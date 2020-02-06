@@ -574,6 +574,7 @@ PokegearMap_KantoMap:
 	jr PokegearMap_ContinueMap
 
 PokegearMap_JohtoMap:
+; TODO: Change these to the last and first landmarks of the Johto region.
 	ld d, SILVER_CAVE
 	ld e, NEW_BARK_TOWN
 PokegearMap_ContinueMap:
@@ -734,6 +735,7 @@ PokegearMap_UpdateCursorPosition:
 	ret
 
 TownMap_GetKantoLandmarkLimits:
+; TODO: Change these to the last and first landmarks of the Kanto region, depending on postgame.
 	ld a, [wStatusFlags]
 	bit STATUSFLAGS_HALL_OF_FAME_F, a
 	jr z, .not_hof
@@ -2280,13 +2282,15 @@ FlyMap:
 .JohtoFlyMap:
 ; Note that .NoKanto should be modified in tandem with this branch
 	push af
+
+; TODO: Choose the appropriate start and end flypoints.
 ; Start from New Bark Town
 	ld a, FLY_NEW_BARK
 	ld [wTownMapPlayerIconLandmark], a
 ; Flypoints begin at New Bark Town...
 	ld [wStartFlypoint], a
 ; ..and end at Silver Cave.
-	ld a, FLY_MT_SILVER
+	ld a, FLY_N_A
 	ld [wEndFlypoint], a
 ; Fill out the map
 	call FillJohtoMap
@@ -2311,8 +2315,9 @@ FlyMap:
 	jr z, .NoKanto
 ; Kanto's map is only loaded if we've visited Indigo Plateau
 
+; TODO: Choose the appropriate start and end flypoints.
 ; Flypoints begin at Pallet Town...
-	ld a, FLY_PALLET
+	ld a, FLY_N_A
 	ld [wStartFlypoint], a
 ; ...and end at Indigo Plateau
 	ld a, FLY_INDIGO
@@ -2336,7 +2341,7 @@ FlyMap:
 ; Flypoints begin at New Bark Town...
 	ld [wStartFlypoint], a
 ; ..and end at Silver Cave
-	ld a, FLY_MT_SILVER
+	ld a, FLY_N_A
 	ld [wEndFlypoint], a
 	call FillJohtoMap
 	pop af

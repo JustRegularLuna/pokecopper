@@ -1,13 +1,9 @@
-; Places and People will not describe these maps.
+; Places and People will only describe the landmarks of these maps.
 
 PnP_HiddenPlaces:
-	map_id PALLET_TOWN
-	map_id ROUTE_22
-	map_id PEWTER_CITY
-	map_id CERULEAN_POLICE_STATION
-	map_id ROUTE_12
-	map_id ROUTE_11
-	map_id ROUTE_16
-	map_id ROUTE_14
-	map_id CINNABAR_POKECENTER_2F_BETA
+; TODO: Choose maps to use here, one per relevant landmark.
+	map_id POKECENTER_2F
+	map_id BATTLE_TOWER_OUTSIDE
+	map_id NEW_BARK_TOWN
+	map_id INDIGO_PLATEAU_POKECENTER_1F
 .End
