@@ -2378,12 +2378,11 @@ Function56cd:
 	jr nc, .ok8
 	ld c, a
 	push bc
-	call Coord2Attr
+	call Coord2Tile
 	pop bc
 	ld a, [hl]
-	and PALETTE_MASK
-	cp PAL_BG_TEXT
-	jr z, .nope
+	cp $7F
+	jr nc, .nope
 .ok8
 	dec d
 	jr nz, .next
