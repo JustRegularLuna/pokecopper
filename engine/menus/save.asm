@@ -93,16 +93,18 @@ MoveMonWOMail_InsertMon_SaveGame:
 	ld [wSaveFileExists], a
 	farcall StageRTCTimeForSave
 	farcall BackupMysteryGift
-	call ValidateSave
+	call InvalidateSave
 	call SaveOptions
 	call SavePlayerData
 	call SavePokemonData
 	call SaveChecksum
-	call ValidateBackupSave
+	call ValidateSave
+	call InvalidateBackupSave
 	call SaveBackupOptions
 	call SaveBackupPlayerData
 	call SaveBackupPokemonData
 	call SaveBackupChecksum
+	call ValidateBackupSave
 	farcall BackupPartyMonMail
 	farcall BackupMobileEventIndex
 	farcall SaveRTC
@@ -257,17 +259,19 @@ _SaveGameData:
 	ld [wSaveFileExists], a
 	farcall StageRTCTimeForSave
 	farcall BackupMysteryGift
-	call ValidateSave
+	call InvalidateSave
 	call SaveOptions
 	call SavePlayerData
 	call SavePokemonData
 	call SaveBox
 	call SaveChecksum
-	call ValidateBackupSave
+	call ValidateSave
+	call InvalidateBackupSave
 	call SaveBackupOptions
 	call SaveBackupPlayerData
 	call SaveBackupPokemonData
 	call SaveBackupChecksum
+	call ValidateBackupSave
 	call UpdateStackTop
 	farcall BackupPartyMonMail
 	farcall BackupMobileEventIndex
@@ -469,6 +473,14 @@ ValidateSave:
 	ld [sCheckValue2], a
 	jp CloseSRAM
 
+InvalidateSave:
+	ld a, BANK(sCheckValue1) ; aka BANK(sCheckValue2)
+	call GetSRAMBank
+	xor a
+	ld [sCheckValue1], a
+	ld [sCheckValue2], a
+	jp CloseSRAM
+
 SaveOptions:
 	ld a, BANK(sOptions)
 	call GetSRAMBank
@@ -531,6 +543,14 @@ ValidateBackupSave:
 	ld [sBackupCheckValue2], a
 	call CloseSRAM
 	ret
+
+InvalidateBackupSave:
+	ld a, BANK(sBackupCheckValue1) ; aka BANK(sBackupCheckValue2)
+	call GetSRAMBank
+	xor a
+	ld [sBackupCheckValue1], a
+	ld [sBackupCheckValue2], a
+	jp CloseSRAM
 
 SaveBackupOptions:
 	ld a, BANK(sBackupOptions)
