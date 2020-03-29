@@ -216,10 +216,15 @@ PokeBallEffect:
 .room_in_party
 	xor a
 	ld [wWildMon], a
-	ld a, [wCurItem]
-	cp PARK_BALL
-	call nz, ReturnToBattle_UseBall
+	ld a, [wBattleType]
+	cp BATTLETYPE_CONTEST
+	jr z, .contest_or_safari
+	; TODO: Add Safari Battle check here too, once safari battles are added
+	;cp BATTLETYPE_SAFARI
+	;jr z, .contest_or_safari
+	call ReturnToBattle_UseBall
 
+.contest_or_safari
 	ld hl, wOptions
 	res NO_TEXT_SCROLL, [hl]
 	ld hl, ItemUsedText
