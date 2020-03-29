@@ -107,15 +107,16 @@ GetFrontpicPointer:
 	cp UNOWN
 	jr z, .unown
 	ld a, [wCurPartySpecies]
+	ld hl, PokemonPicPointers
 	ld d, BANK(PokemonPicPointers)
 	jr .ok
 
 .unown
 	ld a, [wUnownLetter]
+	ld hl, UnownPicPointers
 	ld d, BANK(UnownPicPointers)
 
 .ok
-	ld hl, PokemonPicPointers ; UnownPicPointers
 	dec a
 	ld bc, 6
 	call AddNTimes
