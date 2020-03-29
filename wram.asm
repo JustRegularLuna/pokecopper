@@ -538,7 +538,7 @@ wBattleScriptBufferAddress:: dw ; c6b2
 
 wTurnEnded:: db ; c6b4
 
-	ds 1
+wIsConfusionDamage:: db ; c6b5
 
 wPlayerStats:: ; c6b6
 wPlayerAttack:: dw
