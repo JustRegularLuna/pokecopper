@@ -412,6 +412,16 @@ HandleBerserkGene:
 	call GetBattleVarAddr
 	push af
 	set SUBSTATUS_CONFUSED, [hl]
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wEnemyConfuseCount
+	jr z, .set_confuse_count
+	ld hl, wPlayerConfuseCount
+.set_confuse_count
+	call BattleRandom
+	and %11
+	add a, 2
+	ld [hl], a
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVarAddr
 	push hl
