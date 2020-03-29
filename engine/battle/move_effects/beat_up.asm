@@ -202,6 +202,9 @@ BattleCommand_BeatUpFailText:
 	and a
 	ret nz
 
+	inc a
+	ld [wAttackMissed], a
+
 	jp PrintButItFailed
 
 GetBeatupMonLocation:
