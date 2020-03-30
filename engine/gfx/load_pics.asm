@@ -70,7 +70,6 @@ GetAnimatedFrontpic:
 	xor a
 	ldh [hBGMapMode], a
 	call _GetFrontpic
-	call GetAnimatedEnemyFrontpic
 	pop af
 	ldh [rSVBK], a
 	ret
@@ -127,69 +126,6 @@ GetFrontpicPointer:
 	ld a, d
 	call GetFarHalfword
 	pop bc
-	ret
-
-GetAnimatedEnemyFrontpic:
-	ld a, BANK(vTiles3)
-	ldh [rVBK], a
-	push hl
-	ld de, wDecompressScratch
-	ld c, 7 * 7
-	ldh a, [hROMBank]
-	ld b, a
-	call Get2bpp
-	pop hl
-	ld de, 7 * 7 tiles
-	add hl, de
-	push hl
-	ld a, BANK(wBasePicSize)
-	ld hl, wBasePicSize
-	call GetFarWRAMByte
-	pop hl
-	and $f
-	ld de, wDecompressEnemyFrontpic + 5 * 5 tiles
-	ld c, 5 * 5
-	cp 5
-	jr z, .got_dims
-	ld de, wDecompressEnemyFrontpic + 6 * 6 tiles
-	ld c, 6 * 6
-	cp 6
-	jr z, .got_dims
-	ld de, wDecompressEnemyFrontpic + 7 * 7 tiles
-	ld c, 7 * 7
-.got_dims
-	push hl
-	push bc
-	call LoadFrontpicTiles
-	pop bc
-	pop hl
-	ld de, wDecompressScratch
-	ldh a, [hROMBank]
-	ld b, a
-	call Get2bpp
-	xor a
-	ldh [rVBK], a
-	ret
-
-LoadFrontpicTiles:
-	ld hl, wDecompressScratch
-	swap c
-	ld a, c
-	and $f
-	ld b, a
-	ld a, c
-	and $f0
-	ld c, a
-	push bc
-	call LoadOrientedFrontpic
-	pop bc
-.loop
-	push bc
-	ld c, 0
-	call LoadOrientedFrontpic
-	pop bc
-	dec b
-	jr nz, .loop
 	ret
 
 GetMonBackpic:
