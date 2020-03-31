@@ -616,12 +616,6 @@ AnimateFlowerTile:
 	ld a, [wTileAnimationTimer]
 	and %10
 
-; CGB has different color mappings for flowers.
-	ld e, a
-	ldh a, [hCGB]
-	and 1
-	add e
-
 	swap a
 	ld e, a
 	ld d, 0
@@ -835,107 +829,8 @@ endr
 	ret
 
 AnimateWaterPalette:
-; Transition between color values 0-2 for color 0 in palette 3.
-
-; No palette changes on DMG.
-	ldh a, [hCGB]
-	and a
-	ret z
-
-; We don't want to mess with non-standard palettes.
-	ldh a, [rBGP] ; BGP
-	cp %11100100
-	ret nz
-
-; Only update on even frames.
-	ld a, [wTileAnimationTimer]
-	ld l, a
-	and 1 ; odd
-	ret nz
-
-; Ready for BGPD input...
-
-	ld a, (1 << rBGPI_AUTO_INCREMENT) palette PAL_BG_WATER
-	ldh [rBGPI], a
-
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
-
-; Update color 0 in order 0 1 2 1
-	ld a, l
-	and %110 ; frames 0 2 4 6
-	jr z, .color0
-	cp %100 ; frame 4
-	jr z, .color2
-
-.color1
-	ld hl, wBGPals1 palette PAL_BG_WATER color 1
-	ld a, [hli]
-	ldh [rBGPD], a
-	ld a, [hli]
-	ldh [rBGPD], a
-	jr .end
-
-.color0
-	ld hl, wBGPals1 palette PAL_BG_WATER color 0
-	ld a, [hli]
-	ldh [rBGPD], a
-	ld a, [hli]
-	ldh [rBGPD], a
-	jr .end
-
-.color2
-	ld hl, wBGPals1 palette PAL_BG_WATER color 2
-	ld a, [hli]
-	ldh [rBGPD], a
-	ld a, [hli]
-	ldh [rBGPD], a
-
-.end
-	pop af
-	ldh [rSVBK], a
-	ret
-
 FlickeringCaveEntrancePalette:
 ; No palette changes on DMG.
-	ldh a, [hCGB]
-	and a
-	ret z
-; We don't want to mess with non-standard palettes.
-	ldh a, [rBGP]
-	cp %11100100
-	ret nz
-; We only want to be here if we're in a dark cave.
-	ld a, [wTimeOfDayPalset]
-	cp %11111111 ; 3,3,3,3
-	ret nz
-
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
-; Ready for BGPD input...
-	ld a, (1 << rBGPI_AUTO_INCREMENT) palette PAL_BG_YELLOW
-	ldh [rBGPI], a
-	ldh a, [hVBlankCounter]
-	and %10
-	jr nz, .bit1set
-	ld hl, wBGPals1 palette PAL_BG_YELLOW
-	jr .okay
-
-.bit1set
-	ld hl, wBGPals1 palette PAL_BG_YELLOW color 1
-
-.okay
-	ld a, [hli]
-	ldh [rBGPD], a
-	ld a, [hli]
-	ldh [rBGPD], a
-
-	pop af
-	ldh [rSVBK], a
 	ret
 
 TowerPillarTilePointer1:  dw vTiles2 tile $2d, TowerPillarTile1
