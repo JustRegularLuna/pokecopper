@@ -769,12 +769,6 @@ Function17abcf:
 	ld bc, 2 palettes
 	call CopyBytes
 
-	ld hl, MapObjectPals palette 1
-	ld de, wOBPals1 palette 3
-	ld bc, 1 palettes
-	ld a, BANK(MapObjectPals)
-	call FarCopyBytes
-
 	pop af
 	ldh [rSVBK], a
 	ret
