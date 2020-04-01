@@ -34,8 +34,6 @@ _AnimateTileset::
 	jp hl
 
 Tileset0Anim:
-TilesetJohtoModernAnim:
-TilesetKantoAnim:
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -45,33 +43,6 @@ TilesetKantoAnim:
 	dw NULL,  AnimateFlowerTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  StandingTileFrame8
-	dw NULL,  DoneTileAnimation
-
-TilesetParkAnim:
-	dw vTiles2 tile $14, AnimateWaterTile
-	dw NULL,  WaitTileAnimation
-	dw vTiles2 tile $5f, AnimateFountain
-	dw NULL,  WaitTileAnimation
-	dw NULL,  AnimateWaterPalette
-	dw NULL,  WaitTileAnimation
-	dw NULL,  AnimateFlowerTile
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  StandingTileFrame8
-	dw NULL,  DoneTileAnimation
-
-TilesetForestAnim:
-	dw NULL,  ForestTreeLeftAnimation
-	dw NULL,  ForestTreeRightAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  ForestTreeLeftAnimation2
-	dw NULL,  ForestTreeRightAnimation2
-	dw NULL,  AnimateFlowerTile
-	dw vTiles2 tile $14, AnimateWaterTile
-	dw NULL,  AnimateWaterPalette
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
@@ -90,46 +61,6 @@ TilesetJohtoAnim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-UnusedTilesetAnim_fc0d7:
-	dw vTiles2 tile $03, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw vTiles2 tile $03, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  AnimateFlowerTile
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  DoneTileAnimation
-
-UnusedTilesetAnim_fc103:
-	dw vTiles2 tile $14, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw vTiles2 tile $14, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  DoneTileAnimation
-
-TilesetPortAnim:
-	dw vTiles2 tile $14, AnimateWaterTile
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  AnimateWaterPalette
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  StandingTileFrame8
-	dw NULL,  DoneTileAnimation
-
 TilesetEliteFourRoomAnim:
 	dw NULL,  LavaBubbleAnim2
 	dw NULL,  WaitTileAnimation
@@ -138,58 +69,6 @@ TilesetEliteFourRoomAnim:
 	dw NULL,  LavaBubbleAnim1
 	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
-	dw NULL,  DoneTileAnimation
-
-UnusedTilesetAnim_fc17f:
-	dw vTiles2 tile $53, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileDown
-	dw wTileAnimBuffer, ScrollTileDown
-	dw vTiles2 tile $53, WriteTileFromBuffer
-	dw vTiles2 tile $03, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw vTiles2 tile $03, WriteTileFromBuffer
-	dw vTiles2 tile $53, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileDown
-	dw wTileAnimBuffer, ScrollTileDown
-	dw vTiles2 tile $53, WriteTileFromBuffer
-	dw NULL,  DoneTileAnimation
-
-UnusedTilesetAnim_fc1af:
-	dw vTiles2 tile $54, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileDown
-	dw wTileAnimBuffer, ScrollTileDown
-	dw vTiles2 tile $54, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
-	dw vTiles2 tile $03, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw vTiles2 tile $03, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
-	dw vTiles2 tile $54, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileDown
-	dw wTileAnimBuffer, ScrollTileDown
-	dw vTiles2 tile $54, WriteTileFromBuffer
-	dw NULL,  DoneTileAnimation
-
-TilesetCaveAnim:
-TilesetDarkCaveAnim:
-	dw vTiles2 tile $14, WriteTileToBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw vTiles2 tile $14, WriteTileFromBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  AnimateWaterPalette
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw vTiles2 tile $40, WriteTileToBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw vTiles2 tile $40, WriteTileFromBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
 TilesetIcePathAnim:
@@ -213,61 +92,15 @@ TilesetIcePathAnim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
-TilesetTowerAnim:
-	dw TowerPillarTilePointer9,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer10, AnimateTowerPillarTile
-	dw TowerPillarTilePointer7,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer8,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer5,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer6,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer3,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer4,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer1,  AnimateTowerPillarTile
-	dw TowerPillarTilePointer2,  AnimateTowerPillarTile
-	dw NULL,  StandingTileFrame
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  DoneTileAnimation
-
-UnusedTilesetAnim_fc2bf:
-	dw vTiles2 tile $4f, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw vTiles2 tile $4f, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  DoneTileAnimation
-
 TilesetBattleTowerOutsideAnim:
 TilesetHouseAnim:
 TilesetPlayersHouseAnim:
 TilesetPokecenterAnim:
 TilesetGateAnim:
-TilesetLabAnim:
-TilesetFacilityAnim:
 TilesetMartAnim:
-TilesetMansionAnim:
-TilesetGameCornerAnim:
-TilesetTraditionalHouseAnim:
-TilesetTrainStationAnim:
 TilesetChampionsRoomAnim:
-TilesetLighthouseAnim:
 TilesetPlayersRoomAnim:
-TilesetPokeComCenterAnim:
 TilesetBattleTowerInsideAnim:
-TilesetRuinsOfAlphAnim:
-TilesetRadioTowerAnim:
-TilesetUndergroundAnim:
-TilesetBetaWordRoomAnim:
-TilesetHoOhWordRoomAnim:
-TilesetKabutoWordRoomAnim:
-TilesetOmanyteWordRoomAnim:
-TilesetAerodactylWordRoomAnim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation

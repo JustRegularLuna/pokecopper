@@ -121,14 +121,6 @@ LoadOW_BGPal7::
 Palette_TextBG7:
 INCLUDE "gfx/font/bg_text.pal"
 
-Function49420::
-	ld hl, MansionPalette1 + 8 palettes
-	ld de, wBGPals1 palette PAL_BG_ROOF
-	ld bc, 1 palettes
-	ld a, BANK(wBGPals1)
-	call FarCopyWRAM
-	ret
-
 MG_Mobile_Layout01:
 	call MG_Mobile_Layout_LoadPals
 	ld de, wBGPals1 palette PAL_BG_TEXT
@@ -190,8 +182,6 @@ Function49496:
 	hlcoord 19, 1, wAttrMap
 	ld [hl], a
 	ret
-
-INCLUDE "engine/tilesets/tileset_palettes.asm"
 
 MG_Mobile_Layout02:
 	ld hl, .Palette_49732

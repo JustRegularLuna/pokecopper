@@ -44,7 +44,6 @@ Function17a6a8:
 	farcall HDMATransferAttrMapAndTileMapToWRAMBank3
 	call Function17abcf
 	farcall LoadOW_BGPal7
-	farcall Function49420
 	call SetPalettes
 	call DelayFrame
 	ret
