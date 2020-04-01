@@ -6,33 +6,11 @@ SwapTextboxPalettes::
 	push bc
 	ld c, SCREEN_WIDTH
 .innerloop
-	ld a, [hl]
-	push hl
-	srl a
-	jr c, .UpperNybble
-	ld hl, wTilesetPalettes
-	add [hl]
-	ld l, a
-	ld a, [wTilesetPalettes + 1]
-	adc 0
-	ld h, a
-	ld a, [hl]
-	and $f
-	jr .next
-
-.UpperNybble:
-	ld hl, wTilesetPalettes
-	add [hl]
-	ld l, a
-	ld a, [wTilesetPalettes + 1]
-	adc 0
-	ld h, a
-	ld a, [hl]
-	swap a
-	and $f
-
+	xor a
+	bit 7, [hl]
+	jr z, .next
+	set OAM_TILE_BANK, a
 .next
-	pop hl
 	ld [de], a
 	res 7, [hl]
 	inc hl
@@ -48,35 +26,11 @@ ScrollBGMapPalettes::
 	ld hl, wBGMapBuffer
 	ld de, wBGMapPalBuffer
 .loop
-	ld a, [hl]
-	push hl
-	srl a
-	jr c, .UpperNybble
-
-; .LowerNybble
-	ld hl, wTilesetPalettes
-	add [hl]
-	ld l, a
-	ld a, [wTilesetPalettes + 1]
-	adc 0
-	ld h, a
-	ld a, [hl]
-	and $f
-	jr .next
-
-.UpperNybble:
-	ld hl, wTilesetPalettes
-	add [hl]
-	ld l, a
-	ld a, [wTilesetPalettes + 1]
-	adc 0
-	ld h, a
-	ld a, [hl]
-	swap a
-	and $f
-
+	xor a
+	bit 7, [hl]
+	jr z, .next
+	set OAM_TILE_BANK, a
 .next
-	pop hl
 	ld [de], a
 	res 7, [hl]
 	inc hl
