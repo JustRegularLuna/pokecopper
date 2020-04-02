@@ -5,18 +5,7 @@ SwapTextboxPalettes::
 .loop
 	push bc
 	ld c, SCREEN_WIDTH
-.innerloop
-	xor a
-	bit 7, [hl]
-	jr z, .next
-	set OAM_TILE_BANK, a
-.next
-	ld [de], a
-	res 7, [hl]
-	inc hl
-	inc de
-	dec c
-	jr nz, .innerloop
+	call GetBGMapTilePalettes
 	pop bc
 	dec b
 	jr nz, .loop
@@ -25,11 +14,13 @@ SwapTextboxPalettes::
 ScrollBGMapPalettes::
 	ld hl, wBGMapBuffer
 	ld de, wBGMapPalBuffer
+	; fallthrough
+GetBGMapTilePalettes:
 .loop
 	xor a
 	bit 7, [hl]
 	jr z, .next
-	set OAM_TILE_BANK, a
+	or VRAM_BANK_1
 .next
 	ld [de], a
 	res 7, [hl]
