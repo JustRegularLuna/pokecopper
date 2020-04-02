@@ -20,7 +20,7 @@ PalPacket_GSTitleScreen:
 	sgb_pal_set GS_TITLE_SCREEN_0, GS_TITLE_SCREEN_1, GS_TITLE_SCREEN_2, GS_TITLE_SCREEN_3
 
 PalPacket_MagnetTrain:
-	sgb_pal_set SHINY_GREENMON, GREYMON, BROWNMON, 00
+	sgb_pal_set SHINY_GREENMON, GREYMON, BROWNMON, ROUTE
 
 PalPacket_BetaPoker:
 	sgb_pal_set BETA_POKER_0, BETA_POKER_1, BETA_POKER_2, BETA_POKER_3
@@ -29,28 +29,28 @@ PalPacket_UnownPuzzle:
 	sgb_pal_set UNOWN_PUZZLE, UNOWN_PUZZLE, UNOWN_PUZZLE, UNOWN_PUZZLE
 
 PalPacket_9bd6:
-	sgb_pal_set 00, 00, 00, 00
+	sgb_pal_set ROUTE, ROUTE, ROUTE, ROUTE
 
 PalPacket_GSIntroShellderLapras:
-	sgb_pal_set GS_INTRO_SHELLDER_LAPRAS, 00, 00, 00
+	sgb_pal_set GS_INTRO_SHELLDER_LAPRAS, ROUTE, ROUTE, ROUTE
 
 UnreferencedPalPacket_BetaIntroLapras:
-	sgb_pal_set BETA_INTRO_LAPRAS, 00, 00, 00
+	sgb_pal_set BETA_INTRO_LAPRAS, ROUTE, ROUTE, ROUTE
 
 PalPacket_GSIntroJigglypuffPikachu:
-	sgb_pal_set GS_INTRO_JIGGLYPUFF_PIKACHU_BG, GS_INTRO_JIGGLYPUFF_PIKACHU_OB, 00, 00
+	sgb_pal_set GS_INTRO_JIGGLYPUFF_PIKACHU_BG, GS_INTRO_JIGGLYPUFF_PIKACHU_OB, ROUTE, ROUTE
 
 PalPacket_GSIntroStartersTransition:
-	sgb_pal_set GS_INTRO_STARTERS_TRANSITION, 00, 00, 00
+	sgb_pal_set GS_INTRO_STARTERS_TRANSITION, ROUTE, ROUTE, ROUTE
 
 PalPacket_BetaIntroVenusaur:
-	sgb_pal_set BETA_INTRO_VENUSAUR, 00, 00, 00
+	sgb_pal_set BETA_INTRO_VENUSAUR, ROUTE, ROUTE, ROUTE
 
 PalPacket_Pack:
-	sgb_pal_set PACK, 00, 00, 00
+	sgb_pal_set PACK, ROUTE, ROUTE, ROUTE
 
 PalPacket_BetaPikachuMinigame:
-	sgb_pal_set GS_INTRO_JIGGLYPUFF_PIKACHU_OB, 00, 00, 00
+	sgb_pal_set GS_INTRO_JIGGLYPUFF_PIKACHU_OB, ROUTE, ROUTE, ROUTE
 
 PalPacket_PartyMenu:
 	sgb_pal_set SHINY_GREYMON, HP_GREEN, HP_YELLOW, HP_RED
@@ -59,10 +59,10 @@ PalPacket_BattleGrayscale:
 	sgb_pal_set BLACKOUT, BLACKOUT, BLACKOUT, BLACKOUT
 
 PalPacket_Pokegear:
-	sgb_pal_set POKEGEAR, 00, 00, 00
+	sgb_pal_set POKEGEAR, ROUTE, ROUTE, ROUTE
 
 UnreferencedPalPacket_9c86:
-	sgb_pal_set PACK, 00, 00, 00
+	sgb_pal_set PACK, ROUTE, ROUTE, ROUTE
 
 PalPacket_SlotMachine:
 	sgb_pal_set SLOT_MACHINE_0, SLOT_MACHINE_1, SLOT_MACHINE_2, SLOT_MACHINE_3
@@ -71,13 +71,13 @@ PalPacket_BetaTitleScreen:
 	sgb_pal_set BETA_LOGO_1, BETA_LOGO_2, MEWMON, PURPLEMON
 
 PalPacket_Diploma:
-	sgb_pal_set MEWMON, 00, 00, 00
+	sgb_pal_set MEWMON, ROUTE, ROUTE, ROUTE
 
 PalPacket_TradeTube:
-	sgb_pal_set BLUEMON, 00, 00, 00
+	sgb_pal_set BLUEMON, ROUTE, ROUTE, ROUTE
 
 PalPacket_GamefreakLogo:
-	sgb_pal_set GS_INTRO_GAMEFREAK_LOGO, 00, 00, 00
+	sgb_pal_set GS_INTRO_GAMEFREAK_LOGO, ROUTE, ROUTE, ROUTE
 
 PalPacket_9ce6:
 	sgb_pal01

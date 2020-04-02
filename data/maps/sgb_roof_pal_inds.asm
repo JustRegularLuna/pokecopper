@@ -2,7 +2,7 @@
 
 MapGroupRoofSGBPalInds:
 ; entries correspond to map groups
-	db PREDEFPAL_00 ; 00
+	db PREDEFPAL_ROUTE ; 00
 	db PREDEFPAL_FUCHSIA ; pokecenter upstairs
 	db PREDEFPAL_AZURE_MIST ; battle tower
 	db PREDEFPAL_SILENT
