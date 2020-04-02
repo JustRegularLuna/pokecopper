@@ -20,7 +20,7 @@ PalPacket_GSTitleScreen:
 	sgb_pal_set GS_TITLE_SCREEN_0, GS_TITLE_SCREEN_1, GS_TITLE_SCREEN_2, GS_TITLE_SCREEN_3
 
 PalPacket_MagnetTrain:
-	sgb_pal_set BETA_SHINY_GREENMON, CGB_BADGE, RB_BROWNMON, 00
+	sgb_pal_set SHINY_GREENMON, GREYMON, BROWNMON, 00
 
 PalPacket_BetaPoker:
 	sgb_pal_set BETA_POKER_0, BETA_POKER_1, BETA_POKER_2, BETA_POKER_3
@@ -53,7 +53,7 @@ PalPacket_BetaPikachuMinigame:
 	sgb_pal_set GS_INTRO_JIGGLYPUFF_PIKACHU_OB, 00, 00, 00
 
 PalPacket_PartyMenu:
-	sgb_pal_set PARTY_ICON, HP_GREEN, HP_YELLOW, HP_RED
+	sgb_pal_set SHINY_GREYMON, HP_GREEN, HP_YELLOW, HP_RED
 
 PalPacket_BattleGrayscale:
 	sgb_pal_set BLACKOUT, BLACKOUT, BLACKOUT, BLACKOUT
@@ -68,13 +68,13 @@ PalPacket_SlotMachine:
 	sgb_pal_set SLOT_MACHINE_0, SLOT_MACHINE_1, SLOT_MACHINE_2, SLOT_MACHINE_3
 
 PalPacket_BetaTitleScreen:
-	sgb_pal_set BETA_LOGO_1, BETA_LOGO_2, DIPLOMA, RB_PURPLEMON
+	sgb_pal_set BETA_LOGO_1, BETA_LOGO_2, MEWMON, PURPLEMON
 
 PalPacket_Diploma:
-	sgb_pal_set DIPLOMA, 00, 00, 00
+	sgb_pal_set MEWMON, 00, 00, 00
 
 PalPacket_TradeTube:
-	sgb_pal_set TRADE_TUBE, 00, 00, 00
+	sgb_pal_set BLUEMON, 00, 00, 00
 
 PalPacket_GamefreakLogo:
 	sgb_pal_set GS_INTRO_GAMEFREAK_LOGO, 00, 00, 00

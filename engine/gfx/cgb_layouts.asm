@@ -255,7 +255,7 @@ INCLUDE "gfx/stats/stats.pal"
 
 _CGB_Pokedex:
 	ld de, wBGPals1
-	ld a, PREDEFPAL_POKEDEX
+	ld a, PREDEFPAL_REDMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE ; dex interface palette
 	ld a, [wCurPartySpecies]
@@ -294,7 +294,7 @@ INCLUDE "gfx/pokedex/cursor.pal"
 
 _CGB_BillsPC:
 	ld de, wBGPals1
-	ld a, PREDEFPAL_POKEDEX
+	ld a, PREDEFPAL_REDMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	ld a, [wCurPartySpecies]
@@ -348,7 +348,7 @@ INCLUDE "gfx/pc/orange.pal"
 
 _CGB_PokedexUnownMode:
 	ld de, wBGPals1
-	ld a, PREDEFPAL_POKEDEX
+	ld a, PREDEFPAL_REDMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	ld a, [wCurPartySpecies]
@@ -719,7 +719,7 @@ _CGB_TrainerCard:
 	ld a, PRYCE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, PREDEFPAL_CGB_BADGE
+	ld a, PREDEFPAL_GREYMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 
@@ -800,7 +800,7 @@ _CGB_TrainerCard:
 
 _CGB_MoveList:
 	ld de, wBGPals1
-	ld a, PREDEFPAL_GOLDENROD
+	ld a, PREDEFPAL_MARIGOLD
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	ld a, [wPlayerHPPal]
@@ -834,7 +834,7 @@ _CGB_BetaPikachuMinigame:
 
 _CGB_PokedexSearchOption:
 	ld de, wBGPals1
-	ld a, PREDEFPAL_POKEDEX
+	ld a, PREDEFPAL_REDMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	call WipeAttrMap
@@ -998,7 +998,7 @@ _CGB_TradeTube:
 	ld a, BANK(wOBPals1)
 	call FarCopyWRAM
 	ld de, wOBPals1 palette 7
-	ld a, PREDEFPAL_TRADE_TUBE
+	ld a, PREDEFPAL_BLUEMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	call WipeAttrMap

@@ -764,10 +764,10 @@ Unreferenced_Function97cc:
 	ret z
 	ld a, $90
 	ldh [rOBPI], a
-	ld a, PREDEFPAL_TRADE_TUBE
+	ld a, PREDEFPAL_BLUEMON
 	call GetPredefPal
 	call .PushPalette
-	ld a, PREDEFPAL_RB_GREENMON
+	ld a, PREDEFPAL_GREENMON
 	call GetPredefPal
 	call .PushPalette
 	ret
