@@ -234,7 +234,7 @@ Unreferenced_Function8b81:
 	ld de, wOBPals1
 	ld a, c
 	call GetMonPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
+	call LoadHLPaletteIntoDE
 	ret
 
 LoadTrainerClassPaletteAsNthBGPal:
@@ -270,7 +270,7 @@ got_palette_pointer_8bd7
 	ld e, l
 	ld d, h
 	pop hl
-	call LoadPalette_White_Col1_Col2_Black
+	call LoadHLPaletteIntoDE
 	ret
 
 Unreferenced_Function8bec:
@@ -319,7 +319,7 @@ ApplyMonOrTrainerPals:
 
 .load_palettes
 	ld de, wBGPals1
-	call LoadPalette_White_Col1_Col2_Black
+	call LoadHLPaletteIntoDE
 	call WipeAttrMap
 	call ApplyAttrMap
 	call ApplyPals
@@ -705,31 +705,17 @@ GetEnemyFrontpicPalettePointer:
 GetPlayerOrMonPalettePointer:
 	and a
 	jp nz, GetMonNormalOrShinyPalettePointer
-	ld a, [wPlayerSpriteSetupFlags]
-	bit PLAYERSPRITESETUP_FEMALE_TO_MALE_F, a
-	jr nz, .male
-	ld a, [wPlayerGender]
-	and a
-	jr z, .male
-	ld hl, KrisPalette
-	ret
-
-.male
-	ld hl, PlayerPalette
+	ld a, PREDEFPAL_MEWMON
+	call GetPredefPal
 	ret
 
 GetFrontpicPalettePointer:
 	and a
 	jp nz, GetMonNormalOrShinyPalettePointer
-	ld a, [wTrainerClass]
 
 GetTrainerPalettePointer:
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	ld bc, TrainerPalettes
-	add hl, bc
+	ld a, PREDEFPAL_MEWMON
+	call GetPredefPal
 	ret
 
 GetMonPalettePointer:
@@ -782,13 +768,12 @@ Unreferenced_Function97cc:
 	ret
 
 _GetMonPalettePointer:
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld bc, PokemonPalettes
+	ld hl, PokemonPalettes
+	ld c, a
+	ld b, $0
 	add hl, bc
+	ld a, [hl]
+	call GetPredefPal
 	ret
 
 GetMonNormalOrShinyPalettePointer:
@@ -799,9 +784,11 @@ GetMonNormalOrShinyPalettePointer:
 	call CheckShininess
 	pop hl
 	ret nc
-rept 4
-	inc hl
-endr
+	; all shiny mons of the same color use the same shiny palette, offset from the normal palette
+	push bc
+	ld bc, (PREDEFPAL_SHINY_MEWMON - PREDEFPAL_MEWMON) * 4
+	add hl, bc
+	pop bc
 	ret
 
 PushSGBPals:
@@ -1208,8 +1195,6 @@ ExpBarPalette:
 INCLUDE "gfx/battle/exp_bar.pal"
 
 INCLUDE "data/pokemon/palettes.asm"
-
-INCLUDE "data/trainers/palettes.asm"
 
 PartyMenuBGMobilePalette:
 INCLUDE "gfx/stats/party_menu_bg_mobile.pal"

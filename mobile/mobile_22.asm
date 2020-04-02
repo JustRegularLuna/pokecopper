@@ -748,7 +748,7 @@ Function8956f:
 	ld l, a
 	add hl, hl
 	add hl, hl
-	ld de, TrainerPalettes
+	ld de, PokemonPalettes ; just to get it to compile. This whole thing needs to be removed anyway
 	add hl, de
 	ldh a, [rSVBK]
 	push af
@@ -757,7 +757,7 @@ Function8956f:
 	ld de, wd032
 	ld c, 4
 .loop
-	ld a, BANK(TrainerPalettes)
+	ld a, BANK(PokemonPalettes)
 	call GetFarByte
 	ld [de], a
 	inc de
