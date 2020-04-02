@@ -786,7 +786,7 @@ GetMonNormalOrShinyPalettePointer:
 	ret nc
 	; all shiny mons of the same color use the same shiny palette, offset from the normal palette
 	push bc
-	ld bc, (PREDEFPAL_SHINY_MEWMON - PREDEFPAL_MEWMON) * 4
+	ld bc, (PREDEFPAL_SHINY_MEWMON - PREDEFPAL_MEWMON) * 8
 	add hl, bc
 	pop bc
 	ret
