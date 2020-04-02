@@ -119,15 +119,12 @@ pokecrystal-au.gbc: $(crystal_au_obj) pokecrystal.link
 		tools/lzcomp -- $< $@)
 
 
-### Pokemon pic animation rules
-
-gfx/pokemon/%/front.animated.2bpp: gfx/pokemon/%/front.2bpp gfx/pokemon/%/front.dimensions
-	tools/pokemon_animation_graphics -o $@ $^
-	tools/trim_animation.sh $@ $(word 2,$^)
-
 ### Misc file-specific graphics rules
 
-gfx/pokemon/%/back.2bpp: rgbgfx += -h
+gfx/pokemon/gmon/%.2bpp: rgbgfx += -h
+gfx/pokemon/monback/%.2bpp: rgbgfx += -h
+gfx/pokemon/unown/%.2bpp: rgbgfx += -h
+gfx/pokemon/unownback/%.2bpp: rgbgfx += -h
 
 gfx/trainers/%.2bpp: rgbgfx += -h
 
