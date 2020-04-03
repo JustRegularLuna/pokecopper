@@ -1202,9 +1202,6 @@ INCLUDE "gfx/stats/party_menu_bg_mobile.pal"
 PartyMenuBGPalette:
 INCLUDE "gfx/stats/party_menu_bg.pal"
 
-DiplomaPalettes:
-INCLUDE "gfx/diploma/diploma.pal"
-
 PartyMenuOBPals:
 INCLUDE "gfx/stats/party_menu_ob.pal"
 

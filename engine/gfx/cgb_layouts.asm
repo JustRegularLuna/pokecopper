@@ -510,12 +510,15 @@ _CGB_BetaPoker:
 	ret
 
 _CGB_Diploma:
-	ld hl, DiplomaPalettes
-	ld de, wBGPals1
-	ld bc, 16 palettes
-	ld a, BANK(wBGPals1)
-	call FarCopyWRAM
-
+; Start by loading PAL_MEWMON for 2 object pals
+	ld de, wOBPals1
+	ld a, PAL_MEWMON
+	call GetPredefPal
+	push hl
+	call _CGB_MapPals.LoadHLOBPaletteIntoDE
+	pop hl
+	call _CGB_MapPals.LoadHLOBPaletteIntoDE
+; then load diploma palettes
 	ld hl, PalPacket_Diploma + 1
 	call CopyFourPalettes
 	call WipeAttrMap
