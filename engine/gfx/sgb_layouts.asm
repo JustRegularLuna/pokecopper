@@ -145,7 +145,7 @@ LoadSGBLayout:
 	inc hl
 
 	ld a, [wPlayerHPPal]
-	add PREDEFPAL_HP_GREEN
+	add PAL_HP_GREEN
 	ld [hl], a
 	ld hl, wSGBPals
 	ld de, BlkPacket_MoveList
@@ -523,7 +523,7 @@ endr
 	ld a, [wTimeOfDayPal]
 	cp NITE_F
 	jr c, .morn_day
-	ld a, PREDEFPAL_NITE
+	ld a, PAL_NITE
 	ret
 
 .morn_day
@@ -547,19 +547,19 @@ endr
 	ret
 
 .route
-	ld a, PREDEFPAL_ROUTE
+	ld a, PAL_ROUTE
 	ret
 
 .cave
-	ld a, PREDEFPAL_DUNGEONS
+	ld a, PAL_DUNGEONS
 	ret
 
 .env5
-	ld a, PREDEFPAL_VERMILION
+	ld a, PAL_VERMILION
 	ret
 
 .gate
-	ld a, PREDEFPAL_PEWTER
+	ld a, PAL_PEWTER
 	ret
 
 INCLUDE "data/maps/sgb_roof_pal_inds.asm"

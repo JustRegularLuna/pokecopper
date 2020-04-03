@@ -4,7 +4,7 @@
 
 sgb_pal_set: MACRO
 	db (SGB_PAL_SET << 3) + 1
-	dw PREDEFPAL_\1, PREDEFPAL_\2, PREDEFPAL_\3, PREDEFPAL_\4
+	dw PAL_\1, PAL_\2, PAL_\3, PAL_\4
 	ds 7
 ENDM
 

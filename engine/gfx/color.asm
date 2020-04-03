@@ -186,7 +186,7 @@ Unreferenced_Function8b4d:
 
 .cgb
 	ld de, wOBPals1
-	ld a, PREDEFPAL_BETA_INTRO_VENUSAUR
+	ld a, PAL_BETA_INTRO_VENUSAUR
 	call GetPredefPal
 	jp LoadHLPaletteIntoDE
 
@@ -201,7 +201,7 @@ Unreferenced_Function8b67:
 
 .cgb
 	ld de, wOBPals1
-	ld a, PREDEFPAL_PACK
+	ld a, PAL_PACK
 	call GetPredefPal
 	jp LoadHLPaletteIntoDE
 
@@ -705,7 +705,7 @@ GetEnemyFrontpicPalettePointer:
 GetPlayerOrMonPalettePointer:
 	and a
 	jp nz, GetMonNormalOrShinyPalettePointer
-	ld a, PREDEFPAL_MEWMON
+	ld a, PAL_MEWMON
 	call GetPredefPal
 	ret
 
@@ -714,7 +714,7 @@ GetFrontpicPalettePointer:
 	jp nz, GetMonNormalOrShinyPalettePointer
 
 GetTrainerPalettePointer:
-	ld a, PREDEFPAL_MEWMON
+	ld a, PAL_MEWMON
 	call GetPredefPal
 	ret
 
@@ -750,10 +750,10 @@ Unreferenced_Function97cc:
 	ret z
 	ld a, $90
 	ldh [rOBPI], a
-	ld a, PREDEFPAL_BLUEMON
+	ld a, PAL_BLUEMON
 	call GetPredefPal
 	call .PushPalette
-	ld a, PREDEFPAL_GREENMON
+	ld a, PAL_GREENMON
 	call GetPredefPal
 	call .PushPalette
 	ret
@@ -786,7 +786,7 @@ GetMonNormalOrShinyPalettePointer:
 	ret nc
 	; all shiny mons of the same color use the same shiny palette, offset from the normal palette
 	push bc
-	ld bc, (PREDEFPAL_SHINY_MEWMON - PREDEFPAL_MEWMON) * 8
+	ld bc, (PAL_SHINY_MEWMON - PAL_MEWMON) * 8
 	add hl, bc
 	pop bc
 	ret
