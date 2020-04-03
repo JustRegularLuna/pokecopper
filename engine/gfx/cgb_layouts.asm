@@ -169,19 +169,24 @@ InitPartyMenuBGPal0:
 	ret
 
 _CGB_PokegearPals:
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .male
-	ld hl, FemalePokegearPals
-	jr .got_pals
-
-.male
-	ld hl, MalePokegearPals
-.got_pals
+	ld a, PAL_POKEGEAR
+	call GetPredefPal
 	ld de, wBGPals1
-	ld bc, 6 palettes
-	ld a, BANK(wBGPals1)
-	call FarCopyWRAM
+	ld b, 8
+.loop
+	push hl
+	call LoadHLPaletteIntoDE
+	pop hl
+	dec b
+	jr nz, .loop
+	ld de, wOBPals1
+	ld b, 8
+.loop2
+	push hl
+	call _CGB_MapPals.LoadHLOBPaletteIntoDE
+	pop hl
+	dec b
+	jr nz, .loop2
 	call ApplyPals
 	ld a, $1
 	ldh [hCGBPalUpdate], a
