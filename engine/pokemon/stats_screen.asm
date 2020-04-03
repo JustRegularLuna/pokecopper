@@ -509,11 +509,6 @@ StatsScreen_LoadGFX:
 	ret
 
 .LoadPals:
-	ld a, [wcf64]
-	maskbits NUM_STAT_PAGES
-	ld c, a
-	farcall LoadStatsScreenPals
-	call DelayFrame
 	ld hl, wcf64
 	set 5, [hl]
 	ret

@@ -195,24 +195,21 @@ _CGB_PokegearPals:
 _CGB_StatsScreenHPPals:
 	ld de, wBGPals1
 	ld a, [wCurHPPal]
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld bc, HPBarPals
-	add hl, bc
-	call LoadPalette_White_Col1_Col2_Black ; hp palette
+	add PAL_HP_GREEN
+	call GetPredefPal
+	push hl
+	call LoadHLPaletteIntoDE ; hp palette
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonDVs
 	call GetPlayerOrMonPalettePointer
 	call LoadHLPaletteIntoDE ; mon palette
-	ld hl, ExpBarPalette
-	call LoadPalette_White_Col1_Col2_Black ; exp palette
-	ld hl, StatsScreenPagePals
+	pop hl ; EXP Bar matches HP Bar in SGB mode
+	call LoadHLPaletteIntoDE ; exp palette
 	ld de, wBGPals1 palette 3
-	ld bc, 3 palettes ; pink, green, and blue page palettes
-	ld a, BANK(wBGPals1)
-	call FarCopyWRAM
+	; page button palettes
+	ld a, PAL_HP_GREEN
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
 	call WipeAttrMap
 
 	hlcoord 0, 0, wAttrMap
@@ -226,18 +223,8 @@ _CGB_StatsScreenHPPals:
 	call ByteFill
 
 	hlcoord 13, 5, wAttrMap
-	lb bc, 2, 2
-	ld a, $3 ; pink page palette
-	call FillBoxCGB
-
-	hlcoord 15, 5, wAttrMap
-	lb bc, 2, 2
-	ld a, $4 ; green page palette
-	call FillBoxCGB
-
-	hlcoord 17, 5, wAttrMap
-	lb bc, 2, 2
-	ld a, $5 ; blue page palette
+	lb bc, 2, 6
+	ld a, $3 ; pages palette
 	call FillBoxCGB
 
 	call ApplyAttrMap
@@ -245,12 +232,6 @@ _CGB_StatsScreenHPPals:
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
-
-StatsScreenPagePals:
-INCLUDE "gfx/stats/pages.pal"
-
-StatsScreenPals:
-INCLUDE "gfx/stats/stats.pal"
 
 _CGB_Pokedex:
 	ld de, wBGPals1
