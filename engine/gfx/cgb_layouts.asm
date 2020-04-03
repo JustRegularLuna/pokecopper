@@ -86,28 +86,22 @@ _CGB_BattleColors:
 	push hl
 	call LoadHLPaletteIntoDE ; PAL_BATTLE_BG_ENEMY
 	ld a, [wEnemyHPPal]
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld bc, HPBarPals
-	add hl, bc
-	call LoadPalette_White_Col1_Col2_Black ; PAL_BATTLE_BG_ENEMY_HP
+	add PAL_HP_GREEN
+	call GetPredefPal
+	call LoadHLPaletteIntoDE ; PAL_BATTLE_BG_ENEMY_HP
 	ld a, [wPlayerHPPal]
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld bc, HPBarPals
-	add hl, bc
-	call LoadPalette_White_Col1_Col2_Black ; PAL_BATTLE_BG_PLAYER_HP
-	ld hl, ExpBarPalette
-	call LoadPalette_White_Col1_Col2_Black ; PAL_BATTLE_BG_EXP
+	add PAL_HP_GREEN
+	call GetPredefPal
+	push hl
+	call LoadHLPaletteIntoDE ; PAL_BATTLE_BG_PLAYER_HP
+	pop hl
+	; on the SGB, the EXP Bar was the same color as your HP bar
+	call LoadHLPaletteIntoDE ; PAL_BATTLE_BG_EXP
 	ld de, wOBPals1
 	pop hl
-	call LoadPalette_White_Col1_Col2_Black ; PAL_BATTLE_OB_ENEMY
+	call LoadHLPaletteIntoDE ; PAL_BATTLE_OB_ENEMY
 	pop hl
-	call LoadPalette_White_Col1_Col2_Black ; PAL_BATTLE_OB_PLAYER
+	call LoadHLPaletteIntoDE ; PAL_BATTLE_OB_PLAYER
 	ld a, SCGB_BATTLE_COLORS
 	ld [wSGBPredef], a
 	call ApplyPals
