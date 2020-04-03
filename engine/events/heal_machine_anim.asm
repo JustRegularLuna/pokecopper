@@ -83,7 +83,6 @@ ENDM
 	dw .dummy_5 ; never encountered
 
 .LoadGFX:
-	call .LoadPalettes
 	ld de, .HealMachineGFX
 	ld hl, vTiles0 tile $7c
 	lb bc, BANK(.HealMachineGFX), 2
@@ -153,26 +152,6 @@ INCBIN "gfx/overworld/heal_machine.2bpp"
 	dsprite   7, 3,  11, 2, $7d, PAL_OW_TREE | OBP_NUM
 	dsprite   7, 1,   9, 1, $7d, PAL_OW_TREE | OBP_NUM
 	dsprite   7, 1,  11, 5, $7d, PAL_OW_TREE | OBP_NUM
-
-.LoadPalettes:
-	call IsCGB
-	jr nz, .cgb
-	ld a, %11100000
-	ldh [rOBP1], a
-	ret
-
-.cgb
-	ld hl, .palettes
-	ld de, wOBPals2 palette PAL_OW_TREE
-	ld bc, 1 palettes
-	ld a, BANK(wOBPals2)
-	call FarCopyWRAM
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
-
-.palettes
-INCLUDE "gfx/overworld/heal_machine.pal"
 
 .FlashPalettes8Times:
 	ld c, 8
