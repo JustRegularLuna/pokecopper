@@ -241,8 +241,9 @@ _CGB_Pokedex:
 	ld a, [wCurPartySpecies]
 	cp $ff
 	jr nz, .is_pokemon
-	ld hl, .PokedexQuestionMarkPalette
-	call LoadHLPaletteIntoDE ; green question mark palette
+	ld a, PAL_GREYMON
+	call GetPredefPal
+	call LoadHLPaletteIntoDE ; question mark palette
 	jr .got_palette
 
 .is_pokemon
@@ -255,22 +256,15 @@ _CGB_Pokedex:
 	ld a, $1 ; green question mark palette
 	call FillBoxCGB
 	call InitPartyMenuOBPals
-	ld hl, .PokedexCursorPalette
-	ld de, wOBPals1 palette 7 ; green cursor palette
-	ld bc, 1 palettes
-	ld a, BANK(wOBPals1)
-	call FarCopyWRAM
+	ld a, PAL_REDMON
+	call GetPredefPal
+	ld de, wOBPals1 palette 7 ; cursor palette
+	call LoadHLPaletteIntoDE
 	call ApplyAttrMap
 	call ApplyPals
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
-
-.PokedexQuestionMarkPalette:
-INCLUDE "gfx/pokedex/question_mark.pal"
-
-.PokedexCursorPalette:
-INCLUDE "gfx/pokedex/cursor.pal"
 
 _CGB_BillsPC:
 	ld de, wBGPals1
