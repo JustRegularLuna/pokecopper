@@ -274,7 +274,8 @@ _CGB_BillsPC:
 	ld a, [wCurPartySpecies]
 	cp $ff
 	jr nz, .GetMonPalette
-	ld hl, .BillsPCOrangePalette
+	ld a, PAL_GREYMON
+	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	jr .Resume
 
@@ -294,31 +295,6 @@ _CGB_BillsPC:
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
-
-.Function9009:
-	ld hl, .BillsPCOrangePalette
-	call LoadHLPaletteIntoDE
-	jr .asm_901a
-
-.unused
-	ld bc, wTempMonDVs
-	call GetPlayerOrMonPalettePointer
-	call LoadHLPaletteIntoDE
-.asm_901a
-	call WipeAttrMap
-	hlcoord 1, 1, wAttrMap
-	lb bc, 7, 7
-	ld a, $1
-	call FillBoxCGB
-	call InitPartyMenuOBPals
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
-
-.BillsPCOrangePalette:
-INCLUDE "gfx/pc/orange.pal"
 
 _CGB_PokedexUnownMode:
 	ld de, wBGPals1
