@@ -700,13 +700,9 @@ _CGB_MoveList:
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	ld a, [wPlayerHPPal]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	ld bc, HPBarPals
-	add hl, bc
-	call LoadPalette_White_Col1_Col2_Black
+	add PAL_HP_GREEN
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
 	call WipeAttrMap
 	hlcoord 11, 1, wAttrMap
 	lb bc, 2, 9
@@ -742,57 +738,16 @@ _CGB_PokedexSearchOption:
 
 _CGB_PackPals:
 ; pack pals
-	ld a, [wBattleType]
-	cp BATTLETYPE_TUTORIAL
-	jr z, .tutorial_male
-
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .tutorial_male
-
-	ld hl, .KrisPackPals
-	jr .got_gender
-
-.tutorial_male
-	ld hl, .ChrisPackPals
-
-.got_gender
 	ld de, wBGPals1
-	ld bc, 8 palettes ; 6 palettes?
-	ld a, BANK(wBGPals1)
-	call FarCopyWRAM
+	ld a, PAL_PACK
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
 	call WipeAttrMap
-	hlcoord 0, 0, wAttrMap
-	lb bc, 1, 10
-	ld a, $1
-	call FillBoxCGB
-	hlcoord 10, 0, wAttrMap
-	lb bc, 1, 10
-	ld a, $2
-	call FillBoxCGB
-	hlcoord 7, 2, wAttrMap
-	lb bc, 9, 1
-	ld a, $3
-	call FillBoxCGB
-	hlcoord 0, 7, wAttrMap
-	lb bc, 3, 5
-	ld a, $4
-	call FillBoxCGB
-	hlcoord 0, 3, wAttrMap
-	lb bc, 3, 5
-	ld a, $5
-	call FillBoxCGB
 	call ApplyAttrMap
 	call ApplyPals
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
-
-.ChrisPackPals:
-INCLUDE "gfx/pack/pack.pal"
-
-.KrisPackPals:
-INCLUDE "gfx/pack/pack_f.pal"
 
 _CGB_Pokepic:
 	call _CGB_MapPals
@@ -829,17 +784,10 @@ _CGB_Pokepic:
 	ret
 
 _CGB_MagnetTrain:
-	ld hl, PalPacket_MagnetTrain + 1
-	call CopyFourPalettes
+	xor a ; PAL_ROUTE
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
 	call WipeAttrMap
-	hlcoord 0, 4, wAttrMap
-	lb bc, 10, SCREEN_WIDTH
-	ld a, $2
-	call FillBoxCGB
-	hlcoord 0, 6, wAttrMap
-	lb bc, 6, SCREEN_WIDTH
-	ld a, $1
-	call FillBoxCGB
 	call ApplyAttrMap
 	call ApplyPals
 	ld a, $1
