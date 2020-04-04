@@ -665,13 +665,7 @@ PokegearMap_ContinueMap:
 PokegearMap_InitPlayerIcon:
 	push af
 	depixel 0, 0
-	ld b, SPRITE_ANIM_INDEX_RED_WALK
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .got_gender
-	ld b, SPRITE_ANIM_INDEX_BLUE_WALK
-.got_gender
-	ld a, b
+	ld a, SPRITE_ANIM_INDEX_RED_WALK
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
@@ -2563,13 +2557,7 @@ Pokedex_GetArea:
 	ld [hli], a ; tile id
 	inc de
 	push bc
-	ld c, PAL_OW_RED
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .male
-	inc c ; PAL_OW_BLUE
-.male
-	ld a, c
+	ld a, PAL_OW_RED
 	ld [hli], a ; attributes
 	pop bc
 	jr .ShowPlayerLoop
@@ -2678,58 +2666,11 @@ FillTownMap:
 	jr .loop
 
 TownMapPals:
-; Assign palettes based on tile ids
-	hlcoord 0, 0
-	decoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-.loop
-; Current tile
-	ld a, [hli]
-	push hl
-; The palette map covers tiles $00 to $5f; $60 and above use palette 0
-	cp $60
-	jr nc, .pal0
-
-; The palette data is condensed to nybbles, least-significant first.
-	ld hl, .PalMap
-	srl a
-	jr c, .odd
-; Even-numbered tile ids take the bottom nybble...
-	add l
-	ld l, a
-	ld a, h
-	adc 0
-	ld h, a
-	ld a, [hl]
-	and PALETTE_MASK
-	jr .update
-
-.odd
-; ...and odd ids take the top.
-	add l
-	ld l, a
-	ld a, h
-	adc 0
-	ld h, a
-	ld a, [hl]
-	swap a
-	and PALETTE_MASK
-	jr .update
-
-.pal0
 	xor a
-.update
-	pop hl
-	ld [de], a
-	inc de
-	dec bc
-	ld a, b
-	or c
-	jr nz, .loop
+	call ByteFill
 	ret
-
-.PalMap:
-INCLUDE "gfx/pokegear/town_map_palette_map.asm"
 
 TownMapMon:
 ; Draw the FlyMon icon at town map location
@@ -2776,13 +2717,7 @@ TownMapPlayerIcon:
 	call Request2bpp
 ; Animation/palette
 	depixel 0, 0
-	ld b, SPRITE_ANIM_INDEX_RED_WALK ; Male
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .got_gender
-	ld b, SPRITE_ANIM_INDEX_BLUE_WALK ; Female
-.got_gender
-	ld a, b
+	ld a, SPRITE_ANIM_INDEX_RED_WALK
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
