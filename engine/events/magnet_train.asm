@@ -242,28 +242,10 @@ SetMagnetTrainPals:
 	ld a, 1
 	ldh [rVBK], a
 
-	; bushes
+	; whole screen
 	hlbgcoord 0, 0
-	ld bc, 4 * BG_MAP_WIDTH
-	ld a, PAL_BG_GREEN
-	call ByteFill
-
-	; train
-	hlbgcoord 0, 4
-	ld bc, 10 * BG_MAP_WIDTH
-	xor a ; PAL_BG_GRAY
-	call ByteFill
-
-	; more bushes
-	hlbgcoord 0, 14
-	ld bc, 4 * BG_MAP_WIDTH
-	ld a, PAL_BG_GREEN
-	call ByteFill
-
-	; train window
-	hlbgcoord 7, 8
-	ld bc, 6
-	ld a, PAL_BG_YELLOW
+	ld bc, BG_MAP_HEIGHT * BG_MAP_WIDTH
+	xor a
 	call ByteFill
 
 	ld a, 0
@@ -300,19 +282,7 @@ MagnetTrain_Jumptable:
 	ld d, (8 + 2) * TILE_WIDTH + 5
 	ld a, [wMagnetTrainPlayerSpriteInitX]
 	ld e, a
-	ld b, SPRITE_ANIM_INDEX_MAGNET_TRAIN_RED
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wPlayerGender)
-	ldh [rSVBK], a
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .got_gender
-	ld b, SPRITE_ANIM_INDEX_MAGNET_TRAIN_BLUE
-.got_gender
-	pop af
-	ldh [rSVBK], a
-	ld a, b
+	ld a, SPRITE_ANIM_INDEX_MAGNET_TRAIN_RED
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
@@ -412,7 +382,7 @@ MagnetTrain_Jumptable_FirstRunThrough:
 	ld a, [wTimeOfDay]
 	maskbits NUM_DAYTIMES
 	ld [wTimeOfDayPal], a
-	ld a, TOWN
+	ld a, ROUTE
 	ld [wEnvironment], a
 	ld b, SCGB_MAPPALS
 	call GetSGBLayout
