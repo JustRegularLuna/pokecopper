@@ -35,19 +35,11 @@ ENDM
 
 	newgroup                                                      ;  2
 
-	map_const BATTLE_TOWER_OUTSIDE,                        10, 14 ;  1
-	map_const BATTLE_TOWER_1F,                              8,  5 ;  2
-	map_const BATTLE_TOWER_ELEVATOR,                        2,  2 ;  3
-	map_const BATTLE_TOWER_HALLWAY,                        11,  2 ;  4
-	map_const BATTLE_TOWER_BATTLE_ROOM,                     4,  4 ;  5
-
-	newgroup                                                      ;  3
-
 	map_const NEW_BARK_TOWN,                               10,  9 ;  1
 	map_const PLAYERS_HOUSE_1F,                             5,  4 ;  2
 	map_const PLAYERS_HOUSE_2F,                             4,  3 ;  3
 
-	newgroup                                                      ;  4
+	newgroup                                                      ;  3
 
 	map_const INDIGO_PLATEAU_POKECENTER_1F,                 9,  7 ;  1
 	map_const WILLS_ROOM,                                   5,  9 ;  2

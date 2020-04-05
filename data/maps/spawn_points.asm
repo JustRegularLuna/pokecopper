@@ -11,7 +11,6 @@ SpawnPoints:
 	spawn INDIGO_PLATEAU_POKECENTER_1F,  7,  9
 ; johto
 	spawn NEW_BARK_TOWN,                15,  8
-	spawn BATTLE_TOWER_OUTSIDE,          8, 10
 	spawn NONE,                          6,  2
 
 	spawn N_A,                          -1, -1

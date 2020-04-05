@@ -92,7 +92,6 @@ TilesetIcePathAnim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
-TilesetBattleTowerOutsideAnim:
 TilesetHouseAnim:
 TilesetPlayersHouseAnim:
 TilesetPokecenterAnim:
@@ -100,7 +99,6 @@ TilesetGateAnim:
 TilesetMartAnim:
 TilesetChampionsRoomAnim:
 TilesetPlayersRoomAnim:
-TilesetBattleTowerInsideAnim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation

@@ -8,5 +8,4 @@ TreeMonMaps:
 	db -1
 
 RockMonMaps:
-	treemon_map BATTLE_TOWER_OUTSIDE, TREEMON_SET_ROCK
 	db -1

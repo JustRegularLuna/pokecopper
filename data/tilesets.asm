@@ -21,6 +21,4 @@ Tilesets::
 	tileset TilesetGate
 	tileset TilesetEliteFourRoom
 	tileset TilesetChampionsRoom
-	tileset TilesetBattleTowerOutside
-	tileset TilesetBattleTowerInside
 	tileset TilesetIcePath

@@ -72,7 +72,6 @@ const_value = -1
 	const SPAWN_INDIGO
 ; johto
 	const SPAWN_NEW_BARK
-	const SPAWN_BATTLE_TOWER
 	const SPAWN_FAST_SHIP
 NUM_SPAWNS EQU const_value
 

@@ -97,17 +97,10 @@ ENDM
 
 	map_attributes NewBarkTown, NEW_BARK_TOWN, $05, 0
 
-	map_attributes BattleTowerOutside, BATTLE_TOWER_OUTSIDE, $05, 0
-
 	map_attributes Pokecenter2F, POKECENTER_2F, $00, 0
 	map_attributes TradeCenter, TRADE_CENTER, $00, 0
 	map_attributes Colosseum, COLOSSEUM, $00, 0
 	map_attributes TimeCapsule, TIME_CAPSULE, $00, 0
-
-	map_attributes BattleTower1F, BATTLE_TOWER_1F, $00, 0
-	map_attributes BattleTowerElevator, BATTLE_TOWER_ELEVATOR, $00, 0
-	map_attributes BattleTowerHallway, BATTLE_TOWER_HALLWAY, $00, 0
-	map_attributes BattleTowerBattleRoom, BATTLE_TOWER_BATTLE_ROOM, $00, 0
 
 	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $00, 0
 	map_attributes PlayersHouse2F, PLAYERS_HOUSE_2F, $00, 0

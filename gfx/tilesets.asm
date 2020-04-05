@@ -86,15 +86,6 @@ INCLUDE "data/tilesets/elite_four_room_collision.asm"
 
 SECTION "Tileset Data 5", ROMX
 
-TilesetBattleTowerInsideGFX::
-INCBIN "gfx/tilesets/battle_tower_inside.2bpp.lz"
-
-TilesetBattleTowerInsideMeta::
-INCBIN "data/tilesets/battle_tower_inside_metatiles.bin"
-
-TilesetBattleTowerInsideColl::
-INCLUDE "data/tilesets/battle_tower_inside_collision.asm"
-
 TilesetGateGFX::
 INCBIN "gfx/tilesets/gate.2bpp.lz"
 
@@ -124,15 +115,6 @@ INCBIN "data/tilesets/house_metatiles.bin"
 
 TilesetHouseColl::
 INCLUDE "data/tilesets/house_collision.asm"
-
-TilesetBattleTowerOutsideGFX::
-INCBIN "gfx/tilesets/battle_tower_outside.2bpp.lz"
-
-TilesetBattleTowerOutsideMeta::
-INCBIN "data/tilesets/battle_tower_outside_metatiles.bin"
-
-TilesetBattleTowerOutsideColl::
-INCLUDE "data/tilesets/battle_tower_outside_collision.asm"
 
 
 SECTION "Tileset Data 7", ROMX

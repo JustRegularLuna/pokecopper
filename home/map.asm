@@ -1360,8 +1360,7 @@ LoadTilesetGFX::
 	ld a, [wMapTileset]
 	cp TILESET_JOHTO
 	jr z, .load_roof
-	cp TILESET_BATTLE_TOWER_OUTSIDE
-	jr z, .load_roof
+	; more checks go here
 	jr .skip_roof
 
 .load_roof

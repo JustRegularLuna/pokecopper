@@ -10,21 +10,6 @@ TimeCapsule_Blocks:
 Colosseum_Blocks:
 	INCBIN "maps/Colosseum.blk"
 
-BattleTowerOutside_Blocks:
-	INCBIN "maps/BattleTowerOutside.blk"
-
-BattleTower1F_Blocks:
-	INCBIN "maps/BattleTower1F.blk"
-
-BattleTowerElevator_Blocks:
-	INCBIN "maps/BattleTowerElevator.blk"
-
-BattleTowerHallway_Blocks:
-	INCBIN "maps/BattleTowerHallway.blk"
-
-BattleTowerBattleRoom_Blocks:
-	INCBIN "maps/BattleTowerBattleRoom.blk"
-
 
 SECTION "Map Blocks 2", ROMX
 

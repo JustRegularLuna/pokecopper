@@ -10,11 +10,6 @@ MapScenes::
 	scene_var COLOSSEUM,                    wColosseumSceneID
 	scene_var TIME_CAPSULE,                 wTimeCapsuleSceneID
 
-	scene_var BATTLE_TOWER_1F,              wBattleTower1FSceneID
-	scene_var BATTLE_TOWER_ELEVATOR,        wBattleTowerElevatorSceneID
-	scene_var BATTLE_TOWER_HALLWAY,         wBattleTowerHallwaySceneID
-	scene_var BATTLE_TOWER_BATTLE_ROOM,     wBattleTowerBattleRoomSceneID
-
 	scene_var PLAYERS_HOUSE_1F,             wPlayersHouse1FSceneID
 
 	scene_var INDIGO_PLATEAU_POKECENTER_1F, wIndigoPlateauPokecenter1FSceneID
