@@ -1,4 +1,4 @@
-JoypadInt::
+Joypad::
 ; Replaced by Joypad, called from VBlank instead of the useless
 ; joypad interrupt.
 
@@ -13,7 +13,8 @@ ClearJoypad::
 	ldh [hJoyDown], a
 	ret
 
-Joypad::
+UpdateJoypad::
+; This is called automatically every frame in VBlank.
 ; Read the joypad register and translate it to something more
 ; workable for use in-game. There are 8 buttons, so we can use
 ; one byte to contain all player input.
@@ -294,7 +295,7 @@ JoyWaitAorB::
 	ldh a, [hJoyPressed]
 	and A_BUTTON | B_BUTTON
 	ret nz
-	call RTC
+	call UpdateTimeAndPals
 	jr .loop
 
 WaitButton::
@@ -412,7 +413,7 @@ PromptButton::
 	ldh a, [hJoyPressed]
 	and A_BUTTON | B_BUTTON
 	jr nz, .received_input
-	call RTC
+	call UpdateTimeAndPals
 	ld a, $1
 	ldh [hBGMapMode], a
 	call DelayFrame

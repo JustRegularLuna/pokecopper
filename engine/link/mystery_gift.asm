@@ -1,5 +1,5 @@
 DoMysteryGift:
-	call ClearTileMap
+	call ClearTilemap
 	call ClearSprites
 	call WaitBGMap
 	call InitMysteryGiftLayout
@@ -24,7 +24,7 @@ DoMysteryGift:
 	pop af
 	ldh [rIE], a
 	push de
-	call ClearTileMap
+	call ClearTilemap
 	call EnableLCD
 	call WaitBGMap
 	ld b, SCGB_DIPLOMA
@@ -1261,7 +1261,7 @@ InitMysteryGiftLayout:
 	ld hl, MysteryGiftGFX
 	ld de, vTiles2 tile $00
 	ld a, BANK(MysteryGiftGFX)
-	ld bc, MysteryGiftGFX.End - MysteryGiftGFX
+	ld bc, $43 tiles
 	call FarCopyBytes
 	hlcoord 0, 0
 	ld a, $42
@@ -1347,11 +1347,11 @@ InitMysteryGiftLayout:
 	ret
 
 .Load5GFX:
-	ld b,  5
+	ld b, 5
 	jr .gfx_loop
 
 .Unreferenced_Load6GFX:
-	ld b,  6
+	ld b, 6
 	jr .gfx_loop
 
 .Load16GFX:
@@ -1365,7 +1365,7 @@ InitMysteryGiftLayout:
 	ret
 
 .Load9Column:
-	ld b,  9
+	ld b, 9
 	jr .col_loop
 
 .Load11Column:
@@ -1393,10 +1393,9 @@ InitMysteryGiftLayout:
 
 MysteryGiftGFX:
 INCBIN "gfx/mystery_gift/mystery_gift.2bpp"
-.End
 
 Function105688:
-	call ClearTileMap
+	call ClearTilemap
 	call ClearSprites
 	call WaitBGMap
 	call Function1057d7
@@ -1511,7 +1510,7 @@ MysteryGiftLinkCommErrorText:
 
 Function105777:
 	call ClearSprites
-	call ClearTileMap
+	call ClearTilemap
 	call EnableLCD
 	call WaitBGMap
 	ld b, SCGB_DIPLOMA
@@ -1552,15 +1551,15 @@ Function10578c:
 Function1057d7:
 	call ClearBGPalettes
 	call DisableLCD
-	ld hl, MysteryGiftJP_GFX
+	ld hl, CardTradeGFX
 	ld de, vTiles2 tile $00
-	ld a, BANK(MysteryGiftJP_GFX)
-	lb bc, 4, 0
+	ld a, BANK(CardTradeGFX)
+	ld bc, $40 tiles
 	call FarCopyBytes
-	ld hl, MysteryGiftJP_GFX + $40 tiles
+	ld hl, CardTradeSpriteGFX
 	ld de, vTiles0 tile $00
-	ld a, BANK(MysteryGiftJP_GFX)
-	ld bc, $80
+	ld a, BANK(CardTradeSpriteGFX)
+	ld bc, 8 tiles
 	call FarCopyBytes
 	hlcoord 0, 0
 	ld a, $3f
@@ -1689,23 +1688,25 @@ Function1057d7:
 	ret
 
 .OAM_data:
-	dsprite  2, 1,  6, 4, $00, 0
-	dsprite  2, 1,  7, 4, $01, 0
-	dsprite  2, 1,  8, 4, $02, 0
-	dsprite  2, 1,  9, 4, $03, 0
-	dsprite  3, 1,  6, 4, $04, 0
-	dsprite  3, 1,  7, 4, $05, 0
-	dsprite  3, 1,  8, 4, $06, 0
-	dsprite  3, 1,  9, 4, $07, 0
-	dsprite  0, 1, 11, 4, $00, 0
-	dsprite  0, 1, 12, 4, $01, 0
-	dsprite  0, 1, 13, 4, $02, 0
-	dsprite  0, 1, 14, 4, $03, 0
-	dsprite  1, 1, 11, 4, $04, 0
-	dsprite  1, 1, 12, 4, $05, 0
-	dsprite  1, 1, 13, 4, $06, 0
-	dsprite  1, 1, 14, 4, $07, 0
+	dbsprite  6,  2, 4, 1, $00, 0
+	dbsprite  7,  2, 4, 1, $01, 0
+	dbsprite  8,  2, 4, 1, $02, 0
+	dbsprite  9,  2, 4, 1, $03, 0
+	dbsprite  6,  3, 4, 1, $04, 0
+	dbsprite  7,  3, 4, 1, $05, 0
+	dbsprite  8,  3, 4, 1, $06, 0
+	dbsprite  9,  3, 4, 1, $07, 0
+	dbsprite 11,  0, 4, 1, $00, 0
+	dbsprite 12,  0, 4, 1, $01, 0
+	dbsprite 13,  0, 4, 1, $02, 0
+	dbsprite 14,  0, 4, 1, $03, 0
+	dbsprite 11,  1, 4, 1, $04, 0
+	dbsprite 12,  1, 4, 1, $05, 0
+	dbsprite 13,  1, 4, 1, $06, 0
+	dbsprite 14,  1, 4, 1, $07, 0
 
-; japanese mystery gift gfx
-MysteryGiftJP_GFX:
-INCBIN "gfx/mystery_gift/mystery_gift_jp.2bpp"
+CardTradeGFX:
+INCBIN "gfx/mystery_gift/card_trade.2bpp"
+
+CardTradeSpriteGFX:
+INCBIN "gfx/mystery_gift/card_sprite.2bpp"

@@ -569,20 +569,20 @@ Function8b677:
 	ret
 
 Function8b690:
-	ld hl, GFX_17afa5 + $514
+	ld hl, MobileCardListGFX
 	ld de, vTiles2
-	ld bc, $160
-	ld a, BANK(GFX_17afa5)
+	ld bc, $16 tiles
+	ld a, BANK(MobileCardListGFX)
 	call FarCopyBytes
-	ld hl, GFX_17afa5 + $514 + $160 - $10
+	ld hl, MobileCardListGFX tile $15
 	ld de, vTiles2 tile $61
-	ld bc, $10
-	ld a, BANK(GFX_17afa5)
+	ld bc, 1 tiles
+	ld a, BANK(MobileCardListGFX)
 	call FarCopyBytes
-	ld hl, GFX_17afa5 + $514 + $160
+	ld hl, MobileCardListGFX tile $16
 	ld de, vTiles0 tile $ee
-	ld bc, $10
-	ld a, BANK(GFX_17afa5)
+	ld bc, 1 tiles
+	ld a, BANK(MobileCardListGFX)
 	call FarCopyBytes
 	ret
 
@@ -615,11 +615,11 @@ Palette_8b6d5:
 	RGB 00, 00, 00
 
 Function8b6ed:
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, $012c
 	xor a
 	call ByteFill
-	hlcoord 0, 14, wAttrMap
+	hlcoord 0, 14, wAttrmap
 	ld bc, $0050
 	ld a, $7
 	call ByteFill
@@ -675,7 +675,7 @@ Function8b73e:
 	ret
 
 Function8b744:
-	ld de, wAttrMap - wTileMap
+	ld de, wAttrmap - wTilemap
 	add hl, de
 	inc b
 	inc b
@@ -743,10 +743,10 @@ Function8b788:
 	ret
 
 Function8b79e:
-	hlcoord 0, 1, wAttrMap
+	hlcoord 0, 1, wAttrmap
 	ld a, $1
 	ld [hli], a
-	hlcoord 9, 1, wAttrMap
+	hlcoord 9, 1, wAttrmap
 	ld e, $b
 .asm_8b7a9
 	ld a, $2
@@ -796,9 +796,9 @@ Function8b7bd:
 	call Function8b703
 	call Function8b75d
 	call UpdateSprites
-	call Function89209
+	call Mobile_EnableSpriteUpdates
 	call ScrollingMenu
-	call Function8920f
+	call Mobile_DisableSpriteUpdates
 	ld a, [wMenuJoypad]
 	cp $2
 	jr z, .asm_8b823

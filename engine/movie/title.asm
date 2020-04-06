@@ -1,7 +1,7 @@
 _TitleScreen:
 	call ClearBGPalettes
 	call ClearSprites
-	call ClearTileMap
+	call ClearTilemap
 
 ; Turn BG Map update off
 	xor a
@@ -356,7 +356,7 @@ AnimateTitleCrystal:
 	ld a, [hl]
 	add 2
 	ld [hli], a ; y
-rept SPRITEOAMSTRUCT_LENGTH + -1
+rept SPRITEOAMSTRUCT_LENGTH - 1
 	inc hl
 endr
 	dec c

@@ -106,14 +106,14 @@ Function117738:
 	farcall Function171ccd
 	depixel 6, 3
 	ld a, $1d
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, $c
 	add hl, bc
 	ld a, $6
 	ld [hl], a
 	depixel 9, 4
 	ld a, $1d
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, $c
 	add hl, bc
 	ld a, $7
@@ -486,11 +486,19 @@ MobilePassword_IncrementJumptable:
 	inc [hl]
 	ret
 
+pushc
+setcharmap ascii
+
 Unknown_117a0f:
-INCBIN "data/mobile/ascii-alpha.txt"
+	db "ABCDEFGHIJKLMNOPQRSTUVWXYZ  "
+	db "abcdefghijklmnopqrstuvwxyz  "
 
 Unknown_117a47:
-INCBIN "data/mobile/ascii-sym.txt"
+	db "0123456789    "
+	db "!\"#$%&'()*+   "
+	db ",-./:;<=>?@   "
+	db "[\\]^_`\{|}~    "
+popc
 
 ; everything from here to the end of the bank is related to the
 ; Mobile Stadium option from the continue/newgame menu.
@@ -519,7 +527,7 @@ Function117a94:
 	call ClearBGPalettes
 	call ClearSprites
 	farcall Function172e78
-	farcall HDMATransferAttrMapAndTileMapToWRAMBank3
+	farcall HDMATransferAttrmapAndTilemapToWRAMBank3
 	ret
 
 Function117ab4:
@@ -536,7 +544,7 @@ Function117acd:
 	bit 7, a
 	jr nz, .asm_117ae2
 	call Function117ae9
-	farcall HDMATransferAttrMapAndTileMapToWRAMBank3
+	farcall HDMATransferAttrmapAndTilemapToWRAMBank3
 	jr Function117acd
 
 .asm_117ae2

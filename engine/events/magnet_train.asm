@@ -70,7 +70,7 @@ MagnetTrain:
 	ld [wRequested2bppDest], a
 	ld [wRequested2bppDest + 1], a
 	ld [wRequested2bpp], a
-	call ClearTileMap
+	call ClearTilemap
 
 	pop af
 	ldh [hSCY], a
@@ -283,7 +283,7 @@ MagnetTrain_Jumptable:
 	ld a, [wMagnetTrainPlayerSpriteInitX]
 	ld e, a
 	ld a, SPRITE_ANIM_INDEX_MAGNET_TRAIN_RED
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], 0

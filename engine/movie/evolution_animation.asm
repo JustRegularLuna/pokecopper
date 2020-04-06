@@ -302,7 +302,7 @@ EvolutionAnimation:
 	push de
 	depixel 9, 11
 	ld a, SPRITE_ANIM_INDEX_EVOLUTION_BALL_OF_LIGHT
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [wJumptableIndex]
@@ -336,7 +336,7 @@ EvolutionAnimation:
 	ld a, [hl]
 	or b
 	ld [hli], a ; attributes
-rept SPRITEOAMSTRUCT_LENGTH + -1
+rept SPRITEOAMSTRUCT_LENGTH - 1
 	inc hl
 endr
 	dec c

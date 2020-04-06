@@ -72,7 +72,7 @@ PokeGear:
 
 .InitTilemap:
 	call ClearBGPalettes
-	call ClearTileMap
+	call ClearTilemap
 	call ClearSprites
 	call DisableLCD
 	xor a
@@ -130,7 +130,7 @@ Pokegear_LoadGFX:
 	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
-	cp FAST_SHIP
+	cp LANDMARK_FAST_SHIP
 	jr z, .ssaqua
 	farcall GetPlayerIcon
 	push de
@@ -165,7 +165,7 @@ INCBIN "gfx/pokegear/fast_ship.2bpp"
 InitPokegearModeIndicatorArrow:
 	depixel 4, 2, 4, 0
 	ld a, SPRITE_ANIM_INDEX_POKEGEAR_ARROW
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $0
@@ -195,7 +195,7 @@ TownMap_GetCurrentLandmark:
 	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
-	cp SPECIAL_MAP
+	cp LANDMARK_SPECIAL
 	ret nz
 	ld a, [wBackupMapGroup]
 	ld b, a
@@ -210,9 +210,9 @@ TownMap_InitCursorAndPlayerIconPositions:
 	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
-	cp FAST_SHIP
+	cp LANDMARK_FAST_SHIP
 	jr z, .FastShip
-	cp SPECIAL_MAP
+	cp LANDMARK_SPECIAL
 	jr nz, .LoadLandmark
 	ld a, [wBackupMapGroup]
 	ld b, a
@@ -226,7 +226,7 @@ TownMap_InitCursorAndPlayerIconPositions:
 
 .FastShip:
 	ld [wPokegearMapPlayerIconLandmark], a
-	ld a, NEW_BARK_TOWN
+	ld a, LANDMARK_NEW_BARK_TOWN
 	ld [wPokegearMapCursorLandmark], a
 	ret
 
@@ -324,7 +324,7 @@ InitPokegearTilemap:
 
 .Map:
 	ld a, [wPokegearMapPlayerIconLandmark]
-	cp FAST_SHIP
+	cp LANDMARK_FAST_SHIP
 	jr z, .johto
 	cp KANTO_LANDMARK
 	jr nc, .kanto
@@ -539,7 +539,7 @@ Pokegear_UpdateClock:
 
 PokegearMap_CheckRegion:
 	ld a, [wPokegearMapPlayerIconLandmark]
-	cp FAST_SHIP
+	cp LANDMARK_FAST_SHIP
 	jr z, .johto
 	cp KANTO_LANDMARK
 	jr nc, .kanto
@@ -575,8 +575,8 @@ PokegearMap_KantoMap:
 
 PokegearMap_JohtoMap:
 ; TODO: Change these to the last and first landmarks of the Johto region.
-	ld d, SILVER_CAVE
-	ld e, NEW_BARK_TOWN
+	ld d, LANDMARK_SILVER_CAVE
+	ld e, LANDMARK_NEW_BARK_TOWN
 PokegearMap_ContinueMap:
 	ld hl, hJoyLast
 	ld a, [hl]
@@ -666,7 +666,7 @@ PokegearMap_InitPlayerIcon:
 	push af
 	depixel 0, 0
 	ld a, SPRITE_ANIM_INDEX_RED_WALK
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $10
@@ -687,7 +687,7 @@ PokegearMap_InitCursor:
 	push af
 	depixel 0, 0
 	ld a, SPRITE_ANIM_INDEX_POKEGEAR_ARROW
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $04
@@ -733,20 +733,20 @@ TownMap_GetKantoLandmarkLimits:
 	ld a, [wStatusFlags]
 	bit STATUSFLAGS_HALL_OF_FAME_F, a
 	jr z, .not_hof
-	ld d, ROUTE_28
-	ld e, PALLET_TOWN
+	ld d, LANDMARK_ROUTE_28
+	ld e, LANDMARK_PALLET_TOWN
 	ret
 
 .not_hof
-	ld d, ROUTE_28
-	ld e, VICTORY_ROAD
+	ld d, LANDMARK_ROUTE_28
+	ld e, LANDMARK_VICTORY_ROAD
 	ret
 
 PokegearRadio_Init:
 	call InitPokegearTilemap
 	depixel 4, 10, 4, 4
 	ld a, SPRITE_ANIM_INDEX_RADIO_TUNING_KNOB
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $08
@@ -1124,7 +1124,7 @@ PokegearPhoneContactSubmenu:
 	ld h, a
 	inc de
 	push hl
-	ld bc, hBGMapAddress + 1
+	bccoord -1, -2, 0
 	add hl, bc
 	ld a, [de]
 	inc de
@@ -1498,7 +1498,7 @@ RadioChannels:
 
 .RuinsOfAlphRadio:
 	ld a, [wPokegearMapPlayerIconLandmark]
-	cp RUINS_OF_ALPH
+	cp LANDMARK_RUINS_OF_ALPH
 	jr nz, .NoSignal
 	jp LoadStation_UnownRadio
 
@@ -1532,11 +1532,11 @@ RadioChannels:
 	bit STATUSFLAGS_ROCKET_SIGNAL_F, a
 	jr z, .NoSignal
 	ld a, [wPokegearMapPlayerIconLandmark]
-	cp MAHOGANY_TOWN
+	cp LANDMARK_MAHOGANY_TOWN
 	jr z, .ok
-	cp ROUTE_43
+	cp LANDMARK_ROUTE_43
 	jr z, .ok
-	cp LAKE_OF_RAGE
+	cp LANDMARK_LAKE_OF_RAGE
 	jr nz, .NoSignal
 .ok
 	jp LoadStation_EvolutionRadio
@@ -1550,7 +1550,7 @@ RadioChannels:
 
 ; otherwise clear carry
 	ld a, [wPokegearMapPlayerIconLandmark]
-	cp FAST_SHIP
+	cp LANDMARK_FAST_SHIP
 	jr z, .johto
 	cp KANTO_LANDMARK
 	jr c, .johto
@@ -1779,7 +1779,7 @@ _TownMap:
 	ld [wVramState], a
 
 	call ClearBGPalettes
-	call ClearTileMap
+	call ClearTilemap
 	call ClearSprites
 	call DisableLCD
 	call Pokegear_LoadGFX
@@ -2031,7 +2031,7 @@ PokegearMap:
 
 _FlyMap:
 	call ClearBGPalettes
-	call ClearTileMap
+	call ClearTilemap
 	call ClearSprites
 	ld hl, hInMenu
 	ld a, [hl]
@@ -2262,7 +2262,7 @@ FlyMap:
 	call GetWorldMapLocation
 ; If we're not in a valid location, i.e. Pokecenter floor 2F,
 ; the backup map information is used.
-	cp SPECIAL_MAP
+	cp LANDMARK_SPECIAL
 	jr nz, .CheckRegion
 	ld a, [wBackupMapGroup]
 	ld b, a
@@ -2496,7 +2496,7 @@ Pokedex_GetArea:
 .GetAndPlaceNest:
 	ld [wTownMapCursorLandmark], a
 	ld e, a
-	farcall FindNest ; load nest landmarks into wTileMap[0,0]
+	farcall FindNest ; load nest landmarks into wTilemap[0,0]
 	decoord 0, 0
 	ld hl, wVirtualOAMSprite00
 .nestloop
@@ -2582,7 +2582,7 @@ Pokedex_GetArea:
 ; not in the same region as what's currently
 ; on the screen.
 	ld a, [wTownMapPlayerIconLandmark]
-	cp FAST_SHIP
+	cp LANDMARK_FAST_SHIP
 	jr z, .johto
 	cp KANTO_LANDMARK
 	jr c, .johto
@@ -2610,7 +2610,7 @@ Pokedex_GetArea:
 
 .GetPlayerOrFastShipIcon:
 	ld a, [wTownMapPlayerIconLandmark]
-	cp FAST_SHIP
+	cp LANDMARK_FAST_SHIP
 	jr z, .FastShip
 	farcall GetPlayerIcon
 	ret
@@ -2666,7 +2666,7 @@ FillTownMap:
 	jr .loop
 
 TownMapPals:
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
 	call ByteFill
@@ -2689,7 +2689,7 @@ TownMapMon:
 ; Animation/palette
 	depixel 0, 0
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $08
@@ -2718,7 +2718,7 @@ TownMapPlayerIcon:
 ; Animation/palette
 	depixel 0, 0
 	ld a, SPRITE_ANIM_INDEX_RED_WALK
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $10
@@ -2757,7 +2757,7 @@ Unreferenced_Function92311:
 	xor a
 	ld [wTownMapPlayerIconLandmark], a
 	call ClearBGPalettes
-	call ClearTileMap
+	call ClearTilemap
 	call ClearSprites
 	ld hl, hInMenu
 	ld a, [hl]

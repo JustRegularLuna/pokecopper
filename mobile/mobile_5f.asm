@@ -11,7 +11,7 @@ Function17c000:
 
 	ld hl, HaveWantMap
 	decoord 0, 0
-	bccoord 0, 0, wAttrMap
+	bccoord 0, 0, wAttrmap
 
 	ld a, SCREEN_HEIGHT
 .y
@@ -68,7 +68,7 @@ Function17c000:
 	ld bc, $80 tiles
 	call CopyBytes
 
-	ld hl, HaveWantGFX + $800
+	ld hl, HaveWantGFX + $80 tiles
 	ld de, vTiles1
 	ld bc, $10 tiles
 	call CopyBytes
@@ -507,9 +507,9 @@ Function17d2c0:
 	ret
 
 Function17d2ce:
-	ld a, $5
+	ld a, BANK(s5_aa72)
 	call GetSRAMBank
-	ld a, [$aa72]
+	ld a, [s5_aa72]
 	call CloseSRAM
 	and a
 	jr nz, .asm_17d2e2
@@ -625,7 +625,7 @@ Function17d370:
 	call CopyBytes
 	xor a
 	ldh [rVBK], a
-	ld hl, GFX_17eb7e
+	ld hl, PostalMarkGFX
 	ld de, vTiles2 tile $60
 	ld bc, 1 tiles
 	call CopyBytes
@@ -677,7 +677,7 @@ Function17d405:
 	push af
 	ld a, $5
 	ldh [rSVBK], a
-	ld hl, Palette_17eff6
+	ld hl, PokemonNewsPalettes
 	ld de, wBGPals1
 	ld bc, 8 palettes
 	call CopyBytes
@@ -712,13 +712,13 @@ Jumptable_17d483:
 	dw Function17e427
 
 Function17d48d:
-	ld hl, Palette_17eff6
+	ld hl, PokemonNewsPalettes
 	ld de, wc608
 	ld bc, $40
 	call CopyBytes
 	ld hl, PokemonNewsTileAttrmap
 	decoord 0, 0
-	bccoord 0, 0, wAttrMap
+	bccoord 0, 0, wAttrmap
 	ld a, $12
 .asm_17d4a4
 	push af
@@ -2870,9 +2870,9 @@ Function17e2a7:
 	xor a
 	ld [wcf66], a
 	farcall Function118233
-	ld de, GFX_17eb7e
+	ld de, PostalMarkGFX
 	ld hl, vTiles2 tile $60
-	lb bc, BANK(GFX_17eb7e), 1
+	lb bc, BANK(PostalMarkGFX), 1
 	call Get2bpp
 	ld a, [wMobileErrorCodeBuffer]
 	and a
@@ -3486,7 +3486,7 @@ Function17e691:
 
 .asm_17e6c7
 	pop hl
-	bccoord 0, 0, wAttrMap
+	bccoord 0, 0, wAttrmap
 	add hl, bc
 	ld [hl], a
 	pop hl
@@ -3509,7 +3509,7 @@ Function17e6de:
 	ld l, a
 	ld a, [wc709]
 	ld h, a
-	decoord 0, 0, wAttrMap
+	decoord 0, 0, wAttrmap
 	add hl, de
 	pop af
 	ld b, $7
@@ -3530,45 +3530,14 @@ Function17e6de:
 PokemonNewsGFX:
 INCBIN "gfx/mobile/pokemon_news.2bpp"
 
-GFX_17eb7e:
-INCBIN "gfx/unknown/17eb7e.2bpp"
+PostalMarkGFX:
+INCBIN "gfx/font/postal_mark.2bpp"
 
 PokemonNewsTileAttrmap:
 INCBIN "gfx/mobile/pokemon_news.bin"
 
-Palette_17eff6:
-	RGB 24,  9,  8
-	RGB  4,  9, 18
-	RGB 18, 18, 12
-	RGB  0,  0,  0
-	RGB 24, 24, 18
-	RGB 18, 18, 12
-	RGB  4,  9, 18
-	RGB  0,  0,  0
-	RGB 31, 31, 31
-	RGB 23, 11, 10
-	RGB 13,  6,  5
-	RGB  0,  0,  0
-	RGB 31, 31, 31
-	RGB 15, 25,  5
-	RGB 10, 20,  0
-	RGB  0,  0,  0
-	RGB 31, 31, 31
-	RGB 20, 28, 20
-	RGB 10, 18, 15
-	RGB  0,  0,  0
-	RGB 31, 31, 31
-	RGB 22, 22, 12
-	RGB 17, 12,  5
-	RGB  0,  0,  0
-	RGB  5,  5, 16
-	RGB  8, 19, 28
-	RGB  0,  0,  0
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 27, 24,  0
-	RGB 24, 16,  3
-	RGB  0,  0,  0
+PokemonNewsPalettes:
+INCLUDE "gfx/mobile/pokemon_news.pal"
 
 RunMobileScript::
 	ld a, $6
@@ -4250,7 +4219,7 @@ Function17f41d:
 	push af
 	ld l, c
 	ld h, b
-	ld bc, -wTileMap + $10000
+	ld bc, -wTilemap + $10000
 	add hl, bc
 	ld de, -SCREEN_WIDTH
 	ld c, $1
@@ -4480,7 +4449,7 @@ DisplayMobileError:
 	ld a, [wc303]
 	bit 7, a
 	jr nz, .quit
-	farcall HDMATransferAttrMapAndTileMapToWRAMBank3
+	farcall HDMATransferAttrmapAndTilemapToWRAMBank3
 	jr .loop
 
 .quit
@@ -4545,7 +4514,7 @@ Function17f5c3:
 
 Function17f5d2:
 	call Function17f5e4
-	farcall HDMATransferAttrMapAndTileMapToWRAMBank3
+	farcall HDMATransferAttrmapAndTilemapToWRAMBank3
 	call SetPalettes
 	ld a, $1
 	ld [wc303], a
@@ -4564,7 +4533,7 @@ Function17f5e4:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
 	ld a, $6
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
 	hlcoord 2, 1

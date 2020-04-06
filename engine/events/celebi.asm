@@ -1,5 +1,8 @@
 SPECIALCELEBIEVENT_CELEBI EQU $84
 
+UnusedForestTreeFrames:
+INCBIN "gfx/tilesets/forest-tree/unused.2bpp"
+
 CelebiShrineEvent:
 	call DelayFrame
 	ld a, [wVramState]
@@ -9,7 +12,7 @@ CelebiShrineEvent:
 	call LoadCelebiGFX
 	depixel 0, 10, 7, 0
 	ld a, SPRITE_ANIM_INDEX_CELEBI
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], SPECIALCELEBIEVENT_CELEBI
@@ -54,7 +57,7 @@ CelebiShrineEvent:
 	ld c, 4
 .OAMloop:
 	ld [hli], a ; tile id
-rept SPRITEOAMSTRUCT_LENGTH + -1
+rept SPRITEOAMSTRUCT_LENGTH - 1
 	inc hl
 endr
 	inc a
@@ -107,7 +110,7 @@ CelebiEvent_SpawnLeaf:
 	ld d, a
 	ld e, $0
 	ld a, SPRITE_ANIM_INDEX_FLY_LEAF ; fly land
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $80
@@ -117,10 +120,7 @@ SpecialCelebiLeafGFX:
 INCBIN "gfx/overworld/cut_grass.2bpp"
 
 SpecialCelebiGFX:
-INCBIN "gfx/overworld/celebi/1.2bpp"
-INCBIN "gfx/overworld/celebi/2.2bpp"
-INCBIN "gfx/overworld/celebi/3.2bpp"
-INCBIN "gfx/overworld/celebi/4.2bpp"
+INCBIN "gfx/overworld/celebi.2bpp"
 
 UpdateCelebiPosition:
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
