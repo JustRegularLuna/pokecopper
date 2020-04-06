@@ -75,4 +75,13 @@ const_value = -1
 	const SPAWN_FAST_SHIP
 NUM_SPAWNS EQU const_value
 
+; Flypoints indexes (see data/maps/flypoints.asm)
+	const_def
+; johto
+	const FLY_NEW_BARK
+	const FLY_N_A
+; kanto
+KANTO_FLYPOINT EQU const_value
+	const FLY_INDIGO
+
 MAX_OUTDOOR_SPRITES EQU 23 ; see engine/overworld/overworld.asm

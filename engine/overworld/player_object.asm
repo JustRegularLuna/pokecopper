@@ -5,11 +5,11 @@ BlankScreen:
 	call ClearBGPalettes
 	call ClearSprites
 	hlcoord 0, 0
-	ld bc, wTileMapEnd - wTileMap
+	ld bc, wTilemapEnd - wTilemap
 	ld a, " "
 	call ByteFill
-	hlcoord 0, 0, wAttrMap
-	ld bc, wAttrMapEnd - wAttrMap
+	hlcoord 0, 0, wAttrmap
+	ld bc, wAttrmapEnd - wAttrmap
 	ld a, $7
 	call ByteFill
 	call WaitBGMap2
@@ -122,9 +122,10 @@ RefreshPlayerCoords:
 	ld hl, wPlayerLastMapY
 	ld [hl], e
 	ld e, a
+; the next three lines are useless
 	ld a, [wObjectFollow_Leader]
 	cp $0
-	ret nz ; wtf
+	ret nz
 	ret
 
 CopyObjectStruct::

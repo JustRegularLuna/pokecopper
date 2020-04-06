@@ -103,7 +103,7 @@
 	const MYSTIC_WATER ; 5f
 	const TWISTEDSPOON ; 60
 	const WHT_APRICORN ; 61
-	const BLACKBELT    ; 62
+	const BLACKBELT_I  ; 62
 	const BLK_APRICORN ; 63
 	const ITEM_64      ; 64
 	const PNK_APRICORN ; 65
@@ -202,8 +202,7 @@ if !DEF(TM01)
 TM01 EQU const_value
 	enum_start 1
 endc
-	define _\@_1, "TM_\1"
-	const _\@_1
+	const TM_\1
 	enum \1_TMNUM
 ENDM
 
@@ -266,8 +265,7 @@ add_hm: MACRO
 if !DEF(HM01)
 HM01 EQU const_value
 endc
-	define _\@_1, "HM_\1"
-	const _\@_1
+	const HM_\1
 	enum \1_TMNUM
 ENDM
 
@@ -287,7 +285,7 @@ ENDM
 	add_mt FLAMETHROWER
 	add_mt THUNDERBOLT
 	add_mt ICE_BEAM
-NUM_TM_HM_TUTOR EQU __enum__ + -1
+NUM_TM_HM_TUTOR EQU __enum__ - 1
 
 	const ITEM_FA       ; fa
 

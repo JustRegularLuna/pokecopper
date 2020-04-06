@@ -16,11 +16,11 @@ AnthonyPhoneCalleeScript:
 	farsjump AnthonyHangUpScript
 
 .WantsBattle:
-	getlandmarkname STRING_BUFFER_5, ROUTE_33
+	getlandmarkname STRING_BUFFER_5, LANDMARK_ROUTE_33
 	farsjump AnthonyReminderScript
 
 .AlreadySwarming:
-	getlandmarkname STRING_BUFFER_5, ROUTE_33
+	getlandmarkname STRING_BUFFER_5, LANDMARK_ROUTE_33
 	farsjump AnthonyHurryScript
 
 AnthonyPhoneCallerScript:
@@ -45,7 +45,7 @@ AnthonyFridayNight:
 	setflag ENGINE_ANTHONY_FRIDAY_NIGHT
 
 AnthonyWantsBattle:
-	getlandmarkname STRING_BUFFER_5, ROUTE_33
+	getlandmarkname STRING_BUFFER_5, LANDMARK_ROUTE_33
 	setflag ENGINE_ANTHONY
 	farsjump PhoneScript_WantsToBattle_Male
 
@@ -56,7 +56,7 @@ AnthonyTriesDunsparceSwarm:
 	getmonname STRING_BUFFER_4, DUNSPARCE
 ; TODO: Pick a map for the Dunsparce swarm, and add its wild data to the appropriate data/wild/ file.
 ;	swarm SWARM_DUNSPARCE, NONE
-	getlandmarkname STRING_BUFFER_5, DARK_CAVE
+	getlandmarkname STRING_BUFFER_5, LANDMARK_DARK_CAVE
 	farsjump AnthonySwarmScript
 
 .Generic:

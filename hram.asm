@@ -3,7 +3,8 @@ SECTION "HRAM", HRAM
 hTransferVirtualOAM:: ds 10 ; ff80
 
 hROMBankBackup:: db ; ff8a
-hBuffer:: db ; ff8b
+hFarByte::
+hTempBank:: db ; ff8b
 hSRAMBank:: db ; ff8c
 
 hRTCDayHi::   db ; ff8d
@@ -146,7 +147,7 @@ hRandom::
 hRandomAdd:: db ; ffe1
 hRandomSub:: db ; ffe2
 
-hSecondsBackup:: db ; ffe3
+hUnusedBackup:: db ; ffe3
 
 hBattleTurn:: ; ffe4
 ; Which trainer's turn is it? 0: player, 1: opponent trainer
