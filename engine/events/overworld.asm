@@ -627,7 +627,6 @@ FlyFunction:
 	farcall Function561d
 	call DelayFrame
 	call ReplaceKrisSprite
-	farcall LoadOverworldFont
 	ret
 
 WaterfallFunction:
@@ -1612,10 +1611,6 @@ RodBiteText:
 
 RodNothingText:
 	text_far _RodNothingText
-	text_end
-
-UnusedNothingHereText: ; unused
-	text_far _UnusedNothingHereText
 	text_end
 
 BikeFunction:

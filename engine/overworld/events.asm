@@ -38,41 +38,6 @@ CheckBit5_ScriptFlags3:
 	bit 5, [hl]
 	ret
 
-DisableWarpsConnxns:
-	ld hl, wScriptFlags3
-	res 2, [hl]
-	ret
-
-DisableCoordEvents:
-	ld hl, wScriptFlags3
-	res 1, [hl]
-	ret
-
-DisableStepCount:
-	ld hl, wScriptFlags3
-	res 0, [hl]
-	ret
-
-DisableWildEncounters:
-	ld hl, wScriptFlags3
-	res 4, [hl]
-	ret
-
-EnableWarpsConnxns:
-	ld hl, wScriptFlags3
-	set 2, [hl]
-	ret
-
-EnableCoordEvents:
-	ld hl, wScriptFlags3
-	set 1, [hl]
-	ret
-
-EnableStepCount:
-	ld hl, wScriptFlags3
-	set 0, [hl]
-	ret
-
 EnableWildEncounters:
 	ld hl, wScriptFlags3
 	set 4, [hl]
@@ -133,11 +98,6 @@ EnterMap:
 	ldh [hMapEntryMethod], a
 	ld a, MAPSTATUS_HANDLE
 	ld [wMapStatus], a
-	ret
-
-UnusedWait30Frames:
-	ld c, 30
-	call DelayFrames
 	ret
 
 HandleMap:
@@ -386,14 +346,6 @@ SetUpFiveStepWildEncounterCooldown:
 	ret
 
 ret_968d7:
-	ret
-
-SetMinTwoStepWildEncounterCooldown:
-	ld a, [wWildEncounterCooldown]
-	cp 2
-	ret nc
-	ld a, 2
-	ld [wWildEncounterCooldown], a
 	ret
 
 Dummy_CheckScriptFlags3Bit5:
@@ -1369,14 +1321,6 @@ HandleCmdQueue::
 	inc a
 	cp CMDQUEUE_CAPACITY
 	jr nz, .loop
-	ret
-
-Unreferenced_GetNthCmdQueueEntry:
-	ld hl, wCmdQueue
-	ld bc, CMDQUEUE_ENTRY_SIZE
-	call AddNTimes
-	ld b, h
-	ld c, l
 	ret
 
 WriteCmdQueue::

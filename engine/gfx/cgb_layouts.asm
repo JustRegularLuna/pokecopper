@@ -461,9 +461,9 @@ _CGB_Diploma:
 	ld a, PAL_MEWMON
 	call GetPredefPal
 	push hl
-	call _CGB_MapPals.LoadHLOBPaletteIntoDE
+	call LoadHLPaletteIntoDE
 	pop hl
-	call _CGB_MapPals.LoadHLOBPaletteIntoDE
+	call LoadHLPaletteIntoDE
 ; then load diploma palettes
 	ld hl, PalPacket_Diploma + 1
 	call CopyFourPalettes

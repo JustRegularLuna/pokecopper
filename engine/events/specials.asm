@@ -15,9 +15,6 @@ Special::
 
 INCLUDE "data/special_pointers.asm"
 
-DummySpecial_c224:
-	ret
-
 SetPlayerPalette:
 	ld a, [wScriptVar]
 	ld d, a
@@ -37,12 +34,6 @@ GameCornerPrizeMonCheckDex:
 	ld [wNamedObjectIndexBuffer], a
 	farcall NewPokedexEntry
 	call ExitAllMenus
-	ret
-
-UnusedSetSeenMon:
-	ld a, [wScriptVar]
-	dec a
-	call SetSeenMon
 	ret
 
 FindPartyMonAboveLevel:
@@ -262,11 +253,6 @@ CheckCoinsAndCoinCase:
 	text_far _NoCoinCaseText
 	text_end
 
-ClearBGPalettesBufferScreen:
-	call ClearBGPalettes
-	call BufferScreen
-	ret
-
 ScriptReturnCarry:
 	jr c, .carry
 	xor a
@@ -277,9 +263,9 @@ ScriptReturnCarry:
 	ld [wScriptVar], a
 	ret
 
-UnusedCheckUnusedTwoDayTimer:
-	farcall CheckUnusedTwoDayTimer
-	ld a, [wUnusedTwoDayTimer]
+CheckHoneyTreeTwoDayTimer:
+	farcall _CheckHoneyTreeTwoDayTimer
+	ld a, [wHoneyTreeTwoDayTimer]
 	ld [wScriptVar], a
 	ret
 

@@ -145,11 +145,6 @@ SwitchSometimes:
 	ld [wEnemySwitchMonIndex], a
 	jp AI_TrySwitch
 
-CheckSubstatusCantRun:
-	ld a, [wEnemySubStatus5]
-	bit SUBSTATUS_CANT_RUN, a
-	ret
-
 AI_TryItem:
 	; items are not allowed in the BattleTower
 	ld a, [wInBattleTowerBattle]
@@ -712,12 +707,6 @@ EnemyWithdrewText:
 	text_far _EnemyWithdrewText
 	text_end
 
-Function384d5: ; This appears to be unused
-	call AIUsedItemSound
-	call AI_HealStatus
-	ld a, FULL_HEAL_RED ; X_SPEED
-	jp PrintText_UsedItemOn_AND_AIUpdateHUD
-
 AI_HealStatus:
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Status
@@ -754,31 +743,6 @@ EnemyUsedDireHit:
 	set SUBSTATUS_FOCUS_ENERGY, [hl]
 	ld a, DIRE_HIT
 	jp PrintText_UsedItemOn_AND_AIUpdateHUD
-
-Function3851e: ; This appears to be unused
-	ldh [hDivisor], a
-	ld hl, wEnemyMonMaxHP
-	ld a, [hli]
-	ldh [hDividend], a
-	ld a, [hl]
-	ldh [hDividend + 1], a
-	ld b, 2
-	call Divide
-	ldh a, [hQuotient + 3]
-	ld c, a
-	ldh a, [hQuotient + 2]
-	ld b, a
-	ld hl, wEnemyMonHP + 1
-	ld a, [hld]
-	ld e, a
-	ld a, [hl]
-	ld d, a
-	ld a, d
-	sub b
-	ret nz
-	ld a, e
-	sub c
-	ret
 
 EnemyUsedXAttack:
 	ld b, ATTACK

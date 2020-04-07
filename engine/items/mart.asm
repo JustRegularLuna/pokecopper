@@ -804,9 +804,6 @@ MartSellPriceText:
 	text_far _MartSellPriceText
 	text_end
 
-.UnusedString15f7d:
-	db "！ダミー！@"
-
 MartWelcomeText:
 	text_far _MartWelcomeText
 	text_end

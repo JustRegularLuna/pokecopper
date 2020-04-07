@@ -4142,19 +4142,5 @@ BattleAnim_Cosine_e:
 	ld e, a
 	ret
 
-BattleAnim_AbsSinePrecise:
-	ld a, e
-	call BattleAnim_Sine
-	ld e, l
-	ld d, h
-	ret
-
-BattleAnim_AbsCosinePrecise:
-	ld a, e
-	call BattleAnim_Cosine
-	ld e, l
-	ld d, h
-	ret
-
 BattleAnimSineWave:
 	sine_table 32

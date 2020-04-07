@@ -15,21 +15,6 @@ Function16d42e:
 	call CopyBytes
 	ret
 
-Function16d43b:
-	call LoadStandardMenuHeader
-	call ClearBGPalettes
-	call ClearTilemap
-	call ClearSprites
-	farcall __LoadTradeScreenBorder ; useless to farcall
-	farcall Function16d42e ; useless to farcall
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
-	call SetPalettes
-	call WaitBGMap
-	call JoyWaitAorB
-	call Call_ExitMenu
-	ret
-
 Tilemap_MobileTradeBorderFullscreen:
 INCBIN "gfx/trade/border_mobile_fullscreen.tilemap"
 

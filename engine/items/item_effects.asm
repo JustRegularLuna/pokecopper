@@ -705,7 +705,7 @@ BallMultiplierFunctionTable:
 ; which ball is used in a certain situation.
 	dbw ULTRA_BALL,  UltraBallMultiplier
 	dbw GREAT_BALL,  GreatBallMultiplier
-	dbw SAFARI_BALL, SafariBallMultiplier ; Safari Ball, leftover from RBY
+	dbw SAFARI_BALL, SafariBallMultiplier
 	dbw HEAVY_BALL,  HeavyBallMultiplier
 	dbw LEVEL_BALL,  LevelBallMultiplier
 	dbw LURE_BALL,   LureBallMultiplier
@@ -1032,17 +1032,6 @@ LevelBallMultiplier:
 .max
 	ld b, $ff
 	ret
-
-; These two texts were carried over from gen 1.
-; They are not used in gen 2, and are dummied out.
-
-BallDodgedText:
-	text_far _BallDodgedText
-	text_end
-
-BallMissedText:
-	text_far _BallMissedText
-	text_end
 
 BallBrokeFreeText:
 	text_far _BallBrokeFreeText
@@ -1867,20 +1856,6 @@ LoadCurHPIntoBuffer5:
 	ld [wBuffer5], a
 	ret
 
-LoadHPIntoBuffer5:
-	ld a, d
-	ld [wBuffer6], a
-	ld a, e
-	ld [wBuffer5], a
-	ret
-
-LoadHPFromBuffer5:
-	ld a, [wBuffer6]
-	ld d, a
-	ld a, [wBuffer5]
-	ld e, a
-	ret
-
 LoadCurHPToBuffer3:
 	ld a, MON_HP
 	call GetPartyParamLocation
@@ -2619,18 +2594,6 @@ IsntTheTimeMessage:
 
 WontHaveAnyEffectMessage:
 	ld hl, ItemWontHaveEffectText
-	jr CantUseItemMessage
-
-BelongsToSomeoneElseMessage:
-	ld hl, ItemBelongsToSomeoneElseText
-	jr CantUseItemMessage
-
-CyclingIsntAllowedMessage:
-	ld hl, NoCyclingText
-	jr CantUseItemMessage
-
-CantGetOnYourBikeMessage:
-	ld hl, ItemCantGetOnText
 
 CantUseItemMessage:
 ; Item couldn't be used.
@@ -2650,10 +2613,6 @@ ItemOakWarningText:
 	text_far _ItemOakWarningText
 	text_end
 
-ItemBelongsToSomeoneElseText:
-	text_far _ItemBelongsToSomeoneElseText
-	text_end
-
 ItemWontHaveEffectText:
 	text_far _ItemWontHaveEffectText
 	text_end
@@ -2666,28 +2625,12 @@ BallDontBeAThiefText:
 	text_far _BallDontBeAThiefText
 	text_end
 
-NoCyclingText:
-	text_far _NoCyclingText
-	text_end
-
-ItemCantGetOnText:
-	text_far _ItemCantGetOnText
-	text_end
-
 BallBoxFullText:
 	text_far _BallBoxFullText
 	text_end
 
 ItemUsedText:
 	text_far _ItemUsedText
-	text_end
-
-ItemGotOnText:
-	text_far _ItemGotOnText
-	text_end
-
-ItemGotOffText:
-	text_far _ItemGotOffText
 	text_end
 
 ApplyPPUp:

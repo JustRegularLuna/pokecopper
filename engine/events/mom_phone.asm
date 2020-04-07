@@ -204,8 +204,6 @@ endr
 
 INCLUDE "data/items/mom_phone.asm"
 
-	db 0, 0, 0 ; unused
-
 MomHiHowAreYouText:
 	text_far _MomHiHowAreYouText
 	text_end
@@ -229,10 +227,3 @@ MomFoundADollText:
 MomItsInYourRoomText:
 	text_far _MomItsInYourRoomText
 	text_end
-
-	db 0 ; unused
-
-DummyPredef3A:
-	ret
-
-	ret ; unused

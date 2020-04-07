@@ -2740,9 +2740,9 @@ wLuckyNumberDayBuffer:: dw ; dc2d
 wSpecialPhoneCallID:: db ; dc31
 	ds 3
 wBugContestStartTime:: ds 4 ; day, hour, min, sec ; dc35
-wUnusedTwoDayTimerOn:: db ; dc39
-wUnusedTwoDayTimer:: db
-wUnusedTwoDayTimerStartDate:: db
+wHoneyTreeTwoDayTimerOn:: db ; dc39
+wHoneyTreeTwoDayTimer:: db
+wHoneyTreeTwoDayTimerStartDate:: db
 	ds 4
 wMobileOrCable_LastSelection:: db
 wdc41:: ds 1

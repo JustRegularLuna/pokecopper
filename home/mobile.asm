@@ -122,21 +122,6 @@ Timer::
 	pop af
 	reti
 
-Unreferenced_Function3ed7::
-	ld [$dc02], a
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(Function114243)
-	rst Bankswitch
-
-	call Function114243
-	pop bc
-	ld a, b
-	rst Bankswitch
-
-	ld a, [$dc02]
-	ret
-
 Function3eea::
 	push hl
 	push bc
@@ -150,31 +135,6 @@ Function3eea::
 	pop bc
 	pop hl
 	call MobileHome_PlaceBox
-	ret
-
-Unreferenced_Function3efd::
-	push hl
-	hlcoord 0, 12
-	ld b, 4
-	ld c, 18
-	call .fill_attr
-	pop hl
-	call PrintTextboxText
-	ret
-
-.fill_attr
-	push hl
-	push bc
-	ld de, wAttrmap - wTilemap
-	add hl, de
-	inc b
-	inc b
-	inc c
-	inc c
-	call Function3f35
-	pop bc
-	pop hl
-	call TextboxBorder
 	ret
 
 Function3f20::
@@ -255,44 +215,4 @@ Function3f7c::
 	dec b
 	dec c
 	call Function3eea
-	ret
-
-Function3f88::
-	ld hl, wDecompressScratch
-	ld b, 0
-.row
-	push bc
-	ld c, 1 tiles / 2
-.col
-	ld a, [de]
-	inc de
-	cpl
-	ld [hl], 0
-	inc hl
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop bc
-	dec c
-	jr nz, .row
-	ret
-
-Function3f9f::
-	ld hl, wDecompressScratch
-.row
-	push bc
-	ld c, 1 tiles / 2
-.col
-	ld a, [de]
-	inc de
-	inc de
-	cpl
-	ld [hl], $0
-	inc hl
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop bc
-	dec c
-	jr nz, .row
 	ret

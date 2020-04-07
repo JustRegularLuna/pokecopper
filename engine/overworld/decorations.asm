@@ -939,21 +939,6 @@ GetDecorationID:
 	pop hl
 	ret
 
-SetAllDecorationFlags:
-	ld hl, DecorationIDs
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, .done
-	push hl
-	ld b, SET_FLAG
-	call DecorationFlagAction
-	pop hl
-	jr .loop
-
-.done
-	ret
-
 INCLUDE "data/decorations/decorations.asm"
 
 DescribeDecoration::

@@ -199,12 +199,6 @@ SentAllToMomText:
 	text "Sent all to MOM!"
 	prompt
 
-BattleText_0x80a4f:
-	text "<RIVAL>: Huh? I"
-	line "should've chosen"
-	cont "your #MON!"
-	prompt
-
 BattleText_MonFainted:
 	text_ram wBattleMonNick
 	text_start
@@ -214,12 +208,6 @@ BattleText_MonFainted:
 BattleText_UseNextMon:
 	text "Use next #MON?"
 	done
-
-BattleText_0x80a93:
-	text "<RIVAL>: Yes!"
-	line "I guess I chose a"
-	cont "good #MON!"
-	prompt
 
 LostAgainstText:
 	text "Lost against"

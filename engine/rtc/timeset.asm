@@ -196,32 +196,6 @@ DisplayHourOClock:
 	pop hl
 	ret
 
-UnreferencedFunction907f1:
-	ld h, d
-	ld l, e
-	push hl
-	call DisplayHourOClock
-	pop de
-	inc de
-	inc de
-	ld a, ":"
-	ld [de], a
-	inc de
-	push de
-	ld hl, 3
-	add hl, de
-	ld a, [de]
-	inc de
-	ld [hli], a
-	ld a, [de]
-	ld [hl], a
-	pop hl
-	call DisplayMinutesWithMinString
-	inc hl
-	inc hl
-	inc hl
-	ret
-
 SetMinutes:
 	ldh a, [hJoyPressed]
 	and A_BUTTON
@@ -592,84 +566,6 @@ InitialClearDSTFlag:
 .TimeAskOkayText:
 	text_far _TimeAskOkayText
 	text_end
-
-DebugDisplayTime:
-	hlcoord 1, 14
-	lb bc, 3, SCREEN_WIDTH - 2
-	call ClearBox
-	ld hl, .Text
-	call PlaceHLTextAtBC
-	ret
-
-.Text:
-	text_asm
-	call UpdateTime
-
-	hlcoord 1, 14
-	ld [hl], "R"
-	inc hl
-	ld [hl], "T"
-	inc hl
-	ld [hl], " "
-	inc hl
-
-	ld de, hRTCDayLo
-	call .PrintTime
-
-	hlcoord 1, 16
-	ld [hl], "D"
-	inc hl
-	ld [hl], "F"
-	inc hl
-	ld [hl], " "
-	inc hl
-
-	ld de, wStartDay
-	call .PrintTime
-
-	ld [hl], " "
-	inc hl
-
-	ld a, [wDST]
-	bit 7, a
-	jr z, .off
-
-	ld [hl], "O"
-	inc hl
-	ld [hl], "N"
-	inc hl
-	jr .done
-
-.off
-	ld [hl], "O"
-	inc hl
-	ld [hl], "F"
-	inc hl
-	ld [hl], "F"
-	inc hl
-
-.done
-	ld hl, .NowOnDebug
-	ret
-
-.NowOnDebug:
-	text "<PARA>Now on DEBUG…"
-	prompt
-
-.PrintTime:
-	lb bc, 1, 3
-	call PrintNum
-	ld [hl], "."
-	inc hl
-	inc de
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	call PrintNum
-	ld [hl], ":"
-	inc hl
-	inc de
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	call PrintNum
-	ret
 
 PrintHour:
 	ld l, e

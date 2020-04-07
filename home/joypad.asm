@@ -261,33 +261,6 @@ StopAutoInput::
 	ld [wInputType], a
 	ret
 
-JoyTitleScreenInput::
-.loop
-
-	call DelayFrame
-
-	push bc
-	call JoyTextDelay
-	pop bc
-
-	ldh a, [hJoyDown]
-	cp D_UP | SELECT | B_BUTTON
-	jr z, .keycombo
-
-	ldh a, [hJoyLast]
-	and START | A_BUTTON
-	jr nz, .keycombo
-
-	dec c
-	jr nz, .loop
-
-	and a
-	ret
-
-.keycombo
-	scf
-	ret
-
 JoyWaitAorB::
 .loop
 	call DelayFrame

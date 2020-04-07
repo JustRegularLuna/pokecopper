@@ -508,27 +508,6 @@ GetFrameOAMPointer:
 	add hl, de
 	ret
 
-Unreferenced_BrokenGetStdGraphics:
-	push hl
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	ld de, BrokenStdGFXPointers ; broken 2bpp pointers
-	add hl, de
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	pop hl
-	push bc
-	call Request2bpp
-	pop bc
-	ret
-
 INCLUDE "data/sprite_anims/sequences.asm"
 
 INCLUDE "engine/gfx/sprite_anims.asm"
@@ -536,21 +515,6 @@ INCLUDE "engine/gfx/sprite_anims.asm"
 INCLUDE "data/sprite_anims/framesets.asm"
 
 INCLUDE "data/sprite_anims/oam.asm"
-
-BrokenStdGFXPointers:
-	; tile count, bank, pointer
-	; (all pointers were dummied out to .deleted)
-	dbbw 128, $01, .deleted
-	dbbw 128, $01, .deleted
-	dbbw 128, $01, .deleted
-	dbbw 128, $01, .deleted
-	dbbw 16, $37, .deleted
-	dbbw 16, $11, .deleted
-	dbbw 16, $39, .deleted
-	dbbw 16, $24, .deleted
-	dbbw 16, $21, .deleted
-
-.deleted
 
 Sprites_Cosine:
 ; a = d * cos(a * pi/32)

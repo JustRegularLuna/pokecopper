@@ -487,12 +487,6 @@ _RodNothingText::
 	text "Not even a nibble!"
 	prompt
 
-; unused
-_UnusedNothingHereText::
-	text "Looks like there's"
-	line "nothing here."
-	prompt
-
 _CantGetOffBikeText::
 	text "You can't get off"
 	line "here!"
@@ -599,10 +593,6 @@ _AnEggCantHoldAnItemText::
 	line "an item."
 	prompt
 
-_PackNoItemText::
-	text "No items."
-	done
-
 _AskThrowAwayText::
 	text "Throw away how"
 	line "many?"
@@ -656,11 +646,6 @@ _PackEmptyText::
 	text_start
 	done
 
-_YouCantUseItInABattleText::
-	text "You can't use it"
-	line "in a battle."
-	prompt
-
 _AreYouABoyOrAreYouAGirlText::
 	text "Are you a boy?"
 	line "Or are you a girl?"
@@ -688,8 +673,6 @@ Text_BattleFoeEffectActivate::
 	line "@"
 	text_ram wStringBuffer2
 	text_end
-
-	text_end ; unused
 
 _BattleStatSharplyFellText::
 	text_pause
@@ -757,8 +740,6 @@ _MoveNameText::
 	text_ram wStringBuffer2
 	text_end
 
-	text_end ; unused
-
 _EndUsedMove1Text::
 	text "!"
 	done
@@ -796,8 +777,6 @@ _BreedEggHatchText::
 	sound_caught_mon
 	text_promptbutton
 	text_end
-
-	text_end ; unused
 
 _BreedAskNicknameText::
 	text "Give a nickname to"
@@ -889,33 +868,6 @@ _MailMovedFromBoxText::
 	line "from the MAILBOX."
 	prompt
 
-; unused
-_YesPromptText::
-	text "Yes"
-	prompt
-
-; unused
-_NoPromptText::
-	text "No"
-	prompt
-
-; unused
-_AnimationTypeText::
-	text_decimal wcf64, 1, 3
-	text " @"
-	text_ram wStringBuffer1
-	text_start
-	line "Animation type @"
-	text_ram wStringBuffer2
-	text_end
-
-	text_end ; unused
-
-; unused
-_MonNumberText::
-	text "#MON number?"
-	done
-
 _WasSentToBillsPCText::
 	text_ram wStringBuffer1
 	text " was"
@@ -937,21 +889,6 @@ _PCMonHoldingMailText::
 
 	para "Please remove the"
 	line "MAIL."
-	prompt
-
-_PCNoSingleMonText::
-	text "You don't have a"
-	line "single #MON!"
-	prompt
-
-_PCCantDepositLastMonText::
-	text "You can't deposit"
-	line "your last #MON!"
-	prompt
-
-_PCCantTakeText::
-	text "You can't take any"
-	line "more #MON."
 	prompt
 
 _ContestCaughtMonText::
@@ -1350,29 +1287,6 @@ _OakRating19::
 _OakPCText4::
 	text "The link to PROF."
 	line "OAK's PC closed."
-	done
-
-; unused
-_TrainerRankingExplanationText::
-	text "Triple-theme"
-	line "trainer ranking!"
-
-	para "The SAVE file you"
-	line "just sent might"
-	cont "make the rankings!"
-
-	para ""
-	done
-
-; unused
-_TrainerRankingNoDataText::
-	text "There is no"
-	line "ranking data."
-
-	para "Link to obtain"
-	line "ranking data."
-
-	para ""
 	done
 
 _DummyGameYeahText::

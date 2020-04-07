@@ -31,68 +31,6 @@ FarCopyBytesDouble_DoubleBankSwitch::
 	rst Bankswitch
 	ret
 
-OldDMATransfer:
-	dec c
-	ldh a, [hBGMapMode]
-	push af
-	xor a
-	ldh [hBGMapMode], a
-	ldh a, [hROMBank]
-	push af
-	ld a, b
-	rst Bankswitch
-
-.loop
-; load the source and target MSB and LSB
-	ld a, d
-	ldh [rHDMA1], a ; source MSB
-	ld a, e
-	and $f0
-	ldh [rHDMA2], a ; source LSB
-	ld a, h
-	and $1f
-	ldh [rHDMA3], a ; target MSB
-	ld a, l
-	and $f0
-	ldh [rHDMA4], a ; target LSB
-; stop when c < 8
-	ld a, c
-	cp $8
-	jr c, .done
-; decrease c by 8
-	sub $8
-	ld c, a
-; DMA transfer state
-	ld a, $f
-	ldh [hDMATransfer], a
-	call DelayFrame
-; add $100 to hl and de
-	ld a, l
-	add LOW($100)
-	ld l, a
-	ld a, h
-	adc HIGH($100)
-	ld h, a
-	ld a, e
-	add LOW($100)
-	ld e, a
-	ld a, d
-	adc HIGH($100)
-	ld d, a
-	jr .loop
-
-.done
-	ld a, c
-	and $7f ; pretty silly, considering at most bits 0-2 would be set
-	ldh [hDMATransfer], a
-	call DelayFrame
-	pop af
-	rst Bankswitch
-
-	pop af
-	ldh [hBGMapMode], a
-	ret
-
 ReplaceKrisSprite::
 	farcall _ReplaceKrisSprite
 	ret
@@ -107,10 +45,6 @@ LoadFontsBattleExtra::
 
 LoadFontsExtra::
 	farcall _LoadFontsExtra1
-	farcall _LoadFontsExtra2
-	ret
-
-LoadFontsExtra2:
 	farcall _LoadFontsExtra2
 	ret
 

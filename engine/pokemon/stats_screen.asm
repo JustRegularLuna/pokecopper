@@ -444,18 +444,6 @@ StatsScreen_InitUpperHalf:
 	dw sBoxMonNicknames
 	dw wBufferMonNick
 
-Unreferenced_Function4df7f:
-	hlcoord 7, 0
-	ld bc, SCREEN_WIDTH
-	ld d, SCREEN_HEIGHT
-.loop
-	ld a, $31 ; vertical divider
-	ld [hl], a
-	add hl, bc
-	dec d
-	jr nz, .loop
-	ret
-
 StatsScreen_PlaceHorizontalDivider:
 	hlcoord 0, 7
 	ld b, SCREEN_WIDTH
@@ -933,9 +921,6 @@ StatsScreen_LoadTextboxSpaceGFX:
 	pop de
 	pop hl
 	ret
-
-Unreferenced_StatsScreenSpaceGFX:
-INCBIN "gfx/font/space.2bpp"
 
 EggStatsScreen:
 	xor a

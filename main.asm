@@ -67,7 +67,6 @@ INCLUDE "engine/events/std_collision.asm"
 INCLUDE "engine/events/bug_contest/judging.asm"
 INCLUDE "engine/events/pokerus/apply_pokerus_tick.asm"
 INCLUDE "engine/events/bug_contest/contest_2.asm"
-INCLUDE "engine/pokemon/correct_party_errors.asm"
 INCLUDE "engine/math/get_square_root.asm"
 
 
@@ -250,7 +249,6 @@ INCLUDE "engine/events/basement_key.asm"
 INCLUDE "engine/events/sacred_ash.asm"
 INCLUDE "engine/pokemon/tempmon.asm"
 INCLUDE "engine/pokemon/types.asm"
-INCLUDE "engine/battle/unreferenced_getgen1trainerclassname.asm"
 INCLUDE "engine/pokemon/mon_stats.asm"
 INCLUDE "engine/link/init_list.asm"
 INCLUDE "engine/pokemon/experience.asm"
@@ -498,7 +496,6 @@ INCLUDE "engine/overworld/warp_connection.asm"
 INCLUDE "engine/link/mystery_gift.asm"
 INCLUDE "engine/battle/used_move_text.asm"
 INCLUDE "mobile/mobile_41.asm"
-INCLUDE "engine/gfx/load_overworld_font.asm"
 
 
 SECTION "mobile42", ROMX
@@ -514,7 +511,6 @@ INCBIN "gfx/intro/logo.2bpp.lz"
 
 SECTION "Title", ROMX
 
-INCLUDE "engine/movie/unused_title.asm"
 INCLUDE "engine/movie/title.asm"
 
 
@@ -538,7 +534,6 @@ INCLUDE "engine/events/battle_tower/trainer_text.asm"
 
 SECTION "bank5B", ROMX
 
-INCLUDE "mobile/mobile_5b.asm"
 INCLUDE "engine/link/link_trade.asm"
 
 
@@ -672,11 +667,6 @@ INCLUDE "data/battle_tower/trainer_text.asm"
 SECTION "Battle Tower Trainer Data", ROMX
 
 INCLUDE "data/battle_tower/unknown.asm"
-
-
-SECTION "Mobile News Data", ROMX
-
-INCLUDE "mobile/news/news.asm"
 
 
 SECTION "Crystal Events", ROMX

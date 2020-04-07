@@ -98,8 +98,3 @@ DisplayAlreadyCaughtText:
 .ContestAlreadyCaughtText:
 	text_far _ContestAlreadyCaughtText
 	text_end
-
-DummyPredef2F:
-DummyPredef38:
-DummyPredef39:
-	ret

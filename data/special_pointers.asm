@@ -56,7 +56,6 @@ SpecialsPointers::
 	add_special SlotMachine
 	add_special CardFlip
 	add_special DummyNonfunctionalGameCornerGame
-	add_special ClearBGPalettesBufferScreen
 	add_special FadeOutPalettes
 	add_special BattleTowerFade
 	add_special FadeBlackQuickly ; $30
@@ -65,11 +64,9 @@ SpecialsPointers::
 	add_special ReloadSpritesNoPalettes ; bank 0
 	add_special ClearBGPalettes ; bank 0
 	add_special UpdateTimePals ; bank 0
-	add_special ClearTilemap ; bank 0
 	add_special UpdateSprites ; bank 0
 	add_special ReplaceKrisSprite ; $38 ; bank 0
 	add_special GameCornerPrizeMonCheckDex
-	add_special UnusedSetSeenMon
 	add_special WaitSFX ; bank 0
 	add_special PlayMapMusic ; bank 0
 	add_special RestartMapMusic ; bank 0
@@ -79,7 +76,7 @@ SpecialsPointers::
 	add_special FindPartyMonAtLeastThatHappy
 	add_special FindPartyMonThatSpecies
 	add_special FindPartyMonThatSpeciesYourTrainerID
-	add_special UnusedCheckUnusedTwoDayTimer
+	add_special CheckHoneyTreeTwoDayTimer
 	add_special DayCareMon1
 	add_special DayCareMon2
 	add_special SelectRandomBugContestContestants
@@ -122,21 +119,9 @@ SpecialsPointers::
 	add_special PrintDiploma
 
 ; Crystal only
-	add_special Function11ac3e
-	add_special Function11b444
-	add_special Function11b5e8
-	add_special Function11b7e5 ; $70
-	add_special Function11b879
-	add_special Function11b920
-	add_special Function11b93b
 	add_special BattleTowerRoomMenu
-	add_special Function1700ba
-	add_special Function170114
 	add_special BattleTowerBattle
-	add_special Function1704e1 ; $78
-	add_special DummySpecial_17021d
 	add_special LoadOpponentTrainerAndPokemonWithOTSprite
-	add_special Function11ba38
 	add_special CheckForBattleTowerRules
 	add_special GiveOddEgg
 	add_special Reset ; bank 0
@@ -146,7 +131,6 @@ SpecialsPointers::
 	add_special Function101231
 	add_special MoveTutor
 	add_special OmanyteChamber
-	add_special Function11c1ab
 	add_special BattleTowerAction
 	add_special DisplayUnownWords
 	add_special Menu_ChallengeExplanationCancel ; $88
@@ -166,7 +150,6 @@ SpecialsPointers::
 	add_special BeastsCheck
 	add_special MonCheck
 	add_special SetPlayerPalette ; $98
-	add_special DummySpecial_170bd2
 	add_special Mobile_SelectThreeMons
 	add_special Function1037eb
 	add_special Function10383c
@@ -178,7 +161,5 @@ SpecialsPointers::
 	add_special Function10387b
 	add_special AskRememberPassword
 	add_special LoadMapPalettes
-	add_special UnusedFindItemInPCOrBag
 	add_special InitialSetDSTFlag
 	add_special InitialClearDSTFlag
-	add_special DummySpecial_c224 ; $a8

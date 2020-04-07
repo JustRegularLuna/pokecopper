@@ -402,19 +402,6 @@ UpdatePlayerStep:
 	set PLAYERSTEP_CONTINUE_F, [hl]
 	ret
 
-Unreferenced_Function4759:
-	push bc
-	ld e, a
-	ld d, 0
-	ld hl, OBJECT_MAP_OBJECT_INDEX
-	add hl, bc
-	ld a, [hl]
-	call GetMapObject
-	add hl, de
-	ld a, [hl]
-	pop bc
-	ret
-
 RestoreDefaultMovement:
 	ld hl, OBJECT_MAP_OBJECT_INDEX
 	add hl, bc
@@ -431,12 +418,6 @@ RestoreDefaultMovement:
 
 .ok
 	ld a, SPRITEMOVEDATA_STANDING_DOWN
-	ret
-
-ClearObjectMovementByteIndex:
-	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
-	add hl, bc
-	ld [hl], 0
 	ret
 
 IncrementObjectMovementByteIndex:
@@ -477,18 +458,6 @@ Field1cAnonymousJumptable:
 	ld a, [hl]
 	pop hl
 	rst JumpTable
-	ret
-
-GetValueObjectStructField1c:
-	ld hl, OBJECT_1C
-	add hl, bc
-	ld a, [hl]
-	ret
-
-SetValueObjectStructField1c:
-	ld hl, OBJECT_1C
-	add hl, bc
-	ld [hl], a
 	ret
 
 ObjectMovementReset:
@@ -2560,15 +2529,6 @@ SetFlagsForMovement_1::
 	xor a
 	ret
 
-Function586e:
-	call CheckObjectVisibility
-	ret c
-	ld hl, OBJECT_FLAGS2
-	add hl, bc
-	set OBJ_FLAGS2_5, [hl]
-	xor a
-	ret
-
 Function587a:
 	ld bc, wObjectStructs
 	xor a
@@ -2632,14 +2592,6 @@ Function58b9::
 	cp NUM_OBJECT_STRUCTS
 	jr nz, .loop
 	pop bc
-	ret
-
-Function58d8:
-	call CheckObjectVisibility
-	ret c
-	ld hl, OBJECT_FLAGS2
-	add hl, bc
-	res OBJ_FLAGS2_5, [hl]
 	ret
 
 Function58e3:

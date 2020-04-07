@@ -10,16 +10,15 @@ LoadBattleMenu:
 	ret
 
 SafariBattleMenu:
-; untranslated
-	ld hl, MenuHeader_0x24f4e
+	ld hl, SafariBattleMenuDataHeader
 	call LoadMenuHeader
-	jr Function24f19
+	jr DoSafariOrContestMenu
 
 ContestBattleMenu:
-	ld hl, MenuHeader_0x24f89
+	ld hl, ContestBattleMenuDataHeader
 	call LoadMenuHeader
 
-Function24f19:
+DoSafariOrContestMenu:
 	ld a, [wBattleMenuCursorBuffer]
 	ld [wMenuCursorBuffer], a
 	call _2DMenu
@@ -47,52 +46,52 @@ Strings24f3d:
 	db "PACK@"
 	db "RUN@"
 
-MenuHeader_0x24f4e:
+SafariBattleMenuDataHeader:
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 0, 12, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
-	dw MenuData_0x24f56
+	dw .MenuData2
 	db 1 ; default option
 
-MenuData_0x24f56:
+.MenuData2:
 	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
 	dn 2, 2 ; rows, columns
 	db 11 ; spacing
-	dba Strings24f5f
-	dba Function24f7c
+	dba .Strings
+	dba ShowSafariBallsRemaining
 
-Strings24f5f:
-	db "サファりボール×　　@" ; "SAFARI BALL×  @"
-	db "エサをなげる@" ; "THROW BAIT"
-	db "いしをなげる@" ; "THROW ROCK"
-	db "にげる@" ; "RUN"
+.Strings:
+	db "BALL×　　@"
+	db "BAIT@"
+	db "ROCK@"
+	db "RUN@"
 
-Function24f7c:
+ShowSafariBallsRemaining:
 	hlcoord 17, 13
 	ld de, wSafariBallsRemaining
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
 	ret
 
-MenuHeader_0x24f89:
+ContestBattleMenuDataHeader:
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 2, 12, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
-	dw MenuData_0x24f91
+	dw .MenuData2
 	db 1 ; default option
 
-MenuData_0x24f91:
+.MenuData2:
 	db STATICMENU_CURSOR | STATICMENU_DISABLE_B ; flags
 	dn 2, 2 ; rows, columns
 	db 12 ; spacing
-	dba Strings24f9a
-	dba Function24fb2
+	dba .Strings
+	dba ShowParkBallsRemaining
 
-Strings24f9a:
+.Strings:
 	db "FIGHT@"
 	db "<PKMN>@"
 	db "PARKBALL×  @"
 	db "RUN@"
 
-Function24fb2:
+ShowParkBallsRemaining:
 	hlcoord 13, 16
 	ld de, wParkBallsRemaining
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2

@@ -70,6 +70,3 @@ CopyPokemonName_Buffer1_Buffer3:
 	ld de, wStringBuffer3
 	ld bc, MON_NAME_LENGTH
 	jp CopyBytes
-
-DummyPredef1:
-	ret

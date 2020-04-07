@@ -2592,11 +2592,6 @@ Script_warpcheck:
 	farcall EnableEvents
 	ret
 
-Script_enableevents:
-; unused
-	farcall EnableEvents
-	ret
-
 Script_newloadmap:
 ; script command 0x8a
 ; parameters: which_method

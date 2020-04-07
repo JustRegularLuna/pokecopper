@@ -228,32 +228,13 @@ _MoveMonWOMailSaveText::
 	cont "will be saved. OK?"
 	done
 
-; unused
-_WindowAreaExceededErrorText::
-	text "The window save"
-	line "area was exceeded."
-	done
-
 _WindowPoppingErrorText::
 	text "No windows avail-"
 	line "able for popping."
 	done
 
-; unused
-_CorruptedEventErrorText::
-	text "Corrupted event!"
-	prompt
-
 _ObjectEventText::
 	text "Object event"
-	done
-
-_BGEventText::
-	text "BG event"
-	done
-
-_CoordinatesEventText::
-	text "Coordinates event"
 	done
 
 _ReceivedItemText::
@@ -919,15 +900,6 @@ _PhoneJustTalkToThemText::
 	line "that person!"
 	done
 
-_PhoneThankYouText::
-	text "Thank you!"
-	done
-
-; unused
-UnknownText_0x1c55d6::
-	text "  :"
-	done
-
 _PasswordAskResetText::
 	text "Password OK."
 	line "Select CONTINUE &"
@@ -1200,19 +1172,6 @@ _YouCantTakeAnEggText::
 	para ""
 	done
 
-_BallDodgedText::
-	text "It dodged the"
-	line "thrown BALL!"
-
-	para "This #MON"
-	line "can't be caught!"
-	prompt
-
-_BallMissedText::
-	text "You missed the"
-	line "#MON!"
-	prompt
-
 _BallBrokeFreeText::
 	text "Oh no! The #MON"
 	line "broke free!"
@@ -1241,13 +1200,9 @@ Text_BallCaught::
 	sound_caught_mon
 	text_end
 
-	text_end ; unused
-
 _WaitButtonText::
 	text_promptbutton
 	text_end
-
-	text_end ; unused
 
 _BallSentToPCText::
 	text_ram wMonOrItemNameBuffer
@@ -1263,8 +1218,6 @@ _NewDexDataText::
 	sound_slot_machine_start
 	text_promptbutton
 	text_end
-
-	text_end ; unused
 
 _AskGiveNicknameText::
 	text "Give a nickname to"
@@ -1311,8 +1264,6 @@ Text_PlayedPokeFlute::
 	text_promptbutton
 	text_end
 
-	text_end ; unused
-
 _BlueCardBalanceText::
 	text "You now have"
 	line "@"
@@ -1325,8 +1276,6 @@ _CoinCaseCountText::
 	line "@"
 	text_decimal wCoins, 2, 4
 	text_end
-
-	text_end ; unused
 
 _RaiseThePPOfWhichMoveText::
 	text "Raise the PP of"
@@ -1381,11 +1330,6 @@ _ItemOakWarningText::
 	cont "time to use that!"
 	prompt
 
-_ItemBelongsToSomeoneElseText::
-	text "That belongs to"
-	line "someone else!"
-	prompt
-
 _ItemWontHaveEffectText::
 	text "It won't have any"
 	line "effect."
@@ -1400,18 +1344,6 @@ _BallDontBeAThiefText::
 	text "Don't be a thief!"
 	prompt
 
-_NoCyclingText::
-	text "Cycling isn't"
-	line "allowed here."
-	prompt
-
-_ItemCantGetOnText::
-	text "Can't get on your"
-	line "@"
-	text_ram wStringBuffer1
-	text " now."
-	prompt
-
 _BallBoxFullText::
 	text "The #MON BOX"
 	line "is full. That"
@@ -1424,21 +1356,6 @@ _ItemUsedText::
 	text_ram wStringBuffer2
 	text "."
 	done
-
-_ItemGotOnText::
-	text "<PLAYER> got on the@"
-	text_low
-	text_ram wStringBuffer2
-	text "."
-	prompt
-
-_ItemGotOffText::
-	text "<PLAYER> got off@"
-	text_low
-	text "the @"
-	text_ram wStringBuffer2
-	text "."
-	prompt
 
 _KnowsMoveText::
 	text_ram wStringBuffer1

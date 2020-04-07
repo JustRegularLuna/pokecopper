@@ -226,11 +226,3 @@ RestartClock:
 	add hl, bc
 	ld [hl], e
 	ret
-
-UnreferencedString_HourJP:
-; unused
-	db "じ@" ; HR
-
-UnreferencedString_MinuteJP:
-; unused
-	db "ふん@" ; MIN

@@ -187,12 +187,6 @@ Function17a78f:
 	farcall ReloadMapPart
 	ret
 
-Function17a7a6:
-	ld a, [$d087]
-	inc a
-	ld [$d087], a
-	ret
-
 Function17a7ae:
 	ld a, [$d087]
 	ld hl, Jumptable_17a7b6

@@ -722,8 +722,6 @@ NamingScreen_AdvanceCursor_CheckEndOfString:
 	ld a, [hl]
 	jr NamingScreen_LoadNextCharacter
 
-INCLUDE "data/text/unused_dakutens.asm"
-
 NamingScreen_DeleteCharacter:
 	ld hl, wNamingScreenCurNameLength
 	ld a, [hl]
@@ -887,9 +885,6 @@ NamingScreenGFX_Cursor:
 INCBIN "gfx/naming_screen/cursor.2bpp"
 
 INCLUDE "data/text/name_input_chars.asm"
-
-NamingScreenGFX_End: ; unused
-INCBIN "gfx/naming_screen/end.1bpp"
 
 NamingScreenGFX_MiddleLine:
 INCBIN "gfx/naming_screen/middle_line.1bpp"

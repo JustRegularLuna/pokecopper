@@ -128,10 +128,6 @@ SpeechTextbox::
 	ld c, TEXTBOX_INNERW
 	jp Textbox
 
-TestText::
-	text "ゲームフりーク！"
-	done
-
 RadioTerminator::
 	ld hl, .stop
 	ret
@@ -941,18 +937,6 @@ TextCommand_SOUND::
 	pop de
 
 .done
-	pop hl
-	pop bc
-	ret
-
-Unreferenced_Function1522::
-; sound_cry
-	push de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	call PlayMonCry
-	pop de
 	pop hl
 	pop bc
 	ret
