@@ -722,16 +722,6 @@ SellMenu:
 	and a
 	ret
 
-.Unreferenced_NothingToSell:
-	ld hl, .NothingToSellText
-	call MenuTextboxBackup
-	and a
-	ret
-
-.NothingToSellText:
-	text_far _NothingToSellText
-	text_end
-
 .TryToSellItem:
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]

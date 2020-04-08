@@ -6653,35 +6653,6 @@ Function11b397:
 	inc de
 	jr .loop
 
-Unreferenced_Function11b3b6:
-.loop
-	ld a, [hl]
-	cp -1
-	ret z
-	ld a, [wcd4d]
-	and $7
-	swap a
-	add [hl]
-	inc hl
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	push hl
-	ld l, c
-	ld h, b
-	ld a, [wcd4e]
-	add [hl]
-	inc bc
-	ld [de], a
-	inc de
-	pop hl
-	ld a, $5
-	ld [de], a
-	inc de
-	jr .loop
-
 Function11b3d9:
 	ld de, wVirtualOAMSprite28
 	push de

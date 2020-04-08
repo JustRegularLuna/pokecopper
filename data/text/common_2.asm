@@ -384,11 +384,6 @@ _CantUseTeleportText::
 	para ""
 	done
 
-_AlreadyUsingStrengthText::
-	text "A #MON is using"
-	line "STRENGTH already."
-	prompt
-
 _UseStrengthText::
 	text_ram wStringBuffer2
 	text " used"

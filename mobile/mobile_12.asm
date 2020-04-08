@@ -1598,16 +1598,6 @@ Function48c63:
 	scf
 	ret
 
-Unreferenced_Function48c8e:
-	ld hl, wd019 + $11
-	ld d, h
-	ld e, l
-	farcall Function48c63
-	hlcoord 10, 7
-	call PlaceString
-	call WaitBGMap
-	ret
-
 Function48ca3:
 	push af
 	push bc
