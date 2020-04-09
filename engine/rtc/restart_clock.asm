@@ -206,13 +206,6 @@ RestartClock:
 	ld [wBuffer2], a
 	ret
 
-.unreferenced
-; unused
-	ld a, [wBuffer3]
-	ld b, a
-	call Coord2Tile
-	ret
-
 .PlaceChars:
 	push de
 	call RestartClock_GetWraparoundTime

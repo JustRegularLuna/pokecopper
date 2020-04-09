@@ -343,11 +343,6 @@ _WithdrawPKMN:
 	ld [wJumptableIndex], a
 	ret
 
-.unused
-	ld hl, wJumptableIndex
-	dec [hl]
-	ret
-
 .b_button
 	ld a, $4
 	ld [wJumptableIndex], a
@@ -592,11 +587,6 @@ _MovePKMNWithoutMail:
 	jr z, .b_button
 	ld a, $2
 	ld [wJumptableIndex], a
-	ret
-
-.unused
-	ld hl, wJumptableIndex
-	dec [hl]
 	ret
 
 .b_button
@@ -2442,8 +2432,6 @@ BillsPC_ChangeBoxSubmenu:
 	ld de, wd002
 	call CopyName2
 	ret
-
-	hlcoord 11, 7 ; unused
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags

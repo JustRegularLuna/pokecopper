@@ -392,49 +392,6 @@ AI_Items:
 	call EnemyUsedPotion
 	jp .Use
 
-.asm_382ae ; This appears to be unused
-	callfar AICheckEnemyMaxHP
-	jr c, .dont_use
-	push bc
-	ld de, wEnemyMonMaxHP + 1
-	ld hl, wEnemyMonHP + 1
-	ld a, [de]
-	sub [hl]
-	jr z, .check_40_percent
-	dec hl
-	dec de
-	ld c, a
-	sbc [hl]
-	and a
-	jr nz, .check_40_percent
-	ld a, c
-	cp b
-	jp c, .check_50_percent
-	callfar AICheckEnemyQuarterHP
-	jr c, .check_40_percent
-
-.check_50_percent
-	pop bc
-	ld a, [bc]
-	bit UNKNOWN_USE_F, a
-	jp z, .Use
-	call Random
-	cp 50 percent + 1
-	jp c, .Use
-
-.dont_use
-	jp .DontUse
-
-.check_40_percent
-	pop bc
-	ld a, [bc]
-	bit UNKNOWN_USE_F, a
-	jp z, .DontUse
-	call Random
-	cp 39 percent + 1
-	jp c, .Use
-	jp .DontUse
-
 .XAccuracy:
 	call .XItem
 	jp c, .DontUse

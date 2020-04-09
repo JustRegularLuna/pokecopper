@@ -90,7 +90,3 @@ SafeUpdateSprites::
 	pop af
 	ldh [hOAMUpdate], a
 	ret
-
-; unused
-	scf
-	ret

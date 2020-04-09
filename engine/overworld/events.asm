@@ -433,11 +433,6 @@ CheckTimeEvents:
 	scf
 	ret
 
-.unused
-	ld a, 8
-	scf
-	ret
-
 OWPlayerInput:
 	call PlayerMovement
 	ret c
@@ -878,12 +873,6 @@ CountStep:
 	scf
 	ret
 
-; unused
-.unreferenced
-	ld a, PLAYEREVENT_WHITEOUT
-	scf
-	ret
-
 DoRepelStep:
 	ld a, [wRepelEffect]
 	and a
@@ -939,9 +928,6 @@ PlayerEventScriptPointers:
 	dba Invalid_0x96c2d          ; (NUM_PLAYER_EVENTS)
 
 Invalid_0x96c2d:
-	end
-
-; unused
 	end
 
 HatchEggScript:

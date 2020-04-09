@@ -129,9 +129,6 @@ LoadMapObjects:
 	farcall InitializeVisibleSprites
 	ret
 
-; unused
-	ret
-
 ResetPlayerObjectAction:
 	ld hl, wPlayerSpriteSetupFlags
 	set PLAYERSPRITESETUP_RESET_ACTION_F, [hl]

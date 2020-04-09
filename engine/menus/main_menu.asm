@@ -267,10 +267,6 @@ MainMenu_PrintCurrentTimeAndDay:
 	call PrintNum
 	ret
 
-.min
-; unused
-	db "min.@"
-
 .PrintTimeNotSet:
 	hlcoord 1, 14
 	ld de, .TimeNotSet
@@ -279,10 +275,6 @@ MainMenu_PrintCurrentTimeAndDay:
 
 .TimeNotSet:
 	db "TIME NOT SET@"
-
-.MainMenuTimeUnknownText:
-	text_far _MainMenuTimeUnknownText
-	text_end
 
 .PlaceCurrentDay:
 	push de

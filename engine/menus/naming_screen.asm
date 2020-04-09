@@ -698,30 +698,6 @@ NamingScreen_AdvanceCursor_CheckEndOfString:
 	scf
 	ret
 
-; unused
-	ld a, [wNamingScreenCurNameLength]
-	and a
-	ret z
-	push hl
-	ld hl, wNamingScreenCurNameLength
-	dec [hl]
-	call NamingScreen_GetTextCursorPosition
-	ld c, [hl]
-	pop hl
-
-.loop
-	ld a, [hli]
-	cp $ff
-	jr z, NamingScreen_AdvanceCursor_CheckEndOfString
-	cp c
-	jr z, .done
-	inc hl
-	jr .loop
-
-.done
-	ld a, [hl]
-	jr NamingScreen_LoadNextCharacter
-
 NamingScreen_DeleteCharacter:
 	ld hl, wNamingScreenCurNameLength
 	ld a, [hl]
@@ -1344,39 +1320,5 @@ ComposeMail_GetCursorPosition:
 MailComposition_TryAddLastCharacter:
 	ld a, [wNamingScreenLastCharacter]
 	jp MailComposition_TryAddCharacter
-
-; unused
-	ld a, [wNamingScreenCurNameLength]
-	and a
-	ret z
-	cp $11
-	jr nz, .asm_121c3
-	push hl
-	ld hl, wNamingScreenCurNameLength
-	dec [hl]
-	dec [hl]
-	jr .asm_121c8
-
-.asm_121c3
-	push hl
-	ld hl, wNamingScreenCurNameLength
-	dec [hl]
-
-.asm_121c8
-	call NamingScreen_GetTextCursorPosition
-	ld c, [hl]
-	pop hl
-.asm_121cd
-	ld a, [hli]
-	cp $ff
-	jp z, NamingScreen_AdvanceCursor_CheckEndOfString
-	cp c
-	jr z, .asm_121d9
-	inc hl
-	jr .asm_121cd
-
-.asm_121d9
-	ld a, [hl]
-	jp NamingScreen_LoadNextCharacter
 
 INCLUDE "data/text/mail_input_chars.asm"

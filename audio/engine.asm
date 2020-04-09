@@ -325,13 +325,6 @@ UpdateChannels:
 	ldh [rNR21], a
 	ret
 
-.asm_e81db ; unused
-	ld a, [wCurTrackFrequency]
-	ldh [rNR23], a
-	ld a, [wCurTrackFrequency + 1]
-	ldh [rNR24], a
-	ret
-
 .asm_e81e6
 	ld a, [wCurTrackDuty]
 	ld d, a
@@ -375,13 +368,6 @@ UpdateChannels:
 	jr nz, .asm_e824d
 	bit NOTE_VIBRATO_OVERRIDE, [hl]
 	jr nz, .asm_e823a
-	ret
-
-.asm_e822f ; unused
-	ld a, [wCurTrackFrequency]
-	ldh [rNR33], a
-	ld a, [wCurTrackFrequency + 1]
-	ldh [rNR34], a
 	ret
 
 .asm_e823a
@@ -474,11 +460,6 @@ endr
 	jr nz, .ch4rest
 	bit NOTE_NOISE_SAMPLING, [hl]
 	jr nz, .asm_e82d4
-	ret
-
-.asm_e82c1 ; unused
-	ld a, [wCurTrackFrequency]
-	ldh [rNR43], a
 	ret
 
 .ch4rest

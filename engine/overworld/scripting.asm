@@ -2631,8 +2631,6 @@ Script_writeunusedbytebuffer:
 	ld [wUnusedScriptByteBuffer], a
 	ret
 
-	db closetext_command ; unused
-
 Script_closetext:
 ; script command 0x49
 
@@ -2808,11 +2806,3 @@ Script_checksave:
 	ld a, c
 	ld [wScriptVar], a
 	ret
-
-; unused
-	ld a, [.byte]
-	ld [wScriptVar], a
-	ret
-
-.byte
-	db 0

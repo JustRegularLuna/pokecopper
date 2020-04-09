@@ -110,8 +110,7 @@ CoinString:
 ShowMoney_TerminatorString:
 	db "@"
 
-Unreferenced_Function24b8f:
-; related to safari?
+StartMenu_PrintSafariZoneStatus:
 	ld hl, wOptions
 	ld a, [hl]
 	push af
@@ -128,7 +127,7 @@ Unreferenced_Function24b8f:
 	ld de, .slash_500
 	call PlaceString
 	hlcoord 1, 3
-	ld de, .booru_ko
+	ld de, .balls
 	call PlaceString
 	hlcoord 5, 3
 	ld de, wSafariBallsRemaining
@@ -140,8 +139,8 @@ Unreferenced_Function24b8f:
 
 .slash_500
 	db "／５００@"
-.booru_ko
-	db "ボール　　　こ@"
+.balls
+	db "BALLS:@"
 
 StartMenu_DrawBugContestStatusBox:
 	hlcoord 0, 0
@@ -194,8 +193,6 @@ StartMenu_PrintBugContestStatus:
 	ld [wOptions], a
 	ret
 
-.Balls_JP:
-	db "ボール　　　こ@"
 .CAUGHT:
 	db "CAUGHT@"
 .Balls_EN:
