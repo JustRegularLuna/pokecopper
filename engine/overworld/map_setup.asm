@@ -105,7 +105,13 @@ MapSetupCommands:
 	dba SuspendMapAnims ; 2a
 	dba ApplyMapPalettes ; 2b
 	dba EnableTextAcceleration ; 2c
-	dba InitMapNameSign ; 2d
+;	dba InitMapNameSign ; 2d
+
+
+;InitMapNameSign::
+;	xor a
+;	ldh [hBGMapMode], a
+;	ret
 
 EnableTextAcceleration:
 	xor a

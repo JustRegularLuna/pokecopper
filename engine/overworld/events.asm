@@ -172,7 +172,6 @@ HandleMapObjects:
 HandleMapBackground:
 	farcall _UpdateSprites
 	farcall ScrollScreen
-	farcall PlaceMapNameSign
 	ret
 
 CheckPlayerState:

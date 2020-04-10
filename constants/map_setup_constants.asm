@@ -61,7 +61,7 @@
 	const map_suspend_anims              ; 2a
 	const map_apply_palettes             ; 2b
 	const map_enable_text_acceleration   ; 2c
-	const map_init_name_sign             ; 2d
+;	const map_init_name_sign             ; 2d
 map_end EQU -1
 
 ; callback types

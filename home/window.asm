@@ -39,7 +39,6 @@ CloseText::
 	ld a, $90
 	ldh [hWY], a
 	call ReplaceKrisSprite
-	farcall InitMapNameSign
 	ret
 
 OpenText::

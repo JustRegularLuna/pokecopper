@@ -79,7 +79,7 @@ MapSetupScript_Connection:
 	db map_load_objects
 	db map_fade_to_music
 	db map_load_palettes
-	db map_init_name_sign
+;	db map_init_name_sign
 	db map_apply_palettes
 	db map_load_wild_mon_data
 	db map_update_roam_mons
