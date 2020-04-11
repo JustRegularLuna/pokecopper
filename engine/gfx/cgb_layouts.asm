@@ -49,7 +49,6 @@ LoadSGBLayoutCGB:
 	dw _CGB_PokedexSearchOption
 	dw _CGB_BetaPoker
 	dw _CGB_Pokepic
-	dw _CGB_MagnetTrain
 	dw _CGB_PackPals
 	dw _CGB_TrainerCard
 	dw _CGB_PokedexUnownMode
@@ -771,17 +770,6 @@ _CGB_Pokepic:
 	ld a, $0
 	call FillBoxCGB
 	call ApplyAttrmap
-	ret
-
-_CGB_MagnetTrain:
-	xor a ; PAL_ROUTE
-	call GetPredefPal
-	call LoadHLPaletteIntoDE
-	call WipeAttrmap
-	call ApplyAttrmap
-	call ApplyPals
-	ld a, $1
-	ldh [hCGBPalUpdate], a
 	ret
 
 _CGB_GamefreakLogo:
