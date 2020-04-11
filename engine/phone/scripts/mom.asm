@@ -1,69 +1,5 @@
 MomPhoneCalleeScript:
-	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
-	iftrue .bcec5
-	checkevent EVENT_DUDE_TALKED_TO_YOU
-	iftrue MomPhoneLectureScript
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue MomPhoneNoGymQuestScript
-	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue MomPhoneNoPokedexScript
-	sjump MomPhoneNoPokemonScript
-
-.bcec5
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
-	iftrue MomPhoneHangUpScript
 	farwritetext MomPhoneGreetingText
-	promptbutton
-	getcurlandmarkname STRING_BUFFER_3
-	readvar VAR_ROOFPALETTE
-	ifequal 1, MomPhonePalette1
-	ifequal 2, MomPhonePalette2
-	sjump MomPhoneOther
-
-MomPhoneLandmark:
-	farwritetext MomPhoneLandmarkText
-	promptbutton
-	sjump MomSavingMoney
-
-MomPhonePalette1:
-; TODO: Pick maps for Mom's phone dialog to change.
-	readvar VAR_MAPGROUP
-	ifequal GROUP_NEW_BARK_TOWN, .newbark
-	ifequal GROUP_NONE, .cherrygrove
-	ifequal GROUP_NONE, .violet
-	ifequal GROUP_NONE, .azalea
-	ifequal GROUP_NONE, .goldenrod
-	farwritetext MomPhoneGenericAreaText
-	promptbutton
-	sjump MomSavingMoney
-
-.newbark
-	farwritetext MomPhoneNewBarkText
-	promptbutton
-	sjump MomSavingMoney
-
-.cherrygrove
-	farwritetext MomPhoneCherrygroveText
-	promptbutton
-	sjump MomSavingMoney
-
-.violet
-	getlandmarkname STRING_BUFFER_4, LANDMARK_SPROUT_TOWER
-	sjump MomPhoneLandmark
-.azalea
-	getlandmarkname STRING_BUFFER_4, LANDMARK_SLOWPOKE_WELL
-	sjump MomPhoneLandmark
-.goldenrod
-	getlandmarkname STRING_BUFFER_4, LANDMARK_RADIO_TOWER
-	sjump MomPhoneLandmark
-
-MomPhonePalette2:
-	farwritetext MomOtherAreaText
-	promptbutton
-	sjump MomSavingMoney
-
-MomPhoneOther:
-	farwritetext MomDeterminedText
 	promptbutton
 	sjump MomSavingMoney
 
@@ -120,24 +56,3 @@ MomPhoneWontSaveMoneyScript:
 MomPhoneHangUpScript:
 	farwritetext MomPhoneHangUpText
 	end
-
-MomPhoneNoPokemonScript:
-	farwritetext MomPhoneNoPokemonText
-	end
-
-MomPhoneNoPokedexScript:
-	farwritetext MomPhoneNoPokedexText
-	end
-
-MomPhoneNoGymQuestScript:
-	farwritetext MomPhoneNoGymQuestText
-	end
-
-MomPhoneLectureScript:
-	setevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
-	setflag ENGINE_MOM_ACTIVE
-	specialphonecall SPECIALCALL_NONE
-	farwritetext MomPhoneLectureText
-	yesorno
-	iftrue MomPhoneSaveMoneyScript
-	sjump MomPhoneWontSaveMoneyScript
