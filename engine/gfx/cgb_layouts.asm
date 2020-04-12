@@ -131,13 +131,30 @@ _CGB_FinishBattleScreenLayout:
 	ld bc, 6 * SCREEN_WIDTH
 	ld a, PAL_BATTLE_BG_TEXT
 	call ByteFill
-	ld hl, BattleObjectPals
-	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY
-	ld bc, 6 palettes
-	ld a, BANK(wOBPals1)
-	call FarCopyWRAM
+	call FillBattleObjectPals
 	call ApplyAttrmap
 	ret
+
+FillBattleObjectPals:
+	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY
+	ld a, PAL_GREYMON
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
+	ld a, PAL_YELLOWMON
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
+	ld a, PAL_REDMON
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
+	ld a, PAL_GREENMON
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
+	ld a, PAL_BLUEMON
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
+	ld a, PAL_BROWNMON
+	call GetPredefPal
+	jp LoadHLPaletteIntoDE
 
 InitPartyMenuBGPal7:
 	farcall Function100dc0
@@ -571,11 +588,7 @@ _CGB_Evolution:
 	ld a, [wPlayerHPPal]
 	call GetPlayerOrMonPalettePointer
 	call LoadHLPaletteIntoDE
-	ld hl, BattleObjectPals
-	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY
-	ld bc, 6 palettes
-	ld a, BANK(wOBPals1)
-	call FarCopyWRAM
+	call FillBattleObjectPals
 
 .got_palette
 	call WipeAttrmap

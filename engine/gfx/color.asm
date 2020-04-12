@@ -455,9 +455,6 @@ GetMonPalettePointer:
 	call _GetMonPalettePointer
 	ret
 
-BattleObjectPals:
-INCLUDE "gfx/battle_anims/battle_anims.pal"
-
 _GetMonPalettePointer:
 	ld hl, PokemonPalettes
 	ld c, a
