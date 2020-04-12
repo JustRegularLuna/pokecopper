@@ -91,11 +91,8 @@ _CGB_BattleColors:
 	ld a, [wPlayerHPPal]
 	add PAL_HP_GREEN
 	call GetPredefPal
-	push hl
 	call LoadHLPaletteIntoDE ; PAL_BATTLE_BG_PLAYER_HP
-	pop hl
 	; on the SGB, the EXP Bar was the same color as your HP bar
-	call LoadHLPaletteIntoDE ; PAL_BATTLE_BG_EXP
 	ld de, wOBPals1
 	pop hl
 	call LoadHLPaletteIntoDE ; PAL_BATTLE_OB_ENEMY
@@ -128,7 +125,7 @@ _CGB_FinishBattleScreenLayout:
 	call FillBoxCGB
 	hlcoord 10, 11, wAttrmap
 	lb bc, 1, 9
-	ld a, PAL_BATTLE_BG_EXP
+	ld a, PAL_BATTLE_BG_PLAYER_HP ; PAL_BATTLE_BG_EXP originally. Shared HP color on SGB.
 	call FillBoxCGB
 	hlcoord 0, 12, wAttrmap
 	ld bc, 6 * SCREEN_WIDTH
