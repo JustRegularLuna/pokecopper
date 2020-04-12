@@ -146,22 +146,17 @@ ApplyHPBarPals:
 	ret
 
 .Enemy:
-	ld de, wBGPals2 palette PAL_BATTLE_BG_ENEMY_HP color 1
+	ld de, wBGPals2 palette PAL_BATTLE_BG_ENEMY_HP
 	jr .okay
 
 .Player:
-	ld de, wBGPals2 palette PAL_BATTLE_BG_PLAYER_HP color 1
+	ld de, wBGPals2 palette PAL_BATTLE_BG_PLAYER_HP
 
 .okay
-	ld l, c
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld bc, HPBarPals
-	add hl, bc
-	ld bc, 4
-	ld a, BANK(wBGPals2)
-	call FarCopyWRAM
+	ld a, c
+	add PAL_HP_GREEN
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
@@ -869,12 +864,6 @@ INCLUDE "gfx/sgb/sgb_border.pal"
 
 SGBBorder:
 INCBIN "gfx/sgb/sgb_border.2bpp"
-
-HPBarPals:
-INCLUDE "gfx/battle/hp_bar.pal"
-
-ExpBarPalette:
-INCLUDE "gfx/battle/exp_bar.pal"
 
 INCLUDE "data/pokemon/palettes.asm"
 
