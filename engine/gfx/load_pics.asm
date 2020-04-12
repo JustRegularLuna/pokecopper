@@ -143,12 +143,12 @@ GetMonBackpic:
 	ldh [rSVBK], a
 	push de
 
-	; These are assumed to be at the same address in their respective banks.
-	ld hl, PokemonPicPointers ; UnownPicPointers
+	ld hl, PokemonPicPointers
 	ld a, b
 	ld d, BANK(PokemonPicPointers)
 	cp UNOWN
 	jr nz, .ok
+	ld hl, UnownPicPointers
 	ld a, c
 	ld d, BANK(UnownPicPointers)
 .ok
