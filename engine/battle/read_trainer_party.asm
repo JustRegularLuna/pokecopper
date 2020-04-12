@@ -318,23 +318,6 @@ Battle_GetTrainerName::
 
 GetTrainerName::
 	ld a, c
-	cp CAL
-	jr nz, .not_cal2
-
-	ld a, BANK(sMysteryGiftTrainerHouseFlag)
-	call GetSRAMBank
-	ld a, [sMysteryGiftTrainerHouseFlag]
-	and a
-	call CloseSRAM
-	jr z, .not_cal2
-
-	ld a, BANK(sMysteryGiftPartnerName)
-	call GetSRAMBank
-	ld hl, sMysteryGiftPartnerName
-	call CopyTrainerName
-	jp CloseSRAM
-
-.not_cal2
 	dec c
 	push bc
 	ld b, 0

@@ -211,11 +211,6 @@ _ReceivedTMHMText::
 	text "!"
 	prompt
 
-_YourFriendIsNotReadyText::
-	text "Your friend isn't"
-	line "ready."
-	prompt
-
 _BadgeRequiredText::
 	text "Sorry! A new BADGE"
 	line "is required."

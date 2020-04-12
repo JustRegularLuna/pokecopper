@@ -150,15 +150,6 @@ _ResetWRAM:
 	ld [wRoamMon2MapNumber], a
 	ld [wRoamMon3MapNumber], a
 
-	ld a, BANK(sMysteryGiftItem)
-	call GetSRAMBank
-	ld hl, sMysteryGiftItem
-	xor a
-	ld [hli], a
-	dec a
-	ld [hl], a
-	call CloseSRAM
-
 	call LoadOrRegenerateLuckyIDNumber
 	call InitializeMagikarpHouse
 

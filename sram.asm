@@ -51,24 +51,7 @@ sMailbox8Backup::  mailmsg sMailbox8Backup
 sMailbox9Backup::  mailmsg sMailbox9Backup
 sMailbox10Backup:: mailmsg sMailbox10Backup
 
-; abe2
-sMysteryGiftItem:: db
-sMysteryGiftUnlocked:: db
-sBackupMysteryGiftItem:: db
-sNumDailyMysteryGiftPartnerIDs:: db
-sDailyMysteryGiftPartnerIDs:: ds 5 * 2 ; maximum 5 per day, 2 bytes per ID
-sMysteryGiftDecorationsReceived:: flag_array NUM_NON_TROPHY_DECOS
-	ds 4
-sMysteryGiftTimer:: db
-sMysteryGiftTimerStartDay:: db
-	ds 1
-sMysteryGiftTrainerHouseFlag:: db
-sMysteryGiftPartnerName:: ds NAME_LENGTH
-s0_ac09:: ds 1
-sMysteryGiftTrainer:: ds (1 + 1 + NUM_MOVES) * PARTY_LENGTH + 2 ; ac0a
-sBackupMysteryGiftItemEnd::
-
-	ds $30
+; Old Mystery Gift data deleted from here
 
 sRTCStatusFlags:: ds 8
 sLuckyNumberDay:: db
