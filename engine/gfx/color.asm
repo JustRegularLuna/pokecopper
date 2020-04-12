@@ -276,37 +276,6 @@ LoadHLPaletteIntoDE:
 	ldh [rSVBK], a
 	ret
 
-LoadPalette_White_Col1_Col2_Black:
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
-
-	ld a, LOW(PALRGB_WHITE)
-	ld [de], a
-	inc de
-	ld a, HIGH(PALRGB_WHITE)
-	ld [de], a
-	inc de
-
-	ld c, 2 * PAL_COLOR_SIZE
-.loop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop
-
-	xor a
-	ld [de], a
-	inc de
-	ld [de], a
-	inc de
-
-	pop af
-	ldh [rSVBK], a
-	ret
-
 FillBoxCGB:
 .row
 	push bc
