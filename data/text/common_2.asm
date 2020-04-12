@@ -211,83 +211,9 @@ _ReceivedTMHMText::
 	text "!"
 	prompt
 
-_MysteryGiftCanceledText::
-	text "The link has been"
-	line "cancelled."
-	prompt
-
-_MysteryGiftCommErrorText::
-	text "Communication"
-	line "error."
-	prompt
-
-_RetrieveMysteryGiftText::
-	text "Must retrieve GIFT"
-	line "at #MON CENTER."
-	prompt
-
 _YourFriendIsNotReadyText::
 	text "Your friend isn't"
 	line "ready."
-	prompt
-
-_MysteryGiftFiveADayText::
-	text "Sorry--only five"
-	line "GIFTS a day."
-	prompt
-
-_MysteryGiftOneADayText::
-	text "Sorry. One GIFT"
-	line "a day per person."
-	prompt
-
-_MysteryGiftSentText::
-	text_ram wMysteryGiftPartnerName
-	text " sent"
-	line "@"
-	text_ram wStringBuffer1
-	text "."
-	prompt
-
-_MysteryGiftSentHomeText::
-	text_ram wMysteryGiftPartnerName
-	text " sent"
-	line "@"
-	text_ram wStringBuffer1
-	text_start
-	cont "to @"
-	text_ram wMysteryGiftPlayerName
-	text "'s home."
-	prompt
-
-_MysteryGiftReceivedCardText::
-	text "Received"
-	line "@"
-	text_ram wc850
-	text "'s CARD."
-	prompt
-
-_MysteryGiftListedCardText::
-	text_ram wc850
-	text "'s CARD was"
-	line "listed as no.@"
-	text_decimal wDeciramBuffer, 1, 2
-	text "."
-	prompt
-
-_MysteryGiftNotRegisteredCardText::
-	text "The CARD was not"
-	line "registered."
-	prompt
-
-_MysteryGiftLinkCancelledText::
-	text "The link has been"
-	line "cancelled."
-	prompt
-
-_MysteryGiftLinkCommErrorText::
-	text "Communication"
-	line "error."
 	prompt
 
 _BadgeRequiredText::

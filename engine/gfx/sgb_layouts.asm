@@ -51,7 +51,6 @@ LoadSGBLayout:
 	dw .SGB_PlayerOrMonFrontpicPals
 	dw .SGB_TradeTube
 	dw .SGB_TrainerOrMonFrontpicPals
-	dw .SGB_MysteryGift
 	dw .SGB1e
 
 .SGB_BattleGrayscale:
@@ -275,7 +274,6 @@ LoadSGBLayout:
 	ret
 
 .SGB_Diploma:
-.SGB_MysteryGift:
 	ld hl, PalPacket_Diploma
 	ld de, BlkPacket_9a86
 	ret

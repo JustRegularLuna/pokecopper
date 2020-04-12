@@ -45,12 +45,6 @@ NewGame_ClearTilemapEtc:
 	call ClearWindowData
 	ret
 
-MysteryGift:
-	call UpdateTime
-	farcall DoMysteryGiftIfDayHasPassed
-	farcall DoMysteryGift
-	ret
-
 OptionsMenu:
 	farcall _OptionsMenu
 	ret
@@ -74,14 +68,7 @@ NewGame:
 	jp FinishContinueFunction
 
 AreYouABoyOrAreYouAGirl:
-	farcall Mobile_AlwaysReturnNotCarry ; some mobile stuff
-	jr c, .ok
 	farcall InitGender
-	ret
-
-.ok
-	ld c, 0
-	farcall InitMobileProfile ; mobile
 	ret
 
 ResetWRAM:
@@ -360,7 +347,6 @@ Continue:
 	ld c, 20
 	call DelayFrames
 	farcall JumpRoamMons
-	farcall MysteryGift_CopyReceivedDecosToPC ; Mystery Gift
 	farcall Function140ae ; time-related
 	ld a, [wSpawnAfterChampion]
 	cp SPAWN_LANCE

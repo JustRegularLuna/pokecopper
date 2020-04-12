@@ -2,7 +2,6 @@
 	const POKECENTER2F_TRADE_RECEPTIONIST
 	const POKECENTER2F_BATTLE_RECEPTIONIST
 	const POKECENTER2F_TIME_CAPSULE_RECEPTIONIST
-	const POKECENTER2F_OFFICER
 
 Pokecenter2F_MapScripts:
 	db 4 ; scene scripts
@@ -14,14 +13,6 @@ Pokecenter2F_MapScripts:
 	db 0 ; callbacks
 
 .Scene0:
-	special CheckMysteryGift
-	ifequal $0, .Scene0Done
-	clearevent EVENT_MYSTERY_GIFT_DELIVERY_GUY
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iftrue .Scene0Done
-	prioritysjump Pokecenter2F_AppearMysteryGiftDeliveryGuy
-
-.Scene0Done:
 	end
 
 .Scene1:
@@ -34,12 +25,6 @@ Pokecenter2F_MapScripts:
 
 .Scene3:
 	prioritysjump Script_LeftTimeCapsule
-	end
-
-
-Pokecenter2F_AppearMysteryGiftDeliveryGuy:
-	appear POKECENTER2F_OFFICER
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	end
 
 Script_TradeCenterClosed:
@@ -453,39 +438,6 @@ Pokecenter2FLinkRecordSign:
 	closetext
 	end
 
-Pokecenter2FOfficerScript:
-	faceplayer
-	opentext
-	checkevent EVENT_MYSTERY_GIFT_DELIVERY_GUY
-	iftrue .AlreadyGotGift
-	writetext Text_MysteryGiftDeliveryGuy_Intro
-	yesorno
-	iffalse .RefusedGift
-	writetext Text_MysteryGiftDeliveryGuy_HereYouGo
-	promptbutton
-	waitsfx
-	special GetMysteryGiftItem
-	iffalse .BagIsFull
-	itemnotify
-	setevent EVENT_MYSTERY_GIFT_DELIVERY_GUY
-.AlreadyGotGift:
-	writetext Text_MysteryGiftDeliveryGuy_Outro
-	waitbutton
-	closetext
-	end
-
-.BagIsFull:
-	writetext Text_MysteryGiftDeliveryGuy_NoRoom
-	waitbutton
-	closetext
-	end
-
-.RefusedGift:
-	writetext Text_MysteryGiftDeliveryGuy_SaidNo
-	waitbutton
-	closetext
-	end
-
 Pokecenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:
 	slow_step UP
 	slow_step LEFT
@@ -767,39 +719,6 @@ Text_BattleRoomClosed:
 	cont "being adjusted."
 	done
 
-Text_MysteryGiftDeliveryGuy_Intro:
-	text "Hello! You're"
-	line "<PLAYER>, right?"
-
-	para "I have some-"
-	line "thing for you."
-	done
-
-Text_MysteryGiftDeliveryGuy_HereYouGo:
-	text "Here you go!"
-	done
-
-Text_MysteryGiftDeliveryGuy_Outro:
-	text "We hope to serve"
-	line "you again."
-	done
-
-Text_MysteryGiftDeliveryGuy_NoRoom:
-	text "Oh, you have no"
-	line "space for this."
-
-	para "Stop in at any"
-	line "#MON CENTER"
-
-	para "across the country"
-	line "to pick it up."
-	done
-
-Text_MysteryGiftDeliveryGuy_SaidNo:
-	text "No? That's very"
-	line "strange…"
-	done
-
 Text_OhPleaseWait:
 	text "Oh, please wait."
 	done
@@ -828,8 +747,7 @@ Pokecenter2F_MapEvents:
 	db 1 ; bg events
 	bg_event  7,  3, BGEVENT_READ, Pokecenter2FLinkRecordSign
 
-	db 4 ; object events
+	db 3 ; object events
 	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
 	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
 	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
-	object_event  1,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Pokecenter2FOfficerScript, EVENT_MYSTERY_GIFT_DELIVERY_GUY
