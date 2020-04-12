@@ -317,7 +317,6 @@ Battle_GetTrainerName::
 	ld c, a
 
 GetTrainerName::
-	ld a, c
 	dec c
 	push bc
 	ld b, 0
