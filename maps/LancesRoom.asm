@@ -57,7 +57,7 @@ LancesRoomLanceScript:
 	closetext
 	winlosstext LanceBattleWinText, 0
 	setlasttalked LANCESROOM_LANCE
-	loadtrainer CHAMPION, LANCE
+	loadtrainer POKEMON_PROF, OAK1 ; TODO: Real trainer
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle

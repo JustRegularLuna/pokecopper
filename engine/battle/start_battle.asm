@@ -71,23 +71,14 @@ PlayBattleMusic:
 
 .trainermusic
 	ld de, MUSIC_CHAMPION_BATTLE
-	cp CHAMPION
+	cp TRAINER_NONE
 	jr z, .done
-	cp RED
-	jr z, .done
+	; TODO: Red and Silver checks here
 
-	; TODO: Add Giovanni, Imposter Oak, Butch & Cassidy, etc.
 	ld de, MUSIC_ROCKET_BATTLE
-	cp GRUNTM
+	cp TRAINER_NONE
 	jr z, .done
-	cp GRUNTF
-	jr z, .done
-	cp EXECUTIVEM
-	jr z, .done
-	cp EXECUTIVEF
-	jr z, .done
-	cp SCIENTIST
-	jr z, .done
+	; TODO: Rockets, Giovanni, Imposter Oak, Butch & Cassidy, etc.
 
 	ld de, MUSIC_KANTO_GYM_LEADER_BATTLE
 	farcall IsKantoGymLeader
@@ -101,18 +92,9 @@ PlayBattleMusic:
 
 	ld de, MUSIC_RIVAL_BATTLE
 	ld a, [wOtherTrainerClass]
-	cp RIVAL1
+	cp TRAINER_NONE ; TODO: Non-Champion Rival Class
 	jr z, .done
-	cp RIVAL2
-	jr nz, .othertrainer
 
-	ld a, [wOtherTrainerID]
-	cp RIVAL2_2_CHIKORITA ; Rival in Indigo Plateau
-	jr c, .done
-	ld de, MUSIC_CHAMPION_BATTLE
-	jr .done
-
-.othertrainer
 	ld a, [wLinkMode]
 	and a
 	jr nz, .johtotrainer

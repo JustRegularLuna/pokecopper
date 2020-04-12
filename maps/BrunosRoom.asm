@@ -49,7 +49,7 @@ BrunoScript_Battle:
 	waitbutton
 	closetext
 	winlosstext BrunoScript_BrunoBeatenText, 0
-	loadtrainer BRUNO, BRUNO1
+	loadtrainer POKEMON_PROF, OAK1 ; TODO: Real trainer
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_BRUNO

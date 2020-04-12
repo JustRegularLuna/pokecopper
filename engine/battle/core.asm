@@ -8891,13 +8891,13 @@ GetTrainerBackpic:
 	jr z, .Chris
 
 ; It's a girl.
-	farcall GetKrisBackpic
+	farcall GetSylviaBackpic
 	ret
 
 .Chris:
 ; It's a boy.
-	ld b, BANK(ChrisBackpic)
-	ld hl, ChrisBackpic
+	ld b, BANK(HiroBackpic)
+	ld hl, HiroBackpic
 
 .Decompress:
 	ld de, vTiles2 tile $31

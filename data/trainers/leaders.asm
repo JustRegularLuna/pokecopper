@@ -5,28 +5,8 @@
 ; accounted for prior to the list check.
 
 GymLeaders:
-	db FALKNER
-	db WHITNEY
-	db BUGSY
-	db MORTY
-	db PRYCE
-	db JASMINE
-	db CHUCK
-	db CLAIR
-	db WILL
-	db BRUNO
-	db KAREN
-	db KOGA
-	db CHAMPION
-	db RED
+
 ; fallthrough
 KantoGymLeaders:
-	db BROCK
-	db MISTY
-	db LT_SURGE
-	db ERIKA
-	db JANINE
-	db SABRINA
-	db BLAINE
-	db BLUE
+	db POKEMON_PROF
 	db -1

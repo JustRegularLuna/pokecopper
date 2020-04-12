@@ -1,4 +1,4 @@
-ChrisNameMenuHeader:
+HiroNameMenuHeader:
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 0, 0, 10, TEXTBOX_Y - 1
 	dw .MaleNames
@@ -10,14 +10,14 @@ ChrisNameMenuHeader:
 	db 5 ; items
 	db "NEW NAME@"
 MalePlayerNameArray:
-	db "CHRIS@"
-	db "MAT@"
-	db "ALLAN@"
-	db "JON@"
+	db "GOLD@"
+	db "HIRO@"
+	db "TAYLOR@"
+	db "KARL@"
 	db 2 ; displacement
 	db " NAME @" ; title
 
-KrisNameMenuHeader:
+SylviaNameMenuHeader:
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 0, 0, 10, TEXTBOX_Y - 1
 	dw .FemaleNames
@@ -29,9 +29,9 @@ KrisNameMenuHeader:
 	db 5 ; items
 	db "NEW NAME@"
 FemalePlayerNameArray:
-	db "KRIS@"
-	db "AMANDA@"
-	db "JUANA@"
-	db "JODI@"
+	db "GOLD@"
+	db "SYLVIA@"
+	db "TAYLOR@"
+	db "CARLY@"
 	db 2 ; displacement
 	db " NAME @" ; title

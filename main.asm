@@ -129,8 +129,8 @@ INCLUDE "engine/link/link.asm"
 INCLUDE "engine/overworld/wildmons.asm"
 INCLUDE "engine/battle/link_result.asm"
 
-ChrisBackpic:
-INCBIN "gfx/player/chris_back.2bpp.lz"
+HiroBackpic:
+INCBIN "gfx/player/hiro_back.2bpp.lz"
 
 DudeBackpic:
 INCBIN "gfx/battle/dude.2bpp.lz"

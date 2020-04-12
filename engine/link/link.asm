@@ -419,7 +419,7 @@ Gen2ToGen2LinkComms:
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
 	jr nz, .ready_to_trade
-	ld a, CAL
+	ld a, POKEMON_PROF ; TODO: Player-Looking trainer class
 	ld [wOtherTrainerClass], a
 	call ClearScreen
 	farcall Link_WaitBGMap
