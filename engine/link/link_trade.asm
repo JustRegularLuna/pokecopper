@@ -97,7 +97,10 @@ _LinkTextbox:
 InitTradeSpeciesList:
 	call _LoadTradeScreenBorder
 	call Function16d6ae
-	farcall InitMG_Mobile_LinkTradePalMap
+	xor a
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	call ByteFill
 	farcall PlaceTradePartnerNamesAndParty
 	hlcoord 10, 17
 	ld de, .CANCEL
@@ -119,8 +122,17 @@ LinkComms_LoadPleaseWaitTextboxBorderGFX:
 	ret
 
 LoadTradeRoomBGPals:
-	farcall _LoadTradeRoomBGPals
+	ld hl, TradeRoomPalette
+	ld de, wBGPals1 palette PAL_BG_GREEN
+	ld bc, 6 palettes
+	ld a, BANK(wBGPals1)
+	call FarCopyWRAM
+	farcall ApplyPals
 	ret
+
+TradeRoomPalette:
+INCLUDE "gfx/trade/border.pal"
+
 
 Function16d6ae:
 	call Function16d42e

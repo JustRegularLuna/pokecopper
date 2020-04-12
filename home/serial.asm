@@ -6,10 +6,6 @@ Serial::
 	push de
 	push hl
 
-	ldh a, [hMobileReceive]
-	and a
-	jr nz, .mobile
-
 	ld a, [wPrinterConnectionOpen]
 	bit 0, a
 	jr nz, .printer
@@ -33,10 +29,6 @@ Serial::
 	ld a, (1 << rSC_ON) | (0 << rSC_CLOCK)
 	ldh [rSC], a
 	jr .player2
-
-.mobile
-	call MobileReceive
-	jr .end
 
 .printer
 	call PrinterReceive

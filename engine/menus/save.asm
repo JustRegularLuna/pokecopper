@@ -104,7 +104,6 @@ MoveMonWOMail_InsertMon_SaveGame:
 	call SaveBackupChecksum
 	call ValidateBackupSave
 	farcall BackupPartyMonMail
-	farcall BackupMobileEventIndex
 	farcall SaveRTC
 	call LoadBox
 	call ResumeGameLogic
@@ -271,17 +270,7 @@ _SaveGameData:
 	call ValidateBackupSave
 	call UpdateStackTop
 	farcall BackupPartyMonMail
-	farcall BackupMobileEventIndex
 	farcall SaveRTC
-	ld a, BANK(sBattleTowerChallengeState)
-	call GetSRAMBank
-	ld a, [sBattleTowerChallengeState]
-	cp BATTLETOWER_RECEIVED_REWARD
-	jr nz, .ok
-	xor a
-	ld [sBattleTowerChallengeState], a
-.ok
-	call CloseSRAM
 	ret
 
 UpdateStackTop:
@@ -352,7 +341,6 @@ ErasePreviousSave:
 	call EraseHallOfFame
 	call EraseLinkBattleStats
 	call SaveData
-	call EraseBattleTowerStatus
 	ld a, BANK(sStackTop)
 	call GetSRAMBank
 	xor a
@@ -379,13 +367,6 @@ EraseHallOfFame:
 	ld bc, sHallOfFameEnd - sHallOfFame
 	xor a
 	call ByteFill
-	jp CloseSRAM
-
-EraseBattleTowerStatus:
-	ld a, BANK(sBattleTowerChallengeState)
-	call GetSRAMBank
-	xor a
-	ld [sBattleTowerChallengeState], a
 	jp CloseSRAM
 
 SaveData:
@@ -541,7 +522,6 @@ TryLoadSaveFile:
 	call LoadPokemonData
 	call LoadBox
 	farcall RestorePartyMonMail
-	farcall RestoreMobileEventIndex
 	call ValidateBackupSave
 	call SaveBackupOptions
 	call SaveBackupPlayerData
@@ -557,7 +537,6 @@ TryLoadSaveFile:
 	call LoadBackupPokemonData
 	call LoadBox
 	farcall RestorePartyMonMail
-	farcall RestoreMobileEventIndex
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData
@@ -680,15 +659,6 @@ LoadPlayerData:
 	ld de, wCurMapData
 	ld bc, wCurMapDataEnd - wCurMapData
 	call CopyBytes
-	call CloseSRAM
-	ld a, BANK(sBattleTowerChallengeState)
-	call GetSRAMBank
-	ld a, [sBattleTowerChallengeState]
-	cp BATTLETOWER_RECEIVED_REWARD
-	jr nz, .not_4
-	ld a, BATTLETOWER_WON_CHALLENGE
-	ld [sBattleTowerChallengeState], a
-.not_4
 	call CloseSRAM
 	ret
 

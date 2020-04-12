@@ -1488,14 +1488,12 @@ StepType05:
 	ld [hl], a
 	call IncrementObjectStructField1c
 StepType04:
-	call Stubbed_Function4fb2
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc
 	ld [hl], STANDING
 	ret
 
 NPCStep:
-	call Stubbed_Function4fb2
 	call AddStepVector
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
@@ -1748,27 +1746,6 @@ SkyfallTop:
 	ld [hl], STEP_TYPE_SLEEP
 	ret
 
-Stubbed_Function4fb2:
-	ret
-	ld hl, OBJECT_1D
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
-	srl a
-	srl a
-	and %00000111
-	ld l, a
-	ld h, 0
-	ld de, .y
-	add hl, de
-	ld a, [hl]
-	ld hl, OBJECT_SPRITE_Y_OFFSET
-	add hl, bc
-	ld [hl], a
-	ret
-
-.y
-	db 0, -1, -2, -3, -4, -3, -2, -1
 UpdateJumpPosition:
 	call GetStepVector
 	ld a, h

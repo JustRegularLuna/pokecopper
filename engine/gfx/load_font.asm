@@ -73,10 +73,6 @@ LoadHPBar:
 	ld hl, vTiles2 tile $55
 	lb bc, BANK(ExpBarGFX), 9
 	call Get2bpp_2
-	ld de, MobilePhoneTilesGFX + 7 tiles ; mobile phone icon
-	ld hl, vTiles2 tile $5e
-	lb bc, BANK(MobilePhoneTilesGFX), 2
-	call Get2bpp_2
 	ret
 
 StatsScreen_LoadFont:

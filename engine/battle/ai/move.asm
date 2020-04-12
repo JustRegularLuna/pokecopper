@@ -63,19 +63,11 @@ AIChooseMove:
 ; Apply AI scoring layers depending on the trainer class.
 .ApplyLayers:
 	ld hl, TrainerClassAttributes + TRNATTR_AI_MOVE_WEIGHTS
-
-	; If we have a battle in BattleTower just load the Attributes of the first trainer class in wTrainerClass (Falkner)
-	; so we have always the same AI, regardless of the loaded class of trainer
-	ld a, [wInBattleTowerBattle]
-	bit 0, a
-	jr nz, .battle_tower_skip
-
 	ld a, [wTrainerClass]
 	dec a
 	ld bc, 7 ; Trainer2AI - Trainer1AI
 	call AddNTimes
 
-.battle_tower_skip
 	lb bc, CHECK_FLAG, 0
 	push bc
 	push hl

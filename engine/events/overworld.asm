@@ -407,8 +407,6 @@ UsedSurfScript:
 	waitbutton
 	closetext
 
-	callasm .empty_fn ; empty function
-
 	readmem wBuffer2
 	writevar VAR_MOVEMENT
 
@@ -416,10 +414,6 @@ UsedSurfScript:
 	special PlayMapMusic
 	special SurfStartStep
 	end
-
-.empty_fn
-	farcall StubbedTrainerRankings_Surf
-	ret
 
 UsedSurfText:
 	text_far _UsedSurfText
@@ -690,7 +684,6 @@ Script_UsedWaterfall:
 	ld a, [wPlayerStandingTile]
 	call CheckWaterfallTile
 	ret z
-	farcall StubbedTrainerRankings_Waterfall
 	ld a, $1
 	ld [wScriptVar], a
 	ret

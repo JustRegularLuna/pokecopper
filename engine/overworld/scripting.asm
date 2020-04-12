@@ -227,7 +227,6 @@ ScriptCommandTable:
 	dw Script_halloffame                 ; a1
 	dw Script_credits                    ; a2
 	dw Script_warpfacing                 ; a3
-	dw Script_battletowertext            ; a4
 	dw Script_getlandmarkname            ; a5
 	dw Script_gettrainerclassname        ; a6
 	dw Script_getname                    ; a7
@@ -486,16 +485,6 @@ Script__2dmenu:
 	xor a
 .ok
 	ld [wScriptVar], a
-	ret
-
-Script_battletowertext:
-; script command 0xa4
-; parameters: bttext_id
-
-	call SetUpTextbox
-	call GetScriptByte
-	ld c, a
-	farcall BattleTowerText
 	ret
 
 Script_verbosegiveitem:
@@ -2765,8 +2754,6 @@ Script_halloffame:
 
 	ld hl, wGameTimerPause
 	res GAMETIMERPAUSE_TIMER_PAUSED_F, [hl]
-	farcall StubbedTrainerRankings_HallOfFame
-	farcall StubbedTrainerRankings_HallOfFame2
 	farcall HallOfFame
 	ld hl, wGameTimerPause
 	set GAMETIMERPAUSE_TIMER_PAUSED_F, [hl]

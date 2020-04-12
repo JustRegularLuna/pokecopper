@@ -1024,12 +1024,6 @@ warpfacing: MACRO
 	db \4 ; y
 ENDM
 
-	enum battletowertext_command ; $a4
-battletowertext: MACRO
-	db battletowertext_command
-	db \1 ; bttext_id
-ENDM
-
 	enum getlandmarkname_command ; $a5
 getlandmarkname: MACRO
 	db getlandmarkname_command

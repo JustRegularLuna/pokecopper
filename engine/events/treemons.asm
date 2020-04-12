@@ -1,6 +1,4 @@
 TreeMonEncounter:
-	farcall StubbedTrainerRankings_TreeEncounters
-
 	xor a
 	ld [wTempWildMonSpecies], a
 	ld [wCurPartyLevel], a

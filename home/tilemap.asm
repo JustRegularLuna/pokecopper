@@ -60,10 +60,6 @@ CGBOnly_CopyTilemapAtOnce::
 CopyTilemapAtOnce::
 	jr .CopyTilemapAtOnce
 
-; unused
-	farcall HDMATransferAttrmapAndTilemapToWRAMBank3
-	ret
-
 .CopyTilemapAtOnce:
 	ldh a, [hBGMapMode]
 	push af

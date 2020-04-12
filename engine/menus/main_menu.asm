@@ -1,6 +1,3 @@
-MobileMenuGFX:
-INCBIN "gfx/mobile/mobile_menu.2bpp"
-
 MainMenu:
 	xor a
 	ld [wDisableTextAcceleration], a

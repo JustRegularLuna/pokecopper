@@ -1881,7 +1881,6 @@ ExitAllMenus::
 FinishExitMenu::
 	ld b, SCGB_MAPPALS
 	call GetSGBLayout
-	farcall LoadOW_BGPal7
 	call WaitBGMap2
 	farcall FadeInPalettes
 	call EnableSpriteUpdates
@@ -1903,7 +1902,6 @@ ReturnToMapWithSpeechTextbox::
 	call WaitBGMap2
 	ld b, SCGB_MAPPALS
 	call GetSGBLayout
-	farcall LoadOW_BGPal7
 	call UpdateTimePals
 	call DelayFrame
 	ld a, $1
@@ -2152,7 +2150,6 @@ GetMapMusic::
 	jr z, .mahoganymart
 	cp MUSIC_RADIO_TOWER
 	jr z, .radiotower
-	farcall Function8b342
 	ld e, c
 	ld d, 0
 .done

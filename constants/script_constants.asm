@@ -64,7 +64,6 @@ NUM_STRING_BUFFERS EQU const_value
 	const VAR_XCOORD           ; 12
 	const VAR_YCOORD           ; 13
 	const VAR_SPECIALPHONECALL ; 14
-	const VAR_BT_WIN_STREAK    ; 15
 	const VAR_KURT_APRICORNS   ; 16
 	const VAR_CALLERID         ; 17
 	const VAR_BLUECARDBALANCE  ; 18

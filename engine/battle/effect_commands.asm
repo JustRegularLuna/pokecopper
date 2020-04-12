@@ -655,10 +655,6 @@ BattleCommand_CheckObedience:
 	and a
 	ret nz
 
-	ld a, [wInBattleTowerBattle]
-	and a
-	ret nz
-
 	; If the monster's id doesn't match the player's,
 	; some conditions need to be met.
 	ld a, MON_ID
@@ -3664,10 +3660,6 @@ BattleCommand_SleepTarget:
 
 	call AnimateCurrentMove
 	ld b, $7
-	ld a, [wInBattleTowerBattle]
-	and a
-	jr z, .random_loop
-	ld b, $3
 
 .random_loop
 	call BattleRandom
@@ -3702,10 +3694,6 @@ BattleCommand_SleepTarget:
 
 	; Not in link battle
 	ld a, [wLinkMode]
-	and a
-	jr nz, .dont_fail
-
-	ld a, [wInBattleTowerBattle]
 	and a
 	jr nz, .dont_fail
 
@@ -3797,10 +3785,6 @@ BattleCommand_Poison:
 	jr z, .dont_sample_failure
 
 	ld a, [wLinkMode]
-	and a
-	jr nz, .dont_sample_failure
-
-	ld a, [wInBattleTowerBattle]
 	and a
 	jr nz, .dont_sample_failure
 
@@ -4455,10 +4439,6 @@ BattleCommand_StatDown:
 	jr z, .DidntMiss
 
 	ld a, [wLinkMode]
-	and a
-	jr nz, .DidntMiss
-
-	ld a, [wInBattleTowerBattle]
 	and a
 	jr nz, .DidntMiss
 
@@ -5982,10 +5962,6 @@ BattleCommand_Paralyze:
 	jr z, .dont_sample_failure
 
 	ld a, [wLinkMode]
-	and a
-	jr nz, .dont_sample_failure
-
-	ld a, [wInBattleTowerBattle]
 	and a
 	jr nz, .dont_sample_failure
 

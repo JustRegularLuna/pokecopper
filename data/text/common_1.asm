@@ -391,61 +391,6 @@ _ForYourMonWillTradeText::
 	text "."
 	done
 
-_MobilePlayerWillTradeMonText::
-	text_ram wPlayerTrademonSenderName
-	text " will"
-	line "trade @"
-	text_ram wPlayerTrademonSpeciesName
-	text_end
-
-	text_end ; unused
-
-_MobileForPartnersMonText::
-	text "for @"
-	text_ram wOTTrademonSenderName
-	text "'s"
-	line "@"
-	text_ram wOTTrademonSpeciesName
-	text "."
-	done
-
-; unused
-_MobilePlayersMonTradeText::
-	text_ram wPlayerTrademonSenderName
-	text "'s"
-	line "@"
-	text_ram wPlayerTrademonSpeciesName
-	text " trade…"
-	done
-
-_MobileTakeGoodCareOfMonText::
-	text "Take good care of"
-	line "@"
-	text_ram wOTTrademonSpeciesName
-	text "."
-	done
-
-_MobilePlayersMonTrade2Text::
-	text_ram wPlayerTrademonSenderName
-	text "'s"
-	line "@"
-	text_ram wPlayerTrademonSpeciesName
-	text " trade…"
-	done
-
-_MobileTakeGoodCareOfText::
-	text "Take good care of"
-	line "@"
-	text_ram wOTTrademonSpeciesName
-	text "."
-	done
-
-_MobileTradeCameBackText::
-	text_ram wOTTrademonSpeciesName
-	text " came"
-	line "back!"
-	done
-
 ; Oak's Pokémon Talk
 
 _OPT_IntroText1::

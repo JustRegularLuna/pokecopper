@@ -1248,7 +1248,10 @@ LinkTradeOTPartymonMenuLoop:
 	jp Function28ac9
 
 LinkTrade_PlayerPartyMenu:
-	farcall InitMG_Mobile_LinkTradePalMap
+	xor a
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	call ByteFill
 	xor a
 	ld [wMonType], a
 	ld a, A_BUTTON | D_UP | D_DOWN
@@ -1901,8 +1904,6 @@ LinkTrade:
 
 .save
 	farcall SaveAfterLinkTrade
-	farcall StubbedTrainerRankings_Trades
-	farcall BackupMobileEventIndex
 	ld c, 40
 	call DelayFrames
 	hlcoord 0, 12

@@ -195,7 +195,6 @@ else
 endc
 ENDM
 
-	dict "<MOBILE>",  MobileScriptChar
 	dict "<LINE>",    LineChar
 	dict "<NEXT>",    NextLineChar
 	dict "<CR>",      CarriageReturnChar
@@ -274,12 +273,6 @@ ENDM
 	ld [hli], a
 	call PrintLetterDelay
 	jp NextChar
-
-MobileScriptChar::
-	ld c, l
-	ld b, h
-	farcall RunMobileScript
-	jp PlaceNextChar
 
 print_name: MACRO
 	push de
@@ -459,8 +452,6 @@ Paragraph::
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
 	jr z, .linkbattle
-	cp LINK_MOBILE
-	jr z, .linkbattle
 	call LoadBlinkingCursor
 
 .linkbattle
@@ -526,8 +517,6 @@ PromptText::
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
 	jr z, .ok
-	cp LINK_MOBILE
-	jr z, .ok
 	call LoadBlinkingCursor
 
 .ok
@@ -535,8 +524,6 @@ PromptText::
 	call PromptButton
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jr z, DoneText
-	cp LINK_MOBILE
 	jr z, DoneText
 	call UnloadBlinkingCursor
 
@@ -829,8 +816,6 @@ TextCommand_PROMPT_BUTTON::
 
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jp z, TextCommand_LINK_PROMPT_BUTTON
-	cp LINK_MOBILE
 	jp z, TextCommand_LINK_PROMPT_BUTTON
 
 	push hl

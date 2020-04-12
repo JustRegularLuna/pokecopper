@@ -1,8 +1,4 @@
 ReadTrainerParty:
-	ld a, [wInBattleTowerBattle]
-	bit 0, a
-	ret nz
-
 	ld a, [wLinkMode]
 	and a
 	ret nz
@@ -306,11 +302,6 @@ ComputeTrainerReward:
 	ret
 
 Battle_GetTrainerName::
-	ld a, [wInBattleTowerBattle]
-	bit 0, a
-	ld hl, wOTPlayerName
-	jp nz, CopyTrainerName
-
 	ld a, [wOtherTrainerID]
 	ld b, a
 	ld a, [wOtherTrainerClass]
@@ -349,10 +340,6 @@ CopyTrainerName:
 SetTrainerBattleLevel:
 	ld a, 255
 	ld [wCurPartyLevel], a
-
-	ld a, [wInBattleTowerBattle]
-	bit 0, a
-	ret nz
 
 	ld a, [wLinkMode]
 	and a

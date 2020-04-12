@@ -77,42 +77,6 @@ SGB_ApplyPartyMenuHPPals:
 	ld [hl], e
 	ret
 
-LoadTrainerClassPaletteAsNthBGPal:
-	ld a, [wTrainerClass]
-	call GetTrainerPalettePointer
-	ld a, e
-	jr LoadNthMiddleBGPal
-
-LoadMonPaletteAsNthBGPal:
-	ld a, [wCurPartySpecies]
-	call _GetMonPalettePointer
-	ld a, e
-	bit 7, a
-	jr z, LoadNthMiddleBGPal
-	and $7f
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-
-LoadNthMiddleBGPal:
-	push hl
-	ld hl, wBGPals1
-	ld de, 1 palettes
-.loop
-	and a
-	jr z, .got_addr
-	add hl, de
-	dec a
-	jr .loop
-
-.got_addr
-	ld e, l
-	ld d, h
-	pop hl
-	call LoadHLPaletteIntoDE
-	ret
-
 ApplyMonOrTrainerPals:
 	call CheckCGB
 	ret z
@@ -863,9 +827,6 @@ SGBBorder:
 INCBIN "gfx/sgb/sgb_border.2bpp"
 
 INCLUDE "data/pokemon/palettes.asm"
-
-PartyMenuBGMobilePalette:
-INCLUDE "gfx/stats/party_menu_bg_mobile.pal"
 
 PartyMenuBGPalette:
 INCLUDE "gfx/stats/party_menu_bg.pal"

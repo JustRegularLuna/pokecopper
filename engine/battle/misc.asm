@@ -149,10 +149,6 @@ DoBadgeTypeBoosts:
 	and a
 	ret nz
 
-	ld a, [wInBattleTowerBattle]
-	and a
-	ret nz
-
 	ldh a, [hBattleTurn]
 	and a
 	ret nz

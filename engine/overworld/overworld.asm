@@ -15,28 +15,6 @@ _ReplaceKrisSprite::
 	call GetUsedSprite
 	ret
 
-Function14146: ; mobile
-	ld hl, wSpriteFlags
-	ld a, [hl]
-	push af
-	res 7, [hl]
-	set 6, [hl]
-	call LoadUsedSpritesGFX
-	pop af
-	ld [wSpriteFlags], a
-	ret
-
-Function14157: ; mobile
-	ld hl, wSpriteFlags
-	ld a, [hl]
-	push af
-	set 7, [hl]
-	res 6, [hl]
-	call LoadUsedSpritesGFX
-	pop af
-	ld [wSpriteFlags], a
-	ret
-
 RefreshSprites::
 	call .Refresh
 	call LoadUsedSpritesGFX

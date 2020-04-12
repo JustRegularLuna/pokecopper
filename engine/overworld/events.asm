@@ -344,9 +344,6 @@ SetUpFiveStepWildEncounterCooldown:
 	ld [wWildEncounterCooldown], a
 	ret
 
-ret_968d7:
-	ret
-
 Dummy_CheckScriptFlags3Bit5:
 	call CheckBit5_ScriptFlags3
 	ret z
@@ -720,7 +717,6 @@ PlayerMovement:
 	ret
 
 .jump:
-	call ret_968d7 ; mobile
 	xor a
 	ld c, a
 	ret
