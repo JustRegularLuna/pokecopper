@@ -254,3 +254,6 @@ PokemonPalettes:
 	db PAL_BLUEMON   ; LUGIA
 	db PAL_REDMON    ; HO_OH
 	db PAL_GREENMON  ; CELEBI
+	db PAL_MEWMON    ;
+	db PAL_YELLOWMON ; EGG
+	db PAL_MEWMON    ;

@@ -244,6 +244,10 @@ GetBaseData::
 	rst Bankswitch
 
 	ld a, [wCurSpecies]
+	cp EGG
+	jr z, .egg
+
+; Get BaseData
 	dec a
 	ld bc, BASE_DATA_SIZE
 	ld hl, BaseData
@@ -251,7 +255,15 @@ GetBaseData::
 	ld de, wCurBaseData
 	ld bc, BASE_DATA_SIZE
 	call CopyBytes
+	jr .end
 
+.egg
+; Sprite dimensions
+	ld b, $55 ; 5x5
+	ld hl, wBasePicSize
+	ld [hl], b
+
+.end
 	pop af
 	rst Bankswitch
 	pop hl
