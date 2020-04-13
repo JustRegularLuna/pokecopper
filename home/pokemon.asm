@@ -243,12 +243,7 @@ GetBaseData::
 	ld a, BANK(BaseData)
 	rst Bankswitch
 
-; Egg doesn't have BaseData
 	ld a, [wCurSpecies]
-	cp EGG
-	jr z, .egg
-
-; Get BaseData
 	dec a
 	ld bc, BASE_DATA_SIZE
 	ld hl, BaseData
@@ -256,32 +251,6 @@ GetBaseData::
 	ld de, wCurBaseData
 	ld bc, BASE_DATA_SIZE
 	call CopyBytes
-	jr .end
-
-.egg
-	ld de, UnusedEggFrontpic
-
-; Sprite dimensions
-	ld b, $55 ; 5x5
-	ld hl, wBasePicSize
-	ld [hl], b
-
-; Beta front and back sprites
-; (see pokegold-spaceworld's data/pokemon/base_stats/*)
-	ld hl, wBaseUnusedFrontpic
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	inc hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	jr .end ; useless
-
-.end
-; Replace Pokedex # with species
-	ld a, [wCurSpecies]
-	ld [wBaseDexNo], a
 
 	pop af
 	rst Bankswitch
