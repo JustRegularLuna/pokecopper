@@ -546,7 +546,7 @@ endr
 	ld a, PAL_PEWTER
 	ret
 
-INCLUDE "data/maps/sgb_roof_pal_inds.asm"
+INCLUDE "data/maps/map_pals.asm"
 
 _LoadSGBLayout_ReturnFromJumpTable:
 	push de

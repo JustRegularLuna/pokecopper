@@ -11,9 +11,6 @@ ENDM
 ; - TrainerGroups (see data/trainers/party_pointers.asm)
 ; - TrainerEncounterMusic (see data/trainers/encounter_music.asm)
 ; - TrainerPicPointers (see data/trainers/pic_pointers.asm)
-; - TrainerPalettes (see data/trainers/palettes.asm)
-; - BTTrainerClassSprites (see data/trainers/sprites.asm)
-; - BTTrainerClassGenders (see data/trainers/genders.asm)
 ; trainer constants are Trainers indexes, for the sub-tables of TrainerGroups (see data/trainers/parties.asm)
 	enum_start
 

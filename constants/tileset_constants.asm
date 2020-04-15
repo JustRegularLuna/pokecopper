@@ -9,8 +9,6 @@
 	const TILESET_GATE
 	const TILESET_ELITE_FOUR_ROOM
 	const TILESET_CHAMPIONS_ROOM
-	const TILESET_BATTLE_TOWER_OUTSIDE
-	const TILESET_BATTLE_TOWER_INSIDE
 	const TILESET_ICE_PATH
 
 ; bg palette values (see gfx/tilesets/*_palette_map.asm)
