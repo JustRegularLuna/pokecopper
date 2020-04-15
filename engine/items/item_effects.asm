@@ -18,7 +18,7 @@ ItemEffects:
 	dw NoEffect            ; BRIGHTPOWDER
 	dw PokeBallEffect      ; GREAT_BALL
 	dw PokeBallEffect      ; POKE_BALL
-	dw TownMapEffect       ; TOWN_MAP
+	dw NoEffect            ; ITEM_06
 	dw BicycleEffect       ; BICYCLE
 	dw EvoStoneEffect      ; MOON_STONE
 	dw StatusHealingEffect ; ANTIDOTE
@@ -1080,10 +1080,6 @@ AskGiveNicknameText:
 
 ReturnToBattle_UseBall:
 	farcall _ReturnToBattle_UseBall
-	ret
-
-TownMapEffect:
-	farcall PokegearMap
 	ret
 
 BicycleEffect:
