@@ -1,7 +1,7 @@
 map: MACRO
 ;\1: map name: for the MapAttributes pointer (see data/maps/attributes.asm)
 ;\2: tileset: a TILESET_* constant
-;\3: environment: TOWN, ROUTE, INDOOR, CAVE, ENVIRONMENT_5, GATE, or DUNGEON
+;\3: environment: TOWN, ROUTE, INDOOR, CAVE, GATE, or DUNGEON
 ;\4: location: a LANDMARK_* constant
 ;\5: music: a MUSIC_* constant
 ;\6: phone service flag: TRUE to prevent phone calls
