@@ -650,72 +650,13 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	dec b
 	jr nz, .loop2
 
-	ldh a, [hCGB]
-	and a
-	jr nz, .cgb
 	ld a, $1
 	ldh [hBGMapMode], a
 	call DelayFrame
 	call DelayFrame
-	jr .nextscene
-
-.cgb
-	ld hl, .daypals
-	ld a, [wTimeOfDayPal]
-	maskbits NUM_DAYTIMES
-	cp DARKNESS_F
-	jr nz, .daytime
-	ld hl, .nightpals
-.daytime
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
-	call .copypals
-	push hl
-	ld de, wBGPals1 palette PAL_BG_TEXT
-	ld bc, 1 palettes
-	call CopyBytes
-	pop hl
-	ld de, wBGPals2 palette PAL_BG_TEXT
-	ld bc, 1 palettes
-	call CopyBytes
-	pop af
-	ldh [rSVBK], a
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	call DelayFrame
-	call BattleStart_CopyTilemapAtOnce
-
 .nextscene
 	call StartTrainerBattle_NextScene
 	ret
-
-.copypals
-	ld de, wBGPals1 palette PAL_BG_TEXT
-	call .copy
-	ld de, wBGPals2 palette PAL_BG_TEXT
-	call .copy
-	ld de, wOBPals1 palette PAL_OW_TREE
-	call .copy
-	ld de, wOBPals2 palette PAL_OW_TREE
-	call .copy
-	ld de, wOBPals1 palette PAL_OW_ROCK
-	call .copy
-	ld de, wOBPals2 palette PAL_OW_ROCK
-
-.copy
-	push hl
-	ld bc, 1 palettes
-	call CopyBytes
-	pop hl
-	ret
-
-.daypals
-INCLUDE "gfx/overworld/trainer_battle_day.pal"
-
-.nightpals
-INCLUDE "gfx/overworld/trainer_battle_nite.pal"
 
 .loadpokeballgfx
 	ld a, [wOtherTrainerClass]
