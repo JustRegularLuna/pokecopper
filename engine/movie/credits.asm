@@ -55,11 +55,9 @@ Credits::
 	xor a
 	ld [wCreditsBorderMon], a
 
-	call Credits_LoadBorderGFX
-	ld e, l
-	ld d, h
+	ld de, wCreditsBlankFrame2bpp
 	ld hl, vTiles2
-	lb bc, BANK(CreditsMonsGFX), 16
+	lb bc, BANK(CreditsBorderGFX), 16
 	call Request2bpp
 
 	call ConstructCreditsTilemap
@@ -74,7 +72,8 @@ Credits::
 	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 
-	call GetCreditsPalette
+	ld b, SCGB_DIPLOMA
+	call GetSGBLayout
 	call SetPalettes
 	ldh a, [hVBlank]
 	push af
@@ -188,7 +187,7 @@ Credits_PrepBGMapUpdate:
 	jp Credits_Next
 
 Credits_UpdateGFXRequestPath:
-	call Credits_LoadBorderGFX
+	ld hl, wCreditsBlankFrame2bpp
 	ld a, l
 	ld [wRequested2bppSource], a
 	ld a, h
@@ -326,8 +325,6 @@ ParseCredits:
 	ld [wCreditsBorderMon], a ; scene
 	xor a
 	ld [wCreditsBorderFrame], a ; frame
-	call GetCreditsPalette
-	call SetPalettes ; update hw pal registers
 	jr .loop
 
 .clear
@@ -424,23 +421,8 @@ ConstructCreditsTilemap:
 	call DrawCreditsBorder
 
 	hlcoord 0, 0, wAttrmap
-	ld bc, 4 * SCREEN_WIDTH
+	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
-	call ByteFill
-
-	hlcoord 0, 4, wAttrmap
-	ld bc, SCREEN_WIDTH
-	ld a, $1
-	call ByteFill
-
-	hlcoord 0, 5, wAttrmap
-	ld bc, 12 * SCREEN_WIDTH
-	ld a, $2
-	call ByteFill
-
-	hlcoord 0, 17, wAttrmap
-	ld bc, SCREEN_WIDTH
-	ld a, $1
 	call ByteFill
 
 	call WaitBGMap2
@@ -491,104 +473,6 @@ endr
 	jr nz, .loop
 	ret
 
-GetCreditsPalette:
-	call .GetPalAddress
-
-	push hl
-	ld a, 0
-	call .UpdatePals
-	pop hl
-	ret
-
-.GetPalAddress:
-; Each set of palette data is 24 bytes long.
-	ld a, [wCreditsBorderMon] ; scene
-	and %11
-	add a
-	add a ; * 8
-	add a
-	ld e, a
-	ld d, 0
-	ld hl, CreditsPalettes
-	add hl, de
-	add hl, de ; * 3
-	add hl, de
-	ret
-
-.UpdatePals:
-; Update the first three colors in both palette buffers.
-	push af
-	push hl
-	add LOW(wBGPals1)
-	ld e, a
-	ld a, 0
-	adc HIGH(wBGPals1)
-	ld d, a
-	ld bc, 24
-	call CopyBytes
-
-	pop hl
-	pop af
-	add LOW(wBGPals2)
-	ld e, a
-	ld a, 0
-	adc HIGH(wBGPals2)
-	ld d, a
-	ld bc, 24
-	call CopyBytes
-	ret
-
-CreditsPalettes:
-INCLUDE "gfx/credits/credits.pal"
-
-Credits_LoadBorderGFX:
-	ld hl, wCreditsBorderFrame
-	ld a, [hl]
-	cp $ff
-	jr z, .init
-
-	and %11
-	ld e, a
-	inc a
-	and %11
-	ld [hl], a
-	ld a, [wCreditsBorderMon]
-	and %11
-	add a
-	add a
-	add e
-	add a
-	ld e, a
-	ld d, 0
-	ld hl, .Frames
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
-
-.init
-	ld hl, wCreditsBlankFrame2bpp
-	ret
-
-.Frames:
-	dw CreditsPichuGFX
-	dw CreditsPichuGFX     + 16 tiles
-	dw CreditsPichuGFX     + 32 tiles
-	dw CreditsPichuGFX     + 48 tiles
-	dw CreditsSmoochumGFX
-	dw CreditsSmoochumGFX  + 16 tiles
-	dw CreditsSmoochumGFX  + 32 tiles
-	dw CreditsSmoochumGFX  + 48 tiles
-	dw CreditsDittoGFX
-	dw CreditsDittoGFX     + 16 tiles
-	dw CreditsDittoGFX     + 32 tiles
-	dw CreditsDittoGFX     + 48 tiles
-	dw CreditsIgglybuffGFX
-	dw CreditsIgglybuffGFX + 16 tiles
-	dw CreditsIgglybuffGFX + 32 tiles
-	dw CreditsIgglybuffGFX + 48 tiles
-
 Credits_TheEnd:
 	ld a, $40
 	hlcoord 6, 9
@@ -604,12 +488,6 @@ Credits_TheEnd:
 	ret
 
 CreditsBorderGFX:    INCBIN "gfx/credits/border.2bpp"
-
-CreditsMonsGFX: ; used only for BANK(CreditsMonsGFX)
-CreditsPichuGFX:     INCBIN "gfx/credits/pichu.2bpp"
-CreditsSmoochumGFX:  INCBIN "gfx/credits/smoochum.2bpp"
-CreditsDittoGFX:     INCBIN "gfx/credits/ditto.2bpp"
-CreditsIgglybuffGFX: INCBIN "gfx/credits/igglybuff.2bpp"
 
 INCLUDE "data/credits_script.asm"
 INCLUDE "data/credits_strings.asm"
