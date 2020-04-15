@@ -74,19 +74,6 @@ FoundNone:
 	ld [wScriptVar], a
 	ret
 
-NameRival:
-	ld b, NAME_RIVAL
-	ld de, wRivalName
-	farcall _NamingScreen
-	; default to "SILVER"
-	ld hl, wRivalName
-	ld de, .default
-	call InitName
-	ret
-
-.default
-	db "SILVER@"
-
 NameRater:
 	farcall _NameRater
 	ret

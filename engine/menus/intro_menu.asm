@@ -611,7 +611,24 @@ OakSpeech:
 
 	xor a
 	ld [wCurPartySpecies], a
-	ld a, POKEMON_PROF
+	farcall DrawIntroPlayerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call Intro_RotatePalettesLeftFrontpic
+
+	ld hl, OakText6
+	call PrintText
+	call NamePlayer
+
+	ld hl, OakTextYourNameIs
+	call PrintText
+	call RotateThreePalettesRight
+	call ClearTilemap
+
+	xor a
+	ld [wCurPartySpecies], a
+	ld a, RIVAL1
 	ld [wTrainerClass], a
 	call Intro_PrepTrainerPic
 
@@ -619,7 +636,11 @@ OakSpeech:
 	call GetSGBLayout
 	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, OakText5
+	ld hl, OakTextIntroduceRival
+	call PrintText
+	call NameRival
+
+	ld hl, OakTextOkHisNameIs
 	call PrintText
 	call RotateThreePalettesRight
 	call ClearTilemap
@@ -632,9 +653,6 @@ OakSpeech:
 	call GetSGBLayout
 	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, OakText6
-	call PrintText
-	call NamePlayer
 	ld hl, OakText7
 	call PrintText
 	ret
@@ -660,12 +678,20 @@ OakText4:
 	text_far _OakText4
 	text_end
 
-OakText5:
-	text_far _OakText5
-	text_end
-
 OakText6:
 	text_far _OakText6
+	text_end
+
+OakTextYourNameIs:
+	text_far _OakTextYourNameIs
+	text_end
+
+OakTextIntroduceRival:
+	text_far _OakTextIntroduceRival
+	text_end
+
+OakTextOkHisNameIs:
+	text_far _OakTextOkHisNameIs
 	text_end
 
 OakText7:
@@ -703,19 +729,59 @@ NamePlayer:
 	call RotateThreePalettesLeft
 
 	ld hl, wPlayerName
-	ld de, .Chris
+	ld de, .Hiro
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
 	jr z, .Male
-	ld de, .Kris
+	ld de, .Sylvia
 .Male:
 	call InitName
 	ret
 
-.Chris:
-	db "CHRIS@@@@@@"
-.Kris:
-	db "KRIS@@@@@@@"
+.Hiro:
+	db "HIRO@@@@@@@"
+.Sylvia:
+	db "SYLVIA@@@@@"
+
+NameRival:
+	farcall MovePlayerPicRight
+	farcall ShowRivalNamingChoices
+	ld a, [wMenuCursorY]
+	dec a
+	jr z, .NewName
+	call StoreRivalName
+	farcall ApplyMonOrTrainerPals
+	farcall MovePlayerPicLeft
+	ret
+
+.NewName:
+	ld b, NAME_RIVAL
+	ld de, wRivalName
+	farcall NamingScreen
+
+	call RotateThreePalettesRight
+	call ClearTilemap
+
+	call LoadFontsExtra
+	call WaitBGMap
+
+	xor a
+	ld [wCurPartySpecies], a
+	ld a, RIVAL1
+	ld [wTrainerClass], a
+	call Intro_PrepTrainerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call RotateThreePalettesLeft
+
+	ld hl, wRivalName
+	ld de, .Rival
+	call InitName
+	ret
+
+.Rival:
+	db "KAMON@@@@@@"
 
 StorePlayerName:
 	ld a, "@"
@@ -723,6 +789,16 @@ StorePlayerName:
 	ld hl, wPlayerName
 	call ByteFill
 	ld hl, wPlayerName
+	ld de, wStringBuffer2
+	call CopyName2
+	ret
+
+StoreRivalName:
+	ld a, "@"
+	ld bc, NAME_LENGTH
+	ld hl, wRivalName
+	call ByteFill
+	ld hl, wRivalName
 	ld de, wStringBuffer2
 	call CopyName2
 	ret

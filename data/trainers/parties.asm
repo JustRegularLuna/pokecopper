@@ -15,3 +15,32 @@ PokemonProfGroup:
 	db "OAK@", TRAINERTYPE_NORMAL
 	db 5, EEVEE
 	db -1 ; end
+
+HiroGroup:
+	; HIRO1
+	db "HIRO@", TRAINERTYPE_NORMAL
+	db 5, EEVEE
+	db -1 ; end
+
+SylviaGroup:
+	; SYLVIA1
+	db "SYLVIA@", TRAINERTYPE_NORMAL
+	db 5, EEVEE
+	db -1 ; end
+
+Rival1Group:
+; TODO: Johto starters once added
+	; RIVAL1_LAB_STARTER1
+	db "<RIVAL>@", TRAINERTYPE_NORMAL
+	db 5, SQUIRTLE
+	db -1 ; end
+
+	; RIVAL1_LAB_STARTER2
+	db "<RIVAL>@", TRAINERTYPE_NORMAL
+	db 5, BULBASAUR
+	db -1 ; end
+
+	; RIVAL1_LAB_STARTER2
+	db "<RIVAL>@", TRAINERTYPE_NORMAL
+	db 5, CHARMANDER
+	db -1 ; end

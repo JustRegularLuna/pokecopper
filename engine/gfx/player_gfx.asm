@@ -43,6 +43,10 @@ MovePlayerPic:
 	pop hl
 	jr .loop
 
+ShowRivalNamingChoices:
+	ld hl, RivalNameMenuHeader
+	jr ShowPlayerNamingChoices.GotGender
+
 ShowPlayerNamingChoices:
 	ld hl, HiroNameMenuHeader
 	ld a, [wPlayerGender]

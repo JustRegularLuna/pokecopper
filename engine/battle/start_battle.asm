@@ -92,7 +92,7 @@ PlayBattleMusic:
 
 	ld de, MUSIC_RIVAL_BATTLE
 	ld a, [wOtherTrainerClass]
-	cp TRAINER_NONE ; TODO: Non-Champion Rival Class
+	cp RIVAL1
 	jr z, .done
 
 	ld a, [wLinkMode]

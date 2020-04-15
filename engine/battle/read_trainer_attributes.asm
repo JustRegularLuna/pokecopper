@@ -1,8 +1,8 @@
 GetTrainerClassName:
-;	ld hl, wRivalName
+	ld hl, wRivalName
 	ld a, c
-;	cp RIVAL1
-;	jr z, .rival
+	cp RIVAL1
+	jr z, .rival
 
 	ld [wCurSpecies], a
 	ld a, TRAINER_NAME
@@ -25,10 +25,10 @@ GetOTName:
 	and a
 	jr nz, .ok
 
-;	ld hl, wRivalName
+	ld hl, wRivalName
 	ld a, c
-;	cp RIVAL1
-;	jr z, .ok
+	cp RIVAL1
+	jr z, .ok
 
 	ld [wCurSpecies], a
 	ld a, TRAINER_NAME

@@ -623,3 +623,6 @@ UnownZBackpic::       INCBIN "gfx/pokemon/unownback/unownz.2bpp.lz"
 SECTION "Pics 14", ROMX
 
 PokemonProfPic::      INCBIN "gfx/trainers/oak.2bpp.lz"
+HiroBattlePic::       INCBIN "gfx/player/hiro.2bpp.lz"
+SylviaBattlePic::     INCBIN "gfx/player/sylvia.2bpp.lz"
+Rival1Pic::           INCBIN "gfx/trainers/rival1.2bpp.lz"

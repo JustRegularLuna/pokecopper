@@ -3,3 +3,6 @@
 TrainerPicPointers::
 ; entries correspond to trainer classes (see constants/trainer_constants.asm)
 	dba PokemonProfPic
+	dba HiroBattlePic
+	dba SylviaBattlePic
+	dba Rival1Pic
