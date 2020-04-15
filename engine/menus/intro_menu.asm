@@ -883,7 +883,7 @@ Intro_PlacePlayerSprite:
 CrystalIntroSequence:
 	callfar Copyright_GFPresents
 	jr c, StartTitleScreen
-	farcall CrystalIntro
+	;farcall SpaceworldIntro
 
 	; fallthrough
 
