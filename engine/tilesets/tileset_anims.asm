@@ -38,7 +38,7 @@ Tileset0Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  AnimateWaterPalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  AnimateFlowerTile
 	dw NULL,  WaitTileAnimation
@@ -50,7 +50,7 @@ TilesetJohtoAnim:
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  AnimateWaterPalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  AnimateFlowerTile
 	dw WhirlpoolFrames1, AnimateWhirlpoolTile
@@ -73,23 +73,23 @@ TilesetEliteFourRoomAnim:
 
 TilesetIcePathAnim:
 	dw vTiles2 tile $35, WriteTileToBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  WaitTileAnimation
 	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  WaitTileAnimation
 	dw vTiles2 tile $35, WriteTileFromBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  AnimateWaterPalette
-	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
 	dw vTiles2 tile $31, WriteTileToBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  WaitTileAnimation
 	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  WaitTileAnimation
 	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  WaitTileAnimation
 	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  WaitTileAnimation
 	dw vTiles2 tile $31, WriteTileFromBuffer
-	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  DoneTileAnimation
 
 TilesetHouseAnim:
@@ -295,146 +295,6 @@ AnimateWaterTile:
 WaterTileFrames:
 	INCBIN "gfx/tilesets/water/water.2bpp"
 
-ForestTreeLeftAnimation:
-	ld hl, sp+0
-	ld b, h
-	ld c, l
-
-; Only during the Celebi event.
-	ld a, [wCelebiEvent]
-	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
-	jr nz, .asm_fc46c
-	ld hl, ForestTreeLeftFrames
-	jr .asm_fc47d
-
-.asm_fc46c
-	ld a, [wTileAnimationTimer]
-	call GetForestTreeFrame
-	add a
-	add a
-	add a
-	add LOW(ForestTreeLeftFrames)
-	ld l, a
-	ld a, 0
-	adc HIGH(ForestTreeLeftFrames)
-	ld h, a
-
-.asm_fc47d
-	ld sp, hl
-	ld hl, vTiles2 tile $0c
-	jp WriteTile
-
-ForestTreeLeftFrames:
-	INCBIN "gfx/tilesets/forest-tree/1.2bpp"
-	INCBIN "gfx/tilesets/forest-tree/2.2bpp"
-
-ForestTreeRightFrames:
-	INCBIN "gfx/tilesets/forest-tree/3.2bpp"
-	INCBIN "gfx/tilesets/forest-tree/4.2bpp"
-
-ForestTreeRightAnimation:
-	ld hl, sp+0
-	ld b, h
-	ld c, l
-
-; Only during the Celebi event.
-	ld a, [wCelebiEvent]
-	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
-	jr nz, .asm_fc4d4
-	ld hl, ForestTreeRightFrames
-	jr .asm_fc4eb
-
-.asm_fc4d4
-	ld a, [wTileAnimationTimer]
-	call GetForestTreeFrame
-	add a
-	add a
-	add a
-	add LOW(ForestTreeLeftFrames)
-	ld l, a
-	ld a, 0
-	adc HIGH(ForestTreeLeftFrames)
-	ld h, a
-	push bc
-	ld bc, ForestTreeRightFrames - ForestTreeLeftFrames
-	add hl, bc
-	pop bc
-
-.asm_fc4eb
-	ld sp, hl
-	ld hl, vTiles2 tile $0f
-	jp WriteTile
-
-ForestTreeLeftAnimation2:
-	ld hl, sp+0
-	ld b, h
-	ld c, l
-
-; Only during the Celebi event.
-	ld a, [wCelebiEvent]
-	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
-	jr nz, .asm_fc502
-	ld hl, ForestTreeLeftFrames
-	jr .asm_fc515
-
-.asm_fc502
-	ld a, [wTileAnimationTimer]
-	call GetForestTreeFrame
-	xor 2
-	add a
-	add a
-	add a
-	add LOW(ForestTreeLeftFrames)
-	ld l, a
-	ld a, 0
-	adc HIGH(ForestTreeLeftFrames)
-	ld h, a
-
-.asm_fc515
-	ld sp, hl
-	ld hl, vTiles2 tile $0c
-	jp WriteTile
-
-ForestTreeRightAnimation2:
-	ld hl, sp+0
-	ld b, h
-	ld c, l
-
-; Only during the Celebi event.
-	ld a, [wCelebiEvent]
-	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
-	jr nz, .asm_fc52c
-	ld hl, ForestTreeRightFrames
-	jr .asm_fc545
-
-.asm_fc52c
-	ld a, [wTileAnimationTimer]
-	call GetForestTreeFrame
-	xor 2
-	add a
-	add a
-	add a
-	add LOW(ForestTreeLeftFrames)
-	ld l, a
-	ld a, 0
-	adc HIGH(ForestTreeLeftFrames)
-	ld h, a
-	push bc
-	ld bc, ForestTreeRightFrames - ForestTreeLeftFrames
-	add hl, bc
-	pop bc
-
-.asm_fc545
-	ld sp, hl
-	ld hl, vTiles2 tile $0f
-	jp WriteTile
-
-GetForestTreeFrame:
-; Return 0 if a is even, or 2 if odd.
-	and 1
-	add a
-	ret
-
 AnimateFlowerTile:
 ; No parameters.
 
@@ -458,11 +318,11 @@ AnimateFlowerTile:
 
 	jp WriteTile
 
-FlowerTileFrames:
+FlowerTileFrames: ; TODO: Rework the logic to only need the 2 frames
 	INCBIN "gfx/tilesets/flower/dmg_1.2bpp"
-	INCBIN "gfx/tilesets/flower/cgb_1.2bpp"
+	INCBIN "gfx/tilesets/flower/dmg_1.2bpp"
 	INCBIN "gfx/tilesets/flower/dmg_2.2bpp"
-	INCBIN "gfx/tilesets/flower/cgb_2.2bpp"
+	INCBIN "gfx/tilesets/flower/dmg_2.2bpp"
 
 LavaBubbleAnim1:
 ; Splash in the bottom-right corner of the fountain.
@@ -657,11 +517,6 @@ endr
 	ld h, b
 	ld l, c
 	ld sp, hl
-	ret
-
-AnimateWaterPalette:
-FlickeringCaveEntrancePalette:
-; No palette changes on DMG.
 	ret
 
 TowerPillarTilePointer1:  dw vTiles2 tile $2d, TowerPillarTile1
