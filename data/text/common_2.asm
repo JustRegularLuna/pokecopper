@@ -238,8 +238,6 @@ _BlindingFlashText::
 	text_promptbutton
 	text_end
 
-	text_end ; unused
-
 _UsedSurfText::
 	text_ram wStringBuffer2
 	text " used"
@@ -572,8 +570,6 @@ Text_BattleEffectActivate::
 	line "@"
 	text_ram wStringBuffer2
 	text_end
-
-	text_end ; unused
 
 _BattleStatWentWayUpText::
 	text_pause
@@ -910,8 +906,6 @@ _KarpGuruRecordText::
 	text_ram wMagikarpRecordHoldersName
 	text_promptbutton
 	text_end
-
-	text_end ; unused
 
 _LuckyNumberMatchPartyText::
 	text "Congratulations!"

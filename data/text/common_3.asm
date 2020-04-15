@@ -424,8 +424,6 @@ _CongratulationsYourPokemonText::
 	text_ram wStringBuffer2
 	text_end
 
-	text_end ; unused
-
 _EvolvedIntoText::
 	text_start
 
@@ -745,8 +743,6 @@ _LearnedMoveText::
 	text_promptbutton
 	text_end
 
-	text_end ; unused
-
 _MoveAskForgetText::
 	text "Which move should"
 	next "be forgotten?"
@@ -793,8 +789,6 @@ Text_MoveForgetCount::
 	text "1, 2 and…@"
 	text_pause
 	text_end
-
-	text_end ; unused
 
 _MoveForgotText::
 	text " Poof!@"
@@ -854,8 +848,6 @@ _CardFlipDarnText::
 _GearTodayText::
 	text_today
 	text_end
-
-	text_end ; unused
 
 _GearEllipseText::
 	text "<……>"

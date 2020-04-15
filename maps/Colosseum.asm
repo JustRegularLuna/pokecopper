@@ -3,10 +3,9 @@
 	const COLOSSEUM_CHRIS2
 
 Colosseum_MapScripts:
-	db 3 ; scene scripts
+	db 2 ; scene scripts
 	scene_script .InitializeColosseum ; SCENE_DEFAULT
 	scene_script .DummyScene1 ; SCENE_FINISHED
-	scene_script .DummyScene2 ; unused
 
 	db 2 ; callbacks
 	callback MAPCALLBACK_OBJECTS, .SetWhichChris
@@ -17,9 +16,6 @@ Colosseum_MapScripts:
 	end
 
 .DummyScene1:
-	end
-
-.DummyScene2:
 	end
 
 .SetWhichChris:

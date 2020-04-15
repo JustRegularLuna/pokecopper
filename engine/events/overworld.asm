@@ -1698,10 +1698,6 @@ Script_GetOnBike_Register:
 	special ReplaceKrisSprite
 	end
 
-; unused
-	nop
-	ret
-
 Script_GetOffBike:
 	reloadmappart
 	special UpdateTimePals

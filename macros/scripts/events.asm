@@ -489,12 +489,6 @@ closetext: MACRO
 	db closetext_command
 ENDM
 
-	enum writeunusedbytebuffer_command ; $4a
-writeunusedbytebuffer: MACRO
-	db writeunusedbytebuffer_command
-	db \1 ; byte
-ENDM
-
 	enum farwritetext_command ; $4b
 farwritetext: MACRO
 	db farwritetext_command
