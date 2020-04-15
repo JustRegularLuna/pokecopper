@@ -20,8 +20,8 @@ InitCrystalData:
 
 InitGender:
 	call InitGenderScreen
-	call LoadGenderScreenPal
-	call LoadGenderScreenLightBlueTile
+	ld b, SCGB_DIPLOMA
+	call GetSGBLayout
 	call WaitBGMap2
 	call SetPalettes
 	ld hl, AreYouABoyOrAreYouAGirlText
@@ -68,32 +68,10 @@ InitGenderScreen:
 	call LoadFontsExtra
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	ld a, $0
+	ld a, $7F
 	call ByteFill
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
 	call ByteFill
 	ret
-
-LoadGenderScreenPal:
-	ld hl, .Palette
-	ld de, wBGPals1
-	ld bc, 1 palettes
-	ld a, BANK(wBGPals1)
-	call FarCopyWRAM
-	farcall ApplyPals
-	ret
-
-.Palette:
-INCLUDE "gfx/new_game/gender_screen.pal"
-
-LoadGenderScreenLightBlueTile:
-	ld de, .LightBlueTile
-	ld hl, vTiles2 tile $00
-	lb bc, BANK(.LightBlueTile), 1
-	call Get2bpp
-	ret
-
-.LightBlueTile:
-INCBIN "gfx/new_game/gender_screen.2bpp"
