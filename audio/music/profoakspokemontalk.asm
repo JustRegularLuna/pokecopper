@@ -4,8 +4,6 @@ Music_ProfOaksPokemonTalk:
 	channel 2, Music_ProfOaksPokemonTalk_Ch2
 	channel 3, Music_ProfOaksPokemonTalk_Ch3
 
-	db $3 ; unused
-
 Music_ProfOaksPokemonTalk_Ch1:
 	tempo 164
 	volume 7, 7

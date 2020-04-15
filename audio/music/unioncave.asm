@@ -257,5 +257,3 @@ Music_UnionCave_Ch4:
 	drum_note 9, 4
 	rest 8
 	sound_loop 0, .mainloop
-
-	sound_loop 0, .mainloop ; unused

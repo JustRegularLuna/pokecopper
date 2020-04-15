@@ -136,12 +136,6 @@ vibrato: MACRO
 	ENDC
 ENDM
 
-	enum unknownmusic0xe2_cmd ; $e2
-unknownmusic0xe2: MACRO
-	db unknownmusic0xe2_cmd
-	db \1 ; unknown
-ENDM
-
 	enum toggle_noise_cmd ; $e3
 toggle_noise: MACRO
 	db toggle_noise_cmd
@@ -172,18 +166,6 @@ pitch_offset: MACRO
 	bigdw \1 ; pitch offset
 ENDM
 
-	enum unknownmusic0xe7_cmd ; $e7
-unknownmusic0xe7: MACRO
-	db unknownmusic0xe7_cmd
-	db \1 ; unknown
-ENDM
-
-	enum unknownmusic0xe8_cmd ; $e8
-unknownmusic0xe8: MACRO
-	db unknownmusic0xe8_cmd
-	db \1 ; unknown
-ENDM
-
 	enum tempo_relative_cmd ; $e9
 tempo_relative: MACRO
 	db tempo_relative_cmd
@@ -212,12 +194,6 @@ sfx_priority_off: MACRO
 	db sfx_priority_off_cmd
 ENDM
 
-	enum unknownmusic0xee_cmd ; $ee
-unknownmusic0xee: MACRO
-	db unknownmusic0xee_cmd
-	dw \1 ; address
-ENDM
-
 	enum stereo_panning_cmd ; $ef
 stereo_panning: MACRO
 	db stereo_panning_cmd
@@ -230,51 +206,6 @@ sfx_toggle_noise: MACRO
 	IF _NARG > 0
 		db \1 ; drum kit
 	ENDC
-ENDM
-
-	enum music0xf1_cmd ; $f1
-music0xf1: MACRO
-	db music0xf1_cmd
-ENDM
-
-	enum music0xf2_cmd ; $f2
-music0xf2: MACRO
-	db music0xf2_cmd
-ENDM
-
-	enum music0xf3_cmd ; $f3
-music0xf3: MACRO
-	db music0xf3_cmd
-ENDM
-
-	enum music0xf4_cmd ; $f4
-music0xf4: MACRO
-	db music0xf4_cmd
-ENDM
-
-	enum music0xf5_cmd ; $f5
-music0xf5: MACRO
-	db music0xf5_cmd
-ENDM
-
-	enum music0xf6_cmd ; $f6
-music0xf6: MACRO
-	db music0xf6_cmd
-ENDM
-
-	enum music0xf7_cmd ; $f7
-music0xf7: MACRO
-	db music0xf7_cmd
-ENDM
-
-	enum music0xf8_cmd ; $f8
-music0xf8: MACRO
-	db music0xf8_cmd
-ENDM
-
-	enum unknownmusic0xf9_cmd ; $f9
-unknownmusic0xf9: MACRO
-	db unknownmusic0xf9_cmd
 ENDM
 
 	enum set_condition_cmd ; $fa

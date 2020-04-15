@@ -1364,46 +1364,23 @@ MusicCommands:
 	dw Music_ToggleSFX ; sound on/off
 	dw Music_PitchSlide ; pitch slide
 	dw Music_Vibrato ; vibrato
-	dw MusicE2 ; unused
 	dw Music_ToggleNoise ; music noise sampling
 	dw Music_ForceStereoPanning ; force stereo panning
 	dw Music_Volume ; volume
 	dw Music_PitchOffset ; pitch offset
-	dw MusicE7 ; unused
-	dw MusicE8 ; unused
 	dw Music_TempoRelative ; tempo adjust
 	dw Music_RestartChannel ; restart current channel from header
 	dw Music_NewSong ; new song
 	dw Music_SFXPriorityOn ; sfx priority on
 	dw Music_SFXPriorityOff ; sfx priority off
-	dw MusicEE ; unused
 	dw Music_StereoPanning ; stereo panning
 	dw Music_SFXToggleNoise ; sfx noise sampling
-	dw MusicF1 ; nothing
-	dw MusicF2 ; nothing
-	dw MusicF3 ; nothing
-	dw MusicF4 ; nothing
-	dw MusicF5 ; nothing
-	dw MusicF6 ; nothing
-	dw MusicF7 ; nothing
-	dw MusicF8 ; nothing
-	dw MusicF9 ; unused
 	dw Music_SetCondition ; set condition
 	dw Music_JumpIf ; jumpif
 	dw Music_Jump ; jump
 	dw Music_Loop ; loop
 	dw Music_Call ; call
 	dw Music_Ret ; return
-
-MusicF1:
-MusicF2:
-MusicF3:
-MusicF4:
-MusicF5:
-MusicF6:
-MusicF7:
-MusicF8:
-	ret
 
 Music_Ret:
 ; called when $ff is encountered w/ subroutine flag set
@@ -1594,78 +1571,6 @@ Music_JumpIf:
 	ld [hl], d
 	ret
 
-MusicEE:
-; conditional jump
-; checks a byte in ram corresponding to the current channel
-; doesn't seem to be set by any commands
-; params: 2
-;		ll hh ; pointer
-
-; if ????, jump
-	; get channel
-	ld a, [wCurChannel]
-	maskbits NUM_MUSIC_CHANS
-	ld e, a
-	ld d, 0
-	; hl = wChannel1JumpCondition + channel id
-	ld hl, wChannel1JumpCondition
-	add hl, de
-	; if set, jump
-	ld a, [hl]
-	and a
-	jr nz, .jump
-; skip to next command
-	; get address
-	ld hl, CHANNEL_MUSIC_ADDRESS
-	add hl, bc
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	; skip pointer
-	inc de
-	inc de
-	; update address
-	ld [hl], d
-	dec hl
-	ld [hl], e
-	ret
-
-.jump
-	; reset jump flag
-	ld [hl], 0
-	; de = pointer
-	call GetMusicByte
-	ld e, a
-	call GetMusicByte
-	ld d, a
-	; update address
-	ld hl, CHANNEL_MUSIC_ADDRESS
-	add hl, bc
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	ret
-
-MusicF9:
-; sets some flag
-; seems to be unused
-; params: 0
-	ld a, TRUE
-	ld [wUnusedMusicF9Flag], a
-	ret
-
-MusicE2:
-; seems to have been dummied out
-; params: 1
-	call GetMusicByte
-	ld hl, CHANNEL_FIELD2C
-	add hl, bc
-	ld [hl], a
-	ld hl, CHANNEL_FLAGS2
-	add hl, bc
-	set SOUND_UNKN_0B, [hl]
-	ret
-
 Music_Vibrato:
 ; vibrato
 ; params: 2
@@ -1767,18 +1672,6 @@ Music_PitchOffset:
 	ld [hl], a
 	ret
 
-MusicE7:
-; unused
-; params: 1
-	ld hl, CHANNEL_FLAGS2
-	add hl, bc
-	set SOUND_UNKN_0E, [hl]
-	call GetMusicByte
-	ld hl, CHANNEL_FIELD29
-	add hl, bc
-	ld [hl], a
-	ret
-
 Music_DutyCyclePattern:
 ; sequence of 4 duty cycles to be looped
 ; params: 1 (4 2-bit duty cycle arguments)
@@ -1795,18 +1688,6 @@ Music_DutyCyclePattern:
 	; update duty cycle
 	and $c0 ; only uses top 2 bits
 	ld hl, CHANNEL_DUTY_CYCLE
-	add hl, bc
-	ld [hl], a
-	ret
-
-MusicE8:
-; unused
-; params: 1
-	ld hl, CHANNEL_FLAGS2
-	add hl, bc
-	set SOUND_UNKN_0D, [hl]
-	call GetMusicByte
-	ld hl, CHANNEL_FIELD2A
 	add hl, bc
 	ld [hl], a
 	ret

@@ -4,8 +4,6 @@ Music_VermilionCity:
 	channel 2, Music_VermilionCity_Ch2
 	channel 3, Music_VermilionCity_Ch3
 
-	db $3 ; unused
-
 Music_VermilionCity_Ch1:
 	stereo_panning FALSE, TRUE
 	tempo 176

@@ -4,8 +4,6 @@ Music_DancingHall:
 	channel 2, Music_DancingHall_Ch2
 	channel 3, Music_DancingHall_Ch3
 
-	db $3 ; unused
-
 Music_DancingHall_Ch1:
 	tempo 208
 	volume 7, 7

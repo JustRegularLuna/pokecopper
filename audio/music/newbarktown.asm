@@ -4,8 +4,6 @@ Music_NewBarkTown:
 	channel 2, Music_NewBarkTown_Ch2
 	channel 3, Music_NewBarkTown_Ch3
 
-	db $3 ; unused
-
 Music_NewBarkTown_Ch1:
 	tempo 187
 	volume 7, 7

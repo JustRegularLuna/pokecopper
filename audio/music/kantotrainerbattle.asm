@@ -4,8 +4,6 @@ Music_KantoTrainerBattle:
 	channel 2, Music_KantoTrainerBattle_Ch2
 	channel 3, Music_KantoTrainerBattle_Ch3
 
-	db $3 ; unused
-
 Music_KantoTrainerBattle_Ch1:
 	tempo 114
 	volume 7, 7

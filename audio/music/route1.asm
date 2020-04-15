@@ -4,8 +4,6 @@ Music_Route1:
 	channel 2, Music_Route1_Ch2
 	channel 3, Music_Route1_Ch3
 
-	db $3 ; unused
-
 Music_Route1_Ch1:
 	stereo_panning FALSE, TRUE
 	tempo 184
