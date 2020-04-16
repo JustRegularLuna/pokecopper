@@ -20,7 +20,10 @@ SpawnPlayer:
 	ld a, -1
 	ld [wObjectFollow_Leader], a
 	ld [wObjectFollow_Follower], a
-	ld b, PLAYER
+	ld a, $0
+	ld hl, PlayerObjectTemplate
+	call CopyPlayerObjectTemplate
+	ld b, $0
 	call PlayerSpawn_ConvertCoords
 	ld a, PLAYER_OBJECT
 	call GetMapObject
@@ -47,6 +50,9 @@ SpawnPlayer:
 	ld a, PLAYER
 	ld [wCenteredObject], a
 	ret
+
+PlayerObjectTemplate:
+	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
 
 CopyDECoordsToMapObject::
 	push de
