@@ -29,7 +29,7 @@ KogasRoom_MapScripts:
 
 .KogasDoorLocksBehindYou:
 	applymovement PLAYER, KogasRoom_EnterMovement
-	refreshscreen $86
+	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
 	changeblock 4, 14, $2a ; wall
@@ -128,8 +128,6 @@ KogaScript_KogaDefeatText:
 	done
 
 KogasRoom_MapEvents:
-	db 0, 0 ; filler
-
 	db 4 ; warp events
 	warp_event  4, 17, WILLS_ROOM, 2
 	warp_event  5, 17, WILLS_ROOM, 3

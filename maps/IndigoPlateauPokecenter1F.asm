@@ -47,8 +47,6 @@ IndigoPlateauPokecenter1FClerkScript:
 	end
 
 IndigoPlateauPokecenter1F_MapEvents:
-	db 0, 0 ; filler
-
 	db 4 ; warp events
 	warp_event  5, 13, NEW_BARK_TOWN, 2
 	warp_event  6, 13, NEW_BARK_TOWN, 2

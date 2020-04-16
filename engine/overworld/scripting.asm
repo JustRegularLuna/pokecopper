@@ -2605,10 +2605,8 @@ Script_opentext:
 
 Script_refreshscreen:
 ; script command 0x48
-; parameters: dummy
 
 	call RefreshScreen
-	call GetScriptByte
 	ret
 
 Script_closetext:

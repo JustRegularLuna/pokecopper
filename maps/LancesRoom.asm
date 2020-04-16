@@ -31,7 +31,7 @@ LancesRoom_MapScripts:
 
 .LancesDoorLocksBehindYou:
 	applymovement PLAYER, LancesRoom_EnterMovement
-	refreshscreen $86
+	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
 	changeblock 4, 22, $34 ; wall
@@ -336,8 +336,6 @@ LancesRoomMaryNoInterviewText:
 	done
 
 LancesRoom_MapEvents:
-	db 0, 0 ; filler
-
 	db 4 ; warp events
 	warp_event  4, 23, KARENS_ROOM, 3
 	warp_event  5, 23, KARENS_ROOM, 4

@@ -412,8 +412,6 @@ TVText:
 	done
 
 PlayersHouse1F_MapEvents:
-	db 0, 0 ; filler
-
 	db 3 ; warp events
 	warp_event  6,  7, NEW_BARK_TOWN, 1
 	warp_event  7,  7, NEW_BARK_TOWN, 1

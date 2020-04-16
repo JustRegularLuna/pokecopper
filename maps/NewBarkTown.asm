@@ -12,8 +12,6 @@ NewBarkTown_MapScripts:
 	return
 
 NewBarkTown_MapEvents:
-	db 0, 0 ; filler
-
 	db 2 ; warp events
 	warp_event 15,  7, PLAYERS_HOUSE_1F, 1
 	warp_event  9,  3, INDIGO_PLATEAU_POKECENTER_1F, 1

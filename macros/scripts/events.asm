@@ -476,12 +476,7 @@ ENDM
 
 	enum refreshscreen_command ; $48
 refreshscreen: MACRO
-if _NARG == 0
-	refreshscreen 0
-else
 	db refreshscreen_command
-	db \1 ; dummy
-endc
 ENDM
 
 	enum closetext_command ; $49

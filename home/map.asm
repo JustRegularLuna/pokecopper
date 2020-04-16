@@ -388,8 +388,6 @@ ReadMapEvents::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	inc hl
-	inc hl
 	call ReadWarps
 	call ReadCoordEvents
 	call ReadBGEvents
@@ -634,9 +632,7 @@ GetWarpDestCoords::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-rept 3 ; get to the warp coords
-	inc hl
-endr
+	inc hl ; get to the warp coords
 	ld a, [wWarpNumber]
 	dec a
 	ld c, a

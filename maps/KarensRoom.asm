@@ -29,7 +29,7 @@ KarensRoom_MapScripts:
 
 .KarensDoorLocksBehindYou:
 	applymovement PLAYER, KarensRoom_EnterMovement
-	refreshscreen $86
+	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
 	changeblock 4, 14, $2a ; wall
@@ -131,8 +131,6 @@ KarenScript_KarenDefeatText:
 	done
 
 KarensRoom_MapEvents:
-	db 0, 0 ; filler
-
 	db 4 ; warp events
 	warp_event  4, 17, BRUNOS_ROOM, 3
 	warp_event  5, 17, BRUNOS_ROOM, 4
