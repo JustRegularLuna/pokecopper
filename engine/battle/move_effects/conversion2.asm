@@ -28,8 +28,10 @@ BattleCommand_Conversion2:
 .loop
 	call BattleRandom
 	maskbits NUM_TYPES
-	cp CURSE_TYPE
-	jr z, .loop
+	cp UNUSED_TYPES
+	jr c, .okay
+	cp UNUSED_TYPES_END
+	jr c, .loop
 	cp TYPES_END
 	jr nc, .loop
 .okay
