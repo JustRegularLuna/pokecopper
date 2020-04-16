@@ -6,7 +6,7 @@ CanObjectMoveInDirection:
 
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit NOCLIP_TILES_F, [hl] ; lost, uncomment next line to fix
+	bit NOCLIP_TILES_F, [hl]
 	jr nz, .noclip_tiles
 	push hl
 	push bc
