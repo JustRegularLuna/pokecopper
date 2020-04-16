@@ -16,9 +16,6 @@ sgb_pal23: MACRO
 	db (SGB_PAL23 << 3) + 1
 ENDM
 
-PalPacket_MagnetTrain:
-	sgb_pal_set SHINY_GREENMON, GREYMON, BROWNMON, ROUTE
-
 PalPacket_UnownPuzzle:
 	sgb_pal_set UNOWN_PUZZLE, UNOWN_PUZZLE, UNOWN_PUZZLE, UNOWN_PUZZLE
 

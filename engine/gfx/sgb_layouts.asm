@@ -35,7 +35,6 @@ LoadSGBLayout:
 	dw .SGB_MoveList
 	dw .SGB_PokedexSearchOption
 	dw .SGB_Pokepic
-	dw .SGB_MagnetTrain
 	dw .SGB_PackPals
 	dw .SGB_TrainerCard
 	dw .SGB_PokedexUnownMode
@@ -264,11 +263,6 @@ LoadSGBLayout:
 .SGB_Diploma:
 	ld hl, PalPacket_Diploma
 	ld de, BlkPacket_9a86
-	ret
-
-.SGB_MagnetTrain:
-	ld hl, PalPacket_MagnetTrain
-	ld de, BlkPacket_MagnetTrain
 	ret
 
 .SGB_MapPals:
