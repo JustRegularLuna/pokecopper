@@ -9,7 +9,7 @@ PlayersHouse2F_MapScripts:
 
 	db 2 ; callbacks
 	callback MAPCALLBACK_NEWMAP, .InitializeRoom
-	callback MAPCALLBACK_TILES, .SetSpawn
+	callback MAPCALLBACK_TILES, .SetUpTileDecorations
 
 .InitializeRoom:
 	special ToggleDecorationsVisibility
@@ -22,7 +22,7 @@ PlayersHouse2F_MapScripts:
 .SkipInitialization:
 	return
 
-.SetSpawn:
+.SetUpTileDecorations:
 	special ToggleMaptileDecorations
 	return
 
