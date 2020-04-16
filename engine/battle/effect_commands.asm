@@ -4469,9 +4469,6 @@ BattleCommand_StatDown:
 	and a
 	jr nz, .Failed
 
-	call CheckHiddenOpponent
-	jr nz, .Failed
-
 ; Accuracy/Evasion reduction don't involve stats.
 	ld [hl], b
 	ld a, c
@@ -6403,11 +6400,6 @@ INCLUDE "engine/battle/move_effects/thief.asm"
 BattleCommand_ArenaTrap:
 ; arenatrap
 
-; Doesn't work on an absent opponent.
-
-	call CheckHiddenOpponent
-	jr nz, .failed
-
 ; Don't trap if the opponent is already trapped.
 
 	ld a, BATTLE_VARS_SUBSTATUS5
@@ -6671,10 +6663,6 @@ BattleCommand_SkipSunCharge:
 INCLUDE "engine/battle/move_effects/future_sight.asm"
 
 INCLUDE "engine/battle/move_effects/thunder.asm"
-
-CheckHiddenOpponent:
-	xor a
-	ret
 
 GetUserItem:
 ; Return the effect of the user's item in bc, and its id at hl.

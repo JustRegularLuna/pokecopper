@@ -5,9 +5,6 @@ BattleCommand_Foresight:
 	and a
 	jr nz, .failed
 
-	call CheckHiddenOpponent
-	jr nz, .failed
-
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_IDENTIFIED, [hl]

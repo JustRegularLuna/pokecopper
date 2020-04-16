@@ -12,8 +12,6 @@ BattleCommand_Mimic:
 	jr z, .player_turn
 	ld hl, wEnemyMonMoves
 .player_turn
-	call CheckHiddenOpponent
-	jr nz, .fail
 	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
 	call GetBattleVar
 	and a
