@@ -87,7 +87,6 @@ ScriptCommandTable:
 	dw Script_setval                     ; 15
 	dw Script_addval                     ; 16
 	dw Script_random                     ; 17
-	dw Script_event_0x18                 ; 18 (was checkver)
 	dw Script_readmem                    ; 19
 	dw Script_writemem                   ; 1a
 	dw Script_loadmem                    ; 1b
@@ -152,7 +151,6 @@ ScriptCommandTable:
 	dw Script_closepokepic               ; 57
 	dw Script__2dmenu                    ; 58
 	dw Script_verticalmenu               ; 59
-	dw Script_event_0x5a                 ; 5a (was loadpikachudata)
 	dw Script_randomwildmon              ; 5b
 	dw Script_loadtemptrainer            ; 5c
 	dw Script_loadwildmon                ; 5d
@@ -245,12 +243,6 @@ CheckScript:
 StopScript:
 	ld hl, wScriptFlags
 	res SCRIPT_RUNNING, [hl]
-	ret
-
-Script_event_0x18:
-; script command 0x18
-Script_event_0x5a:
-; script command 0x5a
 	ret
 
 Script_callasm:

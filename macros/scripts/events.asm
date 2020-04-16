@@ -149,11 +149,6 @@ random: MACRO
 	db \1 ; input
 ENDM
 
-	enum event_0x18_command ; $18
-event_0x18: MACRO
-	db event_0x18_command
-ENDM
-
 	enum readmem_command ; $19
 readmem: MACRO
 	db readmem_command
@@ -566,11 +561,6 @@ ENDM
 	enum verticalmenu_command ; $59
 verticalmenu: MACRO
 	db verticalmenu_command
-ENDM
-
-	enum loadpikachudata_command ; $5a
-loadpikachudata: MACRO
-	db loadpikachudata_command
 ENDM
 
 	enum randomwildmon_command ; $5b
