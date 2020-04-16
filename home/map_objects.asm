@@ -115,88 +115,17 @@ CheckGrassTile::
 	ld d, a
 	and $f0
 	cp HI_NYBBLE_TALL_GRASS
-	jr z, .grass
+	jr z, .grass_or_water
 	cp HI_NYBBLE_WATER
-	jr z, .water
+	jr z, .grass_or_water
 	scf
 	ret
 
-.grass
+.grass_or_water
 	ld a, d
 	and LO_NYBBLE_GRASS
 	ret z
 	scf
-	ret
-; For some reason, the above code is duplicated down here.
-.water
-	ld a, d
-	and LO_NYBBLE_GRASS
-	ret z
-	scf
-	ret
-
-CheckSuperTallGrassTile::
-	cp COLL_LONG_GRASS
-	ret z
-	cp COLL_LONG_GRASS_1C
-	ret
-
-CheckCutTreeTile::
-	cp COLL_CUT_TREE
-	ret z
-	cp COLL_CUT_TREE_1A
-	ret
-
-CheckHeadbuttTreeTile::
-	cp COLL_HEADBUTT_TREE
-	ret z
-	cp COLL_HEADBUTT_TREE_1D
-	ret
-
-CheckCounterTile::
-	cp COLL_COUNTER
-	ret z
-	cp COLL_COUNTER_98
-	ret
-
-CheckPitTile::
-	cp COLL_PIT
-	ret z
-	cp COLL_PIT_68
-	ret
-
-CheckIceTile::
-	cp COLL_ICE
-	ret z
-	cp COLL_ICE_2B
-	ret z
-	scf
-	ret
-
-CheckWhirlpoolTile::
-	nop
-	cp COLL_WHIRLPOOL
-	ret z
-	cp COLL_WHIRLPOOL_2C
-	ret z
-	scf
-	ret
-
-CheckWaterfallTile::
-	cp COLL_WATERFALL
-	ret z
-	cp COLL_CURRENT_DOWN
-	ret
-
-CheckStandingOnEntrance::
-	ld a, [wPlayerStandingTile]
-	cp COLL_DOOR
-	ret z
-	cp COLL_DOOR_79
-	ret z
-	cp COLL_STAIRCASE
-	ret z
-	cp COLL_CAVE
 	ret
 
 GetMapObject::

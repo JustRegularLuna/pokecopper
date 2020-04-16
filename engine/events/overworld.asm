@@ -653,7 +653,7 @@ CheckMapCanWaterfall:
 	cp FACE_UP
 	jr nz, .failed
 	ld a, [wTileUp]
-	call CheckWaterfallTile
+	cp COLL_WATERFALL
 	jr nz, .failed
 	xor a
 	ret
@@ -682,7 +682,7 @@ Script_UsedWaterfall:
 	xor a
 	ld [wScriptVar], a
 	ld a, [wPlayerStandingTile]
-	call CheckWaterfallTile
+	cp COLL_WATERFALL
 	ret z
 	ld a, $1
 	ld [wScriptVar], a
@@ -1116,10 +1116,8 @@ UseWhirlpoolText:
 TryWhirlpoolMenu:
 	call GetFacingTileCoord
 	ld c, a
-	push de
-	call CheckWhirlpoolTile
-	pop de
-	jr c, .failed
+	cp COLL_WHIRLPOOL
+	jr nz, .failed
 	call GetBlockLocation
 	ld c, [hl]
 	push hl
@@ -1220,7 +1218,7 @@ HeadbuttFunction:
 
 TryHeadbuttFromMenu:
 	call GetFacingTileCoord
-	call CheckHeadbuttTreeTile
+	cp COLL_HEADBUTT_TREE
 	jr nz, .no_tree
 
 	ld hl, HeadbuttFromMenuScript

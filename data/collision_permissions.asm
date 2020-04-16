@@ -1,14 +1,14 @@
 TileCollisionTable::
 ; entries correspond to COLL_* constants
 	db LAND_TILE         ; COLL_FLOOR
-	db LAND_TILE         ; COLL_01
+	db LAND_TILE         ; 01
 	db LAND_TILE         ; 02
-	db LAND_TILE         ; COLL_03
-	db LAND_TILE         ; COLL_04
+	db LAND_TILE         ; 03
+	db LAND_TILE         ; 04
 	db LAND_TILE         ; 05
 	db LAND_TILE         ; 06
 	db WALL_TILE         ; COLL_WALL
-	db LAND_TILE         ; COLL_CUT_08
+	db LAND_TILE         ; 08
 	db LAND_TILE         ; 09
 	db LAND_TILE         ; 0a
 	db LAND_TILE         ; 0b
@@ -16,7 +16,7 @@ TileCollisionTable::
 	db LAND_TILE         ; 0d
 	db LAND_TILE         ; 0e
 	db WALL_TILE         ; 0f
-	db LAND_TILE         ; COLL_TALL_GRASS_10
+	db LAND_TILE         ; 10
 	db LAND_TILE         ; 11
 	db WALL_TILE | TALK  ; COLL_CUT_TREE
 	db LAND_TILE         ; 13
@@ -26,25 +26,25 @@ TileCollisionTable::
 	db LAND_TILE         ; 17
 	db LAND_TILE         ; COLL_TALL_GRASS
 	db LAND_TILE         ; 19
-	db WALL_TILE | TALK  ; COLL_CUT_TREE_1A
+	db WALL_TILE | TALK  ; 1a
 	db LAND_TILE         ; 1b
-	db LAND_TILE         ; COLL_LONG_GRASS_1C
-	db WALL_TILE | TALK  ; COLL_HEADBUTT_TREE_1D
+	db LAND_TILE         ; 1c
+	db WALL_TILE | TALK  ; 1d
 	db LAND_TILE         ; 1e
 	db LAND_TILE         ; 1f
 	db WATER_TILE        ; 20
-	db WATER_TILE        ; COLL_WATER_21
+	db WATER_TILE        ; 21
 	db WATER_TILE | TALK ; 22
 	db LAND_TILE         ; COLL_ICE
 	db WATER_TILE | TALK ; COLL_WHIRLPOOL
 	db WATER_TILE        ; 25
 	db WATER_TILE        ; 26
 	db WALL_TILE         ; COLL_BUOY
-	db WATER_TILE        ; COLL_CUT_28
+	db WATER_TILE        ; 28
 	db WATER_TILE        ; COLL_WATER
 	db WATER_TILE | TALK ; 2a
-	db LAND_TILE         ; COLL_ICE_2B
-	db WATER_TILE | TALK ; COLL_WHIRLPOOL_2C
+	db LAND_TILE         ; 2b
+	db WATER_TILE | TALK ; 2c
 	db WATER_TILE        ; 2d
 	db WATER_TILE        ; 2e
 	db WALL_TILE         ; 2f
@@ -69,44 +69,44 @@ TileCollisionTable::
 	db LAND_TILE         ; COLL_WALK_LEFT
 	db LAND_TILE         ; COLL_WALK_UP
 	db LAND_TILE         ; COLL_WALK_DOWN
-	db LAND_TILE         ; COLL_BRAKE_45
-	db LAND_TILE         ; COLL_BRAKE_46
-	db LAND_TILE         ; COLL_BRAKE_47
-	db LAND_TILE         ; COLL_GRASS_48
-	db LAND_TILE         ; COLL_GRASS_49
-	db LAND_TILE         ; COLL_GRASS_4A
-	db LAND_TILE         ; COLL_GRASS_4B
-	db LAND_TILE         ; COLL_GRASS_4C
+	db LAND_TILE         ; 45
+	db LAND_TILE         ; 46
+	db LAND_TILE         ; 47
+	db LAND_TILE         ; 48
+	db LAND_TILE         ; 49
+	db LAND_TILE         ; 4a
+	db LAND_TILE         ; 4b
+	db LAND_TILE         ; 4c
 	db LAND_TILE         ; 4d
 	db LAND_TILE         ; 4e
 	db LAND_TILE         ; 4f
-	db LAND_TILE         ; COLL_WALK_RIGHT_ALT
-	db LAND_TILE         ; COLL_WALK_LEFT_ALT
-	db LAND_TILE         ; COLL_WALK_UP_ALT
-	db LAND_TILE         ; COLL_WALK_DOWN_ALT
-	db LAND_TILE         ; COLL_BRAKE_ALT
-	db LAND_TILE         ; COLL_BRAKE_55
-	db LAND_TILE         ; COLL_BRAKE_56
-	db LAND_TILE         ; COLL_BRAKE_57
+	db LAND_TILE         ; 50
+	db LAND_TILE         ; 51
+	db LAND_TILE         ; 52
+	db LAND_TILE         ; 53
+	db LAND_TILE         ; 54
+	db LAND_TILE         ; 55
+	db LAND_TILE         ; 56
+	db LAND_TILE         ; 57
 	db LAND_TILE         ; 58
 	db LAND_TILE         ; 59
 	db LAND_TILE         ; 5a
-	db LAND_TILE         ; COLL_5B
+	db LAND_TILE         ; 5b
 	db LAND_TILE         ; 5c
 	db LAND_TILE         ; 5d
 	db LAND_TILE         ; 5e
 	db LAND_TILE         ; 5f
 	db LAND_TILE         ; COLL_PIT
-	db LAND_TILE         ; COLL_VIRTUAL_BOY
-	db WALL_TILE         ; 62
+	db LAND_TILE         ; 61
+	db LAND_TILE         ; 62
 	db LAND_TILE         ; 63
-	db LAND_TILE         ; COLL_64
-	db LAND_TILE         ; COLL_65
+	db LAND_TILE         ; 64
+	db LAND_TILE         ; 65
 	db LAND_TILE         ; 66
 	db LAND_TILE         ; 67
-	db LAND_TILE         ; COLL_PIT_68
+	db LAND_TILE         ; 68
 	db LAND_TILE         ; 69
-	db WALL_TILE         ; 6a
+	db LAND_TILE         ; 6a
 	db LAND_TILE         ; 6b
 	db LAND_TILE         ; 6c
 	db LAND_TILE         ; 6d
@@ -115,35 +115,35 @@ TileCollisionTable::
 	db LAND_TILE         ; COLL_WARP_CARPET_DOWN
 	db LAND_TILE         ; COLL_DOOR
 	db LAND_TILE         ; COLL_LADDER
-	db LAND_TILE         ; COLL_STAIRCASE_73
-	db LAND_TILE         ; COLL_CAVE_74
-	db LAND_TILE         ; COLL_DOOR_75
+	db LAND_TILE         ; 73
+	db LAND_TILE         ; 74
+	db LAND_TILE         ; 75
 	db LAND_TILE         ; COLL_WARP_CARPET_LEFT
-	db LAND_TILE         ; COLL_WARP_77
+	db LAND_TILE         ; 77
 	db LAND_TILE         ; COLL_WARP_CARPET_UP
-	db LAND_TILE         ; COLL_DOOR_79
+	db LAND_TILE         ; 79
 	db LAND_TILE         ; COLL_STAIRCASE
 	db LAND_TILE         ; COLL_CAVE
 	db LAND_TILE         ; COLL_WARP_PANEL
-	db LAND_TILE         ; COLL_DOOR_7D
+	db LAND_TILE         ; 7d
 	db LAND_TILE         ; COLL_WARP_CARPET_RIGHT
-	db LAND_TILE         ; COLL_WARP_7F
+	db LAND_TILE         ; 7f
 	db WALL_TILE         ; 80
 	db WALL_TILE         ; 81
 	db WALL_TILE         ; 82
 	db WALL_TILE         ; 83
 	db WALL_TILE         ; 84
-	db LAND_TILE         ; 85
-	db LAND_TILE         ; 86
-	db LAND_TILE         ; 87
+	db WALL_TILE         ; 85
+	db WALL_TILE         ; 86
+	db WALL_TILE         ; 87
 	db WALL_TILE         ; 88
 	db WALL_TILE         ; 89
 	db WALL_TILE         ; 8a
 	db WALL_TILE         ; 8b
 	db WALL_TILE         ; 8c
-	db LAND_TILE         ; 8d
-	db LAND_TILE         ; 8e
-	db LAND_TILE         ; 8f
+	db WALL_TILE         ; 8d
+	db WALL_TILE         ; 8e
+	db WALL_TILE         ; 8f
 	db WALL_TILE         ; COLL_COUNTER
 	db WALL_TILE         ; COLL_BOOKSHELF
 	db WALL_TILE         ; 92
@@ -152,11 +152,11 @@ TileCollisionTable::
 	db WALL_TILE         ; COLL_TOWN_MAP
 	db WALL_TILE         ; COLL_MART_SHELF
 	db WALL_TILE         ; COLL_TV
-	db WALL_TILE         ; COLL_COUNTER_98
+	db WALL_TILE         ; 98
 	db WALL_TILE         ; 99
 	db WALL_TILE         ; 9a
 	db WALL_TILE         ; 9b
-	db WALL_TILE         ; COLL_9C
+	db WALL_TILE         ; 9c
 	db WALL_TILE         ; COLL_WINDOW
 	db WALL_TILE         ; 9e
 	db WALL_TILE         ; COLL_INCENSE_BURNER
@@ -255,4 +255,4 @@ TileCollisionTable::
 	db LAND_TILE         ; fc
 	db LAND_TILE         ; fd
 	db LAND_TILE         ; fe
-	db WALL_TILE         ; COLL_FF
+	db WALL_TILE         ; ff

@@ -118,8 +118,8 @@ DoPlayerMovement::
 
 	ld a, [wPlayerStandingTile]
 	ld c, a
-	call CheckWhirlpoolTile
-	jr c, .not_whirlpool
+	cp COLL_WHIRLPOOL
+	jr nz, .not_whirlpool
 	ld a, PLAYERMOVEMENT_FORCE_TURN
 	scf
 	ret
@@ -130,8 +130,6 @@ DoPlayerMovement::
 	jr z, .water
 	cp HI_NYBBLE_WALK
 	jr z, .land1
-	cp HI_NYBBLE_WALK_ALT
-	jr z, .land2
 	cp HI_NYBBLE_WARPS
 	jr z, .warps
 	jr .no_walk
@@ -172,38 +170,10 @@ DoPlayerMovement::
 	db LEFT     ; COLL_WALK_LEFT
 	db UP       ; COLL_WALK_UP
 	db DOWN     ; COLL_WALK_DOWN
-	db STANDING ; COLL_BRAKE_45
-	db STANDING ; COLL_BRAKE_46
-	db STANDING ; COLL_BRAKE_47
-
-.land2
-	ld a, c
-	and 7
-	ld c, a
-	ld b, 0
-	ld hl, .land2_table
-	add hl, bc
-	ld a, [hl]
-	cp STANDING
-	jr z, .no_walk
-	ld [wWalkingDirection], a
-	jr .continue_walk
-
-.land2_table
-	db RIGHT    ; COLL_WALK_RIGHT_ALT
-	db LEFT     ; COLL_WALK_LEFT_ALT
-	db UP       ; COLL_WALK_UP_ALT
-	db DOWN     ; COLL_WALK_DOWN_ALT
-	db STANDING ; COLL_BRAKE_ALT
-	db STANDING ; COLL_BRAKE_55
-	db STANDING ; COLL_BRAKE_56
-	db STANDING ; COLL_BRAKE_57
 
 .warps
 	ld a, c
 	cp COLL_DOOR
-	jr z, .down
-	cp COLL_DOOR_79
 	jr z, .down
 	cp COLL_STAIRCASE
 	jr z, .down
@@ -273,8 +243,8 @@ DoPlayerMovement::
 	jr z, .bump
 
 	ld a, [wPlayerStandingTile]
-	call CheckIceTile
-	jr nc, .ice
+	cp COLL_ICE
+	jr z, .ice
 
 ; Downhill riding is slower when not moving down.
 	call .BikeCheck
@@ -780,8 +750,8 @@ CheckStandingOnIce::
 	cp $f0
 	jr z, .not_ice
 	ld a, [wPlayerStandingTile]
-	call CheckIceTile
-	jr nc, .yep
+	cp COLL_ICE
+	jr z, .yep
 	ld a, [wPlayerState]
 	cp PLAYER_SKATE
 	jr nz, .not_ice

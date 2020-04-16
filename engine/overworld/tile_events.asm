@@ -3,8 +3,6 @@ CheckWarpCollision::
 	ld a, [wPlayerStandingTile]
 	cp COLL_PIT
 	jr z, .warp
-	cp COLL_PIT_68
-	jr z, .warp
 	and $f0
 	cp HI_NYBBLE_WARPS
 	jr z, .warp
@@ -43,14 +41,9 @@ CheckWarpFacingDown:
 
 .blocks
 	db COLL_DOOR
-	db COLL_DOOR_79
 	db COLL_STAIRCASE
-	db COLL_STAIRCASE_73
 	db COLL_CAVE
-	db COLL_CAVE_74
 	db COLL_WARP_PANEL
-	db COLL_DOOR_75
-	db COLL_DOOR_7D
 	db -1
 
 CheckGrassCollision::
@@ -61,16 +54,9 @@ CheckGrassCollision::
 	ret
 
 .blocks
-	db COLL_CUT_08
 	db COLL_TALL_GRASS
 	db COLL_LONG_GRASS
-	db COLL_CUT_28
 	db COLL_WATER
-	db COLL_GRASS_48
-	db COLL_GRASS_49
-	db COLL_GRASS_4A
-	db COLL_GRASS_4B
-	db COLL_GRASS_4C
 	db -1
 
 CheckCutCollision:
@@ -82,11 +68,8 @@ CheckCutCollision:
 
 .blocks
 	db COLL_CUT_TREE
-	db COLL_CUT_TREE_1A
-	db COLL_TALL_GRASS_10
 	db COLL_TALL_GRASS
 	db COLL_LONG_GRASS
-	db COLL_LONG_GRASS_1C
 	db -1
 
 GetWarpSFX::

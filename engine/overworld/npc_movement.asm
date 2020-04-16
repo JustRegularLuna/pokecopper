@@ -230,7 +230,7 @@ CheckFacingObject::
 	call GetFacingTileCoord
 
 ; Double the distance for counter tiles.
-	call CheckCounterTile
+	cp COLL_COUNTER
 	jr nz, .asm_6ff1
 
 	ld a, [wPlayerStandingMapX]

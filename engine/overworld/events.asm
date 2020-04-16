@@ -308,7 +308,7 @@ CheckTileEvent:
 
 .warp_tile
 	ld a, [wPlayerStandingTile]
-	call CheckPitTile
+	cp COLL_PIT
 	jr nz, .not_pit
 	ld a, PLAYEREVENT_FALL
 	scf
@@ -1008,28 +1008,28 @@ TryTileCollisionEvent::
 	farcall CheckFacingTileForStdScript
 	jr c, .done
 
-	call CheckCutTreeTile
+	cp COLL_CUT_TREE
 	jr nz, .whirlpool
 	farcall TryCutOW
 	jr .done
 
 .whirlpool
 	ld a, [wFacingTileID]
-	call CheckWhirlpoolTile
+	cp COLL_WHIRLPOOL
 	jr nz, .waterfall
 	farcall TryWhirlpoolOW
 	jr .done
 
 .waterfall
 	ld a, [wFacingTileID]
-	call CheckWaterfallTile
+	cp COLL_WATERFALL
 	jr nz, .headbutt
 	farcall TryWaterfallOW
 	jr .done
 
 .headbutt
 	ld a, [wFacingTileID]
-	call CheckHeadbuttTreeTile
+	cp COLL_HEADBUTT_TREE
 	jr nz, .surf
 	farcall TryHeadbuttOW
 	jr c, .done
@@ -1109,7 +1109,7 @@ CanUseSweetScent::
 
 .ice_check
 	ld a, [wPlayerStandingTile]
-	call CheckIceTile
+	cp COLL_ICE
 	jr z, .no
 	scf
 	ret
@@ -1180,7 +1180,7 @@ ChooseWildEncounter_BugContest::
 
 TryWildEncounter_BugContest:
 	ld a, [wPlayerStandingTile]
-	call CheckSuperTallGrassTile
+	cp COLL_LONG_GRASS
 	ld b, 40 percent
 	jr z, .ok
 	ld b, 20 percent
@@ -1467,7 +1467,7 @@ CmdQueue_StoneTable:
 	ld hl, OBJECT_NEXT_TILE
 	add hl, de
 	ld a, [hl]
-	call CheckPitTile
+	cp COLL_PIT
 	jr nz, .next
 
 	ld hl, OBJECT_DIRECTION_WALKING
