@@ -143,13 +143,6 @@ MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_STANDING_RIGHT       ; 09
 	const SPRITEMOVEDATA_SPINRANDOM_FAST      ; 0a
 	const SPRITEMOVEDATA_PLAYER               ; 0b
-	const SPRITEMOVEDATA_0C                   ; 0c
-	const SPRITEMOVEDATA_0D                   ; 0d
-	const SPRITEMOVEDATA_0E                   ; 0e
-	const SPRITEMOVEDATA_0F                   ; 0f
-	const SPRITEMOVEDATA_10                   ; 10
-	const SPRITEMOVEDATA_11                   ; 11
-	const SPRITEMOVEDATA_12                   ; 12
 	const SPRITEMOVEDATA_FOLLOWING            ; 13
 	const SPRITEMOVEDATA_SCRIPTED             ; 14
 	const SPRITEMOVEDATA_BIGDOLLSYM           ; 15
@@ -180,13 +173,6 @@ NUM_SPRITEMOVEDATA EQU const_value
 	const SPRITEMOVEFN_FAST_RANDOM_SPIN      ; 05
 	const SPRITEMOVEFN_STANDING              ; 06
 	const SPRITEMOVEFN_OBEY_DPAD             ; 07
-	const SPRITEMOVEFN_08                    ; 08
-	const SPRITEMOVEFN_09                    ; 09
-	const SPRITEMOVEFN_0A                    ; 0a
-	const SPRITEMOVEFN_0B                    ; 0b
-	const SPRITEMOVEFN_0C                    ; 0c
-	const SPRITEMOVEFN_0D                    ; 0d
-	const SPRITEMOVEFN_0E                    ; 0e
 	const SPRITEMOVEFN_FOLLOW                ; 0f
 	const SPRITEMOVEFN_SCRIPTED              ; 10
 	const SPRITEMOVEFN_STRENGTH              ; 11
@@ -223,11 +209,7 @@ NUM_SPRITEMOVEDATA EQU const_value
 	const STEP_TYPE_ROCK_SMASH      ; 11
 	const STEP_TYPE_RETURN_DIG      ; 12
 	const STEP_TYPE_TRACKING_OBJECT ; 13
-	const STEP_TYPE_14              ; 14
 	const STEP_TYPE_15              ; 15
-	const STEP_TYPE_16              ; 16
-	const STEP_TYPE_17              ; 17
-	const STEP_TYPE_18              ; 18
 	const STEP_TYPE_SKYFALL_TOP     ; 19
 
 ; ObjectActionPairPointers indexes (see engine/overworld/map_object_action.asm)

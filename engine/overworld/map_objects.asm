@@ -480,13 +480,6 @@ MapObjectMovementPattern:
 	dw .RandomSpin2 ; 05
 	dw .Standing ; 06
 	dw .ObeyDPad ; 07
-	dw .Movement08 ; 08
-	dw .Movement09 ; 09
-	dw .Movement0a ; 0a
-	dw .Movement0b ; 0b
-	dw .Movement0c ; 0c
-	dw .Movement0d ; 0d
-	dw .Movement0e ; 0e
 	dw .Follow ; 0f
 	dw .Script ; 10
 	dw .Strength ; 11
@@ -562,30 +555,6 @@ MapObjectMovementPattern:
 .ObeyDPad:
 	ld hl, Function5000
 	jp HandleMovementData
-
-.Movement08:
-	ld hl, Function5015
-	jp HandleMovementData
-
-.Movement09:
-	ld hl, Function5026
-	jp HandleMovementData
-
-.Movement0a:
-	jp _GetMovementObject
-
-.Movement0b:
-	jp _GetMovementObject
-
-.Movement0c:
-	jp _GetMovementObject
-
-.Movement0d:
-	ld hl, Function5000
-	jp HandleMovementData
-
-.Movement0e:
-	jp _GetMovementObject
 
 .Follow:
 	ld hl, GetFollowerNextMovementByte
@@ -1041,11 +1010,7 @@ StepTypesJumptable:
 	dw RockSmashStep ; 11
 	dw ReturnDigStep ; 12
 	dw StepTypeTrackingObject ; 13
-	dw StepType14 ; 14
 	dw StepType15 ; 15
-	dw StepType16 ; 16
-	dw StepType17 ; 17
-	dw StepType18 ; 18
 	dw SkyfallTop ; 19
 
 WaitStep_InPlace:
@@ -1436,16 +1401,6 @@ StepType03:
 	ld [hl], STEP_TYPE_SLEEP
 	ret
 
-StepType18:
-	ld hl, OBJECT_DIRECTION_WALKING
-	add hl, bc
-	ld [hl], STANDING
-	ld hl, OBJECT_STEP_DURATION
-	add hl, bc
-	dec [hl]
-	ret nz
-	jp DeleteMapObject
-
 StepTypeBump:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
@@ -1638,7 +1593,6 @@ StepTypeTrackingObject:
 .nope
 	jp DeleteMapObject
 
-StepType14:
 StepType15:
 	call Field1cAnonymousJumptable
 ; anonymous dw
@@ -1686,16 +1640,6 @@ StepType15:
 	cpl
 	inc a
 	ret
-
-StepType16:
-	call Field1cAnonymousJumptable ; ????
-StepType17:
-	call Field1cAnonymousJumptable
-; anonymous dw
-	dw .null
-	dw .null
-	dw .null
-.null
 
 SkyfallTop:
 	call Field1cAnonymousJumptable
@@ -1766,34 +1710,6 @@ Function5000: ; unscripted?
 GetMovementByte:
 	ld hl, wMovementDataBank
 	call _GetMovementByte
-	ret
-
-Function5015:
-	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
-	add hl, bc
-	ld e, [hl]
-	inc [hl]
-	ld d, 0
-	ld hl, wc2e2
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	add hl, de
-	ld a, [hl]
-	ret
-
-Function5026:
-	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
-	add hl, bc
-	ld e, [hl]
-	inc [hl]
-	ld d, 0
-	ld hl, wc2e6
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	add hl, de
-	ld a, [hl]
 	ret
 
 _GetMovementObject:
