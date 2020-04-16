@@ -834,14 +834,5 @@ INCLUDE "gfx/stats/party_menu_bg.pal"
 PartyMenuOBPals:
 INCLUDE "gfx/stats/party_menu_ob.pal"
 
-UnusedGSTitleBGPals:
-INCLUDE "gfx/title/unused_gs_bg.pal"
-
-UnusedGSTitleOBPals:
-INCLUDE "gfx/title/unused_gs_fg.pal"
-
-BetaPokerPals:
-INCLUDE "gfx/beta_poker/beta_poker.pal"
-
 SlotMachinePals:
 INCLUDE "gfx/slots/slots.pal"

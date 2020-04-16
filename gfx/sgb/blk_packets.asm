@@ -18,11 +18,6 @@ BlkPacket_9a86:
 	attr_blk_data %011, 0,0,0, 00,00, 19,17
 	ds 8
 
-BlkPacket_GSIntroJigglypuffPikachu:
-	attr_blk 1
-	attr_blk_data %111, 1,1,0, 00,10, 19,13
-	ds 8
-
 BlkPacket_Battle:
 	attr_blk 5
 	attr_blk_data %111, 2,2,0, 00,12, 19,17 ; text box: pal 2
@@ -58,18 +53,6 @@ BlkPacket_SlotMachine:
 	attr_blk_data %010, 3,3,0, 00,06, 19,07 ; "1" row: pal 3
 	attr_blk_data %011, 0,0,0, 04,04, 15,09 ; slot reels: pal 0
 	attr_blk_data %011, 0,0,0, 00,12, 19,17 ; text box: pal 0
-
-BlkPacket_GSTitleScreen:
-	attr_blk 3
-	attr_blk_data %111, 0,0,2, 00,00, 19,04
-	attr_blk_data %011, 3,3,0, 00,06, 19,17
-	attr_blk_data %011, 1,1,0, 15,01, 18,04
-	ds 12
-
-BlkPacket_BetaTitleScreen:
-	attr_blk 1
-	attr_blk_data %111, 0,0,1, 00,00, 19,05 ; logo
-	ds 8
 
 BlkPacket_MagnetTrain:
 	attr_blk 2
