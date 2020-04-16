@@ -452,5 +452,3 @@ INCLUDE "engine/pokegear/townmap_convertlinebreakcharacters.asm"
 
 PokegearGFX:
 INCBIN "gfx/pokegear/pokegear.2bpp.lz"
-
-INCLUDE "engine/pokemon/european_mail.asm"

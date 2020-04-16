@@ -12,25 +12,7 @@ ReadAnyMail:
 	call ClearTilemap
 	call DisableLCD
 	call LoadFontsExtra
-	pop de
-	push de
-	ld a, BANK(sPartyMail)
-	call GetSRAMBank
-	farcall IsMailEuropean
-	call CloseSRAM
-	ld a, c
-	ld de, StandardEnglishFont
-	or a
-	jr z, .got_font
-	ld de, FrenchGermanFont
-	sub $3
-	jr c, .got_font
-	ld de, SpanishItalianFont
-
-.got_font
-	ld hl, vTiles1
-	lb bc, BANK(StandardEnglishFont), $80
-	call Get1bpp
+	call LoadStandardFont
 	pop de
 	call .LoadGFX
 	call EnableLCD
@@ -50,7 +32,7 @@ ReadAnyMail:
 .loop
 	call GetJoypad
 	ldh a, [hJoyPressed]
-	and A_BUTTON | B_BUTTON | START
+	and A_BUTTON | B_BUTTON
 	jr z, .loop
 	ret
 

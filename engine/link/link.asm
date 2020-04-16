@@ -360,23 +360,6 @@ Gen2ToGen2LinkComms:
 	ld de, wc9f4
 .fix_mail_loop
 	push bc
-	push de
-	farcall IsMailEuropean
-	ld a, c
-	or a
-	jr z, .next
-	sub $3
-	jr nc, .skip
-	farcall ConvertEnglishMailToFrenchGerman
-	jr .next
-
-.skip
-	cp $2
-	jr nc, .next
-	farcall ConvertEnglishMailToSpanishItalian
-
-.next
-	pop de
 	ld hl, MAIL_STRUCT_LENGTH
 	add hl, de
 	ld d, h
@@ -858,25 +841,6 @@ Link_PrepPartyData_Gen2:
 .loop4
 	push bc
 	push hl
-	push de
-	push hl
-	farcall IsMailEuropean
-	pop de
-	ld a, c
-	or a
-	jr z, .next
-	sub $3
-	jr nc, .italian_spanish
-	farcall ConvertFrenchGermanMailToEnglish
-	jr .next
-
-.italian_spanish
-	cp $2
-	jr nc, .next
-	farcall ConvertSpanishItalianMailToEnglish
-
-.next
-	pop de
 	ld hl, MAIL_STRUCT_LENGTH
 	add hl, de
 	ld d, h
