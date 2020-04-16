@@ -208,16 +208,7 @@ NamingScreen:
 	ld [hli], a
 	ld [hl], a
 	pop de
-	ld b, SPRITE_ANIM_INDEX_RED_WALK
-	ld a, d
-	cp HIGH(KrisSpriteGFX)
-	jr nz, .not_kris
-	ld a, e
-	cp LOW(KrisSpriteGFX)
-	jr nz, .not_kris
-	ld b, SPRITE_ANIM_INDEX_BLUE_WALK
-.not_kris
-	ld a, b
+	ld a, SPRITE_ANIM_INDEX_RED_WALK
 	depixel 4, 4, 4, 0
 	call InitSpriteAnimStruct
 	ret

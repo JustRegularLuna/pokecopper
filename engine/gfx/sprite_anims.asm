@@ -17,11 +17,8 @@ DoAnimFrame:
 	dw .PartyMon
 	dw .PartyMonSwitch
 	dw .PartyMonSelected
-	dw .GSTitleTrail
 	dw .NamingScreenCursor
 	dw .GameFreakLogo
-	dw .GSIntroStar
-	dw .GSIntroSparkle
 	dw .SlotsGolem
 	dw .SlotsChansey
 	dw .SlotsChanseyEgg
@@ -37,13 +34,7 @@ DoAnimFrame:
 	dw .FlyFrom
 	dw .FlyLeaf
 	dw .FlyTo
-	dw .GSIntroHoOh
-	dw .IntroSuicune
-	dw .IntroPichuWooper
 	dw .Celebi
-	dw .IntroUnown
-	dw .IntroUnownF
-	dw .IntroSuicuneAway
 
 .Null:
 	ret
@@ -126,88 +117,6 @@ DoAnimFrame:
 	ld [hl], 8 * 3
 	ret
 
-.GSTitleTrail
-	call .AnonymousJumptable
-	jp hl
-
-; Anonymous dw (see .AnonymousJumptable)
-	dw .four_zero
-	dw .four_one
-
-.four_zero
-	call .IncrementJumptableIndex
-
-	ld hl, SPRITEANIMSTRUCT_INDEX
-	add hl, bc
-	ld a, [hl]
-
-	ld hl, SPRITEANIMSTRUCT_0D
-	add hl, bc
-	and $3
-	ld [hl], a
-	inc [hl]
-	swap a
-
-	ld hl, SPRITEANIMSTRUCT_0C
-	add hl, bc
-	ld [hl], a
-
-.four_one
-	ld hl, SPRITEANIMSTRUCT_XCOORD
-	add hl, bc
-	ld a, [hl]
-	cp $a4
-	jr nc, .asm_8d356
-
-	ld hl, SPRITEANIMSTRUCT_0D
-	add hl, bc
-	add $4
-
-	ld hl, SPRITEANIMSTRUCT_XCOORD
-	add hl, bc
-	ld [hl], a
-
-	ld hl, SPRITEANIMSTRUCT_YCOORD
-	add hl, bc
-	inc [hl]
-
-	ld hl, SPRITEANIMSTRUCT_0D
-	add hl, bc
-	ld a, [hl]
-	sla a
-	sla a
-	ld d, $2
-
-	ld hl, SPRITEANIMSTRUCT_0C
-	add hl, bc
-	ld a, [hl]
-	add $3
-	ld [hl], a
-	call .Sprites_Sine
-
-	ld hl, SPRITEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld [hl], a
-	ret
-
-.asm_8d356
-	call DeinitializeSprite
-	ret
-
-.GSIntroHoOh
-	ld hl, SPRITEANIMSTRUCT_0C
-	add hl, bc
-	ld a, [hl]
-	inc a
-	ld [hl], a
-	ld d, $2
-	call .Sprites_Sine
-
-	ld hl, SPRITEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld [hl], a
-	ret
-
 .NamingScreenCursor
 	callfar NamingScreen_AnimateCursor
 	ret
@@ -218,133 +127,6 @@ DoAnimFrame:
 
 .GameFreakLogo:
 	callfar GameFreakLogoJumper
-	ret
-
-.GSIntroStar
-	ld hl, SPRITEANIMSTRUCT_0C
-	add hl, bc
-	ld a, [hl]
-	and a
-	jr z, .asm_8d3ba
-	dec [hl]
-	dec [hl]
-	ld d, a
-	and $1f
-	jr nz, .asm_8d395
-
-	ld hl, SPRITEANIMSTRUCT_0D
-	add hl, bc
-	dec [hl]
-.asm_8d395
-	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
-	add hl, bc
-	ld a, [hl]
-	push af
-	push de
-	call .Sprites_Sine
-
-	ld hl, SPRITEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld [hl], a
-	pop de
-	pop af
-	call .Sprites_Cosine
-
-	ld hl, SPRITEANIMSTRUCT_XOFFSET
-	add hl, bc
-	ld [hl], a
-
-	ld hl, SPRITEANIMSTRUCT_0D
-	add hl, bc
-	ld a, [hl]
-
-	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
-	add hl, bc
-	add [hl]
-	ld [hl], a
-	ret
-
-.asm_8d3ba
-	ld a, $1
-	ld [wcf64], a
-	call DeinitializeSprite
-	ret
-
-.GSIntroSparkle
-	ld hl, SPRITEANIMSTRUCT_0C
-	add hl, bc
-	ld a, [hli]
-	or [hl]
-	jr z, .asm_8d41e
-
-	ld hl, SPRITEANIMSTRUCT_0F
-	add hl, bc
-	ld d, [hl]
-
-	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
-	add hl, bc
-	ld a, [hl]
-	push af
-	push de
-	call .Sprites_Sine
-
-	ld hl, SPRITEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld [hl], a
-	pop de
-	pop af
-	call .Sprites_Cosine
-
-	ld hl, SPRITEANIMSTRUCT_XOFFSET
-	add hl, bc
-	ld [hl], a
-
-	ld hl, SPRITEANIMSTRUCT_0C
-	add hl, bc
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-
-	ld hl, SPRITEANIMSTRUCT_0E
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	add hl, de
-	ld e, l
-	ld d, h
-
-	ld hl, SPRITEANIMSTRUCT_0E
-	add hl, bc
-	ld [hl], e
-	inc hl
-	ld [hl], d
-
-	ld hl, SPRITEANIMSTRUCT_0C
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, -$10
-	add hl, de
-	ld e, l
-	ld d, h
-
-	ld hl, SPRITEANIMSTRUCT_0C
-	add hl, bc
-	ld [hl], e
-	inc hl
-	ld [hl], d
-
-	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
-	add hl, bc
-	ld a, [hl]
-	xor $20
-	ld [hl], a
-	ret
-
-.asm_8d41e
-	call DeinitializeSprite
 	ret
 
 .SlotsGolem:
@@ -727,95 +509,6 @@ DoAnimFrame:
 
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
-	ld [hl], a
-	ret
-
-.IntroSuicune
-	ld a, [wIntroSceneTimer]
-	and a
-	jr nz, .asm_8d645
-	ret
-.asm_8d645
-	ld hl, SPRITEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld [hl], $0
-
-	ld hl, SPRITEANIMSTRUCT_0D
-	add hl, bc
-	ld a, [hl]
-	add $2
-	ld [hl], a
-	xor $ff
-	inc a
-	ld d, $20
-	call .Sprites_Sine
-
-	ld hl, SPRITEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld [hl], a
-	ld a, SPRITE_ANIM_FRAMESET_INTRO_SUICUNE_2
-	call _ReinitSpriteAnimFrame
-	ret
-
-.IntroPichuWooper
-	ld hl, SPRITEANIMSTRUCT_0C
-	add hl, bc
-	ld a, [hl]
-	cp $14
-	jr nc, .asm_8d67f
-	add $2
-	ld [hl], a
-	xor $ff
-	inc a
-	ld d, $20
-	call .Sprites_Sine
-
-	ld hl, SPRITEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld [hl], a
-.asm_8d67f
-	ret
-
-.IntroUnown
-	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
-	add hl, bc
-	ld d, [hl]
-	inc [hl]
-	inc [hl]
-	inc [hl]
-
-	ld hl, SPRITEANIMSTRUCT_0C
-	add hl, bc
-	ld a, [hl]
-	push af
-	push de
-	call .Sprites_Sine
-
-	ld hl, SPRITEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld [hl], a
-	pop de
-	pop af
-	call .Sprites_Cosine
-
-	ld hl, SPRITEANIMSTRUCT_XOFFSET
-	add hl, bc
-	ld [hl], a
-	ret
-
-.IntroUnownF
-	ld a, [wcf64]
-	cp $40
-	ret nz
-	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_F_2
-	call _ReinitSpriteAnimFrame
-	ret
-
-.IntroSuicuneAway
-	ld hl, SPRITEANIMSTRUCT_YCOORD
-	add hl, bc
-	ld a, [hl]
-	add $10
 	ld [hl], a
 	ret
 

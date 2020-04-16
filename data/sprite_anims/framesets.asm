@@ -7,12 +7,9 @@ SpriteAnimFrameData:
 	dw .Frameset_PartyMonFast
 	dw .Frameset_PartyMonWithMailFast
 	dw .Frameset_PartyMonWithItemFast
-	dw .Frameset_GSTitleTrail
 	dw .Frameset_TextEntryCursor
 	dw .Frameset_TextEntryCursorBig
 	dw .Frameset_GameFreakLogo
-	dw .Frameset_GSIntroStar
-	dw .Frameset_GSIntroSparkle
 	dw .Frameset_SlotsGolem
 	dw .Frameset_SlotsChansey
 	dw .Frameset_SlotsChansey2
@@ -35,21 +32,7 @@ SpriteAnimFrameData:
 	dw .Frameset_EggHatch2
 	dw .Frameset_EggHatch3
 	dw .Frameset_EggHatch4
-	dw .Frameset_GSIntroHoOh
 	dw .Frameset_HeadbuttTree
-	dw .Frameset_BlueWalk
-	dw .Frameset_MagnetTrainBlue
-	dw .Frameset_IntroSuicune
-	dw .Frameset_IntroSuicune2
-	dw .Frameset_IntroPichu
-	dw .Frameset_IntroWooper
-	dw .Frameset_IntroUnown1
-	dw .Frameset_IntroUnown2
-	dw .Frameset_IntroUnown3
-	dw .Frameset_IntroUnown4
-	dw .Frameset_IntroUnownF2
-	dw .Frameset_IntroSuicuneAway
-	dw .Frameset_IntroUnownF
 	dw .Frameset_CelebiLeft
 	dw .Frameset_CelebiRight
 
@@ -94,25 +77,6 @@ SpriteAnimFrameData:
 	frame SPRITE_ANIM_OAMSET_RED_WALK_2,  8, OAM_X_FLIP
 	dorestart
 
-.Frameset_BlueWalk:
-	frame SPRITE_ANIM_OAMSET_BLUE_WALK_1,  8
-	frame SPRITE_ANIM_OAMSET_BLUE_WALK_2,  8
-	frame SPRITE_ANIM_OAMSET_BLUE_WALK_1,  8
-	frame SPRITE_ANIM_OAMSET_BLUE_WALK_2,  8, OAM_X_FLIP
-	dorestart
-
-.Frameset_MagnetTrainBlue:
-	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_1,  8
-	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_2,  8
-	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_1,  8
-	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_2,  8, OAM_X_FLIP
-	dorestart
-
-.Frameset_GSTitleTrail:
-	frame SPRITE_ANIM_OAMSET_GS_TITLE_TRAIL_1,  1
-	frame SPRITE_ANIM_OAMSET_GS_TITLE_TRAIL_2,  1
-	dorestart
-
 .Frameset_TextEntryCursor:
 	frame SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR,  1
 	dowait 1
@@ -140,18 +104,6 @@ SpriteAnimFrameData:
 	frame SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_10, 10
 	frame SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_11,  7
 	endanim
-
-.Frameset_GSIntroStar:
-	frame SPRITE_ANIM_OAMSET_GS_INTRO_STAR,  3
-	frame SPRITE_ANIM_OAMSET_GS_INTRO_STAR,  3, OAM_Y_FLIP
-	dorestart
-
-.Frameset_GSIntroSparkle:
-	frame SPRITE_ANIM_OAMSET_GS_INTRO_SPARKLE_1,  2
-	frame SPRITE_ANIM_OAMSET_GS_INTRO_SPARKLE_2,  2
-	frame SPRITE_ANIM_OAMSET_GS_INTRO_SPARKLE_3,  2
-	frame SPRITE_ANIM_OAMSET_GS_INTRO_SPARKLE_2,  2
-	dorestart
 
 .Frameset_SlotsGolem:
 	frame SPRITE_ANIM_OAMSET_SLOTS_GOLEM_1,  7
@@ -264,83 +216,12 @@ SpriteAnimFrameData:
 	frame SPRITE_ANIM_OAMSET_EGG_HATCH, 32, OAM_X_FLIP, OAM_Y_FLIP
 	endanim
 
-.Frameset_GSIntroHoOh:
-	frame SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_1, 10
-	frame SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_2,  9
-	frame SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_3, 10
-	frame SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_4, 10
-	frame SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_3,  9
-	frame SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_5, 10
-	dorestart
-
 .Frameset_HeadbuttTree:
 	frame SPRITE_ANIM_OAMSET_TREE_1,           2
 	frame SPRITE_ANIM_OAMSET_HEADBUTT_TREE_2,  2
 	frame SPRITE_ANIM_OAMSET_TREE_1,           2
 	frame SPRITE_ANIM_OAMSET_HEADBUTT_TREE_2,  2, OAM_X_FLIP
 	dorestart
-
-.Frameset_IntroSuicune:
-	frame SPRITE_ANIM_OAMSET_INTRO_SUICUNE_1,  3
-	frame SPRITE_ANIM_OAMSET_INTRO_SUICUNE_2,  3
-	frame SPRITE_ANIM_OAMSET_INTRO_SUICUNE_3,  3
-	frame SPRITE_ANIM_OAMSET_INTRO_SUICUNE_4,  3
-	dorestart
-
-.Frameset_IntroSuicune2:
-	frame SPRITE_ANIM_OAMSET_INTRO_SUICUNE_4,  3
-	frame SPRITE_ANIM_OAMSET_INTRO_SUICUNE_1,  7
-	endanim
-
-.Frameset_IntroPichu:
-	frame SPRITE_ANIM_OAMSET_INTRO_PICHU_1, 32
-	frame SPRITE_ANIM_OAMSET_INTRO_PICHU_2,  7
-	frame SPRITE_ANIM_OAMSET_INTRO_PICHU_3,  7
-	endanim
-
-.Frameset_IntroWooper:
-	frame SPRITE_ANIM_OAMSET_INTRO_WOOPER,  3
-	endanim
-
-.Frameset_IntroUnown1:
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_1,  3
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_2,  3
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_3,  7
-	delanim
-
-.Frameset_IntroUnown2:
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_1,  3, OAM_X_FLIP
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_2,  3, OAM_X_FLIP
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_3,  7, OAM_X_FLIP
-	delanim
-
-.Frameset_IntroUnown3:
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_1,  3, OAM_Y_FLIP
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_2,  3, OAM_Y_FLIP
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_3,  7, OAM_Y_FLIP
-	delanim
-
-.Frameset_IntroUnown4:
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_1,  3, OAM_X_FLIP, OAM_Y_FLIP
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_2,  3, OAM_X_FLIP, OAM_Y_FLIP
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_3,  7, OAM_X_FLIP, OAM_Y_FLIP
-	delanim
-
-.Frameset_IntroUnownF2:
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_F_2_1,  3
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_F_2_2,  3
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_F_2_3,  3
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_F_2_4,  7
-	frame SPRITE_ANIM_OAMSET_INTRO_UNOWN_F_2_5,  7
-	endanim
-
-.Frameset_IntroSuicuneAway:
-	frame SPRITE_ANIM_OAMSET_INTRO_SUICUNE_AWAY,  3
-	endanim
-
-.Frameset_IntroUnownF:
-	dowait 0
-	endanim
 
 .Frameset_CelebiLeft:
 	frame SPRITE_ANIM_OAMSET_CELEBI_1,  8
