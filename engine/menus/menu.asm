@@ -31,7 +31,6 @@ Get2DMenuSelection:
 	call Init2DMenuCursorPosition
 	call StaticMenuJoypad
 	call MenuClickSound
-Mobile_GetMenuSelection:
 	ld a, [wMenuDataFlags]
 	bit 1, a
 	jr z, .skip

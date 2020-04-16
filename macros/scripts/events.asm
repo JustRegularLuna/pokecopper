@@ -149,9 +149,9 @@ random: MACRO
 	db \1 ; input
 ENDM
 
-	enum checkver_command ; $18
-checkver: MACRO
-	db checkver_command
+	enum event_0x18_command ; $18
+event_0x18: MACRO
+	db event_0x18_command
 ENDM
 
 	enum readmem_command ; $19

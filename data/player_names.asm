@@ -9,7 +9,6 @@ HiroNameMenuHeader:
 	db STATICMENU_CURSOR | STATICMENU_PLACE_TITLE | STATICMENU_DISABLE_B ; flags
 	db 5 ; items
 	db "NEW NAME@"
-MalePlayerNameArray:
 	db "GOLD@"
 	db "HIRO@"
 	db "TAYLOR@"
@@ -29,7 +28,6 @@ SylviaNameMenuHeader:
 	db STATICMENU_CURSOR | STATICMENU_PLACE_TITLE | STATICMENU_DISABLE_B ; flags
 	db 5 ; items
 	db "NEW NAME@"
-FemalePlayerNameArray:
 	db "GOLD@"
 	db "SYLVIA@"
 	db "TAYLOR@"

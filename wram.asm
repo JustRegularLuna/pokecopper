@@ -671,9 +671,6 @@ wPuzzlePieces:: ds 6 * 6
 wUnownPuzzleEnd::
 
 NEXTU ; c608
-wMobileTransferData:: ds $1e0
-
-NEXTU ; c608
 
 ; This union spans 200 bytes from c608 to c6d0.
 UNION ; c608
@@ -1211,7 +1208,7 @@ wPredefTemp:: dw ; cfb5
 wPredefAddress:: dw ; cfb7
 wFarCallBCBuffer:: dw ; cfb9
 
-wcfbb:: db
+	ds 1
 
 wGameTimerPause:: ; cfbc
 ; bit 0: game timer paused
@@ -1946,7 +1943,7 @@ ENDU ; d430
 
 wBattleAction:: db ; d430
 
-wd431:: db ; mobile?
+wd431:: db ; link?
 wMapStatus:: db ; d432
 wMapEventStatus:: db ; d433
 

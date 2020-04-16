@@ -47,18 +47,18 @@ MainMenu:
 	dw MainMenu_NewGame
 	dw MainMenu_Options
 
-CONTINUE       EQU 0
-NEW_GAME       EQU 1
-OPTION         EQU 2
+CONTINUE EQU 0
+NEW_GAME EQU 1
+OPTION   EQU 2
 
 MainMenuItems:
-NewGameMenu:
+.NewGameMenu:
 	db 2
 	db NEW_GAME
 	db OPTION
 	db -1
 
-ContinueMenu:
+.ContinueMenu:
 	db 3
 	db CONTINUE
 	db NEW_GAME

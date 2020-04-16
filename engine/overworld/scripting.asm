@@ -87,7 +87,7 @@ ScriptCommandTable:
 	dw Script_setval                     ; 15
 	dw Script_addval                     ; 16
 	dw Script_random                     ; 17
-	dw Script_checkver                   ; 18
+	dw Script_event_0x18                 ; 18 (was checkver)
 	dw Script_readmem                    ; 19
 	dw Script_writemem                   ; 1a
 	dw Script_loadmem                    ; 1b
@@ -152,7 +152,7 @@ ScriptCommandTable:
 	dw Script_closepokepic               ; 57
 	dw Script__2dmenu                    ; 58
 	dw Script_verticalmenu               ; 59
-	dw Script_loadpikachudata            ; 5a
+	dw Script_event_0x5a                 ; 5a (was loadpikachudata)
 	dw Script_randomwildmon              ; 5b
 	dw Script_loadtemptrainer            ; 5c
 	dw Script_loadwildmon                ; 5d
@@ -245,6 +245,12 @@ CheckScript:
 StopScript:
 	ld hl, wScriptFlags
 	res SCRIPT_RUNNING, [hl]
+	ret
+
+Script_event_0x18:
+; script command 0x18
+Script_event_0x5a:
+; script command 0x5a
 	ret
 
 Script_callasm:
@@ -1273,15 +1279,6 @@ EarthquakeMovement:
 	step_end
 .End
 
-Script_loadpikachudata:
-; script command 0x5a
-
-	ld a, PIKACHU
-	ld [wTempWildMonSpecies], a
-	ld a, 5
-	ld [wCurPartyLevel], a
-	ret
-
 Script_randomwildmon:
 ; script command 0x5b
 
@@ -1823,16 +1820,6 @@ GetVarAction:
 	ld c, a
 	farcall _GetVarAction
 	ret
-
-Script_checkver:
-; script command 0x18
-
-	ld a, [.gs_version]
-	ld [wScriptVar], a
-	ret
-
-.gs_version:
-	db GS_VERSION
 
 Script_getmonname:
 ; script command 0x40

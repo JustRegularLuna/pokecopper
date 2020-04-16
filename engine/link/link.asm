@@ -1546,8 +1546,6 @@ Function28b22:
 	call GetSGBLayout
 	call WaitBGMap2
 	xor a
-	ld [wcfbb], a
-	xor a
 	ldh [rSB], a
 	ldh [hSerialSend], a
 	ld a, (0 << rSC_ON) | (1 << rSC_CLOCK)
