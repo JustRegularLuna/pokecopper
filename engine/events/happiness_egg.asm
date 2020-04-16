@@ -73,7 +73,7 @@ ChangeHappiness:
 	ld d, 0
 	add hl, de
 	ld a, [hl]
-	cp $64 ; why not $80?
+	cp $80 ; first negative number
 	pop de
 
 	ld a, [de]

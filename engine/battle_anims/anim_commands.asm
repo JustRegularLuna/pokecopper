@@ -16,13 +16,13 @@ PlayBattleAnim:
 _PlayBattleAnim:
 	ld c, 6
 .wait
-	call BattleAnimDelayFrame
+	call DelayFrame
 	dec c
 	jr nz, .wait
 
 	call BattleAnimAssignPals
 	call BattleAnimRequestPals
-	call BattleAnimDelayFrame
+	call DelayFrame
 
 	ld c, 1
 	ldh a, [rKEY1]
@@ -44,9 +44,9 @@ _PlayBattleAnim:
 	ld a, $1
 	ldh [hBGMapMode], a
 
-	call BattleAnimDelayFrame
-	call BattleAnimDelayFrame
-	call BattleAnimDelayFrame
+	call DelayFrame
+	call DelayFrame
+	call DelayFrame
 	call WaitSFX
 	ret
 
@@ -67,7 +67,7 @@ BattleAnimRunScript:
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	call BattleAnimDelayFrame
+	call DelayFrame
 	call BattleAnimRestoreHuds
 
 .disabled
@@ -124,7 +124,7 @@ RunBattleAnimScript:
 	jr nz, .find
 
 .not_rollout
-	call BattleAnimDelayFrame
+	call DelayFrame
 
 .done
 	ld a, [wBattleAnimFlags]
@@ -135,19 +135,19 @@ RunBattleAnimScript:
 	ret
 
 BattleAnimClearHud:
-	call BattleAnimDelayFrame
+	call DelayFrame
 	call WaitTop
 	call ClearActorHud
 	ld a, $1
 	ldh [hBGMapMode], a
-	call BattleAnimDelayFrame
-	call BattleAnimDelayFrame
-	call BattleAnimDelayFrame
+	call DelayFrame
+	call DelayFrame
+	call DelayFrame
 	call WaitTop
 	ret
 
 BattleAnimRestoreHuds:
-	call BattleAnimDelayFrame
+	call DelayFrame
 	call WaitTop
 
 	ldh a, [rSVBK]
@@ -164,9 +164,9 @@ BattleAnimRestoreHuds:
 
 	ld a, $1
 	ldh [hBGMapMode], a
-	call BattleAnimDelayFrame
-	call BattleAnimDelayFrame
-	call BattleAnimDelayFrame
+	call DelayFrame
+	call DelayFrame
+	call DelayFrame
 	call WaitTop
 	ret
 
@@ -186,17 +186,6 @@ BattleAnimRequestPals:
 	ld a, [wOBP0]
 	cp b
 	call nz, BattleAnim_SetOBPals
-	ret
-
-BattleAnimDelayFrame:
-; Like DelayFrame but wastes battery life.
-
-	ld a, 1
-	ld [wVBlankOccurred], a
-.wait
-	ld a, [wVBlankOccurred]
-	and a
-	jr nz, .wait
 	ret
 
 ClearActorHud:
@@ -1337,7 +1326,7 @@ ClearBattleAnims::
 	add hl, de
 	call GetBattleAnimPointer
 	call BattleAnimAssignPals
-	call BattleAnimDelayFrame
+	call DelayFrame
 	ret
 
 BattleAnim_RevertPals:
@@ -1352,7 +1341,7 @@ BattleAnim_RevertPals:
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	call BattleAnimDelayFrame
+	call DelayFrame
 	ld a, $1
 	ldh [hBGMapMode], a
 	ret

@@ -2654,7 +2654,6 @@ ApplyPPUp:
 .use
 	ld a, [hl]
 	and PP_UP_MASK
-	ld a, [de] ; wasted cycle
 	call nz, ComputeMaxPP
 
 .skip

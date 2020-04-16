@@ -391,7 +391,6 @@ TMHM_DisplayPocketItems:
 	add hl, bc
 	ld [hl], "×"
 	inc hl
-	ld a, "0" ; why are we doing this?
 	pop bc
 	push bc
 	ld a, b

@@ -1906,7 +1906,7 @@ LoadTradeScreenBorder:
 	ret
 
 SetTradeRoomBGPals:
-	farcall LoadTradeRoomBGPals ; just a nested farcall; so wasteful
+	farcall LoadTradeRoomBGPals
 	call SetPalettes
 	ret
 
