@@ -1,9 +1,4 @@
 _Diploma:
-	call PlaceDiplomaOnScreen
-	call WaitPressAorB_BlinkCursor
-	ret
-
-PlaceDiplomaOnScreen:
 	call ClearBGPalettes
 	call ClearTilemap
 	call ClearSprites
@@ -11,15 +6,13 @@ PlaceDiplomaOnScreen:
 	ld hl, DiplomaGFX
 	ld de, vTiles2
 	call Decompress
+; Page 1
 	ld hl, DiplomaPage1Tilemap
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call CopyBytes
 	ld de, .Player
 	hlcoord 2, 5
-	call PlaceString
-	ld de, .EmptyString
-	hlcoord 15, 5
 	call PlaceString
 	ld de, wPlayerName
 	hlcoord 9, 5
@@ -33,23 +26,8 @@ PlaceDiplomaOnScreen:
 	call GetSGBLayout
 	call SetPalettes
 	call DelayFrame
-	ret
-
-.Player:
-	db "PLAYER@"
-
-.EmptyString:
-	db "@"
-
-.Certification:
-	db   "This certifies"
-	next "that you have"
-	next "completed the"
-	next "new #DEX."
-	next "Congratulations!"
-	db   "@"
-
-PrintDiplomaPage2:
+	call WaitPressAorB_BlinkCursor
+; Page 2
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $7f
@@ -73,7 +51,18 @@ PrintDiplomaPage2:
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
+	call WaitPressAorB_BlinkCursor
 	ret
+
+.Player: db "PLAYER@"
+
+.Certification:
+	db   "This certifies"
+	next "that you have"
+	next "completed the"
+	next "new #DEX."
+	next "Congratulations!"
+	db   "@"
 
 .PlayTime: db "PLAY TIME@"
 .GameFreak: db "GAME FREAK@"
