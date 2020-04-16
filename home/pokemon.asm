@@ -259,9 +259,8 @@ GetBaseData::
 
 .egg
 ; Sprite dimensions
-	ld b, $55 ; 5x5
 	ld hl, wBasePicSize
-	ld [hl], b
+	ld [hl], $55 ; 5x5
 
 .end
 	pop af

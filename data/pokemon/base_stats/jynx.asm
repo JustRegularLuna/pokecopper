@@ -8,11 +8,8 @@
 	db 137 ; base exp
 	db ICE_BERRY, ICE_BERRY ; items
 	db GENDER_F100 ; gender ratio
-	db 100 ; unknown 1
 	db 25 ; step cycles to hatch
-	db 5 ; unknown 2
 	INCBIN "gfx/pokemon/gmon/jynx.dimensions"
-	dw NULL, NULL ; unused (beta front/back pics)
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_HUMANSHAPE, EGG_HUMANSHAPE ; egg groups
 
