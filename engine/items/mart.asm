@@ -444,17 +444,13 @@ BuyMenuLoop:
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
 	jr z, .set_carry
-	cp A_BUTTON
-	jr z, .useless_pointer
 
-.useless_pointer
 	call MartAskPurchaseQuantity
 	jr c, .cancel
 	call MartConfirmPurchase
 	jr c, .cancel
 	ld de, wMoney
 	ld bc, hMoneyTemp
-	ld a, 3 ; useless load
 	call CompareMoney
 	jr c, .insufficient_funds
 	ld hl, wNumItems

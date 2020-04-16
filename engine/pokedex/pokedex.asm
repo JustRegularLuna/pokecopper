@@ -1448,23 +1448,13 @@ Pokedex_PlaceBorder:
 Pokedex_PrintListing:
 ; Prints the list of Pokémon on the main Pokédex screen.
 
-; This check is completely useless.
-	ld a, [wCurDexMode]
-	cp DEXMODE_OLD
-	jr z, .okay
-	ld c, 11
-	jr .resume
-.okay
-	ld c, 11
-; End useless check
-
-.resume
 ; Clear (2 * [wDexListingHeight] + 1) by 11 box starting at 0,1
 	hlcoord 0, 1
 	ld a, [wDexListingHeight]
 	add a
 	inc a
 	ld b, a
+	ld c, 11
 	ld a, " "
 	call Pokedex_FillBox
 

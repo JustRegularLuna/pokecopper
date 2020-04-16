@@ -2600,8 +2600,7 @@ UpdateFaintedPlayerMon:
 	ld [wBattleResult], a
 	ld a, [wWhichMonFaintedFirst]
 	and a
-	ret z
-	ret ; ??????????
+	ret
 
 AskUseNextPokemon:
 	call EmptyBattleTextbox

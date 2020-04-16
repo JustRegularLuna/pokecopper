@@ -174,9 +174,7 @@ _InitSpriteAnimStruct::
 	call GetSpriteAnimVTile
 	ld [hli], a
 	pop de
-; Set hl to field 4 (X coordinate).  Kinda pointless, because we're presumably already here.
-	ld hl, SPRITEANIMSTRUCT_XCOORD
-	add hl, bc
+	assert SPRITEANIMSTRUCT_TILE_ID + 1 == SPRITEANIMSTRUCT_XCOORD
 ; Load the original value of de into here.
 	ld a, e
 	ld [hli], a

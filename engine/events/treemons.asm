@@ -51,8 +51,6 @@ RockMonEncounter:
 	xor a
 	ret
 
-	db $05 ; ????
-
 GetTreeMonSet:
 ; Return carry and treemon set in a
 ; if the current map is in table hl.

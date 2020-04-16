@@ -17,7 +17,6 @@ NAME_LENGTH_JAPANESE EQU 6
 	const PARTY_OT_NAME         ; 5
 	const ENEMY_OT_NAME         ; 6
 	const TRAINER_NAME          ; 7
-	const MOVE_DESC_NAME_BROKEN ; 8
 
 ; see home/text.asm
 BORDER_WIDTH   EQU 2

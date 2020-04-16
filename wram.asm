@@ -1654,7 +1654,7 @@ wSeerNickname:: ds MON_NAME_LENGTH
 wSeerCaughtLocation:: ds 17
 wSeerTimeOfDay:: ds NAME_LENGTH
 wSeerOTName:: ds NAME_LENGTH
-wSeerOTNameGrammar:: db
+	ds 1
 wSeerCaughtLevelString:: ds 4
 wSeerCaughtLevel:: db
 wSeerCaughtData:: db

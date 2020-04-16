@@ -26,7 +26,6 @@ SetFacingStanding:
 
 SetFacingCurrent:
 	call GetSpriteDirection
-	or FACING_STEP_DOWN_0 ; useless
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
 	ld [hl], a
@@ -59,7 +58,6 @@ SetFacingStepAction:
 	ld d, a
 
 	call GetSpriteDirection
-	or FACING_STEP_DOWN_0 ; useless
 	or d
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
@@ -85,7 +83,6 @@ SetFacingSkyfall:
 	ld d, a
 
 	call GetSpriteDirection
-	or FACING_STEP_DOWN_0 ; useless
 	or d
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
@@ -110,7 +107,6 @@ SetFacingBumpAction:
 	ld d, a
 
 	call GetSpriteDirection
-	or FACING_STEP_DOWN_0 ; useless
 	or d
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
@@ -122,7 +118,6 @@ SetFacingCounterclockwiseSpin:
 	ld hl, OBJECT_FACING
 	add hl, bc
 	ld a, [hl]
-	or FACING_STEP_DOWN_0 ; useless
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
 	ld [hl], a

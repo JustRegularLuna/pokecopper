@@ -53,7 +53,7 @@ SECTION "serial", ROM0[$0058]
 	jp Serial
 
 SECTION "joypad", ROM0[$0060]
-	jp Joypad
+	reti
 
 
 SECTION "Header", ROM0[$0100]

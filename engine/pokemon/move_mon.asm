@@ -1815,7 +1815,4 @@ InitNickname:
 	pop hl
 	ld de, wStringBuffer1
 	call InitName
-	ld a, $4 ; ExitAllMenus is in bank 0, XXX could this be in bank 4 in pokered?
-	ld hl, ExitAllMenus
-	rst FarCall
-	ret
+	jp ExitAllMenus

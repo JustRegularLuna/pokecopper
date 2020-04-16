@@ -128,14 +128,6 @@ TrainerCard_Page1_Joypad:
 	ld [wJumptableIndex], a
 	ret
 
-.Unreferenced_KantoCheck:
-	ld a, [wKantoBadges]
-	and a
-	ret z
-	ld a, TRAINERCARDSTATE_PAGE3_LOADGFX
-	ld [wJumptableIndex], a
-	ret
-
 TrainerCard_Page2_LoadGFX:
 	call ClearSprites
 	hlcoord 0, 8
@@ -168,14 +160,6 @@ TrainerCard_Page2_Joypad:
 
 .d_left
 	ld a, TRAINERCARDSTATE_PAGE1_LOADGFX
-	ld [wJumptableIndex], a
-	ret
-
-.Unreferenced_KantoCheck:
-	ld a, [wKantoBadges]
-	and a
-	ret z
-	ld a, TRAINERCARDSTATE_PAGE3_LOADGFX
 	ld [wJumptableIndex], a
 	ret
 

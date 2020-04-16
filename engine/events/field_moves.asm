@@ -135,7 +135,7 @@ OWCutAnimation:
 	ret
 
 .LoadCutGFX:
-	callfar ClearSpriteAnims ; pointless to farcall
+	call ClearSpriteAnims
 	ld de, CutGrassGFX
 	ld hl, vTiles0 tile FIELDMOVE_GRASS
 	lb bc, BANK(CutGrassGFX), 4

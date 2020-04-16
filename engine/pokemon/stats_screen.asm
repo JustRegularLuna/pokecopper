@@ -45,11 +45,7 @@ StatsScreenInit:
 StatsScreenMain:
 	xor a
 	ld [wJumptableIndex], a
-; ???
-	ld [wcf64], a
-	ld a, [wcf64]
-	and $ff ^ STAT_PAGE_MASK
-	or PINK_PAGE ; first_page
+	inc a ; PINK_PAGE ; first_page
 	ld [wcf64], a
 .loop
 	ld a, [wJumptableIndex]
@@ -834,7 +830,6 @@ StatsScreen_GetAnimationParam:
 
 .Tempmon:
 	ld bc, wTempMonSpecies
-	jr .CheckEggFaintedFrzSlp ; utterly pointless
 
 .CheckEggFaintedFrzSlp:
 	ld a, [wCurPartySpecies]
@@ -1019,8 +1014,6 @@ StatsScreen_LoadPageIndicators:
 CopyNickname:
 	ld de, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
-	jr .okay ; utterly pointless
-.okay
 	ld a, [wMonType]
 	cp BOXMON
 	jr nz, .partymon

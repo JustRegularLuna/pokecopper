@@ -1,11 +1,4 @@
 LoadPoisonBGPals:
-	call .LoadPals
-	ldh a, [hCGB]
-	and a
-	ret nz
-	ret ; ????
-
-.LoadPals:
 	ldh a, [hCGB]
 	and a
 	jr nz, .cgb
