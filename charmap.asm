@@ -49,7 +49,7 @@
 
 	charmap " ",         $7f ; gfx/frames/space.png
 
-	; needed for StatsScreen_PlaceShinyIcon and PrintPartyMonPage1
+	; needed for StatsScreen_PlaceShinyIcon
 	charmap "⁂",         $3f ; gfx/stats/stats_tiles.png, tile 14
 
 ; Actual characters (from gfx/font/font.png)

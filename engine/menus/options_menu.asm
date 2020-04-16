@@ -1,3 +1,5 @@
+NUM_OPTIONS EQU 6
+
 _OptionsMenu:
 	ld hl, hInMenu
 	ld a, [hl]
@@ -5,15 +7,15 @@ _OptionsMenu:
 	ld [hl], $1
 	call ClearBGPalettes
 	hlcoord 0, 0
-	ld b, 16
-	ld c, 18
+	ld b, SCREEN_HEIGHT - 2
+	ld c, SCREEN_WIDTH - 2
 	call Textbox
 	hlcoord 2, 2
 	ld de, StringOptions
 	call PlaceString
 	xor a
 	ld [wJumptableIndex], a
-	ld c, $6 ; number of items on the menu minus 1 (for cancel)
+	ld c, NUM_OPTIONS - 1 ; without cancel
 
 .print_text_loop ; this next will display the settings of each option when the menu is opened
 	push bc
@@ -69,12 +71,12 @@ StringOptions:
 	db "        :<LF>"
 	db "SOUND<LF>"
 	db "        :<LF>"
-	db "PRINT<LF>"
-	db "        :<LF>"
 	db "MENU ACCOUNT<LF>"
 	db "        :<LF>"
 	db "FRAME<LF>"
 	db "        :TYPE<LF>"
+	db "<LF>"
+	db "<LF>"
 	db "CANCEL@"
 
 GetOptionPointer:
@@ -94,7 +96,6 @@ GetOptionPointer:
 	dw Options_BattleScene
 	dw Options_BattleStyle
 	dw Options_Sound
-	dw Options_Print
 	dw Options_MenuAccount
 	dw Options_Frame
 	dw Options_Cancel
@@ -307,108 +308,6 @@ Options_Sound:
 .Mono:   db "MONO  @"
 .Stereo: db "STEREO@"
 
-	const_def
-	const OPT_PRINT_LIGHTEST ; 0
-	const OPT_PRINT_LIGHTER  ; 1
-	const OPT_PRINT_NORMAL   ; 2
-	const OPT_PRINT_DARKER   ; 3
-	const OPT_PRINT_DARKEST  ; 4
-
-Options_Print:
-	call GetPrinterSetting
-	ldh a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
-	ld a, c
-	cp OPT_PRINT_DARKEST
-	jr c, .Increase
-	ld c, OPT_PRINT_LIGHTEST - 1
-
-.Increase:
-	inc c
-	ld a, e
-	jr .Save
-
-.LeftPressed:
-	ld a, c
-	and a
-	jr nz, .Decrease
-	ld c, OPT_PRINT_DARKEST + 1
-
-.Decrease:
-	dec c
-	ld a, d
-
-.Save:
-	ld b, a
-	ld [wGBPrinterBrightness], a
-
-.NonePressed:
-	ld b, $0
-	ld hl, .Strings
-	add hl, bc
-	add hl, bc
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	hlcoord 11, 11
-	call PlaceString
-	and a
-	ret
-
-.Strings:
-; entries correspond to OPT_PRINT_* constants
-	dw .Lightest
-	dw .Lighter
-	dw .Normal
-	dw .Darker
-	dw .Darkest
-
-.Lightest: db "LIGHTEST@"
-.Lighter:  db "LIGHTER @"
-.Normal:   db "NORMAL  @"
-.Darker:   db "DARKER  @"
-.Darkest:  db "DARKEST @"
-
-GetPrinterSetting:
-; converts GBPRINTER_* value in a to OPT_PRINT_* value in c,
-; with previous/next GBPRINTER_* values in d/e
-	ld a, [wGBPrinterBrightness]
-	and a
-	jr z, .IsLightest
-	cp GBPRINTER_LIGHTER
-	jr z, .IsLight
-	cp GBPRINTER_DARKER
-	jr z, .IsDark
-	cp GBPRINTER_DARKEST
-	jr z, .IsDarkest
-	; none of the above
-	ld c, OPT_PRINT_NORMAL
-	lb de, GBPRINTER_LIGHTER, GBPRINTER_DARKER
-	ret
-
-.IsLightest:
-	ld c, OPT_PRINT_LIGHTEST
-	lb de, GBPRINTER_DARKEST, GBPRINTER_LIGHTER
-	ret
-
-.IsLight:
-	ld c, OPT_PRINT_LIGHTER
-	lb de, GBPRINTER_LIGHTEST, GBPRINTER_NORMAL
-	ret
-
-.IsDark:
-	ld c, OPT_PRINT_DARKER
-	lb de, GBPRINTER_NORMAL, GBPRINTER_DARKEST
-	ret
-
-.IsDarkest:
-	ld c, OPT_PRINT_DARKEST
-	lb de, GBPRINTER_DARKER, GBPRINTER_LIGHTEST
-	ret
-
 Options_MenuAccount:
 	ld hl, wOptions2
 	ldh a, [hJoyPressed]
@@ -439,7 +338,7 @@ Options_MenuAccount:
 	ld de, .On
 
 .Display:
-	hlcoord 11, 13
+	hlcoord 11, 11
 	call PlaceString
 	and a
 	ret
@@ -471,7 +370,7 @@ Options_Frame:
 	ld [hl], a
 UpdateFrame:
 	ld a, [wTextboxFrame]
-	hlcoord 16, 15 ; where on the screen the number is drawn
+	hlcoord 16, 13 ; where on the screen the number is drawn
 	add "1"
 	ld [hl], a
 	call LoadFontsExtra
@@ -500,45 +399,29 @@ OptionsControl:
 	ret
 
 .DownPressed:
-	ld a, [hl] ; load the cursor position to a
-	cp $7 ; maximum number of items in option menu
-	jr nz, .CheckFive
-	ld [hl], $0
-	scf
-	ret
-
-.CheckFive: ; I have no idea why this exists...
-	cp $5
-	jr nz, .Increase
-	ld [hl], $5
-
-.Increase:
 	inc [hl]
+	ld a, [hl]
+	cp NUM_OPTIONS + 1
+	jr nz, .NoOverflow
+	ld [hl], 0
+.NoOverflow
 	scf
 	ret
 
 .UpPressed:
-	ld a, [hl]
-	cp $6
-	jr nz, .NotSix
-	ld [hl], $5 ; Another thing where I'm not sure why it exists
-	scf
-	ret
-
-.NotSix:
-	and a
-	jr nz, .Decrease
-	ld [hl], $8 ; number of option items +1
-
-.Decrease:
 	dec [hl]
+	ld a, [hl]
+	cp -1
+	jr nz, .NoUnderflow
+	ld [hl], NUM_OPTIONS
+.NoUnderflow
 	scf
 	ret
 
 Options_UpdateCursorPosition:
 	hlcoord 1, 1
 	ld de, SCREEN_WIDTH
-	ld c, $10
+	ld c, SCREEN_HEIGHT - 2
 .loop
 	ld [hl], " "
 	add hl, de
@@ -547,6 +430,10 @@ Options_UpdateCursorPosition:
 	hlcoord 1, 2
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [wJumptableIndex]
+	cp NUM_OPTIONS
+	jr nz, .not_cancel
+	inc a
+.not_cancel
 	call AddNTimes
 	ld [hl], "▶"
 	ret

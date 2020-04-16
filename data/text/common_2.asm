@@ -1,13 +1,3 @@
-_NoPhotoText::
-	text "Oh, no picture?"
-	line "Come again, OK?"
-	done
-
-_EggPhotoText::
-	text "An EGG? My talent"
-	line "is worth more…"
-	done
-
 _NameRaterHelloText::
 	text "Hello, hello! I'm"
 	line "the NAME RATER."

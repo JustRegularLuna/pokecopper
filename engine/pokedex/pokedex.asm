@@ -416,17 +416,15 @@ Pokedex_ReinitDexEntryScreen:
 	ret
 
 DexEntryScreen_ArrowCursorData:
-	db D_RIGHT | D_LEFT, 4
+	db D_RIGHT | D_LEFT, 3
 	dwcoord 1, 17  ; PAGE
 	dwcoord 6, 17  ; AREA
 	dwcoord 11, 17 ; CRY
-	dwcoord 15, 17 ; PRNT
 
 DexEntryScreen_MenuActionJumptable:
 	dw Pokedex_Page
 	dw .Area
 	dw .Cry
-	dw .Print
 
 .Area:
 	call Pokedex_BlackOutBG
@@ -450,7 +448,9 @@ DexEntryScreen_MenuActionJumptable:
 	ld a, POKEDEX_SCX
 	ldh [hSCX], a
 	call DelayFrame
-	call Pokedex_RedisplayDexEntry
+	call Pokedex_DrawDexEntryScreenBG
+	call Pokedex_GetSelectedMon
+	farcall DisplayDexEntry
 	call Pokedex_LoadSelectedMonTiles
 	call WaitBGMap
 	call Pokedex_GetSelectedMon
@@ -462,40 +462,6 @@ DexEntryScreen_MenuActionJumptable:
 .Cry:
 	ld a, [wCurPartySpecies]
 	call PlayMonCry
-	ret
-
-.Print:
-	call Pokedex_ApplyPrintPals
-	xor a
-	ldh [hSCX], a
-	ld a, [wPrevDexEntryBackup]
-	push af
-	ld a, [wPrevDexEntryJumptableIndex]
-	push af
-	ld a, [wJumptableIndex]
-	push af
-	farcall PrintDexEntry
-	pop af
-	ld [wJumptableIndex], a
-	pop af
-	ld [wPrevDexEntryJumptableIndex], a
-	pop af
-	ld [wPrevDexEntryBackup], a
-	call ClearBGPalettes
-	call DisableLCD
-	call LoadStandardFont
-	call Pokedex_RedisplayDexEntry
-	call EnableLCD
-	call WaitBGMap
-	ld a, POKEDEX_SCX
-	ldh [hSCX], a
-	call Pokedex_ApplyUsualPals
-	ret
-
-Pokedex_RedisplayDexEntry:
-	call Pokedex_DrawDexEntryScreenBG
-	call Pokedex_GetSelectedMon
-	farcall DisplayDexEntry
 	ret
 
 Pokedex_InitOptionScreen:
@@ -1162,7 +1128,7 @@ Pokedex_DrawDexEntryScreenBG:
 .Weight:
 	db "WT   ???lb", -1 ; WT   ???lb
 .MenuItems:
-	db $3b, " PAGE AREA CRY PRNT", -1
+	db $3b, " PAGE AREA CRY     ", -1
 
 Pokedex_DrawOptionScreenBG:
 	call Pokedex_FillBackgroundColor2
@@ -2282,8 +2248,6 @@ Pokedex_BlackOutBG:
 	call ByteFill
 	pop af
 	ldh [rSVBK], a
-
-Pokedex_ApplyPrintPals:
 	ld a, $ff
 	call DmgToCgbBGPals
 	ld a, $ff
@@ -2294,9 +2258,6 @@ Pokedex_ApplyPrintPals:
 Pokedex_GetSGBLayout:
 	ld b, a
 	call GetSGBLayout
-
-Pokedex_ApplyUsualPals:
-; This applies the palettes used for most Pokédex screens.
 	ld a, $e4
 	call DmgToCgbBGPals
 	ld a, $e0

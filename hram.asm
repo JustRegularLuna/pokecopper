@@ -46,9 +46,8 @@ hJoyLast::        db ; ffa9
 
 hInMenu:: db ; ffaa
 
-	ds 1
+	ds 2
 
-hPrinter:: db ; ffac
 hGraphicStartTile:: db ; ffad
 hMoveMon:: db ; ffae
 

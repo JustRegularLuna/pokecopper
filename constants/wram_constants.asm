@@ -54,13 +54,6 @@ NUM_FRAMES EQU const_value
 	const FAST_TEXT_DELAY_F ; 0
 	const NO_TEXT_DELAY_F   ; 1
 
-; wGBPrinterBrightness:: ; cfd0
-GBPRINTER_LIGHTEST EQU $00
-GBPRINTER_LIGHTER  EQU $20
-GBPRINTER_NORMAL   EQU $40
-GBPRINTER_DARKER   EQU $60
-GBPRINTER_DARKEST  EQU $7f
-
 ; wOptions2:: ; cfd1
 	const_def
 	const MENU_ACCOUNT ; 0

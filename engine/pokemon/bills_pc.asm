@@ -2377,27 +2377,6 @@ BillsPC_ChangeBoxSubmenu:
 	jr z, .Switch
 	cp $2
 	jr z, .Name
-	cp $3
-	jr z, .Print
-	and a
-	ret
-
-.Print:
-	call GetBoxCount
-	and a
-	jr z, .EmptyBox
-	ld e, l
-	ld d, h
-	ld a, [wMenuSelection]
-	dec a
-	ld c, a
-	farcall PrintPCBox
-	call BillsPC_ClearTilemap
-	and a
-	ret
-
-.EmptyBox:
-	call BillsPC_PlaceEmptyBoxString_SFX
 	and a
 	ret
 
@@ -2435,16 +2414,15 @@ BillsPC_ChangeBoxSubmenu:
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 11, 4, SCREEN_WIDTH - 1, 13
+	menu_coords 11, 4, SCREEN_WIDTH - 1, 11
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db STATICMENU_CURSOR ; flags
-	db 4 ; items
+	db 3 ; items
 	db "SWITCH@"
 	db "NAME@"
-	db "PRINT@"
 	db "QUIT@"
 
 BillsPC_PlaceChooseABoxString:
@@ -2460,19 +2438,6 @@ BillsPC_PlaceWhatsUpString:
 
 .WhatsUp:
 	db "What's up?@"
-
-BillsPC_PlaceEmptyBoxString_SFX:
-	ld de, .NoMonString
-	call BillsPC_PlaceChangeBoxString
-	ld de, SFX_WRONG
-	call WaitPlaySFX
-	call WaitSFX
-	ld c, 50
-	call DelayFrames
-	ret
-
-.NoMonString:
-	db "There's no #MON.@"
 
 BillsPC_PlaceChangeBoxString:
 	push de

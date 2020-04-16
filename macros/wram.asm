@@ -170,22 +170,6 @@ channel_struct: MACRO
                       ds 1
 ENDM
 
-battle_tower_struct: MACRO
-\1Name:: ds NAME_LENGTH - 1
-\1TrainerClass:: ds 1
-\1Mon1:: party_struct \1Mon1
-\1Mon1Name:: ds MON_NAME_LENGTH
-\1Mon1NameEnd::
-\1Mon2:: party_struct \1Mon2
-\1Mon2Name:: ds MON_NAME_LENGTH
-\1Mon2NameEnd::
-\1Mon3:: party_struct \1Mon3
-\1Mon3Name:: ds MON_NAME_LENGTH
-\1Mon3NameEnd::
-\1TrainerData:: ds BATTLETOWER_TRAINERDATALENGTH
-\1TrainerEnd::
-ENDM
-
 mailmsg: MACRO
 \1Message::    ds MAIL_MSG_LENGTH
 \1MessageEnd:: ds 1

@@ -149,10 +149,8 @@ wSpriteUpdatesEnabled:: db
 
 wMapTimeOfDay:: db
 
-	ds 3
+	ds 5
 
-wPrinterConnectionOpen:: db
-wPrinterOpcode:: db
 wPrevDexEntry:: db
 wDisableTextAcceleration:: db
 wPrevLandmark:: db
@@ -837,46 +835,6 @@ wOverworldMapBlocks:: ds 1300 ; c800
 wOverworldMapBlocksEnd::
 
 NEXTU ; c800
-; GB Printer screen RAM
-wGameboyPrinterRAM::
-wGameboyPrinterScreen:: ds SCREEN_HEIGHT * SCREEN_WIDTH ; c800
-wGameboyPrinterScreenEnd:: ; c968
-
-NEXTU ; c800
-; GB Printer data
-wGameboyPrinter2bppSource:: ds 40 tiles
-wGameboyPrinter2bppSourceEnd::
-wca80:: db
-wPrinterRowIndex:: db
-
-; Printer data
-wPrinterData:: ds 4
-wPrinterChecksum:: dw ; ca86
-wPrinterHandshake:: db
-wPrinterStatusFlags::
-; bit 7: set if error 1 (battery low)
-; bit 6: set if error 4 (too hot or cold)
-; bit 5: set if error 3 (paper jammed or empty)
-; if this and the previous byte are both $ff: error 2 (connection error)
-	db
-
-wHandshakeFrameDelay:: db
-wPrinterSerialFrameDelay:: db
-wPrinterSendByteOffset:: dw
-wPrinterSendByteCounter:: dw
-
-; tilemap backup?
-wPrinterTilemapBuffer:: ds SCREEN_HEIGHT * SCREEN_WIDTH ; ca90
-wPrinterTilemapBufferEnd::
-wPrinterStatus:: db ; cbf8
-	ds 1
-; High nibble is for margin before the image, low nibble is for after.
-wPrinterMargins:: db ; cbfa
-wPrinterExposureTime:: db ; cbfb
-	ds 16
-wGameboyPrinterRAMEnd::
-
-NEXTU ; c800
 ; bill's pc data
 wBillsPCData::
 wBillsPCPokemonList::
@@ -1103,8 +1061,6 @@ wNamingScreenLetterCase::
 wHallOfFameMonCounter::
 wSlotsDelay::
 	db
-wPrinterQueueLength::
-	db
 ENDU ; cf67
 
 wRequested2bpp::
@@ -1259,14 +1215,7 @@ wTextboxFlags::
 ; bit 0: 1-frame text delay
 ; bit 4: no text delay
 	db
-wGBPrinterBrightness:: ; cfd0
-; bit 0-6: brightness
-;   lightest: $00
-;   lighter:  $20
-;   normal:   $40 (default)
-;   darker:   $60
-;   darkest:  $7F
-	db
+	ds 1
 wOptions2:: ; cfd1
 ; bit 1: menu account off/on
 	db
@@ -1374,14 +1323,6 @@ wMovementBufferObject:: db
 wMovementBuffer:: ds 55
 
 NEXTU ; d002
-; box printing
-wWhichBoxMonToPrint:: db
-wFinishedPrintingBox:: db
-wAddrOfBoxToPrint:: dw
-wBankOfBoxToPrint:: db
-wWhichBoxToPrint:: db
-
-NEXTU ; d002
 ; trainer HUD data
 	ds 1
 wPlaceBallsDirection:: db
@@ -1412,8 +1353,7 @@ wd004:: db
 
 wd00d:: dw
 wd00f:: dw
-wd011:: ds 1
-wd012:: ds 1
+wd011:: dw
 
 UNION ; d03e
 ; trainer data
@@ -2195,10 +2135,6 @@ wPokecenter2FSceneID::              db ; d972
 wTradeCenterSceneID::               db ; d973
 wColosseumSceneID::                 db ; d974
 wTimeCapsuleSceneID::               db ; d975
-wBattleTower1FSceneID::             db ; d976
-wBattleTowerBattleRoomSceneID::     db ; d977
-wBattleTowerElevatorSceneID::       db ; d978
-wBattleTowerHallwaySceneID::        db ; d979
 wPlayersHouse1FSceneID::            db ; d97a
 wIndigoPlateauPokecenter1FSceneID:: db ; d97b
 wWillsRoomSceneID::                 db ; d97c
@@ -2208,7 +2144,7 @@ wKarensRoomSceneID::                db ; d97f
 wLancesRoomSceneID::                db ; d980
 wHallOfFameSceneID::                db ; d981
 
-	ds 111
+	ds 115
 
 ; fight counts
 wJackFightCount::    db ; d9f2
