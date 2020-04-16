@@ -35,7 +35,6 @@ LoadSGBLayout:
 	dw .SGB_PartyMenu
 	dw .SGB_Evolution
 	dw .SGB_GSTitleScreen
-	dw .SGB0d
 	dw .SGB_MoveList
 	dw .SGB_BetaPikachuMinigame
 	dw .SGB_PokedexSearchOption
@@ -51,7 +50,6 @@ LoadSGBLayout:
 	dw .SGB_PlayerOrMonFrontpicPals
 	dw .SGB_TradeTube
 	dw .SGB_TrainerOrMonFrontpicPals
-	dw .SGB1e
 
 .SGB_BattleGrayscale:
 	ld hl, PalPacket_BattleGrayscale
@@ -381,7 +379,6 @@ endr
 	ld de, BlkPacket_9a86
 	ret
 
-.SGB0d:
 .SGB_TrainerCard:
 	ld hl, PalPacket_Diploma
 	ld de, BlkPacket_9a86
@@ -419,38 +416,6 @@ endr
 	ld [hl], a
 	ld hl, wSGBPals
 	ld de, wSGBPals + PALPACKET_LENGTH
-	ret
-
-.SGB1e:
-	ld hl, PalPacket_9ce6
-	ld de, wSGBPals
-	ld bc, PALPACKET_LENGTH
-	call CopyBytes
-	ld a, [wCurPartySpecies]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, PokemonPalettes
-	add hl, de
-	ld a, [wcf65]
-	and 3
-	sla a
-	sla a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hli]
-	ld [wSGBPals + 3], a
-	ld a, [hli]
-	ld [wSGBPals + 4], a
-	ld a, [hli]
-	ld [wSGBPals + 5], a
-	ld a, [hl]
-	ld [wSGBPals + 6], a
-	ld hl, wSGBPals
-	ld de, BlkPacket_9a86
 	ret
 
 .SGB_GamefreakLogo:
