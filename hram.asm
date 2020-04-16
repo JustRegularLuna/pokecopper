@@ -88,11 +88,6 @@ hMathBuffer:: ds 5 ; ffb8
 NEXTU ; ffb3
 ; PrintNum scratch space
 hPrintNumBuffer:: ds 10 ; ffb3
-
-NEXTU ; ffb3
-; miscellaneous
-    ds 9
-hMGStatusFlags:: db ; ffbc
 ENDU ; ffbd
 
 hUsedSpriteIndex:: db ; ffbd
@@ -102,19 +97,14 @@ hFFC0::            db ; ffc0
 hFFC1::            db ; ffc1
 hFFC2::            db ; ffc2
 
-UNION ; ffc3
 hMoneyTemp:: ds 3 ; ffc3
-NEXTU ; ffc3
-hMGJoypadPressed::  db ; ffc3
-hMGJoypadReleased:: db ; ffc4
-hMGPrevTIMA::       db ; ffc5
-ENDU ; ffc6
 
 hLCDCPointer::     db ; ffc6
 hLYOverrideStart:: db ; ffc7
 hLYOverrideEnd::   db ; ffc8
 
-hMobileReceive::             db ; ffc9
+	ds 1
+
 hSerialReceivedNewData::     db ; ffca
 hSerialConnectionStatus::    db ; ffcb
 hSerialIgnoringInitialData:: db ; ffcc
@@ -159,6 +149,8 @@ hCGB::          db ; ffe6
 hSGB::          db ; ffe7
 
 hDMATransfer:: db ; ffe8
-hMobile:: db ; ffe9
+
+	ds 1
+
 hSystemBooted:: db ; ffea
 hClockResetTrigger:: db ; ffeb
