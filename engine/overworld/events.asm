@@ -207,8 +207,6 @@ PlayerEvents:
 	and a
 	ret nz
 
-	call Dummy_CheckScriptFlags3Bit5 ; This is a waste of time
-
 	call CheckTrainerBattle_GetPlayerEvent
 	jr c, .ok
 
@@ -237,16 +235,7 @@ PlayerEvents:
 
 	ld [wScriptRunning], a
 	call DoPlayerEvent
-	ld a, [wScriptRunning]
-	cp PLAYEREVENT_CONNECTION
-	jr z, .ok2
-	cp PLAYEREVENT_JOYCHANGEFACING
-	jr z, .ok2
 
-	xor a
-	ld [wLandmarkSignTimer], a
-
-.ok2
 	scf
 	ret
 
@@ -341,12 +330,6 @@ CheckWildEncounterCooldown::
 SetUpFiveStepWildEncounterCooldown:
 	ld a, 5
 	ld [wWildEncounterCooldown], a
-	ret
-
-Dummy_CheckScriptFlags3Bit5:
-	call CheckBit5_ScriptFlags3
-	ret z
-	call ret_2f3e
 	ret
 
 RunSceneScript:
@@ -1289,12 +1272,6 @@ DelCmdQueue::
 	scf
 	ret
 
-_DelCmdQueue:
-	ld hl, CMDQUEUE_TYPE
-	add hl, bc
-	ld [hl], 0
-	ret
-
 HandleQueuedCommand:
 	ld hl, CMDQUEUE_TYPE
 	add hl, bc
@@ -1321,129 +1298,12 @@ HandleQueuedCommand:
 
 .Jumptable:
 	dba CmdQueue_Null
-	dba CmdQueue_Null2
+	dba CmdQueue_Null
 	dba CmdQueue_StoneTable
-	dba CmdQueue_Type3
-	dba CmdQueue_Type4
-
-CmdQueueAnonymousJumptable:
-	ld hl, CMDQUEUE_05
-	add hl, bc
-	ld a, [hl]
-	pop hl
-	rst JumpTable
-	ret
-
-CmdQueueAnonJT_Increment:
-	ld hl, CMDQUEUE_05
-	add hl, bc
-	inc [hl]
-	ret
-
-CmdQueueAnonJT_Decrement:
-	ld hl, CMDQUEUE_05
-	add hl, bc
-	dec [hl]
-	ret
+	dba CmdQueue_Null
+	dba CmdQueue_Null
 
 CmdQueue_Null:
-	ret
-
-CmdQueue_Null2:
-	call ret_2f3e
-	ret
-
-CmdQueue_Type4:
-	call CmdQueueAnonymousJumptable
-	; anonymous dw
-	dw .zero
-	dw .one
-
-.zero
-	ldh a, [hSCY]
-	ld hl, CMDQUEUE_04
-	add hl, bc
-	ld [hl], a
-	call CmdQueueAnonJT_Increment
-.one
-	ld hl, CMDQUEUE_ADDR
-	add hl, bc
-	ld a, [hl]
-	dec a
-	ld [hl], a
-	jr z, .finish
-	and 1
-	jr z, .add
-	ld hl, CMDQUEUE_02
-	add hl, bc
-	ldh a, [hSCY]
-	sub [hl]
-	ldh [hSCY], a
-	ret
-
-.add
-	ld hl, CMDQUEUE_02
-	add hl, bc
-	ldh a, [hSCY]
-	add [hl]
-	ldh [hSCY], a
-	ret
-
-.finish
-	ld hl, CMDQUEUE_04
-	add hl, bc
-	ld a, [hl]
-	ldh [hSCY], a
-	call _DelCmdQueue
-	ret
-
-CmdQueue_Type3:
-	call CmdQueueAnonymousJumptable
-	; anonymous dw
-	dw .zero
-	dw .one
-	dw .two
-
-.zero
-	call .IsPlayerFacingDown
-	jr z, .PlayerNotFacingDown
-	call CmdQueueAnonJT_Increment
-.one
-	call .IsPlayerFacingDown
-	jr z, .PlayerNotFacingDown
-	call CmdQueueAnonJT_Increment
-
-	ld hl, CMDQUEUE_02
-	add hl, bc
-	ld a, [hl]
-	ld [wd173], a
-	ret
-
-.two
-	call .IsPlayerFacingDown
-	jr z, .PlayerNotFacingDown
-	call CmdQueueAnonJT_Decrement
-
-	ld hl, CMDQUEUE_03
-	add hl, bc
-	ld a, [hl]
-	ld [wd173], a
-	ret
-
-.PlayerNotFacingDown:
-	ld a, $7f
-	ld [wd173], a
-	ld hl, CMDQUEUE_05
-	add hl, bc
-	ld [hl], 0
-	ret
-
-.IsPlayerFacingDown:
-	push bc
-	ld bc, wPlayerStruct
-	call GetSpriteDirection
-	and a
-	pop bc
 	ret
 
 CmdQueue_StoneTable:

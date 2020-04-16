@@ -30,6 +30,3 @@ IsInJohto::
 .Kanto:
 	ld a, KANTO_REGION
 	ret
-
-ret_2f3e::
-	ret

@@ -246,16 +246,12 @@ WRAMX 1
 	"Enemy Party"
 	"Party"
 WRAMX 2
-	"Pic Animations"
-WRAMX 3
-	"Battle Tower RAM"
+	"wTempTilemap"
 WRAMX 5
 	align 8
 	"GBC Video"
 	org $d300
 	"Battle Animations"
-	org $d800
-	"Mobile RAM"
 WRAMX 6
 	"Scratch RAM"
 WRAMX 7
@@ -275,17 +271,9 @@ SRAM $01
 	"Active Box"
 	"Link Battle Data"
 	"SRAM Hall of Fame"
-	"SRAM Crystal Data"
-	"SRAM Battle Tower"
 SRAM $02
 	"Boxes 1-7"
 SRAM $03
 	"Boxes 8-14"
-SRAM $04
-	"SRAM Mobile 1"
-SRAM $05
-	"SRAM Mobile 2"
-SRAM $06
-	"SRAM Mobile 3"
 HRAM
 	"HRAM"

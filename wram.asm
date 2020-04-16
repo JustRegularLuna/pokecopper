@@ -157,7 +157,8 @@ wPrevDexEntry:: db
 wDisableTextAcceleration:: db
 wPrevLandmark:: db
 wCurLandmark:: db
-wLandmarkSignTimer:: dw
+
+	ds 2
 
 wLinkMode::
 ; a LINK_* value for the link type
@@ -168,12 +169,11 @@ wScriptVar:: db ; c2dd
 wPlayerNextMovement:: db
 wPlayerMovement:: db
 	ds 2
-wc2e2::
 wMovementObject::
 	db
 wMovementDataBank:: db
 wMovementDataAddress:: dw
-wc2e6:: ds 4
+	ds 4
 wMovementByteWasControlSwitch:: db
 wMovementPointer:: dw ; c2eb
 
@@ -233,39 +233,7 @@ wSpriteAnimationStructsEnd::
 
 NEXTU ; c300
 ; dummy game
-wc300::
-
-NEXTU ; c300
-; mobile data
-wMobileWRAM::
-wMobileErrorCodeBuffer:: ds 3 ; c300
-wc303:: ds 2
-wc305:: ds 1
-wc306:: ds 1
-wc307:: ds 1
-wc308:: ds 1
-wc309:: ds 1
-wc30a:: ds 1
-wc30b:: ds 1
-wc30c:: ds 1
-wc30d:: ds 1
-wc30e:: ds 1
-wc30f:: ds 1
-wc310:: ds 1
-wc311:: ds 1
-wc312:: ds 1
-wc313:: ds 1
-wc314:: ds 5
-wc319:: db
-wc31a:: db
-wc31b:: db
-wc31c:: db
-wc31d:: db
-wc31e:: db
-wc31f:: db
-wc320:: ds 38
-wc346:: ds 102
-wc3ac:: ds 8
+wc300:: ; c300
 ENDU ; c3b4
 
 wSpriteAnimCount:: db
@@ -287,30 +255,7 @@ wGlobalAnimYOffset:: db
 wGlobalAnimXOffset:: db
 wSpriteAnimsEnd::
 
-	ds 11
-
-; mobile data
-wc3cc:: ds 1
-wc3cd:: ds 31
-wc3ec:: ds 1
-wc3ed:: ds 1
-wc3ee:: ds 1
-wc3ef:: ds 1
-wc3f0:: ds 1
-wc3f1:: ds 1
-wc3f2:: ds 1
-wc3f3:: ds 1
-wc3f4:: ds 1
-wc3f5:: ds 1
-wc3f6:: ds 1
-wc3f7:: ds 1
-wc3f8:: ds 1
-wc3f9:: ds 1
-wc3fa:: ds 1
-wc3fb:: ds 1
-wc3fc:: ds 1
-	ds 3
-wMobileWRAMEnd::
+	ds 63
 
 
 SECTION "Sprites", WRAM0
@@ -382,10 +327,6 @@ NEXTU ; c608
 ; needs more space than the buffer can hold.
 wBoxPartialData:: ds 480
 wBoxPartialDataEnd::
-
-NEXTU ; c608
-; battle tower temp struct
-wBT_OTTemp:: battle_tower_struct wBT_OTTemp
 
 NEXTU ; c608
 ; battle data
@@ -736,6 +677,9 @@ NEXTU ; c608
 
 ; This union spans 200 bytes from c608 to c6d0.
 UNION ; c608
+	ds 200
+
+NEXTU ; c608
 ; timeset temp storage
 wTimeSetBuffer::
 	ds 20
@@ -759,16 +703,6 @@ NEXTU ; c608
 wOddEgg:: party_struct wOddEgg
 wOddEggName:: ds MON_NAME_LENGTH
 wOddEggOTName:: ds NAME_LENGTH
-
-NEXTU ; c608
-wc608:: ds 53
-wc63d:: ds 5
-wc642:: ds 5
-wc647:: ds 33
-wc668:: ds 32
-wc688:: ds 2
-wc68a:: ds 4
-	ds 66
 ENDU ; c6d0
 
 ; This union spans 280 bytes from c6d0 to c7e8.
@@ -798,12 +732,9 @@ wDexListingCursorBackup:: db
 wBackupDexListingCursor:: db
 wBackupDexListingPage:: db
 wDexCurLocation:: db
-if DEF(_CRYSTAL11)
 wPokedexStatus:: db
 wPokedexDataEnd::
-else
-wPokedexDataEnd:: ds 1
-endc
+
 	ds 2
 
 NEXTU ; c6d0
@@ -894,32 +825,6 @@ wDummyGameLastMatches:: ds 5 ; c703
 wDummyGameCounter:: db ; c708
 wDummyGameNumCardsMatched:: db ; c709
 wDummyGameEnd::
-
-NEXTU ; c6d0
-; mobile data
-wc6d0:: ds 56
-wc708:: db
-wc709:: db
-wc70a:: db
-wc70b:: db
-wc70c:: db
-wc70d:: db
-wc70e:: db
-wc70f:: db
-wc710:: db
-wc711:: db
-wc712:: ds 7
-wc719:: ds 53
-wc74e:: ds 107
-wc7b9:: ds 1
-wc7ba:: ds 1
-wc7bb:: ds 2
-wc7bd:: ds 19
-wc7d0:: ds 1
-wc7d1:: ds 1
-wc7d2:: ds 1
-wc7d3:: ds 1
-wc7d4:: ds 1
 ENDU ; c7e8
 
 ENDU ; c7e8
@@ -1038,75 +943,9 @@ wLinkPlayerDataEnd::
 ENDU ; c9b7
 
 NEXTU ; c800
-; mystery gift data
-wMysteryGiftPartyTemp:: ; ds PARTY_LENGTH * (1 + 1 + NUM_MOVES)
-wMysteryGiftStaging::
-wc800:: ds 1
-wc801:: ds 1
-wc802:: ds 1
-wc803:: ds 4
-wc807:: ds 7
-wc80e:: ds 1
-wc80f:: ds 1
-wc810:: ds 1
-wc811:: ds 1
-wMobileSDK_PacketChecksum:: dw ; c812
-wc814:: ds 4
-wMobileSDK_AdapterType:: db ; c818
-	ds 5
-wMobileSDK_SendCommandID:: db ; c81e
-	ds 1
-wc820:: ds 1
-wc821:: ds 1
-wc822:: ds 46
-
-UNION ; c850
-wMysteryGiftTrainerData:: ds (1 + 1 + NUM_MOVES) * PARTY_LENGTH + 2
-wMysteryGiftTrainerDataEnd::
-
-NEXTU ; c850
-wc850:: ds 16
-wc860:: ds 16
-wc870:: ds 16
-wc880:: ds 16
-wc890:: ds 16
-wc8a0:: ds 16
-wc8b0:: ds 16
-wc8c0:: ds 16
-wc8d0:: ds 16
-wc8e0:: ds 16
-wc8f0:: ds 16
-ENDU ; c900
-
-wMysteryGiftPartnerData::
-wc900:: db
-wMysteryGiftPartnerID:: dw
-wMysteryGiftPartnerName:: ds NAME_LENGTH
-wMysteryGiftPartnerDexCaught:: db
-wc90f::
-wMysteryGiftPartnerSentDeco:: db
-wMysteryGiftPartnerWhichItem:: db
-wMysteryGiftPartnerWhichDeco:: db
-wMysteryGiftPartnerBackupItem:: db
-	ds 1
-wMysteryGiftPartnerDataEnd::
-
-	ds 60
-
-wMysteryGiftPlayerData::
-	ds 1
-wMysteryGiftPlayerID:: dw
-wMysteryGiftPlayerName:: ds NAME_LENGTH
-wMysteryGiftPlayerDexCaught:: db
-wMysteryGiftPlayerSentDeco:: db
-wMysteryGiftPlayerWhichItem:: db
-wMysteryGiftPlayerWhichDeco:: db
-wMysteryGiftPlayerBackupItem:: db
-	ds 1
-wMysteryGiftPlayerDataEnd::
-
-	ds 144
-
+; link data
+	ds 271
+wc90f:: ds 229
 wc9f4:: ds 5
 wc9f9:: ds 7
 
@@ -1116,49 +955,23 @@ wCreditsBlankFrame2bpp:: ds 4 * 4 tiles
 wCreditsBlankFrame2bppEnd::
 
 NEXTU ; ca00
-; mystery gift data
-wca00:: db
-wca01:: db
-wca02:: db
-
-NEXTU ; ca00
 ; link data
 	ds 191
 wcabf:: ds 1
-
-NEXTU ; ca00
-	ds $2f
-wMobileSDK_ReceivePacketBufferAlt:: ds 11 ; ca2f
-wMobileSDK_ReceivedBytes:: dw ; ca3a
-wMobileSDK_ReceivePacketBuffer:: ; ca3c
-
 ENDU ; cb00
 
 	ds 14
 wcb0e:: ds 5
 wcb13:: ds 50
-wcb45:: ds 2
-wMobileSDK_PacketBuffer:: ds 18 ; cb47
-wcb59:: ds 20
-wcb6d:: ds 1
-wcb6e:: ds 22
+	ds 63
 wcb84:: ds 100
 wcbe8:: dw
 wLinkOTPartyMonTypes:: ds 2 * PARTY_LENGTH
 	ds 84
 wcc4a:: ds 22
-
-wcc60:: ds 1
-wcc61:: ds 1
-wcc62:: ds 2
-wcc64:: ds 1
-wcc65:: ds 57
+	ds 62
 wcc9e:: ds 22
-wccb4:: ds 1
-wccb5:: ds 3
-wccb8:: ds 1
-wccb9:: ds 1
-wccba:: ds 102
+	ds 108
 ENDU ; cd20
 
 
@@ -1176,139 +989,6 @@ NEXTU ; cd20
 wCreditsPos:: db
 	ds 1
 wCreditsTimer:: db
-
-NEXTU ; cd20
-; mobile data
-wMobileMonSpeciesPointerBuffer:: dw
-wMobileMonStructurePointerBuffer:: dw
-wMobileMonOTNamePointerBuffer:: dw
-wMobileMonNicknamePointerBuffer:: dw
-wMobileMonMailPointerBuffer:: dw
-
-NEXTU ; cd20
-; more mobile data
-wcd20:: ds 1
-wcd21:: ds 1
-wcd22:: ds 1
-wcd23:: ds 1
-wcd24:: ds 1
-wMobileCommsJumptableIndex:: ds 1 ; cd25
-wcd26:: ds 1
-wcd27:: ds 1
-wcd28:: ds 1
-wcd29:: ds 1
-
-wMobileMonSpeciesBuffer::
-wcd2a:: db
-
-wTempOddEggNickname:: ; ds 11
-wcd2b:: ds 1
-wcd2c:: ds 1
-wcd2d:: ds 1
-wcd2e:: ds 1
-wcd2f:: ds 1
-wcd30:: ds 1
-wcd31:: ds 1
-wcd32:: ds 1
-wcd33:: ds 1
-wcd34:: ds 1
-wcd35:: ds 1
-
-; current time for link/mobile?
-wcd36:: db ; hours
-wcd37:: db ; mins
-wcd38:: db ; secs
-
-wcd39:: ds 1
-wcd3a:: ds 1
-wcd3b:: ds 1
-wBattleTowerRoomMenu2JumptableIndex:: ds 1
-wcd3d:: ds 1
-wcd3e:: ds 1
-wcd3f:: ds 1
-wcd40:: ds 1
-wcd41:: ds 1
-wcd42:: ds 1
-wcd43:: ds 1
-
-; some sort of timer in link battles
-wMobileInactivityTimerMinutes:: db ; mins
-wMobileInactivityTimerSeconds:: db ; secs
-wMobileInactivityTimerFrames:: db ; frames
-wcd47:: ds 1
-
-	ds 1
-
-wBTTempOTSprite::
-wcd49:: db
-
-wcd4a:: ds 1
-wcd4b:: ds 1
-
-wEZChatCursorXCoord::
-wcd4c:: db
-wEZChatCursorYCoord::
-wcd4d:: db
-
-wcd4e:: ds 1
-wcd4f:: ds 1
-wcd50:: ds 1
-wcd51:: ds 1
-wcd52:: ds 1
-
-wMobileOpponentBattleMessage:: ; ds 12
-wcd53:: ds 1
-wcd54:: ds 1
-wcd55:: ds 1
-wcd56:: ds 1
-wcd57:: ds 1
-wcd58:: ds 1
-wcd59:: ds 1
-wcd5a:: ds 1
-wcd5b:: ds 1
-wcd5c:: ds 1
-wcd5d:: ds 1
-wcd5e:: ds 1
-wcd5f:: ds 1
-wcd60:: ds 2
-wcd62:: ds 1
-wcd63:: ds 1
-wcd64:: ds 1
-wcd65:: ds 1
-wcd66:: ds 1
-wcd67:: ds 1
-wcd68:: ds 1
-wcd69:: ds 1
-wcd6a:: ds 1
-wcd6b:: ds 1
-wcd6c:: ds 1
-wcd6d:: ds 1
-wcd6e:: ds 1
-wcd6f:: ds 1
-wcd70:: ds 1
-wcd71:: ds 1
-wcd72:: ds 1
-wcd73:: ds 1
-wcd74:: ds 1
-
-wOTMonSelection:: ds 2 ; ds BATTLETOWER_PARTY_LENGTH
-wcd77:: ds 1
-
-wMobileCrashCheckPointer:: dw
-wcd7a:: ds 2
-wcd7c:: ds 3
-wcd7f:: ds 1
-wcd80:: ds 1
-wcd81:: ds 1
-wcd82:: ds 1
-wcd83:: ds 1
-wcd84:: ds 1
-wcd85:: ds 4
-wcd89:: ds 1
-wcd8a:: ds 1
-wcd8b:: ds 1
-wcd8c:: ds 1
-wcd8d:: ds 11
 ENDU ; cd98
 
 wSGBPredef:: db ; cd98
@@ -1335,17 +1015,7 @@ wAttrmap:: ; cdd9
 	ds SCREEN_WIDTH * SCREEN_HEIGHT
 wAttrmapEnd::
 
-UNION ; cf41
-; addresses dealing with serial comms
-	ds 1
-wcf42:: db
-	ds 1
-wcf44:: db
-wcf45:: db
-
-NEXTU ; cf41
 wTileAnimBuffer:: ds 1 tiles
-ENDU ; cf51
 
 ; link data
 wOtherPlayerLinkMode:: db
@@ -1365,9 +1035,7 @@ wNamedObjectTypeBuffer:: db
 
 	ds 1
 
-wJumptableIndex::
-wBattleTowerBattleEnded::
-	db
+wJumptableIndex:: db
 
 UNION ; cf64
 ; unidentified
@@ -1393,12 +1061,7 @@ wCreditsLYOverride:: db
 NEXTU ; cf64
 ; pokedex
 wPrevDexEntryJumptableIndex:: db
-if DEF(_CRYSTAL11)
 wPrevDexEntryBackup:: db
-else
-wPrevDexEntryBackup::
-wPokedexStatus:: db
-endc
 
 NEXTU ; cf64
 ; pokegear
@@ -1436,14 +1099,8 @@ wUnownPuzzleCursorPosition:: db
 wUnownPuzzleHeldPiece:: db
 
 NEXTU ; cf64
-; battle tower
-	ds $2
-wBattleTowerRoomMenuJumptableIndex:: db
-
-NEXTU ; cf64
 ; miscellaneous
 wFrameCounter::
-wNrOfBeatenBattleTowerTrainers::
 wMomBankDigitCursorPosition::
 wNamingScreenLetterCase::
 wHallOfFameMonCounter::
@@ -1570,14 +1227,7 @@ wcfbe:: ; cfbe
 ; bit 7: SGB flag?
 	db
 
-	ds 1
-
-wInBattleTowerBattle:: ; cfc0
-; 0 not in BattleTower-Battle
-; 1 BattleTower-Battle
-	db
-
-	ds 1
+	ds 3
 
 wFXAnimID:: dw ; cfc2
 
@@ -1741,13 +1391,6 @@ wPlaceBallsDirection:: db
 wTrainerHUDTiles:: ds 4
 
 NEXTU ; d002
-; mobile participant nicknames
-	ds 4
-wMobileParticipant1Nickname:: ds NAME_LENGTH_JAPANESE
-wMobileParticipant2Nickname:: ds NAME_LENGTH_JAPANESE
-wMobileParticipant3Nickname:: ds NAME_LENGTH_JAPANESE
-
-NEXTU ; d002
 ; earthquake data buffer
 wEarthquakeMovementDataBuffer:: ds 5
 
@@ -1768,35 +1411,12 @@ wd002:: db
 wd003:: db
 wd004:: db
 
-; mobile?
-	ds 1
-wd006:: ds 2
-wd008:: ds 2
-	ds 2
-wd00c:: ds 1
-wd00d:: ds 1
-	ds 1
-wd00f:: ds 1
-wd010:: ds 1
+	ds 8
+
+wd00d:: dw
+wd00f:: dw
 wd011:: ds 1
 wd012:: ds 1
-wd013:: ds 1
-wd014:: ds 2
-	ds 1
-wd017:: ds 1
-wd018:: ds 1
-wd019:: ds 1
-	ds 19
-wd02d:: ds 1
-wd02e:: ds 1
-wd02f:: ds 1
-wd030:: ds 1
-wd031:: ds 1
-wd032:: ds 1
-wd033:: ds 1
-wd034:: ds 2
-wd036:: ds 2
-	ds 6
 
 UNION ; d03e
 ; trainer data
@@ -1952,7 +1572,6 @@ wTMHMPocketScrollPosition::     db
 wSwitchMon::
 wSwitchItem::
 wMoveSwapBuffer::
-wd0e3:: ; mobile
 	db
 
 wMenuScrollPosition:: ds 4
@@ -2076,10 +1695,6 @@ wBGMapAnchor:: dw ; d152
 UNION ; d154
 wUsedSprites:: ds SPRITE_GFX_LIST_CAPACITY * 2
 wUsedSpritesEnd::
-
-NEXTU ; d154
-	ds 31
-wd173:: db ; related to command queue type 3
 ENDU ; d194
 
 wOverworldMapAnchor:: dw ; d194
@@ -2157,15 +1772,8 @@ wEvolutionPicOffset:: db ; d1ec
 wEvolutionCanceled:: db ; d1ed
 
 NEXTU ; d1ea
-; mobile
-	ds 2
-wd1ec:: ds 1
-wd1ed:: ds 1
-wd1ee:: ds 1
-wd1ef:: ds 1
-wd1f0:: ds 1
-wd1f1:: ds 1
-wd1f2:: ds 1
+; link
+	ds 9
 wd1f3:: ds 4
 
 NEXTU ; d1ea
@@ -2245,6 +1853,8 @@ wBaseEggGroups:: db ; d24d
 wBaseTMHM:: flag_array NUM_TM_HM_TUTOR ; d24e
 wCurBaseDataEnd::
 
+	ds 6
+
 wCurDamage:: dw ; d256
 
 	ds 2
@@ -2274,7 +1884,6 @@ wChosenCableClubRoom::
 wBreedingCompatibility::
 wApplyStatLevelMultipliersToEnemy::
 wUsePPUp::
-wd265:: ; mobile
 	db
 
 wFailedToFlee:: db
@@ -2291,8 +1900,6 @@ SECTION "Enemy Party", WRAMX
 UNION ; d26b
 wPokedexShowPointerAddr:: dw
 wPokedexShowPointerBank:: db
-	ds 3
-wd271:: dw ; mobile
 
 NEXTU ; d26b
 ; enemy party
@@ -2337,10 +1944,9 @@ wDudeBallsEnd:: db ; d2af
 wDudeBagEnd::
 ENDU ; d430
 
-wd430:: ; mobile
 wBattleAction:: db ; d430
 
-wd431:: db ; mobile
+wd431:: db ; mobile?
 wMapStatus:: db ; d432
 wMapEventStatus:: db ; d433
 
@@ -2399,23 +2005,7 @@ wBugContestSecsRemaining:: db ; d46d
 	ds 2
 wMapStatusEnd:: ; d470
 
-	ds 2
-
-wCrystalData::
-wPlayerGender:: ; d472
-; bit 0:
-;	0 male
-;	1 female
-	db
-wd473:: ds 1
-wd474:: ds 1
-wd475:: ds 1
-wd476:: ds 1
-wd477:: ds 1
-wd478:: ds 1
-wCrystalDataEnd::
-
-wd479:: ds 2
+	ds 11
 
 wGameData::
 wPlayerData::
@@ -2456,7 +2046,11 @@ wGameTimeFrames::  db ; d4c8
 
 wCurDay:: db ; d4cb
 
-	ds 1
+wPlayerGender:: ; d472
+; bit 0:
+;	0 male
+;	1 female
+	db
 
 wObjectFollow_Leader:: db
 wObjectFollow_Follower:: db
@@ -2730,10 +2324,9 @@ wBugContestStartTime:: ds 4 ; day, hour, min, sec ; dc35
 wHoneyTreeTwoDayTimerOn:: db ; dc39
 wHoneyTreeTwoDayTimer:: db
 wHoneyTreeTwoDayTimerStartDate:: db
-	ds 4
-wMobileOrCable_LastSelection:: db
-wdc41:: ds 1
-wdc42:: ds 8
+
+	ds 14
+
 wBuenasPassword:: db
 wBlueCardBalance:: db
 wDailyRematchFlags:: ds 4
@@ -2743,10 +2336,8 @@ wKenjiBreakTimer:: ds 2 ; Kenji
 wYanmaMapGroup:: db ; dc5a
 wYanmaMapNumber:: db
 wPlayerMonSelection:: ds 3
-wdc5f:: db
-wdc60:: db
 
-	ds 18
+	ds 20
 
 wStepCount:: db ; dc73
 wPoisonStepCount:: db ; dc74
@@ -2892,82 +2483,11 @@ wGameDataEnd::
 ; dff5
 
 
-SECTION "Pic Animations", WRAMX
+SECTION "wTempTilemap", WRAMX
 
 wTempTilemap::
 ; 20x18 grid of 8x8 tiles
 	ds SCREEN_WIDTH * SCREEN_HEIGHT ; $168 = 360
-
-
-
-SECTION "Battle Tower RAM", WRAMX
-
-w3_d000:: ds 1 ; d000
-w3_d001:: ds 1
-w3_d002:: ds $7e
-w3_d080:: ds 1
-w3_d081:: ds $f
-w3_d090:: ds $70
-
-w3_d100::
-wBT_OTTrainer:: battle_tower_struct wBT_OT
-	ds $20
-wBT_TrainerTextIndex:: db ; d200
-	ds 1
-w3_d202:: battle_tower_struct w3_d202
-w3_d2e2:: battle_tower_struct w3_d2e2
-w3_d3c2:: battle_tower_struct w3_d3c2
-w3_d4a2:: battle_tower_struct w3_d4a2
-w3_d582:: battle_tower_struct w3_d582
-w3_d662:: battle_tower_struct w3_d662
-
-UNION ; d742
-w3_d742:: battle_tower_struct w3_d742
-; d822
-
-NEXTU ; d742
-	ds $be
-w3_d800:: ds BG_MAP_WIDTH * SCREEN_HEIGHT
-
-NEXTU ; d742
-	ds $be
-wBTChoiceOfLvlGroup:: db ; d800
-	ds $1
-w3_d802:: ds 12 ; d802
-w3_d80e:: db ; d80e
-	ds $1
-w3_d810:: ; d810
-	ds $59
-w3_d869:: ds $17 ; d869
-w3_d880:: ds 1 ; d880
-w3_d881:: ds 8 ; d881
-w3_d889:: ds 1 ; d889
-w3_d88a:: ds 4 ; d88a
-w3_d88e:: ds 1 ; d88e
-w3_d88f:: ds 4 ; d88f
-w3_d893:: ds 1 ; d893
-w3_d894:: ds 1 ; d894
-w3_d895:: ds 11 ; d895
-w3_d8a0:: ds 1 ; d8a0
-w3_d8a1:: ds 1 ; d8a1
-w3_d8a2:: ds 1 ; d8a2
-w3_d8a3:: ds 1 ; d8a3
-ENDU ; d8a4
-
-	ds $1c0
-
-w3_dc00:: ds SCREEN_WIDTH * SCREEN_HEIGHT
-UNION ; dd68
-w3_dd68:: ds SCREEN_WIDTH * SCREEN_HEIGHT
-
-	ds $11c
-
-w3_dfec:: ds $10
-w3_dffc:: ds 4
-NEXTU ; dd68
-	ds $98
-w3_de00:: ds $200
-ENDU ; e000
 
 
 SECTION "GBC Video", WRAMX, ALIGN[8]
@@ -3069,19 +2589,6 @@ wSurfWaveBGEffectEnd::
 ENDU ; d462
 
 
-SECTION "Mobile RAM", WRAMX
-
-w5_d800:: ds $200
-w5_da00:: ds $200
-w5_dc00:: ds $d
-w5_dc0d:: ds 4
-w5_dc11:: ds 9
-w5_MobileOpponentBattleMessages:: ds $c ; dc1a
-w5_MobileOpponentBattleStartMessage:: ds $c ; dc26
-w5_MobileOpponentBattleWinMessage:: ds $c ; dc32
-w5_MobileOpponentBattleLossMessage:: ds $c ; dc3e
-
-
 SECTION "Scratch RAM", WRAMX
 
 UNION ; d000
@@ -3091,10 +2598,6 @@ wScratchAttrmap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 NEXTU ; d000
 wDecompressScratch:: ds $80 tiles
 wDecompressEnemyFrontpic:: ds $80 tiles
-
-NEXTU ; d000
-; unidentified uses
-w6_d000:: ds $1000
 ENDU ; e000
 
 
