@@ -946,9 +946,6 @@ INCBIN "gfx/icons/mail_big.2bpp"
 	ld [wNamingScreenMaxNameLength], a
 	ret
 
-.UnusedString11f7a:
-	db "メールを　かいてね@"
-
 .InitCharset:
 	call WaitTop
 	hlcoord 0, 0

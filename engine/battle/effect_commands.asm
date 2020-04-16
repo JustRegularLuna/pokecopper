@@ -5701,10 +5701,6 @@ BattleCommand_Charge:
 	text_far _BattleDugText
 	text_end
 
-BattleCommand3c:
-; unused
-	ret
-
 BattleCommand_TrapTarget:
 ; traptarget
 
@@ -6466,10 +6462,6 @@ INCLUDE "engine/battle/move_effects/perish_song.asm"
 INCLUDE "engine/battle/move_effects/sandstorm.asm"
 
 INCLUDE "engine/battle/move_effects/rollout.asm"
-
-BattleCommand5d:
-; unused
-	ret
 
 INCLUDE "engine/battle/move_effects/fury_cutter.asm"
 

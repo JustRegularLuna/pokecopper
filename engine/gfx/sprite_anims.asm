@@ -26,7 +26,6 @@ DoAnimFrame:
 	dw .SlotsChansey
 	dw .SlotsChanseyEgg
 	dw .MailCursor
-	dw .UnusedCursor
 	dw .DummyGameCursor
 	dw .PokegearArrow
 	dw .TradePokeBall
@@ -394,10 +393,6 @@ DoAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a
-	ret
-
-.UnusedCursor
-	callfar ret_e00ed
 	ret
 
 .PokegearArrow

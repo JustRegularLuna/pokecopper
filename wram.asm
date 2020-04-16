@@ -39,7 +39,7 @@ wChannel8:: channel_struct wChannel8 ; c25f
 wCurTrackDuty:: db
 wCurTrackVolumeEnvelope:: db
 wCurTrackFrequency:: dw
-wUnusedBCDNumber:: db ; BCD value, dummied out
+	ds 1
 wCurNoteDuration:: db ; used in MusicE0 and LoadNote
 
 wCurMusicByte:: db ; c298
@@ -94,7 +94,8 @@ wCryPitch:: dw ; c2b0
 wCryLength:: dw ; c2b2
 
 wLastVolume:: db ; c2b4
-wUnusedMusicF9Flag:: db ; c2b5
+
+	ds 1
 
 wSFXPriority:: ; c2b6
 ; if nonzero, turn off music when playing sfx
@@ -144,7 +145,7 @@ wDebugFlags:: db
 wGameLogicPaused:: db ; c2cd
 wSpriteUpdatesEnabled:: db
 
-wUnusedScriptByteBuffer:: db
+	ds 1
 
 wMapTimeOfDay:: db
 
@@ -586,8 +587,7 @@ wPlayerTurnsTaken:: db ; c6dd
 wPlayerSubstituteHP:: db ; c6df
 wEnemySubstituteHP:: db ; c6e0
 
-wUnusedPlayerLockedMove:: db ; c6e1
-	ds 1
+	ds 2
 
 wCurPlayerMove:: db ; c6e3
 wCurEnemyMove:: db ; c6e4
@@ -924,10 +924,7 @@ ENDU ; c7e8
 
 ENDU ; c7e8
 
-; This was a buffer for map-related pointers in the 1997 G/S prototype.
-; See wMapBuffer in pokegold-spaceworld's wram.asm.
-wUnusedMapBuffer:: ds 24
-wUnusedMapBufferEnd::
+	ds 24
 
 
 SECTION "Overworld Map", WRAM0
@@ -1177,7 +1174,7 @@ wBGMapBufferEnd::
 NEXTU ; cd20
 ; credits
 wCreditsPos:: db
-wCreditsUnusedCD21:: db
+	ds 1
 wCreditsTimer:: db
 
 NEXTU ; cd20
@@ -1726,8 +1723,7 @@ NEXTU ; d002
 ; movement buffer data
 wMovementBufferCount:: db
 wMovementBufferObject:: db
-wUnusedMovementBufferBank:: db
-wUnusedMovementBufferPointer:: dw
+	ds 3
 wMovementBuffer:: ds 55
 
 NEXTU ; d002
@@ -1948,7 +1944,7 @@ wBallsPocketCursor::    db
 wTMHMPocketCursor::     db
 
 wPCItemsScrollPosition::        db
-wPartyMenuScrollPosition::      db ; unused
+	ds 1
 wItemsPocketScrollPosition::    db
 wKeyItemsPocketScrollPosition:: db
 wBallsPocketScrollPosition::    db
@@ -2010,7 +2006,7 @@ wMailboxEnd:: ; d0fe
 ENDU ; d100
 
 wListPointer:: dw ; d100
-wUnusedD102:: dw ; d102
+	ds 2
 wItemAttributesPtr:: dw ; d104
 
 wCurItem:: db ; d106
@@ -2303,9 +2299,6 @@ wPokedexShowPointerAddr:: dw
 wPokedexShowPointerBank:: db
 	ds 3
 wd271:: dw ; mobile
-
-NEXTU ; d26b
-wUnusedEggHatchFlag:: db
 
 NEXTU ; d26b
 ; enemy party

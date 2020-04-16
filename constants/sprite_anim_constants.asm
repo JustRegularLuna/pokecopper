@@ -32,7 +32,6 @@ NUM_SPRITE_ANIM_STRUCTS EQU 10 ; see wSpriteAnimationStructs
 	const SPRITE_ANIM_INDEX_SLOTS_EGG                ; 08
 	const SPRITE_ANIM_INDEX_COMPOSE_MAIL_CURSOR      ; 09
 	const SPRITE_ANIM_INDEX_RED_WALK                 ; 0a
-	const SPRITE_ANIM_INDEX_UNUSED_CURSOR            ; 0b
 	const SPRITE_ANIM_INDEX_DUMMY_GAME               ; 0c
 	const SPRITE_ANIM_INDEX_POKEGEAR_ARROW           ; 0d
 	const SPRITE_ANIM_INDEX_TRADE_POKE_BALL          ; 0e
@@ -82,7 +81,6 @@ NUM_SPRITE_ANIM_STRUCTS EQU 10 ; see wSpriteAnimationStructs
 	const SPRITE_ANIM_SEQ_SLOTS_CHANSEY           ; 0a
 	const SPRITE_ANIM_SEQ_SLOTS_EGG               ; 0b
 	const SPRITE_ANIM_SEQ_MAIL_CURSOR             ; 0c
-	const SPRITE_ANIM_SEQ_UNUSED_CURSOR           ; 0d
 	const SPRITE_ANIM_SEQ_DUMMY_GAME_CURSOR       ; 0e
 	const SPRITE_ANIM_SEQ_POKEGEAR_ARROW          ; 0f
 	const SPRITE_ANIM_SEQ_TRADE_POKE_BALL         ; 10
@@ -132,7 +130,6 @@ NUM_SPRITE_ANIM_STRUCTS EQU 10 ; see wSpriteAnimationStructs
 	const SPRITE_ANIM_FRAMESET_EVOLUTION_BALL_OF_LIGHT  ; 19
 	const SPRITE_ANIM_FRAMESET_RADIO_TUNING_KNOB        ; 1a
 	const SPRITE_ANIM_FRAMESET_MAGNET_TRAIN_RED         ; 1b
-	const SPRITE_ANIM_FRAMESET_UNUSED_1C                ; 1c
 	const SPRITE_ANIM_FRAMESET_LEAF                     ; 1d
 	const SPRITE_ANIM_FRAMESET_CUT_TREE                 ; 1e
 	const SPRITE_ANIM_FRAMESET_EGG_CRACK                ; 1f
@@ -227,18 +224,6 @@ NUM_SPRITE_ANIM_STRUCTS EQU 10 ; see wSpriteAnimationStructs
 	const SPRITE_ANIM_OAMSET_PARTY_MON_WITH_ITEM_2      ; 40
 	const SPRITE_ANIM_OAMSET_MAGNET_TRAIN_RED_1         ; 41
 	const SPRITE_ANIM_OAMSET_MAGNET_TRAIN_RED_2         ; 42
-	const SPRITE_ANIM_OAMSET_UNUSED_43                  ; 43
-	const SPRITE_ANIM_OAMSET_UNUSED_44                  ; 44
-	const SPRITE_ANIM_OAMSET_UNUSED_45                  ; 45
-	const SPRITE_ANIM_OAMSET_UNUSED_46                  ; 46
-	const SPRITE_ANIM_OAMSET_UNUSED_47                  ; 47
-	const SPRITE_ANIM_OAMSET_UNUSED_48                  ; 48
-	const SPRITE_ANIM_OAMSET_UNUSED_49                  ; 49
-	const SPRITE_ANIM_OAMSET_UNUSED_4A                  ; 4a
-	const SPRITE_ANIM_OAMSET_UNUSED_4B                  ; 4b
-	const SPRITE_ANIM_OAMSET_UNUSED_4C                  ; 4c
-	const SPRITE_ANIM_OAMSET_UNUSED_4D                  ; 4d
-	const SPRITE_ANIM_OAMSET_UNUSED_4E                  ; 4e
 	const SPRITE_ANIM_OAMSET_LEAF                       ; 4f
 	const SPRITE_ANIM_OAMSET_TREE_1                     ; 50
 	const SPRITE_ANIM_OAMSET_CUT_TREE_2                 ; 51

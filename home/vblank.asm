@@ -139,9 +139,6 @@ VBlank0::
 	ldh a, [hROMBankBackup]
 	rst Bankswitch
 
-	ldh a, [hSeconds]
-	ldh [hUnusedBackup], a
-
 	ret
 
 VBlank2::

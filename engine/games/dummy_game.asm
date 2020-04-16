@@ -1,3 +1,10 @@
+Unknown_e00ed:
+; Graphics for an unused Game Corner
+; game were meant to be here.
+
+ret_e00ed:
+	ret
+
 _DummyGame:
 	call .LoadGFXAndPals
 	call DelayFrame

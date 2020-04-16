@@ -20,10 +20,7 @@ SpawnPlayer:
 	ld a, -1
 	ld [wObjectFollow_Leader], a
 	ld [wObjectFollow_Follower], a
-	ld a, $0
-	ld hl, PlayerObjectTemplate
-	call CopyPlayerObjectTemplate
-	ld b, $0
+	ld b, PLAYER
 	call PlayerSpawn_ConvertCoords
 	ld a, PLAYER_OBJECT
 	call GetMapObject
@@ -50,12 +47,6 @@ SpawnPlayer:
 	ld a, PLAYER
 	ld [wCenteredObject], a
 	ret
-
-PlayerObjectTemplate:
-; A dummy map object used to initialize the player object.
-; Shorter than the actual amount copied by two bytes.
-; Said bytes seem to be unused.
-	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
 
 CopyDECoordsToMapObject::
 	push de

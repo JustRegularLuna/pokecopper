@@ -150,7 +150,6 @@ SFX:
 	dba Sfx_RegisterPhoneNumber
 	dba Sfx_3rdPlace
 	dba Sfx_GetEgg
-	dba Sfx_GetEgg
 	dba Sfx_MoveDeleted
 	dba Sfx_2ndPlace
 	dba Sfx_1stPlace

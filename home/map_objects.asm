@@ -343,19 +343,6 @@ DeleteObjectStruct::
 	call MaskObject
 	ret
 
-CopyPlayerObjectTemplate::
-	push hl
-	call GetMapObject
-	ld d, b
-	ld e, c
-	ld a, -1
-	ld [de], a
-	inc de
-	pop hl
-	ld bc, MAPOBJECT_LENGTH - 1
-	call CopyBytes
-	ret
-
 LoadMovementDataPointer::
 ; Load the movement data pointer for object a.
 	ld [wMovementObject], a

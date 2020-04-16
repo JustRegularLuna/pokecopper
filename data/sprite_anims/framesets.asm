@@ -28,7 +28,6 @@ SpriteAnimFrameData:
 	dw .Frameset_EvolutionBallOfLight
 	dw .Frameset_RadioTuningKnob
 	dw .Frameset_MagnetTrainRed
-	dw .Frameset_Unused1C
 	dw .Frameset_Leaf
 	dw .Frameset_CutTree
 	dw .Frameset_EggCrack
@@ -231,53 +230,6 @@ SpriteAnimFrameData:
 	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_RED_1,  8
 	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_RED_2,  8, OAM_X_FLIP
 	dorestart
-
-; unused
-	frame SPRITE_ANIM_OAMSET_UNUSED_43,  8
-	frame SPRITE_ANIM_OAMSET_UNUSED_44,  8
-	dorestart
-
-; unused
-	frame SPRITE_ANIM_OAMSET_UNUSED_45,  8
-	frame SPRITE_ANIM_OAMSET_UNUSED_46,  8
-	dorestart
-
-; unused
-	frame SPRITE_ANIM_OAMSET_UNUSED_47,  8
-	frame SPRITE_ANIM_OAMSET_UNUSED_48,  8
-	dorestart
-
-; unused
-	frame SPRITE_ANIM_OAMSET_UNUSED_49,  1
-	frame SPRITE_ANIM_OAMSET_UNUSED_49,  1, OAM_X_FLIP
-	frame SPRITE_ANIM_OAMSET_UNUSED_49,  1, OAM_X_FLIP, OAM_Y_FLIP
-	frame SPRITE_ANIM_OAMSET_UNUSED_49,  1, OAM_Y_FLIP
-	dorestart
-
-; unused
-	frame SPRITE_ANIM_OAMSET_UNUSED_4A, 32
-	endanim
-
-; unused
-	frame SPRITE_ANIM_OAMSET_UNUSED_4B, 32
-	endanim
-
-; unused
-	frame SPRITE_ANIM_OAMSET_UNUSED_4C, 32
-	endanim
-
-; unused
-	frame SPRITE_ANIM_OAMSET_UNUSED_4D, 32
-	endanim
-
-; unused
-	frame SPRITE_ANIM_OAMSET_UNUSED_4E,  3
-	dowait 3
-	dorestart
-
-.Frameset_Unused1C:
-	dowait 32
-	endanim
 
 .Frameset_Leaf:
 	frame SPRITE_ANIM_OAMSET_LEAF, 32
