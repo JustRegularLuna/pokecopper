@@ -209,8 +209,7 @@ GetMonSprite:
 
 	farcall LoadOverworldMonIcon
 
-	ld l, 1
-	ld h, 0
+	lb hl, 0, 1
 	scf
 	ret
 
@@ -226,8 +225,7 @@ GetMonSprite:
 
 .NoBreedmon:
 	ld a, 1
-	ld l, 1
-	ld h, 0
+	lb hl, 0, 1
 	and a
 	ret
 
@@ -348,8 +346,7 @@ ArrangeUsedSprites:
 ; Crystal introduces a second table in VRAM bank 0.
 
 	ld hl, wUsedSprites
-	ld c, SPRITE_GFX_LIST_CAPACITY
-	ld b, 0
+	lb bc, 0, SPRITE_GFX_LIST_CAPACITY
 .FirstTableLength:
 ; Keep going until the end of the list.
 	ld a, [hli]

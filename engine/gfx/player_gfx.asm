@@ -137,8 +137,7 @@ HOF_LoadTrainerFrontpic:
 
 .GotPic:
 	ld hl, vTiles2
-	ld b, BANK(HiroPic) ; aka BANK(SylviaPic)
-	ld c, 7 * 7
+	lb bc, BANK(HiroPic), 7 * 7 ; aka BANK(SylviaPic)
 	call Get2bpp
 	call WaitBGMap
 	ld a, $1
@@ -160,8 +159,7 @@ DrawIntroPlayerPic:
 	ld de, SylviaPic
 .GotPic:
 	ld hl, vTiles2
-	ld b, BANK(HiroPic) ; aka BANK(SylviaPic)
-	ld c, 7 * 7 ; dimensions
+	lb bc, BANK(HiroPic), 7 * 7 ; aka BANK(SylviaPic)
 	call Get2bpp
 
 ; Draw

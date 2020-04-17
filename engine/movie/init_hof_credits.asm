@@ -70,8 +70,7 @@ ResetDisplayBetweenHallOfFameMons:
 	call ByteFill
 	hlbgcoord 0, 0
 	ld de, wDecompressScratch
-	ld b, 0
-	ld c, 4 tiles
+	lb bc, 0, 4 tiles
 	call Request2bpp
 	pop af
 	ldh [rSVBK], a

@@ -1,6 +1,5 @@
 WriteOAMDMACodeToHRAM::
-	ld c, LOW(hTransferVirtualOAM)
-	ld b, .PushOAMEnd - .PushOAM
+	lb bc, .PushOAMEnd - .PushOAM, LOW(hTransferVirtualOAM)
 	ld hl, .PushOAM
 .loop
 	ld a, [hli]

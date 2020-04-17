@@ -2350,8 +2350,7 @@ GetBoxCount:
 
 BillsPC_PrintBoxName:
 	hlcoord 0, 0
-	ld b, 2
-	ld c, 18
+	lb bc, 2, 18
 	call Textbox
 	hlcoord 1, 2
 	ld de, .Current

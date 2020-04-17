@@ -473,8 +473,7 @@ CardFlip_DisplayCardFaceUp:
 CardFlip_UpdateCoinBalanceDisplay:
 	push hl
 	hlcoord 0, 12
-	ld b, 4
-	ld c, SCREEN_WIDTH - 2
+	lb bc, 4, SCREEN_WIDTH - 2
 	call Textbox
 	pop hl
 	call PrintTextboxText
@@ -483,8 +482,7 @@ CardFlip_UpdateCoinBalanceDisplay:
 
 CardFlip_PrintCoinBalance:
 	hlcoord 9, 15
-	ld b, 1
-	ld c, 9
+	lb bc, 1, 9
 	call Textbox
 	hlcoord 10, 16
 	ld de, .CoinStr

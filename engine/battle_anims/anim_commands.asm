@@ -900,15 +900,13 @@ BattleAnimCmd_UpdateActorPic:
 	jr z, .player
 
 	ld hl, vTiles2 tile $00
-	ld b, 0
-	ld c, 7 * 7
+	lb bc, 0, 7 * 7
 	call Request2bpp
 	ret
 
 .player
 	ld hl, vTiles2 tile $31
-	ld b, 0
-	ld c, 6 * 6
+	lb bc, 0, 6 * 6
 	call Request2bpp
 	ret
 

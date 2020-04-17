@@ -142,8 +142,7 @@ Function16d6ce:
 
 Function16d6e1:
 	hlcoord 4, 10
-	ld b, 1
-	ld c, 10
+	lb bc, 1, 10
 	predef LinkTextboxAtHL
 	hlcoord 5, 11
 	ld de, .Waiting

@@ -692,8 +692,7 @@ EggHatch_AnimationSequence:
 	call PlayMusic
 	call EnableLCD
 	hlcoord 7, 4
-	ld b, HIGH(vBGMap0)
-	ld c, $31 ; Egg tiles start here
+	lb bc, HIGH(vBGMap0), $31 ; Egg tiles start here
 	ld a, EGG
 	call Hatch_UpdateFrontpicBGMapCenter
 	ld c, 80
@@ -741,8 +740,7 @@ EggHatch_AnimationSequence:
 	call ClearSprites
 	call Hatch_InitShellFragments
 	hlcoord 6, 3
-	ld b, HIGH(vBGMap0)
-	ld c, $00 ; Hatchling tiles start here
+	lb bc, HIGH(vBGMap0), $00 ; Hatchling tiles start here
 	ld a, [wJumptableIndex]
 	call Hatch_UpdateFrontpicBGMapCenter
 	call Hatch_ShellFragmentLoop
@@ -756,8 +754,7 @@ EggHatch_AnimationSequence:
 
 Hatch_LoadFrontpicPal:
 	ld [wPlayerHPPal], a
-	ld b, SCGB_EVOLUTION
-	ld c, $0
+	lb bc, SCGB_EVOLUTION, $0
 	jp GetSGBLayout
 
 EggHatch_CrackShell:

@@ -194,8 +194,7 @@ AI_Types:
 	ld a, [wEnemyMoveStruct + MOVE_TYPE]
 	ld d, a
 	ld hl, wEnemyMonMoves
-	ld b, wEnemyMonMovesEnd - wEnemyMonMoves + 1
-	ld c, 0
+	lb bc, wEnemyMonMovesEnd - wEnemyMonMoves + 1, 0
 .checkmove2
 	dec b
 	jr z, .asm_38693
@@ -1326,8 +1325,7 @@ AI_Smart_Mimic:
 AI_Smart_Counter:
 	push hl
 	ld hl, wPlayerUsedMoves
-	ld c, 4
-	ld b, 0
+	lb bc, 0, 4
 
 .asm_38bf9
 	ld a, [hli]
@@ -2431,8 +2429,7 @@ AI_Smart_BellyDrum:
 AI_Smart_PsychUp:
 	push hl
 	ld hl, wEnemyAtkLevel
-	ld b, $8
-	ld c, 100
+	lb bc, $8, 100
 
 ; Calculate the sum of all enemy's stat level modifiers. Add 100 first to prevent underflow.
 ; Put the result in c. c will range between 58 and 142.
@@ -2488,8 +2485,7 @@ AI_Smart_PsychUp:
 AI_Smart_MirrorCoat:
 	push hl
 	ld hl, wPlayerUsedMoves
-	ld c, $4
-	ld b, $0
+	lb bc, $0, $4
 
 .asm_39193
 	ld a, [hli]

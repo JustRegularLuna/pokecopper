@@ -130,8 +130,7 @@ CheckForLuckyNumberWinners:
 	ld de, wLuckyIDNumber
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
-	ld b, 5
-	ld c, 0
+	lb bc, 5, 0
 	ld hl, wLuckyNumberDigitsBuffer + 4
 	ld de, wBuffer1 + 4
 .loop
