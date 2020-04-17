@@ -941,8 +941,7 @@ wBGMapBufferEnd::
 
 NEXTU ; cd20
 ; credits
-wCreditsPos:: db
-	ds 1
+wCreditsPos:: dw
 wCreditsTimer:: db
 ENDU ; cd98
 

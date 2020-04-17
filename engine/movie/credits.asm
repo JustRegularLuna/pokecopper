@@ -86,6 +86,7 @@ Credits::
 	xor a
 	ldh [hBGMapMode], a
 	ld [wCreditsPos], a
+	ld [wCreditsPos + 1], a
 	ld [wCreditsTimer], a
 
 .execution_loop
