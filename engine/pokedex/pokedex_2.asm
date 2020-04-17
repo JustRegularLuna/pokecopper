@@ -92,9 +92,9 @@ DisplayDexEntry:
 	push de
 ; Print dex number
 	hlcoord 2, 8
-	ld a, $5c ; No
+	ld a, "№"
 	ld [hli], a
-	ld a, $5d ; .
+	ld a, "."
 	ld [hli], a
 	ld de, wTempSpecies
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
@@ -133,7 +133,7 @@ DisplayDexEntry:
 	call PrintNum
 ; Replace the decimal point with a ft symbol
 	hlcoord 14, 7
-	ld [hl], $5e
+	ld [hl], "′"
 	pop af
 	pop hl
 

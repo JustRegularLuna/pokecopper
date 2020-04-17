@@ -779,18 +779,10 @@ Pokedex_UpdateUnownMode:
 	ld a, DEXSTATE_OPTION_SCR
 	ld [wJumptableIndex], a
 	call DelayFrame
-	call Pokedex_CheckSGB
-	jr nz, .decompress
-	farcall LoadSGBPokedexGFX2
-	jr .done
-
-.decompress
 	ld hl, PokedexLZ
 	ld de, vTiles2 tile $31
 	lb bc, BANK(PokedexLZ), 58
 	call DecompressRequest2bpp
-
-.done
 	ret
 
 Pokedex_UnownModeHandleDPadInput:
@@ -1124,7 +1116,7 @@ Pokedex_DrawDexEntryScreenBG:
 	ret
 
 .Height:
-	db "HT  ?", $5e, "??", $5f, -1 ; HT  ?'??"
+	db "HT  ?′??″", -1 ; HT  ?′??″
 .Weight:
 	db "WT   ???lb", -1 ; WT   ???lb
 .MenuItems:
@@ -2311,17 +2303,9 @@ Pokedex_LoadGFX:
 	call LoadFontsExtra
 	ld hl, vTiles2 tile $60
 	ld bc, $20 tiles
-	call Pokedex_CheckSGB
-	jr nz, .LoadPokedexLZ
-	farcall LoadSGBPokedexGFX
-	jr .LoadPokedexSlowpokeLZ
-
-.LoadPokedexLZ:
 	ld hl, PokedexLZ
 	ld de, vTiles2 tile $31
 	call Decompress
-
-.LoadPokedexSlowpokeLZ:
 	ld hl, PokedexSlowpokeLZ
 	ld de, vTiles0
 	call Decompress
@@ -2335,14 +2319,6 @@ INCBIN "gfx/pokedex/pokedex.2bpp.lz"
 
 PokedexSlowpokeLZ:
 INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
-
-Pokedex_CheckSGB:
-	ldh a, [hCGB]
-	or a
-	ret nz
-	ldh a, [hSGB]
-	dec a
-	ret
 
 Pokedex_LoadUnownFont:
 	ld a, BANK(sScratch)
