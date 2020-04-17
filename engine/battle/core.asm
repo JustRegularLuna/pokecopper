@@ -4094,7 +4094,6 @@ HandleHPHealingItem:
 	ld [wBuffer4], a
 	adc a
 	ld b, a
-	ld a, b
 	cp [hl]
 	ld a, c
 	pop bc

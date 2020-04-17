@@ -14,7 +14,6 @@ _GiveOddEgg:
 	ld d, a
 
 	; Break on $ffff.
-	ld a, d
 	cp HIGH($ffff)
 	jr nz, .not_done
 	ld a, e

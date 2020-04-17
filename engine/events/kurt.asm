@@ -136,7 +136,6 @@ Kurt_SelectQuantity:
 	cp -1
 	jr z, .done
 	ld a, [wItemQuantityChangeBuffer]
-	ld [wItemQuantityChangeBuffer], a ; What is the point of this operation?
 	scf
 
 .done
