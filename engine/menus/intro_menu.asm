@@ -1054,7 +1054,7 @@ TitleScreenEntrance:
 ; Reversed signage for every other line's position.
 ; This is responsible for the interlaced effect.
 	ld a, e
-	xor $ff
+	cpl
 	inc a
 
 	ld b, 8 * 10 / 2 ; logo height / 2
