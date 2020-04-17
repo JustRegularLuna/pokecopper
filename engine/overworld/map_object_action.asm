@@ -220,9 +220,8 @@ SetFacingFreezeBounce:
 SetFacingWeirdTree:
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
+	inc [hl]
 	ld a, [hl]
-	inc a
-	ld [hl], a
 	maskbits NUM_DIRECTIONS, 2
 	rrca
 	rrca
