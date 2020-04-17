@@ -5,8 +5,7 @@ __LoadTradeScreenBorder:
 	ld de, LinkCommsBorderGFX
 	ld hl, vTiles2
 	lb bc, BANK(LinkCommsBorderGFX), 70
-	call Get2bpp
-	ret
+	jp Get2bpp
 
 Tilemap_CableTradeBorder:
 INCBIN "gfx/trade/border.tilemap"
@@ -91,22 +90,19 @@ InitTradeSpeciesList:
 	farcall PlaceTradePartnerNamesAndParty
 	hlcoord 10, 17
 	ld de, .CANCEL
-	call PlaceString
-	ret
+	jp PlaceString
 
 .CANCEL:
 	db "CANCEL@"
 
 _LoadTradeScreenBorder:
-	call __LoadTradeScreenBorder
-	ret
+	jp __LoadTradeScreenBorder
 
 LinkComms_LoadPleaseWaitTextboxBorderGFX:
 	ld de, LinkCommsBorderGFX + $30 tiles
 	ld hl, vTiles2 tile $76
 	lb bc, BANK(LinkCommsBorderGFX), 8
-	call Get2bpp
-	ret
+	jp Get2bpp
 
 LoadTradeRoomBGPals:
 	ld hl, TradeRoomPalette
@@ -125,20 +121,17 @@ Function16d6ae:
 	ld hl, Tilemap_CableTradeBorder
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 LinkTextbox:
-	call _LinkTextbox
-	ret
+	jp _LinkTextbox
 
 Function16d6ce:
 	call LoadStandardMenuHeader
 	call Function16d6e1
 	farcall WaitLinkTransfer
 	call Call_ExitMenu
-	call WaitBGMap2
-	ret
+	jp WaitBGMap2
 
 Function16d6e1:
 	hlcoord 4, 10

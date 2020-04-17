@@ -33,14 +33,12 @@ OverworldBGMap:
 	call ClearScreen
 	call WaitBGMap2
 	call HideSprites
-	call RotateThreePalettesLeft
-	ret
+	jp RotateThreePalettesLeft
 
 BattleBGMap:
 	ld b, SCGB_BATTLE_GRAYSCALE
 	call GetSGBLayout
-	call SetPalettes
-	ret
+	jp SetPalettes
 
 HalveMoney:
 ; Halve the player's money.

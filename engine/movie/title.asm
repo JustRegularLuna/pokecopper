@@ -195,9 +195,7 @@ _TitleScreen:
 ; Play starting sound effect
 	call SFXChannelsOff
 	ld de, SFX_TITLE_SCREEN_ENTRANCE
-	call PlaySFX
-
-	ret
+	jp PlaySFX
 
 SuicuneFrameIterator:
 	ld hl, wSuicuneFrame

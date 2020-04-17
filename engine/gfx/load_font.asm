@@ -16,8 +16,7 @@ _LoadStandardFont::
 	ld de, Font + 96 * LEN_1BPP_TILE
 	ld hl, vTiles1 tile $60
 	lb bc, BANK(Font), 32 ; "'" to "9"
-	call Get1bpp_2
-	ret
+	jp Get1bpp_2
 
 _LoadFontsExtra1::
 	jr LoadFrame
@@ -46,8 +45,7 @@ LoadFrame:
 	ld hl, vTiles2 tile " " ; $7f
 	ld de, TextboxSpaceGFX
 	lb bc, BANK(TextboxSpaceGFX), 1
-	call Get1bpp_2
-	ret
+	jp Get1bpp_2
 
 LoadBattleFontsHPBar:
 	ld de, FontBattleExtra
@@ -68,8 +66,7 @@ LoadHPBar:
 	ld de, ExpBarGFX
 	ld hl, vTiles2 tile $55
 	lb bc, BANK(ExpBarGFX), 9
-	call Get2bpp_2
-	ret
+	jp Get2bpp_2
 
 StatsScreen_LoadFont:
 	call _LoadFontsBattleExtra
@@ -93,5 +90,4 @@ LoadStatsScreenPageTilesGFX:
 	ld de, StatsScreenPageTilesGFX
 	ld hl, vTiles2 tile $31
 	lb bc, BANK(StatsScreenPageTilesGFX), 17
-	call Get2bpp_2
-	ret
+	jp Get2bpp_2

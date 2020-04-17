@@ -59,8 +59,7 @@ ShowPlayerNamingChoices:
 	ld a, [wMenuCursorY]
 	dec a
 	call CopyNameFromMenu
-	call CloseWindow
-	ret
+	jp CloseWindow
 
 INCLUDE "data/player_names.asm"
 
@@ -97,8 +96,7 @@ GetCardPic:
 	ld de, vTiles2 tile $23
 	ld bc, 6 tiles
 	ld a, BANK(CardGFX)
-	call FarCopyBytes
-	ret
+	jp FarCopyBytes
 
 HiroCardPic:
 INCBIN "gfx/trainer_card/hiro_card.2bpp"
@@ -113,8 +111,7 @@ GetPlayerBackpic:
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
 	jr z, GetHiroBackpic
-	call GetSylviaBackpic
-	ret
+	jp GetSylviaBackpic
 
 GetHiroBackpic:
 	ld hl, HiroBackpic
@@ -179,8 +176,7 @@ GetSylviaBackpic:
 	ld de, SylviaBackpic
 	ld hl, vTiles2 tile $31
 	lb bc, BANK(SylviaBackpic), 7 * 7 ; dimensions
-	call Get2bpp
-	ret
+	jp Get2bpp
 
 SylviaBackpic:
 INCBIN "gfx/player/sylvia_back.2bpp"

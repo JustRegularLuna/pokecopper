@@ -11,8 +11,7 @@ _DudeAutoInput_DownA:
 
 _DudeAutoInput:
 	ld a, BANK(DudeAutoInputs)
-	call StartAutoInput
-	ret
+	jp StartAutoInput
 
 DudeAutoInputs: ; used only for BANK(DudeAutoInputs)
 

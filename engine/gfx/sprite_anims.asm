@@ -138,8 +138,7 @@ DoAnimFrame:
 	ret nz
 	ld [hl], $3
 	ld a, SPRITE_ANIM_FRAMESET_SLOTS_CHANSEY_2
-	call _ReinitSpriteAnimFrame
-	ret
+	jp _ReinitSpriteAnimFrame
 
 .SlotsChanseyEgg:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
@@ -159,8 +158,7 @@ DoAnimFrame:
 	ld a, $4
 	ld [wcf64], a
 	ld de, SFX_PLACE_PUZZLE_PIECE_DOWN
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 .move_right
 	inc [hl]
@@ -291,8 +289,7 @@ DoAnimFrame:
 	sub $c
 	ld [hl], a
 	ld de, SFX_SWITCH_POKEMON
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 .asm_8d51c
 	xor a
@@ -300,12 +297,10 @@ DoAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a
-	call .IncrementJumptableIndex
-	ret
+	jp .IncrementJumptableIndex
 
 .TradePokeBall_five
-	call DeinitializeSprite
-	ret
+	jp DeinitializeSprite
 
 .TradeTubeBulge
 	ld hl, SPRITEANIMSTRUCT_XCOORD
@@ -318,12 +313,10 @@ DoAnimFrame:
 	and $3
 	ret nz
 	ld de, SFX_POKEBALLS_PLACED_ON_TABLE
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 .delete
-	call DeinitializeSprite
-	ret
+	jp DeinitializeSprite
 
 .TrademonInTube
 	callfar TradeAnim_AnimateTrademonInTube
@@ -363,8 +356,7 @@ DoAnimFrame:
 	ret
 
 .finish_EggShell
-	call DeinitializeSprite
-	ret
+	jp DeinitializeSprite
 
 .RadioTuningKnob:
 	callfar AnimateTuningKnob
@@ -474,8 +466,7 @@ DoAnimFrame:
 	ret
 
 .delete_leaf
-	call DeinitializeSprite
-	ret
+	jp DeinitializeSprite
 
 .FlyTo:
 	ld hl, SPRITEANIMSTRUCT_YCOORD
@@ -538,9 +529,7 @@ DoAnimFrame:
 	ret
 
 .Sprites_Sine:
-	call Sprites_Sine
-	ret
+	jp Sprites_Sine
 
 .Sprites_Cosine:
-	call Sprites_Cosine
-	ret
+	jp Sprites_Cosine

@@ -311,8 +311,7 @@ ReloadSpritesNoPalettes::
 	ldh [rSVBK], a
 	ld a, 1
 	ldh [hCGBPalUpdate], a
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 SwapTextboxPalettes::
 	homecall _SwapTextboxPalettes

@@ -219,8 +219,7 @@ PlaySFX::
 
 WaitPlaySFX::
 	call WaitSFX
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 WaitSFX::
 ; infinite loop until sfx is done playing
@@ -460,8 +459,7 @@ SpecialMapMusic::
 GetMapMusic_MaybeSpecial::
 	call SpecialMapMusic
 	ret c
-	call GetMapMusic
-	ret
+	jp GetMapMusic
 
 CheckSFX::
 ; Return carry if any SFX channels are active.

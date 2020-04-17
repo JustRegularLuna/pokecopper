@@ -119,12 +119,10 @@ MainMenu_PrintCurrentTimeAndDay:
 	jr nz, .TimeFail
 	hlcoord 0, 14
 	lb bc, 2, 18
-	call Textbox
-	ret
+	jp Textbox
 
 .TimeFail:
-	call SpeechTextbox
-	ret
+	jp SpeechTextbox
 
 .PlaceTime:
 	ld a, [wSaveFileExists]
@@ -146,14 +144,12 @@ MainMenu_PrintCurrentTimeAndDay:
 	inc hl
 	ld de, hMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	call PrintNum
-	ret
+	jp PrintNum
 
 .PrintTimeNotSet:
 	hlcoord 1, 14
 	ld de, .TimeNotSet
-	call PlaceString
-	ret
+	jp PlaceString
 
 .TimeNotSet:
 	db "TIME NOT SET@"
@@ -170,8 +166,7 @@ MainMenu_PrintCurrentTimeAndDay:
 	ld h, b
 	ld l, c
 	ld de, .Day
-	call PlaceString
-	ret
+	jp PlaceString
 
 .Days:
 	db "SUN@"
@@ -190,8 +185,7 @@ Function49ed0:
 	call ClearTilemap
 	call LoadFontsExtra
 	call LoadStandardFont
-	call ClearWindowData
-	ret
+	jp ClearWindowData
 
 MainMenu_NewGame:
 	farcall NewGame

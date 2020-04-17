@@ -105,37 +105,32 @@ _TimeOfDayPals::
 _UpdateTimePals::
 	ld c, $9 ; normal
 	call GetTimePalFade
-	call DmgToCgbTimePals
-	ret
+	jp DmgToCgbTimePals
 
 FadeInPalettes::
 	ld c, $12
 	call GetTimePalFade
 	ld b, $4
-	call ConvertTimePalsDecHL
-	ret
+	jp ConvertTimePalsDecHL
 
 FadeOutPalettes::
 	call FillWhiteBGColor
 	ld c, $9
 	call GetTimePalFade
 	ld b, $4
-	call ConvertTimePalsIncHL
-	ret
+	jp ConvertTimePalsIncHL
 
 FadeInQuickly:
 	ld c, $0
 	call GetTimePalFade
 	ld b, $4
-	call ConvertTimePalsIncHL
-	ret
+	jp ConvertTimePalsIncHL
 
 FadeBlackQuickly:
 	ld c, $9
 	call GetTimePalFade
 	ld b, $4
-	call ConvertTimePalsDecHL
-	ret
+	jp ConvertTimePalsDecHL
 
 FillWhiteBGColor:
 	ldh a, [rSVBK]

@@ -1963,7 +1963,7 @@ wStartMinute:: db ; d4b8
 wStartSecond:: db ; d4b9
 
 wRTC:: ds 4 ; d4ba
-	
+
 	ds 4
 
 wDST:: ; d4c2

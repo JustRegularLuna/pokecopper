@@ -47,8 +47,7 @@ InitPartyMenuPalettes:
 	ld hl, PalPacket_PartyMenu + 1
 	call CopyFourPalettes
 	call InitPartyMenuOBPals
-	call WipeAttrmap
-	ret
+	jp WipeAttrmap
 
 ; SGB layout for SCGB_PARTY_MENU_HP_PALS
 SGB_ApplyPartyMenuHPPals:
@@ -96,8 +95,7 @@ ApplyMonOrTrainerPals:
 	call LoadHLPaletteIntoDE
 	call WipeAttrmap
 	call ApplyAttrmap
-	call ApplyPals
-	ret
+	jp ApplyPals
 
 ApplyHPBarPals:
 	ld a, [wWhichHPBar]
@@ -141,8 +139,7 @@ ApplyHPBarPals:
 .done
 	lb bc, 2, 8
 	ld a, e
-	call FillBoxCGB
-	ret
+	jp FillBoxCGB
 
 LoadMailPalettes:
 	ld l, e
@@ -173,8 +170,7 @@ LoadMailPalettes:
 	ld hl, wSGBPals
 	call PushSGBPals
 	ld hl, BlkPacket_9a86
-	call PushSGBPals
-	ret
+	jp PushSGBPals
 
 .cgb
 	ld de, wBGPals1
@@ -183,8 +179,7 @@ LoadMailPalettes:
 	call FarCopyWRAM
 	call ApplyPals
 	call WipeAttrmap
-	call ApplyAttrmap
-	ret
+	jp ApplyAttrmap
 
 .MailPals:
 INCLUDE "gfx/mail/mail.pal"
@@ -291,16 +286,14 @@ WipeAttrmap:
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
-	call ByteFill
-	ret
+	jp ByteFill
 
 ApplyPals:
 	ld hl, wBGPals1
 	ld de, wBGPals2
 	ld bc, 16 palettes
 	ld a, BANK(wGBCPalettes)
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 ApplyAttrmap:
 	ldh a, [rLCDC]
@@ -368,16 +361,14 @@ CGB_ApplyPartyMenuHPPals:
 .done
 	lb bc, 2, 8
 	ld a, e
-	call FillBoxCGB
-	ret
+	jp FillBoxCGB
 
 InitPartyMenuOBPals:
 	ld hl, PartyMenuOBPals
 	ld de, wOBPals1
 	ld bc, 2 palettes
 	ld a, BANK(wOBPals1)
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 GetBattlemonBackpicPalettePointer:
 	push de
@@ -403,8 +394,7 @@ GetPlayerOrMonPalettePointer:
 	and a
 	jp nz, GetMonNormalOrShinyPalettePointer
 	ld a, PAL_MEWMON
-	call GetPredefPal
-	ret
+	jp GetPredefPal
 
 GetFrontpicPalettePointer:
 	and a
@@ -412,8 +402,7 @@ GetFrontpicPalettePointer:
 
 GetTrainerPalettePointer:
 	ld a, PAL_MEWMON
-	call GetPredefPal
-	ret
+	jp GetPredefPal
 
 GetMonPalettePointer:
 	ld hl, PokemonPalettes
@@ -421,8 +410,7 @@ GetMonPalettePointer:
 	ld b, $0
 	add hl, bc
 	ld a, [hl]
-	call GetPredefPal
-	ret
+	jp GetPredefPal
 
 GetMonNormalOrShinyPalettePointer:
 	push bc
@@ -609,8 +597,7 @@ PushSGBBorder:
 	push de
 	call SGBBorder_YetMorePalPushing
 	pop hl
-	call SGBBorder_MorePalPushing
-	ret
+	jp SGBBorder_MorePalPushing
 
 .LoadSGBBorderPointers:
 	ld hl, SGBBorder
@@ -621,8 +608,7 @@ SGB_ClearVRAM:
 	ld hl, VRAM_Begin
 	ld bc, VRAM_End - VRAM_Begin
 	xor a
-	call ByteFill
-	ret
+	jp ByteFill
 
 PushSGBBorderPalsAndWait:
 	ld hl, MltReq2Packet

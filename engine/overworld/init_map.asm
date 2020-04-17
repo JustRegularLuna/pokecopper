@@ -46,8 +46,7 @@ ReanchorBGMap_NoOAMUpdate::
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	call ApplyBGMapAnchorToObjects
-	ret
+	jp ApplyBGMapAnchorToObjects
 
 .LoadBGMapAddrIntoHRAM:
 	ldh [hBGMapAddress + 1], a
@@ -72,8 +71,7 @@ LoadFonts_NoOAMUpdate::
 	ld a, $90
 	ldh [hWY], a
 	call SafeUpdateSprites
-	call LoadStandardFont
-	ret
+	jp LoadStandardFont
 
 HDMATransfer_FillBGMap0WithBlack:
 	ldh a, [rSVBK]

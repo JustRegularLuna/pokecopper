@@ -101,16 +101,14 @@ Copyright_GFPresents:
 	ld a, $90
 	ldh [hWY], a
 	lb de, %11100100, %11100100
-	call DmgToCgbObjPals
-	ret
+	jp DmgToCgbObjPals
 
 .StopGamefreakAnim:
 	farcall ClearSpriteAnims
 	call ClearTilemap
 	call ClearSprites
 	ld c, 16
-	call DelayFrames
-	ret
+	jp DelayFrames
 
 PlaceGameFreakPresents:
 	ld a, [wJumptableIndex]
@@ -152,8 +150,7 @@ PlaceGameFreakPresents_1:
 	call CopyBytes
 	call PlaceGameFreakPresents_AdvanceIndex
 	ld de, SFX_GAME_FREAK_PRESENTS
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 .GAME_FREAK:
 	;  G  A  M  E   _  F  R  E  A  K
@@ -175,8 +172,7 @@ PlaceGameFreakPresents_2:
 	decoord 7, 11
 	ld bc, .end - .presents
 	call CopyBytes
-	call PlaceGameFreakPresents_AdvanceIndex
-	ret
+	jp PlaceGameFreakPresents_AdvanceIndex
 
 .presents
 	db 7, 8, 9, 10, 11, 12
@@ -220,6 +216,7 @@ GameFreakLogoScene1:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]
+GameFreakLogoScene5:
 	ret
 
 GameFreakLogoScene2:
@@ -254,8 +251,7 @@ GameFreakLogoScene2:
 	sub $30
 	ld [hl], a
 	ld de, SFX_DITTO_BOUNCE
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 .asm_e4747
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
@@ -265,8 +261,7 @@ GameFreakLogoScene2:
 	add hl, bc
 	ld [hl], $0
 	ld de, SFX_DITTO_POP_UP
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 GameFreakLogoScene3:
 	ld hl, SPRITEANIMSTRUCT_0D
@@ -285,8 +280,7 @@ GameFreakLogoScene3:
 	add hl, bc
 	ld [hl], $0
 	ld de, SFX_DITTO_TRANSFORM
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 GameFreakLogoScene4:
 	ld hl, SPRITEANIMSTRUCT_0D
@@ -320,9 +314,7 @@ GameFreakLogoScene4:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]
-	call PlaceGameFreakPresents_AdvanceIndex
-GameFreakLogoScene5:
-	ret
+	jp PlaceGameFreakPresents_AdvanceIndex
 
 GameFreakLogoPalettes:
 INCLUDE "gfx/intro/gamefreak_logo.pal"

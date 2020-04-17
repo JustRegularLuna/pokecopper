@@ -15,8 +15,7 @@ BugContest_SetCaughtContestMon:
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	ld hl, .ContestCaughtMonText
-	call PrintText
-	ret
+	jp PrintText
 
 .generatestats
 	ld a, [wTempEnemyMonSpecies]

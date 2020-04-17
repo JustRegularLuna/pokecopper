@@ -15,8 +15,7 @@ InitGender:
 	dec a
 	ld [wPlayerGender], a
 	ld c, 10
-	call DelayFrames
-	ret
+	jp DelayFrames
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
@@ -52,5 +51,4 @@ InitGenderScreen:
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
 	ld [wPlayerGender], a
-	call ByteFill
-	ret
+	jp ByteFill

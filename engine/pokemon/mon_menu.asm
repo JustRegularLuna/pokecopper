@@ -75,8 +75,7 @@ TossItemFromPC:
 
 .CantToss:
 	ld hl, .ItemsTooImportantText
-	call MenuTextboxBackup
-	ret
+	jp MenuTextboxBackup
 
 .ItemsTooImportantText:
 	text_far _ItemsTooImportantText
@@ -84,8 +83,7 @@ TossItemFromPC:
 
 CantUseItem:
 	ld hl, ItemsOakWarningText
-	call MenuTextboxWaitButton
-	ret
+	jp MenuTextboxWaitButton
 
 ItemsOakWarningText:
 	text_far _ItemsOakWarningText
@@ -95,8 +93,7 @@ PartyMonItemName:
 	ld a, [wCurItem]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
-	call CopyName1
-	ret
+	jp CopyName1
 
 CancelPokemonAction:
 	farcall InitPartyMenuWithCancel
@@ -195,8 +192,7 @@ SwitchPartyMons:
 .DontSwitch:
 	xor a
 	ld [wPartyMenuActionText], a
-	call CancelPokemonAction
-	ret
+	jp CancelPokemonAction
 
 GiveTakePartyMonItem:
 ; Eggs can't hold items!
@@ -287,13 +283,11 @@ TryGiveItemToPartymon:
 	call GiveItemToPokemon
 	ld hl, PokemonHoldItemText
 	call MenuTextboxBackup
-	call GivePartyItem
-	ret
+	jp GivePartyItem
 
 .please_remove_mail
 	ld hl, PokemonRemoveMailText
-	call MenuTextboxBackup
-	ret
+	jp MenuTextboxBackup
 
 .already_holding_item
 	ld [wNamedObjectIndexBuffer], a
@@ -316,8 +310,7 @@ TryGiveItemToPartymon:
 	call MenuTextboxBackup
 	ld a, [wNamedObjectIndexBuffer]
 	ld [wCurItem], a
-	call GivePartyItem
-	ret
+	jp GivePartyItem
 
 .bag_full
 	ld a, [wNamedObjectIndexBuffer]
@@ -468,8 +461,7 @@ ComposeMailMessage:
 	ld a, BANK(sPartyMail)
 	call GetSRAMBank
 	call CopyBytes
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 MonMailAction:
 ; If in the time capsule or trade center,
@@ -1221,8 +1213,7 @@ String_MoveNoPower:
 
 PlaceMoveScreenArrows:
 	call PlaceMoveScreenLeftArrow
-	call PlaceMoveScreenRightArrow
-	ret
+	jp PlaceMoveScreenRightArrow
 
 PlaceMoveScreenLeftArrow:
 	ld a, [wCurPartyMon]

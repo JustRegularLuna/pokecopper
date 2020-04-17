@@ -144,8 +144,7 @@ EvolutionAnimation:
 	ret c
 
 	ld a, [wPlayerHPPal]
-	call PlayMonCry
-	ret
+	jp PlayMonCry
 
 .GetSGBLayout:
 	ld b, SCGB_EVOLUTION
@@ -342,8 +341,7 @@ endr
 	dec c
 	jr nz, .loop6
 	pop bc
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 .GFX:
 INCBIN "gfx/evo/bubble_large.2bpp"

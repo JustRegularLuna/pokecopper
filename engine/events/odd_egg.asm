@@ -43,8 +43,6 @@ _GiveOddEgg:
 	; even though OddEggs does not have data for wOddEggOTName
 	ld de, wOddEgg
 	ld bc, NICKNAMED_MON_STRUCT_LENGTH + NAME_LENGTH
-	call CopyBytes
-
-	ret
+	jp CopyBytes
 
 INCLUDE "data/events/odd_eggs.asm"

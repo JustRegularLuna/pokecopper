@@ -15,8 +15,7 @@ MonSubmenu:
 	call MonMenuLoop
 	ld [wMenuSelection], a
 
-	call ExitMenu
-	ret
+	jp ExitMenu
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
@@ -34,8 +33,7 @@ MonSubmenu:
 	sub b
 	inc a
 	ld [wMenuBorderTopCoord], a
-	call MenuBox
-	ret
+	jp MenuBox
 
 MonMenuLoop:
 .loop
@@ -98,8 +96,7 @@ GetMonMenuString:
 	inc hl
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
-	call GetMoveName
-	ret
+	jp GetMoveName
 
 .NotMove:
 	inc hl
@@ -173,8 +170,7 @@ GetMonSubmenuItems:
 	call AddMonMenuItem
 
 .ok2
-	call TerminateMonSubmenu
-	ret
+	jp TerminateMonSubmenu
 
 .egg
 	ld a, MONMENUITEM_STATS
@@ -183,8 +179,7 @@ GetMonSubmenuItems:
 	call AddMonMenuItem
 	ld a, MONMENUITEM_CANCEL
 	call AddMonMenuItem
-	call TerminateMonSubmenu
-	ret
+	jp TerminateMonSubmenu
 
 IsFieldMove:
 	ld b, a
@@ -211,8 +206,7 @@ ResetMonSubmenu:
 	ld [wBuffer1], a
 	ld hl, wBuffer2
 	ld bc, NUM_MONMENU_ITEMS + 1
-	call ByteFill
-	ret
+	jp ByteFill
 
 TerminateMonSubmenu:
 	ld a, [wBuffer1]

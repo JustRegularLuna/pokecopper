@@ -22,8 +22,7 @@ HealMachineAnim:
 	ld [wBuffer2], a
 	call .DoJumptableFunctions
 	ld a, [wBuffer2]
-	call DmgToCgbObjPal1
-	ret
+	jp DmgToCgbObjPal1
 
 .DoJumptableFunctions:
 	xor a
@@ -86,8 +85,7 @@ ENDM
 	ld de, .HealMachineGFX
 	ld hl, vTiles0 tile $7c
 	lb bc, BANK(.HealMachineGFX), 2
-	call Request2bpp
-	ret
+	jp Request2bpp
 
 .PC_LoadBallsOntoMachine:
 	ld hl, wVirtualOAMSprite32
@@ -126,8 +124,7 @@ ENDM
 	call .FlashPalettes8Times
 	call WaitSFX
 	ld de, SFX_BOOT_PC
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 .dummy_5
 	ret

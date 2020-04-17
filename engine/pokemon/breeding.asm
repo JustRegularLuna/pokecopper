@@ -821,8 +821,7 @@ Hatch_InitShellFragments:
 .done
 	ld de, SFX_EGG_HATCH
 	call PlaySFX
-	call EggHatch_DoAnimFrame
-	ret
+	jp EggHatch_DoAnimFrame
 
 shell_fragment: MACRO
 ; y tile, y pxl, x tile, x pxl, frameset offset, ???

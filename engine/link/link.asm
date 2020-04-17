@@ -473,8 +473,7 @@ LinkTimeout:
 	call ClearScreen
 	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
-	call WaitBGMap2
-	ret
+	jp WaitBGMap2
 
 .LinkTimeoutText:
 	text_far _LinkTimeoutText
@@ -1886,8 +1885,7 @@ LoadTradeScreenBorder:
 
 SetTradeRoomBGPals:
 	farcall LoadTradeRoomBGPals
-	call SetPalettes
-	ret
+	jp SetPalettes
 
 INCLUDE "engine/movie/trade_animation.asm"
 
@@ -1982,8 +1980,7 @@ Function29c67:
 	add hl, bc
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
-	call GetPokemonName
-	ret
+	jp GetPokemonName
 
 EnterTimeCapsule:
 	ld c, 10

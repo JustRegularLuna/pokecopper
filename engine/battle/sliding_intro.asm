@@ -20,8 +20,7 @@ BattleIntroSlidingPics:
 	ld a, %11100100
 	call DmgToCgbBGPals
 	lb de, %11100100, %11100100
-	call DmgToCgbObjPals
-	ret
+	jp DmgToCgbObjPals
 
 .subfunction2
 	lb de, $90, $72
@@ -71,8 +70,7 @@ BattleIntroSlidingPics:
 	ld hl, wLYOverrides
 	ld a, $90
 	ld bc, SCREEN_HEIGHT_PX
-	call ByteFill
-	ret
+	jp ByteFill
 
 .subfunction5
 	ld hl, wLYOverrides

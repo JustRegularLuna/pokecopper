@@ -13,8 +13,7 @@ BlankScreen:
 	ld a, $7
 	call ByteFill
 	call WaitBGMap2
-	call SetPalettes
-	ret
+	jp SetPalettes
 
 SpawnPlayer:
 	ld a, -1
@@ -76,8 +75,7 @@ PlayerSpawn_ConvertCoords:
 	add 4
 	ld e, a
 	pop bc
-	call CopyDECoordsToMapObject
-	ret
+	jp CopyDECoordsToMapObject
 
 WriteObjectXY::
 	ld a, b
@@ -157,8 +155,7 @@ CopyObjectStruct::
 
 CopyMapObjectToObjectStruct:
 	call .CopyMapObjectToTempObject
-	call CopyTempObjectToObjectStruct
-	ret
+	jp CopyTempObjectToObjectStruct
 
 .CopyMapObjectToTempObject:
 	ldh a, [hObjectStructIndexBuffer]
@@ -523,8 +520,7 @@ TrainerWalkToPlayer:
 
 .TerminateStep:
 	ld a, movement_step_end
-	call AppendToMovementBuffer
-	ret
+	jp AppendToMovementBuffer
 
 .GetPathToPlayer:
 	push de
@@ -567,8 +563,7 @@ TrainerWalkToPlayer:
 	ld d, a
 
 	pop af
-	call ComputePathToWalkToPlayer
-	ret
+	jp ComputePathToWalkToPlayer
 
 SurfStartStep:
 	ld a, [wPlayerDirection]
@@ -695,8 +690,7 @@ GetRelativeFacing::
 	cp NUM_OBJECT_STRUCTS
 	jr nc, .carry
 	ld e, a
-	call .GetFacing_e_relativeto_d
-	ret
+	jp .GetFacing_e_relativeto_d
 
 .carry
 	scf

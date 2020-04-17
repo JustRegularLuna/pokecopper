@@ -27,8 +27,7 @@ GameCornerPrizeMonCheckDex:
 	ld a, [wScriptVar]
 	ld [wNamedObjectIndexBuffer], a
 	farcall NewPokedexEntry
-	call ExitAllMenus
-	ret
+	jp ExitAllMenus
 
 FindPartyMonAboveLevel:
 	ld a, [wScriptVar]
@@ -75,14 +74,12 @@ NameRater:
 OverworldTownMap:
 	call FadeToMenu
 	farcall _TownMap
-	call ExitAllMenus
-	ret
+	jp ExitAllMenus
 
 DisplayLinkRecord:
 	call FadeToMenu
 	farcall _DisplayLinkRecord
-	call ExitAllMenus
-	ret
+	jp ExitAllMenus
 
 PlayersHousePC:
 	xor a
@@ -109,32 +106,28 @@ UnownPuzzle:
 	farcall _UnownPuzzle
 	ld a, [wSolvedUnownPuzzle]
 	ld [wScriptVar], a
-	call ExitAllMenus
-	ret
+	jp ExitAllMenus
 
 SlotMachine:
 	call CheckCoinsAndCoinCase
 	ret c
 	ld a, BANK(_SlotMachine)
 	ld hl, _SlotMachine
-	call StartGameCornerGame
-	ret
+	jp StartGameCornerGame
 
 CardFlip:
 	call CheckCoinsAndCoinCase
 	ret c
 	ld a, BANK(_CardFlip)
 	ld hl, _CardFlip
-	call StartGameCornerGame
-	ret
+	jp StartGameCornerGame
 
 DummyNonfunctionalGameCornerGame:
 	call CheckCoinsAndCoinCase
 	ret c
 	ld a, BANK(_DummyGame)
 	ld hl, _DummyGame
-	call StartGameCornerGame
-	ret
+	jp StartGameCornerGame
 
 StartGameCornerGame:
 	call FarQueueScript
@@ -147,8 +140,7 @@ StartGameCornerGame:
 	ld l, a
 	pop af
 	rst FarCall
-	call ExitAllMenus
-	ret
+	jp ExitAllMenus
 
 CheckCoinsAndCoinCase:
 	ld hl, wCoins
@@ -325,5 +317,4 @@ FadeOutMusic:
 Diploma:
 	call FadeToMenu
 	farcall _Diploma
-	call ExitAllMenus
-	ret
+	jp ExitAllMenus

@@ -288,8 +288,7 @@ UpdateChannels:
 	and %10001110 ; ch1 off
 	ldh [rNR52], a
 	ld hl, rNR10
-	call ClearChannel
-	ret
+	jp ClearChannel
 
 .asm_e81a2
 	ld hl, wCurTrackDuty
@@ -341,8 +340,7 @@ UpdateChannels:
 	and %10001101 ; ch2 off
 	ldh [rNR52], a
 	ld hl, rNR20
-	call ClearChannel
-	ret
+	jp ClearChannel
 
 .asm_e8204
 	ld hl, wCurTrackDuty
@@ -380,8 +378,7 @@ UpdateChannels:
 	and %10001011 ; ch3 off
 	ldh [rNR52], a
 	ld hl, rNR30
-	call ClearChannel
-	ret
+	jp ClearChannel
 
 .asm_e824d
 	ld a, $3f ; sound length
@@ -467,8 +464,7 @@ endr
 	and %10000111 ; ch4 off
 	ldh [rNR52], a
 	ld hl, rNR40
-	call ClearChannel
-	ret
+	jp ClearChannel
 
 .asm_e82d4
 	ld a, $3f ; sound length
@@ -1761,8 +1757,7 @@ Music_NoteType:
 	cp CHAN4
 	ret z
 	; volume envelope
-	call Music_VolumeEnvelope
-	ret
+	jp Music_VolumeEnvelope
 
 Music_PitchSweep:
 ; update pitch sweep
@@ -1805,8 +1800,7 @@ Music_Tempo:
 	ld d, a
 	call GetMusicByte
 	ld e, a
-	call SetGlobalTempo
-	ret
+	jp SetGlobalTempo
 
 Music_Octave8:
 Music_Octave7:
@@ -1842,8 +1836,7 @@ Music_StereoPanning:
 	bit STEREO, a
 	jr nz, Music_ForceStereoPanning
 	; skip param
-	call GetMusicByte
-	ret
+	jp GetMusicByte
 
 Music_ForceStereoPanning:
 ; force panning
@@ -1895,8 +1888,7 @@ Music_TempoRelative:
 	add hl, de
 	ld e, l
 	ld d, h
-	call SetGlobalTempo
-	ret
+	jp SetGlobalTempo
 
 Music_SFXPriorityOn:
 ; turn sfx priority on
@@ -2213,8 +2205,7 @@ _PlayMusic::
 	ld [wNoiseSampleAddress + 1], a
 	ld [wNoiseSampleDelay], a
 	ld [wMusicNoiseSampleSet], a
-	call MusicOn
-	ret
+	jp MusicOn
 
 _PlayCry::
 ; Play cry de using parameters:
@@ -2324,8 +2315,7 @@ _PlayCry::
 .end
 	ld a, 1 ; stop playing music
 	ld [wSFXPriority], a
-	call MusicOn
-	ret
+	jp MusicOn
 
 _PlaySFX::
 ; clear channels if they aren't already
@@ -2524,8 +2514,7 @@ PlayStereoSFX::
 	jr nz, .loop
 
 ; we're done
-	call MusicOn
-	ret
+	jp MusicOn
 
 LoadChannel:
 ; prep channel for use
@@ -2686,5 +2675,4 @@ PlayTrainerEncounterMusic::
 	ld hl, TrainerEncounterMusic
 	add hl, de
 	ld e, [hl]
-	call PlayMusic
-	ret
+	jp PlayMusic

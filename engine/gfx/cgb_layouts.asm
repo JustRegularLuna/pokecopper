@@ -22,8 +22,7 @@ LoadSGBLayoutCGB:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call _hl_
-	ret
+	jp _hl_
 
 .dw
 	dw _CGB_BattleGrayscale
@@ -120,8 +119,7 @@ _CGB_FinishBattleScreenLayout:
 	ld a, PAL_BATTLE_BG_TEXT
 	call ByteFill
 	call FillBattleObjectPals
-	call ApplyAttrmap
-	ret
+	jp ApplyAttrmap
 
 FillBattleObjectPals:
 	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY
@@ -149,16 +147,14 @@ InitPartyMenuBGPal7:
 	ld de, wBGPals1 palette 7
 	ld bc, 1 palettes
 	ld a, BANK(wBGPals1)
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 InitPartyMenuBGPal0:
 	ld hl, PartyMenuBGPalette
 	ld de, wBGPals1 palette 0
 	ld bc, 1 palettes
 	ld a, BANK(wBGPals1)
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 _CGB_PokegearPals:
 	ld a, PAL_POKEGEAR
@@ -364,8 +360,7 @@ _CGB_Diploma:
 	ld hl, PalPacket_Diploma + 1
 	call CopyFourPalettes
 	call WipeAttrmap
-	call ApplyAttrmap
-	ret
+	jp ApplyAttrmap
 
 _CGB_MapPals:
 ; Get SGB palette
@@ -448,8 +443,7 @@ _CGB_PartyMenu:
 	call InitPartyMenuBGPal0
 	call InitPartyMenuBGPal7
 	call InitPartyMenuOBPals
-	call ApplyAttrmap
-	ret
+	jp ApplyAttrmap
 
 _CGB_Evolution:
 	ld de, wBGPals1
@@ -499,8 +493,7 @@ _CGB_UnownPuzzle:
 	pop af
 	ldh [rSVBK], a
 	call WipeAttrmap
-	call ApplyAttrmap
-	ret
+	jp ApplyAttrmap
 
 _CGB_TrainerCard:
 	; Palettes for border and trainers
@@ -626,8 +619,7 @@ _CGB_Pokepic:
 	ld c, a
 	xor a
 	call FillBoxCGB
-	call ApplyAttrmap
-	ret
+	jp ApplyAttrmap
 
 _CGB_GamefreakLogo:
 	ld de, wBGPals1
@@ -642,8 +634,7 @@ _CGB_GamefreakLogo:
 	call LoadHLPaletteIntoDE
 	call WipeAttrmap
 	call ApplyAttrmap
-	call ApplyPals
-	ret
+	jp ApplyPals
 
 .Palette:
 INCLUDE "gfx/splash/logo.pal"
@@ -656,8 +647,7 @@ _CGB_PlayerOrMonFrontpicPals:
 	call LoadHLPaletteIntoDE
 	call WipeAttrmap
 	call ApplyAttrmap
-	call ApplyPals
-	ret
+	jp ApplyPals
 
 _CGB_TradeTube:
 	ld hl, PalPacket_TradeTube + 1
@@ -671,8 +661,7 @@ _CGB_TradeTube:
 	ld a, PAL_BLUEMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
-	call WipeAttrmap
-	ret
+	jp WipeAttrmap
 
 _CGB_TrainerOrMonFrontpicPals:
 	ld de, wBGPals1
@@ -682,5 +671,4 @@ _CGB_TrainerOrMonFrontpicPals:
 	call LoadHLPaletteIntoDE
 	call WipeAttrmap
 	call ApplyAttrmap
-	call ApplyPals
-	ret
+	jp ApplyPals

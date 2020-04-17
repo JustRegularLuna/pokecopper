@@ -21,8 +21,7 @@ PrintDayOfWeek:
 	ld h, b
 	ld l, c
 	ld de, .Day
-	call PlaceString
-	ret
+	jp PlaceString
 
 .Days:
 	db "SUN@"
@@ -42,8 +41,7 @@ NewGame_ClearTilemapEtc:
 	call ClearTilemap
 	call LoadFontsExtra
 	call LoadStandardFont
-	call ClearWindowData
-	ret
+	jp ClearWindowData
 
 OptionsMenu:
 	farcall _OptionsMenu
@@ -175,8 +173,7 @@ endc
 
 	farcall DeletePartyMonMail
 
-	call ResetGameTime
-	ret
+	jp ResetGameTime
 
 .InitList:
 ; Loads 0 in the count and -1 in the first item or mon slot.
@@ -225,8 +222,7 @@ InitializeMagikarpHouse:
 	ld a, $6
 	ld [hli], a
 	ld de, .Ralph
-	call CopyName2
-	ret
+	jp CopyName2
 
 .Ralph:
 	db "RALPH@"
@@ -240,8 +236,7 @@ InitializeNPCNames:
 	ld de, wMomsName
 .Copy:
 	ld bc, NAME_LENGTH
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 .Rival: db "???@"
 .Mom:   db "MOM@"
@@ -392,13 +387,11 @@ DisplaySaveInfoOnContinue:
 	and %10000000
 	jr z, .clock_ok
 	lb de, 4, 8
-	call DisplayContinueDataWithRTCError
-	ret
+	jp DisplayContinueDataWithRTCError
 
 .clock_ok
 	lb de, 4, 8
-	call DisplayNormalContinueData
-	ret
+	jp DisplayNormalContinueData
 
 DisplaySaveInfoOnSave:
 	lb de, 4, 0
@@ -409,16 +402,14 @@ DisplayNormalContinueData:
 	call Continue_DisplayBadgesDexPlayerName
 	call Continue_PrintGameTime
 	call LoadFontsExtra
-	call UpdateSprites
-	ret
+	jp UpdateSprites
 
 DisplayContinueDataWithRTCError:
 	call Continue_LoadMenuHeader
 	call Continue_DisplayBadgesDexPlayerName
 	call Continue_UnknownGameTime
 	call LoadFontsExtra
-	call UpdateSprites
-	ret
+	jp UpdateSprites
 
 Continue_LoadMenuHeader:
 	xor a
@@ -432,8 +423,7 @@ Continue_LoadMenuHeader:
 .show_menu
 	call _OffsetMenuHeader
 	call MenuBox
-	call PlaceVerticalMenuItems
-	ret
+	jp PlaceVerticalMenuItems
 
 .MenuHeader_Dex:
 	db MENU_BACKUP_TILES ; flags
@@ -489,15 +479,13 @@ Continue_DisplayBadgesDexPlayerName:
 Continue_PrintGameTime:
 	decoord 9, 8, 0
 	add hl, de
-	call Continue_DisplayGameTime
-	ret
+	jp Continue_DisplayGameTime
 
 Continue_UnknownGameTime:
 	decoord 9, 8, 0
 	add hl, de
 	ld de, .three_question_marks
-	call PlaceString
-	ret
+	jp PlaceString
 
 .three_question_marks
 	db " ???@"
@@ -632,8 +620,7 @@ OakSpeech:
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, OakText7
-	call PrintText
-	ret
+	jp PrintText
 
 OakText1:
 	text_far _OakText1
@@ -713,8 +700,7 @@ NamePlayer:
 	jr z, .Male
 	ld de, .Sylvia
 .Male:
-	call InitName
-	ret
+	jp InitName
 
 .Hiro:
 	db "HIRO@@@@@@@"
@@ -755,8 +741,7 @@ NameRival:
 
 	ld hl, wRivalName
 	ld de, .Rival
-	call InitName
-	ret
+	jp InitName
 
 .Rival:
 	db "KAMON@@@@@@"
@@ -768,8 +753,7 @@ StorePlayerName:
 	call ByteFill
 	ld hl, wPlayerName
 	ld de, wStringBuffer2
-	call CopyName2
-	ret
+	jp CopyName2
 
 StoreRivalName:
 	ld a, "@"
@@ -778,8 +762,7 @@ StoreRivalName:
 	call ByteFill
 	ld hl, wRivalName
 	ld de, wStringBuffer2
-	call CopyName2
-	ret
+	jp CopyName2
 
 ShrinkPlayer:
 	ldh a, [hROMBank]
@@ -829,8 +812,7 @@ ShrinkPlayer:
 	call DelayFrames
 
 	call RotateThreePalettesRight
-	call ClearTilemap
-	ret
+	jp ClearTilemap
 
 Intro_RotatePalettesLeftFrontpic:
 	ld hl, IntroFadePalettes

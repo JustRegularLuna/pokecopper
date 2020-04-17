@@ -2713,8 +2713,7 @@ JumpToPartyMenuAndPrintText:
 	farcall PrintPartyMenuText
 	call WaitBGMap
 	call SetPalettes
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 SelectBattleMon:
 	farcall PartyMenuSelect
@@ -2953,8 +2952,7 @@ ForceEnemySwitch:
 	call ResetEnemyStatLevels
 	call Function_SetEnemyMonAndSendOutAnimation
 	call BreakAttraction
-	call ResetBattleParticipants
-	ret
+	jp ResetBattleParticipants
 
 EnemySwitch:
 	call CheckWhetherToAskSwitch
@@ -3702,8 +3700,7 @@ InitBattleMon:
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_ATK
 	call CopyBytes
 	call ApplyStatusEffectOnPlayerStats
-	call BadgeStatBoosts
-	ret
+	jp BadgeStatBoosts
 
 BattleCheckPlayerShininess:
 	call GetPartyMonDVs
@@ -4648,13 +4645,11 @@ DrawEnemyHUD:
 	ld [wWhichHPBar], a
 	hlcoord 2, 2
 	ld b, 0
-	call DrawBattleHPBar
-	ret
+	jp DrawBattleHPBar
 
 UpdateEnemyHPPal:
 	ld hl, wEnemyHPPal
-	call UpdateHPPal
-	ret
+	jp UpdateHPPal
 
 UpdateHPPal:
 	ld b, [hl]
@@ -4755,8 +4750,7 @@ BattleMenu_Pack:
 	call DoItemEffect
 
 .got_item
-	call .UseItem
-	ret
+	jp .UseItem
 
 .didnt_use_item
 	call ClearPalettes
@@ -4902,8 +4896,7 @@ Battle_StatsScreen:
 	ld bc, $31 tiles
 	call CopyBytes
 
-	call EnableLCD
-	ret
+	jp EnableLCD
 
 TryPlayerSwitch:
 	ld a, [wCurBattleMon]
@@ -4975,8 +4968,7 @@ PlayerSwitch:
 	jp c, .switch
 	cp BATTLEACTION_FORFEIT
 	jr nz, .dont_run
-	call WildFled_EnemyFled_LinkBattleCanceled
-	ret
+	jp WildFled_EnemyFled_LinkBattleCanceled
 
 .dont_run
 	ldh a, [hSerialConnectionStatus]
@@ -5467,8 +5459,7 @@ MoveInfoBox:
 	inc hl
 	ld de, wNamedObjectIndexBuffer
 	lb bc, 1, 2
-	call PrintNum
-	ret
+	jp PrintNum
 
 CheckPlayerHasUsableMoves:
 	ld a, STRUGGLE
@@ -5692,8 +5683,7 @@ LinkBattleSendReceiveAction:
 	call .StageForSend
 	ld [wd431], a
 	farcall PlaceWaitingText
-	call .LinkBattle_SendReceiveAction
-	ret
+	jp .LinkBattle_SendReceiveAction
 
 .StageForSend:
 	ld a, [wBattlePlayerAction]
@@ -6196,9 +6186,7 @@ LoadEnemyMon:
 	ld hl, wEnemyMonStats
 	ld de, wEnemyStats
 	ld bc, wEnemyMonStatsEnd - wEnemyMonStats
-	call CopyBytes
-
-	ret
+	jp CopyBytes
 
 CheckSleepingTreeMon:
 ; Return carry if species is in the list
@@ -7941,8 +7929,7 @@ InitEnemyWildmon:
 
 ExitBattle:
 	call .HandleEndOfBattle
-	call CleanUpBattleRAM
-	ret
+	jp CleanUpBattleRAM
 
 .HandleEndOfBattle:
 	ld a, [wLinkMode]
@@ -7951,8 +7938,7 @@ ExitBattle:
 	call ShowLinkBattleParticipantsAfterEnd
 	ld c, 150
 	call DelayFrames
-	call DisplayLinkBattleResult
-	ret
+	jp DisplayLinkBattleResult
 
 .not_linked
 	ld a, [wBattleResult]
@@ -7994,8 +7980,7 @@ CleanUpBattleRAM:
 	ld [hli], a
 	dec b
 	jr nz, .loop
-	call WaitSFX
-	ret
+	jp WaitSFX
 
 CheckPayDay:
 	ld hl, wPayDayMoney
@@ -8026,8 +8011,7 @@ CheckPayDay:
 	ld hl, BattleText_PlayerPickedUpPayDayMoney
 	call StdBattleTextbox
 	call ClearTilemap
-	call ClearBGPalettes
-	ret
+	jp ClearBGPalettes
 
 ShowLinkBattleParticipantsAfterEnd:
 	ld a, [wCurOTMon]
@@ -8071,8 +8055,7 @@ DisplayLinkBattleResult:
 	call CloseSRAM
 
 	call WaitPressAorB_BlinkCursor
-	call ClearTilemap
-	ret
+	jp ClearTilemap
 
 .Win:
 	db "YOU WIN@"
@@ -8098,8 +8081,7 @@ _DisplayLinkRecord:
 	call SetPalettes
 	ld c, 8
 	call DelayFrames
-	call WaitPressAorB_BlinkCursor
-	ret
+	jp WaitPressAorB_BlinkCursor
 
 ReadAndPrintLinkBattleRecord:
 	call ClearTilemap
@@ -8385,8 +8367,7 @@ AddLastLinkBattleToLinkRecord:
 
 .done
 	call .StoreResult
-	call .FindOpponentAndAppendRecord
-	ret
+	jp .FindOpponentAndAppendRecord
 .StoreResult:
 	ld a, [wBattleResult]
 	and $f
@@ -8505,8 +8486,7 @@ AddLastLinkBattleToLinkRecord:
 	ld hl, wd002
 	ld bc, 18
 	pop de
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 .LoadPointer:
 	ld e, $0
@@ -8598,8 +8578,7 @@ InitBattleDisplay:
 
 .InitBackPic:
 	call GetTrainerBackpic
-	call CopyBackpic
-	ret
+	jp CopyBackpic
 
 GetTrainerBackpic:
 ; Load the player character's backpic (6x6) into VRAM starting from vTiles2 tile $31.
@@ -8748,5 +8727,4 @@ BattleStartMessage:
 	push hl
 	farcall BattleStart_TrainerHuds
 	pop hl
-	call StdBattleTextbox
-	ret
+	jp StdBattleTextbox

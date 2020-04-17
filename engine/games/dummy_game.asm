@@ -46,8 +46,7 @@ _DummyGame:
 	ld a, $e4
 	call DmgToCgbBGPals
 	ld a, $e0
-	call DmgToCgbObjPal0
-	ret
+	jp DmgToCgbObjPal0
 
 .JumptableLoop:
 	ld a, [wJumptableIndex]
@@ -111,8 +110,7 @@ endr
 	call DummyGame_Card2Coord
 	xor a
 	ld [wDummyGameLastCardPicked], a
-	call DummyGame_PlaceCard
-	ret
+	jp DummyGame_PlaceCard
 
 .spawn_object
 	depixel 6, 3, 4, 4
@@ -296,8 +294,7 @@ DummyGame_CheckMatch:
 	add hl, de
 	call DummyGame_PlaceCard
 	ld hl, .VictoryText
-	call PrintText
-	ret
+	jp PrintText
 
 .no_match
 	xor a
@@ -312,8 +309,7 @@ DummyGame_CheckMatch:
 	call DummyGame_PlaceCard
 
 	ld hl, DummyGameDarnText
-	call PrintText
-	ret
+	jp PrintText
 
 .VictoryText:
 	text_asm
@@ -437,8 +433,7 @@ DummyGame_PlaceCard:
 	inc a
 	ld [hl], a
 	ld c, 3
-	call DelayFrames
-	ret
+	jp DelayFrames
 
 DummyGame_DeleteCard:
 	ld a, $1
@@ -449,8 +444,7 @@ DummyGame_DeleteCard:
 	ld [hli], a
 	ld [hl], a
 	ld c, 3
-	call DelayFrames
-	ret
+	jp DelayFrames
 
 DummyGame_InitStrings:
 	hlcoord 0, 0
@@ -464,8 +458,7 @@ DummyGame_InitStrings:
 	ld de, .japstr2
 	call PlaceString
 	ld hl, .dummy_text
-	call PrintText
-	ret
+	jp PrintText
 
 .dummy_text
 	db "@"

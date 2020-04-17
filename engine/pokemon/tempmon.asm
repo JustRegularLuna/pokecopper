@@ -110,8 +110,7 @@ GetMonSpecies:
 	call GetSRAMBank
 	ld hl, sBoxSpecies
 	call .done
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 .breedmon
 	ld a, [wBreedMon1Species]

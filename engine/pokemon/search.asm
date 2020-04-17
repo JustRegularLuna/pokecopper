@@ -88,8 +88,7 @@ CheckOwnMonAnywhere:
 	jr nc, .loop
 
 	; found!
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 .loop
 	push bc
@@ -152,8 +151,7 @@ CheckOwnMonAnywhere:
 
 	; found!
 	pop bc
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 .loopboxmon
 	push bc

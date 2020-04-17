@@ -1,8 +1,7 @@
 LoadQuestionMarkPic:
 	ld hl, .QuestionMarkLZ
 	ld de, sScratch
-	call Decompress
-	ret
+	jp Decompress
 
 .QuestionMarkLZ:
 INCBIN "gfx/pokedex/question_mark.2bpp.lz"
@@ -92,8 +91,7 @@ DrawPokedexSearchResultsWindow:
 	call ClearBox
 	ld de, .esults_D
 	hlcoord 0, 12
-	call PlaceString
-	ret
+	jp PlaceString
 
 .esults_D
 ; (SEARCH R)

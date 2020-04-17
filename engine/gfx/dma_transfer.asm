@@ -9,8 +9,7 @@ HDMATransferTilemapToWRAMBank3::
 	xor a
 	ldh [rVBK], a
 	ld hl, wScratchTilemap
-	call HDMATransferToWRAMBank3
-	ret
+	jp HDMATransferToWRAMBank3
 
 HDMATransferAttrmapToWRAMBank3:
 	ld hl, .Function
@@ -23,8 +22,7 @@ HDMATransferAttrmapToWRAMBank3:
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, wScratchAttrmap
-	call HDMATransferToWRAMBank3
-	ret
+	jp HDMATransferToWRAMBank3
 
 ReloadMapPart::
 	ld hl, .Function
@@ -404,8 +402,7 @@ HDMATransfer_OnlyTopFourRows:
 	ld c, $8
 	ld hl, wScratchTilemap
 	debgcoord 0, 0, vBGMap1
-	call HDMATransfer_Wait127Scanlines
-	ret
+	jp HDMATransfer_Wait127Scanlines
 
 .Copy:
 	ld b, 4

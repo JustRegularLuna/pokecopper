@@ -6,8 +6,7 @@ _2DMenu_::
 	call Draw2DMenu
 	call UpdateSprites
 	call ApplyTilemap
-	call Get2DMenuSelection
-	ret
+	jp Get2DMenuSelection
 
 _InterpretBattleMenu::
 	ld hl, CopyMenuData
@@ -17,15 +16,13 @@ _InterpretBattleMenu::
 	call Draw2DMenu
 	call UpdateSprites
 	call ApplyTilemap
-	call Get2DMenuSelection
-	ret
+	jp Get2DMenuSelection
 
 Draw2DMenu:
 	xor a
 	ldh [hBGMapMode], a
 	call MenuBox
-	call Place2DMenuItemStrings
-	ret
+	jp Place2DMenuItemStrings
 
 Get2DMenuSelection:
 	call Init2DMenuCursorPosition
