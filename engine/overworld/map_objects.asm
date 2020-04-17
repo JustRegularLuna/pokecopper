@@ -718,9 +718,6 @@ MapObjectMovementPattern:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], OBJECT_ACTION_STAND
-	ld hl, OBJECT_RANGE
-	add hl, bc
-	ld a, [hl]
 	ld a, $10
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc

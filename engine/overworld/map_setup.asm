@@ -225,10 +225,6 @@ ApplyMapPalettes:
 	ret
 
 FadeMapMusicAndPalettes:
-	ld e, 0
-	ld a, [wMusicFadeID]
-	ld d, 0
-	ld a, [wMusicFadeID + 1]
 	ld a, $4
 	ld [wMusicFade], a
 	call RotateThreePalettesRight
