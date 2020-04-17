@@ -22,11 +22,7 @@ LoadSGBLayoutCGB:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, .ReturnFromJumpTable
-	push de
-	jp hl
-
-.ReturnFromJumpTable:
+	call _hl_
 	ret
 
 .dw

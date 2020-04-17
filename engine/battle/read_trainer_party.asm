@@ -53,11 +53,7 @@ ReadTrainerParty:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld bc, .done
-	push bc
-	jp hl
-
-.done
+	call _hl_
 	jp ComputeTrainerReward
 
 TrainerTypes:

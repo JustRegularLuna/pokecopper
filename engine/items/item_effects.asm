@@ -245,7 +245,7 @@ PokeBallEffect:
 .get_multiplier_loop
 	ld a, [hli]
 	cp $ff
-	jr z, .skip_or_return_from_ball_fn
+	jr z, .skip_ball_fn
 	cp c
 	jr z, .call_ball_function
 	inc hl
@@ -256,11 +256,9 @@ PokeBallEffect:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, .skip_or_return_from_ball_fn
-	push de
-	jp hl
+	call _hl_
 
-.skip_or_return_from_ball_fn
+.skip_ball_fn
 	ld a, [wCurItem]
 	cp LEVEL_BALL
 	ld a, b

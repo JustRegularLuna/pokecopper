@@ -254,11 +254,7 @@ InitPokegearTilemap:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, .return_from_jumptable
-	push de
-	jp hl
-
-.return_from_jumptable
+	call _hl_
 	call Pokegear_FinishTilemap
 	farcall TownMapPals
 	ld a, [wPokegearMapRegion]
@@ -1399,11 +1395,7 @@ UpdateRadioStation:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, .returnafterstation
-	push de
-	jp hl
-
-.returnafterstation
+	call _hl_
 	ld a, [wPokegearRadioChannelBank]
 	and a
 	ret z
@@ -1903,11 +1895,7 @@ PlayRadio:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, .jump_return
-	push de
-	jp hl
-
-.jump_return
+	call _hl_
 	push de
 	hlcoord 0, 12
 	lb bc, 4, 18
