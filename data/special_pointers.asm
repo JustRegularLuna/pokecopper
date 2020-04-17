@@ -119,7 +119,6 @@ SpecialsPointers::
 	add_special SampleKenjiBreakCountdown
 	add_special BeastsCheck
 	add_special MonCheck
-	add_special SetPlayerPalette ; $98
 	add_special RefreshSprites
 	add_special AskRememberPassword
 	add_special LoadMapPalettes

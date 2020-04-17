@@ -2314,29 +2314,6 @@ ContinueSpawnFacing:
 	call SetSpriteDirection
 	ret
 
-_SetPlayerPalette:
-	ld a, d
-	and 1 << 7
-	ret z
-	ld bc, 0 ; debug?
-	ld hl, OBJECT_FACING
-	add hl, bc
-	ld a, [hl]
-	or d
-	ld [hl], a
-	ld a, d
-	swap a
-	and PALETTE_MASK
-	ld d, a
-	ld bc, wPlayerStruct
-	ld hl, OBJECT_PALETTE
-	add hl, bc
-	ld a, [hl]
-	and $ff ^ PALETTE_MASK
-	or d
-	ld [hl], a
-	ret
-
 StartFollow::
 	push bc
 	ld a, b

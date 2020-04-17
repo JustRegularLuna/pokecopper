@@ -15,12 +15,6 @@ Special::
 
 INCLUDE "data/special_pointers.asm"
 
-SetPlayerPalette:
-	ld a, [wScriptVar]
-	ld d, a
-	farcall _SetPlayerPalette
-	ret
-
 GameCornerPrizeMonCheckDex:
 	ld a, [wScriptVar]
 	dec a
