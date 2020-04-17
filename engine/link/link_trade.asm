@@ -157,8 +157,7 @@ Function16d6e1:
 
 LinkTradeMenu:
 	call .MenuAction
-	call .GetJoypad
-	ret
+	; fallthrough
 
 .GetJoypad:
 	push bc

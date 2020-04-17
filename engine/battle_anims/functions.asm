@@ -619,12 +619,8 @@ BattleAnimFunction_08:
 	add hl, bc
 	ld a, [hl]
 	cp $b0
-	jr c, .retain
+	jr c, .SetCoords
 	call DeinitBattleAnimation
-	ret
-
-.retain
-	call .SetCoords
 	ret
 
 .SetCoords:

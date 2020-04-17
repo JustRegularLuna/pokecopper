@@ -188,8 +188,7 @@ DrawMagnetTrain:
 	hlbgcoord 0, 9
 	ld de, MagnetTrainTilemap + (SCREEN_WIDTH * 3)
 	ld c, SCREEN_WIDTH
-	call .FillLine
-	ret
+	; fallthrough
 
 .FillLine:
 	ld a, [de]

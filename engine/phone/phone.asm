@@ -438,8 +438,7 @@ Script_SpecialBillCall::
 
 RingTwice_StartCall:
 	call .Ring
-	call .Ring
-	ret
+	; fallthrough
 
 .Ring:
 	call Phone_StartRinging

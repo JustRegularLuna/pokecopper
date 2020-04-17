@@ -232,8 +232,7 @@ Pack:
 	lb bc, PACKSTATE_INITITEMSPOCKET, PACKSTATE_INITKEYITEMSPOCKET ; left, right
 	call Pack_InterpretJoypad
 	ret c
-	call .ItemBallsKey_LoadSubmenu
-	ret
+	; fallthrough
 
 .ItemBallsKey_LoadSubmenu:
 	farcall _CheckTossableItem

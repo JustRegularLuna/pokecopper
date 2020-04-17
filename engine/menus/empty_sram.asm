@@ -6,8 +6,7 @@ EmptyAllSRAMBanks:
 	ld a, 2
 	call .EmptyBank
 	ld a, 3
-	call .EmptyBank
-	ret
+	; fallthrough
 
 .EmptyBank:
 	call GetSRAMBank

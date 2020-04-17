@@ -117,10 +117,7 @@ LoadUsedSpritesGFX:
 	ld a, MAPCALLBACK_SPRITES
 	call RunMapCallback
 	call GetUsedSprites
-	call .LoadMiscTiles
-	ret
 
-.LoadMiscTiles:
 	ld a, [wSpriteFlags]
 	bit 6, a
 	ret nz

@@ -1568,8 +1568,7 @@ Pokedex_OrderMonsByMode:
 	inc a
 	dec c
 	jr nz, .loopold
-	call .FindLastSeen
-	ret
+	; fallthrough
 
 .FindLastSeen:
 	ld hl, wPokedexOrder + NUM_POKEMON - 1

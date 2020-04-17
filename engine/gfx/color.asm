@@ -416,10 +416,6 @@ GetTrainerPalettePointer:
 	ret
 
 GetMonPalettePointer:
-	call _GetMonPalettePointer
-	ret
-
-_GetMonPalettePointer:
 	ld hl, PokemonPalettes
 	ld c, a
 	ld b, $0
@@ -430,7 +426,7 @@ _GetMonPalettePointer:
 
 GetMonNormalOrShinyPalettePointer:
 	push bc
-	call _GetMonPalettePointer
+	call GetMonPalettePointer
 	pop bc
 	push hl
 	call CheckShininess

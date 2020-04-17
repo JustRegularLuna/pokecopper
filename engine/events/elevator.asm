@@ -23,10 +23,7 @@ Elevator::
 	ld [wElevatorPointer], a
 	ld a, d
 	ld [wElevatorPointer + 1], a
-	call .LoadFloors
-	ret
 
-.LoadFloors:
 	ld de, wCurElevator
 	ld bc, wElevatorDataEnd - wElevatorData
 	ld hl, wElevatorPointer

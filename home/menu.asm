@@ -87,8 +87,7 @@ RestoreTileBackup::
 	call MenuBoxCoord2Tile
 	call .copy
 	call MenuBoxCoord2Attr
-	call .copy
-	ret
+	; fallthrough
 
 .copy
 	call GetMenuBoxDims

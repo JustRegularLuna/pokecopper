@@ -133,8 +133,7 @@ PlayMonCry2::
 	ld [wStereoPanningMask], a
 	ld [wCryTracks], a
 	pop af
-	call _PlayMonCry
-	ret
+	; fallthrough
 
 _PlayMonCry::
 	push hl
