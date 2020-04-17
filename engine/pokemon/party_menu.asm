@@ -480,8 +480,8 @@ PartyMenuCheckEgg:
 	ld a, LOW(wPartySpecies)
 	add b
 	ld e, a
-	ld a, HIGH(wPartySpecies)
-	adc 0
+	adc HIGH(wPartySpecies)
+	sub e
 	ld d, a
 	ld a, [de]
 	cp EGG
