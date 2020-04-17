@@ -565,11 +565,11 @@ ReadObjectEvents::
 
 ; get NUM_OBJECTS - 1 - [wCurMapObjectEventCount]
 	ld a, [wCurMapObjectEventCount]
-	ld c, a
-	ld a, NUM_OBJECTS - 1
-	sub c
-	jr z, .skip
-	jr c, .skip
+	cp NUM_OBJECTS - 1
+	jr nc, .skip
+	; a = NUM_OBJECTS - 1 - a
+	cpl
+	add NUM_OBJECTS - 1 + 1
 
 	inc hl
 ; Fill the remaining sprite IDs and y coords with 0 and -1, respectively.

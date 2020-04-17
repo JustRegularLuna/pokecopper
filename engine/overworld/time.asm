@@ -212,16 +212,14 @@ RestartLuckyNumberCountdown:
 
 .GetDaysUntilNextFriday:
 	call GetWeekday
-	ld c, a
-	ld a, FRIDAY
-	sub c
+	; FRIDAY - a
+	cpl
+	add FRIDAY + 1
 	jr z, .friday_saturday
-	jr nc, .earlier ; could have done "ret nc"
+	ret nc
 
 .friday_saturday
 	add 7
-
-.earlier
 	ret
 
 _CheckLuckyNumberShowFlag:

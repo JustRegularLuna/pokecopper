@@ -237,7 +237,7 @@ GetGender:
 ListMovePP:
 	ld a, [wNumMoves]
 	inc a
-	ld c, a
+	ld c, a ; gets used in .load_loop
 	ld a, NUM_MOVES
 	sub c
 	ld b, a

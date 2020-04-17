@@ -1660,9 +1660,9 @@ Slots_AskBet:
 	call CloseWindow
 	ret c
 	ld a, [wMenuCursorY]
-	ld b, a
-	ld a, 4
-	sub b
+	; 4 - a
+	cpl
+	add 4 + 1
 	ld [wSlotBet], a
 	ld hl, wCoins
 	ld c, a
