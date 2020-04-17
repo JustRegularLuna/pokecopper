@@ -8,7 +8,6 @@
 	const POKEDEX_SHOW           ; 01
 	const POKEMON_MUSIC          ; 02
 	const LUCKY_CHANNEL          ; 03
-	const BUENAS_PASSWORD        ; 04
 	const PLACES_AND_PEOPLE      ; 05
 	const LETS_ALL_SING          ; 06
 	const ROCKET_RADIO           ; 07
@@ -69,26 +68,6 @@
 	const OAKS_POKEMON_TALK_12   ; 3d
 	const OAKS_POKEMON_TALK_13   ; 3e
 	const OAKS_POKEMON_TALK_14   ; 3f
-	const BUENAS_PASSWORD_2      ; 40
-	const BUENAS_PASSWORD_3      ; 41
-	const BUENAS_PASSWORD_4      ; 42
-	const BUENAS_PASSWORD_5      ; 43
-	const BUENAS_PASSWORD_6      ; 44
-	const BUENAS_PASSWORD_7      ; 45
-	const BUENAS_PASSWORD_8      ; 46
-	const BUENAS_PASSWORD_9      ; 47
-	const BUENAS_PASSWORD_10     ; 48
-	const BUENAS_PASSWORD_11     ; 49
-	const BUENAS_PASSWORD_12     ; 4a
-	const BUENAS_PASSWORD_13     ; 4b
-	const BUENAS_PASSWORD_14     ; 4c
-	const BUENAS_PASSWORD_15     ; 4d
-	const BUENAS_PASSWORD_16     ; 4e
-	const BUENAS_PASSWORD_17     ; 4f
-	const BUENAS_PASSWORD_18     ; 50
-	const BUENAS_PASSWORD_19     ; 51
-	const BUENAS_PASSWORD_20     ; 52
-	const BUENAS_PASSWORD_21     ; 53
 	const RADIO_SCROLL           ; 54
 	const POKEDEX_SHOW_6         ; 55
 	const POKEDEX_SHOW_7         ; 56
@@ -112,14 +91,3 @@ NUM_OAKS_POKEMON_TALK_ADVERBS    EQU 16 ; OaksPKMNTalk8.Adverbs
 NUM_OAKS_POKEMON_TALK_ADJECTIVES EQU 16 ; OaksPKMNTalk9.Adjectives
 NUM_PNP_PEOPLE_ADJECTIVES    EQU 16 ; PeoplePlaces5.Adjectives
 NUM_PNP_PLACES_ADJECTIVES    EQU 16 ; PeoplePlaces7.Adjectives
-
-; BuenasPasswordTable sizes (see data/radio/buenas_passwords.asm)
-NUM_PASSWORD_CATEGORIES    EQU 11
-NUM_PASSWORDS_PER_CATEGORY EQU  3
-
-; GetBuenasPassword.StringFunctionJumpTable indexes (see engine/pokegear/radio.asm)
-	const_def
-	const BUENA_MON
-	const BUENA_ITEM
-	const BUENA_MOVE
-	const BUENA_STRING

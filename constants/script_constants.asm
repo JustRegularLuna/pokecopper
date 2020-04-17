@@ -66,8 +66,6 @@ NUM_STRING_BUFFERS EQU const_value
 	const VAR_SPECIALPHONECALL ; 14
 	const VAR_KURT_APRICORNS   ; 16
 	const VAR_CALLERID         ; 17
-	const VAR_BLUECARDBALANCE  ; 18
-	const VAR_BUENASPASSWORD   ; 19
 	const VAR_KENJI_BREAK      ; 1a
 NUM_VARS EQU const_value       ; 1b
 

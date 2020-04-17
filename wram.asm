@@ -2256,10 +2256,8 @@ wHoneyTreeTwoDayTimerOn:: db ; dc39
 wHoneyTreeTwoDayTimer:: db
 wHoneyTreeTwoDayTimerStartDate:: db
 
-	ds 14
+	ds 16
 
-wBuenasPassword:: db
-wBlueCardBalance:: db
 wDailyRematchFlags:: ds 4
 wDailyPhoneItemFlags:: ds 4
 wDailyPhoneTimeOfDayFlags:: ds 4

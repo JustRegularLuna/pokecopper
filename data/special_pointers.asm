@@ -112,13 +112,10 @@ SpecialsPointers::
 ; Crystal only
 	add_special Reset ; bank 0
 	add_special PokeSeer
-	add_special BuenasPassword
-	add_special BuenaPrize
 	add_special SampleKenjiBreakCountdown
 	add_special BeastsCheck
 	add_special MonCheck
 	add_special RefreshSprites
-	add_special AskRememberPassword
 	add_special LoadMapPalettes
 	add_special InitialSetDSTFlag
 	add_special InitialClearDSTFlag

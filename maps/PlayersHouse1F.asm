@@ -41,6 +41,7 @@ MeetMomScript:
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD
 	setflag ENGINE_MAP_CARD
+	setflag ENGINE_RADIO_CARD
 	addcellnum PHONE_MOM
 	setscene SCENE_FINISHED
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
@@ -251,7 +252,8 @@ MomGivesPokegearText:
 
 	para "It comes with a"
 	line "CLOCK, PHONE,"
-	cont "and TOWN MAP!"
+	cont "TOWN MAP, and"
+	cont "even a RADIO!"
 
 	para "Oh, the day of the"
 	line "week isn't set."

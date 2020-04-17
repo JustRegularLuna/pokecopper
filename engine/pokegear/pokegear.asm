@@ -1437,7 +1437,6 @@ RadioChannels:
 	dbw 16, .PKMNTalkAndPokedexShow ; 04.5
 	dbw 28, .PokemonMusic           ; 07.5
 	dbw 32, .LuckyChannel           ; 08.5
-	dbw 40, .BuenasPassword         ; 10.5
 	dbw 52, .RuinsOfAlphRadio       ; 13.5
 	dbw 64, .PlacesAndPeople        ; 16.5
 	dbw 72, .LetsAllSing            ; 18.5
@@ -1465,11 +1464,6 @@ RadioChannels:
 	call .InJohto
 	jr nc, .NoSignal
 	jp LoadStation_LuckyChannel
-
-.BuenasPassword:
-	call .InJohto
-	jr nc, .NoSignal
-	jp LoadStation_BuenasPassword
 
 .RuinsOfAlphRadio:
 	ld a, [wPokegearMapPlayerIconLandmark]
@@ -1579,24 +1573,6 @@ LoadStation_LuckyChannel:
 	call Radio_BackUpFarCallParams
 	ld de, LuckyChannelName
 	ret
-
-LoadStation_BuenasPassword:
-	ld a, BUENAS_PASSWORD
-	ld [wCurRadioLine], a
-	xor a
-	ld [wNumRadioLinesPrinted], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
-	ld de, NotBuenasPasswordName
-	ld a, [wStatusFlags2]
-	bit STATUSFLAGS2_ROCKETS_IN_RADIO_TOWER_F, a
-	ret z
-	ld de, BuenasPasswordName
-	ret
-
-BuenasPasswordName:    db "BUENA'S PASSWORD@"
-NotBuenasPasswordName: db "@"
 
 LoadStation_UnownRadio:
 	ld a, UNOWN_RADIO

@@ -790,56 +790,6 @@ _PokegearAskDeleteText::
 	line "phone number?"
 	done
 
-_BuenaAskWhichPrizeText::
-	text "Which prize would"
-	line "you like?"
-	done
-
-_BuenaIsThatRightText::
-	text_ram wStringBuffer1
-	text "?"
-	line "Is that right?"
-	done
-
-_BuenaHereYouGoText::
-	text "Here you go!"
-
-	para ""
-	done
-
-_BuenaNotEnoughPointsText::
-	text "You don't have"
-	line "enough points."
-
-	para ""
-	done
-
-_BuenaNoRoomText::
-	text "You have no room"
-	line "for it."
-
-	para ""
-	done
-
-_BuenaComeAgainText::
-	text "Oh. Please come"
-	line "back again!"
-	done
-
-_ExcuseMeYoureNotReadyText::
-	text "Excuse me."
-	line "You're not ready."
-
-	para ""
-	done
-
-_YouCantTakeAnEggText::
-	text "You can't take an"
-	line "EGG!"
-
-	para ""
-	done
-
 _BallBrokeFreeText::
 	text "Oh no! The #MON"
 	line "broke free!"
@@ -931,13 +881,6 @@ Text_PlayedPokeFlute::
 	line "# FLUTE.@"
 	text_promptbutton
 	text_end
-
-_BlueCardBalanceText::
-	text "You now have"
-	line "@"
-	text_decimal wBlueCardBalance, 1, 2
-	text " points."
-	done
 
 _CoinCaseCountText::
 	text "Coins:"
