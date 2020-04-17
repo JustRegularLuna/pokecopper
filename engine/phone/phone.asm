@@ -114,7 +114,6 @@ CheckPhoneCall::
 	jr z, .no_call
 
 	call .timecheck
-	nop
 	jr nc, .no_call
 
 	call Random
@@ -389,8 +388,6 @@ LoadOutOfAreaScript:
 	return
 
 LoadCallerScript:
-	nop
-	nop
 	ld a, e
 	ld [wCurCaller], a
 	and a

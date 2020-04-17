@@ -240,8 +240,6 @@ PlayerEvents:
 	ret
 
 CheckTrainerBattle_GetPlayerEvent:
-	nop
-	nop
 	call CheckTrainerBattle
 	jr nc, .nope
 

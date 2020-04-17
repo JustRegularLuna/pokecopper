@@ -382,7 +382,7 @@ HandleBerserkGene:
 .set_confuse_count
 	call BattleRandom
 	and %11
-	add a, 2
+	add 2
 	ld [hl], a
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVarAddr
