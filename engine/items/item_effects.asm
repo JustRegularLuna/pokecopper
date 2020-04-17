@@ -2795,7 +2795,6 @@ GetMaxPPOfMove:
 	ld [hl], a
 	xor a
 	ld [wTempPP], a
-	ld a, b ; this gets lost anyway
 	call ComputeMaxPP
 	ld a, [hl]
 	and PP_MASK

@@ -646,8 +646,7 @@ NamingScreen_AnimateCursor:
 	ret
 
 NamingScreen_TryAddCharacter:
-	ld a, [wNamingScreenLastCharacter] ; lost
-MailComposition_TryAddCharacter:
+MailComposition_TryAddLastCharacter:
 	ld a, [wNamingScreenMaxNameLength]
 	ld c, a
 	ld a, [wNamingScreenCurNameLength]
@@ -1288,9 +1287,5 @@ ComposeMail_GetCursorPosition:
 .letter
 	xor a
 	ret
-
-MailComposition_TryAddLastCharacter:
-	ld a, [wNamingScreenLastCharacter]
-	jp MailComposition_TryAddCharacter
 
 INCLUDE "data/text/mail_input_chars.asm"
