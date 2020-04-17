@@ -129,7 +129,7 @@ LinkTextbox:
 Function16d6ce:
 	call LoadStandardMenuHeader
 	call Function16d6e1
-	farcall WaitLinkTransfer
+	call WaitLinkTransfer
 	call Call_ExitMenu
 	jp WaitBGMap2
 

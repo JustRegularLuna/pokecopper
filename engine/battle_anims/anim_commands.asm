@@ -151,9 +151,7 @@ BattleAnimRestoreHuds:
 	ld a, BANK(wCurBattleMon) ; aka BANK(wTempMon), BANK(wPartyMon1), and several others
 	ldh [rSVBK], a
 
-	ld hl, UpdateBattleHuds
-	ld a, BANK(UpdatePlayerHUD)
-	rst FarCall ; Why not "call UpdateBattleHuds"?
+	call UpdateBattleHuds
 
 	pop af
 	ldh [rSVBK], a
