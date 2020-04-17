@@ -20,17 +20,17 @@ Predef::
 	push hl
 
 ; Call the Predef function
-	ld a, [wPredefAddress]
+	ld hl, wPredefAddress
+	ld a, [hli]
+	ld l, [hl]
 	ld h, a
-	ld a, [wPredefAddress + 1]
-	ld l, a
 	push hl
 
 ; Get hl back
-	ld a, [wPredefTemp]
+	ld hl, wPredefTemp
+	ld a, [hli]
+	ld l, [hl]
 	ld h, a
-	ld a, [wPredefTemp + 1]
-	ld l, a
 	ret
 
 .Return:
@@ -45,8 +45,8 @@ Predef::
 	ld a, h
 	rst Bankswitch
 
-	ld a, [wPredefTemp]
+	ld hl, wPredefTemp
+	ld a, [hli]
+	ld l, [hl]
 	ld h, a
-	ld a, [wPredefTemp + 1]
-	ld l, a
 	ret
