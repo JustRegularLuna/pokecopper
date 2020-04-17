@@ -1032,12 +1032,7 @@ PeoplePlaces2:
 
 PeoplePlaces3:
 	ld hl, PnP_Text3
-	call Random
-	cp 49 percent - 1
-	ld a, PLACES_AND_PEOPLE_4 ; People
-	jr c, .ok
-	ld a, PLACES_AND_PEOPLE_6 ; Places
-.ok
+	call PickPeopleOrPlaces
 	jp NextRadioLine
 
 PnP_Text1:
@@ -1106,16 +1101,7 @@ PeoplePlaces5:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call Random
-	cp 4 percent
-	ld a, PLACES_AND_PEOPLE
-	jr c, .ok
-	call Random
-	cp 49 percent - 1
-	ld a, PLACES_AND_PEOPLE_4 ; People
-	jr c, .ok
-	ld a, PLACES_AND_PEOPLE_6 ; Places
-.ok
+	call PickPeopleOrPlacesBiased
 	jp NextRadioLine
 
 .Adjectives:
@@ -1240,16 +1226,7 @@ PeoplePlaces7:
 	ld h, [hl]
 	ld l, a
 	call CopyRadioTextToRAM
-	call Random
-	cp 4 percent
-	ld a, PLACES_AND_PEOPLE
-	jr c, .ok
-	call Random
-	cp 49 percent - 1
-	ld a, PLACES_AND_PEOPLE_4 ; People
-	jr c, .ok
-	ld a, PLACES_AND_PEOPLE_6 ; Places
-.ok
+	call PickPeopleOrPlacesBiased
 	jp PrintRadioLine
 
 .Adjectives:
@@ -1270,6 +1247,20 @@ PeoplePlaces7:
 	dw PnP_WeirdText
 	dw PnP_RightForMeText
 	dw PnP_OddText
+
+PickPeopleOrPlacesBiased:
+	call Random
+	cp 4 percent
+	ld a, PLACES_AND_PEOPLE
+	ret c
+PickPeopleOrPlaces:
+	call Random
+	cp 49 percent - 1
+	; carry ? PLACES_AND_PEOPLE_4 (People) : PLACES_AND_PEOPLE_6 (Places)
+	assert PLACES_AND_PEOPLE_4 + 2 == PLACES_AND_PEOPLE_6
+	sbc a
+	sbc -PLACES_AND_PEOPLE_6
+	ret
 
 RocketRadio1:
 	call StartRadioStation

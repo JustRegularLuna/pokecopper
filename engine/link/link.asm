@@ -2299,10 +2299,9 @@ TryQuickSave:
 	ld a, [wChosenCableClubRoom]
 	push af
 	farcall Link_SaveGame
-	ld a, TRUE
-	jr nc, .return_result
-	xor a ; FALSE
-.return_result
+	; carry ? FALSE : TRUE
+	sbc a
+	inc a
 	ld [wScriptVar], a
 	ld c, 30
 	call DelayFrames

@@ -594,9 +594,10 @@ DayCare_InitBreeding:
 	jr nz, .GotEggSpecies
 	call Random
 	cp 50 percent + 1
-	ld a, NIDORAN_F
-	jr c, .GotEggSpecies
-	ld a, NIDORAN_M
+	; carry ? NIDORAN_F : NIDORAN_M
+	sbc a
+	and NIDORAN_F - NIDORAN_M
+	add NIDORAN_M
 .GotEggSpecies:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
