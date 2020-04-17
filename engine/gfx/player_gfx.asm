@@ -121,8 +121,7 @@ GetHiroBackpic:
 	ld b, BANK(HiroBackpic)
 	ld de, vTiles2 tile $31
 	ld c, 7 * 7
-	predef DecompressGet2bpp
-	ret
+	predef_jump DecompressGet2bpp
 
 HOF_LoadTrainerFrontpic:
 	call WaitBGMap
@@ -167,8 +166,7 @@ DrawIntroPlayerPic:
 	ldh [hGraphicStartTile], a
 	hlcoord 6, 4
 	lb bc, 7, 7
-	predef PlaceGraphic
-	ret
+	predef_jump PlaceGraphic
 
 HiroPic:
 INCBIN "gfx/player/hiro.2bpp"

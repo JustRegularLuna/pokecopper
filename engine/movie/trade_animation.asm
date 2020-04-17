@@ -815,8 +815,7 @@ TradeAnim_GetFrontpic:
 	ld [wCurSpecies], a
 	call GetBaseData
 	pop de
-	predef GetMonFrontpic
-	ret
+	predef_jump GetMonFrontpic
 
 TradeAnim_GetNickname:
 	push de

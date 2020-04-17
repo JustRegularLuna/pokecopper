@@ -176,8 +176,7 @@ PlacePartymonHPBar:
 	ld d, a
 	ld a, [hli]
 	ld e, a
-	predef ComputeHPBarPixels
-	ret
+	predef_jump ComputeHPBarPixels
 
 PlacePartyMenuHPDigits:
 	ld a, [wPartyCount]

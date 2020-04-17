@@ -634,8 +634,7 @@ StatsScreen_LoadGFX:
 	hlcoord 12, 11
 	ld a, SCREEN_WIDTH * 2
 	ld [wBuffer1], a
-	predef ListMovePP
-	ret
+	predef_jump ListMovePP
 
 .GetItemName:
 	ld de, .ThreeDashes
@@ -671,8 +670,7 @@ StatsScreen_LoadGFX:
 	jr nz, .BluePageVerticalDivider
 	hlcoord 11, 8
 	ld bc, 6
-	predef PrintTempMonStats
-	ret
+	predef_jump PrintTempMonStats
 
 .PlaceOTInfo:
 	ld de, IDNoString
