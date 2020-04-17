@@ -8,21 +8,8 @@ __LoadTradeScreenBorder:
 	call Get2bpp
 	ret
 
-Function16d42e:
-	ld hl, Tilemap_MobileTradeBorderFullscreen
-	decoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call CopyBytes
-	ret
-
-Tilemap_MobileTradeBorderFullscreen:
-INCBIN "gfx/trade/border_mobile_fullscreen.tilemap"
-
-Tilemap_CableTradeBorderTop:
-INCBIN "gfx/trade/border_cable_top.tilemap"
-
-Tilemap_CableTradeBorderBottom:
-INCBIN "gfx/trade/border_cable_bottom.tilemap"
+Tilemap_CableTradeBorder:
+INCBIN "gfx/trade/border.tilemap"
 
 _LinkTextbox:
 	ld h, d
@@ -135,14 +122,9 @@ INCLUDE "gfx/trade/border.pal"
 
 
 Function16d6ae:
-	call Function16d42e
-	ld hl, Tilemap_CableTradeBorderTop
+	ld hl, Tilemap_CableTradeBorder
 	decoord 0, 0
-	ld bc, 2 * SCREEN_WIDTH
-	call CopyBytes
-	ld hl, Tilemap_CableTradeBorderBottom
-	decoord 0, 16
-	ld bc, 2 * SCREEN_WIDTH
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call CopyBytes
 	ret
 

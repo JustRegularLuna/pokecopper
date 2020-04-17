@@ -29,7 +29,7 @@ EngineFlags:
 	engine_flag wStatusFlags, STATUSFLAGS_CAUGHT_POKERUS_F
 	engine_flag wStatusFlags, STATUSFLAGS_ROCKET_SIGNAL_F
 	engine_flag wStatusFlags, STATUSFLAGS_HALL_OF_FAME_F
-	engine_flag wStatusFlags, STATUSFLAGS_MAIN_MENU_MOBILE_CHOICES_F
+	engine_flag wStatusFlags, STATUSFLAGS_UNUSED_7_F
 
 	engine_flag wStatusFlags2, STATUSFLAGS2_BUG_CONTEST_TIMER_F
 	engine_flag wStatusFlags2, STATUSFLAGS2_SAFARI_GAME_F
@@ -96,8 +96,6 @@ EngineFlags:
 
 	engine_flag wSwarmFlags, SWARMFLAGS_BUENAS_PASSWORD_F ; $60
 	engine_flag wSwarmFlags, SWARMFLAGS_GOLDENROD_DEPT_STORE_SALE_F
-
-	engine_flag wGameTimerPause, GAMETIMERPAUSE_MOBILE_7_F
 
 	engine_flag wPlayerGender, PLAYERGENDER_FEMALE_F
 

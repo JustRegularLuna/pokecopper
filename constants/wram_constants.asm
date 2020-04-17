@@ -23,7 +23,6 @@ AUTO_INPUT EQU $ff
 
 ; wGameTimerPause:: ; cfbc
 GAMETIMERPAUSE_TIMER_PAUSED_F EQU 0
-GAMETIMERPAUSE_MOBILE_7_F     EQU 7
 
 ; wOptions:: ; cfcc
 TEXT_DELAY_MASK EQU %111
@@ -175,14 +174,14 @@ NUM_OBJECTS   EQU 16
 
 ; wStatusFlags:: ; d84c
 	const_def
-	const STATUSFLAGS_POKEDEX_F                  ; 0
-	const STATUSFLAGS_UNOWN_DEX_F                ; 1
-	const STATUSFLAGS_FLASH_F                    ; 2
-	const STATUSFLAGS_CAUGHT_POKERUS_F           ; 3
-	const STATUSFLAGS_ROCKET_SIGNAL_F            ; 4
-	const STATUSFLAGS_NO_WILD_ENCOUNTERS_F       ; 5
-	const STATUSFLAGS_HALL_OF_FAME_F             ; 6
-	const STATUSFLAGS_MAIN_MENU_MOBILE_CHOICES_F ; 7
+	const STATUSFLAGS_POKEDEX_F            ; 0
+	const STATUSFLAGS_UNOWN_DEX_F          ; 1
+	const STATUSFLAGS_FLASH_F              ; 2
+	const STATUSFLAGS_CAUGHT_POKERUS_F     ; 3
+	const STATUSFLAGS_ROCKET_SIGNAL_F      ; 4
+	const STATUSFLAGS_NO_WILD_ENCOUNTERS_F ; 5
+	const STATUSFLAGS_HALL_OF_FAME_F       ; 6
+	const STATUSFLAGS_UNUSED_7_F           ; 7
 
 ; wStatusFlags2:: ; d84d
 	const_def
@@ -285,7 +284,6 @@ CELEBIEVENT_FOREST_IS_RESTLESS_F EQU 2
 	const SWARMFLAGS_GOLDENROD_DEPT_STORE_SALE_F ; 1
 	const SWARMFLAGS_DUNSPARCE_SWARM_F           ; 2
 	const SWARMFLAGS_YANMA_SWARM_F               ; 3
-	const SWARMFLAGS_MOBILE_4_F                  ; 4
 
 ; wLuckyNumberShowFlag:: ; dc9d
 LUCKYNUMBERSHOW_GAME_OVER_F EQU 0

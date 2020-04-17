@@ -66,7 +66,7 @@ DoBattleTransition:
 	farcall ReanchorBGMap_NoOAMUpdate
 	call UpdateSprites
 	call DelayFrame
-	call .NonMobile_LoadPokeballTiles
+	call .LoadPokeballTiles
 	call BattleStart_CopyTilemapAtOnce
 
 	ld a, SCREEN_HEIGHT_PX
@@ -82,7 +82,7 @@ DoBattleTransition:
 	call WipeLYOverrides
 	ret
 
-.NonMobile_LoadPokeballTiles:
+.LoadPokeballTiles:
 	call LoadTrainerBattlePokeballTiles
 	hlbgcoord 0, 0
 	call ConvertTrainerBattlePokeballTilesTo2bpp

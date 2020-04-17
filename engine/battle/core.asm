@@ -2650,7 +2650,6 @@ ForcePlayerMonChoice:
 	or [hl]
 	jr nz, .send_out_pokemon
 
-.enemy_fainted_mobile_error
 	call ClearSprites
 	call ClearBGPalettes
 	call _LoadHPBar
@@ -8093,7 +8092,7 @@ DisplayLinkBattleResult:
 	ld a, BANK(sLinkBattleStats)
 	call GetSRAMBank
 
-	call AddLastMobileBattleToLinkRecord
+	call AddLastLinkBattleToLinkRecord
 	call ReadAndPrintLinkBattleRecord
 
 	call CloseSRAM
@@ -8361,7 +8360,7 @@ GetRoamMonSpecies:
 	ld hl, wRoamMon3Species
 	ret
 
-AddLastMobileBattleToLinkRecord:
+AddLastLinkBattleToLinkRecord:
 	ld hl, wOTPlayerID
 	ld de, wStringBuffer1
 	ld bc, 2

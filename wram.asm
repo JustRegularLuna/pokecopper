@@ -1168,7 +1168,6 @@ wFarCallBCBuffer:: dw ; cfb9
 
 wGameTimerPause:: ; cfbc
 ; bit 0: game timer paused
-; bit 7: something mobile
 	db
 
 	ds 1
@@ -2057,7 +2056,7 @@ wStatusFlags:: ; d84c
 ; bit 4: rocket signal
 ; bit 5: wild encounters on/off
 ; bit 6: hall of fame
-; bit 7: bug contest on
+; bit 7: unused
 	db
 
 wStatusFlags2:: ; d84d
