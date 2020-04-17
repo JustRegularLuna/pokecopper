@@ -112,9 +112,6 @@ SpecialsPointers::
 ; Crystal only
 	add_special Reset ; bank 0
 	add_special MoveTutor
-	add_special OmanyteChamber
-	add_special DisplayUnownWords
-	add_special HoOhChamber
 	add_special PokeSeer
 	add_special BuenasPassword
 	add_special BuenaPrize
