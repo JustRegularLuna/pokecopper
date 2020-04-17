@@ -22,19 +22,9 @@
 	charmap "<TARGET>",  $59
 	charmap "<USER>",    $5a
 
-; Actual characters (from gfx/font/font_battle_extra.png)
-
-	charmap "<LV>",      $6e
-	charmap "◀",         $71
-	charmap "<ID>",      $73
-	charmap "№",         $74
-
 ; Actual characters (from other graphics files)
 
 	charmap " ",         $7f ; gfx/font/space.png
-
-	; needed for StatsScreen_PlaceShinyIcon
-	charmap "⁂",         $3f ; gfx/stats/stats_tiles.png, tile 14
 
 ; Actual characters (from gfx/font/font.png)
 
@@ -106,6 +96,13 @@
 	charmap "└",         $be
 	charmap "┘",         $bf
 
+	charmap "■",         $c0
+	charmap "☎",         $c1
+
+	charmap "<BOLD_P>",  $ca ; PP
+	charmap "⁂",         $cb ; shiny
+	charmap "<ID>",      $cc
+	charmap "№",         $cd
 	charmap "′",         $ce
 	charmap "″",         $cf
 
@@ -117,12 +114,12 @@
 	charmap "'t",        $d5
 	charmap "'v",        $d6
 
-	charmap "■",         $d7
-	charmap "▲",         $d8
-	charmap "☎",         $d9
-	charmap "<BOLD_V>",  $da
-	charmap "<BOLD_S>",  $db
-	charmap "<COLON>",   $dc ; colon with tinier dots than ":"
+	charmap "<BOLD_V>",  $d7
+	charmap "<BOLD_S>",  $d8
+	charmap "<COLON>",   $d9 ; colon with tinier dots than ":"
+	charmap "<LV>",      $da
+	charmap "▲",         $db
+	charmap "◀",         $dc
 	charmap "“",         $dd ; opening quote
 	charmap "”",         $de ; closing quote
 

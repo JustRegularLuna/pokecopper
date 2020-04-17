@@ -54,10 +54,6 @@ LoadBattleFontsHPBar:
 	ld hl, vTiles2 tile $60
 	lb bc, BANK(FontBattleExtra), 12 ; HP bar tiles
 	call Get2bpp_2
-	ld hl, vTiles2 tile "◀" ; $71
-	ld de, FontBattleExtra + 17 tiles ; "◀"
-	lb bc, BANK(FontBattleExtra), 1
-	call Get2bpp_2
 	call LoadFrame
 
 LoadHPBar:
