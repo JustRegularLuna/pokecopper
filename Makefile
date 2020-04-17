@@ -1,6 +1,6 @@
-roms := pokecrystal.gbc pokecrystal11.gbc pokecrystal-au.gbc
+roms := redgold.gbc bluesilver.gbc
 
-crystal_obj := \
+rgbs_obj := \
 audio.o \
 home.o \
 main.o \
@@ -16,17 +16,11 @@ gfx/pics.o \
 gfx/sprites.o \
 gfx/tilesets.o
 
-crystal11_obj := $(crystal_obj:.o=11.o)
-crystal_au_obj := $(crystal_obj:.o=_au.o)
+redgold_obj := $(rgbs_obj:.o=_rg.o)
+bluesilver_obj := $(rgbs_obj:.o=_bs.o)
 
 
 ### Build tools
-
-ifeq (,$(shell which sha1sum))
-SHA1 := shasum
-else
-SHA1 := sha1sum
-endif
 
 RGBDS ?=
 RGBASM  ?= $(RGBDS)rgbasm
@@ -38,37 +32,32 @@ RGBLINK ?= $(RGBDS)rgblink
 ### Build targets
 
 .SUFFIXES:
-.PHONY: all crystal crystal11 crystal_au clean tidy compare tools
+.PHONY: all redgold bluesilver clean tidy compare tools
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
 
-all: crystal
-crystal:    pokecrystal.gbc
-crystal11:  pokecrystal11.gbc
-crystal-au: pokecrystal-au.gbc
+all: $(roms)
+redgold:    redgold.gbc
+bluesilver: bluesilver.gbc
 
 clean:
-	rm -f $(roms) $(crystal_obj) $(crystal11_obj) $(crystal_au_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
+	rm -f $(roms) $(redgold_obj) $(bluesilver_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
 	find gfx \( -name "*.[12]bpp" -o -name "*.lz" -o -name "*.gbcpal" -o -name "*.sgb.tilemap" \) -delete
 	find gfx/pokemon -mindepth 1 ! -path "gfx/pokemon/unown/*" \( -name "bitmask.asm" -o -name "frames.asm" -o -name "front.animated.tilemap" -o -name "front.dimensions" \) -delete
 	$(MAKE) clean -C tools/
 
 tidy:
-	rm -f $(roms) $(crystal_obj) $(crystal11_obj) $(crystal_au_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
+	rm -f $(roms) $(redgold_obj) $(bluesilver_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
 	$(MAKE) clean -C tools/
-
-compare: $(roms)
-	@$(SHA1) -c roms.sha1
 
 tools:
 	$(MAKE) -C tools/
 
 
 RGBASMFLAGS = -L -Weverything
-$(crystal_obj):    RGBASMFLAGS +=
-$(crystal11_obj):  RGBASMFLAGS += -D _CRYSTAL11
-$(crystal_au_obj): RGBASMFLAGS += -D _CRYSTAL11 -D _CRYSTAL_AU
+$(redgold_obj):    RGBASMFLAGS += -D _REDGOLD
+$(bluesilver_obj): RGBASMFLAGS += -D _BLUESILVER
 
 # The dep rules have to be explicit or else missing files won't be reported.
 # As a side effect, they're evaluated immediately instead of when the rule is invoked.
@@ -84,36 +73,19 @@ ifeq (,$(filter clean tools,$(MAKECMDGOALS)))
 
 $(info $(shell $(MAKE) -C tools))
 
-$(foreach obj, $(crystal_au_obj), $(eval $(call DEP,$(obj),$(obj:_au.o=.asm))))
-$(foreach obj, $(crystal11_obj), $(eval $(call DEP,$(obj),$(obj:11.o=.asm))))
-$(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
+$(foreach obj, $(redgold_obj), $(eval $(call DEP,$(obj),$(obj:_rg.o=.asm))))
+$(foreach obj, $(bluesilver_obj), $(eval $(call DEP,$(obj),$(obj:_bs.o=.asm))))
 
 endif
 
 
-pokecrystal.gbc: $(crystal_obj) pokecrystal.link
-	$(RGBLINK) -n pokecrystal.sym -m pokecrystal.map -l pokecrystal.link -p 0xff -o $@ $(crystal_obj)
-	$(RGBFIX) -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -p 0xff -r 3 -t PM_CRYSTAL $@
+redgold.gbc: $(redgold_obj) layout.link
+	$(RGBLINK) -n redgold.sym -m redgold.map -l layout.link -p 0xff -o $@ $(redgold_obj)
+	$(RGBFIX) -Cjv -t POKEMON_2_ -i GOLD -k 01 -l 0x33 -m 0x10 -n 1 -p 0xff -r 3 $@
 
-pokecrystal11.gbc: $(crystal11_obj) pokecrystal.link
-	$(RGBLINK) -n pokecrystal11.sym -m pokecrystal11.map -l pokecrystal.link -p 0xff -o $@ $(crystal11_obj)
-	$(RGBFIX) -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -n 1 -p 0xff -r 3 -t PM_CRYSTAL $@
-
-pokecrystal-au.gbc: $(crystal_au_obj) pokecrystal.link
-	$(RGBLINK) -n pokecrystal-au.sym -m pokecrystal-au.map -l pokecrystal.link -p 0xff -o $@ $(crystal_au_obj)
-	$(RGBFIX) -Cjv -i BYTU -k 01 -l 0x33 -m 0x10 -p 0xff -r 3 -t PM_CRYSTAL $@
-
-
-# For files that the compressor can't match, there will be a .lz file suffixed with the md5 hash of the correct uncompressed file.
-# If the hash of the uncompressed file matches, use this .lz instead.
-# This allows pngs to be used for compressed graphics and still match.
-
-%.lz: hash = $(shell tools/md5 $(*D)/$(*F) | sed "s/\(.\{8\}\).*/\1/")
-%.lz: %
-	$(eval filename := $@.$(hash))
-	$(if $(wildcard $(filename)),\
-		cp $(filename) $@,\
-		tools/lzcomp -- $< $@)
+bluesilver.gbc: $(bluesilver_obj) layout.link
+	$(RGBLINK) -n bluesilver.sym -m bluesilver.map -l layout.link -p 0xff -o $@ $(bluesilver_obj)
+	$(RGBFIX) -Cjv -t POKEMON_2_ -i SILV -k 01 -l 0x33 -m 0x10 -n 1 -p 0xff -r 3 $@
 
 
 ### Misc file-specific graphics rules
@@ -124,8 +96,6 @@ gfx/pokemon/unown/%.2bpp: rgbgfx += -h
 gfx/pokemon/unownback/%.2bpp: rgbgfx += -h
 
 gfx/trainers/%.2bpp: rgbgfx += -h
-
-gfx/pokemon/egg/unused_front.2bpp: rgbgfx += -h
 
 gfx/new_game/shrink1.2bpp: rgbgfx += -h
 gfx/new_game/shrink2.2bpp: rgbgfx += -h
@@ -144,10 +114,7 @@ gfx/pokedex/slowpoke.2bpp: tools/gfx += --trim-whitespace
 gfx/pokegear/pokegear.2bpp: rgbgfx += -x2
 gfx/pokegear/pokegear_sprites.2bpp: tools/gfx += --trim-whitespace
 
-gfx/mystery_gift/mystery_gift.2bpp: tools/gfx += --trim-whitespace
-
 gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
-gfx/title/old_fg.2bpp: tools/gfx += --interleave --png=$<
 gfx/title/logo.2bpp: rgbgfx += -x 4
 
 gfx/trade/ball.2bpp: tools/gfx += --remove-whitespace
@@ -193,13 +160,14 @@ gfx/sprites/big_onix.2bpp: tools/gfx += --remove-whitespace --remove-xflip
 
 gfx/battle/dude.2bpp: rgbgfx += -h
 
-gfx/font/unused_bold_font.1bpp: tools/gfx += --trim-whitespace
-
 gfx/sgb/sgb_border.2bpp: tools/gfx += --trim-whitespace
 gfx/sgb/sgb_border.sgb.tilemap: gfx/sgb/sgb_border.bin ; tr < $< -d '\000' > $@
 
 
 ### Catch-all graphics rules
+
+%.lz: %
+	tools/lzcomp -- $< $@
 
 %.2bpp: %.png
 	$(RGBGFX) $(rgbgfx) -o $@ $<
