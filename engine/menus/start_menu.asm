@@ -193,7 +193,7 @@ StartMenu::
 .SaveString:     db "SAVE@"
 .OptionString:   db "OPTION@"
 .ExitString:     db "EXIT@"
-.PokegearString: db "<POKE>GEAR@"
+.PokegearString: db "<PO><KE>GEAR@"
 .QuitString:     db "QUIT@"
 
 .PokedexDesc:
@@ -201,7 +201,7 @@ StartMenu::
 	next "database@"
 
 .PartyDesc:
-	db   "Party <PKMN>"
+	db   "Party <PK><MN>"
 	next "status@"
 
 .PackDesc:

@@ -1,8 +1,8 @@
 NAMINGSCREEN_CURSOR     EQU $7e
 
-NAMINGSCREEN_BORDER     EQUS "\"■\"" ; $d7
-NAMINGSCREEN_MIDDLELINE EQUS "\"→\"" ; $eb
-NAMINGSCREEN_UNDERLINE  EQUS "\"☎\"" ; $d9
+NAMINGSCREEN_BORDER     EQU "■" ; $d7
+NAMINGSCREEN_MIDDLELINE EQU "→" ; $eb
+NAMINGSCREEN_UNDERLINE  EQU "☎" ; $d9
 
 _NamingScreen:
 	call DisableSpriteUpdates
@@ -79,9 +79,6 @@ NamingScreen:
 	dw .Rival
 	dw .Mom
 	dw .Box
-	dw .Tomodachi
-	dw .Pokemon
-	dw .Pokemon
 
 .Pokemon:
 	ld a, [wCurPartySpecies]
@@ -179,16 +176,6 @@ NamingScreen:
 
 .BoxNameString:
 	db "BOX NAME?@"
-
-.Tomodachi:
-	hlcoord 3, 2
-	ld de, .oTomodachi_no_namae_sutoringu
-	call PlaceString
-	call .StoreSpriteIconParams
-	ret
-
-.oTomodachi_no_namae_sutoringu
-	db "おともだち　の　なまえは？@"
 
 .LoadSprite:
 	push de

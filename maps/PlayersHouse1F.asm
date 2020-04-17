@@ -348,25 +348,25 @@ ImBehindYouText:
 
 NeighborMornIntroText:
 	text "Good morning,"
-	line "<PLAY_G>!"
+	line "<PLAYER>!"
 
 	para "I'm visiting!"
 	done
 
 NeighborDayIntroText:
-	text "Hello, <PLAY_G>!"
+	text "Hello, <PLAYER>!"
 	line "I'm visiting!"
 	done
 
 NeighborNiteIntroText:
 	text "Good evening,"
-	line "<PLAY_G>!"
+	line "<PLAYER>!"
 
 	para "I'm visiting!"
 	done
 
 NeighborText:
-	text "<PLAY_G>, have you"
+	text "<PLAYER>, have you"
 	line "heard?"
 
 	para "My daughter is"

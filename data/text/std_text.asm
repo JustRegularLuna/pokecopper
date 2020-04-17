@@ -219,8 +219,8 @@ ContestResults_ReadyToJudgeText:
 	line "the #MON you've"
 	cont "caught."
 
-	para "<……>"
-	line "<……>"
+	para "……"
+	line "……"
 
 	para "We have chosen the"
 	line "winners!"

@@ -138,7 +138,7 @@ StartMenu_PrintSafariZoneStatus:
 	ret
 
 .slash_500
-	db "／５００@"
+	db "/500@"
 .balls
 	db "BALLS:@"
 

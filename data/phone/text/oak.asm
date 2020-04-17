@@ -1,5 +1,5 @@
 OakPhoneHealYourMonText:
-	text "Hello, <PLAY_G>?"
+	text "Hello, <PLAYER>?"
 
 	para "Try not to overdo"
 	line "it."
@@ -10,7 +10,7 @@ OakPhoneHealYourMonText:
 	done
 
 OakPhoneDiscoveredPokerusText:
-	text "Hello, <PLAY_G>?"
+	text "Hello, <PLAYER>?"
 
 	para "I discovered an"
 	line "odd thing."

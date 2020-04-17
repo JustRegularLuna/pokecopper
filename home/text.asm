@@ -197,79 +197,23 @@ ENDM
 
 	dict "<LINE>",    LineChar
 	dict "<NEXT>",    NextLineChar
-	dict "<CR>",      CarriageReturnChar
 	dict "<NULL>",    NullChar
-	dict "<SCROLL>",  _ContTextNoPause
-	dict "<_CONT>",   _ContText
+	dict "<SCROLL>",  ContTextNoPause
 	dict "<PARA>",    Paragraph
 	dict "<MOM>",     PrintMomsName
 	dict "<PLAYER>",  PrintPlayerName
 	dict "<RIVAL>",   PrintRivalName
-	dict "<ROUTE>",   PlaceJPRoute
-	dict "<WATASHI>", PlaceWatashi
-	dict "<KOKO_WA>", PlaceKokoWa
-	dict "<RED>",     PrintRedsName
-	dict "<GREEN>",   PrintGreensName
 	dict "#",         PlacePOKe
-	dict "<PC>",      PCChar
-	dict "<ROCKET>",  RocketChar
-	dict "<TM>",      TMChar
-	dict "<TRAINER>", TrainerChar
-	dict "<KOUGEKI>", PlaceKougeki
 	dict "<LF>",      LineFeedChar
 	dict "<CONT>",    ContText
-	dict "<……>",      SixDotsChar
 	dict "<DONE>",    DoneText
 	dict "<PROMPT>",  PromptText
-	dict "<PKMN>",    PlacePKMN
-	dict "<POKE>",    PlacePOKE
 	dict "%",         NextChar
 	dict "¯",         " "
-	dict "<DEXEND>",  PlaceDexEnd
 	dict "<TARGET>",  PlaceMoveTargetsName
 	dict "<USER>",    PlaceMoveUsersName
 	dict "<ENEMY>",   PlaceEnemysName
-	dict "<PLAY_G>",  PlaceGenderedPlayerName
-	dict "ﾟ",         .place ; should be .diacritic
-	dict "ﾞ",         .place ; should be .diacritic
-	jr .not_diacritic
 
-.diacritic
-	ld b, a
-	call Diacritic
-	jp NextChar
-
-.not_diacritic
-	cp FIRST_REGULAR_TEXT_CHAR
-	jr nc, .place
-
-	cp "パ"
-	jr nc, .handakuten
-
-.dakuten
-	cp FIRST_HIRAGANA_DAKUTEN_CHAR
-	jr nc, .hiragana_dakuten
-	add "カ" - "ガ"
-	jr .katakana_dakuten
-.hiragana_dakuten
-	add "か" - "が"
-.katakana_dakuten
-	ld b, "ﾞ" ; dakuten
-	call Diacritic
-	jr .place
-
-.handakuten
-	cp "ぱ"
-	jr nc, .hiragana_handakuten
-	add "ハ" - "パ"
-	jr .katakana_handakuten
-.hiragana_handakuten
-	add "は" - "ぱ"
-.katakana_handakuten
-	ld b, "ﾟ" ; handakuten
-	call Diacritic
-
-.place
 	ld [hli], a
 	call PrintLetterDelay
 	jp NextChar
@@ -283,21 +227,8 @@ ENDM
 PrintMomsName:   print_name wMomsName
 PrintPlayerName: print_name wPlayerName
 PrintRivalName:  print_name wRivalName
-PrintRedsName:   print_name wRedsName
-PrintGreensName: print_name wGreensName
 
-TrainerChar:  print_name TrainerCharText
-TMChar:       print_name TMCharText
-PCChar:       print_name PCCharText
-RocketChar:   print_name RocketCharText
-PlacePOKe:    print_name PlacePOKeText
-PlaceKougeki: print_name KougekiText
-SixDotsChar:  print_name SixDotsCharText
-PlacePKMN:    print_name PlacePKMNText
-PlacePOKE:    print_name PlacePOKEText
-PlaceJPRoute: print_name PlaceJPRouteText
-PlaceWatashi: print_name PlaceWatashiText
-PlaceKokoWa:  print_name PlaceKokoWaText
+PlacePOKe: print_name PlacePOKeText
 
 PlaceMoveTargetsName::
 	ldh a, [hBattleTurn]
@@ -347,19 +278,6 @@ PlaceEnemysName::
 	ld de, wOTClassName
 	jr PlaceCommandCharacter
 
-PlaceGenderedPlayerName::
-	push de
-	ld de, wPlayerName
-	call PlaceString
-	ld h, b
-	ld l, c
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	ld de, KunSuffixText
-	jr z, PlaceCommandCharacter
-	ld de, ChanSuffixText
-	jr PlaceCommandCharacter
-
 PlaceCommandCharacter::
 	call PlaceString
 	ld h, b
@@ -367,23 +285,9 @@ PlaceCommandCharacter::
 	pop de
 	jp NextChar
 
-TMCharText::      db "TM@"
-TrainerCharText:: db "TRAINER@"
-PCCharText::      db "PC@"
-RocketCharText::  db "ROCKET@"
-PlacePOKeText::   db "POKé@"
-KougekiText::     db "こうげき@"
-SixDotsCharText:: db "……@"
-EnemyText::       db "Enemy @"
-PlacePKMNText::   db "<PK><MN>@"
-PlacePOKEText::   db "<PO><KE>@"
-String_Space::    db " @"
-; These strings have been dummied out.
-PlaceJPRouteText::
-PlaceWatashiText::
-PlaceKokoWaText:: db "@"
-KunSuffixText::   db "@"
-ChanSuffixText::  db "@"
+PlacePOKeText:: db "POKé@"
+EnemyText::     db "Enemy @"
+String_Space::  db " @"
 
 NextLineChar::
 	pop hl
@@ -395,47 +299,6 @@ NextLineChar::
 LineFeedChar::
 	pop hl
 	ld bc, SCREEN_WIDTH
-	add hl, bc
-	push hl
-	jp NextChar
-
-CarriageReturnChar::
-	pop hl
-	push de
-	ld bc, -wTilemap + $10000
-	add hl, bc
-	ld de, -SCREEN_WIDTH
-	ld c, 1
-.loop
-	ld a, h
-	and a
-	jr nz, .next
-	ld a, l
-	cp SCREEN_WIDTH
-	jr c, .done
-
-.next
-	add hl, de
-	inc c
-	jr .loop
-
-.done
-	hlcoord 0, 0
-	ld de, SCREEN_WIDTH
-	ld a, c
-.loop2
-	and a
-	jr z, .done2
-	add hl, de
-	dec a
-	jr .loop2
-
-.done2
-	pop de
-	inc de
-	ld a, [de]
-	ld c, a
-	ld b, 0
 	add hl, bc
 	push hl
 	jp NextChar
@@ -467,7 +330,7 @@ Paragraph::
 	pop de
 	jp NextChar
 
-_ContText::
+ContText::
 	ld a, [wLinkMode]
 	or a
 	jr nz, .communication
@@ -485,33 +348,13 @@ _ContText::
 	call z, UnloadBlinkingCursor
 	; fallthrough
 
-_ContTextNoPause::
+ContTextNoPause::
 	push de
 	call TextScroll
 	call TextScroll
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	pop de
 	jp NextChar
-
-ContText::
-	push de
-	ld de, .cont
-	ld b, h
-	ld c, l
-	call PlaceString
-	ld h, b
-	ld l, c
-	pop de
-	jp NextChar
-
-.cont: db "<_CONT>@"
-
-PlaceDexEnd::
-; Ends a Pokédex entry in Gen 1.
-; Dex entries are now regular strings.
-	ld [hl], "."
-	pop hl
-	ret
 
 PromptText::
 	ld a, [wLinkMode]
@@ -586,9 +429,6 @@ Text_WaitBGMap::
 	pop af
 	ldh [hOAMUpdate], a
 	pop bc
-	ret
-
-Diacritic::
 	ret
 
 LoadBlinkingCursor::

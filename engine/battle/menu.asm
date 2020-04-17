@@ -42,7 +42,7 @@ MenuData_0x24f34:
 
 Strings24f3d:
 	db "FIGHT@"
-	db "<PKMN>@"
+	db "<PK><MN>@"
 	db "PACK@"
 	db "RUN@"
 
@@ -60,7 +60,7 @@ SafariBattleMenuDataHeader:
 	dba ShowSafariBallsRemaining
 
 .Strings:
-	db "BALL×　　@"
+	db "BALL×  @"
 	db "BAIT@"
 	db "ROCK@"
 	db "RUN@"
@@ -87,7 +87,7 @@ ContestBattleMenuDataHeader:
 
 .Strings:
 	db "FIGHT@"
-	db "<PKMN>@"
+	db "<PK><MN>@"
 	db "PARKBALL×  @"
 	db "RUN@"
 

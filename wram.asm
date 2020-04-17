@@ -1951,8 +1951,8 @@ wPlayerID:: ; d47b
 wPlayerName:: ds NAME_LENGTH ; d47d
 wMomsName::   ds NAME_LENGTH ; d488
 wRivalName::  ds NAME_LENGTH ; d493
-wRedsName::   ds NAME_LENGTH ; d49e
-wGreensName:: ds NAME_LENGTH ; d4a9
+
+	ds 22
 
 wSavedAtLeastOnce:: db
 wSpawnAfterChampion:: db

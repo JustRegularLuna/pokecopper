@@ -613,7 +613,7 @@ _PhoneClickText::
 	done
 
 _PhoneEllipseText::
-	text "<……>"
+	text "……"
 	done
 
 _PhoneOutOfAreaText::
@@ -767,7 +767,7 @@ _GearTodayText::
 	text_end
 
 _GearEllipseText::
-	text "<……>"
+	text "……"
 	done
 
 _GearOutOfServiceText::
