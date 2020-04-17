@@ -1885,9 +1885,10 @@ BattleBGEffect_2a:
 	add hl, bc
 	ld a, [hl]
 	inc [hl]
-	srl a
-	srl a
-	srl a
+	rrca
+	rrca
+	rrca
+	and %00011111
 	ld e, a
 	ld d, 0
 	ld hl, .data
@@ -1923,9 +1924,10 @@ BattleBGEffect_2b:
 	and a
 	jr z, .done
 	dec [hl]
-	srl a
-	srl a
-	srl a
+	rrca
+	rrca
+	rrca
+	and %00011111
 	and $f
 	ld d, a
 	ld e, a
