@@ -68,10 +68,7 @@ MainMenuItems:
 MainMenu_GetWhichMenu:
 	ld a, [wSaveFileExists]
 	and a
-	jr nz, .continue
-	ld a, $0 ; New Game
-	ret
-.continue
+	ret z ; New Game
 	ld a, $1 ; Continue
 	ret
 

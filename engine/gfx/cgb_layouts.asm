@@ -527,7 +527,7 @@ _CGB_TrainerCard:
 	and a
 	ld a, $1 ; red
 	jr z, .got_gender
-	ld a, $0 ; cyan
+	xor a ; cyan
 .got_gender
 	call ByteFill
 	; fill trainer sprite area with trainer palette
@@ -624,7 +624,7 @@ _CGB_Pokepic:
 	sub c
 	inc a
 	ld c, a
-	ld a, $0
+	xor a
 	call FillBoxCGB
 	call ApplyAttrmap
 	ret

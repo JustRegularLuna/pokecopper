@@ -1,5 +1,5 @@
 EmptyAllSRAMBanks:
-	ld a, 0
+	xor a
 	call .EmptyBank
 	ld a, 1
 	call .EmptyBank

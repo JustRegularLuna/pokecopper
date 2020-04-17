@@ -479,7 +479,7 @@ DoPlayerMovement::
 	db $80 | RIGHT
 
 .StandInPlace:
-	ld a, 0
+	xor a
 	ld [wPlayerTurningDirection], a
 	ld a, movement_step_sleep
 	ld [wMovementAnimation], a
@@ -487,7 +487,7 @@ DoPlayerMovement::
 	ret
 
 ._WalkInPlace:
-	ld a, 0
+	xor a
 	ld [wPlayerTurningDirection], a
 	ld a, movement_step_bump
 	ld [wMovementAnimation], a
@@ -575,7 +575,7 @@ ENDM
 ; Returns 0 if there is an NPC in front that you can't move
 ; Returns 1 if there is no NPC in front
 ; Returns 2 if there is a movable NPC in front
-	ld a, 0
+	xor a
 	ldh [hMapObjectIndexBuffer], a
 ; Load the next X coordinate into d
 	ld a, [wPlayerStandingMapX]
@@ -770,6 +770,6 @@ StopPlayerForEvent::
 	ret z
 
 	ld [hl], a
-	ld a, 0
+	xor a
 	ld [wPlayerTurningDirection], a
 	ret

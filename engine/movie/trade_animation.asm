@@ -162,7 +162,7 @@ RunTradeAnimScript:
 	ld bc, sScratch - vTiles0
 	xor a
 	call ByteFill
-	ld a, $0
+	xor a
 	ldh [rVBK], a
 
 .NotCGB:

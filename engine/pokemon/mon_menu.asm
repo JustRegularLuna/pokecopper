@@ -863,7 +863,7 @@ ManagePokemonMoves:
 	call ClearBGPalettes
 
 .egg
-	ld a, $0
+	xor a
 	ret
 
 MoveScreenLoop:

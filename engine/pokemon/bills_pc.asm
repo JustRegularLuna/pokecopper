@@ -157,9 +157,8 @@ BillsPCDepositFuncDeposit:
 	jp c, BillsPCDepositFuncCancel
 	call DepositPokemon
 	jr c, .box_full
-	ld a, $0
-	ld [wJumptableIndex], a
 	xor a
+	ld [wJumptableIndex], a
 	ld [wBillsPC_CursorPosition], a
 	ld [wBillsPC_ScrollPosition], a
 	ret
@@ -205,9 +204,8 @@ BillsPCDepositFuncRelease:
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
 	call ReleasePKMN_ByePKMN
-	ld a, $0
-	ld [wJumptableIndex], a
 	xor a
+	ld [wJumptableIndex], a
 	ld [wBillsPC_CursorPosition], a
 	ld [wBillsPC_ScrollPosition], a
 	pop af
@@ -221,7 +219,7 @@ BillsPCDepositFuncRelease:
 	ret
 
 BillsPCDepositFuncCancel:
-	ld a, $0
+	xor a
 	ld [wJumptableIndex], a
 	ret
 
@@ -369,7 +367,7 @@ BillsPC_Withdraw:
 	ld a, [wMenuCursorY]
 	call StoreTo_wMenuCursorBuffer
 	call VerticalMenu
-	jp c, .cancel
+	jp c, BillsPCDepositFuncCancel
 	ld a, [wMenuCursorY]
 	dec a
 	and %11
@@ -387,16 +385,15 @@ BillsPC_Withdraw:
 	dw .withdraw ; Withdraw
 	dw .stats ; Stats
 	dw .release ; Release
-	dw .cancel ; Cancel
+	dw BillsPCDepositFuncCancel ; Cancel
 
 .withdraw
 	call BillsPC_CheckMail_PreventBlackout
-	jp c, .cancel
+	jp c, BillsPCDepositFuncCancel
 	call TryWithdrawPokemon
 	jr c, .FailedWithdraw
-	ld a, $0
-	ld [wJumptableIndex], a
 	xor a
+	ld [wJumptableIndex], a
 	ld [wBillsPC_CursorPosition], a
 	ld [wBillsPC_ScrollPosition], a
 	ret
@@ -439,9 +436,8 @@ BillsPC_Withdraw:
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
 	call ReleasePKMN_ByePKMN
-	ld a, $0
-	ld [wJumptableIndex], a
 	xor a
+	ld [wJumptableIndex], a
 	ld [wBillsPC_CursorPosition], a
 	ld [wBillsPC_ScrollPosition], a
 	pop af
@@ -451,11 +447,6 @@ BillsPC_Withdraw:
 	call BillsPC_PlaceString
 	pop af
 	ld [wMenuCursorY], a
-	ret
-
-.cancel
-	ld a, $0
-	ld [wJumptableIndex], a
 	ret
 
 .MenuHeader:
@@ -575,7 +566,6 @@ _MovePKMNWithoutMail:
 	xor a
 	ld [wBillsPC_CursorPosition], a
 	ld [wBillsPC_ScrollPosition], a
-	ld a, $0
 	ld [wJumptableIndex], a
 	ret
 
@@ -615,7 +605,7 @@ _MovePKMNWithoutMail:
 	ld a, [wMenuCursorY]
 	call StoreTo_wMenuCursorBuffer
 	call VerticalMenu
-	jp c, .Cancel
+	jp c, BillsPCDepositFuncCancel
 	ld a, [wMenuCursorY]
 	dec a
 	and %11
@@ -632,11 +622,11 @@ _MovePKMNWithoutMail:
 .Jumptable2:
 	dw .Move
 	dw .Stats
-	dw .Cancel
+	dw BillsPCDepositFuncCancel
 
 .Move:
 	call BillsPC_CheckMail_PreventBlackout
-	jp c, .Cancel
+	jp c, BillsPCDepositFuncCancel
 	ld a, [wBillsPC_ScrollPosition]
 	ld [wBillsPC_BackupScrollPosition], a
 	ld a, [wBillsPC_CursorPosition]
@@ -656,11 +646,6 @@ _MovePKMNWithoutMail:
 	ld [wCurPartySpecies], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
-	ret
-
-.Cancel:
-	ld a, $0
-	ld [wJumptableIndex], a
 	ret
 
 .MenuHeader:
@@ -726,7 +711,7 @@ _MovePKMNWithoutMail:
 	call BillsPC_CheckSpaceInDestination
 	jr c, .no_space
 	call MovePKMNWitoutMail_InsertMon
-	ld a, $0
+	xor a
 	ld [wJumptableIndex], a
 	ret
 
@@ -742,7 +727,7 @@ _MovePKMNWithoutMail:
 	ld [wBillsPC_CursorPosition], a
 	ld a, [wBillsPC_BackupLoadedBox]
 	ld [wBillsPC_LoadedBox], a
-	ld a, $0
+	xor a
 	ld [wJumptableIndex], a
 	ret
 

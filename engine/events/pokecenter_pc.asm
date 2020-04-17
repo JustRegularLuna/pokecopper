@@ -445,7 +445,7 @@ PlayerDepositItemMenu:
 .TryDepositItem:
 	ld a, [wSpriteUpdatesEnabled]
 	push af
-	ld a, $0
+	xor a
 	ld [wSpriteUpdatesEnabled], a
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
@@ -550,7 +550,7 @@ PCItemsJoypad:
 .loop
 	ld a, [wSpriteUpdatesEnabled]
 	push af
-	ld a, $0
+	xor a
 	ld [wSpriteUpdatesEnabled], a
 	ld hl, .PCItemsMenuData
 	call CopyMenuHeader

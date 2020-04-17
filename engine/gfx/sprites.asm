@@ -571,7 +571,7 @@ AnimateEndOfExpBar:
 	add 10 * TILE_WIDTH + 4
 	ld [hli], a ; x
 
-	ld a, $0
+	xor a
 	ld [hli], a ; tile id
 	ld a, PAL_BATTLE_OB_BLUE
 	ld [hli], a ; attributes

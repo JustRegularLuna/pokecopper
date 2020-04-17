@@ -85,7 +85,7 @@ _TitleScreen:
 	call ByteFill
 
 ; Back to VRAM bank 0
-	ld a, $0
+	xor a
 	ldh [rVBK], a
 
 ; Decompress logo

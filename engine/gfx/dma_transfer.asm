@@ -6,7 +6,7 @@ HDMATransferTilemapToWRAMBank3::
 	decoord 0, 0
 	ld hl, wScratchTilemap
 	call PadTilemapForHDMATransfer
-	ld a, $0
+	xor a
 	ldh [rVBK], a
 	ld hl, wScratchTilemap
 	call HDMATransferToWRAMBank3
@@ -46,7 +46,7 @@ ReloadMapPart::
 	ldh [rVBK], a
 	ld hl, wScratchAttrmap
 	call HDMATransfer_Wait127Scanlines_toBGMap
-	ld a, $0
+	xor a
 	ldh [rVBK], a
 	ld hl, wScratchTilemap
 	call HDMATransfer_Wait127Scanlines_toBGMap
@@ -80,7 +80,7 @@ OpenAndCloseMenu_HDMATransferTilemapAndAttrmap::
 	ldh [rVBK], a
 	ld hl, wScratchAttrmap
 	call HDMATransfer_Wait123Scanlines_toBGMap
-	ld a, $0
+	xor a
 	ldh [rVBK], a
 	ld hl, wScratchTilemap
 	call HDMATransfer_Wait123Scanlines_toBGMap
@@ -399,7 +399,7 @@ HDMATransfer_OnlyTopFourRows:
 	ld hl, wScratchTilemap + $80
 	debgcoord 0, 0, vBGMap1
 	call HDMATransfer_Wait127Scanlines
-	ld a, $0
+	xor a
 	ldh [rVBK], a
 	ld c, $8
 	ld hl, wScratchTilemap

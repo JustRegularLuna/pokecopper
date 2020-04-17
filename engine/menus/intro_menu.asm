@@ -1149,7 +1149,7 @@ TitleScreenMain:
 	ret
 
 .incave
-	ld a, 0
+	xor a
 	jr .done
 
 .delete_save_data

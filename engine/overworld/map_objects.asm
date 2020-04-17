@@ -648,7 +648,7 @@ MapObjectMovementPattern:
 	cp e
 	jr z, .standing
 	jr c, .less2
-	ld a, 0
+	xor a
 	jr .done
 
 .less2
