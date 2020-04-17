@@ -244,8 +244,7 @@ StatsScreen_JoypadAction:
 	bit D_UP_F, a
 	jr nz, .d_up
 	bit D_DOWN_F, a
-	jr nz, .d_down
-	jr .done
+	jr z, .done
 
 .d_down
 	ld a, [wMonType]

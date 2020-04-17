@@ -1018,8 +1018,7 @@ TryTileCollisionEvent::
 
 .surf
 	farcall TrySurfOW
-	jr nc, .noevent
-	jr .done
+	jr c, .done
 
 .noevent
 	xor a
@@ -1047,8 +1046,7 @@ RandomEncounter::
 
 .bug_contest
 	call _TryWildEncounter_BugContest
-	jr nc, .nope
-	jr .ok_bug_contest
+	jr c, .ok_bug_contest
 
 .nope
 	ld a, 1

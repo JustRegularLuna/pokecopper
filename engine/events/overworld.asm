@@ -552,10 +552,8 @@ FlyFunction:
 	jr c, .nostormbadge
 	call GetMapEnvironment
 	call CheckOutdoorMap
-	jr z, .outdoors
-	jr .indoors
+	jr nz, .indoors
 
-.outdoors
 	xor a
 	ldh [hMapAnims], a
 	call LoadStandardMenuHeader
@@ -877,10 +875,8 @@ TeleportFunction:
 .TryTeleport:
 	call GetMapEnvironment
 	call CheckOutdoorMap
-	jr z, .CheckIfSpawnPoint
-	jr .nope
+	jr nz, .nope
 
-.CheckIfSpawnPoint:
 	ld a, [wLastSpawnMapGroup]
 	ld d, a
 	ld a, [wLastSpawnMapNumber]
@@ -952,8 +948,7 @@ StrengthFunction:
 ; Strength
 	ld de, ENGINE_PLAINBADGE
 	call CheckBadge
-	jr c, .Failed
-	jr .UseStrength
+	jr nc, .UseStrength
 
 .Failed:
 	ld a, $80
@@ -1660,8 +1655,7 @@ BikeFunction:
 	cp CAVE
 	jr z, .ok
 	cp GATE
-	jr z, .ok
-	jr .nope
+	jr nz, .nope
 
 .ok
 	call GetPlayerStandingTile

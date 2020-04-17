@@ -72,8 +72,7 @@ HandleStoneQueue::
 	inc hl
 	ld a, [hld]
 	cp d
-	jr nz, .not_on_warp
-	jr .found_warp
+	jr z, .found_warp
 
 .not_on_warp
 	ld a, WARP_EVENT_SIZE

@@ -447,8 +447,7 @@ AI_Items:
 	jp z, .DontUse
 	call Random
 	cp 20 percent - 1
-	jp nc, .DontUse
-	jp .Use
+	jp c, .Use
 
 .DontUse:
 	scf

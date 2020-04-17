@@ -1265,9 +1265,7 @@ BattleCommand_Stab:
 	cp b
 	jr z, .stab
 	cp c
-	jr z, .stab
-
-	jr .SkipStab
+	jr nz, .SkipStab
 
 .stab
 	ld hl, wCurDamage + 1
@@ -1318,8 +1316,7 @@ BattleCommand_Stab:
 	cp d
 	jr z, .GotMatchup
 	cp e
-	jr z, .GotMatchup
-	jr .SkipType
+	jr nz, .SkipType
 
 .GotMatchup:
 	push hl
@@ -2109,8 +2106,7 @@ BattleCommand_FailureText:
 	cp EFFECT_POISON_MULTI_HIT
 	jr z, .multihit
 	cp EFFECT_BEAT_UP
-	jr z, .multihit
-	jp EndMoveEffect
+	jp nz, EndMoveEffect
 
 .multihit
 	call BattleCommand_RaiseSub

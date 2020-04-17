@@ -1627,10 +1627,8 @@ StatsScreenDPad:
 	ld a, [hl]
 	and D_DOWN | D_UP
 	ld [wMenuJoypad], a
-	jr nz, .pressed_down_up
-	jr .pressed_a_b_right_left
+	jr z, .pressed_a_b_right_left
 
-.pressed_down_up
 	call _StatsScreenDPad
 	and a
 	jr z, .did_nothing

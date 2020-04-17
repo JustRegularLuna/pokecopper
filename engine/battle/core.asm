@@ -200,8 +200,7 @@ BattleTurn:
 	call HandleBetweenTurnEffects
 	ld a, [wBattleEnded]
 	and a
-	jr nz, .quit
-	jp .loop
+	jp z, .loop
 
 .quit
 	pop af
@@ -2079,10 +2078,8 @@ UpdateBattleStateAndExperienceAfterEnemyFaint:
 	call BreakAttraction
 	ld a, [wBattleMode]
 	dec a
-	jr z, .wild2
-	jr .trainer
+	jr nz, .trainer
 
-.wild2
 	call StopDangerSound
 	ld a, $1
 	ld [wBattleLowHealthAlarm], a

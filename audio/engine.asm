@@ -519,11 +519,8 @@ PlayDanger:
 
 	; Play the low tone
 	cp 16
-	jr z, .halfway
+	jr nz, .increment
 
-	jr .increment
-
-.halfway
 	ld hl, DangerSoundLow
 	jr .applychannel
 

@@ -209,11 +209,9 @@ AI_Types:
 	jr z, .checkmove2
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	jr nz, .asm_38692
-	jr .checkmove2
-
-.asm_38692
+	jr z, .checkmove2
 	ld c, a
+
 .asm_38693
 	ld a, c
 	pop bc
