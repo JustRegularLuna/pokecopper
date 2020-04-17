@@ -611,7 +611,7 @@ MonMenu_Fly:
 	ld a, [wFieldMoveSucceeded]
 	cp $2
 	jr z, .Fail
-	cp $0
+	and a
 	jr z, .Error
 	ld b, $4
 	ld a, $2

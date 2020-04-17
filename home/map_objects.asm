@@ -21,7 +21,7 @@ GetSpriteVTile::
 	ld c, SPRITE_GFX_LIST_CAPACITY - 1
 	ld b, a
 	ldh a, [hMapObjectIndexBuffer]
-	cp 0
+	and a
 	jr z, .nope
 	ld a, b
 .loop

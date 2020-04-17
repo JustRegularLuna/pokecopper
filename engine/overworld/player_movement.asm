@@ -201,7 +201,7 @@ DoPlayerMovement::
 ; the player change facing without moving by tapping a direction.
 
 	ld a, [wPlayerTurningDirection]
-	cp 0
+	and a
 	jr nz, .not_turning
 	ld a, [wWalkingDirection]
 	cp STANDING
@@ -501,7 +501,7 @@ DoPlayerMovement::
 	ret nc
 
 	ld a, [wPlayerTurningDirection]
-	cp 0
+	and a
 	ret z
 
 	maskbits NUM_DIRECTIONS
@@ -744,7 +744,7 @@ ENDM
 
 CheckStandingOnIce::
 	ld a, [wPlayerTurningDirection]
-	cp 0
+	and a
 	jr z, .not_ice
 	cp $f0
 	jr z, .not_ice
