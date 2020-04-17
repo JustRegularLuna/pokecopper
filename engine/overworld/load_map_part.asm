@@ -27,10 +27,9 @@ _LoadMapPart::
 	ld a, l
 	add METATILE_WIDTH
 	ld l, a
-	jr nc, .carry
-	inc h
-
-.carry
+	adc h
+	sub l
+	ld h, a
 	dec b
 	jr nz, .loop
 	ret

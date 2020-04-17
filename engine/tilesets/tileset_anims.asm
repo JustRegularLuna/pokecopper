@@ -233,9 +233,9 @@ AnimateFountain:
 	add a
 	add l
 	ld l, a
-	jr nc, .okay
-	inc h
-.okay
+	adc h
+	sub l
+	ld h, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
