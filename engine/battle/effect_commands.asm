@@ -3170,7 +3170,7 @@ ConfusionDamageCalc:
 	ldh [hProduct + 3], a
 
 	ldh a, [hQuotient + 2]
-	rl a
+	rla
 	ldh [hProduct + 2], a
 
 ; Cap at $ffff.
@@ -3244,7 +3244,7 @@ BattleCommand_ConstantDamage:
 	srl a
 	ld b, a
 	ld a, [hl]
-	rr a
+	rra
 	push af
 	ld a, b
 	pop bc
@@ -3288,17 +3288,17 @@ BattleCommand_ConstantDamage:
 
 	ldh a, [hProduct + 4]
 	srl b
-	rr a
+	rra
 	srl b
-	rr a
+	rra
 	ldh [hDivisor], a
 	ldh a, [hProduct + 2]
 	ld b, a
 	srl b
 	ldh a, [hProduct + 3]
-	rr a
+	rra
 	srl b
-	rr a
+	rra
 	ldh [hDividend + 3], a
 	ld a, b
 	ldh [hDividend + 2], a
@@ -3877,7 +3877,7 @@ SapHealth:
 	ldh [hDividend], a
 	ld b, a
 	ld a, [hl]
-	rr a
+	rra
 	ldh [hDividend + 1], a
 	or b
 	jr nz, .at_least_one

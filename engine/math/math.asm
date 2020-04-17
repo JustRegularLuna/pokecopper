@@ -165,7 +165,7 @@ _Divide::
 	ldh [hDivisor], a
 
 	ldh a, [hMathBuffer + 0]
-	rr a
+	rra
 	ldh [hMathBuffer + 0], a
 
 	jr .loop

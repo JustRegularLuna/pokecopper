@@ -56,7 +56,7 @@ BattleCommand_PainSplit:
 	srl a
 	ld [wCurDamage], a
 	ld a, [wCurDamage + 1]
-	rr a
+	rra
 	ld [wCurDamage + 1], a
 	inc hl
 	inc hl
