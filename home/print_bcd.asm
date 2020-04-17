@@ -51,7 +51,6 @@ PrintBCDNumber::
 
 PrintBCDDigit::
 	and %00001111
-	and a
 	jr z, .zeroDigit
 .nonzeroDigit
 	bit PRINTNUM_LEADINGZEROS_F, b ; have any non-space characters been printed?
