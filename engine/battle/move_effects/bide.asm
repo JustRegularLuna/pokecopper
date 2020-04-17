@@ -24,8 +24,7 @@ BattleCommand_StoreEnergy:
 
 	ld a, BATTLE_VARS_MOVE_POWER
 	call GetBattleVarAddr
-	ld a, 1
-	ld [hl], a
+	ld [hl], 1
 	ld hl, wPlayerDamageTaken + 1
 	ld de, wPlayerCharging ; player
 	ldh a, [hBattleTurn]
@@ -58,8 +57,7 @@ BattleCommand_StoreEnergy:
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVarAddr
-	ld a, BIDE
-	ld [hl], a
+	ld [hl], BIDE
 
 	ld b, unleashenergy_command
 	jp SkipToBattleCommand

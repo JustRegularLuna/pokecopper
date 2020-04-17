@@ -17,8 +17,7 @@ CheckPartyFullAfterContest:
 	ld a, [wContestMon]
 	ld [hli], a
 	ld [wCurSpecies], a
-	ld a, -1
-	ld [hl], a
+	ld [hl], -1
 	ld hl, wPartyMon1Species
 	ld a, [wPartyCount]
 	dec a

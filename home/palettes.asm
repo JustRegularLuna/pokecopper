@@ -295,9 +295,6 @@ ClearVBank1::
 	ldh [rVBK], a
 	ret
 
-ret_d90::
-	ret
-
 ReloadSpritesNoPalettes::
 	ldh a, [hCGB]
 	and a

@@ -1830,7 +1830,6 @@ CloseSubmenu::
 	call ReloadTilesetAndPalettes
 	call UpdateSprites
 	call Call_ExitMenu
-	call ret_d90
 	jr FinishExitMenu
 
 ExitAllMenus::
@@ -1838,7 +1837,6 @@ ExitAllMenus::
 	call Call_ExitMenu
 	call ReloadTilesetAndPalettes
 	call UpdateSprites
-	call ret_d90
 FinishExitMenu::
 	ld b, SCGB_MAPPALS
 	call GetSGBLayout

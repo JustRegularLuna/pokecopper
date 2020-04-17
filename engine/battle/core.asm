@@ -1477,8 +1477,7 @@ HandleFutureSight:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
 	push af
-	ld a, FUTURE_SIGHT
-	ld [hl], a
+	ld [hl], FUTURE_SIGHT
 
 	callfar UpdateMoveData
 	xor a
@@ -3976,8 +3975,7 @@ PursuitSwitch:
 
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
-	ld a, $ff
-	ld [hl], a
+	ld [hl], $ff
 
 	pop af
 	ld [wCurBattleMon], a
@@ -4453,7 +4451,6 @@ CheckDanger:
 PrintPlayerHUD:
 	ld de, wBattleMonNick
 	hlcoord 10, 7
-	call ret_3e138
 	call PlaceString
 
 	push bc
@@ -4539,7 +4536,6 @@ DrawEnemyHUD:
 	call GetBaseData
 	ld de, wEnemyMonNick
 	hlcoord 1, 0
-	call ret_3e138
 	call PlaceString
 	ld h, b
 	ld l, c
@@ -4667,9 +4663,6 @@ UpdateHPPal:
 	cp b
 	ret z
 	jp FinishBattleAnim
-
-ret_3e138:
-	ret
 
 BattleMenu:
 	xor a

@@ -685,8 +685,7 @@ TextCommand_START_ASM::
 	jp hl
 
 .not_rom
-	ld a, TX_END
-	ld [hl], a
+	ld [hl], TX_END
 	ret
 
 TextCommand_NUM::

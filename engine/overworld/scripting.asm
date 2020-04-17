@@ -496,11 +496,7 @@ Script_verbosegiveitem:
 	ld de, GiveItemScript
 	jp ScriptCall
 
-ret_96f76:
-	ret
-
 GiveItemScript:
-	callasm ret_96f76
 	writetext ReceivedItemText
 	iffalse .Full
 	waitsfx

@@ -1966,7 +1966,6 @@ _FlyMap:
 	lb bc, BANK(FlyMapLabelBorderGFX), 6
 	call Request1bpp
 	call FlyMap
-	call ret_91c8f
 	ld b, SCGB_POKEGEAR_PALS
 	call GetSGBLayout
 	call SetPalettes
@@ -2071,8 +2070,7 @@ TownMapBubble:
 	ld a, " "
 	call ByteFill
 ; Top-right corner
-	ld a, $31
-	ld [hl], a
+	ld [hl], $31
 	hlcoord 1, 1
 
 ; Middle row
@@ -2089,8 +2087,7 @@ TownMapBubble:
 	ld a, " "
 	call ByteFill
 ; Bottom-right corner
-	ld a, $33
-	ld [hl], a
+	ld [hl], $33
 
 ; Print "Where?"
 	hlcoord 2, 0
@@ -2170,9 +2167,6 @@ HasVisitedSpawn:
 	ret
 
 INCLUDE "data/maps/flypoints.asm"
-
-ret_91c8f:
-	ret
 
 FlyMap:
 	ld a, [wMapGroup]

@@ -825,8 +825,7 @@ RetrieveBreedmon:
 .okay
 	ld [hli], a
 	ld [wCurSpecies], a
-	ld a, $ff
-	ld [hl], a
+	ld [hl], $ff
 	ld hl, wPartyMonNicknames
 	ld a, [wPartyCount]
 	dec a
@@ -1181,8 +1180,7 @@ GiveEgg::
 	ld b, 0
 	ld c, a
 	add hl, bc
-	ld a, EGG
-	ld [hl], a
+	ld [hl], EGG
 	ld a, [wPartyCount]
 	dec a
 	ld hl, wPartyMonNicknames

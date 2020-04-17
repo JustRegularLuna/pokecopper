@@ -84,18 +84,15 @@ DoAnimFrame:
 	cp $1
 	jr z, .load_minus_one
 .load_zero
-	xor a
-	ld [hl], a
+	ld [hl], 0
 	ret
 
 .load_minus_one
-	ld a, -1
-	ld [hl], a
+	ld [hl], -1
 	ret
 
 .load_minus_two
-	ld a, -2
-	ld [hl], a
+	ld [hl], -2
 	ret
 
 .PartyMonSelected

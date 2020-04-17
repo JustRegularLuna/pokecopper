@@ -138,8 +138,6 @@ BuySellToss_UpdateQuantityDisplay:
 	ld d, a
 	ld a, [wMenuDataBank]
 	call FarCall_de
-	ret
-
 ret_25097:
 	ret
 

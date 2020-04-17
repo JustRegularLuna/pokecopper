@@ -761,8 +761,7 @@ BattleAnimCmd_BattlerGFX_1Row:
 	ld [hli], a
 	ld a, ANIM_GFX_ENEMYFEET
 	ld [hli], a
-	ld a, ($80 - 6) - BATTLEANIM_BASE_TILE
-	ld [hl], a
+	ld [hl], ($80 - 6) - BATTLEANIM_BASE_TILE
 
 	ld hl, vTiles0 tile ($80 - 6 - 7)
 	ld de, vTiles2 tile $06 ; Enemy feet start tile
@@ -814,8 +813,7 @@ BattleAnimCmd_BattlerGFX_2Row:
 	ld [hli], a
 	ld a, ANIM_GFX_ENEMYFEET
 	ld [hli], a
-	ld a, ($80 - 6 * 2) - BATTLEANIM_BASE_TILE
-	ld [hl], a
+	ld [hl], ($80 - 6 * 2) - BATTLEANIM_BASE_TILE
 
 	ld hl, vTiles0 tile ($80 - 6 * 2 - 7 * 2)
 	ld de, vTiles2 tile $05 ; Enemy feet start tile

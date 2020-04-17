@@ -18,7 +18,6 @@ SaveMenu:
 
 .refused
 	call ExitMenu
-	call ret_d90
 	farcall SaveMenu_CopyTilemapAtOnce
 	scf
 	ret
@@ -203,9 +202,6 @@ SaveTheGame_yesorno:
 	ld a, [wMenuCursorY]
 	dec a
 	call CloseWindow
-	push af
-	call ret_d90
-	pop af
 	and a
 	ret
 
