@@ -184,7 +184,6 @@ SECTION "Crystal Features 1", ROMX
 
 INCLUDE "engine/menus/init_gender.asm"
 INCLUDE "engine/items/pack_kris.asm"
-INCLUDE "engine/events/move_tutor.asm"
 INCLUDE "engine/events/celebi.asm"
 INCLUDE "engine/menus/main_menu.asm"
 INCLUDE "engine/pokemon/search.asm"
@@ -271,7 +270,6 @@ SECTION "Crystal Features 2", ROMX
 INCLUDE "engine/events/kurt.asm"
 INCLUDE "engine/gfx/player_gfx.asm"
 INCLUDE "engine/events/buena.asm"
-INCLUDE "engine/events/dratini.asm"
 
 
 SECTION "bank23", ROMX

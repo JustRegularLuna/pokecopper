@@ -111,11 +111,9 @@ SpecialsPointers::
 
 ; Crystal only
 	add_special Reset ; bank 0
-	add_special MoveTutor
 	add_special PokeSeer
 	add_special BuenasPassword
 	add_special BuenaPrize
-	add_special GiveDratini
 	add_special SampleKenjiBreakCountdown
 	add_special BeastsCheck
 	add_special MonCheck
