@@ -21,13 +21,13 @@ ENDM
 
 	trainerclass POKEMON_PROF
 	const OAK1
-	
+
 	trainerclass HIRO ; used in link battles, trainer house later
 	const HIRO1
-	
+
 	trainerclass SYLVIA ; hopefully for future use in link battles, and trainer house later
 	const SYLVIA1
-	
+
 	trainerclass RIVAL1
 	const RIVAL1_LAB_STARTER1
 	const RIVAL1_LAB_STARTER2

@@ -19,8 +19,6 @@
 	enum smashrock
 	enum pokecentersign
 	enum martsign
-	enum goldenrodrockets
-	enum radiotowerrockets
 	enum elevatorbutton
 	enum daytotext
 	enum bugcontestresultswarp

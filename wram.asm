@@ -2129,58 +2129,27 @@ wFarfetchdPosition:: db ; d964
 	ds 13
 
 ; map scene ids
-wPokecenter2FSceneID::              db ; d972
-wTradeCenterSceneID::               db ; d973
-wColosseumSceneID::                 db ; d974
-wTimeCapsuleSceneID::               db ; d975
-wPlayersHouse1FSceneID::            db ; d97a
-wIndigoPlateauPokecenter1FSceneID:: db ; d97b
-wWillsRoomSceneID::                 db ; d97c
-wKogasRoomSceneID::                 db ; d97d
-wBrunosRoomSceneID::                db ; d97e
-wKarensRoomSceneID::                db ; d97f
-wLancesRoomSceneID::                db ; d980
-wHallOfFameSceneID::                db ; d981
+wPokecenter2FSceneID::              db
+wTradeCenterSceneID::               db
+wColosseumSceneID::                 db
+wTimeCapsuleSceneID::               db
+wPlayersHouse1FSceneID::            db
+wIndigoPlateauPokecenter1FSceneID:: db
+wWillsRoomSceneID::                 db
+wKogasRoomSceneID::                 db
+wBrunosRoomSceneID::                db
+wKarensRoomSceneID::                db
+wLancesRoomSceneID::                db
+wHallOfFameSceneID::                db
 
 	ds 115
 
 ; fight counts
-wJackFightCount::    db ; d9f2
-wBeverlyFightCount:: db ; unused
-wHueyFightCount::    db
-wGavenFightCount::   db
-wBethFightCount::    db
-wJoseFightCount::    db
-wReenaFightCount::   db
-wJoeyFightCount::    db
-wWadeFightCount::    db
-wRalphFightCount::   db
-wLizFightCount::     db
-wAnthonyFightCount:: db
-wToddFightCount::    db
-wGinaFightCount::    db
-wIrwinFightCount::   db ; unused
-wArnieFightCount::   db
-wAlanFightCount::    db
-wDanaFightCount::    db
-wChadFightCount::    db
-wDerekFightCount::   db ; unused
-wTullyFightCount::   db
-wBrentFightCount::   db
-wTiffanyFightCount:: db
-wVanceFightCount::   db
-wWiltonFightCount::  db
-wKenjiFightCount::   db ; unused
-wParryFightCount::   db
-wErinFightCount::    db
-; da0e
-
-	ds 100
+	ds 28
 
 wEventFlags:: flag_array NUM_EVENTS ; da72
-; db6c
 
-	ds 6
+	ds 100
 
 wCurBox:: db ; db72
 

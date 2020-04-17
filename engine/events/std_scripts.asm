@@ -18,8 +18,6 @@ StdScripts::
 	dba SmashRockScript
 	dba PokecenterSignScript
 	dba MartSignScript
-	dba GoldenrodRocketsScript
-	dba RadioTowerRocketsScript
 	dba ElevatorButtonScript
 	dba DayToTextScript
 	dba BugContestResultsWarpScript
@@ -53,8 +51,6 @@ StdScripts::
 	dba HappinessCheckScript
 
 PokecenterNurseScript:
-; EVENT_WELCOMED_TO_POKECOM_CENTER is never set
-
 	opentext
 	checktime MORN
 	iftrue .morn
@@ -65,42 +61,20 @@ PokecenterNurseScript:
 	sjump .ok
 
 .morn
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftrue .morn_comcenter
 	farwritetext NurseMornText
-	promptbutton
-	sjump .ok
-.morn_comcenter
-	farwritetext PokeComNurseMornText
 	promptbutton
 	sjump .ok
 
 .day
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftrue .day_comcenter
 	farwritetext NurseDayText
-	promptbutton
-	sjump .ok
-.day_comcenter
-	farwritetext PokeComNurseDayText
 	promptbutton
 	sjump .ok
 
 .nite
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftrue .nite_comcenter
 	farwritetext NurseNiteText
 	promptbutton
-	sjump .ok
-.nite_comcenter
-	farwritetext PokeComNurseNiteText
-	promptbutton
-	sjump .ok
 
 .ok
-	; only do this once
-	clearevent EVENT_WELCOMED_TO_POKECOM_CENTER
-
 	farwritetext NurseAskHealText
 	yesorno
 	iffalse .done
@@ -119,13 +93,19 @@ PokecenterNurseScript:
 	pause 10
 
 	checkphonecall ; elm already called about pokerus
-	iftrue .no
+	iftrue .no_pokerus
 	checkflag ENGINE_CAUGHT_POKERUS
-	iftrue .no
+	iftrue .no_pokerus
 	special CheckPokerus
-	iftrue .pokerus
-.no
+	iffalse .no_pokerus
+	farwritetext NursePokerusText
+	waitbutton
+	closetext
+	setflag ENGINE_CAUGHT_POKERUS
+	specialphonecall SPECIALCALL_POKERUS
+	end
 
+.no_pokerus
 	farwritetext NurseReturnPokemonText
 	pause 20
 
@@ -139,25 +119,6 @@ PokecenterNurseScript:
 
 	waitbutton
 	closetext
-	end
-
-.pokerus
-	; already cleared earlier in the script
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftrue .pokerus_comcenter
-	farwritetext NursePokerusText
-	waitbutton
-	closetext
-	sjump .pokerus_done
-
-.pokerus_comcenter
-	farwritetext PokeComNursePokerusText
-	waitbutton
-	closetext
-
-.pokerus_done
-	setflag ENGINE_CAUGHT_POKERUS
-	specialphonecall SPECIALCALL_POKERUS
 	end
 
 DifficultBookshelfScript:
@@ -283,21 +244,6 @@ DayToTextScript:
 	db "FRIDAY@"
 .SaturdayText:
 	db "SATURDAY@"
-
-GoldenrodRocketsScript:
-	clearevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
-	end
-
-RadioTowerRocketsScript:
-	setflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	setevent EVENT_GOLDENROD_CITY_CIVILIANS
-	setevent EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
-	clearevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	clearevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
-	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
-;	specialphonecall SPECIALCALL_WEIRDBROADCAST
-;	setmapscene MAHOGANY_TOWN, SCENE_FINISHED
-	end
 
 BugContestResultsWarpScript:
 	special ClearBGPalettes
