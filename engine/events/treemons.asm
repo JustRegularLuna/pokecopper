@@ -152,7 +152,6 @@ GetTreeMon:
 	call RandomRange
 	cp 8
 	jr nc, NoTreeMon
-	jr .skip
 .skip
 	ld a, [hli]
 	cp -1

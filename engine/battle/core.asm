@@ -516,7 +516,6 @@ DetermineMoveOrder:
 	call BattleRandom
 	cp c
 	jp c, .enemy_first
-	jr .speed_check
 
 .speed_check
 	ld de, wBattleMonSpeed
@@ -2328,11 +2327,8 @@ WinTrainerBattle:
 .skip_heal
 	ld a, [wDebugFlags]
 	bit DEBUG_BATTLE_F, a
-	jr nz, .skip_win_loss_text
+	jr nz, .GiveMoney
 	call PrintWinLossText
-
-.skip_win_loss_text
-	jp .GiveMoney
 
 .GiveMoney:
 	ld a, [wAmuletCoin]
@@ -4285,16 +4281,15 @@ HandleStatBoostingHeldItems:
 	cp USING_EXTERNAL_CLOCK
 	jr z, .player_1
 	call .DoPlayer
-	jp .DoEnemy
+	jr .DoEnemy
 
 .player_1
 	call .DoEnemy
-	jp .DoPlayer
 
 .DoPlayer:
 	call GetPartymonItem
 	ld a, $0
-	jp .HandleItem
+	jr .HandleItem
 
 .DoEnemy:
 	call GetOTPartymonItem
@@ -8068,7 +8063,6 @@ DisplayLinkBattleResult:
 
 .loss
 	ld de, .Lose
-	jr .store_result
 
 .store_result
 	hlcoord 6, 8

@@ -58,9 +58,6 @@ CGBOnly_CopyTilemapAtOnce::
 	jr z, WaitBGMap
 
 CopyTilemapAtOnce::
-	jr .CopyTilemapAtOnce
-
-.CopyTilemapAtOnce:
 	ldh a, [hBGMapMode]
 	push af
 	xor a

@@ -2449,9 +2449,6 @@ BattleCommand_CheckFaint:
 BattleCommand_BuildOpponentRage:
 ; buildopponentrage
 
-	jp .start
-
-.start
 	ld a, [wAttackMissed]
 	and a
 	ret nz
@@ -3257,7 +3254,6 @@ BattleCommand_ConstantDamage:
 	ld a, 0
 	jr nz, .got_power
 	ld b, 1
-	jr .got_power
 
 .got_power
 	ld hl, wCurDamage

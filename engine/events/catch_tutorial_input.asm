@@ -8,7 +8,6 @@ _DudeAutoInput_RightA:
 
 _DudeAutoInput_DownA:
 	ld hl, DudeAutoInput_DownA
-	jr _DudeAutoInput
 
 _DudeAutoInput:
 	ld a, BANK(DudeAutoInputs)

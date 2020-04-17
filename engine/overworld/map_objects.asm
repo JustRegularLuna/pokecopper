@@ -160,7 +160,6 @@ Function4440:
 	jr nz, SetFacingStanding
 asm_4448:
 	ld de, ObjectActionPairPointers + 2 ; use second column
-	jr _HandleObjectAction
 
 _HandleObjectAction:
 ; call [4 * wObjectStructs[ObjInd, OBJECT_ACTION] + de]

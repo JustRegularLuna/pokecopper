@@ -1049,7 +1049,6 @@ TryStrengthOW:
 
 .already_using
 	xor a
-	jr .done
 
 .done
 	ld [wScriptVar], a
@@ -1380,14 +1379,9 @@ AskRockSmashText:
 HasRockSmash:
 	ld d, ROCK_SMASH
 	call CheckPartyMove
-	jr nc, .yes
-.no
-	ld a, 1
-	jr .done
-.yes
-	xor a
-	jr .done
-.done
+	; carry ? TRUE : FALSE
+	sbc a
+	and TRUE
 	ld [wScriptVar], a
 	ret
 
