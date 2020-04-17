@@ -218,16 +218,11 @@ UpdateOverworldMap:
 	dec [hl]
 	ld a, [hl]
 	cp -1
-	jr nz, .done_left
+	ret nz
 	ld [hl], 1
-	call .ScrollMapDataLeft
-.done_left
-	ret
-
-.ScrollMapDataLeft:
 	ld hl, wOverworldMapAnchor
 	ld a, [hl]
-	sub 1
+	sub 1 ; dec a can't set carry
 	ld [hli], a
 	ret nc
 	dec [hl]
@@ -247,16 +242,11 @@ UpdateOverworldMap:
 	inc [hl]
 	ld a, [hl]
 	cp 2
-	jr nz, .done_right
+	ret nz
 	ld [hl], 0
-	call .ScrollMapDataRight
-.done_right
-	ret
-
-.ScrollMapDataRight:
 	ld hl, wOverworldMapAnchor
 	ld a, [hl]
-	add 1
+	inc a
 	ld [hli], a
 	ret nc
 	inc [hl]
