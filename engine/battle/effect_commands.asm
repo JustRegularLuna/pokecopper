@@ -2812,8 +2812,7 @@ SpeciesItemBoost:
 	ret nz
 
 ; Double the stat
-	sla l
-	rl h
+	add hl, hl
 
 	ld a, HIGH(MAX_STAT_VALUE)
 	cp h
