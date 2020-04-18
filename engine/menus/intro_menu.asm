@@ -243,6 +243,8 @@ InitializeNPCNames:
 
 InitializeWorld:
 	call ShrinkPlayer
+	farcall InitClock
+	call RotateFourPalettesLeft
 	farcall SpawnPlayer
 	farcall _InitializeStartDay
 	farcall InitializeEvents
@@ -515,7 +517,13 @@ Continue_DisplayGameTime:
 	jp PrintNum
 
 OakSpeech:
-	farcall InitClock
+	ld a, POTION
+	ld [wCurItem], a
+	ld a, 1
+	ld [wItemQuantityChangeBuffer], a
+	ld hl, wNumPCItems
+	call ReceiveItem
+
 	call RotateFourPalettesLeft
 	call ClearTilemap
 
