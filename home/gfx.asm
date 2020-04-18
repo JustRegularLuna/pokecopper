@@ -44,8 +44,7 @@ LoadFontsBattleExtra::
 	ret
 
 LoadFontsExtra::
-	farcall _LoadFontsExtra1
-	farcall _LoadFontsExtra2
+	farcall LoadFrame
 	ret
 
 DecompressRequest2bpp::

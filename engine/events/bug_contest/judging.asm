@@ -125,17 +125,15 @@ INCLUDE "data/events/bug_contest_winners.asm"
 
 BugContest_GetPlayersResult:
 	ld hl, wBugContestThirdPlaceWinnerID
-	ld de, - BUG_CONTESTANT_SIZE
+	ld de, -BUG_CONTESTANT_SIZE
 	ld b, 3 ; 3rd, 2nd, or 1st
 .loop
 	ld a, [hl]
 	cp BUG_CONTEST_PLAYER
-	jr z, .done
+	ret z
 	add hl, de
 	dec b
 	jr nz, .loop
-
-.done
 	ret
 
 BugContest_JudgeContestants:
@@ -170,15 +168,12 @@ DetermineContestWinners:
 	jr c, .not_first_place
 	ld hl, wBugContestSecondPlaceWinnerID
 	ld de, wBugContestThirdPlaceWinnerID
-	ld bc, BUG_CONTESTANT_SIZE
-	call CopyBytes
+	call CopyTempContestant_NotWinner
 	ld hl, wBugContestFirstPlaceWinnerID
 	ld de, wBugContestSecondPlaceWinnerID
-	ld bc, BUG_CONTESTANT_SIZE
-	call CopyBytes
-	ld hl, wBugContestFirstPlaceWinnerID
-	call CopyTempContestant
-	jr .done
+	call CopyTempContestant_NotWinner
+	ld de, wBugContestFirstPlaceWinnerID
+	jr CopyTempContestant
 
 .not_first_place
 	ld de, wBugContestTempScore
@@ -188,36 +183,24 @@ DetermineContestWinners:
 	jr c, .not_second_place
 	ld hl, wBugContestSecondPlaceWinnerID
 	ld de, wBugContestThirdPlaceWinnerID
-	ld bc, BUG_CONTESTANT_SIZE
-	call CopyBytes
-	ld hl, wBugContestSecondPlaceWinnerID
-	call CopyTempContestant
-	jr .done
+	call CopyTempContestant_NotWinner
+	ld de, wBugContestSecondPlaceWinnerID
+	jr CopyTempContestant
 
 .not_second_place
 	ld de, wBugContestTempScore
 	ld hl, wBugContestThirdPlaceScore
 	ld c, 2
 	call CompareBytes
-	jr c, .done
-	ld hl, wBugContestThirdPlaceWinnerID
-	call CopyTempContestant
-
-.done
-	ret
+	ret c
+	ld de, wBugContestThirdPlaceWinnerID
+	; fallthrough
 
 CopyTempContestant:
-; Could've just called CopyBytes.
-	ld de, wBugContestTempWinnerID
-rept BUG_CONTESTANT_SIZE - 1
-	ld a, [de]
-	inc de
-	ld [hli], a
-endr
-	ld a, [de]
-	inc de
-	ld [hl], a
-	ret
+	ld hl, wBugContestTempWinnerID
+CopyTempContestant_NotWinner:
+	ld bc, BUG_CONTESTANT_SIZE
+	jp CopyBytes
 
 ComputeAIContestantScores:
 	ld e, 0
@@ -287,7 +270,7 @@ ContestScore:
 
 	ld a, [wContestMonSpecies] ; Species
 	and a
-	jr z, .done
+	ret z
 
 	; Tally the following:
 
@@ -355,13 +338,10 @@ ContestScore:
 	; Whether it's holding an item
 	ld a, [wContestMonItem]
 	and a
-	jr z, .done
+	ret z
 
 	ld a, 1
-	call .AddContestStat
-
-.done
-	ret
+	; fallthrough
 
 .AddContestStat:
 	ld hl, hMultiplicand

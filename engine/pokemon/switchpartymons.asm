@@ -7,14 +7,12 @@ _SwitchPartyMons:
 	dec a
 	ld [wBuffer2], a
 	cp b
-	jr z, .skip
+	ret z
 	call .SwapMonAndMail
 	ld a, [wBuffer3]
 	call .ClearSprite
 	ld a, [wBuffer2]
-	call .ClearSprite
-.skip
-	ret
+	; fallthrough
 
 .ClearSprite:
 	push af

@@ -117,7 +117,6 @@ BuySellToss_InterpretJoypad:
 	ld a, b
 	ld [wItemQuantityChangeBuffer], a
 	and a
-ret_25097:
 	ret
 
 BuySellToss_UpdateQuantityDisplay:
@@ -194,7 +193,7 @@ BuySell_DisplaySubtotal:
 TossItem_MenuHeader:
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 15, 9, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
-	dw ret_25097
+	dw DoNothing
 	db 0 ; default option
 
 BuyItem_MenuHeader:

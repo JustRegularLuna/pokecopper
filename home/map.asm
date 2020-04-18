@@ -439,12 +439,9 @@ GetMapConnections::
 .no_west
 
 	bit EAST_F, b
-	jr z, .no_east
+	ret z
 	ld de, wEastMapConnection
-	call GetMapConnection
-.no_east
-
-	ret
+	; fallthrough
 
 GetMapConnection::
 ; Load map connection struct at hl into de.
@@ -776,7 +773,7 @@ FillMapConnections::
 .East:
 	ld a, [wEastConnectedMapGroup]
 	cp $ff
-	jr z, .Done
+	ret z
 	ld b, a
 	ld a, [wEastConnectedMapNumber]
 	ld c, a
@@ -794,10 +791,7 @@ FillMapConnections::
 	ld b, a
 	ld a, [wEastConnectedMapWidth]
 	ldh [hConnectionStripLength], a
-	call FillEastConnectionStrip
-
-.Done:
-	ret
+	jp FillEastConnectionStrip
 
 FillNorthConnectionStrip::
 FillSouthConnectionStrip::

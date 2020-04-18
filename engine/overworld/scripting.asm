@@ -368,10 +368,10 @@ Script_repeattext:
 	call GetScriptByte
 	ld h, a
 	cp -1
-	jr nz, .done
+	ret nz
 	ld a, l
 	cp -1
-	jr nz, .done
+	ret nz
 	ld hl, wScriptTextBank
 	ld a, [hli]
 	ld b, a
@@ -379,9 +379,6 @@ Script_repeattext:
 	ld h, [hl]
 	ld l, a
 	jp MapTextbox
-
-.done
-	ret
 
 Script_waitbutton:
 ; script command 0x54
@@ -1629,10 +1626,9 @@ DoScene:
 	call GetMapSceneID
 	ld a, d
 	or e
-	jr z, .no_scene
+	ret z
 	call GetScriptByte
 	ld [de], a
-.no_scene
 	ret
 
 Script_readmem:

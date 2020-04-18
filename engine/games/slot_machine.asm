@@ -182,40 +182,6 @@ SlotsLoop:
 	xor a
 	ld [wCurSpriteOAMAddr], a
 	callfar DoNextFrameForFirst16Sprites
-	call .PrintCoinsAndPayout
-	call .Stubbed_Function927d3
-	call DelayFrame
-	and a
-	ret
-
-.stop
-	scf
-	ret
-
-.Stubbed_Function927d3:
-; dummied out
-	ret
-	ld a, [wReel1ReelAction]
-	and a
-	ret nz
-	ld a, [wReel2ReelAction]
-	and a
-	ret nz
-	ld a, [wFirstTwoReelsMatchingSevens]
-	and a
-	jr nz, .matching_sevens
-	ld a, %11100100
-	jp DmgToCgbBGPals
-
-.matching_sevens
-	ld a, [wTextDelayFrames]
-	and $7
-	ret nz
-	ldh a, [rBGP]
-	xor %00001100
-	jp DmgToCgbBGPals
-
-.PrintCoinsAndPayout:
 	hlcoord 5, 1
 	ld de, wCoins
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 4
@@ -223,7 +189,14 @@ SlotsLoop:
 	hlcoord 11, 1
 	ld de, wPayout
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 4
-	jp PrintNum
+	call PrintNum
+	call DelayFrame
+	and a
+	ret
+
+.stop
+	scf
+	ret
 
 SlotsJumptable:
 	jumptable .Jumptable, wJumptableIndex
@@ -806,7 +779,7 @@ ReelActionJumptable:
 	jp hl
 
 .Jumptable:
-	dw ReelAction_DoNothing                   ; 00
+	dw DoNothing                              ; 00
 	dw ReelAction_StopReelIgnoreJoypad        ; 01
 	dw ReelAction_QuadrupleRate               ; 02
 	dw ReelAction_DoubleRate                  ; 03
@@ -831,9 +804,6 @@ ReelActionJumptable:
 	dw ReelAction_WaitChansey                 ; 16
 	dw ReelAction_WaitEgg                     ; 17
 	dw ReelAction_DropReel                    ; 18
-
-ReelAction_DoNothing:
-	ret
 
 ReelAction_QuadrupleRate:
 	ld hl, REEL_SPIN_RATE
@@ -1307,7 +1277,7 @@ Slots_CheckMatchedFirstTwoReels:
 	ret
 
 .Jumptable:
-	dw .zero
+	dw DoNothing
 	dw .one
 	dw .two
 	dw .three
@@ -1321,10 +1291,7 @@ Slots_CheckMatchedFirstTwoReels:
 	call .CheckTopRow
 
 .one
-	call .CheckMiddleRow
-
-.zero
-	ret
+	jr .CheckMiddleRow
 
 .CheckBottomRow:
 	ld hl, wCurReelStopped
@@ -1400,7 +1367,7 @@ Slots_CheckMatchedAllThreeReels:
 	ret
 
 .Jumptable:
-	dw .zero
+	dw DoNothing
 	dw .one
 	dw .two
 	dw .three
@@ -1414,10 +1381,7 @@ Slots_CheckMatchedAllThreeReels:
 	call .CheckTopRow
 
 .one
-	call .CheckMiddleRow
-
-.zero
-	ret
+	jr .CheckMiddleRow
 
 .CheckBottomRow:
 	ld hl, wCurReelStopped

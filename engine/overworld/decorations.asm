@@ -104,7 +104,7 @@ _PlayerDecorationMenu:
 	ld a, [hli]
 	ld d, a
 	or e
-	jr z, .done
+	ret z
 	push hl
 	call _de_
 	pop hl
@@ -116,8 +116,6 @@ _PlayerDecorationMenu:
 .next
 	inc hl
 	jr .loop
-.done
-	ret
 
 .dw
 	dwb FindOwnedBeds, 0 ; bed
@@ -141,7 +139,7 @@ CheckAllDecorationFlags:
 .loop
 	ld a, [hli]
 	cp -1
-	jr z, .done
+	ret z
 	push hl
 	push af
 	ld b, CHECK_FLAG
@@ -153,9 +151,6 @@ CheckAllDecorationFlags:
 	call nz, AppendDecoIndex
 	pop hl
 	jr .loop
-
-.done
-	ret
 
 AppendDecoIndex:
 	ld hl, wd002
@@ -494,16 +489,13 @@ GetDecoName:
 	ret
 
 .NameFunctions:
-	dw .invalid
+	dw DoNothing
 	dw .plant
 	dw .bed
 	dw .carpet
 	dw .poster
 	dw .doll
 	dw .bigdoll
-
-.invalid
-	ret
 
 .plant
 	ld a, e

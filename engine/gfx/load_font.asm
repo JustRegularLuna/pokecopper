@@ -18,20 +18,14 @@ _LoadStandardFont::
 	lb bc, BANK(Font), 32 ; "'" to "9"
 	jp Get1bpp_2
 
-_LoadFontsExtra1::
-	jr LoadFrame
-
-_LoadFontsExtra2::
-	ret
-
 _LoadFontsBattleExtra::
 	ld de, FontBattleExtra
 	ld hl, vTiles2 tile $60
 	lb bc, BANK(FontBattleExtra), 25
 	call Get2bpp_2
-	jr LoadFrame
+	; fallthrough
 
-LoadFrame:
+LoadFrame::
 	ld a, [wTextboxFrame]
 	maskbits NUM_FRAMES
 	ld bc, 6 * LEN_1BPP_TILE

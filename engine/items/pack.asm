@@ -162,7 +162,7 @@ Pack:
 
 .Jumptable1:
 	dw .UseItem
-	dw QuitItemSubmenu
+	dw DoNothing
 
 .MenuHeader2:
 	db MENU_BACKUP_TILES ; flags
@@ -180,7 +180,7 @@ Pack:
 .Jumptable2:
 	dw .UseItem
 	dw GiveItem
-	dw QuitItemSubmenu
+	dw DoNothing
 
 .UseItem:
 	farcall AskTeachTMHM
@@ -315,7 +315,7 @@ Jumptable_UseGiveTossRegisterQuit:
 	dw GiveItem
 	dw TossMenu
 	dw RegisterItem
-	dw QuitItemSubmenu
+	dw DoNothing
 
 MenuHeader_UsableItem:
 	db MENU_BACKUP_TILES ; flags
@@ -335,7 +335,7 @@ Jumptable_UseGiveTossQuit:
 	dw UseItem
 	dw GiveItem
 	dw TossMenu
-	dw QuitItemSubmenu
+	dw DoNothing
 
 MenuHeader_UnusableItem:
 	db MENU_BACKUP_TILES ; flags
@@ -351,7 +351,7 @@ MenuHeader_UnusableItem:
 
 Jumptable_UseQuit:
 	dw UseItem
-	dw QuitItemSubmenu
+	dw DoNothing
 
 MenuHeader_UnusableKeyItem:
 	db MENU_BACKUP_TILES ; flags
@@ -369,7 +369,7 @@ MenuHeader_UnusableKeyItem:
 Jumptable_UseRegisterQuit:
 	dw UseItem
 	dw RegisterItem
-	dw QuitItemSubmenu
+	dw DoNothing
 
 MenuHeader_HoldableKeyItem:
 	db MENU_BACKUP_TILES ; flags
@@ -389,7 +389,7 @@ Jumptable_GiveTossRegisterQuit:
 	dw GiveItem
 	dw TossMenu
 	dw RegisterItem
-	dw QuitItemSubmenu
+	dw DoNothing
 
 MenuHeader_HoldableItem:
 	db MENU_BACKUP_TILES ; flags
@@ -407,7 +407,7 @@ MenuHeader_HoldableItem:
 Jumptable_GiveTossQuit:
 	dw GiveItem
 	dw TossMenu
-	dw QuitItemSubmenu
+	dw DoNothing
 
 UseItem:
 	farcall CheckItemMenu
@@ -464,7 +464,7 @@ TossMenu:
 	push af
 	call ExitMenu
 	pop af
-	jr c, .finish
+	ret c
 	call Pack_GetItemName
 	ld hl, AskQuantityThrowAwayText
 	call MenuTextbox
@@ -472,15 +472,13 @@ TossMenu:
 	push af
 	call ExitMenu
 	pop af
-	jr c, .finish
+	ret c
 	ld hl, wNumItems
 	ld a, [wCurItemQuantity]
 	call TossItem
 	call Pack_GetItemName
 	ld hl, ThrewAwayText
-	call Pack_PrintTextNoScroll
-.finish
-	ret
+	jp Pack_PrintTextNoScroll
 
 RegisterItem:
 	farcall CheckSelectableItem
@@ -565,12 +563,10 @@ GiveItem:
 .NoPokemon:
 	ld hl, YouDontHaveAMonText
 	jp Pack_PrintTextNoScroll
+
 .AnEggCantHoldAnItemText:
 	text_far _AnEggCantHoldAnItemText
 	text_end
-
-QuitItemSubmenu:
-	ret
 
 BattlePack:
 	ld hl, wOptions
@@ -754,7 +750,7 @@ TMHMSubmenu:
 
 .UsableJumptable:
 	dw .Use
-	dw .Quit
+	dw DoNothing
 
 .UnusableMenuHeader:
 	db MENU_BACKUP_TILES ; flags
@@ -768,7 +764,7 @@ TMHMSubmenu:
 	db "QUIT@"
 
 .UnusableJumptable:
-	dw .Quit
+	dw DoNothing
 
 .Use:
 	farcall CheckItemContext
@@ -828,8 +824,6 @@ TMHMSubmenu:
 .didnt_use_item
 	xor a
 	ld [wItemEffectSucceeded], a
-	ret
-.Quit:
 	ret
 
 InitPackBuffers:

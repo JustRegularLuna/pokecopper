@@ -110,7 +110,7 @@ Function437b:
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	bit OBJ_FLAGS2_5, [hl]
-	jr nz, .bit5
+	ret nz
 	cp STEP_TYPE_SLEEP
 	jr z, .one
 	jr .ok3
@@ -120,7 +120,7 @@ Function437b:
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	bit OBJ_FLAGS2_5, [hl]
-	jr nz, .bit5
+	ret nz
 .one
 	call MapObjectMovementPattern
 	ld hl, OBJECT_STEP_TYPE
@@ -133,9 +133,6 @@ Function437b:
 .ok3
 	ld hl, StepTypesJumptable
 	rst JumpTable
-	ret
-
-.bit5
 	ret
 
 .HandleObjectAction:
@@ -468,7 +465,7 @@ MapObjectMovementPattern:
 
 .Pointers:
 ; entries correspond to SPRITEMOVEFN_* constants
-	dw .Null_00 ; 00
+	dw DoNothing ; 00
 	dw .RandomWalkY ; 01
 	dw .RandomWalkX ; 02
 	dw .RandomWalkXY ; 03
@@ -489,9 +486,6 @@ MapObjectMovementPattern:
 	dw .MovementSpinCounterclockwise ; 19
 	dw .MovementBoulderDust ; 1a
 	dw .MovementShakingGrass ; 1b
-
-.Null_00:
-	ret
 
 .RandomWalkY:
 	call Random

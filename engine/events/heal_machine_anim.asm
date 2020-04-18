@@ -44,13 +44,10 @@ HealMachineAnim:
 	add hl, de
 	ld a, [hl]
 	cp HEALMACHINESTATE_FINISH
-	jr z, .finish
+	ret z
 	ld hl, .Jumptable
 	rst JumpTable
 	jr .jumpable_loop
-
-.finish
-	ret
 
 .Pointers:
 ; entries correspond to HEALMACHINE_* constants
@@ -79,7 +76,7 @@ ENDM
 	dw .HOF_LoadBallsOntoMachine
 	dw .PlayHealMusic
 	dw .HOF_PlaySFX
-	dw .dummy_5 ; never encountered
+	dw DoNothing ; never encountered
 
 .LoadGFX:
 	ld de, .HealMachineGFX
@@ -125,9 +122,6 @@ ENDM
 	call WaitSFX
 	ld de, SFX_BOOT_PC
 	jp PlaySFX
-
-.dummy_5
-	ret
 
 .PC_ElmsLab_OAM:
 	dbsprite   4,   4, 2, 0, $7c, PAL_OW_TREE | OBP_NUM

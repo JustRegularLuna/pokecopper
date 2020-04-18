@@ -12,6 +12,7 @@ SECTION "rst10", ROM0[$0010]
 Bankswitch::
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
+DoNothing::
 	ret
 
 SECTION "rst18", ROM0[$0018]

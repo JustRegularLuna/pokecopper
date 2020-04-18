@@ -1601,14 +1601,11 @@ BattleCommand_CheckHit:
 .skip_brightpowder
 	ld a, b
 	cp -1
-	jr z, .Hit
+	ret z
 
 	call BattleRandom
 	cp b
-	jr nc, .Miss
-
-.Hit:
-	ret
+	ret c
 
 .Miss:
 ; Keep the damage value intact if we're using (Hi) Jump Kick.
@@ -5639,28 +5636,26 @@ BattleCommand_Charge:
 	call GetBattleVar
 	cp RAZOR_WIND
 	ld hl, .BattleMadeWhirlwindText
-	jr z, .done
+	ret z
 
 	cp SOLARBEAM
 	ld hl, .BattleTookSunlightText
-	jr z, .done
+	ret z
 
 	cp SKULL_BASH
 	ld hl, .BattleLoweredHeadText
-	jr z, .done
+	ret z
 
 	cp SKY_ATTACK
 	ld hl, .BattleGlowingText
-	jr z, .done
+	ret z
 
 	cp FLY
 	ld hl, .BattleFlewText
-	jr z, .done
+	ret z
 
 	cp DIG
 	ld hl, .BattleDugText
-
-.done
 	ret
 
 .BattleMadeWhirlwindText:
@@ -6066,12 +6061,11 @@ DoubleDamage:
 	sla [hl]
 	dec hl
 	rl [hl]
-	jr nc, .quit
+	ret nc
 
 	ld a, $ff
 	ld [hli], a
 	ld [hl], a
-.quit
 	ret
 
 INCLUDE "engine/battle/move_effects/mimic.asm"

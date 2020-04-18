@@ -114,25 +114,6 @@ OWCutAnimation:
 	ld a, e
 	and 1
 	ld [wJumptableIndex], a
-	call .LoadCutGFX
-	call WaitSFX
-	ld de, SFX_PLACE_PUZZLE_PIECE_DOWN
-	call PlaySFX
-.loop
-	ld a, [wJumptableIndex]
-	bit 7, a
-	jr nz, .finish
-	ld a, 36 * SPRITEOAMSTRUCT_LENGTH
-	ld [wCurSpriteOAMAddr], a
-	callfar DoNextFrameForAllSprites
-	call OWCutJumptable
-	call DelayFrame
-	jr .loop
-
-.finish
-	ret
-
-.LoadCutGFX:
 	call ClearSpriteAnims
 	ld de, CutGrassGFX
 	ld hl, vTiles0 tile FIELDMOVE_GRASS
@@ -141,7 +122,20 @@ OWCutAnimation:
 	ld de, CutTreeGFX
 	ld hl, vTiles0 tile FIELDMOVE_TREE
 	lb bc, BANK(CutTreeGFX), 4
-	jp Request2bpp
+	call Request2bpp
+	call WaitSFX
+	ld de, SFX_PLACE_PUZZLE_PIECE_DOWN
+	call PlaySFX
+.loop
+	ld a, [wJumptableIndex]
+	bit 7, a
+	ret nz
+	ld a, 36 * SPRITEOAMSTRUCT_LENGTH
+	ld [wCurSpriteOAMAddr], a
+	callfar DoNextFrameForAllSprites
+	call OWCutJumptable
+	call DelayFrame
+	jr .loop
 
 CutTreeGFX:
 INCBIN "gfx/overworld/cut_tree.2bpp"

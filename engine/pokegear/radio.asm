@@ -58,7 +58,7 @@ RadioJumptable:
 	dw BenFernMusic4 ; $19
 	dw BenFernMusic5 ; $1a
 	dw BenFernMusic6 ; $1b
-	dw BenFernMusic7 ; $1c
+	dw DoNothing ; $1c
 	dw FernMonMusic2 ; $1d
 ; Lucky Number Show
 	dw LuckyNumberShow2 ; $1e
@@ -819,9 +819,6 @@ BenFernMusic6:
 .SunTueThurSun:
 	ld a, POKEMON_MUSIC_7
 	jp NextRadioLine
-
-BenFernMusic7:
-	ret
 
 StartPokemonMusicChannel:
 	call RadioTerminator

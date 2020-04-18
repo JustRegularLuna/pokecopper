@@ -842,7 +842,7 @@ HandleTrackVibrato:
 	ld hl, CHANNEL_FLAGS2
 	add hl, bc
 	bit SOUND_VIBRATO, [hl] ; vibrato
-	jr z, .quit
+	ret z
 	; is vibrato active for this note yet?
 	; is the delay over?
 	ld hl, CHANNEL_VIBRATO_DELAY_COUNT
@@ -855,7 +855,7 @@ HandleTrackVibrato:
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .quit
+	ret z
 	; save it for later
 	ld d, a
 	; is it time to toggle vibrato up/down?
@@ -866,7 +866,7 @@ HandleTrackVibrato:
 	jr z, .toggle
 .subexit
 	dec [hl]
-	jr .quit
+	ret
 
 .toggle
 	; refresh count
@@ -913,7 +913,6 @@ HandleTrackVibrato:
 	ld hl, CHANNEL_NOTE_FLAGS
 	add hl, bc
 	set NOTE_VIBRATO_OVERRIDE, [hl]
-.quit
 	ret
 
 ApplyPitchSlide:
@@ -1074,13 +1073,13 @@ ReadNoiseSample:
 	; is it empty?
 	ld a, e
 	or d
-	jr z, .quit
+	ret z
 
 	ld a, [de]
 	inc de
 
 	cp sound_ret_cmd
-	jr z, .quit
+	ret z
 
 	and $f
 	inc a
@@ -1102,9 +1101,6 @@ ReadNoiseSample:
 	ld hl, CHANNEL_NOTE_FLAGS
 	add hl, bc
 	set NOTE_NOISE_SAMPLING, [hl]
-	ret
-
-.quit
 	ret
 
 ParseMusic:

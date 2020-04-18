@@ -13,7 +13,7 @@ DoAnimFrame:
 
 .Jumptable:
 ; entries correspond to SPRITE_ANIM_SEQ_* constants
-	dw .Null
+	dw DoNothing
 	dw .PartyMon
 	dw .PartyMonSwitch
 	dw .PartyMonSelected
@@ -35,9 +35,6 @@ DoAnimFrame:
 	dw .FlyLeaf
 	dw .FlyTo
 	dw .Celebi
-
-.Null:
-	ret
 
 .PartyMon
 	ld a, [wMenuCursorY]

@@ -122,9 +122,9 @@ Pokedex_InitCursorPosition:
 	ld hl, wPokedexOrder
 	ld a, [wPrevDexEntry]
 	and a
-	jr z, .done
+	ret z
 	cp NUM_POKEMON + 1
-	jr nc, .done
+	ret nc
 
 	ld b, a
 	ld a, [wDexListingEnd]
@@ -136,7 +136,7 @@ Pokedex_InitCursorPosition:
 .loop1
 	ld a, b
 	cp [hl]
-	jr z, .done
+	ret z
 	inc hl
 	ld a, [wDexListingScrollOffset]
 	inc a
@@ -149,15 +149,13 @@ Pokedex_InitCursorPosition:
 .loop2
 	ld a, b
 	cp [hl]
-	jr z, .done
+	ret z
 	inc hl
 	ld a, [wDexListingCursor]
 	inc a
 	ld [wDexListingCursor], a
 	dec c
 	jr nz, .loop2
-
-.done
 	ret
 
 Pokedex_GetLandmark:
@@ -1212,14 +1210,13 @@ Pokedex_PlaceSearchResultsTypeStrings:
 	ld b, a
 	ld a, [wDexSearchMonType2]
 	and a
-	jr z, .done
+	ret z
 	cp b
-	jr z, .done
+	ret z
 	hlcoord 2, 15
 	call Pokedex_PlaceTypeString
 	hlcoord 1, 15
 	ld [hl], "/"
-.done
 	ret
 
 Pokedex_DrawUnownModeBG:
@@ -1581,14 +1578,11 @@ Pokedex_ABCMode:
 	ld c, 0
 .loop2abc
 	cp NUM_POKEMON
-	jr z, .doneabc
+	ret z
 	ld [hl], c
 	inc hl
 	inc a
 	jr .loop2abc
-
-.doneabc
-	ret
 
 INCLUDE "data/pokemon/dex_order_alpha.asm"
 
@@ -1824,14 +1818,11 @@ Pokedex_SearchForMons:
 
 .zero_remaining_mons
 	cp NUM_POKEMON
-	jr z, .done
+	ret z
 	ld [hl], c
 	inc hl
 	inc a
 	jr .zero_remaining_mons
-
-.done
-	ret
 
 INCLUDE "data/types/search_types.asm"
 

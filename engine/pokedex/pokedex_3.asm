@@ -37,7 +37,7 @@ DrawPokedexListWindow:
 	ld b, SCREEN_HEIGHT - 3
 	call Bank77_FillColumn
 	ld [hl], $52
-	jr .Done
+	ret
 
 .OldMode:
 ; no scroll bar
@@ -48,7 +48,6 @@ DrawPokedexListWindow:
 	ld b, SCREEN_HEIGHT - 3
 	call Bank77_FillColumn
 	ld [hl], $68
-.Done:
 	ret
 
 DrawPokedexSearchResultsWindow:

@@ -72,13 +72,11 @@ GetPlayerIcon:
 
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .done
+	ret z
 
 ; Female
 	ld de, KrisSpriteGFX
 	ld b, BANK(KrisSpriteGFX)
-
-.done
 	ret
 
 GetCardPic:

@@ -14,17 +14,14 @@ PlaceMenuItemQuantity:
 	ld a, [wItemAttributeParamBuffer]
 	pop hl
 	and a
-	jr nz, .done
+	ret nz
 	ld de, $15
 	add hl, de
 	ld [hl], "×"
 	inc hl
 	ld de, wMenuSelectionQuantity
 	lb bc, 1, 2
-	call PrintNum
-
-.done
-	ret
+	jp PrintNum
 
 PlaceMoneyTopRight:
 	ld hl, MenuHeader_0x24b15

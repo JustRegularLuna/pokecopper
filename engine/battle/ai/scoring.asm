@@ -1356,26 +1356,24 @@ AI_Smart_Counter:
 
 	ld a, [wLastPlayerCounterMove]
 	and a
-	jr z, .asm_38c38
+	ret z
 
 	call AIGetEnemyMove
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	jr z, .asm_38c38
+	ret z
 
 	ld a, [wEnemyMoveStruct + MOVE_TYPE]
 	cp SPECIAL
-	jr nc, .asm_38c38
+	ret nc
 
 .asm_38c30
 	call Random
 	cp 39 percent + 1
-	jr c, .asm_38c38
+	ret c
 
 	dec [hl]
-
-.asm_38c38
 	ret
 
 .asm_38c39
@@ -2516,25 +2514,23 @@ AI_Smart_MirrorCoat:
 
 	ld a, [wLastPlayerCounterMove]
 	and a
-	jr z, .asm_391d2
+	ret z
 
 	call AIGetEnemyMove
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	jr z, .asm_391d2
+	ret z
 
 	ld a, [wEnemyMoveStruct + MOVE_TYPE]
 	cp SPECIAL
-	jr c, .asm_391d2
+	ret c
 
 .asm_391ca
 	call Random
 	cp 100
-	jr c, .asm_391d2
+	ret c
 	dec [hl]
-
-.asm_391d2
 	ret
 
 .asm_391d3
@@ -2864,12 +2860,12 @@ AI_Opportunist:
 .checkmove
 	inc hl
 	dec c
-	jr z, .asm_39347
+	ret z
 
 	ld a, [de]
 	inc de
 	and a
-	jr z, .asm_39347
+	ret z
 
 	push hl
 	push de
@@ -2886,11 +2882,7 @@ AI_Opportunist:
 	inc [hl]
 	jr .checkmove
 
-.asm_39347
-	ret
-
 INCLUDE "data/battle/ai/stall_moves.asm"
-
 
 AI_Aggressive:
 ; Use whatever does the most damage.
@@ -2949,7 +2941,7 @@ AI_Aggressive:
 ; Nothing we can do if no attacks did damage.
 	ld a, c
 	and a
-	jr z, .done
+	ret z
 
 ; Discourage moves that do less damage unless they're reckless too.
 	ld hl, wBuffer1 - 1
@@ -2959,7 +2951,7 @@ AI_Aggressive:
 	inc b
 	ld a, b
 	cp wEnemyMonMovesEnd - wEnemyMonMoves + 1
-	jr z, .done
+	ret z
 
 ; Ignore this move if it is the highest damaging one.
 	cp c
@@ -2993,9 +2985,6 @@ AI_Aggressive:
 ; If we made it this far, discourage this move.
 	inc [hl]
 	jr .checkmove2
-
-.done
-	ret
 
 INCLUDE "data/battle/ai/reckless_moves.asm"
 
@@ -3189,10 +3178,6 @@ endr
 	jr .checkmove
 
 INCLUDE "data/battle/ai/risky_effects.asm"
-
-
-AI_None:
-	ret
 
 AIDiscourageMove:
 	ld a, [hl]

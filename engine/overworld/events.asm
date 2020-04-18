@@ -13,7 +13,6 @@ OverworldLoop::
 	ld a, [wMapStatus]
 	cp MAPSTATUS_DONE
 	jr nz, .loop
-.done
 	ret
 
 .jumps
@@ -21,7 +20,7 @@ OverworldLoop::
 	dw StartMap
 	dw EnterMap
 	dw HandleMap
-	dw .done
+	dw DoNothing
 
 DisableEvents:
 	xor a
@@ -101,7 +100,8 @@ EnterMap:
 	ret
 
 HandleMap:
-	call ResetOverworldDelay
+	ld a, 2
+	ld [wOverworldDelay], a
 	call HandleMapTimeAndJoypad
 	farcall HandleCmdQueue ; no need to farcall
 	call MapEvents
@@ -125,23 +125,12 @@ MapEvents:
 .jumps
 ; entries correspond to MAPEVENTS_* constants
 	dw .events
-	dw .no_events
+	dw DoNothing
 
 .events
 	call PlayerEvents
 	call DisableEvents
 	farcall ScriptEvents
-	ret
-
-.no_events
-	ret
-
-MaxOverworldDelay:
-	db 2
-
-ResetOverworldDelay:
-	ld a, [MaxOverworldDelay]
-	ld [wOverworldDelay], a
 	ret
 
 NextOverworldFrame:
@@ -1285,14 +1274,11 @@ HandleQueuedCommand:
 	ret
 
 .Jumptable:
-	dba CmdQueue_Null
-	dba CmdQueue_Null
+	dba DoNothing
+	dba DoNothing
 	dba CmdQueue_StoneTable
-	dba CmdQueue_Null
-	dba CmdQueue_Null
-
-CmdQueue_Null:
-	ret
+	dba DoNothing
+	dba DoNothing
 
 CmdQueue_StoneTable:
 	ld de, wPlayerStruct

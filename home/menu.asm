@@ -223,10 +223,8 @@ GetMenuTextStartCoord::
 ; bit 7: if set, leave extra room on the left
 	ld a, [wMenuDataFlags]
 	bit 7, a
-	jr z, .bit_7_clear
+	ret z
 	inc c
-
-.bit_7_clear
 	ret
 
 ClearMenuBoxInterior::
@@ -592,11 +590,9 @@ InitMenuCursorAndButtonPermissions::
 .disallow_select
 	ld a, [wMenuDataFlags]
 	bit 2, a
-	jr z, .disallow_left_right
+	ret z
 	set D_LEFT_F, [hl]
 	set D_RIGHT_F, [hl]
-
-.disallow_left_right
 	ret
 
 GetScrollingMenuJoypad::

@@ -238,12 +238,12 @@ StatsScreen_JoypadAction:
 	bit D_UP_F, a
 	jr nz, .d_up
 	bit D_DOWN_F, a
-	jr z, .done
+	ret z
 
 .d_down
 	ld a, [wMonType]
 	cp BOXMON
-	jr nc, .done
+	ret nc
 	and a
 	ld a, [wPartyCount]
 	jr z, .next_mon
@@ -253,7 +253,7 @@ StatsScreen_JoypadAction:
 	ld a, [wCurPartyMon]
 	inc a
 	cp b
-	jr z, .done
+	ret z
 	ld [wCurPartyMon], a
 	ld b, a
 	ld a, [wMonType]
@@ -267,7 +267,7 @@ StatsScreen_JoypadAction:
 .d_up
 	ld a, [wCurPartyMon]
 	and a
-	jr z, .done
+	ret z
 	dec a
 	ld [wCurPartyMon], a
 	ld b, a
@@ -295,10 +295,6 @@ StatsScreen_JoypadAction:
 	dec c
 	jr nz, .set_page
 	ld c, BLUE_PAGE ; last page
-	jr .set_page
-
-.done
-	ret
 
 .set_page
 	ld a, [wcf64]
@@ -673,9 +669,9 @@ StatsScreen_LoadGFX:
 	call PlaceString
 	ld a, [wTempMonCaughtGender]
 	and a
-	jr z, .done
+	ret z
 	cp $7f
-	jr z, .done
+	ret z
 	and CAUGHT_GENDER_MASK
 	ld a, "♂"
 	jr z, .got_gender
@@ -683,7 +679,6 @@ StatsScreen_LoadGFX:
 .got_gender
 	hlcoord 9, 13
 	ld [hl], a
-.done
 	ret
 
 .OTNamePointers:
