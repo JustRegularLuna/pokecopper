@@ -72,13 +72,10 @@ LZ_LONG_HI   EQU %00000011
 
 .Main:
 	ld a, [hl]
+	cp LZ_LONG
+	jr c, .short
 	cp LZ_END
 	ret z
-
-	and LZ_CMD
-
-	cp LZ_LONG
-	jr nz, .short
 
 .long
 ; The count is now 10 bits.
@@ -105,6 +102,7 @@ LZ_LONG_HI   EQU %00000011
 	jr .command
 
 .short
+	and LZ_CMD
 	push af
 
 	ld a, [hli]
