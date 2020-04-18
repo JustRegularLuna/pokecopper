@@ -310,8 +310,9 @@ AddOrSubtractY:
 	bit OAM_Y_FLIP, [hl]
 	jr z, .ok
 	; 8 - a
+	add $8
 	cpl
-	add $8 + 1
+	inc a
 
 .ok
 	pop hl
@@ -324,8 +325,9 @@ AddOrSubtractX:
 	bit OAM_X_FLIP, [hl]
 	jr z, .ok
 	; 8 - a
+	add $8
 	cpl
-	add $8 + 1
+	inc a
 
 .ok
 	pop hl
