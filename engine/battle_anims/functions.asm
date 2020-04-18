@@ -144,10 +144,8 @@ BattleAnimFunction_04:
 	add hl, bc
 	ld a, [hl]
 	cp $88
-	jr c, .asm_cd0b3
-	jp DeinitBattleAnimation
+	jp nc, DeinitBattleAnimation
 
-.asm_cd0b3
 	add $2
 	ld [hl], a
 	ld hl, BATTLEANIMSTRUCT_YCOORD
@@ -380,10 +378,8 @@ BattleAnimFunction_PokeBallBlocked:
 	add hl, bc
 	ld a, [hl]
 	cp $70
-	jr nc, .next
-	jp BattleAnimFunction_ThrowFromPlayerToEnemy
+	jp c, BattleAnimFunction_ThrowFromPlayerToEnemy
 
-.next
 	call BattleAnim_IncAnonJumptableIndex
 .two
 	ld hl, BATTLEANIMSTRUCT_YCOORD
@@ -526,10 +522,8 @@ BattleAnimFunction_08:
 	add hl, bc
 	ld a, [hl]
 	cp $80
-	jr nc, .next
-	jp .SetCoords
+	jp c, .SetCoords
 
-.next
 	call BattleAnim_IncAnonJumptableIndex
 .one
 	call BattleAnim_IncAnonJumptableIndex
@@ -594,8 +588,7 @@ BattleAnimFunction_08:
 	add hl, bc
 	ld a, [hl]
 	cp $b0
-	jr c, .SetCoords
-	jp DeinitBattleAnimation
+	jp nc, DeinitBattleAnimation
 
 .SetCoords:
 	ld hl, BATTLEANIMSTRUCT_PARAM
@@ -838,10 +831,8 @@ BattleAnimFunction_RazorLeaf:
 	add hl, bc
 	ld a, [hl]
 	cp $20
-	jr nz, .sine_cosine_2
-	jp DeinitBattleAnimation
+	jp z, DeinitBattleAnimation
 
-.sine_cosine_2
 	ld hl, BATTLEANIMSTRUCT_0F
 	add hl, bc
 	ld a, [hl]
@@ -967,10 +958,8 @@ BattleAnimFunction_4E:
 	add hl, bc
 	ld a, [hl]
 	cp $30
-	jr nc, .sine_cosine
-	jp DeinitBattleAnimation
+	jp c, DeinitBattleAnimation
 
-.sine_cosine
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
@@ -1188,10 +1177,8 @@ Functioncd6f7:
 	add hl, bc
 	ld a, [hl]
 	cp $b8
-	jr c, .asm_cd704
-	jp DeinitBattleAnimation
+	jp nc, DeinitBattleAnimation
 
-.asm_cd704
 	ld a, $2
 	call Functionce70a
 	ld hl, BATTLEANIMSTRUCT_0F
@@ -1268,10 +1255,8 @@ BattleAnimFunction_11:
 	add hl, bc
 	ld a, [hl]
 	cp $38
-	jr c, .asm_cd784
-	jp DeinitBattleAnimation
+	jp nc, DeinitBattleAnimation
 
-.asm_cd784
 	ld a, [hl]
 	ld hl, BATTLEANIMSTRUCT_0F
 	add hl, bc
@@ -1327,10 +1312,8 @@ Functioncd7d2:
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr nz, .asm_cd7de
-	jp DeinitBattleAnimation
+	jp z, DeinitBattleAnimation
 
-.asm_cd7de
 	ld hl, BATTLEANIMSTRUCT_0F
 	add hl, bc
 	ld a, [hl]
@@ -1707,10 +1690,8 @@ BattleAnimFunction_1C:
 	add hl, bc
 	ld a, [hl]
 	cp $30
-	jr nc, .asm_cda17
-	jp DeinitBattleAnimation
+	jp c, DeinitBattleAnimation
 
-.asm_cda17
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
@@ -1769,10 +1750,8 @@ BattleAnimFunction_LeechSeed:
 	add hl, bc
 	ld a, [hl]
 	cp $20
-	jr c, .sprout
-	jp Functioncda8d
+	jr nc, Functioncda8d
 
-.sprout
 	ld [hl], $40
 	ld a, BATTLEANIMFRAMESET_57
 	call ReinitBattleAnimFrameset
@@ -1859,10 +1838,7 @@ Functioncdae9:
 	add hl, bc
 	ld a, [hl]
 	cp $20
-	jr c, .asm_cdaf6
-	jp Functioncda8d
-
-.asm_cdaf6
+	jp nc, Functioncda8d
 	jp BattleAnim_IncAnonJumptableIndex
 
 BattleAnimFunction_1A:
@@ -2155,8 +2131,7 @@ BattleAnimFunction_1E:
 	and a
 	jr z, .asm_cdcb6
 	cp $d8
-	jr nc, .asm_cdcb6
-	jp DeinitBattleAnimation
+	jp c, DeinitBattleAnimation
 
 .asm_cdcb6
 	ld hl, BATTLEANIMSTRUCT_PARAM
@@ -2896,10 +2871,8 @@ Functionce0f8:
 	add hl, bc
 	ld a, [hl]
 	cp $84
-	jr c, .asm_ce105
-	jp DeinitBattleAnimation
+	jp nc, DeinitBattleAnimation
 
-.asm_ce105
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
@@ -3391,10 +3364,8 @@ BattleAnimFunction_3A:
 	add hl, bc
 	ld a, [hl]
 	cp $20
-	jr c, .asm_ce3df
-	jp DeinitBattleAnimation
+	jp nc, DeinitBattleAnimation
 
-.asm_ce3df
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]

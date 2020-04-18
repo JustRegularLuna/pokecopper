@@ -250,9 +250,7 @@ GiveTakePartyMonItem:
 	call CheckTossableItem
 	ld a, [wItemAttributeParamBuffer]
 	and a
-	jr nz, .next
-
-	jr TryGiveItemToPartymon
+	jr z, TryGiveItemToPartymon
 
 .next
 	ld hl, ItemCantHeldText

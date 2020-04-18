@@ -4953,10 +4953,8 @@ PlayerSwitch:
 	cp BATTLEACTION_SWITCH1
 	jp c, .switch
 	cp BATTLEACTION_FORFEIT
-	jr nz, .dont_run
-	jp WildFled_EnemyFled_LinkBattleCanceled
+	jp z, WildFled_EnemyFled_LinkBattleCanceled
 
-.dont_run
 	ldh a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
 	jr z, .player_1

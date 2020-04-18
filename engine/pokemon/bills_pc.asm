@@ -1389,10 +1389,8 @@ BillsPC_GetSelectedPokemonSpecies:
 BillsPC_UpdateSelectionCursor:
 	ld a, [wBillsPC_NumMonsInBox]
 	and a
-	jr nz, .place_cursor
-	jp ClearSprites
+	jp z, ClearSprites
 
-.place_cursor
 	ld hl, .OAM
 	ld de, wVirtualOAMSprite00
 .loop

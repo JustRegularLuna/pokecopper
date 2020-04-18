@@ -418,11 +418,8 @@ StatsScreen_LoadGFX:
 	call .LoadPals
 	ld hl, wcf64
 	bit 4, [hl]
-	jr nz, .place_frontpic
+	jp nz, StatsScreen_PlaceFrontpic
 	jp SetPalettes
-
-.place_frontpic
-	jp StatsScreen_PlaceFrontpic
 
 .ClearBox:
 	ld a, [wcf64]

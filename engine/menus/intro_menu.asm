@@ -284,15 +284,10 @@ Continue:
 	ld c, 20
 	call DelayFrames
 	call ConfirmContinue
-	jr nc, .Check1Pass
-	jp CloseWindow
-
-.Check1Pass:
+	jp c, CloseWindow
 	call Continue_CheckRTC_RestartClock
-	jr nc, .Check2Pass
-	jp CloseWindow
+	jp c, CloseWindow
 
-.Check2Pass:
 	ld a, $8
 	ld [wMusicFade], a
 	ld a, LOW(MUSIC_NONE)

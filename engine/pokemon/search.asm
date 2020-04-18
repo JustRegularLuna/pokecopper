@@ -85,12 +85,9 @@ CheckOwnMonAnywhere:
 	ld bc, sBoxMonOT
 .openboxmon
 	call CheckOwnMon
-	jr nc, .loop
-
 	; found!
-	jp CloseSRAM
+	jp c, CloseSRAM
 
-.loop
 	push bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	add hl, bc
