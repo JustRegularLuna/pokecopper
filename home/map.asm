@@ -1044,6 +1044,9 @@ GetScriptByte::
 	pop hl
 	ret
 
+DummyScene::
+	end
+
 ObjectEvent::
 	jumptextfaceplayer ObjectEventText
 

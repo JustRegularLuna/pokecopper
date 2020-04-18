@@ -1,22 +1,30 @@
+KarensRoom_MapScripts:
+	db 2 ; scene scripts
+	scene_script KarensRoom_LockDoor ; SCENE_DEFAULT
+	scene_script DummyScene ; SCENE_FINISHED
+
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, KarensRoom_DoorsCallback
+
+KarensRoom_MapEvents:
+	db 4 ; warp events
+	warp_event  4, 17, BRUNOS_ROOM, 3
+	warp_event  5, 17, BRUNOS_ROOM, 4
+	warp_event  4,  2, LANCES_ROOM, 1
+	warp_event  5,  2, LANCES_ROOM, 2
+
+	db 0 ; coord events
+
+	db 0 ; bg events
+
+	db 1 ; object events
+	object_event  5,  7, SPRITE_KAREN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, KarenScript_Battle, -1
+
 	object_const_def ; object_event constants
 	const KARENSROOM_KAREN
 
-KarensRoom_MapScripts:
-	db 2 ; scene scripts
-	scene_script .LockDoor ; SCENE_DEFAULT
-	scene_script .DummyScene ; SCENE_FINISHED
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_TILES, .KarensRoomDoors
-
-.LockDoor:
-	prioritysjump .KarensDoorLocksBehindYou
-	end
-
-.DummyScene:
-	end
-
-.KarensRoomDoors:
+KarensRoom_DoorsCallback:
 	checkevent EVENT_KARENS_ROOM_ENTRANCE_CLOSED
 	iffalse .KeepEntranceOpen
 	changeblock 4, 14, $2a ; wall
@@ -26,6 +34,10 @@ KarensRoom_MapScripts:
 	changeblock 4, 2, $16 ; open door
 .KeepExitClosed:
 	return
+
+KarensRoom_LockDoor:
+	prioritysjump .KarensDoorLocksBehindYou
+	end
 
 .KarensDoorLocksBehindYou:
 	applymovement PLAYER, KarensRoom_EnterMovement
@@ -129,17 +141,3 @@ KarenScript_KarenDefeatText:
 	para "Go on--the CHAM-"
 	line "PION is waiting."
 	done
-
-KarensRoom_MapEvents:
-	db 4 ; warp events
-	warp_event  4, 17, BRUNOS_ROOM, 3
-	warp_event  5, 17, BRUNOS_ROOM, 4
-	warp_event  4,  2, LANCES_ROOM, 1
-	warp_event  5,  2, LANCES_ROOM, 2
-
-	db 0 ; coord events
-
-	db 0 ; bg events
-
-	db 1 ; object events
-	object_event  5,  7, SPRITE_KAREN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, KarenScript_Battle, -1

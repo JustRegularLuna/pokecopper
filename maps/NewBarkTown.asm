@@ -1,15 +1,8 @@
-	object_const_def ; object_event constants
-
 NewBarkTown_MapScripts:
 	db 0 ; scene scripts
 
 	db 1 ; callbacks
-	callback MAPCALLBACK_NEWMAP, .FlyPoint
-
-.FlyPoint:
-	setflag ENGINE_FLYPOINT_NEW_BARK
-	clearevent EVENT_FIRST_TIME_BANKING_WITH_MOM
-	return
+	callback MAPCALLBACK_NEWMAP, NewBarkTown_FlyPointCallback
 
 NewBarkTown_MapEvents:
 	db 2 ; warp events
@@ -21,3 +14,11 @@ NewBarkTown_MapEvents:
 	db 0 ; bg events
 
 	db 0 ; object events
+
+	object_const_def ; object_event constants
+
+
+NewBarkTown_FlyPointCallback:
+	setflag ENGINE_FLYPOINT_NEW_BARK
+	clearevent EVENT_FIRST_TIME_BANKING_WITH_MOM
+	return

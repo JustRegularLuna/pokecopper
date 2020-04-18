@@ -1,18 +1,28 @@
-	object_const_def ; object_event constants
-	const HALLOFFAME_LANCE
-
 HallOfFame_MapScripts:
 	db 2 ; scene scripts
-	scene_script .EnterHallOfFame ; SCENE_DEFAULT
-	scene_script .DummyScene ; SCENE_FINISHED
+	scene_script HallOfFame_EnterHallOfFame ; SCENE_DEFAULT
+	scene_script DummyScene ; SCENE_FINISHED
 
 	db 0 ; callbacks
 
-.EnterHallOfFame:
-	prioritysjump .EnterHallOfFameScript
-	end
+HallOfFame_MapEvents:
+	db 2 ; warp events
+	warp_event  4, 13, LANCES_ROOM, 3
+	warp_event  5, 13, LANCES_ROOM, 4
 
-.DummyScene:
+	db 0 ; coord events
+
+	db 0 ; bg events
+
+	db 1 ; object events
+	object_event  4, 12, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+
+	object_const_def ; object_event constants
+	const HALLOFFAME_LANCE
+
+
+HallOfFame_EnterHallOfFame:
+	prioritysjump .EnterHallOfFameScript
 	end
 
 .EnterHallOfFameScript:
@@ -101,15 +111,3 @@ HallOfFame_LanceText:
 	para "and your partners"
 	line "as CHAMPIONS!"
 	done
-
-HallOfFame_MapEvents:
-	db 2 ; warp events
-	warp_event  4, 13, LANCES_ROOM, 3
-	warp_event  5, 13, LANCES_ROOM, 4
-
-	db 0 ; coord events
-
-	db 0 ; bg events
-
-	db 1 ; object events
-	object_event  4, 12, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1

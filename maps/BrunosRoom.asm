@@ -1,22 +1,30 @@
+BrunosRoom_MapScripts:
+	db 2 ; scene scripts
+	scene_script BrunosRoom_LockDoor ; SCENE_DEFAULT
+	scene_script DummyScene ; SCENE_FINISHED
+
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, BrunosRoom_DoorsCallback
+
+BrunosRoom_MapEvents:
+	db 4 ; warp events
+	warp_event  4, 17, KOGAS_ROOM, 3
+	warp_event  5, 17, KOGAS_ROOM, 4
+	warp_event  4,  2, KARENS_ROOM, 1
+	warp_event  5,  2, KARENS_ROOM, 2
+
+	db 0 ; coord events
+
+	db 0 ; bg events
+
+	db 1 ; object events
+	object_event  5,  7, SPRITE_BRUNO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BrunoScript_Battle, -1
+
 	object_const_def ; object_event constants
 	const BRUNOSROOM_BRUNO
 
-BrunosRoom_MapScripts:
-	db 2 ; scene scripts
-	scene_script .LockDoor ; SCENE_DEFAULT
-	scene_script .DummyScene ; SCENE_FINISHED
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_TILES, .BrunosRoomDoors
-
-.LockDoor:
-	prioritysjump .BrunosDoorLocksBehindYou
-	end
-
-.DummyScene:
-	end
-
-.BrunosRoomDoors:
+BrunosRoom_DoorsCallback:
 	checkevent EVENT_BRUNOS_ROOM_ENTRANCE_CLOSED
 	iffalse .KeepEntranceOpen
 	changeblock 4, 14, $2a ; wall
@@ -26,6 +34,10 @@ BrunosRoom_MapScripts:
 	changeblock 4, 2, $16 ; open door
 .KeepExitClosed:
 	return
+
+BrunosRoom_LockDoor:
+	prioritysjump .BrunosDoorLocksBehindYou
+	end
 
 .BrunosDoorLocksBehindYou:
 	applymovement PLAYER, BrunosRoom_EnterMovement
@@ -121,17 +133,3 @@ BrunoScript_BrunoDefeatText:
 	para "Go face your next"
 	line "challenge!"
 	done
-
-BrunosRoom_MapEvents:
-	db 4 ; warp events
-	warp_event  4, 17, KOGAS_ROOM, 3
-	warp_event  5, 17, KOGAS_ROOM, 4
-	warp_event  4,  2, KARENS_ROOM, 1
-	warp_event  5,  2, KARENS_ROOM, 2
-
-	db 0 ; coord events
-
-	db 0 ; bg events
-
-	db 1 ; object events
-	object_event  5,  7, SPRITE_BRUNO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BrunoScript_Battle, -1

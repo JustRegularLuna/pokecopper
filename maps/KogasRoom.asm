@@ -1,22 +1,30 @@
+KogasRoom_MapScripts:
+	db 2 ; scene scripts
+	scene_script KogasRoom_LockDoor ; SCENE_DEFAULT
+	scene_script DummyScene ; SCENE_FINISHED
+
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, KogasRoom_DoorsCallback
+
+KogasRoom_MapEvents:
+	db 4 ; warp events
+	warp_event  4, 17, WILLS_ROOM, 2
+	warp_event  5, 17, WILLS_ROOM, 3
+	warp_event  4,  2, BRUNOS_ROOM, 1
+	warp_event  5,  2, BRUNOS_ROOM, 2
+
+	db 0 ; coord events
+
+	db 0 ; bg events
+
+	db 1 ; object events
+	object_event  5,  7, SPRITE_KOGA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, KogaScript_Battle, -1
+
 	object_const_def ; object_event constants
 	const KOGASROOM_KOGA
 
-KogasRoom_MapScripts:
-	db 2 ; scene scripts
-	scene_script .LockDoor ; SCENE_DEFAULT
-	scene_script .DummyScene ; SCENE_FINISHED
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_TILES, .KogasRoomDoors
-
-.LockDoor:
-	prioritysjump .KogasDoorLocksBehindYou
-	end
-
-.DummyScene:
-	end
-
-.KogasRoomDoors:
+KogasRoom_DoorsCallback:
 	checkevent EVENT_KOGAS_ROOM_ENTRANCE_CLOSED
 	iffalse .KeepEntranceOpen
 	changeblock 4, 14, $2a ; wall
@@ -26,6 +34,10 @@ KogasRoom_MapScripts:
 	changeblock 4, 2, $16 ; open door
 .KeepExitClosed:
 	return
+
+KogasRoom_LockDoor:
+	prioritysjump .KogasDoorLocksBehindYou
+	end
 
 .KogasDoorLocksBehindYou:
 	applymovement PLAYER, KogasRoom_EnterMovement
@@ -126,17 +138,3 @@ KogaScript_KogaDefeatText:
 	line "room, and put your"
 	cont "abilities to test!"
 	done
-
-KogasRoom_MapEvents:
-	db 4 ; warp events
-	warp_event  4, 17, WILLS_ROOM, 2
-	warp_event  5, 17, WILLS_ROOM, 3
-	warp_event  4,  2, BRUNOS_ROOM, 1
-	warp_event  5,  2, BRUNOS_ROOM, 2
-
-	db 0 ; coord events
-
-	db 0 ; bg events
-
-	db 1 ; object events
-	object_event  5,  7, SPRITE_KOGA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, KogaScript_Battle, -1

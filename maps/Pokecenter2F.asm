@@ -1,29 +1,44 @@
+Pokecenter2F_MapScripts:
+	db 4 ; scene scripts
+	scene_script DummyScene ; SCENE_DEFAULT
+	scene_script Pokecenter2F_LeaveTradeCenter ; SCENE_POKECENTER2F_LEAVE_TRADE_CENTER
+	scene_script Pokecenter2F_LeaveColosseum ; SCENE_POKECENTER2F_LEAVE_COLOSSEUM
+	scene_script Pokecenter2F_LeaveTimeCapsule ; SCENE_POKECENTER2F_LEAVE_TIME_CAPSULE
+
+	db 0 ; callbacks
+
+Pokecenter2F_MapEvents:
+	db 4 ; warp events
+	warp_event  0,  7, POKECENTER_2F, -1
+	warp_event  5,  0, TRADE_CENTER, 1
+	warp_event  9,  0, COLOSSEUM, 1
+	warp_event 13,  2, TIME_CAPSULE, 1
+
+	db 0 ; coord events
+
+	db 1 ; bg events
+	bg_event  7,  3, BGEVENT_READ, Pokecenter2FLinkRecordSign
+
+	db 3 ; object events
+	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
+	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
+	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
+
 	object_const_def ; object_event constants
 	const POKECENTER2F_TRADE_RECEPTIONIST
 	const POKECENTER2F_BATTLE_RECEPTIONIST
 	const POKECENTER2F_TIME_CAPSULE_RECEPTIONIST
 
-Pokecenter2F_MapScripts:
-	db 4 ; scene scripts
-	scene_script .Scene0 ; SCENE_DEFAULT
-	scene_script .Scene1 ; SCENE_POKECENTER2F_LEAVE_TRADE_CENTER
-	scene_script .Scene2 ; SCENE_POKECENTER2F_LEAVE_COLOSSEUM
-	scene_script .Scene3 ; SCENE_POKECENTER2F_LEAVE_TIME_CAPSULE
 
-	db 0 ; callbacks
-
-.Scene0:
-	end
-
-.Scene1:
+Pokecenter2F_LeaveTradeCenter:
 	prioritysjump Script_LeftCableTradeCenter
 	end
 
-.Scene2:
+Pokecenter2F_LeaveColosseum:
 	prioritysjump Script_LeftCableColosseum
 	end
 
-.Scene3:
+Pokecenter2F_LeaveTimeCapsule:
 	prioritysjump Script_LeftTimeCapsule
 	end
 
@@ -667,20 +682,3 @@ Text_LikeTheLook:
 	text "How does this"
 	line "style look to you?"
 	done
-
-Pokecenter2F_MapEvents:
-	db 4 ; warp events
-	warp_event  0,  7, POKECENTER_2F, -1
-	warp_event  5,  0, TRADE_CENTER, 1
-	warp_event  9,  0, COLOSSEUM, 1
-	warp_event 13,  2, TIME_CAPSULE, 1
-
-	db 0 ; coord events
-
-	db 1 ; bg events
-	bg_event  7,  3, BGEVENT_READ, Pokecenter2FLinkRecordSign
-
-	db 3 ; object events
-	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
-	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
-	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
