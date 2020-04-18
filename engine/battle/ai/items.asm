@@ -37,7 +37,7 @@ DontSwitch:
 	jp AI_TryItem
 
 SwitchOften:
-	callfar CheckAbleToSwitch
+	farcall CheckAbleToSwitch
 	ld a, [wEnemySwitchMonParam]
 	and $f0
 	jp z, DontSwitch
@@ -72,7 +72,7 @@ SwitchOften:
 	jp AI_TrySwitch
 
 SwitchRarely:
-	callfar CheckAbleToSwitch
+	farcall CheckAbleToSwitch
 	ld a, [wEnemySwitchMonParam]
 	and $f0
 	jp z, DontSwitch
@@ -106,7 +106,7 @@ SwitchRarely:
 	jp AI_TrySwitch
 
 SwitchSometimes:
-	callfar CheckAbleToSwitch
+	farcall CheckAbleToSwitch
 	ld a, [wEnemySwitchMonParam]
 	and $f0
 	jp z, DontSwitch
@@ -328,12 +328,12 @@ AI_Items:
 	ld a, [bc]
 	bit CONTEXT_USE_F, a
 	jr nz, .CheckHalfOrQuarterHP
-	callfar AICheckEnemyHalfHP
+	farcall AICheckEnemyHalfHP
 	jp c, .DontUse
 	ld a, [bc]
 	bit UNKNOWN_USE_F, a
 	jp nz, .CheckQuarterHP
-	callfar AICheckEnemyQuarterHP
+	farcall AICheckEnemyQuarterHP
 	jp nc, .UseHealItem
 	call Random
 	cp 50 percent + 1
@@ -341,7 +341,7 @@ AI_Items:
 	jp .DontUse
 
 .CheckQuarterHP:
-	callfar AICheckEnemyQuarterHP
+	farcall AICheckEnemyQuarterHP
 	jp c, .DontUse
 	call Random
 	cp 20 percent - 1
@@ -349,9 +349,9 @@ AI_Items:
 	jr .UseHealItem
 
 .CheckHalfOrQuarterHP:
-	callfar AICheckEnemyHalfHP
+	farcall AICheckEnemyHalfHP
 	jp c, .DontUse
-	callfar AICheckEnemyQuarterHP
+	farcall AICheckEnemyQuarterHP
 	jp nc, .UseHealItem
 	call Random
 	cp 20 percent - 1
@@ -613,7 +613,7 @@ AI_Switch:
 	res SUBSTATUS_RAGE, [hl]
 	xor a
 	ldh [hBattleTurn], a
-	callfar PursuitSwitch
+	farcall PursuitSwitch
 
 	push af
 	ld a, [wCurOTMon]
@@ -634,8 +634,8 @@ AI_Switch:
 .skiptext
 	ld a, 1
 	ld [wBattleHasJustStarted], a
-	callfar NewEnemyMonStatus
-	callfar ResetEnemyStatLevels
+	farcall NewEnemyMonStatus
+	farcall ResetEnemyStatLevels
 	ld hl, wPlayerSubStatus1
 	res SUBSTATUS_IN_LOVE, [hl]
 	farcall EnemySwitch

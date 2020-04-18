@@ -18,7 +18,7 @@ Copyright_GFPresents:
 	call SetPalettes
 	ld c, 10
 	call DelayFrames
-	callfar Copyright
+	farcall Copyright
 	call WaitBGMap
 	ld c, 100
 	call DelayFrames

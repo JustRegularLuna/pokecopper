@@ -112,23 +112,23 @@ DoAnimFrame:
 	ret
 
 .NamingScreenCursor
-	callfar NamingScreen_AnimateCursor
+	farcall NamingScreen_AnimateCursor
 	ret
 
 .MailCursor
-	callfar ComposeMail_AnimateCursor
+	farcall ComposeMail_AnimateCursor
 	ret
 
 .GameFreakLogo:
-	callfar GameFreakLogoJumper
+	farcall GameFreakLogoJumper
 	ret
 
 .SlotsGolem:
-	callfar Slots_AnimateGolem
+	farcall Slots_AnimateGolem
 	ret
 
 .SlotsChansey:
-	callfar Slots_AnimateChansey
+	farcall Slots_AnimateChansey
 	ld hl, wcf64
 	ld a, [hl]
 	cp $2
@@ -170,11 +170,11 @@ DoAnimFrame:
 	ret
 
 .PokegearArrow
-	callfar AnimatePokegearModeIndicatorArrow
+	farcall AnimatePokegearModeIndicatorArrow
 	ret
 
 .DummyGameCursor
-	callfar DummyGame_InterpretJoypad_AnimateCursor
+	farcall DummyGame_InterpretJoypad_AnimateCursor
 	ret
 
 .TradePokeBall
@@ -316,7 +316,7 @@ DoAnimFrame:
 	jp DeinitializeSprite
 
 .TrademonInTube
-	callfar TradeAnim_AnimateTrademonInTube
+	farcall TradeAnim_AnimateTrademonInTube
 	ret
 
 .RevealNewMon:
@@ -356,7 +356,7 @@ DoAnimFrame:
 	jp DeinitializeSprite
 
 .RadioTuningKnob:
-	callfar AnimateTuningKnob
+	farcall AnimateTuningKnob
 	ret
 
 .CutLeaves

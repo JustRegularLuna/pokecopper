@@ -308,9 +308,9 @@ GetBattleAnimTileOffset:
 	ret
 
 _ExecuteBGEffects:
-	callfar ExecuteBGEffects
+	farcall ExecuteBGEffects
 	ret
 
 _QueueBGEffect:
-	callfar QueueBGEffect
+	farcall QueueBGEffect
 	ret

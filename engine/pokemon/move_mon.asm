@@ -151,7 +151,7 @@ endr
 	push de
 	ld a, [wCurPartyLevel]
 	ld d, a
-	callfar CalcExpAtLevel
+	farcall CalcExpAtLevel
 	pop de
 	ldh a, [hProduct + 1]
 	ld [de], a
@@ -355,7 +355,7 @@ endr
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	predef GetUnownLetter
-	callfar UpdateUnownDex
+	farcall UpdateUnownDex
 
 .done
 	scf ; When this function returns, the carry flag indicates success vs failure.
@@ -464,7 +464,7 @@ AddTempmonToParty:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	predef GetUnownLetter
-	callfar UpdateUnownDex
+	farcall UpdateUnownDex
 	ld a, [wFirstUnownSeen]
 	and a
 	jr nz, .done
@@ -639,7 +639,7 @@ SendGetMonIntoFromBox:
 	add $2
 	ld [wMonType], a
 	predef CopyMonToTempMon
-	callfar CalcLevel
+	farcall CalcLevel
 	ld a, d
 	ld [wCurPartyLevel], a
 	pop hl
@@ -882,7 +882,7 @@ RetrieveBreedmon:
 	farcall HealPartyMon
 	ld a, [wCurPartyLevel]
 	ld d, a
-	callfar CalcExpAtLevel
+	farcall CalcExpAtLevel
 	pop bc
 	ld hl, $8
 	add hl, bc
@@ -992,7 +992,7 @@ SendMonIntoBox:
 	push de
 	ld a, [wCurPartyLevel]
 	ld d, a
-	callfar CalcExpAtLevel
+	farcall CalcExpAtLevel
 	pop de
 	ldh a, [hProduct + 1]
 	ld [de], a
@@ -1042,7 +1042,7 @@ SendMonIntoBox:
 	jr nz, .not_unown
 	ld hl, sBoxMon1DVs
 	predef GetUnownLetter
-	callfar UpdateUnownDex
+	farcall UpdateUnownDex
 
 .not_unown
 	ld hl, sBoxMon1Moves
@@ -1117,8 +1117,8 @@ ShiftBoxMon:
 GiveEgg::
 	ld a, [wCurPartySpecies]
 	push af
-	callfar GetPreEvolution
-	callfar GetPreEvolution
+	farcall GetPreEvolution
+	farcall GetPreEvolution
 	ld a, [wCurPartySpecies]
 	dec a
 
@@ -1644,7 +1644,7 @@ GivePoke::
 .failed
 	ld a, [wCurPartySpecies]
 	ld [wTempEnemyMonSpecies], a
-	callfar LoadEnemyMon
+	farcall LoadEnemyMon
 	call SendMonIntoBox
 	jp nc, .FailedToGiveMon
 	ld a, BOXMON

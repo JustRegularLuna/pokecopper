@@ -901,7 +901,7 @@ Intro_PlacePlayerSprite:
 	db 10 * 8 + 4, 10 * 8, 3
 
 CrystalIntroSequence:
-	callfar Copyright_GFPresents
+	farcall Copyright_GFPresents
 	jr c, StartTitleScreen
 	;farcall SpaceworldIntro
 

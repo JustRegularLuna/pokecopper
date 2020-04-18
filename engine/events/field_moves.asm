@@ -132,7 +132,7 @@ OWCutAnimation:
 	ret nz
 	ld a, 36 * SPRITEOAMSTRUCT_LENGTH
 	ld [wCurSpriteOAMAddr], a
-	callfar DoNextFrameForAllSprites
+	farcall DoNextFrameForAllSprites
 	call OWCutJumptable
 	call DelayFrame
 	jr .loop
@@ -319,7 +319,7 @@ FlyFromAnim:
 	jr nz, .exit
 	ld a, 0 * SPRITEOAMSTRUCT_LENGTH
 	ld [wCurSpriteOAMAddr], a
-	callfar DoNextFrameForAllSprites
+	farcall DoNextFrameForAllSprites
 	call FlyFunction_FrameTimer
 	call DelayFrame
 	jr .loop
@@ -356,7 +356,7 @@ FlyToAnim:
 	jr nz, .exit
 	ld a, 0 * SPRITEOAMSTRUCT_LENGTH
 	ld [wCurSpriteOAMAddr], a
-	callfar DoNextFrameForAllSprites
+	farcall DoNextFrameForAllSprites
 	call FlyFunction_FrameTimer
 	call DelayFrame
 	jr .loop
@@ -382,7 +382,7 @@ endr
 	jp ByteFill
 
 FlyFunction_InitGFX:
-	callfar ClearSpriteAnims
+	farcall ClearSpriteAnims
 	ld de, CutGrassGFX
 	ld hl, vTiles0 tile FIELDMOVE_GRASS
 	lb bc, BANK(CutGrassGFX), 4

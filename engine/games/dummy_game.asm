@@ -17,7 +17,7 @@ _DummyGame:
 	call DisableLCD
 	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
-	callfar ClearSpriteAnims
+	farcall ClearSpriteAnims
 	ld hl, LZ_e2221
 	ld de, vTiles2 tile $00
 	call Decompress
@@ -53,7 +53,7 @@ _DummyGame:
 	bit 7, a
 	jr nz, .quit
 	call .ExecuteJumptable
-	callfar PlaySpriteAnimations
+	farcall PlaySpriteAnimations
 	call DelayFrame
 	and a
 	ret

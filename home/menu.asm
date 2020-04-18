@@ -21,11 +21,11 @@ SetMenuAttributes::
 	ret
 
 StaticMenuJoypad::
-	callfar _StaticMenuJoypad
+	farcall _StaticMenuJoypad
 	jp GetMenuJoypad
 
 ScrollingMenuJoypad::
-	callfar _ScrollingMenuJoypad
+	farcall _ScrollingMenuJoypad
 	jp GetMenuJoypad
 
 GetMenuJoypad::
@@ -60,17 +60,17 @@ HideCursor::
 	ret
 
 PushWindow::
-	callfar _PushWindow
+	farcall _PushWindow
 	ret
 
 ExitMenu::
 	push af
-	callfar _ExitMenu
+	farcall _ExitMenu
 	pop af
 	ret
 
 InitVerticalMenuCursor::
-	callfar _InitVerticalMenuCursor
+	farcall _InitVerticalMenuCursor
 	ret
 
 CloseWindow::

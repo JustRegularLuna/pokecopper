@@ -568,7 +568,7 @@ OaksPKMNTalk14:
 	dec [hl]
 	ret nz
 	ld de, MUSIC_POKEMON_TALK
-	callfar RadioMusicRestartDE
+	farcall RadioMusicRestartDE
 	ld hl, .terminator
 	call PrintText
 	ld a, OAKS_POKEMON_TALK_4
@@ -829,7 +829,7 @@ StartPokemonMusicChannel:
 	jr z, .SunTueThurSun
 	ld de, MUSIC_POKEMON_LULLABY
 .SunTueThurSun:
-	callfar RadioMusicRestartDE
+	farcall RadioMusicRestartDE
 	ret
 
 BenIntroText1:
@@ -874,9 +874,9 @@ BenFernText3B:
 
 LuckyNumberShow1:
 	call StartRadioStation
-	callfar CheckLuckyNumberShowFlag
+	farcall CheckLuckyNumberShowFlag
 	jr nc, .dontreset
-	callfar ResetLuckyNumberShowFlag
+	farcall ResetLuckyNumberShowFlag
 .dontreset
 	ld hl, LC_Text1
 	ld a, LUCKY_NUMBER_SHOW_2
@@ -1068,12 +1068,12 @@ PeoplePlaces4: ; People
 	pop bc
 	jr c, PeoplePlaces4
 	push bc
-	callfar GetTrainerClassName
+	farcall GetTrainerClassName
 	ld de, wStringBuffer1
 	call CopyName1
 	pop bc
 	ld b, 1
-	callfar GetTrainerName
+	farcall GetTrainerName
 	ld hl, PnP_Text4
 	ld a, PLACES_AND_PEOPLE_5
 	jp NextRadioLine
@@ -1390,7 +1390,7 @@ StartRadioStation:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	callfar RadioMusicRestartDE
+	farcall RadioMusicRestartDE
 	ret
 
 INCLUDE "data/radio/channel_music.asm"
