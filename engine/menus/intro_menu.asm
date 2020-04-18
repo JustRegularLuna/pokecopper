@@ -243,6 +243,8 @@ InitializeNPCNames:
 
 InitializeWorld:
 	call ShrinkPlayer
+	farcall InitClock
+	call RotateFourPalettesLeft
 	farcall SpawnPlayer
 	farcall _InitializeStartDay
 	farcall InitializeEvents
@@ -522,7 +524,6 @@ OakSpeech:
 	ld hl, wNumPCItems
 	call ReceiveItem
 
-	farcall InitClock
 	call RotateFourPalettesLeft
 	call ClearTilemap
 
