@@ -244,37 +244,4 @@ GetDexEntryPointer:
 	db BANK("Pokedex Entries 129-192")
 	db BANK("Pokedex Entries 193-251")
 
-GetDexEntryPagePointer:
-	call GetDexEntryPointer
-	push hl
-	ld h, d
-	ld l, e
-; skip species name
-.loop1
-	ld a, b
-	call GetFarByte
-	inc hl
-	cp "@"
-	jr nz, .loop1
-; skip height and weight
-rept 4
-	inc hl
-endr
-; if c != 1: skip entry
-	dec c
-	jr z, .done
-; skip entry
-.loop2
-	ld a, b
-	call GetFarByte
-	inc hl
-	cp "@"
-	jr nz, .loop2
-
-.done
-	ld d, h
-	ld e, l
-	pop hl
-	ret
-
 INCLUDE "data/pokemon/dex_entry_pointers.asm"
