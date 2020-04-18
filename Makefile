@@ -42,13 +42,13 @@ redgold:    redgold.gbc
 bluesilver: bluesilver.gbc
 
 clean:
-	rm -f $(roms) $(redgold_obj) $(bluesilver_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
+	rm -f $(roms) $(redgold_obj) $(bluesilver_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) rgbdscheck.o
 	find gfx \( -name "*.[12]bpp" -o -name "*.lz" -o -name "*.gbcpal" -o -name "*.sgb.tilemap" \) -delete
 	find gfx/pokemon -mindepth 1 ! -path "gfx/pokemon/unown/*" \( -name "bitmask.asm" -o -name "frames.asm" -o -name "front.animated.tilemap" -o -name "front.dimensions" \) -delete
 	$(MAKE) clean -C tools/
 
 tidy:
-	rm -f $(roms) $(redgold_obj) $(bluesilver_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
+	rm -f $(roms) $(redgold_obj) $(bluesilver_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) rgbdscheck.o
 	$(MAKE) clean -C tools/
 
 tools:
@@ -58,6 +58,9 @@ tools:
 RGBASMFLAGS = -L -Weverything
 $(redgold_obj):    RGBASMFLAGS += -D _REDGOLD
 $(bluesilver_obj): RGBASMFLAGS += -D _BLUESILVER
+
+rgbdscheck.o: rgbdscheck.asm
+	$(RGBASM) -o $@ $<
 
 # The dep rules have to be explicit or else missing files won't be reported.
 # As a side effect, they're evaluated immediately instead of when the rule is invoked.
