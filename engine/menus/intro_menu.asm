@@ -515,6 +515,13 @@ Continue_DisplayGameTime:
 	jp PrintNum
 
 OakSpeech:
+	ld a, POTION
+	ld [wCurItem], a
+	ld a, 1
+	ld [wItemQuantityChangeBuffer], a
+	ld hl, wNumPCItems
+	call ReceiveItem
+
 	farcall InitClock
 	call RotateFourPalettesLeft
 	call ClearTilemap
