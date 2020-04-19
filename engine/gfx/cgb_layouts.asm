@@ -143,18 +143,11 @@ FillBattleObjectPals:
 	jp LoadHLPaletteIntoDE
 
 InitPartyMenuBGPal7:
-	ld hl, PartyMenuBGPalette
+; TODO: Is Pal 7 actually needed?
 	ld de, wBGPals1 palette 7
-	ld bc, 1 palettes
-	ld a, BANK(wBGPals1)
-	jp FarCopyWRAM
-
-InitPartyMenuBGPal0:
-	ld hl, PartyMenuBGPalette
-	ld de, wBGPals1 palette 0
-	ld bc, 1 palettes
-	ld a, BANK(wBGPals1)
-	jp FarCopyWRAM
+	ld a, PAL_MEWMON
+	call GetPredefPal
+	jp LoadHLPaletteIntoDE
 
 _CGB_PokegearPals:
 	ld a, PAL_POKEGEAR
@@ -295,52 +288,47 @@ _CGB_PokedexUnownMode:
 	ret
 
 _CGB_SlotMachine:
-	ld hl, SlotMachinePals
-	ld de, wBGPals1
-	ld bc, 16 palettes
-	ld a, BANK(wBGPals1)
-	call FarCopyWRAM
+	; grab the SGB color packet
+	ld hl, PalPacket_SlotMachine + 1
+	call CopyFourPalettes
+	; in SGB, Slot Reels use Pal 0
+	; fill OB Pals with Pal 0
+	ld de, wOBPals1
+	ld a, PAL_SLOT_MACHINE_0
+	call GetPredefPal
+	ld b, 8
+.loop
+	push hl
+	call LoadHLPaletteIntoDE
+	pop hl
+	dec b
+	jr nz, .loop
+	; Apply the palettes to the screen like SGB
 	call WipeAttrmap
 	hlcoord 0, 2, wAttrmap
 	lb bc, 10, 3
-	ld a, $2
+	ld a, $1
 	call FillBoxCGB
 	hlcoord 17, 2, wAttrmap
 	lb bc, 10, 3
-	ld a, $2
+	ld a, $1
 	call FillBoxCGB
 	hlcoord 0, 4, wAttrmap
 	lb bc, 6, 3
-	ld a, $3
+	ld a, $2
 	call FillBoxCGB
 	hlcoord 17, 4, wAttrmap
 	lb bc, 6, 3
-	ld a, $3
+	ld a, $2
 	call FillBoxCGB
 	hlcoord 0, 6, wAttrmap
 	lb bc, 2, 3
-	ld a, $4
+	ld a, $3
 	call FillBoxCGB
 	hlcoord 17, 6, wAttrmap
 	lb bc, 2, 3
-	ld a, $4
+	ld a, $3
 	call FillBoxCGB
-	hlcoord 4, 2, wAttrmap
-	lb bc, 2, 12
-	ld a, $1
-	call FillBoxCGB
-	hlcoord 3, 2, wAttrmap
-	lb bc, 10, 1
-	ld a, $1
-	call FillBoxCGB
-	hlcoord 16, 2, wAttrmap
-	lb bc, 10, 1
-	ld a, $1
-	call FillBoxCGB
-	hlcoord 0, 12, wAttrmap
-	ld bc, $78
-	ld a, $7
-	call ByteFill
 	call ApplyAttrmap
 	call ApplyPals
 	ld a, $1
@@ -440,7 +428,6 @@ endr
 _CGB_PartyMenu:
 	ld hl, PalPacket_PartyMenu + 1
 	call CopyFourPalettes
-	call InitPartyMenuBGPal0
 	call InitPartyMenuBGPal7
 	call InitPartyMenuOBPals
 	jp ApplyAttrmap
@@ -652,11 +639,7 @@ _CGB_PlayerOrMonFrontpicPals:
 _CGB_TradeTube:
 	ld hl, PalPacket_TradeTube + 1
 	call CopyFourPalettes
-	ld hl, PartyMenuOBPals
-	ld de, wOBPals1
-	ld bc, 1 palettes
-	ld a, BANK(wOBPals1)
-	call FarCopyWRAM
+	call InitPartyMenuOBPals
 	ld de, wOBPals1 palette 7
 	ld a, PAL_BLUEMON
 	call GetPredefPal

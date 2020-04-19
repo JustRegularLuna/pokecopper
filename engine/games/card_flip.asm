@@ -6,7 +6,6 @@ CARDFLIP_DECK_SIZE EQU 4 * 6
 _CardFlip:
 	ld hl, wOptions
 	set NO_TEXT_SCROLL, [hl]
-	call ClearBGPalettes
 	call ClearTilemap
 	call ClearSprites
 	ld de, MUSIC_NONE
@@ -36,7 +35,6 @@ _CardFlip:
 
 	call CardFlip_ShiftDigitsUpOnePixel
 	call CardFlip_InitTilemap
-	call CardFlip_InitAttrPals
 	call EnableLCD
 	call WaitBGMap2
 	ld a, %11100100
@@ -1507,56 +1505,6 @@ ENDM
 	dbsprite   1,  0, 0, 0, $00, 0 | X_FLIP | PRIORITY
 	dbsprite   0,  1, 0, 0, $00, 0 | Y_FLIP | PRIORITY
 	dbsprite   1,  1, 0, 0, $00, 0 | X_FLIP | Y_FLIP | PRIORITY
-
-CardFlip_InitAttrPals:
-	ldh a, [hCGB]
-	and a
-	ret z
-
-	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	xor a
-	call ByteFill
-
-	hlcoord 12, 1, wAttrmap
-	lb bc, 2, 2
-	ld a, $1
-	call CardFlip_FillBox
-
-	hlcoord 14, 1, wAttrmap
-	lb bc, 2, 2
-	ld a, $2
-	call CardFlip_FillBox
-
-	hlcoord 16, 1, wAttrmap
-	lb bc, 2, 2
-	ld a, $3
-	call CardFlip_FillBox
-
-	hlcoord 18, 1, wAttrmap
-	lb bc, 2, 2
-	ld a, $4
-	call CardFlip_FillBox
-
-	hlcoord 9, 0, wAttrmap
-	lb bc, 12, 1
-	ld a, $1
-	call CardFlip_FillBox
-
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
-	ld hl, .palettes
-	ld de, wBGPals1
-	ld bc, 9 palettes
-	call CopyBytes
-	pop af
-	ldh [rSVBK], a
-	ret
-
-.palettes
-INCLUDE "gfx/card_flip/card_flip.pal"
 
 CardFlipLZ03:
 INCBIN "gfx/card_flip/card_flip_3.2bpp.lz"
