@@ -811,6 +811,3 @@ SGBBorder:
 INCBIN "gfx/sgb/sgb_border.2bpp"
 
 INCLUDE "data/pokemon/palettes.asm"
-
-SlotMachinePals:
-INCLUDE "gfx/slots/slots.pal"
