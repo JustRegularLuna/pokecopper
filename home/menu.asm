@@ -22,11 +22,11 @@ SetMenuAttributes::
 
 StaticMenuJoypad::
 	farcall _StaticMenuJoypad
-	jp GetMenuJoypad
+	jr GetMenuJoypad
 
 ScrollingMenuJoypad::
 	farcall _ScrollingMenuJoypad
-	jp GetMenuJoypad
+	; fallthrough
 
 GetMenuJoypad::
 	push bc

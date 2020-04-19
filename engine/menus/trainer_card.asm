@@ -437,7 +437,7 @@ TrainerCard_Page2_3_AnimateBadges:
 	inc a
 	and %111
 	ld [wTrainerCardBadgeFrameCounter], a
-	jr TrainerCard_Page2_3_OAMUpdate
+	; fallthrough
 
 TrainerCard_Page2_3_OAMUpdate:
 ; copy flag array pointer

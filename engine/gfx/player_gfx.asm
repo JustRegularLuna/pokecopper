@@ -108,14 +108,19 @@ INCBIN "gfx/trainer_card/trainer_card.2bpp"
 GetPlayerBackpic:
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
-	jr z, GetHiroBackpic
-	jp GetSylviaBackpic
+	jr nz, GetSylviaBackpic
+	; fallthrough
 
 GetHiroBackpic:
 	ld hl, HiroBackpic
-	ld b, BANK(HiroBackpic)
 	ld de, vTiles2 tile $31
-	ld c, 7 * 7
+	lb bc, BANK(HiroBackpic), 7 * 7
+	predef_jump DecompressGet2bpp
+
+GetSylviaBackpic:
+	ld hl, SylviaBackpic
+	ld de, vTiles2 tile $31
+	lb bc, BANK(SylviaBackpic), 7 * 7
 	predef_jump DecompressGet2bpp
 
 HOF_LoadTrainerFrontpic:
@@ -169,12 +174,11 @@ INCBIN "gfx/player/hiro.2bpp"
 SylviaPic:
 INCBIN "gfx/player/sylvia.2bpp"
 
-GetSylviaBackpic:
-; Sylvia's backpic is uncompressed.
-	ld de, SylviaBackpic
-	ld hl, vTiles2 tile $31
-	lb bc, BANK(SylviaBackpic), 7 * 7 ; dimensions
-	jp Get2bpp
+HiroBackpic:
+INCBIN "gfx/player/hiro_back.2bpp.lz"
 
 SylviaBackpic:
-INCBIN "gfx/player/sylvia_back.2bpp"
+INCBIN "gfx/player/sylvia_back.2bpp.lz"
+
+DudeBackpic:
+INCBIN "gfx/battle/dude.2bpp.lz"

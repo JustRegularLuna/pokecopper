@@ -463,8 +463,6 @@ CardFlip_UpdateCoinBalanceDisplay:
 	call Textbox
 	pop hl
 	call PrintTextboxText
-	jp CardFlip_PrintCoinBalance
-
 CardFlip_PrintCoinBalance:
 	hlcoord 9, 15
 	lb bc, 1, 9

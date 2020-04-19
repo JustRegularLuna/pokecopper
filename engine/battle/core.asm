@@ -940,13 +940,12 @@ PlayerTurn_EndOpponentProtectEndureDestinyBond:
 	call SetPlayerTurn
 	call EndUserDestinyBond
 	farcall DoPlayerTurn
-	jp EndOpponentProtectEndureDestinyBond
+	jr EndOpponentProtectEndureDestinyBond
 
 EnemyTurn_EndOpponentProtectEndureDestinyBond:
 	call SetEnemyTurn
 	call EndUserDestinyBond
 	farcall DoEnemyTurn
-	jp EndOpponentProtectEndureDestinyBond
 
 EndOpponentProtectEndureDestinyBond:
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
@@ -2829,12 +2828,11 @@ LostBattle:
 EnemyMonFaintedAnimation:
 	hlcoord 12, 5
 	decoord 12, 6
-	jp MonFaintedAnimation
+	jr MonFaintedAnimation
 
 PlayerMonFaintedAnimation:
 	hlcoord 1, 10
 	decoord 1, 11
-	jp MonFaintedAnimation
 
 MonFaintedAnimation:
 	ld a, [wcfbe]
@@ -4405,10 +4403,6 @@ DrawPlayerHUD:
 	pop de
 	ret
 
-UpdatePlayerHPPal:
-	ld hl, wPlayerHPPal
-	jp UpdateHPPal
-
 CheckDanger:
 	ld hl, wBattleMonHP
 	ld a, [hli]
@@ -4633,9 +4627,12 @@ DrawEnemyHUD:
 	ld b, 0
 	jp DrawBattleHPBar
 
+UpdatePlayerHPPal:
+	ld hl, wPlayerHPPal
+	jr UpdateHPPal
+
 UpdateEnemyHPPal:
 	ld hl, wEnemyHPPal
-	jp UpdateHPPal
 
 UpdateHPPal:
 	ld b, [hl]
@@ -8557,32 +8554,26 @@ GetTrainerBackpic:
 ; Load the player character's backpic (6x6) into VRAM starting from vTiles2 tile $31.
 
 ; Special exception for Dude.
-	ld b, BANK(DudeBackpic)
-	ld hl, DudeBackpic
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
-	jr z, .Decompress
+	jr z, .DudeBackpic
 
 ; What gender are we?
 	ld a, [wPlayerSpriteSetupFlags]
 	bit PLAYERSPRITESETUP_FEMALE_TO_MALE_F, a
 	jr nz, .Chris
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .Chris
-
-; It's a girl.
-	farcall GetSylviaBackpic
+	farcall GetPlayerBackpic
 	ret
 
 .Chris:
 ; It's a boy.
-	ld b, BANK(HiroBackpic)
-	ld hl, HiroBackpic
+	farcall GetHiroBackpic
+	ret
 
-.Decompress:
+.DudeBackpic:
+	ld hl, DudeBackpic
 	ld de, vTiles2 tile $31
-	ld c, 7 * 7
+	lb bc, BANK(DudeBackpic), 7 * 7
 	predef_jump DecompressGet2bpp
 
 CopyBackpic:

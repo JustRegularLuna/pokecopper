@@ -384,7 +384,7 @@ DisplaySaveInfoOnContinue:
 
 DisplaySaveInfoOnSave:
 	lb de, 4, 0
-	jr DisplayNormalContinueData
+	; fallthrough
 
 DisplayNormalContinueData:
 	call Continue_LoadMenuHeader

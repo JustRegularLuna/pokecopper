@@ -55,7 +55,7 @@ FindPartyMonThatSpeciesYourTrainerID:
 	ld b, a
 	farcall _FindPartyMonThatSpeciesYourTrainerID
 	jr z, FoundNone
-	jr FoundOne
+	; fallthrough
 
 FoundOne:
 	ld a, TRUE
@@ -113,21 +113,21 @@ SlotMachine:
 	ret c
 	ld a, BANK(_SlotMachine)
 	ld hl, _SlotMachine
-	jp StartGameCornerGame
+	jr StartGameCornerGame
 
 CardFlip:
 	call CheckCoinsAndCoinCase
 	ret c
 	ld a, BANK(_CardFlip)
 	ld hl, _CardFlip
-	jp StartGameCornerGame
+	jr StartGameCornerGame
 
 DummyNonfunctionalGameCornerGame:
 	call CheckCoinsAndCoinCase
 	ret c
 	ld a, BANK(_DummyGame)
 	ld hl, _DummyGame
-	jp StartGameCornerGame
+	; fallthrough
 
 StartGameCornerGame:
 	call FarQueueScript

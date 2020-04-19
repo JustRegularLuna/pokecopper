@@ -273,7 +273,7 @@ PlaceEnemysName::
 
 .linkbattle
 	ld de, wOTClassName
-	jr PlaceCommandCharacter
+	; fallthrough
 
 PlaceCommandCharacter::
 	call PlaceString

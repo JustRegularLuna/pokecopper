@@ -947,7 +947,7 @@ Script_faceplayer:
 	ld e, a
 	ldh a, [hLastTalked]
 	ld d, a
-	jp ApplyObjectFacing
+	jr ApplyObjectFacing
 
 Script_faceobject:
 ; script command 0x6c
@@ -976,7 +976,7 @@ Script_faceobject:
 	add a
 	ld e, a
 	ld d, c
-	jp ApplyObjectFacing
+	jr ApplyObjectFacing
 
 Script_turnobject:
 ; script command 0x76
@@ -993,7 +993,7 @@ Script_turnobject:
 	add a
 	add a
 	ld e, a
-	jp ApplyObjectFacing
+	; fallthrough
 
 ApplyObjectFacing:
 	ld a, d
@@ -1325,7 +1325,7 @@ Script_reloadmapafterbattle:
 	ld de, Script_SpecialBillCall
 	farcall LoadScriptBDE
 .done
-	jp Script_reloadmap
+	; fallthrough
 
 Script_reloadmap:
 ; script command 0x7b

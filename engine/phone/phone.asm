@@ -434,8 +434,6 @@ Script_SpecialBillCall::
 
 RingTwice_StartCall:
 	call .Ring
-	; fallthrough
-
 .Ring:
 	call Phone_StartRinging
 	call Phone_Wait20Frames
@@ -443,12 +441,25 @@ RingTwice_StartCall:
 	call Phone_Wait20Frames
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
-	jp Phone_CallerTextboxWithName
-
 Phone_CallerTextboxWithName:
 	ld a, [wCurCaller]
 	ld b, a
-	jp Function90363
+Function90363:
+	push bc
+	call Phone_CallerTextbox
+	hlcoord 1, 1
+	ld [hl], "☎"
+	inc hl
+	inc hl
+	ld d, h
+	ld e, l
+	pop bc
+Function90380:
+	ld h, d
+	ld l, e
+	ld a, b
+	call GetCallerTrainerClass
+	jp GetCallerName
 
 PhoneCall::
 	ld a, b
@@ -458,8 +469,6 @@ PhoneCall::
 	ld a, d
 	ld [wPhoneCaller + 1], a
 	call Phone_FirstOfTwoRings
-	jp Phone_FirstOfTwoRings
-
 Phone_FirstOfTwoRings:
 	call Phone_StartRinging
 	call Phone_Wait20Frames
@@ -467,8 +476,6 @@ Phone_FirstOfTwoRings:
 	call Phone_Wait20Frames
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
-	jp Phone_CallerTextboxWithName2
-
 Phone_CallerTextboxWithName2:
 	call Phone_CallerTextbox
 	hlcoord 1, 2
@@ -494,16 +501,21 @@ HangUp::
 Phone_CallEnd:
 	call HangUp_BoopOn
 	call HangUp_Wait20Frames
-	call HangUp_BoopOff
+	call SpeechTextbox
 	call HangUp_Wait20Frames
 	call HangUp_BoopOn
 	call HangUp_Wait20Frames
-	call HangUp_BoopOff
+	call SpeechTextbox
 	call HangUp_Wait20Frames
 	call HangUp_BoopOn
 	call HangUp_Wait20Frames
-	call HangUp_BoopOff
-	jp HangUp_Wait20Frames
+	call SpeechTextbox
+HangUp_Wait20Frames:
+Phone_Wait20Frames:
+	ld c, 20
+	call DelayFrames
+	farcall PhoneRing_CopyTilemapAtOnce
+	ret
 
 HangUp_Beep:
 	ld hl, PhoneClickText
@@ -523,9 +535,6 @@ PhoneEllipseText:
 	text_far _PhoneEllipseText
 	text_end
 
-HangUp_BoopOff:
-	jp SpeechTextbox
-
 Phone_StartRinging:
 	call WaitSFX
 	ld de, SFX_CALL
@@ -535,38 +544,10 @@ Phone_StartRinging:
 	farcall PhoneRing_CopyTilemapAtOnce
 	ret
 
-HangUp_Wait20Frames:
-	jr Phone_Wait20Frames
-
-Phone_Wait20Frames:
-	ld c, 20
-	call DelayFrames
-	farcall PhoneRing_CopyTilemapAtOnce
-	ret
-
-Function90363:
-	push bc
-	call Phone_CallerTextbox
-	hlcoord 1, 1
-	ld [hl], "☎"
-	inc hl
-	inc hl
-	ld d, h
-	ld e, l
-	pop bc
-	jp Function90380
-
 Phone_CallerTextbox:
 	hlcoord 0, 0
 	lb bc, 2, SCREEN_WIDTH - 2
 	jp Textbox
-
-Function90380:
-	ld h, d
-	ld l, e
-	ld a, b
-	call GetCallerTrainerClass
-	jp GetCallerName
 
 CheckCanDeletePhoneNumber:
 	ld a, c

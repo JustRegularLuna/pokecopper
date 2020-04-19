@@ -998,7 +998,7 @@ DecorationDesc_RightOrnament:
 
 DecorationDesc_Console:
 	ld a, [wDecoConsole]
-	jr DecorationDesc_OrnamentOrConsole
+	; fallthrough
 
 DecorationDesc_OrnamentOrConsole:
 	ld c, a
@@ -1095,7 +1095,7 @@ ToggleDecorationsVisibility:
 	ld de, EVENT_PLAYERS_HOUSE_2F_BIG_DOLL
 	ld hl, wVariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS
 	ld a, [wDecoBigDoll]
-	jp ToggleDecorationVisibility
+	; fallthrough
 
 ToggleDecorationVisibility:
 	and a

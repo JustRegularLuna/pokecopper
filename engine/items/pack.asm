@@ -709,7 +709,7 @@ BattlePack:
 	lb bc, PACKSTATE_INITITEMSPOCKET, PACKSTATE_INITKEYITEMSPOCKET ; left, right
 	call Pack_InterpretJoypad
 	ret c
-	jp ItemSubmenu
+	; fallthrough
 
 ItemSubmenu:
 	farcall CheckItemContext

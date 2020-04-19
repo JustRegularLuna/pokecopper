@@ -2196,7 +2196,7 @@ GoodRodEffect:
 
 SuperRodEffect:
 	ld e, $2
-	jr UseRod
+	; fallthrough
 
 UseRod:
 	farcall FishFunction

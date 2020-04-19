@@ -1,7 +1,6 @@
 SelectQuantityToToss:
 	ld hl, TossItem_MenuHeader
-	call LoadMenuHeader
-	jp Toss_Sell_Loop
+	jr Toss_Sell_Loop
 
 SelectQuantityToBuy:
 	farcall GetItemPrice
@@ -11,8 +10,7 @@ RooftopSale_SelectQuantityToBuy:
 	ld a, e
 	ld [wBuffer2], a
 	ld hl, BuyItem_MenuHeader
-	call LoadMenuHeader
-	jp Toss_Sell_Loop
+	jr Toss_Sell_Loop
 
 SelectQuantityToSell:
 	farcall GetItemPrice
@@ -21,10 +19,10 @@ SelectQuantityToSell:
 	ld a, e
 	ld [wBuffer2], a
 	ld hl, SellItem_MenuHeader
-	call LoadMenuHeader
-	jp Toss_Sell_Loop
+	; fallthrough
 
 Toss_Sell_Loop:
+	call LoadMenuHeader
 	ld a, 1
 	ld [wItemQuantityChangeBuffer], a
 .loop

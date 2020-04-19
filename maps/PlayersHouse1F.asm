@@ -107,6 +107,7 @@ MeetMomScript:
 	promptbutton
 	givepoke PIKACHU, 5, BERRY
 	closetext
+	setevent EVENT_GOT_STARTER_POKEMON
 	setflag ENGINE_POKEDEX
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue .FromRight

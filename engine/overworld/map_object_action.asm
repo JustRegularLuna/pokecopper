@@ -36,8 +36,8 @@ SetFacingStandAction:
 	add hl, bc
 	ld a, [hl]
 	and 1
-	jr nz, SetFacingStepAction
-	jp SetFacingCurrent
+	jp z, SetFacingCurrent
+	; fallthrough
 
 SetFacingStepAction:
 	ld hl, OBJECT_FLAGS1
