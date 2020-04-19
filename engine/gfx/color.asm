@@ -364,11 +364,13 @@ CGB_ApplyPartyMenuHPPals:
 	jp FillBoxCGB
 
 InitPartyMenuOBPals:
-	ld hl, PartyMenuOBPals
 	ld de, wOBPals1
-	ld bc, 2 palettes
-	ld a, BANK(wOBPals1)
-	jp FarCopyWRAM
+	ld a, PAL_MEWMON
+	call GetPredefPal
+	push hl
+	call _CGB_MapPals.LoadHLOBPaletteIntoDE
+	pop hl
+	jp _CGB_MapPals.LoadHLOBPaletteIntoDE
 
 GetBattlemonBackpicPalettePointer:
 	push de
@@ -809,12 +811,6 @@ SGBBorder:
 INCBIN "gfx/sgb/sgb_border.2bpp"
 
 INCLUDE "data/pokemon/palettes.asm"
-
-PartyMenuBGPalette:
-INCLUDE "gfx/stats/party_menu_bg.pal"
-
-PartyMenuOBPals:
-INCLUDE "gfx/stats/party_menu_ob.pal"
 
 SlotMachinePals:
 INCLUDE "gfx/slots/slots.pal"

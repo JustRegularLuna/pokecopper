@@ -143,18 +143,11 @@ FillBattleObjectPals:
 	jp LoadHLPaletteIntoDE
 
 InitPartyMenuBGPal7:
-	ld hl, PartyMenuBGPalette
+; TODO: Is Pal 7 actually needed?
 	ld de, wBGPals1 palette 7
-	ld bc, 1 palettes
-	ld a, BANK(wBGPals1)
-	jp FarCopyWRAM
-
-InitPartyMenuBGPal0:
-	ld hl, PartyMenuBGPalette
-	ld de, wBGPals1 palette 0
-	ld bc, 1 palettes
-	ld a, BANK(wBGPals1)
-	jp FarCopyWRAM
+	ld a, PAL_MEWMON
+	call GetPredefPal
+	jp LoadHLPaletteIntoDE
 
 _CGB_PokegearPals:
 	ld a, PAL_POKEGEAR
@@ -440,7 +433,6 @@ endr
 _CGB_PartyMenu:
 	ld hl, PalPacket_PartyMenu + 1
 	call CopyFourPalettes
-	call InitPartyMenuBGPal0
 	call InitPartyMenuBGPal7
 	call InitPartyMenuOBPals
 	jp ApplyAttrmap
@@ -652,11 +644,7 @@ _CGB_PlayerOrMonFrontpicPals:
 _CGB_TradeTube:
 	ld hl, PalPacket_TradeTube + 1
 	call CopyFourPalettes
-	ld hl, PartyMenuOBPals
-	ld de, wOBPals1
-	ld bc, 1 palettes
-	ld a, BANK(wOBPals1)
-	call FarCopyWRAM
+	call InitPartyMenuOBPals
 	ld de, wOBPals1 palette 7
 	ld a, PAL_BLUEMON
 	call GetPredefPal
