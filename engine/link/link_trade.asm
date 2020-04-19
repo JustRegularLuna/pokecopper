@@ -105,17 +105,10 @@ LinkComms_LoadPleaseWaitTextboxBorderGFX:
 	jp Get2bpp
 
 LoadTradeRoomBGPals:
-	ld hl, TradeRoomPalette
-	ld de, wBGPals1 palette PAL_BG_GREEN
-	ld bc, 6 palettes
-	ld a, BANK(wBGPals1)
-	call FarCopyWRAM
+	ld b, SCGB_DIPLOMA
+	call GetSGBLayout
 	farcall ApplyPals
 	ret
-
-TradeRoomPalette:
-INCLUDE "gfx/trade/border.pal"
-
 
 Function16d6ae:
 	ld hl, Tilemap_CableTradeBorder
