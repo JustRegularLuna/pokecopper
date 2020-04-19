@@ -499,14 +499,6 @@ INCLUDE "data/sprite_anims/framesets.asm"
 
 INCLUDE "data/sprite_anims/oam.asm"
 
-Sprites_Cosine:
-; a = d * cos(a * pi/32)
-	add %010000 ; cos(x) = sin(x + pi/2)
-	; fallthrough
-Sprites_Sine:
-; a = d * sin(a * pi/32)
-	calc_sine_wave
-
 AnimateEndOfExpBar:
 	ld de, EndOfExpBarGFX
 	ld hl, vTiles0 tile $00
@@ -542,7 +534,7 @@ AnimateEndOfExpBar:
 
 	push de
 	push hl
-	call Sprites_Sine
+	call Sine
 	pop hl
 	pop de
 	add 13 * TILE_WIDTH
@@ -551,7 +543,7 @@ AnimateEndOfExpBar:
 	pop af
 	push de
 	push hl
-	call Sprites_Cosine
+	call Cosine
 	pop hl
 	pop de
 	add 10 * TILE_WIDTH + 4

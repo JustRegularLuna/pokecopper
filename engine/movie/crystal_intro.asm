@@ -234,11 +234,10 @@ GameFreakLogoScene2:
 	jr nc, .asm_e4723
 	add %100000
 .asm_e4723
-	ld e, a
-	farcall BattleAnim_Sine_e
+	call Sine
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
-	ld [hl], e
+	ld [hl], a
 	ld hl, SPRITEANIMSTRUCT_0D
 	add hl, bc
 	ld a, [hl]

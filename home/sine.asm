@@ -5,5 +5,13 @@ Cosine::
 Sine::
 ; a = d * sin(a * pi/32)
 	ld e, a
-	homecall _Sine
+	ldh a, [hROMBank]
+	push af
+	ld a, BANK(_Sine)
+	rst Bankswitch
+	call _Sine
+	ld e, a
+	pop af
+	rst Bankswitch
+	ld a, e
 	ret
