@@ -516,11 +516,6 @@ PokeBallEffect:
 	ld a, [wBattleType]
 	cp BATTLETYPE_CONTEST
 	jp z, .catch_bug_contest_mon
-	cp BATTLETYPE_CELEBI
-	jr nz, .not_celebi
-	ld hl, wBattleResult
-	set BATTLERESULT_CAUGHT_CELEBI, [hl]
-.not_celebi
 
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH

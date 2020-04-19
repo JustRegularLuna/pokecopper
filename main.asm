@@ -178,7 +178,6 @@ SECTION "Crystal Features 1", ROMX
 
 INCLUDE "engine/menus/init_gender.asm"
 INCLUDE "engine/items/pack_kris.asm"
-INCLUDE "engine/events/celebi.asm"
 INCLUDE "engine/menus/main_menu.asm"
 INCLUDE "engine/pokemon/search.asm"
 

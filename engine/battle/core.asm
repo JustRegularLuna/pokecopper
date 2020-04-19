@@ -3486,8 +3486,6 @@ TryToRunAwayFromBattle:
 	jp z, .can_escape
 	cp BATTLETYPE_TRAP
 	jp z, .cant_escape
-	cp BATTLETYPE_CELEBI
-	jp z, .cant_escape
 	cp BATTLETYPE_SHINY
 	jp z, .cant_escape
 	cp BATTLETYPE_SUICUNE
@@ -8681,9 +8679,6 @@ BattleStartMessage:
 .NotFishing:
 	ld hl, PokemonFellFromTreeText
 	cp BATTLETYPE_TREE
-	jr z, .PlaceBattleStartText
-	ld hl, WildCelebiAppearedText
-	cp BATTLETYPE_CELEBI
 	jr z, .PlaceBattleStartText
 	ld hl, WildPokemonAppearedText
 

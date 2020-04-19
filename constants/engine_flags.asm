@@ -89,8 +89,6 @@
 	const ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
 ; wPlayerGender
 	const ENGINE_PLAYER_IS_FEMALE
-; wCelebiEvent
-	const ENGINE_FOREST_IS_RESTLESS
 ; wDailyRematchFlags
 	const ENGINE_JACK
 	const ENGINE_HUEY

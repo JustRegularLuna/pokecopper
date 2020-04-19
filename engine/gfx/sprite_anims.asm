@@ -34,7 +34,6 @@ DoAnimFrame:
 	dw .FlyFrom
 	dw .FlyLeaf
 	dw .FlyTo
-	dw .Celebi
 
 .PartyMon
 	ld a, [wMenuCursorY]
@@ -495,10 +494,6 @@ DoAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld [hl], a
-	ret
-
-.Celebi
-	farcall UpdateCelebiPosition
 	ret
 
 .AnonymousJumptable:

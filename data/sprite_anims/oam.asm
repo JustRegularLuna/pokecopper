@@ -41,8 +41,6 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_1x1_Palette0             ; SPRITE_ANIM_OAMSET_EGG_CRACK
 	dbw $01, .OAMData_1x1_Palette0             ; SPRITE_ANIM_OAMSET_EGG_HATCH
 	dbw $04, .OAMData_Tree                     ; SPRITE_ANIM_OAMSET_HEADBUTT_TREE_2
-	dbw $00, .OAMData_Celebi                   ; SPRITE_ANIM_OAMSET_CELEBI_1
-	dbw $04, .OAMData_Celebi                   ; SPRITE_ANIM_OAMSET_CELEBI_2
 	dbw $d0, .OAMData_GameFreakLogo1_3         ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_1
 	dbw $d3, .OAMData_GameFreakLogo1_3         ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_2
 	dbw $d6, .OAMData_GameFreakLogo1_3         ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_3
@@ -245,13 +243,6 @@ SpriteAnimOAMData:
 	dbsprite  1, -1,  0,  0, $01, PAL_OW_TREE
 	dbsprite -2,  0,  0,  0, $02, PAL_OW_TREE
 	dbsprite  1,  0,  0,  0, $03, PAL_OW_TREE
-
-.OAMData_Celebi:
-	db 4
-	dbsprite -1, -1,  0,  0, $00, PAL_OW_GREEN
-	dbsprite  0, -1,  0,  0, $01, PAL_OW_GREEN
-	dbsprite -1,  0,  0,  0, $02, PAL_OW_GREEN
-	dbsprite  0,  0,  0,  0, $03, PAL_OW_GREEN
 
 .OAMData_GameFreakLogo1_3:
 	db 9

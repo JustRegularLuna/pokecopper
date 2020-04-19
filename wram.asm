@@ -1534,7 +1534,6 @@ wVramState:: ; d0ed
 
 wBattleResult:: ; d0ee
 ; WIN, LOSE, or DRAW
-; bit 6: caught celebi
 ; bit 7: box full
 	db
 wUsingItemWithSelect:: db ; d0ef
@@ -2158,11 +2157,7 @@ wCurBox:: db ; db72
 ; 8 chars + $50
 wBoxNames:: ds BOX_NAME_LENGTH * NUM_BOXES ; db75
 
-wCelebiEvent:: ; dbf3
-; bit 2: forest is restless
-	db
-
-	ds 1
+	ds 2
 
 wBikeFlags:: ; dbf5
 ; bit 0: using strength

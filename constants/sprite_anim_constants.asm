@@ -45,7 +45,6 @@ NUM_SPRITE_ANIM_STRUCTS EQU 10 ; see wSpriteAnimationStructs
 	const SPRITE_ANIM_INDEX_EGG_CRACK                ; 19
 	const SPRITE_ANIM_INDEX_HEADBUTT                 ; 1b
 	const SPRITE_ANIM_INDEX_EGG_HATCH                ; 1c
-	const SPRITE_ANIM_INDEX_CELEBI                   ; 2c
 
 ; DoAnimFrame.Jumptable indexes (see engine/gfx/sprite_anims.asm)
 	const_def
@@ -70,7 +69,6 @@ NUM_SPRITE_ANIM_STRUCTS EQU 10 ; see wSpriteAnimationStructs
 	const SPRITE_ANIM_SEQ_FLY_FROM                ; 16
 	const SPRITE_ANIM_SEQ_FLY_LEAF                ; 17
 	const SPRITE_ANIM_SEQ_FLY_TO                  ; 18
-	const SPRITE_ANIM_SEQ_CELEBI                  ; 1f
 
 ; SpriteAnimFrameData indexes (see data/sprite_anims/framesets.asm)
 	const_def
@@ -107,8 +105,6 @@ NUM_SPRITE_ANIM_STRUCTS EQU 10 ; see wSpriteAnimationStructs
 	const SPRITE_ANIM_FRAMESET_EGG_HATCH_3              ; 22
 	const SPRITE_ANIM_FRAMESET_EGG_HATCH_4              ; 23
 	const SPRITE_ANIM_FRAMESET_HEADBUTT                 ; 25
-	const SPRITE_ANIM_FRAMESET_CELEBI_LEFT              ; 40
-	const SPRITE_ANIM_FRAMESET_CELEBI_RIGHT             ; 41
 
 ; SpriteAnimOAMData indexes (see data/sprite_anims/oam.asm)
 	const_def
@@ -152,8 +148,6 @@ NUM_SPRITE_ANIM_STRUCTS EQU 10 ; see wSpriteAnimationStructs
 	const SPRITE_ANIM_OAMSET_EGG_CRACK                  ; 54
 	const SPRITE_ANIM_OAMSET_EGG_HATCH                  ; 55
 	const SPRITE_ANIM_OAMSET_HEADBUTT_TREE_2            ; 5b
-	const SPRITE_ANIM_OAMSET_CELEBI_1                   ; 7f
-	const SPRITE_ANIM_OAMSET_CELEBI_2                   ; 80
 	const SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_1           ; 81
 	const SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_2           ; 82
 	const SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_3           ; 83
