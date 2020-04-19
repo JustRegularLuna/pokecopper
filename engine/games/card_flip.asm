@@ -6,7 +6,6 @@ CARDFLIP_DECK_SIZE EQU 4 * 6
 _CardFlip:
 	ld hl, wOptions
 	set NO_TEXT_SCROLL, [hl]
-	call ClearBGPalettes
 	call ClearTilemap
 	call ClearSprites
 	ld de, MUSIC_NONE
@@ -36,7 +35,6 @@ _CardFlip:
 
 	call CardFlip_ShiftDigitsUpOnePixel
 	call CardFlip_InitTilemap
-	call CardFlip_InitAttrPals
 	call EnableLCD
 	call WaitBGMap2
 	ld a, %11100100
@@ -1507,21 +1505,6 @@ ENDM
 	dbsprite   1,  0, 0, 0, $00, 0 | X_FLIP | PRIORITY
 	dbsprite   0,  1, 0, 0, $00, 0 | Y_FLIP | PRIORITY
 	dbsprite   1,  1, 0, 0, $00, 0 | X_FLIP | Y_FLIP | PRIORITY
-
-CardFlip_InitAttrPals:
-	ldh a, [hCGB]
-	and a
-	ret z
-
-	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	xor a
-	call ByteFill
-
-	; since it doesn't use special pals on non-color gameboys
-	ld b, SCGB_MAPPALS
-	call GetSGBLayout
-	ret
 
 CardFlipLZ03:
 INCBIN "gfx/card_flip/card_flip_3.2bpp.lz"
