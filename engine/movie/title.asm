@@ -147,7 +147,6 @@ _TitleScreen:
 
 ; LY/SCX trickery starts here
 
-	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wLYOverrides)
 	ldh [rSVBK], a
