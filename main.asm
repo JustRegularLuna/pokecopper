@@ -378,12 +378,6 @@ INCLUDE "engine/overworld/warp_connection.asm"
 INCLUDE "engine/battle/used_move_text.asm"
 
 
-SECTION "Intro Logo", ROMX
-
-IntroLogoGFX:
-INCBIN "gfx/intro/logo.2bpp.lz"
-
-
 SECTION "Title", ROMX
 
 INCLUDE "engine/movie/title.asm"

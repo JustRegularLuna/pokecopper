@@ -160,7 +160,6 @@ ROMX $3e
 ROMX $3f
 	"bank3F"
 ROMX $42
-	"Intro Logo"
 	"Credits"
 ROMX $43
 	"Title"

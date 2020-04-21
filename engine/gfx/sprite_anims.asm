@@ -119,7 +119,7 @@ DoAnimFrame:
 	ret
 
 .GameFreakLogo:
-	farcall GameFreakLogoJumper
+	; TODO: Maybe add an animation
 	ret
 
 .SlotsGolem:

@@ -613,18 +613,17 @@ _CGB_GamefreakLogo:
 	ld a, PAL_GAMEFREAK_LOGO_BG
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
-	ld hl, .Palette
+	ld a, PAL_GAMEFREAK_LOGO_OB
+	call GetPredefPal
+	push hl
 	ld de, wOBPals1
 	call LoadHLPaletteIntoDE
-	ld hl, .Palette
+	pop hl
 	ld de, wOBPals1 palette 1
 	call LoadHLPaletteIntoDE
 	call WipeAttrmap
 	call ApplyAttrmap
 	jp ApplyPals
-
-.Palette:
-INCLUDE "gfx/splash/logo.pal"
 
 _CGB_PlayerOrMonFrontpicPals:
 	ld de, wBGPals1
