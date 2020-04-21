@@ -2557,10 +2557,10 @@ LoadTownMapGFX:
 	jp DecompressRequest2bpp
 
 JohtoMap:
-INCBIN "gfx/pokegear/johto.map"
+INCBIN "gfx/pokegear/johto.tilemap"
 
 KantoMap:
-INCBIN "gfx/pokegear/kanto.map"
+INCBIN "gfx/pokegear/kanto.tilemap"
 
 PokedexNestIconGFX:
 INCBIN "gfx/pokegear/dexmap_nest_icon.2bpp"
