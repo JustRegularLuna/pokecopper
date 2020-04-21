@@ -4,7 +4,7 @@ treemon_map: MACRO
 ENDM
 
 TreeMonMaps:
-	treemon_map NEW_BARK_TOWN,        TREEMON_SET_CITY
+	treemon_map SILENT_HILLS,         TREEMON_SET_CITY
 	db -1
 
 RockMonMaps:

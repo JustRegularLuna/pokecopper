@@ -70,14 +70,13 @@ const_value = -1
 ; kanto
 	const SPAWN_INDIGO
 ; johto
-	const SPAWN_NEW_BARK
-	const SPAWN_FAST_SHIP
+	const SPAWN_SILENT
 NUM_SPAWNS EQU const_value
 
 ; Flypoints indexes (see data/maps/flypoints.asm)
 	const_def
 ; johto
-	const FLY_NEW_BARK
+	const FLY_SILENT
 	const FLY_N_A
 ; kanto
 KANTO_FLYPOINT EQU const_value

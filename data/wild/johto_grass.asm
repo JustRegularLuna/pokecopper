@@ -2,7 +2,7 @@
 
 JohtoGrassWildMons:
 
-	map_id NEW_BARK_TOWN
+	map_id SILENT_HILLS
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 2, PIDGEY

@@ -8,7 +8,7 @@ INCLUDE "maps/TimeCapsule.asm"
 
 SECTION "Map Scripts 2", ROMX
 
-INCLUDE "maps/NewBarkTown.asm"
+INCLUDE "maps/SilentHills.asm"
 INCLUDE "maps/PlayersHouse1F.asm"
 INCLUDE "maps/PlayersHouse2F.asm"
 

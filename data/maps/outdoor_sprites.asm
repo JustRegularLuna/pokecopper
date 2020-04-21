@@ -4,7 +4,7 @@
 OutdoorSprites:
 ; entries correspond to map groups
 	dw CableClubGroupSprites
-	dw NewBarkGroupSprites
+	dw SilentGroupSprites
 	dw PokemonLeagueGroupSprites
 
 CableClubGroupSprites:
@@ -12,8 +12,8 @@ CableClubGroupSprites:
 	; 0 of 9 walking sprites
 	db 0 ; end
 
-NewBarkGroupSprites:
-; NewBarkTown
+SilentGroupSprites:
+; SilentHills
 	; 0 of 9 walking sprites
 	db 0 ; end
 

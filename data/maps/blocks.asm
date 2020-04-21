@@ -13,8 +13,8 @@ Colosseum_Blocks:
 
 SECTION "Map Blocks 2", ROMX
 
-NewBarkTown_Blocks:
-	INCBIN "maps/NewBarkTown.blk"
+SilentHills_Blocks:
+	INCBIN "maps/SilentHills.blk"
 
 PlayersHouse1F_Blocks:
 	INCBIN "maps/PlayersHouse1F.blk"

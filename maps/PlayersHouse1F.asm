@@ -7,8 +7,8 @@ PlayersHouse1F_MapScripts:
 
 PlayersHouse1F_MapEvents:
 	db 3 ; warp events
-	warp_event  6,  7, NEW_BARK_TOWN, 1
-	warp_event  7,  7, NEW_BARK_TOWN, 1
+	warp_event  6,  7, SILENT_HILLS, 1
+	warp_event  7,  7, SILENT_HILLS, 1
 	warp_event  9,  0, PLAYERS_HOUSE_2F, 1
 
 	db 2 ; coord events

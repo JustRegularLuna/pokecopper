@@ -128,8 +128,6 @@ Pokegear_LoadGFX:
 	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
-	cp LANDMARK_FAST_SHIP
-	jr z, .ssaqua
 	farcall GetPlayerIcon
 	push de
 	ld h, d
@@ -148,15 +146,6 @@ Pokegear_LoadGFX:
 	ld de, vTiles0 tile $14
 	ld bc, 4 tiles
 	jp FarCopyBytes
-
-.ssaqua
-	ld hl, FastShipGFX
-	ld de, vTiles0 tile $10
-	ld bc, 8 tiles
-	jp CopyBytes
-
-FastShipGFX:
-INCBIN "gfx/pokegear/fast_ship.2bpp"
 
 InitPokegearModeIndicatorArrow:
 	depixel 4, 2, 4, 0
@@ -205,8 +194,6 @@ TownMap_InitCursorAndPlayerIconPositions:
 	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
-	cp LANDMARK_FAST_SHIP
-	jr z, .FastShip
 	cp LANDMARK_SPECIAL
 	jr nz, .LoadLandmark
 	ld a, [wBackupMapGroup]
@@ -216,12 +203,6 @@ TownMap_InitCursorAndPlayerIconPositions:
 	call GetWorldMapLocation
 .LoadLandmark:
 	ld [wPokegearMapPlayerIconLandmark], a
-	ld [wPokegearMapCursorLandmark], a
-	ret
-
-.FastShip:
-	ld [wPokegearMapPlayerIconLandmark], a
-	ld a, LANDMARK_NEW_BARK_TOWN
 	ld [wPokegearMapCursorLandmark], a
 	ret
 
@@ -313,8 +294,6 @@ InitPokegearTilemap:
 
 .Map:
 	ld a, [wPokegearMapPlayerIconLandmark]
-	cp LANDMARK_FAST_SHIP
-	jr z, .johto
 	cp KANTO_LANDMARK
 	jr nc, .kanto
 .johto
@@ -515,8 +494,6 @@ Pokegear_UpdateClock:
 
 PokegearMap_CheckRegion:
 	ld a, [wPokegearMapPlayerIconLandmark]
-	cp LANDMARK_FAST_SHIP
-	jr z, .johto
 	cp KANTO_LANDMARK
 	jr nc, .kanto
 .johto
@@ -545,12 +522,11 @@ PokegearMap_Init:
 	ret
 
 PokegearMap_KantoMap:
-	call TownMap_GetKantoLandmarkLimits
+	lb de, LANDMARK_CERULEAN_CAVE, LANDMARK_PALLET_TOWN
 	jr PokegearMap_ContinueMap
 
 PokegearMap_JohtoMap:
-; TODO: Change these to the last and first landmarks of the Johto region.
-	lb de, LANDMARK_SILVER_CAVE, LANDMARK_NEW_BARK_TOWN
+	lb de, LANDMARK_TIDAL_CAVE, LANDMARK_SILENT_HILLS
 PokegearMap_ContinueMap:
 	ld hl, hJoyLast
 	ld a, [hl]
@@ -694,18 +670,6 @@ PokegearMap_UpdateCursorPosition:
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
 	ld [hl], d
-	ret
-
-TownMap_GetKantoLandmarkLimits:
-; TODO: Change these to the last and first landmarks of the Kanto region, depending on postgame.
-	ld a, [wStatusFlags]
-	bit STATUSFLAGS_HALL_OF_FAME_F, a
-	jr z, .not_hof
-	lb de, LANDMARK_ROUTE_28, LANDMARK_PALLET_TOWN
-	ret
-
-.not_hof
-	lb de, LANDMARK_ROUTE_28, LANDMARK_VICTORY_ROAD
 	ret
 
 PokegearRadio_Init:
@@ -1449,11 +1413,11 @@ RadioChannels:
 	bit STATUSFLAGS_ROCKET_SIGNAL_F, a
 	jr z, .NoSignal
 	ld a, [wPokegearMapPlayerIconLandmark]
-	cp LANDMARK_MAHOGANY_TOWN
+	cp LANDMARK_CEDAR_TOWN
 	jr z, .ok
-	cp LANDMARK_ROUTE_43
+	cp LANDMARK_JOHTO_ROUTE_17
 	jr z, .ok
-	cp LANDMARK_LAKE_OF_RAGE
+	cp LANDMARK_WISTERIA_TOWN
 	jr nz, .NoSignal
 .ok
 	jp LoadStation_EvolutionRadio
@@ -1462,12 +1426,10 @@ RadioChannels:
 	jp NoRadioStation
 
 .InJohto:
-; if in Johto or on the S.S. Aqua, set carry
+; if in Johto, set carry
 
 ; otherwise clear carry
 	ld a, [wPokegearMapPlayerIconLandmark]
-	cp LANDMARK_FAST_SHIP
-	jr z, .johto
 	cp KANTO_LANDMARK
 	jr c, .johto
 .kanto
@@ -1714,7 +1676,7 @@ _TownMap:
 	jr .resume
 
 .kanto
-	call TownMap_GetKantoLandmarkLimits
+	lb de, LANDMARK_CERULEAN_CAVE, LANDMARK_PALLET_TOWN
 	call .loop
 
 .resume
@@ -2154,7 +2116,7 @@ FlyMap:
 
 ; TODO: Choose the appropriate start and end flypoints.
 ; Start from New Bark Town
-	ld a, FLY_NEW_BARK
+	ld a, FLY_SILENT
 	ld [wTownMapPlayerIconLandmark], a
 ; Flypoints begin at New Bark Town...
 	ld [wStartFlypoint], a
@@ -2203,7 +2165,7 @@ FlyMap:
 ; If Indigo Plateau hasn't been visited, we use Johto's map instead
 
 ; Start from New Bark Town
-	ld a, FLY_NEW_BARK
+	ld a, FLY_SILENT
 	ld [wTownMapPlayerIconLandmark], a
 ; Flypoints begin at New Bark Town...
 	ld [wStartFlypoint], a
@@ -2241,7 +2203,7 @@ Pokedex_GetArea:
 	ld hl, vTiles0 tile $7f
 	lb bc, BANK(PokedexNestIconGFX), 1
 	call Request2bpp
-	call .GetPlayerOrFastShipIcon
+	call .GetPlayerIcon
 	ld hl, vTiles0 tile $78
 	ld c, 4
 	call Request2bpp
@@ -2446,8 +2408,6 @@ Pokedex_GetArea:
 ; not in the same region as what's currently
 ; on the screen.
 	ld a, [wTownMapPlayerIconLandmark]
-	cp LANDMARK_FAST_SHIP
-	jr z, .johto
 	cp KANTO_LANDMARK
 	jr c, .johto
 .kanto
@@ -2472,16 +2432,8 @@ Pokedex_GetArea:
 	scf
 	ret
 
-.GetPlayerOrFastShipIcon:
-	ld a, [wTownMapPlayerIconLandmark]
-	cp LANDMARK_FAST_SHIP
-	jr z, .FastShip
+.GetPlayerIcon:
 	farcall GetPlayerIcon
-	ret
-
-.FastShip:
-	ld de, FastShipGFX
-	ld b, BANK(FastShipGFX)
 	ret
 
 TownMapBGUpdate:
@@ -2605,10 +2557,10 @@ LoadTownMapGFX:
 	jp DecompressRequest2bpp
 
 JohtoMap:
-INCBIN "gfx/pokegear/johto.bin"
+INCBIN "gfx/pokegear/johto.map"
 
 KantoMap:
-INCBIN "gfx/pokegear/kanto.bin"
+INCBIN "gfx/pokegear/kanto.map"
 
 PokedexNestIconGFX:
 INCBIN "gfx/pokegear/dexmap_nest_icon.2bpp"

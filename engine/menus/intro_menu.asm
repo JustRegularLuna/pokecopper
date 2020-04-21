@@ -311,13 +311,13 @@ Continue:
 	jp FinishContinueFunction
 
 .SpawnAfterE4:
-	ld a, SPAWN_NEW_BARK
+	ld a, SPAWN_SILENT
 	ld [wDefaultSpawnpoint], a
 	call PostCreditsSpawn
 	jp FinishContinueFunction
 
 SpawnAfterRed:
-	ld a, SPAWN_NEW_BARK
+	ld a, SPAWN_SILENT
 	ld [wDefaultSpawnpoint], a
 
 PostCreditsSpawn:

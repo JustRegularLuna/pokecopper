@@ -35,7 +35,7 @@ ENDM
 
 	newgroup                                                      ;  2
 
-	map_const NEW_BARK_TOWN,                               10,  9 ;  1
+	map_const SILENT_HILLS,                                10,  9 ;  1
 	map_const PLAYERS_HOUSE_1F,                             5,  4 ;  2
 	map_const PLAYERS_HOUSE_2F,                             4,  3 ;  3
 

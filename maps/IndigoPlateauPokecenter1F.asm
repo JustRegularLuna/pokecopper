@@ -7,8 +7,8 @@ IndigoPlateauPokecenter1F_MapScripts:
 
 IndigoPlateauPokecenter1F_MapEvents:
 	db 4 ; warp events
-	warp_event  5, 13, NEW_BARK_TOWN, 2
-	warp_event  6, 13, NEW_BARK_TOWN, 2
+	warp_event  5, 13, SILENT_HILLS, 2
+	warp_event  6, 13, SILENT_HILLS, 2
 	warp_event  0, 13, POKECENTER_2F, 1
 	warp_event 14,  3, WILLS_ROOM, 1
 
