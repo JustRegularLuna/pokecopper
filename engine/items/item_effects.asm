@@ -7,9 +7,7 @@ _DoItemEffect::
 	ld [wItemEffectSucceeded], a
 	ld a, [wCurItem]
 	dec a
-	ld hl, ItemEffects
-	rst JumpTable
-	ret
+	call AnonJumpTable
 
 ItemEffects:
 ; entries correspond to item ids
@@ -1423,10 +1421,7 @@ GetItemHealingAction:
 INCLUDE "data/items/heal_status.asm"
 
 StatusHealer_Jumptable:
-	ld hl, .dw
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .dw
 	dw StatusHealer_ClearPalettes
 	dw StatusHealer_NoEffect

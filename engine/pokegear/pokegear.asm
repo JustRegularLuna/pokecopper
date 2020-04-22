@@ -396,11 +396,7 @@ Pokegear_FinishTilemap:
 	ret
 
 PokegearJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 ; entries correspond to POKEGEARSTATE_* constants
 	dw PokegearClock_Init
@@ -1099,8 +1095,7 @@ PokegearPhoneContactSubmenu:
 	and B_BUTTON
 	jr nz, .Cancel
 	ld a, [wPokegearPhoneSubmenuCursor]
-	rst JumpTable
-	ret
+	jp JumpTable
 
 .Cancel:
 	ld hl, PokegearAskWhoCallText

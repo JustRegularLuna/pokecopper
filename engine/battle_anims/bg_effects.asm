@@ -68,9 +68,7 @@ DoBattleBGEffectFunction:
 	ld hl, BG_EFFECT_STRUCT_FUNCTION
 	add hl, bc
 	ld a, [hl]
-	ld hl, BattleBGEffects
-	rst JumpTable
-	ret
+	call AnonJumpTable
 
 BattleBGEffects:
 ; entries correspond to ANIM_BG_* constants
@@ -136,9 +134,7 @@ BattleBGEffects_AnonJumptable:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
 	ld a, [hl]
-	pop hl
-	rst JumpTable
-	ret
+	jp AnonJumpTable
 
 BattleBGEffects_IncrementJumptable:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX

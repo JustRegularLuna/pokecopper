@@ -33,11 +33,7 @@ Pack:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 ; entries correspond to PACKSTATE_* constants
 	dw .InitGFX            ;  0
@@ -145,8 +141,7 @@ Pack:
 	ret c
 	ld a, [wMenuCursorY]
 	dec a
-	rst JumpTable
-	ret
+	jp JumpTable
 
 .MenuHeader1:
 	db MENU_BACKUP_TILES ; flags
@@ -292,8 +287,7 @@ Pack:
 	ret c
 	ld a, [wMenuCursorY]
 	dec a
-	rst JumpTable
-	ret
+	jp JumpTable
 
 MenuHeader_UsableKeyItem:
 	db MENU_BACKUP_TILES ; flags
@@ -412,10 +406,7 @@ Jumptable_GiveTossQuit:
 UseItem:
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
-	ld hl, .dw
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .dw
 ; entries correspond to ITEMMENU_* constants
 	dw .Oak     ; ITEMMENU_NOUSE
@@ -589,11 +580,7 @@ BattlePack:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 ; entries correspond to PACKSTATE_* constants
 	dw .InitGFX            ;  0
@@ -733,8 +720,7 @@ TMHMSubmenu:
 	ret c
 	ld a, [wMenuCursorY]
 	dec a
-	rst JumpTable
-	ret
+	jp JumpTable
 
 .UsableMenuHeader:
 	db MENU_BACKUP_TILES ; flags
@@ -769,10 +755,7 @@ TMHMSubmenu:
 .Use:
 	farcall CheckItemContext
 	ld a, [wItemAttributeParamBuffer]
-	ld hl, .ItemFunctionJumptable
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .ItemFunctionJumptable:
 ; entries correspond to ITEMMENU_* constants
 	dw .Oak         ; ITEMMENU_NOUSE
@@ -862,11 +845,7 @@ DepositSellPack:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 ; entries correspond to *_POCKET constants
 	dw .ItemsPocket
@@ -1004,11 +983,7 @@ TutorialPack:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .dw
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .dw
 ; entries correspond to *_POCKET constants
 	dw .Items

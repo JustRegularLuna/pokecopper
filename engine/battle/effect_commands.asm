@@ -4798,9 +4798,7 @@ BattleCommand_TriStatusChance:
 	and %11
 	jr z, .loop
 	dec a
-	ld hl, .ptrs
-	rst JumpTable
-	ret
+	call AnonJumpTable
 
 .ptrs
 	dw BattleCommand_ParalyzeTarget ; paralyze

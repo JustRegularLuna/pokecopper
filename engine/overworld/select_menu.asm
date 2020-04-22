@@ -20,10 +20,7 @@ CheckRegisteredItem:
 	and REGISTERED_POCKET
 	rlca
 	rlca
-	ld hl, .Pockets
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Pockets:
 ; entries correspond to *_POCKET constants
 	dw .CheckItem
@@ -106,10 +103,7 @@ CheckRegisteredItem:
 UseRegisteredItem:
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
-	ld hl, .SwitchTo
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .SwitchTo:
 ; entries correspond to ITEMMENU_* constants
 	dw .CantUse

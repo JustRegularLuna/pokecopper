@@ -136,10 +136,7 @@ TrainerBattlePokeballTiles:
 INCBIN "gfx/overworld/trainer_battle_pokeball_tiles.2bpp"
 
 BattleTransitionJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
+	call StandardAnonJumpTable
 
 .Jumptable
 	dw StartTrainerBattle_DetermineWhichAnimation ; 00

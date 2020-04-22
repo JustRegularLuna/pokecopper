@@ -2,9 +2,7 @@ DoBattleAnimFrame:
 	ld hl, BATTLEANIMSTRUCT_FUNCTION
 	add hl, bc
 	ld a, [hl]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
+	call AnonJumpTable
 
 .Jumptable:
 ; entries correspond to BATTLEANIMFUNC_* constants
@@ -3948,9 +3946,7 @@ BattleAnim_AnonJumptable:
 	ld hl, BATTLEANIMSTRUCT_ANON_JT_INDEX
 	add hl, bc
 	ld a, [hl]
-	pop hl
-	rst JumpTable
-	ret
+	jp AnonJumpTable
 
 BattleAnim_IncAnonJumptableIndex:
 	ld hl, BATTLEANIMSTRUCT_ANON_JT_INDEX

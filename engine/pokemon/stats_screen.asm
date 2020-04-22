@@ -51,7 +51,7 @@ StatsScreenMain:
 	ld a, [wJumptableIndex]
 	and $ff ^ (1 << 7)
 	ld hl, StatsScreenPointerTable
-	rst JumpTable
+	call JumpTable
 	call StatsScreen_WaitAnim
 	ld a, [wJumptableIndex]
 	bit 7, a
@@ -439,10 +439,7 @@ StatsScreen_LoadGFX:
 	ld a, [wcf64]
 	maskbits NUM_STAT_PAGES
 	dec a
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Jumptable:
 ; entries correspond to *_PAGE constants
 	dw .PinkPage
@@ -754,10 +751,7 @@ StatsScreen_PlaceFrontpic:
 
 StatsScreen_GetAnimationParam:
 	ld a, [wMonType]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Jumptable:
 	dw .PartyMon
 	dw .OTPartyMon

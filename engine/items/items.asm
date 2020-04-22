@@ -6,10 +6,7 @@ _ReceiveItem::
 	pop de
 	ld a, [wItemAttributeParamBuffer]
 	dec a
-	ld hl, .Pockets
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Pockets:
 ; entries correspond to item types
 	dw .Item
@@ -47,10 +44,7 @@ _TossItem::
 	pop de
 	ld a, [wItemAttributeParamBuffer]
 	dec a
-	ld hl, .Pockets
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Pockets:
 ; entries correspond to item types
 	dw .Item
@@ -90,10 +84,7 @@ _CheckItem::
 	pop de
 	ld a, [wItemAttributeParamBuffer]
 	dec a
-	ld hl, .Pockets
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Pockets:
 ; entries correspond to item types
 	dw .Item

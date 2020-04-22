@@ -79,11 +79,7 @@ TrainerCard:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 ; entries correspond to TRAINERCARDSTATE_* constants
 	dw TrainerCard_Page1_LoadGFX

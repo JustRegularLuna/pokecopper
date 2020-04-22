@@ -14,10 +14,7 @@ LoadSGBLayoutCGB:
 	cp SCGB_PARTY_MENU_HP_PALS
 	jp z, CGB_ApplyPartyMenuHPPals
 	call ResetBGPals
-	ld hl, .dw
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .dw
 	dw _CGB_BattleGrayscale
 	dw _CGB_BattleColors

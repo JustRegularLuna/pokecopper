@@ -6,7 +6,7 @@ FieldMoveJumptableReset:
 
 FieldMoveJumptable:
 	ld a, [wBuffer1]
-	rst JumpTable
+	call JumpTable
 	ld [wBuffer1], a
 	bit 7, a
 	jr nz, .okay

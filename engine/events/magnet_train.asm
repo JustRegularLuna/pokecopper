@@ -251,11 +251,7 @@ SetMagnetTrainPals:
 	ret
 
 MagnetTrain_Jumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 	dw .InitPlayerSpriteAnim
 	dw .WaitScene

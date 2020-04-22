@@ -12,10 +12,7 @@ OpenMartDialog::
 	ld [wMartType], a
 	call LoadMartPointer
 	ld a, [wMartType]
-	ld hl, .dialogs
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .dialogs
 	dw MartDialog
 	dw HerbShop
@@ -139,7 +136,7 @@ StandardMart:
 .loop
 	ld a, [wMartJumptableIndex]
 	ld hl, .MartFunctions
-	rst JumpTable
+	call JumpTable
 	ld [wMartJumptableIndex], a
 	cp STANDARDMART_EXIT
 	jr nz, .loop
@@ -707,10 +704,7 @@ SellMenu:
 .TryToSellItem:
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
-	ld hl, .dw
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .dw
 	dw .try_sell
 	dw DoNothing

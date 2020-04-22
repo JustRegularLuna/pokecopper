@@ -18,11 +18,7 @@ BankOfMom:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .dw
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .dw
 	dw .CheckIfBankInitialized
 	dw .InitializeBank

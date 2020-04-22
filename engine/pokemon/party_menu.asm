@@ -55,7 +55,7 @@ WritePartyMenuTilemap:
 	jr z, .end
 	push hl
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 	pop hl
 	jr .loop
 .end

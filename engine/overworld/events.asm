@@ -9,7 +9,7 @@ OverworldLoop::
 .loop
 	ld a, [wMapStatus]
 	ld hl, .jumps
-	rst JumpTable
+	call JumpTable
 	ld a, [wMapStatus]
 	cp MAPSTATUS_DONE
 	jr nz, .loop
@@ -118,10 +118,7 @@ HandleMap:
 
 MapEvents:
 	ld a, [wMapEventStatus]
-	ld hl, .jumps
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .jumps
 ; entries correspond to MAPEVENTS_* constants
 	dw .events
@@ -542,10 +539,7 @@ TryBGEvent:
 
 .is_bg_event:
 	ld a, [wCurBGEventType]
-	ld hl, .bg_events
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .bg_events
 	dw .read
 	dw .up
@@ -656,7 +650,7 @@ PlayerMovement:
 	farcall DoPlayerMovement
 	ld a, c
 	ld hl, .pointers
-	rst JumpTable
+	call JumpTable
 	ld a, c
 	ret
 

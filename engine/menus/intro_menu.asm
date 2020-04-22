@@ -953,10 +953,7 @@ StartTitleScreen:
 	jr c, .ok
 	xor a
 .ok
-	ld hl, .dw
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .dw
 	dw _MainMenu
 	dw DeleteSaveData
@@ -982,10 +979,7 @@ RunTitleScreen:
 	ret
 
 TitleScreenScene:
-	ld hl, .scenes
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .scenes
 	dw TitleScreenEntrance
 	dw TitleScreenTimer

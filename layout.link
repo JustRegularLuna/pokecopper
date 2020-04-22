@@ -13,6 +13,8 @@ ROM0
 	"rst20"
 	org $0028
 	"rst28"
+	org $0030
+	"rst30"
 	org $0038
 	"rst38"
 	org $0040

@@ -63,11 +63,7 @@ _DummyGame:
 	ret
 
 .ExecuteJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 	dw .RestartGame
 	dw .ResetBoard

@@ -10,7 +10,7 @@ LoadSGBLayout:
 	cp SCGB_PARTY_MENU_HP_PALS
 	jp z, SGB_ApplyPartyMenuHPPals
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 	push de
 	call PushSGBPals
 	pop hl

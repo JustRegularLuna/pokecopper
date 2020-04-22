@@ -58,10 +58,7 @@ StartMenu::
 
 ; Menu items have different return functions.
 ; For example, saving exits the menu.
-	ld hl, .MenuReturns
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .MenuReturns:
 	dw .Reopen
 	dw .Exit

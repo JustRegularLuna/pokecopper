@@ -56,7 +56,7 @@ _BillsPC:
 	push af
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 	pop bc
 	ld a, b
 	jr nc, .loop

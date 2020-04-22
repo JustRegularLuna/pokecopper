@@ -66,11 +66,7 @@ _CardFlip:
 	ret
 
 .CardFlip:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 	dw .AskPlayWithThree
 	dw .DeductCoins
@@ -574,9 +570,7 @@ CardFlip_BlankDiscardedCardSlot:
 	and $1c ; get level
 	srl a
 	srl a
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
+	call AnonJumpTable
 
 .Jumptable:
 	dw .Level1
@@ -739,9 +733,7 @@ CardFlip_BlankDiscardedCardSlot:
 CardFlip_CheckWinCondition:
 	call CollapseCursorPosition
 	ld a, l
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
+	call AnonJumpTable
 
 .Jumptable:
 	dw .Impossible

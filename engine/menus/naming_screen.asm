@@ -59,10 +59,7 @@ NamingScreen:
 .GetNamingScreenSetup:
 	ld a, [wNamingScreenType]
 	maskbits NUM_NAME_TYPES
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Jumptable:
 ; entries correspond to NAME_* constants
 	dw .Pokemon
@@ -325,11 +322,7 @@ NamingScreenJoypadLoop:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 	dw .InitCursor
 	dw .ReadButtons
@@ -968,11 +961,7 @@ INCBIN "gfx/icons/mail_big.2bpp"
 	ret
 
 .DoJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 	dw .init_blinking_cursor
 	dw .process_joypad

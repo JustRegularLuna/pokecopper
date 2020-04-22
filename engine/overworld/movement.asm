@@ -1,3 +1,9 @@
+DoMovementFunction:
+	push af
+	call ApplyMovementToFollower
+	pop af
+	call AnonJumpTable
+
 MovementPointers:
 ; entries correspond to macros/scripts/movement.asm enumeration
 	dw Movement_turn_head_down        ; 00

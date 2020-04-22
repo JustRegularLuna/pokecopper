@@ -36,11 +36,7 @@ _DepositPKMN:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 	dw .Init
 	dw .HandleJoypad
@@ -133,9 +129,7 @@ _DepositPKMN:
 	ld a, [wMenuCursorY]
 	dec a
 	and %11
-	ld hl, BillsPCDepositJumptable
-	rst JumpTable
-	ret
+	call AnonJumpTable
 
 BillsPCDepositJumptable:
 	dw BillsPCDepositFuncDeposit ; Deposit Pokemon
@@ -264,11 +258,7 @@ _WithdrawPKMN:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 	dw .Init
 	dw .Joypad
@@ -357,10 +347,7 @@ BillsPC_Withdraw:
 	ld a, [wMenuCursorY]
 	dec a
 	and %11
-	ld hl, .dw
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .dw
 	dw .withdraw ; Withdraw
 	dw .stats ; Stats
@@ -482,11 +469,7 @@ _MovePKMNWithoutMail:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 	dw .Init
 	dw .Joypad
@@ -584,10 +567,7 @@ _MovePKMNWithoutMail:
 	ld a, [wMenuCursorY]
 	dec a
 	and %11
-	ld hl, .Jumptable2
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Jumptable2:
 	dw .Move
 	dw .Stats

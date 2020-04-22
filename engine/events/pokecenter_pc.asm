@@ -440,7 +440,7 @@ PlayerDepositItemMenu:
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .dw
-	rst JumpTable
+	call JumpTable
 	pop af
 	ld [wSpriteUpdatesEnabled], a
 	ret

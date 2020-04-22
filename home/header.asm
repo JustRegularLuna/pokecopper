@@ -32,20 +32,14 @@ SECTION "rst20", ROM0[$0020]
 	ds 7 ; unused
 
 SECTION "rst28", ROM0[$0028]
-JumpTable::
-	push de
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-; SECTION "rst30", ROM0[$0030]
-	ld l, a
-	pop de
-	jp hl
+	rst $38
 
-	ds 5 ; unused
+	ds 7 ; unused
+
+SECTION "rst30", ROM0[$0030]
+	rst $38
+
+	ds 7 ; unused
 
 SECTION "rst38", ROM0[$0038]
 	rst $38

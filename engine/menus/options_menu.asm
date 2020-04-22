@@ -79,11 +79,7 @@ StringOptions:
 	db "CANCEL@"
 
 GetOptionPointer:
-	ld a, [wJumptableIndex] ; load the cursor position to a
-	ld hl, .Pointers
-	rst JumpTable ; jump to the code of the current highlighted item
-	ret
-
+	call StandardAnonJumpTable
 .Pointers:
 	dw Options_TextSpeed
 	dw Options_BattleScene

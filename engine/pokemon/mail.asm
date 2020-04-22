@@ -407,10 +407,7 @@ MailboxPC:
 	ret c
 	ld a, [wMenuCursorY]
 	dec a
-	ld hl, .JumpTable
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .JumpTable:
 	dw .ReadMail
 	dw .PutInPack

@@ -12,7 +12,7 @@ ScriptEvents::
 .loop
 	ld a, [wScriptMode]
 	ld hl, .modes
-	rst JumpTable
+	call JumpTable
 	call CheckScript
 	jr nz, .loop
 	ret
@@ -54,9 +54,7 @@ WaitScriptMovement:
 
 RunScriptCommand:
 	call GetScriptByte
-	ld hl, ScriptCommandTable
-	rst JumpTable
-	ret
+	call AnonJumpTable
 
 ScriptCommandTable:
 ; entries correspond to macros/scripts/events.asm enumeration

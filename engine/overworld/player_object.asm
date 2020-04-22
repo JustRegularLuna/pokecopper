@@ -276,10 +276,7 @@ CheckObjectEnteringVisibleRange::
 	ld a, [wPlayerStepDirection]
 	cp STANDING
 	ret z
-	ld hl, .dw
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .dw
 	dw .Down
 	dw .Up

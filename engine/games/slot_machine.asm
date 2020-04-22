@@ -199,11 +199,7 @@ SlotsLoop:
 	ret
 
 SlotsJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call StandardAnonJumpTable
 .Jumptable:
 	dw SlotsAction_Init              ; 00
 	dw SlotsAction_BetAndStart       ; 01
@@ -772,10 +768,7 @@ ReelActionJumptable:
 	ld hl, REEL_ACTION
 	add hl, bc
 	ld a, [hl]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Jumptable:
 	dw DoNothing                              ; 00
 	dw ReelAction_StopReelIgnoreJoypad        ; 01
@@ -1814,10 +1807,7 @@ Slots_AnimateGolem:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [hl]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Jumptable:
 	dw .init
 	dw .fall
@@ -1906,10 +1896,7 @@ Slots_AnimateChansey:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [hl]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Jumptable:
 	dw .walk
 	dw .one

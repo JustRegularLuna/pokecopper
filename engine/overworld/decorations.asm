@@ -429,10 +429,7 @@ DoDecorationAction2:
 	ld de, 2 ; function 2
 	add hl, de
 	ld a, [hl]
-	ld hl, .DecoActions
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .DecoActions:
 	dw DecoAction_nothing
 	dw DecoAction_setupbed
@@ -484,7 +481,7 @@ GetDecoName:
 	ld bc, wStringBuffer2
 	push bc
 	ld hl, .NameFunctions
-	rst JumpTable
+	call JumpTable
 	pop de
 	ret
 
@@ -915,10 +912,7 @@ INCLUDE "data/decorations/decorations.asm"
 
 DescribeDecoration::
 	ld a, b
-	ld hl, .JumpTable
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .JumpTable:
 ; entries correspond to DECODESC_* constants
 	dw DecorationDesc_Poster

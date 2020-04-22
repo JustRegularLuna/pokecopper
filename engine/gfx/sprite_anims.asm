@@ -2,10 +2,7 @@ DoAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
 	ld a, [hl]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Jumptable:
 ; entries correspond to SPRITE_ANIM_SEQ_* constants
 	dw DoNothing
@@ -175,10 +172,7 @@ DoAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [hl]
-	ld hl, .TradePokeBall_dw
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .TradePokeBall_dw
 	dw .TradePokeBall_zero
 	dw .TradePokeBall_one

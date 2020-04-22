@@ -18,7 +18,7 @@ MainMenu:
 	call ClearTilemap
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 	jr MainMenu
 
 .MenuHeader:

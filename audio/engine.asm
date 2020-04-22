@@ -211,9 +211,7 @@ _UpdateSound::
 UpdateChannels:
 	ld a, [wCurChannel]
 	and $7
-	ld hl, .ChannelFnPtrs
-	rst JumpTable
-	ret
+	call AnonJumpTable
 
 .ChannelFnPtrs:
 	dw .Channel1
@@ -1316,9 +1314,7 @@ ParseMusicCommand:
 	; get command #
 	sub FIRST_MUSIC_CMD
 	; jump to the command pointer
-	ld hl, MusicCommands
-	rst JumpTable
-	ret
+	call AnonJumpTable
 
 MusicCommands:
 ; entries correspond to macros/scripts/audio.asm enumeration

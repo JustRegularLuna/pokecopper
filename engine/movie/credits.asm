@@ -144,10 +144,7 @@ Credits_HandleBButton:
 Credits_Jumptable:
 	ld a, [wJumptableIndex]
 	and $f
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Jumptable:
 	dw ParseCredits
 	dw Credits_Next

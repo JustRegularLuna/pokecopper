@@ -44,9 +44,7 @@ PokeSeer:
 
 SeerAction:
 	ld a, [wSeerAction]
-	ld hl, SeerActions
-	rst JumpTable
-	ret
+	call AnonJumpTable
 
 SeerActions:
 	dw SeerAction0

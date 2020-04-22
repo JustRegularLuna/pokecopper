@@ -274,10 +274,7 @@ RunBattleAnimCommand:
 ; Execute battle animation command in [wBattleAnimByte].
 	ld a, [wBattleAnimByte]
 	sub anim_obj_command
-
-	ld hl, BattleAnimCommands
-	rst JumpTable
-	ret
+	call AnonJumpTable
 
 BattleAnimCommands::
 ; entries correspond to macros/scripts/battle_anims.asm enumeration

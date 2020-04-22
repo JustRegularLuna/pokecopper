@@ -24,10 +24,7 @@ LoadMenuMonIcon:
 
 .LoadIcon:
 	ld a, e
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
-
+	call AnonJumpTable
 .Jumptable:
 ; entries correspond to MONICON_* constants
 	dw PartyMenu_InitAnimatedMonIcon    ; MONICON_PARTYMENU
