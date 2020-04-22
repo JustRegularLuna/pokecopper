@@ -144,8 +144,8 @@ TeachTMHM:
 	jr z, .nope
 
 	ld a, [wCurItem]
-	call IsHM
-	ret c
+	cp HM01
+	ret nc
 
 	ld c, HAPPINESS_LEARNMOVE
 	farcall ChangeHappiness

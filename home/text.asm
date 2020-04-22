@@ -844,6 +844,7 @@ TextCommand_DAY::
 ; text_today
 
 	call GetWeekday
+PrintDayOfWeek::
 	push hl
 	push bc
 	ld c, a

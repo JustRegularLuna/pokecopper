@@ -16,10 +16,13 @@ SimpleMultiply::
 SimpleDivide::
 ; Divide a by c. Return quotient b and remainder a.
 	ld b, 0
+	and a
+	ret z
 .loop
 	inc b
 	sub c
 	jr nc, .loop
+	ret z
 	dec b
 	add c
 	ret

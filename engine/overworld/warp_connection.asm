@@ -1,8 +1,21 @@
 HandleNewMap:
-	call ResetMapBufferEventFlags
-	call ResetFlashIfOutOfCave
+	xor a
+	ld hl, wEventFlags
+	ld [hl], a
+	ld hl, wBikeFlags
+	ld [hl], a
+
+	ld a, [wEnvironment]
+	cp ROUTE
+	jr z, .outdoors
+	cp TOWN
+	jr nz, .not_outdoors
+.outdoors
+	ld hl, wStatusFlags
+	res STATUSFLAGS_FLASH_F, [hl]
+.not_outdoors
+
 	call GetCurrentMapSceneID
-	call ResetBikeFlags
 	ld a, MAPCALLBACK_NEWMAP
 	call RunMapCallback
 HandleContinueMap:

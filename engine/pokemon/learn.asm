@@ -179,7 +179,9 @@ ForgetMove:
 	ld a, [hl]
 	push af
 	push bc
-	call IsHMMove
+	ld hl, HMMoves
+	ld de, 1
+	call IsInArray
 	pop bc
 	pop de
 	ld a, d
@@ -198,6 +200,8 @@ ForgetMove:
 .cancel
 	scf
 	ret
+
+INCLUDE "data/moves/hm_moves.asm"
 
 LearnedMoveText:
 	text_far _LearnedMoveText

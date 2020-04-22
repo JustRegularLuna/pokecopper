@@ -10,6 +10,6 @@ predef: MACRO
 ENDM
 
 predef_jump: MACRO
-	predef \1
+	predef \1 ; no-optimize tail predef
 	ret
 ENDM

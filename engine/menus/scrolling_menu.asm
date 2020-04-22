@@ -106,13 +106,13 @@ ScrollingMenuJoyAction:
 .select
 	ld a, [wMenuDataFlags]
 	bit 7, a
-	jp z, xor_a_dec_a
+	jr z, .xor_a_dec_a
 	ld a, [wMenuCursorY]
 	dec a
 	call ScrollingMenu_GetListItemCoordAndFunctionArgs
 	ld a, [wMenuSelection]
 	cp -1
-	jp z, xor_a_dec_a
+	jr z, .xor_a_dec_a
 	call ScrollingMenu_GetCursorPosition
 	dec a
 	ld [wScrollingMenuCursorPosition], a
@@ -123,7 +123,7 @@ ScrollingMenuJoyAction:
 .start
 	ld a, [wMenuDataFlags]
 	bit 6, a
-	jp z, xor_a_dec_a
+	jr z, .xor_a_dec_a
 	ld a, START
 	scf
 	ret
@@ -131,10 +131,10 @@ ScrollingMenuJoyAction:
 .d_left
 	ld hl, w2DMenuFlags2
 	bit 7, [hl]
-	jp z, xor_a_dec_a
+	jr z, .xor_a_dec_a
 	ld a, [wMenuDataFlags]
 	bit 3, a
-	jp z, xor_a_dec_a
+	jr z, .xor_a_dec_a
 	ld a, D_LEFT
 	scf
 	ret
@@ -142,10 +142,10 @@ ScrollingMenuJoyAction:
 .d_right
 	ld hl, w2DMenuFlags2
 	bit 7, [hl]
-	jp z, xor_a_dec_a
+	jr z, .xor_a_dec_a
 	ld a, [wMenuDataFlags]
 	bit 2, a
-	jp z, xor_a_dec_a
+	jr z, .xor_a_dec_a
 	ld a, D_RIGHT
 	scf
 	ret
@@ -153,21 +153,20 @@ ScrollingMenuJoyAction:
 .d_up
 	ld hl, w2DMenuFlags2
 	bit 7, [hl]
-	jp z, xor_a
+	jr z, .d_up_done
 	ld hl, wMenuScrollPosition
 	ld a, [hl]
 	and a
 	jr z, .xor_dec_up
 	dec [hl]
-	jp xor_a
-
-.xor_dec_up
-	jp xor_a_dec_a
+.d_up_done
+	xor a
+	ret
 
 .d_down
 	ld hl, w2DMenuFlags2
 	bit 7, [hl]
-	jp z, xor_a
+	jr z, .d_down_done
 	ld hl, wMenuScrollPosition
 	ld a, [wMenuData_ScrollingMenuHeight]
 	add [hl]
@@ -176,10 +175,16 @@ ScrollingMenuJoyAction:
 	cp b
 	jr c, .xor_dec_down
 	inc [hl]
-	jp xor_a
+.d_down_done
+	xor a
+	ret
 
+.xor_dec_up
 .xor_dec_down
-	jp xor_a_dec_a
+.xor_a_dec_a
+	xor a
+	dec a
+	ret
 
 ScrollingMenu_GetCursorPosition:
 	ld a, [wMenuScrollPosition]

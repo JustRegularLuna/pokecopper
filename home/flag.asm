@@ -1,29 +1,3 @@
-ResetMapBufferEventFlags::
-	xor a
-	ld hl, wEventFlags
-	ld [hli], a
-	ret
-
-ResetBikeFlags::
-	xor a
-	ld hl, wBikeFlags
-	ld [hli], a
-	ld [hl], a
-	ret
-
-ResetFlashIfOutOfCave::
-	ld a, [wEnvironment]
-	cp ROUTE
-	jr z, .outdoors
-	cp TOWN
-	jr z, .outdoors
-	ret
-
-.outdoors
-	ld hl, wStatusFlags
-	res STATUSFLAGS_FLASH_F, [hl]
-	ret
-
 EventFlagAction::
 	ld hl, wEventFlags
 
@@ -98,13 +72,4 @@ CheckReceivedDex::
 	farcall EngineFlagAction
 	ld a, c
 	and a
-	ret
-
-xor_a::
-	xor a
-	ret
-
-xor_a_dec_a::
-	xor a
-	dec a
 	ret

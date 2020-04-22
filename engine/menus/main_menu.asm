@@ -129,10 +129,8 @@ MainMenu_PrintCurrentTimeAndDay:
 	and $80
 	jp nz, .PrintTimeNotSet
 	call UpdateTime
-	call GetWeekday
-	ld b, a
-	decoord 1, 15
-	call .PlaceCurrentDay
+	bccoord 1, 15
+	call TextCommand_DAY
 	decoord 4, 16
 	ldh a, [hHours]
 	ld c, a
@@ -151,32 +149,6 @@ MainMenu_PrintCurrentTimeAndDay:
 
 .TimeNotSet:
 	db "TIME NOT SET@"
-
-.PlaceCurrentDay:
-	push de
-	ld hl, .Days
-	ld a, b
-	call GetNthString
-	ld d, h
-	ld e, l
-	pop hl
-	rst PlaceString
-	ld h, b
-	ld l, c
-	ld de, .Day
-	rst PlaceString
-	ret
-
-.Days:
-	db "SUN@"
-	db "MON@"
-	db "TUES@"
-	db "WEDNES@"
-	db "THURS@"
-	db "FRI@"
-	db "SATUR@"
-.Day:
-	db "DAY@"
 
 Function49ed0:
 	xor a

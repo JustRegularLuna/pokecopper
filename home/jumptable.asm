@@ -12,4 +12,5 @@ JumpTable::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+_hl_::
 	jp hl

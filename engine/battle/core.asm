@@ -8303,12 +8303,12 @@ AddLastLinkBattleToLinkRecord:
 	and a
 	jr z, .copy
 	push de
-	ld bc, 12
+	ld c, 12
 	ld de, wStringBuffer1
-	call CompareBytesLong
+	call CompareBytes
 	pop de
 	pop hl
-	jr c, .done
+	jr z, .done
 	ld bc, 18
 	add hl, bc
 	dec d
