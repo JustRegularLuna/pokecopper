@@ -2012,8 +2012,6 @@ wObjectStructsEnd:: ; d6de
 
 wCmdQueue:: ds CMDQUEUE_CAPACITY * CMDQUEUE_ENTRY_SIZE
 
-	ds 40
-
 wMapObjects:: ; d71e
 wPlayerObject:: map_object wPlayer
 wMap1Object::   map_object wMap1
@@ -2031,6 +2029,10 @@ wMap12Object::  map_object wMap12
 wMap13Object::  map_object wMap13
 wMap14Object::  map_object wMap14
 wMap15Object::  map_object wMap15
+wMap16Object::  map_object wMap16
+wMap17Object::  map_object wMap17
+wMap18Object::  map_object wMap18
+wMap19Object::  map_object wMap19
 wMapObjectsEnd::
 
 wObjectMasks:: ds NUM_OBJECTS ; d81e
@@ -2127,8 +2129,6 @@ wMooMooBerries:: db ; d962
 wUndergroundSwitchPositions:: db ; d963
 wFarfetchdPosition:: db ; d964
 
-	ds 13
-
 ; map scene ids
 wPokecenter2FSceneID::              db
 wTradeCenterSceneID::               db
@@ -2143,10 +2143,7 @@ wKarensRoomSceneID::                db
 wLancesRoomSceneID::                db
 wHallOfFameSceneID::                db
 
-	ds 115
-
-; fight counts
-	ds 28
+	ds 128
 
 wEventFlags:: flag_array NUM_EVENTS ; da72
 
