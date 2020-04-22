@@ -508,10 +508,7 @@ OakSpeech:
 
 	call RotateFourPalettesRight
 	call RotateThreePalettesRight
-	xor a
-	ld [wCurPartySpecies], a
 	ld a, POKEMON_PROF
-	ld [wTrainerClass], a
 	call Intro_PrepTrainerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
@@ -546,9 +543,7 @@ OakSpeech:
 	call RotateThreePalettesRight
 	call ClearTilemap
 
-	xor a
-	ld [wCurPartySpecies], a
-	farcall DrawIntroPlayerPic
+	call Intro_PrepPlayerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
@@ -563,10 +558,7 @@ OakSpeech:
 	call RotateThreePalettesRight
 	call ClearTilemap
 
-	xor a
-	ld [wCurPartySpecies], a
 	ld a, RIVAL1
-	ld [wTrainerClass], a
 	call Intro_PrepTrainerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
@@ -582,9 +574,7 @@ OakSpeech:
 	call RotateThreePalettesRight
 	call ClearTilemap
 
-	xor a
-	ld [wCurPartySpecies], a
-	farcall DrawIntroPlayerPic
+	call Intro_PrepPlayerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
@@ -656,9 +646,7 @@ NamePlayer:
 	call LoadFontsExtra
 	call WaitBGMap
 
-	xor a
-	ld [wCurPartySpecies], a
-	farcall DrawIntroPlayerPic
+	call Intro_PrepPlayerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
@@ -700,10 +688,7 @@ NameRival:
 	call LoadFontsExtra
 	call WaitBGMap
 
-	xor a
-	ld [wCurPartySpecies], a
 	ld a, RIVAL1
-	ld [wTrainerClass], a
 	call Intro_PrepTrainerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
@@ -821,7 +806,18 @@ Intro_WipeInFrontpic:
 	ldh [hWX], a
 	jr .loop
 
+Intro_PrepPlayerPic:
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld a, HIRO
+	jr z, .GotClass
+	assert HIRO + 1 == SYLVIA
+	inc a ; SYLVIA
+.GotClass
 Intro_PrepTrainerPic:
+	ld [wTrainerClass], a
+	xor a
+	ld [wCurPartySpecies], a
 	ld de, vTiles2
 	farcall GetTrainerPic
 	xor a

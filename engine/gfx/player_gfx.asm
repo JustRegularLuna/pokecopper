@@ -80,30 +80,22 @@ GetPlayerIcon:
 	ret
 
 GetCardPic:
-	ld hl, HiroCardPic
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .GotClass
+	ld hl, HiroCardPic
+	ld a, BANK(HiroCardPic)
+	jr z, .GotPic
 	ld hl, SylviaCardPic
-.GotClass:
+	ld a, BANK(SylviaCardPic)
+.GotPic:
 	ld de, vTiles2 tile $00
 	ld bc, $23 tiles
-	ld a, BANK(HiroCardPic) ; aka BANK(SylviaCardPic)
 	call FarCopyBytes
 	ld hl, CardGFX
 	ld de, vTiles2 tile $23
 	ld bc, 6 tiles
 	ld a, BANK(CardGFX)
 	jp FarCopyBytes
-
-HiroCardPic:
-INCBIN "gfx/trainer_card/hiro_card.2bpp"
-
-SylviaCardPic:
-INCBIN "gfx/trainer_card/sylvia_card.2bpp"
-
-CardGFX:
-INCBIN "gfx/trainer_card/trainer_card.2bpp"
 
 GetPlayerBackpic:
 	ld a, [wPlayerGender]
@@ -127,58 +119,17 @@ HOF_LoadTrainerFrontpic:
 	call WaitBGMap
 	xor a
 	ldh [hBGMapMode], a
-	ld [wTrainerClass], a
-	ld de, HiroPic
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .GotPic
-	ld de, SylviaPic
-
-.GotPic:
-	ld hl, vTiles2
-	lb bc, BANK(HiroPic), 7 * 7 ; aka BANK(SylviaPic)
-	call Get2bpp
+	ld a, HIRO
+	jr z, .GotClass
+	assert HIRO + 1 == SYLVIA
+	inc a ; SYLVIA
+.GotClass
+	ld [wTrainerClass], a
+	ld de, vTiles2
+	farcall GetTrainerPic
 	call WaitBGMap
 	ld a, $1
 	ldh [hBGMapMode], a
 	ret
-
-DrawIntroPlayerPic:
-; Draw the player pic at (6,4).
-
-; Get class
-	xor a
-	ld [wTrainerClass], a
-
-; Load pic
-	ld de, HiroPic
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .GotPic
-	ld de, SylviaPic
-.GotPic:
-	ld hl, vTiles2
-	lb bc, BANK(HiroPic), 7 * 7 ; aka BANK(SylviaPic)
-	call Get2bpp
-
-; Draw
-	xor a
-	ldh [hGraphicStartTile], a
-	hlcoord 6, 4
-	lb bc, 7, 7
-	predef_jump PlaceGraphic
-
-HiroPic:
-INCBIN "gfx/player/hiro.2bpp"
-
-SylviaPic:
-INCBIN "gfx/player/sylvia.2bpp"
-
-HiroBackpic:
-INCBIN "gfx/player/hiro_back.2bpp.lz"
-
-SylviaBackpic:
-INCBIN "gfx/player/sylvia_back.2bpp.lz"
-
-DudeBackpic:
-INCBIN "gfx/battle/dude.2bpp.lz"

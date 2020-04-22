@@ -14,6 +14,7 @@ engine/movie/credits.o \
 engine/overworld/events.o \
 gfx/battle_anims.o \
 gfx/emotes.o \
+gfx/misc.o \
 gfx/pics.o \
 gfx/sprites.o \
 gfx/tilesets.o

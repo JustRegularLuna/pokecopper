@@ -1110,24 +1110,32 @@ DrawPackGFX:
 	jr nz, .female
 .male_dude
 	ld hl, PackGFXPointers
+	lb bc, BANK(PackGFX), 15
+	jr .got_pack_gfx
+
+.female
+	ld hl, PackFGFXPointers
+	lb bc, BANK(PackFGFX), 15
+.got_pack_gfx
 	add hl, de
 	add hl, de
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
 	ld hl, vTiles2 tile $50
-	lb bc, BANK(PackGFX), 15
 	jp Request2bpp
-
-.female
-	farcall DrawKrisPackGFX
-	ret
 
 PackGFXPointers:
 	dw PackGFX + (15 tiles) * 1 ; ITEM_POCKET
 	dw PackGFX + (15 tiles) * 3 ; BALL_POCKET
 	dw PackGFX + (15 tiles) * 0 ; KEY_ITEM_POCKET
 	dw PackGFX + (15 tiles) * 2 ; TM_HM_POCKET
+
+PackFGFXPointers:
+	dw PackFGFX + (15 tiles) * 1 ; ITEM_POCKET
+	dw PackFGFX + (15 tiles) * 3 ; BALL_POCKET
+	dw PackFGFX + (15 tiles) * 0 ; KEY_ITEM_POCKET
+	dw PackFGFX + (15 tiles) * 2 ; TM_HM_POCKET
 
 Pack_InterpretJoypad:
 	ld hl, wMenuJoypad
@@ -1458,8 +1466,3 @@ AskItemMoveText:
 PackEmptyText:
 	text_far _PackEmptyText
 	text_end
-
-PackMenuGFX:
-INCBIN "gfx/pack/pack_menu.2bpp"
-PackGFX:
-INCBIN "gfx/pack/pack.2bpp"

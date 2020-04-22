@@ -27,9 +27,6 @@ INCBIN "gfx/battle/hp_exp_bar_border.1bpp"
 ExpBarGFX:
 INCBIN "gfx/battle/expbar.2bpp"
 
-TownMapGFX:
-INCBIN "gfx/pokegear/town_map.2bpp.lz"
-
 TextboxSpaceGFX:
 ; StatsScreen_LoadTextboxSpaceGFX reads 2bpp; LoadFrame reads first half as 1bpp
 INCBIN "gfx/font/space.2bpp"

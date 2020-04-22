@@ -177,7 +177,6 @@ INCLUDE "engine/pokemon/mail.asm"
 SECTION "Crystal Features 1", ROMX
 
 INCLUDE "engine/menus/init_gender.asm"
-INCLUDE "engine/items/pack_kris.asm"
 INCLUDE "engine/menus/main_menu.asm"
 INCLUDE "engine/pokemon/search.asm"
 
@@ -192,13 +191,6 @@ INCLUDE "engine/events/checksave.asm"
 INCLUDE "data/maps/scenes.asm"
 INCLUDE "engine/overworld/load_map_part.asm"
 INCLUDE "engine/phone/phonering_copytilemapatonce.asm"
-
-Shrink1Pic:
-INCBIN "gfx/new_game/shrink1.2bpp.lz"
-
-Shrink2Pic:
-INCBIN "gfx/new_game/shrink2.2bpp.lz"
-
 INCLUDE "engine/link/link_2.asm"
 INCLUDE "engine/rtc/reset_password.asm"
 INCLUDE "engine/menus/delete_save.asm"
@@ -314,9 +306,6 @@ INCLUDE "engine/battle_anims/bg_effects.asm"
 INCLUDE "data/moves/animations.asm"
 INCLUDE "engine/events/poisonstep_pals.asm"
 
-TheEndGFX::
-INCBIN "gfx/credits/theend.2bpp"
-
 
 SECTION "Move Animations", ROMX
 
@@ -340,9 +329,6 @@ INCLUDE "engine/pokemon/bills_pc.asm"
 
 
 SECTION "bank39", ROMX
-
-CopyrightGFX::
-INCBIN "gfx/splash/copyright.2bpp"
 
 INCLUDE "engine/menus/options_menu.asm"
 INCLUDE "engine/movie/crystal_intro.asm"
@@ -422,9 +408,3 @@ INCLUDE "engine/events/diploma.asm"
 INCLUDE "engine/pokedex/pokedex_3.asm"
 INCLUDE "engine/events/catch_tutorial_input.asm"
 INCLUDE "engine/pokegear/townmap_convertlinebreakcharacters.asm"
-
-UnownFont:
-INCBIN "gfx/font/unown_font.2bpp"
-
-PokegearGFX:
-INCBIN "gfx/pokegear/pokegear.2bpp.lz"

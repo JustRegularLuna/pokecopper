@@ -105,7 +105,7 @@ MeetMomScript:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	promptbutton
-	givepoke PIKACHU, 5, BERRY
+	givepoke PIKACHU, 10, BERRY
 	closetext
 	setevent EVENT_GOT_STARTER_POKEMON
 	setflag ENGINE_POKEDEX
