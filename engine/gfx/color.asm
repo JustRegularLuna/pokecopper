@@ -144,11 +144,10 @@ ApplyHPBarPals:
 LoadMailPalettes:
 	ld l, e
 	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
 	ld de, .MailPals
 	add hl, de
+	ld a, [hl]
+	call GetPredefPal
 	call CheckCGB
 	jr nz, .cgb
 	push hl
@@ -182,7 +181,7 @@ LoadMailPalettes:
 	jp ApplyAttrmap
 
 .MailPals:
-INCLUDE "gfx/mail/mail.pal"
+INCLUDE "data/items/mail_palettes.asm"
 
 INCLUDE "engine/gfx/cgb_layouts.asm"
 
