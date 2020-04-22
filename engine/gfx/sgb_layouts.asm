@@ -9,17 +9,12 @@ LoadSGBLayout:
 .not_ram
 	cp SCGB_PARTY_MENU_HP_PALS
 	jp z, SGB_ApplyPartyMenuHPPals
-	ld l, a
-	ld h, 0
-	add hl, hl
-	ld de, .Jumptable
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, _LoadSGBLayout_ReturnFromJumpTable
+	ld hl, .Jumptable
+	rst JumpTable
 	push de
-	jp hl
+	call PushSGBPals
+	pop hl
+	jp PushSGBPals
 
 .Jumptable:
 	dw .SGB_BattleGrayscale
@@ -449,9 +444,3 @@ LoadSGBLayout:
 	ret
 
 INCLUDE "data/maps/map_pals.asm"
-
-_LoadSGBLayout_ReturnFromJumpTable:
-	push de
-	call PushSGBPals
-	pop hl
-	jp PushSGBPals

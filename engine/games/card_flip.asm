@@ -67,15 +67,9 @@ _CardFlip:
 
 .CardFlip:
 	ld a, [wJumptableIndex]
-	ld e, a
-	ld d, 0
 	ld hl, .Jumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 .Jumptable:
 	dw .AskPlayWithThree
@@ -579,15 +573,10 @@ CardFlip_BlankDiscardedCardSlot:
 	ld a, e
 	and $1c ; get level
 	srl a
-	add LOW(.Jumptable)
-	ld l, a
-	adc HIGH(.Jumptable)
-	sub l
-	ld h, a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	srl a
+	ld hl, .Jumptable
+	rst JumpTable
+	ret
 
 .Jumptable:
 	dw .Level1
@@ -749,13 +738,10 @@ CardFlip_BlankDiscardedCardSlot:
 
 CardFlip_CheckWinCondition:
 	call CollapseCursorPosition
-	add hl, hl
-	ld de, .Jumptable
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	ld a, l
+	ld hl, .Jumptable
+	rst JumpTable
+	ret
 
 .Jumptable:
 	dw .Impossible

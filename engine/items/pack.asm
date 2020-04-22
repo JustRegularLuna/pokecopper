@@ -35,8 +35,8 @@ Pack:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	call Pack_GetJumptablePointer
-	jp hl
+	rst JumpTable
+	ret
 
 .Jumptable:
 ; entries correspond to PACKSTATE_* constants
@@ -145,8 +145,8 @@ Pack:
 	ret c
 	ld a, [wMenuCursorY]
 	dec a
-	call Pack_GetJumptablePointer
-	jp hl
+	rst JumpTable
+	ret
 
 .MenuHeader1:
 	db MENU_BACKUP_TILES ; flags
@@ -292,8 +292,8 @@ Pack:
 	ret c
 	ld a, [wMenuCursorY]
 	dec a
-	call Pack_GetJumptablePointer
-	jp hl
+	rst JumpTable
+	ret
 
 MenuHeader_UsableKeyItem:
 	db MENU_BACKUP_TILES ; flags
@@ -591,8 +591,8 @@ BattlePack:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	call Pack_GetJumptablePointer
-	jp hl
+	rst JumpTable
+	ret
 
 .Jumptable:
 ; entries correspond to PACKSTATE_* constants
@@ -733,8 +733,8 @@ TMHMSubmenu:
 	ret c
 	ld a, [wMenuCursorY]
 	dec a
-	call Pack_GetJumptablePointer
-	jp hl
+	rst JumpTable
+	ret
 
 .UsableMenuHeader:
 	db MENU_BACKUP_TILES ; flags
@@ -864,8 +864,8 @@ DepositSellPack:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	call Pack_GetJumptablePointer
-	jp hl
+	rst JumpTable
+	ret
 
 .Jumptable:
 ; entries correspond to *_POCKET constants
@@ -1006,8 +1006,8 @@ TutorialPack:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .dw
-	call Pack_GetJumptablePointer
-	jp hl
+	rst JumpTable
+	ret
 
 .dw
 ; entries correspond to *_POCKET constants
@@ -1094,16 +1094,6 @@ TutorialPack:
 Pack_JumptableNext:
 	ld hl, wJumptableIndex
 	inc [hl]
-	ret
-
-Pack_GetJumptablePointer:
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	ret
 
 Pack_QuitNoScript:

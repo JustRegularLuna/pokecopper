@@ -1,15 +1,10 @@
 DoAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
-	ld e, [hl]
-	ld d, 0
+	ld a, [hl]
 	ld hl, .Jumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 .Jumptable:
 ; entries correspond to SPRITE_ANIM_SEQ_* constants
@@ -177,10 +172,14 @@ DoAnimFrame:
 	ret
 
 .TradePokeBall
-	call .AnonymousJumptable
-	jp hl
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
+	add hl, bc
+	ld a, [hl]
+	ld hl, .TradePokeBall_dw
+	rst JumpTable
+	ret
 
-; Anonymous dw (see .AnonymousJumptable)
+.TradePokeBall_dw
 	dw .TradePokeBall_zero
 	dw .TradePokeBall_one
 	dw .TradePokeBall_two
@@ -494,24 +493,6 @@ DoAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld [hl], a
-	ret
-
-.AnonymousJumptable:
-	ld hl, sp+$0
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc de
-
-	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
-	add hl, bc
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	ret
 
 .IncrementJumptableIndex:

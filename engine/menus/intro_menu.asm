@@ -953,15 +953,9 @@ StartTitleScreen:
 	jr c, .ok
 	xor a
 .ok
-	ld e, a
-	ld d, 0
 	ld hl, .dw
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 .dw
 	dw _MainMenu
@@ -989,15 +983,9 @@ RunTitleScreen:
 	ret
 
 TitleScreenScene:
-	ld e, a
-	ld d, 0
 	ld hl, .scenes
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 .scenes
 	dw TitleScreenEntrance

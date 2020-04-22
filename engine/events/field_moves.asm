@@ -145,15 +145,9 @@ INCBIN "gfx/overworld/cut_grass.2bpp"
 
 OWCutJumptable:
 	ld a, [wJumptableIndex]
-	ld e, a
-	ld d, 0
 	ld hl, .dw
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 .dw
 	dw Cut_SpawnAnimateTree

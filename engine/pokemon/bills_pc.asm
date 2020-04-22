@@ -38,8 +38,8 @@ _DepositPKMN:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	call BillsPC_Jumptable
-	jp hl
+	rst JumpTable
+	ret
 
 .Jumptable:
 	dw .Init
@@ -133,15 +133,9 @@ _DepositPKMN:
 	ld a, [wMenuCursorY]
 	dec a
 	and %11
-	ld e, a
-	ld d, 0
 	ld hl, BillsPCDepositJumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 BillsPCDepositJumptable:
 	dw BillsPCDepositFuncDeposit ; Deposit Pokemon
@@ -272,8 +266,8 @@ _WithdrawPKMN:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	call BillsPC_Jumptable
-	jp hl
+	rst JumpTable
+	ret
 
 .Jumptable:
 	dw .Init
@@ -363,15 +357,9 @@ BillsPC_Withdraw:
 	ld a, [wMenuCursorY]
 	dec a
 	and %11
-	ld e, a
-	ld d, 0
 	ld hl, .dw
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 .dw
 	dw .withdraw ; Withdraw
@@ -496,8 +484,8 @@ _MovePKMNWithoutMail:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	call BillsPC_Jumptable
-	jp hl
+	rst JumpTable
+	ret
 
 .Jumptable:
 	dw .Init
@@ -596,15 +584,9 @@ _MovePKMNWithoutMail:
 	ld a, [wMenuCursorY]
 	dec a
 	and %11
-	ld e, a
-	ld d, 0
 	ld hl, .Jumptable2
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 .Jumptable2:
 	dw .Move
@@ -2071,16 +2053,6 @@ BillsPC_ApplyPalettes:
 	call DmgToCgbBGPals
 	ld a, %11111100
 	jp DmgToCgbObjPal0
-
-BillsPC_Jumptable:
-	ld e, a
-	ld d, $0
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
 
 BillsPC_InitGFX:
 	call DisableLCD

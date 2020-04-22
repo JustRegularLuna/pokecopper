@@ -67,15 +67,10 @@ EndBattleBGEffect:
 DoBattleBGEffectFunction:
 	ld hl, BG_EFFECT_STRUCT_FUNCTION
 	add hl, bc
-	ld e, [hl]
-	ld d, 0
+	ld a, [hl]
 	ld hl, BattleBGEffects
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 BattleBGEffects:
 ; entries correspond to ANIM_BG_* constants
@@ -137,30 +132,13 @@ BattleBGEffects:
 BattleBGEffect_End:
 	jp EndBattleBGEffect
 
-BatttleBGEffects_GetNamedJumptablePointer:
-	ld hl, BG_EFFECT_STRUCT_JT_INDEX
-	add hl, bc
-	ld l, [hl]
-	ld h, 0
-	add hl, hl
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
-
 BattleBGEffects_AnonJumptable:
-	pop de
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
-	ld l, [hl]
-	ld h, 0
-	add hl, hl
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	ld a, [hl]
+	pop hl
+	rst JumpTable
+	ret
 
 BattleBGEffects_IncrementJumptable:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
@@ -1953,10 +1931,7 @@ BattleBGEffect_1c:
 	ret
 
 .cgb
-	ld de, .Jumptable
-	call BatttleBGEffects_GetNamedJumptablePointer
-	jp hl
-
+	call BattleBGEffects_AnonJumptable
 .Jumptable:
 	dw .cgb_zero
 	dw .cgb_one
@@ -2285,12 +2260,7 @@ BGEffect_RapidCyclePals:
 	ldh a, [hCGB]
 	and a
 	jr nz, .cgb
-	push de
-	ld de, .Jumptable_DMG
-	call BatttleBGEffects_GetNamedJumptablePointer
-	pop de
-	jp hl
-
+	call BattleBGEffects_AnonJumptable
 .Jumptable_DMG:
 	dw .zero_dmg
 	dw .one_dmg
@@ -2344,12 +2314,7 @@ BGEffect_RapidCyclePals:
 	jp EndBattleBGEffect
 
 .cgb
-	push de
-	ld de, .Jumptable_CGB
-	call BatttleBGEffects_GetNamedJumptablePointer
-	pop de
-	jp hl
-
+	call BattleBGEffects_AnonJumptable
 .Jumptable_CGB:
 	dw .zero_cgb
 	dw .one_cgb

@@ -1,15 +1,10 @@
 DoBattleAnimFrame:
 	ld hl, BATTLEANIMSTRUCT_FUNCTION
 	add hl, bc
-	ld e, [hl]
-	ld d, 0
+	ld a, [hl]
 	ld hl, .Jumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 .Jumptable:
 ; entries correspond to BATTLEANIMFUNC_* constants
@@ -3950,17 +3945,12 @@ Functionce70a:
 	ret
 
 BattleAnim_AnonJumptable:
-	pop de
 	ld hl, BATTLEANIMSTRUCT_ANON_JT_INDEX
 	add hl, bc
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	ld a, [hl]
+	pop hl
+	rst JumpTable
+	ret
 
 BattleAnim_IncAnonJumptableIndex:
 	ld hl, BATTLEANIMSTRUCT_ANON_JT_INDEX

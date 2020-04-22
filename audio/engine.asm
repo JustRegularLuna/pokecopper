@@ -209,17 +209,11 @@ _UpdateSound::
 	ret
 
 UpdateChannels:
-	ld hl, .ChannelFnPtrs
 	ld a, [wCurChannel]
 	and $7
-	add a
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	ld hl, .ChannelFnPtrs
+	rst JumpTable
+	ret
 
 .ChannelFnPtrs:
 	dw .Channel1
@@ -1321,17 +1315,10 @@ ParseMusicCommand:
 	ld a, [wCurMusicByte]
 	; get command #
 	sub FIRST_MUSIC_CMD
-	ld e, a
-	ld d, 0
-	; seek command pointer
+	; jump to the command pointer
 	ld hl, MusicCommands
-	add hl, de
-	add hl, de
-	; jump to the new pointer
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 MusicCommands:
 ; entries correspond to macros/scripts/audio.asm enumeration

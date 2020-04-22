@@ -7,12 +7,8 @@ FarCall_de::
 	push af
 	ldh a, [hTempBank]
 	rst Bankswitch
-	call .de
+	call _de_
 	jr ReturnFarCall
-
-.de
-	push de
-	ret
 
 FarCall_hl::
 ; Call a:hl.
@@ -23,7 +19,7 @@ FarCall_hl::
 	push af
 	ldh a, [hTempBank]
 	rst Bankswitch
-	call FarCall_JumpToHL
+	call _hl_
 
 ReturnFarCall::
 ; We want to retain the contents of f.
@@ -44,6 +40,3 @@ ReturnFarCall::
 	ld a, [wFarCallBCBuffer + 1]
 	ld c, a
 	ret
-
-FarCall_JumpToHL::
-	jp hl

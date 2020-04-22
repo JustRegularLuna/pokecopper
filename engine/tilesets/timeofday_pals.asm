@@ -200,15 +200,9 @@ ReplaceTimeOfDayPals:
 
 GetTimePalette:
 	ld a, [wTimeOfDay]
-	ld e, a
-	ld d, 0
 	ld hl, .TimePalettes
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 .TimePalettes:
 	dw .MorningPalette

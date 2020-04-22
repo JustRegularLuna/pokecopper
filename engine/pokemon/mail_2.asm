@@ -76,7 +76,7 @@ ReadAnyMail:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp _hl_
+	jp hl
 
 MailGFXPointers:
 	dbw FLOWER_MAIL,  LoadFlowerMailGFX

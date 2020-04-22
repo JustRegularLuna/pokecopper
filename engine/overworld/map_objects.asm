@@ -162,15 +162,11 @@ _HandleObjectAction:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld a, [hl]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp _hl_
+	add a
+	ld l, e
+	ld h, d
+	rst JumpTable
+	ret
 
 INCLUDE "engine/overworld/map_object_action.asm"
 

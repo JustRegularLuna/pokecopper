@@ -100,12 +100,9 @@ DoMove:
 	ld a, BANK(BattleCommandPointers)
 	call GetFarHalfword
 
-	call .DoMoveEffectCommand
+	call _hl_
 
 	jr .ReadMoveEffectCommand
-
-.DoMoveEffectCommand:
-	jp hl
 
 CheckTurn:
 BattleCommand_CheckTurn:

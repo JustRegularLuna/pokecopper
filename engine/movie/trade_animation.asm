@@ -228,15 +228,9 @@ DoTradeAnimation:
 
 .DoTradeAnimCommand:
 	ld a, [wJumptableIndex]
-	ld e, a
-	ld d, 0
 	ld hl, .JumpTable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 .JumpTable:
 ; entries correspond to macros/scripts/trade_anims.asm enumeration
@@ -503,15 +497,9 @@ TradeAnim_GetTrademonSFX:
 
 TradeAnim_TubeAnimJumptable:
 	maskbits TRADEANIMJUMPTABLE_LENGTH
-	ld e, a
-	ld d, 0
 	ld hl, .Jumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 .Jumptable:
 ; entries correspond to TRADEANIMSTATE_* constants
@@ -1010,15 +998,10 @@ TradeAnim_BulgeThroughTube:
 TradeAnim_AnimateTrademonInTube:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
-	ld e, [hl]
-	ld d, 0
+	ld a, [hl]
 	ld hl, .Jumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	rst JumpTable
+	ret
 
 .Jumptable:
 	dw .InitTimer

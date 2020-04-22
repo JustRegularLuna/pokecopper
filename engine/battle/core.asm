@@ -3924,12 +3924,9 @@ SpikesDamage:
 	call SubtractHPFromTarget
 
 	pop hl
-	call .hl
+	call _hl_
 
 	jp WaitBGMap
-
-.hl
-	jp hl
 
 PursuitSwitch:
 	ld a, BATTLE_VARS_MOVE
