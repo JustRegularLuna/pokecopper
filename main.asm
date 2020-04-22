@@ -419,17 +419,14 @@ INCLUDE "engine/overworld/landmarks.asm"
 
 SECTION "bank77", ROMX
 
-UnownFont:
-INCBIN "gfx/font/unown_font.2bpp"
-
-
-SECTION "bank77_2", ROMX
-
 INCLUDE "engine/rtc/print_hours_mins.asm"
 INCLUDE "engine/events/diploma.asm"
 INCLUDE "engine/pokedex/pokedex_3.asm"
 INCLUDE "engine/events/catch_tutorial_input.asm"
 INCLUDE "engine/pokegear/townmap_convertlinebreakcharacters.asm"
+
+UnownFont:
+INCBIN "gfx/font/unown_font.2bpp"
 
 PokegearGFX:
 INCBIN "gfx/pokegear/pokegear.2bpp.lz"

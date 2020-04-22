@@ -43,15 +43,11 @@ ROMX $04
 	"bank4"
 ROMX $05
 	"bank5"
-ROMX $06
-	"Tileset Data 1"
 ROMX $07
 	"Roofs"
-	"Tileset Data 2"
 	"Extra Songs 1"
 ROMX $08
 	"Clock Reset"
-	"Tileset Data 3"
 	"Egg Moves"
 ROMX $09
 	"bank9"
@@ -59,8 +55,6 @@ ROMX $0a
 	"bankA"
 ROMX $0b
 	"bankB"
-ROMX $0c
-	"Tileset Data 4"
 ROMX $0d
 	"Effect Commands"
 ROMX $0e
@@ -127,8 +121,6 @@ ROMX $2b
 	"Map Blocks 2"
 ROMX $2c
 	"Map Blocks 3"
-ROMX $2d
-	"Tileset Data 5"
 ROMX $2e
 	"bank2E"
 ROMX $2f
@@ -142,8 +134,6 @@ ROMX $32
 ROMX $33
 	"Move Animations"
 	"Extra Songs 2"
-ROMX $37
-	"Tileset Data 6"
 ROMX $38
 	"bank38"
 ROMX $39
@@ -214,10 +204,6 @@ ROMX $72
 	"Miscellaneous Text"
 ROMX $77
 	"bank77"
-	"Tileset Data 7"
-	"bank77_2"
-ROMX $78
-	"Tileset Data 8"
 WRAM0
 	"Stack"
 	"Audio RAM"
