@@ -66,9 +66,9 @@ SECTION "lcd", ROM0[$0048]
 	ds 5 ; unused
 
 SECTION "timer", ROM0[$0050]
-	reti
+; TIMER interrupt is never enabled
 
-	ds 7 ; unused
+	ds 8 ; unused
 
 SECTION "serial", ROM0[$0058]
 	jp Serial
@@ -76,9 +76,9 @@ SECTION "serial", ROM0[$0058]
 	ds 5 ; unused
 
 SECTION "joypad", ROM0[$0060]
-	reti
+; JOYPAD interrupt is never enabled
 
-	ds 7 ; unused
+	ds 8 ; unused
 
 
 SECTION "High Home", ROM0[$0068]

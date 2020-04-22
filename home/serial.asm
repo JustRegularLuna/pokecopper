@@ -143,7 +143,7 @@ Serial_ExchangeByte::
 
 .not_player_1_or_wLinkTimeoutFrames_zero
 	ldh a, [rIE]
-	and (1 << SERIAL) | (1 << TIMER) | (1 << LCD_STAT) | (1 << VBLANK)
+	and (1 << SERIAL) | (1 << LCD_STAT) | (1 << VBLANK)
 	cp 1 << SERIAL
 	jr nz, .loop2
 	ld a, [wcf5d]
@@ -167,7 +167,7 @@ Serial_ExchangeByte::
 	xor a
 	ldh [hSerialReceivedNewData], a
 	ldh a, [rIE]
-	and (1 << SERIAL) | (1 << TIMER) | (1 << LCD_STAT) | (1 << VBLANK)
+	and (1 << SERIAL) | (1 << LCD_STAT) | (1 << VBLANK)
 	sub 1 << SERIAL
 	jr nz, .rIE_not_equal_8
 
@@ -198,7 +198,7 @@ Serial_ExchangeByte::
 
 .linkTimeoutFrames_zero
 	ldh a, [rIE]
-	and (1 << SERIAL) | (1 << TIMER) | (1 << LCD_STAT) | (1 << VBLANK)
+	and (1 << SERIAL) | (1 << LCD_STAT) | (1 << VBLANK)
 	cp 1 << SERIAL
 	ld a, SERIAL_NO_DATA_BYTE
 	ret z
