@@ -10,19 +10,6 @@ ENDM
 
 ; Design patterns
 
-jumptable: MACRO
-	ld a, [\2]
-	ld e, a
-	ld d, 0
-	ld hl, \1
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
-ENDM
-
 maskbits: MACRO
 ; masks just enough bits to cover the first argument
 ; the second argument is an optional shift amount
