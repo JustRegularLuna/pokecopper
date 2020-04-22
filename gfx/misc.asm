@@ -44,7 +44,7 @@ INCBIN "gfx/trainer_card/leaders.2bpp"
 
 SECTION "LeaderGFX2", ROMX
 LeaderGFX2::
-INCBIN "gfx/trainer_card/leaders.2bpp"
+INCBIN "gfx/trainer_card/leaders2.2bpp"
 
 SECTION "BadgeGFX", ROMX
 BadgeGFX::
@@ -52,7 +52,7 @@ INCBIN "gfx/trainer_card/badges.2bpp"
 
 SECTION "BadgeGFX2", ROMX
 BadgeGFX2::
-INCBIN "gfx/trainer_card/badges.2bpp"
+INCBIN "gfx/trainer_card/badges2.2bpp"
 
 
 ; Pack
