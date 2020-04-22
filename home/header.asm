@@ -4,9 +4,13 @@ SECTION "rst0", ROM0[$0000]
 	di
 	jp Start
 
+	ds 4 ; unused
+
 SECTION "rst8", ROM0[$0008]
 FarCall::
 	jp FarCall_hl
+
+	ds 5 ; unused
 
 SECTION "rst10", ROM0[$0010]
 Bankswitch::
@@ -15,11 +19,17 @@ Bankswitch::
 DoNothing::
 	ret
 
+	ds 2 ; unused
+
 SECTION "rst18", ROM0[$0018]
 	rst $38
 
+	ds 7 ; unused
+
 SECTION "rst20", ROM0[$0020]
 	rst $38
+
+	ds 7 ; unused
 
 SECTION "rst28", ROM0[$0028]
 JumpTable::
@@ -35,8 +45,12 @@ JumpTable::
 	pop de
 	jp hl
 
+	ds 5 ; unused
+
 SECTION "rst38", ROM0[$0038]
 	rst $38
+
+	ds 7 ; unused
 
 
 ; Game Boy hardware interrupts
@@ -44,17 +58,32 @@ SECTION "rst38", ROM0[$0038]
 SECTION "vblank", ROM0[$0040]
 	jp VBlank
 
+	ds 5 ; unused
+
 SECTION "lcd", ROM0[$0048]
 	jp LCD
+
+	ds 5 ; unused
 
 SECTION "timer", ROM0[$0050]
 	reti
 
+	ds 7 ; unused
+
 SECTION "serial", ROM0[$0058]
 	jp Serial
 
+	ds 5 ; unused
+
 SECTION "joypad", ROM0[$0060]
 	reti
+
+	ds 7 ; unused
+
+
+SECTION "High Home", ROM0[$0068]
+
+	ds 152 ; unused
 
 
 SECTION "Header", ROM0[$0100]
