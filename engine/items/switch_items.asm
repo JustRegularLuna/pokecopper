@@ -77,7 +77,7 @@ SwitchItemsInBag:
 	call ItemSwitch_ConvertItemFormatToDW
 	add hl, bc
 	pop bc
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wScrollingMenuCursorPosition]
 	call Function24a4d
 	xor a
@@ -184,7 +184,8 @@ Function24a40:
 	call ItemSwitch_GetNthItem
 	ld de, wd002
 	call ItemSwitch_ConvertItemFormatToDW
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 Function24a4d:
 	call ItemSwitch_GetNthItem
@@ -192,7 +193,8 @@ Function24a4d:
 	ld e, l
 	ld hl, wd002
 	call ItemSwitch_ConvertItemFormatToDW
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 ItemSwitch_GetNthItem:
 	push af
@@ -203,7 +205,8 @@ ItemSwitch_GetNthItem:
 	ld l, a
 	inc hl
 	pop af
-	jp AddNTimes
+	rst AddNTimes
+	ret
 
 Function24a6c:
 	push hl
@@ -215,7 +218,7 @@ Function24a6c:
 	cpl
 .dont_negate
 	ld hl, 0
-	call AddNTimes
+	rst AddNTimes
 	ld b, h
 	ld c, l
 	pop hl

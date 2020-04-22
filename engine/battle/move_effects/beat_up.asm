@@ -120,9 +120,9 @@ BattleCommand_BeatUp:
 	ld a, [wd002]
 	ld hl, wOTPartyMonNicknames
 	ld bc, NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld de, wStringBuffer1
-	call CopyBytes
+	rst CopyBytes
 
 .got_enemy_nick
 	ld a, MON_HP

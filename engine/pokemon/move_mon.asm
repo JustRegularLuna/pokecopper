@@ -46,7 +46,7 @@ TryAddMonToParty:
 	ld e, l
 	ld hl, wPlayerName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	; Only initialize the nickname for party mon
 	ld a, [wMonType]
 	and a
@@ -62,7 +62,7 @@ TryAddMonToParty:
 	ld e, l
 	ld hl, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 .skipnickname
 	ld hl, wPartyMon1Species
@@ -75,7 +75,7 @@ TryAddMonToParty:
 	ldh a, [hMoveMon]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 GeneratePartyMonStats:
 ; wBattleMode specifies whether it's a wild mon or not.
 ; wMonType specifies whether it's an opposing mon or not.
@@ -331,7 +331,7 @@ endr
 	jr nz, .generatestats
 	ld hl, wEnemyMonMaxHP
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_MAXHP
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	jr .registerunowndex
 
@@ -353,7 +353,7 @@ endr
 	ld a, [wPartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	predef GetUnownLetter
 	farcall UpdateUnownDex
 
@@ -374,7 +374,7 @@ FillPP:
 	push bc
 	ld hl, Moves
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld de, wStringBuffer1
 	ld a, BANK(Moves)
 	call FarCopyBytes
@@ -411,11 +411,11 @@ AddTempmonToParty:
 	ld a, [wPartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	ld hl, wTempMonSpecies
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, wPartyMonOT
 	ld a, [wPartyCount]
@@ -427,7 +427,7 @@ AddTempmonToParty:
 	ld a, [wCurPartyMon]
 	call SkipNames
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, wPartyMonNicknames
 	ld a, [wPartyCount]
@@ -439,7 +439,7 @@ AddTempmonToParty:
 	ld a, [wCurPartyMon]
 	call SkipNames
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndexBuffer], a
@@ -451,7 +451,7 @@ AddTempmonToParty:
 	ld a, [wPartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], BASE_HAPPINESS
 .egg
 
@@ -462,7 +462,7 @@ AddTempmonToParty:
 	ld a, [wPartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	predef GetUnownLetter
 	farcall UpdateUnownDex
 	ld a, [wFirstUnownSeen]
@@ -534,7 +534,7 @@ SendGetMonIntoFromBox:
 
 .okay2
 	dec a ; wPartyCount - 1
-	call AddNTimes
+	rst AddNTimes
 
 .breedmon
 	push hl
@@ -553,11 +553,11 @@ SendGetMonIntoFromBox:
 
 .okay3
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 
 .okay4
 	ld bc, BOXMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wPokemonWithdrawDepositParameter]
 	cp DAY_CARE_DEPOSIT
 	ld de, wBreedMon1OT
@@ -591,7 +591,7 @@ SendGetMonIntoFromBox:
 
 .okay8
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wPokemonWithdrawDepositParameter]
 	cp DAY_CARE_DEPOSIT
 	ld de, wBreedMon1Nick
@@ -625,7 +625,7 @@ SendGetMonIntoFromBox:
 
 .okay12
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 
 	ld a, [wPokemonWithdrawDepositParameter]
@@ -710,7 +710,7 @@ RestorePPOfDepositedPokemon:
 	ld a, b
 	ld hl, sBoxMons
 	ld bc, BOXMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld b, h
 	ld c, l
 	ld hl, MON_PP
@@ -719,14 +719,14 @@ RestorePPOfDepositedPokemon:
 	push bc
 	ld de, wTempMonPP
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	ld hl, MON_MOVES
 	add hl, bc
 	push hl
 	ld de, wTempMonMoves
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	pop de
 
@@ -834,7 +834,7 @@ RetrieveBreedmon:
 	ld h, d
 	ld l, e
 	pop de
-	call CopyBytes
+	rst CopyBytes
 	push hl
 	ld hl, wPartyMonOT
 	ld a, [wPartyCount]
@@ -843,12 +843,12 @@ RetrieveBreedmon:
 	ld d, h
 	ld e, l
 	pop hl
-	call CopyBytes
+	rst CopyBytes
 	push hl
 	call GetLastPartyMon
 	pop hl
 	ld bc, BOXMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call GetBaseData
 	call GetLastPartyMon
 	ld b, d
@@ -870,7 +870,7 @@ RetrieveBreedmon:
 	ld a, [wPartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld a, $1
@@ -900,7 +900,7 @@ GetLastPartyMon:
 	dec a
 	ld hl, wPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ret
@@ -923,17 +923,18 @@ DepositBreedmon:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	call SkipNames
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonOT
 	call SkipNames
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld bc, BOXMON_STRUCT_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 SendMonIntoBox:
 ; Sends the mon into one of Bills Boxes
@@ -966,7 +967,7 @@ SendMonIntoBox:
 	ld hl, wPlayerName
 	ld de, sBoxMonOT
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndexBuffer], a
@@ -975,12 +976,12 @@ SendMonIntoBox:
 	ld de, sBoxMonNicknames
 	ld hl, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, wEnemyMon
 	ld de, sBoxMon1
 	ld bc, 1 + 1 + NUM_MOVES ; species + item + moves
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, wPlayerID
 	ld a, [hli]
@@ -1048,12 +1049,12 @@ SendMonIntoBox:
 	ld hl, sBoxMon1Moves
 	ld de, wTempMonMoves
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, sBoxMon1PP
 	ld de, wTempMonPP
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 
 	ld b, 0
 	call RestorePPOfDepositedPokemon
@@ -1085,7 +1086,7 @@ ShiftBoxMon:
 	ret c
 
 	push hl
-	call AddNTimes
+	rst AddNTimes
 	dec hl
 	ld e, l
 	ld d, h
@@ -1093,14 +1094,14 @@ ShiftBoxMon:
 
 	ld a, [sBoxCount]
 	dec a
-	call AddNTimes
+	rst AddNTimes
 	dec hl
 
 	push hl
 	ld a, [sBoxCount]
 	dec a
 	ld hl, 0
-	call AddNTimes
+	rst AddNTimes
 	ld c, l
 	ld b, h
 	pop hl
@@ -1172,7 +1173,7 @@ GiveEgg::
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1Species
-	call AddNTimes
+	rst AddNTimes
 	ld a, [wCurPartySpecies]
 	ld [hl], a
 	ld hl, wPartyCount
@@ -1191,7 +1192,7 @@ GiveEgg::
 	dec a
 	ld hl, wPartyMon1Happiness
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [wDebugFlags]
 	bit DEBUG_FIELD_F, a
 	ld a, 1
@@ -1204,7 +1205,7 @@ GiveEgg::
 	dec a
 	ld hl, wPartyMon1HP
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	xor a
 	ld [hli], a
 	ld [hl], a
@@ -1284,7 +1285,7 @@ RemoveMonFromPartyOrBox:
 	ld bc, BOXMON_STRUCT_LENGTH
 .party4
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld a, [wPokemonWithdrawDepositParameter]
@@ -1310,7 +1311,7 @@ RemoveMonFromPartyOrBox:
 .party6
 	ld bc, MON_NAME_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld bc, MON_NAME_LENGTH
@@ -1341,7 +1342,7 @@ RemoveMonFromPartyOrBox:
 	; Shift our mail messages up.
 	ld hl, sPartyMail
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	add hl, bc
 	pop de
@@ -1351,7 +1352,7 @@ RemoveMonFromPartyOrBox:
 	push bc
 	push hl
 	ld bc, MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	push hl
 	ld bc, MAIL_STRUCT_LENGTH
@@ -1636,7 +1637,7 @@ GivePoke::
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [wCurItem]
 	ld [hl], a
 	jr .done
@@ -1672,7 +1673,7 @@ GivePoke::
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	and a
 	jp z, .wildmon
@@ -1720,7 +1721,7 @@ GivePoke::
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, HIGH(RANDY_OT_ID)
 	ld [hli], a
 	ld [hl], LOW(RANDY_OT_ID)
@@ -1784,7 +1785,7 @@ GivePoke::
 	ld hl, wMonOrItemNameBuffer
 	ld de, sBoxMonNicknames
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	ld b, $1
 	ret

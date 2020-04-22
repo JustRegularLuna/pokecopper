@@ -13,7 +13,8 @@ GetPartyParamLocation::
 GetPartyLocation::
 ; Add the length of a PartyMon struct to hl a times.
 	ld bc, PARTYMON_STRUCT_LENGTH
-	jp AddNTimes
+	rst AddNTimes
+	ret
 
 UserPartyAttr::
 	push af
@@ -101,7 +102,8 @@ UpdateBattleMon::
 	ld e, l
 	ld hl, wBattleMonLevel
 	ld bc, wBattleMonMaxHP - wBattleMonLevel
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 UpdateEnemyMonInParty::
 ; Update level, status, current HP
@@ -119,7 +121,8 @@ UpdateEnemyMonInParty::
 	ld e, l
 	ld hl, wEnemyMonLevel
 	ld bc, wEnemyMonMaxHP - wEnemyMonLevel
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 RefreshBattleHuds::
 	call UpdateBattleHuds
@@ -151,7 +154,7 @@ FarCopyRadioText::
 	ld h, a
 	ld de, wRadioText
 	ld bc, 2 * SCREEN_WIDTH
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a

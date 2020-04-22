@@ -79,14 +79,14 @@ NamingScreen:
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	hlcoord 5, 2
-	call PlaceString
+	rst PlaceString
 	ld l, c
 	ld h, b
 	ld de, .NicknameStrings
-	call PlaceString
+	rst PlaceString
 	inc de
 	hlcoord 5, 4
-	call PlaceString
+	rst PlaceString
 	farcall GetGender
 	jr c, .genderless
 	ld a, "♂"
@@ -107,7 +107,7 @@ NamingScreen:
 	call .LoadSprite
 	hlcoord 5, 2
 	ld de, .PlayerNameString
-	call PlaceString
+	rst PlaceString
 	jp .StoreSpriteIconParams
 
 .PlayerNameString:
@@ -119,7 +119,7 @@ NamingScreen:
 	call .LoadSprite
 	hlcoord 5, 2
 	ld de, .RivalNameString
-	call PlaceString
+	rst PlaceString
 	jp .StoreSpriteIconParams
 
 .RivalNameString:
@@ -131,7 +131,7 @@ NamingScreen:
 	call .LoadSprite
 	hlcoord 5, 2
 	ld de, .MomNameString
-	call PlaceString
+	rst PlaceString
 	jp .StoreSpriteIconParams
 
 .MomNameString:
@@ -154,7 +154,7 @@ NamingScreen:
 	ld [hl], $0
 	hlcoord 5, 2
 	ld de, .BoxNameString
-	call PlaceString
+	rst PlaceString
 	jp .StoreBoxIconParams
 
 .BoxNameString:
@@ -220,7 +220,7 @@ NamingScreen_InitText:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, NAMINGSCREEN_BORDER
-	call ByteFill
+	rst ByteFill
 	hlcoord 1, 1
 	lb bc, 6, 18
 	call NamingScreen_IsTargetBox
@@ -316,7 +316,7 @@ NamingScreenJoypadLoop:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call PlaceString
+	rst PlaceString
 	ld a, $1
 	ldh [hBGMapMode], a
 	ret
@@ -894,11 +894,11 @@ INCBIN "gfx/icons/mail_big.2bpp"
 	hlcoord 0, 0
 	ld bc, 6 * SCREEN_WIDTH
 	ld a, NAMINGSCREEN_BORDER
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 6
 	ld bc, 12 * SCREEN_WIDTH
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlcoord 1, 1
 	lb bc, 4, SCREEN_WIDTH - 2
 	call ClearBox
@@ -955,7 +955,7 @@ INCBIN "gfx/icons/mail_big.2bpp"
 	inc hl
 	ld d, [hl]
 	hlcoord 2, 2
-	call PlaceString
+	rst PlaceString
 	ld a, $1
 	ldh [hBGMapMode], a
 	ret

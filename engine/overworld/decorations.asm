@@ -77,7 +77,8 @@ _PlayerDecorationMenu:
 	ld hl, wStringBuffer2
 	ld de, wd002
 	ld bc, ITEM_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .ClearStringBuffer2:
 	ld hl, wStringBuffer2
@@ -85,7 +86,8 @@ _PlayerDecorationMenu:
 	ld [hli], a
 	ld bc, ITEM_NAME_LENGTH - 1
 	ld a, -1
-	jp ByteFill
+	rst ByteFill
+	ret
 
 .AppendToStringBuffer2:
 	ld hl, wStringBuffer2
@@ -133,7 +135,8 @@ Deco_FillTempWithMinusOne:
 	ld [hli], a
 	ld a, -1
 	ld bc, $10
-	jp ByteFill
+	rst ByteFill
+	ret
 
 CheckAllDecorationFlags:
 .loop
@@ -406,7 +409,8 @@ PopulateDecoCategoryMenu:
 GetDecorationData:
 	ld hl, DecorationAttributes
 	ld bc, 6
-	jp AddNTimes
+	rst AddNTimes
+	ret
 
 GetDecorationName:
 	push hl
@@ -421,7 +425,8 @@ DecorationMenuFunction:
 	call GetDecorationData
 	call GetDecoName
 	pop hl
-	jp PlaceString
+	rst PlaceString
+	ret
 
 DoDecorationAction2:
 	ld a, [wMenuSelection]

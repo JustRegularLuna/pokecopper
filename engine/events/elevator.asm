@@ -102,7 +102,7 @@ Elevator_GoToFloor:
 	inc hl
 	pop af
 	ld bc, wElevatorDataEnd - wElevatorData
-	call AddNTimes
+	rst AddNTimes
 	inc hl
 	ld de, wBackupWarpNumber
 	ld a, [wElevatorPointerBank]
@@ -147,7 +147,7 @@ Elevator_GetCurrentFloorText:
 	call Textbox
 	hlcoord 1, 2
 	ld de, Elevator_CurrentFloorText
-	call PlaceString
+	rst PlaceString
 	hlcoord 4, 4
 	call Elevator_GetCurrentFloorString
 	pop af
@@ -191,7 +191,8 @@ GetFloorString:
 	ld d, h
 	ld e, l
 	pop hl
-	jp PlaceString
+	rst PlaceString
+	ret
 
 FloorToString:
 	push de

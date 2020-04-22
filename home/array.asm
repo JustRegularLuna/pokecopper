@@ -33,7 +33,7 @@ SkipNames::
 	jr nz, .loop
 	ret
 
-AddNTimes::
+_AddNTimes::
 ; Add bc * a to hl.
 	and a
 	ret z

@@ -84,7 +84,7 @@ Init::
 	xor a
 	ld hl, HRAM_Begin
 	ld bc, HRAM_End - HRAM_Begin
-	call ByteFill
+	rst ByteFill
 	pop af
 	ldh [hSystemBooted], a
 	pop af
@@ -180,7 +180,8 @@ ClearVRAM::
 	ld hl, VRAM_Begin
 	ld bc, VRAM_End - VRAM_Begin
 	xor a
-	jp ByteFill
+	rst ByteFill
+	ret
 
 ClearWRAM::
 ; Wipe swappable WRAM banks (1-7)
@@ -193,7 +194,7 @@ ClearWRAM::
 	xor a
 	ld hl, WRAM1_Begin
 	ld bc, WRAM1_End - WRAM1_Begin
-	call ByteFill
+	rst ByteFill
 	pop af
 	inc a
 	cp 8
@@ -208,5 +209,5 @@ ClearsScratch::
 	ld hl, sScratch
 	ld bc, $20
 	xor a
-	call ByteFill
+	rst ByteFill
 	jp CloseSRAM

@@ -68,4 +68,5 @@ CopyPokemonName_Buffer1_Buffer3:
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer3
 	ld bc, MON_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret

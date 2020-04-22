@@ -1,4 +1,4 @@
-Predef::
+_Predef::
 ; Call predefined function a.
 ; Preserves bc, de, hl and f.
 

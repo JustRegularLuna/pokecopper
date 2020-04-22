@@ -177,7 +177,7 @@ StatsScreen_CopyToTempMon:
 	ld hl, wBufferMon
 	ld de, wTempMon
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	jr .done
 
 .breedmon
@@ -334,7 +334,7 @@ StatsScreen_InitUpperHalf:
 	call GetNicknamePointer
 	call CopyNickname
 	hlcoord 8, 2
-	call PlaceString
+	rst PlaceString
 	hlcoord 18, 0
 	call .PlaceGenderChar
 	hlcoord 9, 4
@@ -343,7 +343,7 @@ StatsScreen_InitUpperHalf:
 	ld a, [wBaseDexNo]
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
-	call PlaceString
+	rst PlaceString
 	call StatsScreen_PlaceHorizontalDivider
 	call StatsScreen_PlacePageSwitchArrows
 	jp StatsScreen_PlaceShinyIcon
@@ -454,7 +454,7 @@ StatsScreen_LoadGFX:
 	ld [hl], $41 ; right HP/exp bar end cap
 	ld de, .Status_Type
 	hlcoord 0, 12
-	call PlaceString
+	rst PlaceString
 	ld a, [wTempMonPokerusStatus]
 	ld b, a
 	and $f
@@ -478,11 +478,11 @@ StatsScreen_LoadGFX:
 .HasPokerus:
 	ld de, .PkrsStr
 	hlcoord 1, 13
-	call PlaceString
+	rst PlaceString
 	jr .done_status
 .StatusOK:
 	ld de, .OK_str
-	call PlaceString
+	rst PlaceString
 .done_status
 	hlcoord 1, 15
 	predef PrintMonTypes
@@ -497,7 +497,7 @@ StatsScreen_LoadGFX:
 	jr nz, .vertical_divider
 	ld de, .ExpPointStr
 	hlcoord 10, 9
-	call PlaceString
+	rst PlaceString
 	hlcoord 17, 14
 	call .PrintNextLevel
 	hlcoord 13, 10
@@ -511,10 +511,10 @@ StatsScreen_LoadGFX:
 	call PrintNum
 	ld de, .LevelUpStr
 	hlcoord 10, 12
-	call PlaceString
+	rst PlaceString
 	ld de, .ToStr
 	hlcoord 14, 14
-	call PlaceString
+	rst PlaceString
 	hlcoord 11, 16
 	ld a, [wTempMonLevel]
 	ld b, a
@@ -590,17 +590,17 @@ StatsScreen_LoadGFX:
 .GreenPage:
 	ld de, .Item
 	hlcoord 0, 8
-	call PlaceString
+	rst PlaceString
 	call .GetItemName
 	hlcoord 8, 8
-	call PlaceString
+	rst PlaceString
 	ld de, .Move
 	hlcoord 0, 10
-	call PlaceString
+	rst PlaceString
 	ld hl, wTempMonMoves
 	ld de, wListMoves_MoveIndicesBuffer
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 	hlcoord 8, 10
 	ld a, SCREEN_WIDTH * 2
 	ld [wBuffer1], a
@@ -648,10 +648,10 @@ StatsScreen_LoadGFX:
 .PlaceOTInfo:
 	ld de, IDNoString
 	hlcoord 0, 9
-	call PlaceString
+	rst PlaceString
 	ld de, OTString
 	hlcoord 0, 12
-	call PlaceString
+	rst PlaceString
 	hlcoord 2, 10
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	ld de, wTempMonID
@@ -660,7 +660,7 @@ StatsScreen_LoadGFX:
 	call GetNicknamePointer
 	call CopyNickname
 	hlcoord 2, 13
-	call PlaceString
+	rst PlaceString
 	ld a, [wTempMonCaughtGender]
 	and a
 	ret z
@@ -763,7 +763,7 @@ StatsScreen_GetAnimationParam:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld b, h
 	ld c, l
 	jr .CheckEggFaintedFrzSlp
@@ -776,7 +776,7 @@ StatsScreen_GetAnimationParam:
 	ld hl, sBoxMons
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld b, h
 	ld c, l
 	ld a, BANK(sBoxMons)
@@ -843,19 +843,19 @@ EggStatsScreen:
 	call StatsScreen_PlaceHorizontalDivider
 	ld de, EggString
 	hlcoord 8, 1
-	call PlaceString
+	rst PlaceString
 	ld de, IDNoString
 	hlcoord 8, 3
-	call PlaceString
+	rst PlaceString
 	ld de, OTString
 	hlcoord 8, 5
-	call PlaceString
+	rst PlaceString
 	ld de, FiveQMarkString
 	hlcoord 11, 3
-	call PlaceString
+	rst PlaceString
 	ld de, FiveQMarkString
 	hlcoord 11, 5
-	call PlaceString
+	rst PlaceString
 	ld a, [wTempMonHappiness] ; egg status
 	ld de, EggSoonString
 	cp $6
@@ -869,7 +869,7 @@ EggStatsScreen:
 	ld de, EggALotMoreTimeString
 .picked
 	hlcoord 1, 9
-	call PlaceString
+	rst PlaceString
 	ld hl, wcf64
 	set 5, [hl]
 	call SetPalettes ; pals
@@ -977,13 +977,13 @@ CopyNickname:
 	ld a, BANK(sBoxMonNicknames)
 	call GetSRAMBank
 	push de
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	jp CloseSRAM
 
 .partymon
 	push de
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	ret
 

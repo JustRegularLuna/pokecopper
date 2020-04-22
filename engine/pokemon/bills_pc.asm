@@ -685,7 +685,7 @@ BillsPC_InitRAM:
 	ld hl, wBillsPCData
 	ld bc, wBillsPCDataEnd - wBillsPCData
 	xor a
-	call ByteFill
+	rst ByteFill
 	xor a
 	ld [wJumptableIndex], a
 	ld [wcf64], a
@@ -872,7 +872,8 @@ BillsPC_PlaceString:
 	call Textbox
 	pop de
 	hlcoord 1, 16
-	jp PlaceString
+	rst PlaceString
+	ret
 
 BillsPC_MoveMonWOMail_BoxNameAndArrows:
 	call BillsPC_BoxName
@@ -900,7 +901,7 @@ BillsPC_BoxName:
 	dec a
 	ld hl, wBoxNames
 	ld bc, BOX_NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	jr .print
@@ -909,7 +910,8 @@ BillsPC_BoxName:
 	ld de, .PartyPKMN
 .print
 	hlcoord 10, 1
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .PartyPKMN:
 	db "PARTY <PK><MN>@"
@@ -978,7 +980,7 @@ PCMonInfo:
 
 	call GetBasePokemonName
 	hlcoord 1, 14
-	call PlaceString
+	rst PlaceString
 
 	hlcoord 1, 12
 	call PrintLevel
@@ -1037,7 +1039,7 @@ BillsPC_LoadMonStats:
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wTempMonLevel], a
 	pop hl
@@ -1046,7 +1048,7 @@ BillsPC_LoadMonStats:
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wTempMonItem], a
 	pop hl
@@ -1054,7 +1056,7 @@ BillsPC_LoadMonStats:
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld de, wTempMonDVs
 	ld a, [hli]
 	ld [de], a
@@ -1067,19 +1069,19 @@ BillsPC_LoadMonStats:
 	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wTempMonLevel], a
 	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wTempMonItem], a
 	ld hl, wPartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld de, wTempMonDVs
 	ld a, [hli]
 	ld [de], a
@@ -1094,21 +1096,21 @@ BillsPC_LoadMonStats:
 	ld hl, sBoxMon1Level
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wTempMonLevel], a
 
 	ld hl, sBoxMon1Item
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wTempMonItem], a
 
 	ld hl, sBoxMon1DVs
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld de, wTempMonDVs
 	ld a, [hli]
 	ld [de], a
@@ -1166,7 +1168,8 @@ BillsPC_RefreshTextboxes:
 	cp -1
 	jr nz, .get_nickname
 	ld de, .CancelString
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .get_nickname
 	inc de
@@ -1189,7 +1192,7 @@ BillsPC_RefreshTextboxes:
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	pop hl
 	and a
@@ -1198,14 +1201,15 @@ BillsPC_RefreshTextboxes:
 	add hl, bc
 	ld bc, MON_NAME_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld de, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	pop hl
 	ld de, wStringBuffer1
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .boxfail
 	call CloseSRAM
@@ -1223,13 +1227,14 @@ BillsPC_RefreshTextboxes:
 	ld hl, wPartyMonNicknames
 	ld bc, MON_NAME_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld de, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	ld de, wStringBuffer1
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .partyfail
 	pop hl
@@ -1248,21 +1253,23 @@ BillsPC_RefreshTextboxes:
 	ld hl, sBoxMonNicknames
 	ld bc, MON_NAME_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld de, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	pop hl
 	ld de, wStringBuffer1
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .sBoxFail
 	call CloseSRAM
 	pop hl
 .placeholder_string
 	ld de, .Placeholder
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .Placeholder:
 	db "-----@"
@@ -1305,7 +1312,7 @@ CopyBoxmonSpecies:
 	xor a
 	ld hl, wBillsPCPokemonList
 	ld bc, 3 * 30
-	call ByteFill
+	rst ByteFill
 	ld de, wBillsPCPokemonList
 	xor a
 	ld [wd003], a
@@ -1586,10 +1593,10 @@ BillsPC_CopyMon:
 	ld hl, sBoxMons
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wBufferMon
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	farcall CalcBufferMonStats
 	ret
@@ -1604,10 +1611,11 @@ BillsPC_CopyMon:
 	ld hl, wPartyMon1
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wBufferMon
 	ld bc, PARTYMON_STRUCT_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .box
 	ld b, a
@@ -1665,11 +1673,11 @@ DepositPokemon:
 	call WaitBGMap
 	hlcoord 1, 16
 	ld de, PCString_Stored
-	call PlaceString
+	rst PlaceString
 	ld l, c
 	ld h, b
 	ld de, wStringBuffer1
-	call PlaceString
+	rst PlaceString
 	ld a, "!"
 	ld [bc], a
 	ld c, 50
@@ -1720,11 +1728,11 @@ TryWithdrawPokemon:
 	call WaitBGMap
 	hlcoord 1, 16
 	ld de, PCString_Got
-	call PlaceString
+	rst PlaceString
 	ld l, c
 	ld h, b
 	ld de, wStringBuffer1
-	call PlaceString
+	rst PlaceString
 	ld a, "!"
 	ld [bc], a
 	ld c, 50
@@ -1768,7 +1776,7 @@ ReleasePKMN_ByePKMN:
 	call GetPokemonName
 	hlcoord 1, 16
 	ld de, PCString_ReleasedPKMN
-	call PlaceString
+	rst PlaceString
 	ld c, 80
 	call DelayFrames
 	hlcoord 0, 15
@@ -1776,12 +1784,12 @@ ReleasePKMN_ByePKMN:
 	call Textbox
 	hlcoord 1, 16
 	ld de, PCString_Bye
-	call PlaceString
+	rst PlaceString
 	ld l, c
 	ld h, b
 	inc hl
 	ld de, wStringBuffer1
-	call PlaceString
+	rst PlaceString
 	ld l, c
 	ld h, b
 	ld [hl], "!"
@@ -1798,7 +1806,7 @@ MovePKMNWitoutMail_InsertMon:
 	call Textbox
 	hlcoord 1, 16
 	ld de, .Saving_LeaveOn
-	call PlaceString
+	rst PlaceString
 	ld c, 20
 	call DelayFrames
 	pop af
@@ -1975,24 +1983,27 @@ CopySpeciesToTemp:
 CopyNicknameToTemp:
 	ld bc, MON_NAME_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wBufferMonNick
 	ld bc, MON_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 CopyOTNameToTemp:
 	ld bc, NAME_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wBufferMonOT
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 CopyMonToTemp:
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wBufferMon
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 GetBoxPointer:
 	dec b
@@ -2039,13 +2050,13 @@ BillsPC_InitGFX:
 	ld hl, vTiles2 tile $00
 	ld bc, $31 tiles
 	xor a
-	call ByteFill
+	rst ByteFill
 	call LoadStandardFont
 	call LoadFontsBattleExtra
 	ld hl, PCMailGFX
 	ld de, vTiles2 tile $5c
 	ld bc, 4 tiles
-	call CopyBytes
+	rst CopyBytes
 	ld hl, PCSelectLZ
 	ld de, vTiles0 tile $00
 	call Decompress
@@ -2103,7 +2114,8 @@ BillsPC_ClearTilemap:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
-	jp ByteFill
+	rst ByteFill
+	ret
 
 _ChangeBox_MenuHeader:
 	db MENU_BACKUP_TILES ; flags
@@ -2135,12 +2147,13 @@ endr
 	dec a
 	call GetBoxName
 	pop hl
-	jp PlaceString
+	rst PlaceString
+	ret
 
 GetBoxName:
 	ld bc, BOX_NAME_LENGTH
 	ld hl, wBoxNames
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ret
@@ -2154,7 +2167,7 @@ BillsPC_PrintBoxCountAndCapacity:
 	ret z
 	hlcoord 12, 9
 	ld de, .Pokemon
-	call PlaceString
+	rst PlaceString
 	call GetBoxCount
 	ld [wDeciramBuffer], a
 	hlcoord 13, 11
@@ -2162,7 +2175,8 @@ BillsPC_PrintBoxCountAndCapacity:
 	lb bc, 1, 2
 	call PrintNum
 	ld de, .out_of_20
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .Pokemon:
 	db "#MON@"
@@ -2236,12 +2250,13 @@ BillsPC_PrintBoxName:
 	call Textbox
 	hlcoord 1, 2
 	ld de, .Current
-	call PlaceString
+	rst PlaceString
 	ld a, [wCurBox]
 	and $f
 	call GetBoxName
 	hlcoord 11, 2
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .Current:
 	db "CURRENT@"
@@ -2325,7 +2340,7 @@ BillsPC_PlaceChangeBoxString:
 	call Textbox
 	pop de
 	hlcoord 1, 16
-	call PlaceString
+	rst PlaceString
 	ld a, $1
 	ldh [hBGMapMode], a
 	ret

@@ -1657,7 +1657,7 @@ AI_Smart_Conversion2:
 	dec a
 	ld hl, Moves + MOVE_TYPE
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 
 	ld a, BANK(Moves)
 	call GetFarByte
@@ -3194,7 +3194,7 @@ AIGetEnemyMove:
 	dec a
 	ld hl, Moves
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 
 	ld de, wEnemyMoveStruct
 	ld a, BANK(Moves)

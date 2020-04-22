@@ -40,7 +40,7 @@ DoBattleTransition:
 	ld hl, wBGPals1
 	ld bc, 8 palettes
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	pop af
 	ldh [rSVBK], a

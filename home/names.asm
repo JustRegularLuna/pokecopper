@@ -51,7 +51,7 @@ GetName::
 
 	ld de, wStringBuffer1
 	ld bc, ITEM_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 .done
 	pop de
@@ -130,7 +130,7 @@ GetPokemonName::
 	ld de, wStringBuffer1
 	push de
 	ld bc, MON_NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wStringBuffer1 + MON_NAME_LENGTH - 1
 	ld [hl], "@"
 	pop de
@@ -187,7 +187,7 @@ GetTMHMName::
 
 .copy
 	ld de, wStringBuffer1
-	call CopyBytes
+	rst CopyBytes
 
 ; TM/HM number
 	push de

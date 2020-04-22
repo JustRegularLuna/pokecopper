@@ -42,7 +42,7 @@ PartyMenu_InitAnimatedMonIcon:
 	ldh a, [hObjectStructIndexBuffer]
 	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	pop bc
 	ld a, [hl]
 	and a

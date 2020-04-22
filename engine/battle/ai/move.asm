@@ -66,7 +66,7 @@ AIChooseMove:
 	ld a, [wTrainerClass]
 	dec a
 	ld bc, 7 ; Trainer2AI - Trainer1AI
-	call AddNTimes
+	rst AddNTimes
 
 	lb bc, CHECK_FLAG, 0
 	push bc
@@ -103,7 +103,7 @@ AIChooseMove:
 	ld h, [hl]
 	ld l, a
 	ld a, BANK(AIScoring)
-	call FarCall_hl
+	rst FarCall
 
 	jr .CheckLayer
 

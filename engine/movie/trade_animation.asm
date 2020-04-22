@@ -161,7 +161,7 @@ RunTradeAnimScript:
 	ld hl, vTiles0
 	ld bc, sScratch - vTiles0
 	xor a
-	call ByteFill
+	rst ByteFill
 	xor a
 	ldh [rVBK], a
 
@@ -169,7 +169,7 @@ RunTradeAnimScript:
 	hlbgcoord 0, 0
 	ld bc, sScratch - vBGMap0
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	ld hl, TradeGameBoyLZ
 	ld de, vTiles2 tile $31
 	call Decompress
@@ -332,7 +332,7 @@ TradeAnim_InitTubeAnim:
 	hlbgcoord 20, 3
 	ld bc, 12
 	ld a, $60
-	call ByteFill
+	rst ByteFill
 	pop af
 
 	call TradeAnim_TubeAnimJumptable
@@ -455,7 +455,7 @@ TradeAnim_TubeToPlayer8:
 	hlbgcoord 0, 0
 	ld bc, sScratch - vBGMap0
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	xor a
 	ldh [hSCX], a
 	ld a, $90
@@ -509,7 +509,7 @@ TradeAnim_TubeAnimJumptable:
 	inc hl
 	ld bc, 10
 	ld a, $60
-	call ByteFill
+	rst ByteFill
 	hlcoord 3, 2
 	jp TradeAnim_CopyTradeGameBoyTilemap
 
@@ -518,14 +518,15 @@ TradeAnim_TubeAnimJumptable:
 	hlcoord 0, 3
 	ld bc, SCREEN_WIDTH
 	ld a, $60
-	jp ByteFill
+	rst ByteFill
+	ret
 
 .Two:
 	call TradeAnim_BlankTilemap
 	hlcoord 0, 3
 	ld bc, $11
 	ld a, $60
-	call ByteFill
+	rst ByteFill
 	hlcoord 17, 3
 	ld [hl], $5d
 
@@ -560,10 +561,10 @@ TradeAnim_PlaceTrademonStatsOnTubeAnim:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH
 	ld a, "─"
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 1
 	ld de, wLinkPlayer1Name
-	call PlaceString
+	rst PlaceString
 	ld hl, wLinkPlayer2Name
 	ld de, 0
 .find_name_end_loop
@@ -577,11 +578,11 @@ TradeAnim_PlaceTrademonStatsOnTubeAnim:
 	hlcoord 0, 4
 	add hl, de
 	ld de, wLinkPlayer2Name
-	call PlaceString
+	rst PlaceString
 	hlcoord 7, 2
 	ld bc, 6
 	pop af
-	call ByteFill
+	rst ByteFill
 	call WaitBGMap
 	call WaitTop
 	ld a, HIGH(vBGMap0)
@@ -774,7 +775,8 @@ TradeAnim_GetNickname:
 	ld hl, wStringBuffer1
 	pop de
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 TradeAnim_ShowGivemonFrontpic:
 	ld de, vTiles0
@@ -873,7 +875,8 @@ TrademonStats_MonTemplate:
 	call Textbox
 	hlcoord 4, 0
 	ld de, .OTMonData
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .OTMonData:
 	db   "─── №."
@@ -891,7 +894,7 @@ TrademonStats_Egg:
 	call Textbox
 	hlcoord 4, 2
 	ld de, .EggData
-	call PlaceString
+	rst PlaceString
 	jp TrademonStats_WaitBGMap
 
 .EggData:
@@ -915,7 +918,8 @@ TrademonStats_PrintSpeciesNumber:
 
 TrademonStats_PrintSpeciesName:
 	hlcoord 4, 2
-	jp PlaceString
+	rst PlaceString
+	ret
 
 TrademonStats_PrintOTName:
 	cp 3
@@ -924,7 +928,7 @@ TrademonStats_PrintOTName:
 .caught_gender_okay
 	push af
 	hlcoord 7, 4
-	call PlaceString
+	rst PlaceString
 	inc bc
 	pop af
 	ld hl, .Gender
@@ -1142,7 +1146,7 @@ TradeAnim_TakeCareOfText:
 	hlcoord 0, 10
 	ld bc, 8 * SCREEN_WIDTH
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	call WaitBGMap
 	ld hl, .TakeGoodCareOfMonText
 	call PrintText
@@ -1199,7 +1203,8 @@ TradeAnim_BlankTilemap:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
-	jp ByteFill
+	rst ByteFill
+	ret
 
 TradeAnim_CopyBoxFromDEtoHL:
 .row
@@ -1235,11 +1240,12 @@ LinkTradeAnim_LoadTradePlayerNames:
 	push de
 	ld de, wLinkPlayer1Name
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	ld de, wLinkPlayer2Name
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 LinkTradeAnim_LoadTradeMonSpecies:
 	ld a, [hl]

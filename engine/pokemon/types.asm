@@ -34,7 +34,7 @@ PrintMoveType:
 	dec a
 	ld bc, MOVE_LENGTH
 	ld hl, Moves
-	call AddNTimes
+	rst AddNTimes
 	ld de, wStringBuffer1
 	ld a, BANK(Moves)
 	call FarCopyBytes
@@ -59,7 +59,8 @@ PrintType:
 	ld d, [hl]
 	pop hl
 
-	jp PlaceString
+	rst PlaceString
+	ret
 
 GetTypeName:
 ; Copy the name of type [wNamedObjectIndexBuffer] to wStringBuffer1.
@@ -75,6 +76,7 @@ GetTypeName:
 	ld l, a
 	ld de, wStringBuffer1
 	ld bc, MOVE_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 INCLUDE "data/types/names.asm"

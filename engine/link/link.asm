@@ -23,7 +23,7 @@ LinkCommunications:
 	farcall LinkTextbox2
 	hlcoord 4, 10
 	ld de, String_PleaseWait
-	call PlaceString
+	rst PlaceString
 	call SetTradeRoomBGPals
 	call WaitBGMap2
 	ld hl, wcf5d
@@ -138,7 +138,7 @@ Gen2ToGen1LinkComms:
 	ld hl, wLinkPlayerName
 	ld de, wOTPlayerName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld de, wOTPartyCount
 	ld a, [hli]
 	ld [de], a
@@ -293,7 +293,7 @@ Gen2ToGen2LinkComms:
 	dec hl
 	ld de, wcb84
 	ld bc, $190 ; 400
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wcb84
 	ld bc, $c6 ; 198
 .loop4
@@ -328,7 +328,7 @@ Gen2ToGen2LinkComms:
 .copy_mail_loop
 	push bc
 	ld bc, MAIL_MSG_LENGTH + 1
-	call CopyBytes
+	rst CopyBytes
 	ld a, LOW(MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1))
 	add e
 	ld e, a
@@ -349,7 +349,7 @@ Gen2ToGen2LinkComms:
 	adc d
 	ld d, a
 	ld bc, MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	dec b
 	jr nz, .copy_author_loop
@@ -372,16 +372,16 @@ Gen2ToGen2LinkComms:
 	ld hl, wLinkPlayerName
 	ld de, wOTPlayerName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld de, wOTPartyCount
 	ld bc, 1 + PARTY_LENGTH + 1
-	call CopyBytes
+	rst CopyBytes
 	ld de, wOTPlayerID
 	ld bc, 2
-	call CopyBytes
+	rst CopyBytes
 	ld de, wOTPartyMons
 	ld bc, wOTPartyDataEnd - wOTPartyMons
-	call CopyBytes
+	rst CopyBytes
 	ld de, MUSIC_NONE
 	call PlayMusic
 	ldh a, [hSerialConnectionStatus]
@@ -404,7 +404,7 @@ Gen2ToGen2LinkComms:
 	ld hl, wOTPlayerName
 	ld de, wOTClassName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call ReturnToMapFromSubmenu
 
 	; LET'S DO THIS
@@ -610,7 +610,7 @@ Link_PrepPartyData_Gen1:
 	jr nz, .loop1
 	ld hl, wPlayerName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	push de
 	ld hl, wPartyCount
 	ld a, [hli]
@@ -653,7 +653,8 @@ Link_PrepPartyData_Gen1:
 	ld hl, wPartyMonNicknames
 .copy_ot_nicks
 	ld bc, PARTY_LENGTH * NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .ConvertPartyStruct2to1:
 	ld b, h
@@ -703,7 +704,7 @@ Link_PrepPartyData_Gen1:
 	dec a
 	ld hl, BaseData + BASE_TYPES
 	ld bc, BASE_DATA_SIZE
-	call AddNTimes
+	rst AddNTimes
 	ld bc, BASE_CATCH_RATE - BASE_TYPES
 	ld a, BANK(BaseData)
 	call FarCopyBytes
@@ -714,7 +715,7 @@ Link_PrepPartyData_Gen1:
 	ld hl, MON_ITEM
 	add hl, bc
 	ld bc, MON_HAPPINESS - MON_ITEM
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 
 	ld hl, MON_LEVEL
@@ -728,7 +729,7 @@ Link_PrepPartyData_Gen1:
 	ld hl, MON_MAXHP
 	add hl, bc
 	ld bc, MON_SAT - MON_MAXHP
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 
 	push de
@@ -775,22 +776,22 @@ Link_PrepPartyData_Gen2:
 	jr nz, .loop1
 	ld hl, wPlayerName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wPartyCount
 	ld bc, 1 + PARTY_LENGTH + 1
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wPlayerID
 	ld bc, 2
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wPartyMon1Species
 	ld bc, PARTY_LENGTH * PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wPartyMonOT
 	ld bc, PARTY_LENGTH * NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wPartyMonNicknames
 	ld bc, PARTY_LENGTH * MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 ; Okay, we did all that.  Now, are we in the trade center?
 	ld a, [wLinkMode]
@@ -810,7 +811,7 @@ Link_PrepPartyData_Gen2:
 .loop2
 	push bc
 	ld bc, MAIL_MSG_LENGTH + 1
-	call CopyBytes
+	rst CopyBytes
 	ld bc, sPartyMon1MailEnd - sPartyMon1MailAuthor
 	add hl, bc
 	pop bc
@@ -824,7 +825,7 @@ Link_PrepPartyData_Gen2:
 	ld bc, MAIL_MSG_LENGTH + 1
 	add hl, bc
 	ld bc, sPartyMon1MailEnd - sPartyMon1MailAuthor
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	dec b
 	jr nz, .loop3
@@ -912,10 +913,11 @@ Function2868a:
 	add hl, bc
 	ld de, wOTPartyMonOT
 	ld bc, PARTY_LENGTH * NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld de, wOTPartyMonNicknames
 	ld bc, PARTY_LENGTH * MON_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .ConvertToGen2:
 	ld b, h
@@ -975,7 +977,7 @@ Function2868a:
 	inc de
 	pop bc
 	ld bc, $19
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	ld d, h
 	ld e, l
@@ -993,7 +995,7 @@ Function2868a:
 	ld l, e
 	pop de
 	ld bc, 8
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	call GetBaseData
 	push de
@@ -1198,7 +1200,7 @@ LinkTrade_PlayerPartyMenu:
 	xor a
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
+	rst ByteFill
 	xor a
 	ld [wMonType], a
 	ld a, A_BUTTON | D_UP | D_DOWN
@@ -1282,7 +1284,7 @@ Function28926:
 	call LinkTextboxAtHL
 	hlcoord 2, 16
 	ld de, .String_Stats_Trade
-	call PlaceString
+	rst PlaceString
 	farcall Link_WaitBGMap
 
 .joy_loop
@@ -1420,7 +1422,7 @@ Function28926:
 	call LinkTextboxAtHL
 	hlcoord 1, 14
 	ld de, String_TooBadTheTradeWasCanceled
-	call PlaceString
+	rst PlaceString
 	ld a, $1
 	ld [wPlayerLinkAction], a
 	farcall Function16d6ce
@@ -1505,7 +1507,7 @@ Function28b68:
 	ld a, [wOtherPlayerLinkMode]
 	hlcoord 6, 9
 	ld bc, SCREEN_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], "▷"
 	ret
 
@@ -1544,7 +1546,7 @@ LinkTrade:
 	ld hl, wStringBuffer1
 	ld de, wd004
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wd003]
 	ld hl, wOTPartySpecies
 	ld c, a
@@ -1562,7 +1564,7 @@ LinkTrade:
 	call LinkTextboxAtHL
 	ld de, String28eab
 	hlcoord 12, 8
-	call PlaceString
+	rst PlaceString
 	ld a, 8
 	ld [w2DMenuCursorInitY], a
 	ld a, 11
@@ -1601,7 +1603,7 @@ LinkTrade:
 	call LinkTextboxAtHL
 	hlcoord 1, 14
 	ld de, String_TooBadTheTradeWasCanceled
-	call PlaceString
+	rst PlaceString
 	farcall Function16d6ce
 	jp Function28ea3
 
@@ -1617,14 +1619,14 @@ LinkTrade:
 	call LinkTextboxAtHL
 	hlcoord 1, 14
 	ld de, String_TooBadTheTradeWasCanceled
-	call PlaceString
+	rst PlaceString
 	jp Function28ea3
 
 .asm_28c7b
 	ld hl, sPartyMail
 	ld a, [wd002]
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(sPartyMail)
 	call GetSRAMBank
 	ld d, h
@@ -1640,7 +1642,7 @@ LinkTrade:
 	jr z, .asm_28ca6
 	push bc
 	ld bc, MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	jr .asm_28c96
 
@@ -1649,20 +1651,20 @@ LinkTrade:
 	ld a, [wPartyCount]
 	dec a
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	ld hl, wc9f4
 	ld a, [wd003]
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	pop de
 	ld bc, MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	ld hl, wPlayerName
 	ld de, wPlayerTrademonSenderName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wd002]
 	ld hl, wPartySpecies
 	ld b, 0
@@ -1676,7 +1678,7 @@ LinkTrade:
 	call SkipNames
 	ld de, wPlayerTrademonOTName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wPartyMon1ID
 	ld a, [wd002]
 	call GetPartyLocation
@@ -1702,7 +1704,7 @@ LinkTrade:
 	ld hl, wOTPlayerName
 	ld de, wOTTrademonSenderName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wd003]
 	ld hl, wOTPartySpecies
 	ld b, 0
@@ -1715,7 +1717,7 @@ LinkTrade:
 	call SkipNames
 	ld de, wOTTrademonOTName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wOTPartyMon1ID
 	ld a, [wd003]
 	call GetPartyLocation
@@ -1792,7 +1794,7 @@ LinkTrade:
 	call GetPartyLocation
 	ld de, wTempMonSpecies
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	predef AddTempmonToParty
 	ld a, [wPartyCount]
 	dec a
@@ -1844,7 +1846,7 @@ LinkTrade:
 	call LinkTextboxAtHL
 	hlcoord 1, 14
 	ld de, String28ebd
-	call PlaceString
+	rst PlaceString
 	farcall Link_WaitBGMap
 	ld c, 50
 	call DelayFrames

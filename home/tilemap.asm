@@ -180,7 +180,7 @@ ClearPalettes::
 	ld hl, wBGPals2
 	ld bc, 16 palettes
 	ld a, $ff
-	call ByteFill
+	rst ByteFill
 
 	pop af
 	ldh [rSVBK], a

@@ -2,7 +2,8 @@ FieldMoveJumptableReset:
 	xor a
 	ld hl, wBuffer1
 	ld bc, 7
-	jp ByteFill
+	rst ByteFill
+	ret
 
 FieldMoveJumptable:
 	ld a, [wBuffer1]
@@ -81,7 +82,7 @@ CheckPartyMove:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1Moves
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld b, NUM_MOVES
 .check
 	ld a, [hli]
@@ -777,7 +778,7 @@ EscapeRopeOrDig:
 	ld hl, wDigWarpNumber
 	ld de, wNextWarp
 	ld bc, 3
-	call CopyBytes
+	rst CopyBytes
 	call GetPartyNick
 	ld a, [wBuffer2]
 	cp $2

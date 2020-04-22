@@ -71,7 +71,7 @@ SGB_ApplyPartyMenuHPPals:
 	ld hl, wSGBPals + 10
 	ld bc, $6
 	ld a, [wSGBPals]
-	call AddNTimes
+	rst AddNTimes
 	pop de
 	ld [hl], e
 	ret
@@ -154,7 +154,7 @@ LoadMailPalettes:
 	ld hl, PalPacket_9ce6
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	inc hl
 	inc hl
@@ -285,7 +285,8 @@ WipeAttrmap:
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
-	jp ByteFill
+	rst ByteFill
+	ret
 
 ApplyPals:
 	ld hl, wBGPals1
@@ -519,7 +520,7 @@ InitCGBPals::
 	ld hl, vTiles3
 	ld bc, $200 tiles
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld a, BANK(vTiles0)
 	ldh [rVBK], a
 	ld a, 1 << rBGPI_AUTO_INCREMENT
@@ -609,7 +610,8 @@ SGB_ClearVRAM:
 	ld hl, VRAM_Begin
 	ld bc, VRAM_End - VRAM_Begin
 	xor a
-	jp ByteFill
+	rst ByteFill
+	ret
 
 PushSGBBorderPalsAndWait:
 	ld hl, MltReq2Packet

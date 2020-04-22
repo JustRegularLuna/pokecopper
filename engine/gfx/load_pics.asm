@@ -118,7 +118,7 @@ GetFrontpicPointer:
 .ok
 	dec a
 	ld bc, 6
-	call AddNTimes
+	rst AddNTimes
 	ld a, d
 	call GetFarByte
 	push af
@@ -154,7 +154,7 @@ GetMonBackpic:
 .ok
 	dec a
 	ld bc, 6
-	call AddNTimes
+	rst AddNTimes
 	ld bc, 3
 	add hl, bc
 	ld a, d
@@ -191,7 +191,7 @@ GetTrainerPic:
 	ld a, [wTrainerClass]
 	dec a
 	ld bc, 3
-	call AddNTimes
+	rst AddNTimes
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wDecompressScratch)

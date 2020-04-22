@@ -11,7 +11,7 @@ _OptionsMenu:
 	call Textbox
 	hlcoord 2, 2
 	ld de, StringOptions
-	call PlaceString
+	rst PlaceString
 	xor a
 	ld [wJumptableIndex], a
 	ld c, NUM_OPTIONS - 1 ; without cancel
@@ -137,7 +137,7 @@ Options_TextSpeed:
 	inc hl
 	ld d, [hl]
 	hlcoord 11, 3
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -206,7 +206,7 @@ Options_BattleScene:
 
 .Display:
 	hlcoord 11, 5
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -244,7 +244,7 @@ Options_BattleStyle:
 
 .Display:
 	hlcoord 11, 7
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -289,7 +289,7 @@ Options_Sound:
 
 .Display:
 	hlcoord 11, 9
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -327,7 +327,7 @@ Options_MenuAccount:
 
 .Display:
 	hlcoord 11, 11
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -422,6 +422,6 @@ Options_UpdateCursorPosition:
 	jr nz, .not_cancel
 	inc a
 .not_cancel
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], "▶"
 	ret

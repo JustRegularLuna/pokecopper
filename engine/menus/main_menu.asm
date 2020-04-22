@@ -146,7 +146,8 @@ MainMenu_PrintCurrentTimeAndDay:
 .PrintTimeNotSet:
 	hlcoord 1, 14
 	ld de, .TimeNotSet
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .TimeNotSet:
 	db "TIME NOT SET@"
@@ -159,11 +160,12 @@ MainMenu_PrintCurrentTimeAndDay:
 	ld d, h
 	ld e, l
 	pop hl
-	call PlaceString
+	rst PlaceString
 	ld h, b
 	ld l, c
 	ld de, .Day
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .Days:
 	db "SUN@"

@@ -53,7 +53,7 @@ LoadSGBLayout:
 	ld hl, PalPacket_9ce6
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	ld a, [wPlayerHPPal]
 	add PAL_HP_GREEN
@@ -82,7 +82,7 @@ LoadSGBLayout:
 	ld hl, PalPacket_9cf6
 	ld de, wSGBPals + PALPACKET_LENGTH
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	call GetBattlemonBackpicPalettePointer
 
@@ -114,7 +114,7 @@ LoadSGBLayout:
 	ld hl, PalPacket_9bd6
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, wSGBPals + 1
 	ld [hl], $10
@@ -137,7 +137,7 @@ LoadSGBLayout:
 	ld hl, PalPacket_9ce6
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wCurHPPal]
 	add PAL_HP_GREEN
 	call GetPredefPal
@@ -173,7 +173,7 @@ LoadSGBLayout:
 	ld hl, PalPacket_9ce6
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wSGBPals + 3
 	ld [hl], LOW(palred 31 + palgreen 20 + palblue 10)
 	inc hl
@@ -200,7 +200,7 @@ LoadSGBLayout:
 	ld hl, PalPacket_9ce6
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wSGBPals + 3
 	ld [hl], LOW(palred 31 + palgreen 20 + palblue 10)
 	inc hl
@@ -233,7 +233,7 @@ LoadSGBLayout:
 	ld hl, PalPacket_9ce6
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wSGBPals + 3
 	ld [hl], LOW(palred 31 + palgreen 20 + palblue 10)
 	inc hl
@@ -265,7 +265,7 @@ LoadSGBLayout:
 	ld hl, PalPacket_9bd6
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call .GetMapPalsIndex
 	ld hl, wSGBPals + 1
 	ld [hld], a
@@ -279,7 +279,7 @@ LoadSGBLayout:
 	ld hl, PalPacket_9ce6
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	ld a, c
 	and a
@@ -299,7 +299,7 @@ LoadSGBLayout:
 	ld hl, wPartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld c, l
 	ld b, h
 	ld a, [wPlayerHPPal]
@@ -332,11 +332,11 @@ LoadSGBLayout:
 	ld hl, PalPacket_9bd6
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, BlkPacket_9a86
 	ld de, wSGBPals + PALPACKET_LENGTH
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call .GetMapPalsIndex
 	ld hl, wSGBPals + 1
 	ld [hl], a
@@ -366,7 +366,7 @@ LoadSGBLayout:
 	ld hl, PalPacket_9ce6
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonDVs
 	call GetPlayerOrMonPalettePointer
@@ -391,7 +391,7 @@ LoadSGBLayout:
 	ld hl, PalPacket_9ce6
 	ld de, wSGBPals
 	ld bc, PALPACKET_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonDVs
 	call GetFrontpicPalettePointer

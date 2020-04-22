@@ -73,7 +73,7 @@ ChooseMonToLearnTMHM:
 	ld hl, wStringBuffer2
 	ld de, wTMHMMoveNameBackup
 	ld bc, 12
-	call CopyBytes
+	rst CopyBytes
 	call ClearBGPalettes
 	farcall LoadPartyMenuGFX
 	farcall InitPartyMenuWithCancel
@@ -96,7 +96,7 @@ ChooseMonToLearnTMHM:
 	ld hl, wTMHMMoveNameBackup
 	ld de, wStringBuffer2
 	ld bc, 12
-	call CopyBytes
+	rst CopyBytes
 	pop af ; now contains the original contents of af
 	ret
 
@@ -377,7 +377,7 @@ TMHM_DisplayPocketItems:
 	ld bc, 3
 	add hl, bc
 	push hl
-	call PlaceString
+	rst PlaceString
 	pop hl
 	pop bc
 	ld a, c
@@ -410,7 +410,7 @@ TMHM_DisplayPocketItems:
 	inc hl
 	push de
 	ld de, TMHM_String_Cancel
-	call PlaceString
+	rst PlaceString
 	pop de
 	ret
 
@@ -451,7 +451,7 @@ Tutorial_TMHMPocket:
 	hlcoord 9, 3
 	push de
 	ld de, TMHM_String_Cancel
-	call PlaceString
+	rst PlaceString
 	pop de
 	ret
 

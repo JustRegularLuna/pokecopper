@@ -390,7 +390,8 @@ ScrollingMenu_UpdateDisplay:
 	bit 0, a ; call function on cancel
 	jr nz, .call_function
 	ld de, .string_2485f
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .string_2485f
 	db "CANCEL@"

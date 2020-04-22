@@ -1,4 +1,4 @@
-CopyBytes::
+_CopyBytes::
 ; copy bc bytes from hl to de
 	inc b ; we bail the moment b hits 0, so include the last run
 	inc c ; same thing; include last byte
@@ -14,7 +14,7 @@ CopyBytes::
 	jr nz, .CopyByte
 	ret
 
-ByteFill::
+_ByteFill::
 ; fill bc bytes with the value of a, starting at hl
 	inc b ; we bail the moment b hits 0, so include the last run
 	inc c ; same thing; include last byte
@@ -75,7 +75,7 @@ FarCopyWRAM::
 	ldh a, [hTempBank]
 	ldh [rSVBK], a
 
-	call CopyBytes
+	rst CopyBytes
 
 	pop af
 	ldh [rSVBK], a

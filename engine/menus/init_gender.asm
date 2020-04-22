@@ -46,9 +46,10 @@ InitGenderScreen:
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	ld a, $7F
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
 	ld [wPlayerGender], a
-	jp ByteFill
+	rst ByteFill
+	ret

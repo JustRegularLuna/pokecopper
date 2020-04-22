@@ -188,7 +188,7 @@ ClearPCItemScreen:
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 0
 	lb bc, 10, 18
 	call Textbox
@@ -202,10 +202,10 @@ CopyBoxmonToTempMon:
 	ld a, [wCurPartyMon]
 	ld hl, sBoxMon1Species
 	ld bc, BOXMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld de, wTempMonSpecies
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, BANK(sBoxMon1Species)
 	call GetSRAMBank
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM

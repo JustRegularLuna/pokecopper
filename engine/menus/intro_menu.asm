@@ -17,11 +17,12 @@ PrintDayOfWeek:
 	ld d, h
 	ld e, l
 	pop hl
-	call PlaceString
+	rst PlaceString
 	ld h, b
 	ld l, c
 	ld de, .Day
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .Days:
 	db "SUN@"
@@ -72,17 +73,17 @@ ResetWRAM:
 	ld hl, wVirtualOAM
 	ld bc, wOptions - wVirtualOAM
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	ld hl, WRAM1_Begin
 	ld bc, wGameData - WRAM1_Begin
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	ld hl, wGameData
 	ld bc, wGameDataEnd - wGameData
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	call DelayFrame
 	ldh a, [hRandomSub]
@@ -236,7 +237,8 @@ InitializeNPCNames:
 	ld de, wMomsName
 .Copy:
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .Rival: db "???@"
 .Mom:   db "MOM@"
@@ -458,7 +460,7 @@ Continue_DisplayBadgesDexPlayerName:
 	decoord 8, 2, 0
 	add hl, de
 	ld de, .Player
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ret
 
@@ -474,7 +476,8 @@ Continue_UnknownGameTime:
 	decoord 9, 8, 0
 	add hl, de
 	ld de, .three_question_marks
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .three_question_marks
 	db " ???@"
@@ -745,7 +748,7 @@ StorePlayerName:
 	ld a, "@"
 	ld bc, NAME_LENGTH
 	ld hl, wPlayerName
-	call ByteFill
+	rst ByteFill
 	ld hl, wPlayerName
 	ld de, wStringBuffer2
 	jp CopyName2
@@ -754,7 +757,7 @@ StoreRivalName:
 	ld a, "@"
 	ld bc, NAME_LENGTH
 	ld hl, wRivalName
-	call ByteFill
+	rst ByteFill
 	ld hl, wRivalName
 	ld de, wStringBuffer2
 	jp CopyName2
@@ -1144,7 +1147,8 @@ Copyright:
 	call Request2bpp
 	hlcoord 2, 7
 	ld de, CopyrightString
-	jp PlaceString
+	rst PlaceString
+	ret
 
 CopyrightString:
 	; ©1995-2001 Nintendo

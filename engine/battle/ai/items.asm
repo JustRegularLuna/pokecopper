@@ -24,7 +24,7 @@ AI_SwitchOrTryItem:
 	ld a, [wTrainerClass]
 	dec a
 	ld bc, NUM_TRAINER_ATTRIBUTES
-	call AddNTimes
+	rst AddNTimes
 	bit SWITCH_OFTEN_F, [hl]
 	jp nz, SwitchOften
 	bit SWITCH_RARELY_F, [hl]
@@ -153,7 +153,7 @@ AI_TryItem:
 	dec a
 	ld hl, TrainerClassAttributes + TRNATTR_AI_ITEM_SWITCH
 	ld bc, NUM_TRAINER_ATTRIBUTES
-	call AddNTimes
+	rst AddNTimes
 	ld b, h
 	ld c, l
 	ld hl, AI_Items
@@ -236,7 +236,7 @@ AI_TryItem:
 
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Level
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	cp e
 	jr nc, .yes
@@ -617,12 +617,12 @@ AI_Switch:
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Status
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, wEnemyMonStatus
 	ld bc, MON_MAXHP - MON_STATUS
-	call CopyBytes
+	rst CopyBytes
 	pop af
 
 	jr c, .skiptext
@@ -654,7 +654,7 @@ AI_HealStatus:
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Status
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	xor a
 	ld [hl], a
 	ld [wEnemyMonStatus], a
@@ -731,7 +731,7 @@ PrintText_UsedItemOn:
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, ITEM_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, EnemyUsedOnText
 	jp PrintText
 

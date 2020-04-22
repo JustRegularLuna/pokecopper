@@ -41,7 +41,8 @@ PrintHoursMins:
 	ld de, String_PM
 .place_am_pm
 	inc hl
-	jp PlaceString
+	rst PlaceString
+	ret
 
 String_AM: db "AM@"
 String_PM: db "PM@"

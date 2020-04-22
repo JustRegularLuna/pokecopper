@@ -1,18 +1,19 @@
 ; rst vectors (called through the rst instruction)
 
-SECTION "rst0", ROM0[$0000]
+SECTION "rst0 EntryPoint", ROM0[$0000]
+EntryPoint::
 	di
 	jp Start
 
 	ds 4 ; unused
 
-SECTION "rst8", ROM0[$0008]
+SECTION "rst8 FarCall", ROM0[$0008]
 FarCall::
 	jp FarCall_hl
 
 	ds 5 ; unused
 
-SECTION "rst10", ROM0[$0010]
+SECTION "rst10 Bankswitch", ROM0[$0010]
 Bankswitch::
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
@@ -21,30 +22,35 @@ DoNothing::
 
 	ds 2 ; unused
 
-SECTION "rst18", ROM0[$0018]
-	rst $38
+SECTION "rst18 AddNTimes", ROM0[$0018]
+AddNTimes::
+	jp _AddNTimes
 
-	ds 7 ; unused
+	ds 5 ; unused
 
-SECTION "rst20", ROM0[$0020]
-	rst $38
+SECTION "rst20 CopyBytes", ROM0[$0020]
+CopyBytes::
+	jp _CopyBytes
 
-	ds 7 ; unused
+	ds 5 ; unused
 
-SECTION "rst28", ROM0[$0028]
-	rst $38
+SECTION "rst28 ByteFill", ROM0[$0028]
+ByteFill::
+	jp _ByteFill
 
-	ds 7 ; unused
+	ds 5 ; unused
 
-SECTION "rst30", ROM0[$0030]
-	rst $38
+SECTION "rst30 PlaceString", ROM0[$0030]
+PlaceString::
+	jp _PlaceString
 
-	ds 7 ; unused
+	ds 5 ; unused
 
-SECTION "rst38", ROM0[$0038]
-	rst $38
+SECTION "rst38 Predef", ROM0[$0038]
+Predef::
+	jp _Predef
 
-	ds 7 ; unused
+	ds 5 ; unused
 
 
 ; Game Boy hardware interrupts

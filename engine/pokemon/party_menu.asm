@@ -47,7 +47,7 @@ WritePartyMenuTilemap:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
-	call ByteFill ; blank the tilemap
+	rst ByteFill ; blank the tilemap
 	call GetPartyMenuQualityIndexes
 .loop
 	ld a, [hli]
@@ -89,7 +89,7 @@ PlacePartyNicknames:
 	ld a, b
 	call GetNick
 	pop hl
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ld de, 2 * SCREEN_WIDTH
 	add hl, de
@@ -102,7 +102,8 @@ PlacePartyNicknames:
 	dec hl
 	dec hl
 	ld de, .CANCEL
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .CANCEL:
 	db "CANCEL@"
@@ -152,7 +153,7 @@ PlacePartymonHPBar:
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1HP
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hli]
 	or [hl]
 	jr nz, .not_fainted
@@ -189,7 +190,7 @@ PlacePartyMenuHPDigits:
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1HP
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	pop hl
@@ -230,7 +231,7 @@ PlacePartyMonLevel:
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1Level
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	pop hl
@@ -272,7 +273,7 @@ PlacePartyMonStatus:
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1Status
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	pop hl
@@ -310,7 +311,7 @@ PlacePartyMonTMHMCompatibility:
 	predef CanLearnTMHMMove
 	pop hl
 	call .PlaceAbleNotAble
-	call PlaceString
+	rst PlaceString
 
 .next
 	pop hl
@@ -355,7 +356,7 @@ PlacePartyMonEvoStoneCompatibility:
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1Species
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	dec a
 	ld e, a
@@ -365,7 +366,7 @@ PlacePartyMonEvoStoneCompatibility:
 	add hl, de
 	call .DetermineCompatibility
 	pop hl
-	call PlaceString
+	rst PlaceString
 
 .next
 	pop hl
@@ -449,7 +450,7 @@ PlacePartyMonGender:
 
 .got_gender
 	pop hl
-	call PlaceString
+	rst PlaceString
 
 .next
 	pop hl
@@ -655,7 +656,7 @@ PrintPartyMenuText:
 	set NO_TEXT_SCROLL, a
 	ld [wOptions], a
 	hlcoord 1, 16 ; Coord
-	call PlaceString
+	rst PlaceString
 	pop af
 	ld [wOptions], a
 	ret

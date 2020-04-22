@@ -147,7 +147,7 @@ CopyMenuData::
 	ld l, a
 	ld de, wMenuDataFlags
 	ld bc, wMenuDataEnd - wMenuDataFlags
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	pop bc
 	pop de
@@ -179,7 +179,7 @@ PlaceVerticalMenuItems::
 	ld b, a
 .loop
 	push bc
-	call PlaceString
+	rst PlaceString
 	inc de
 	ld bc, 2 * SCREEN_WIDTH
 	add hl, bc
@@ -197,7 +197,8 @@ PlaceVerticalMenuItems::
 	inc de
 	ld b, $0
 	add hl, bc
-	jp PlaceString
+	rst PlaceString
+	ret
 
 MenuBox::
 	call MenuBoxCoord2Tile
@@ -304,7 +305,7 @@ LoadMenuHeader::
 CopyMenuHeader::
 	ld de, wMenuHeader
 	ld bc, wMenuHeaderEnd - wMenuHeader
-	call CopyBytes
+	rst CopyBytes
 	ldh a, [hROMBank]
 	ld [wMenuDataBank], a
 	ret
@@ -667,7 +668,8 @@ PlaceMenuStrings::
 	ld d, h
 	ld e, l
 	pop hl
-	jp PlaceString
+	rst PlaceString
+	ret
 
 PlaceNthMenuStrings::
 	push de
@@ -679,7 +681,8 @@ PlaceNthMenuStrings::
 	ld d, [hl]
 	ld e, a
 	pop hl
-	jp PlaceString
+	rst PlaceString
+	ret
 
 MenuJumptable::
 	ld a, [wMenuSelection]
@@ -733,7 +736,8 @@ ClearWindowData::
 .bytefill
 	ld bc, $10
 	xor a
-	jp ByteFill
+	rst ByteFill
+	ret
 
 MenuClickSound::
 	push af
@@ -766,7 +770,7 @@ Place2DMenuItemName::
 	ldh a, [hTempBank]
 	rst Bankswitch
 
-	call PlaceString
+	rst PlaceString
 	pop af
 	rst Bankswitch
 

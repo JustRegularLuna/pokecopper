@@ -1214,7 +1214,7 @@ Script_earthquake:
 	ld hl, EarthquakeMovement
 	ld de, wEarthquakeMovementDataBuffer
 	ld bc, EarthquakeMovement.End - EarthquakeMovement
-	call CopyBytes
+	rst CopyBytes
 	call GetScriptByte
 	ld [wEarthquakeMovementDataBuffer + 1], a
 	and %00111111
@@ -1794,7 +1794,7 @@ GetStringBuffer:
 CopyConvertedText:
 	ld hl, wStringBuffer3
 	ld bc, wStringBuffer4 - wStringBuffer3
-	call AddNTimes
+	rst AddNTimes
 	jp CopyName2
 
 Script_getitemname:
@@ -1907,7 +1907,8 @@ ResetStringBuffer1:
 	ld hl, wStringBuffer1
 	ld bc, NAME_LENGTH
 	ld a, "@"
-	jp ByteFill
+	rst ByteFill
+	ret
 
 Script_getstring:
 ; script command 0x44

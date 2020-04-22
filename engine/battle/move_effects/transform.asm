@@ -42,7 +42,7 @@ BattleCommand_Transform:
 	inc de
 	inc de
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 	ldh a, [hBattleTurn]
 	and a
 	jr z, .mimic_enemy_backup
@@ -71,7 +71,7 @@ BattleCommand_Transform:
 	ld e, l
 	pop hl
 	ld bc, wBattleMonStructEnd - wBattleMonStats
-	call CopyBytes
+	rst CopyBytes
 ; init the power points
 	ld bc, wBattleMonMoves - wBattleMonStructEnd
 	add hl, bc
@@ -148,4 +148,5 @@ BattleSideCopy:
 	ld l, e
 	pop de
 .copy
-	jp CopyBytes
+	rst CopyBytes
+	ret

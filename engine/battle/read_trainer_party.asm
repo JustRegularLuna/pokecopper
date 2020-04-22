@@ -12,7 +12,7 @@ ReadTrainerParty:
 	ld hl, wOTPartyMons
 	ld bc, wOTPartyMonsEnd - wOTPartyMons
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	ld a, [wOtherTrainerClass]
 	dec a
@@ -103,7 +103,7 @@ TrainerType2:
 	dec a
 	ld hl, wOTPartyMon1Moves
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop hl
@@ -122,7 +122,7 @@ TrainerType2:
 	dec a
 	ld hl, wOTPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, MON_PP
@@ -143,7 +143,7 @@ TrainerType2:
 	dec a
 	ld hl, Moves + MOVE_PP
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	pop bc
@@ -178,7 +178,7 @@ TrainerType3:
 	dec a
 	ld hl, wOTPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop hl
@@ -208,7 +208,7 @@ TrainerType4:
 	dec a
 	ld hl, wOTPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop hl
@@ -221,7 +221,7 @@ TrainerType4:
 	dec a
 	ld hl, wOTPartyMon1Moves
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop hl
@@ -240,7 +240,7 @@ TrainerType4:
 	dec a
 	ld hl, wOTPartyMon1
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, MON_PP
@@ -262,7 +262,7 @@ TrainerType4:
 	dec a
 	ld hl, Moves + MOVE_PP
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	pop bc
@@ -329,7 +329,7 @@ CopyTrainerName:
 	ld de, wStringBuffer1
 	push de
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	ret
 

@@ -96,7 +96,7 @@ LoadMartPointer:
 	ld hl, wCurMart
 	xor a
 	ld bc, wCurMartEnd - wCurMart
-	call ByteFill
+	rst ByteFill
 	xor a ; STANDARDMART_HOWMAYIHELPYOU
 	ld [wMartJumptableIndex], a
 	ld [wBargainShopFlags], a

@@ -7,11 +7,11 @@ BlankScreen:
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 0, wAttrmap
 	ld bc, wAttrmapEnd - wAttrmap
 	ld a, $7
-	call ByteFill
+	rst ByteFill
 	call WaitBGMap2
 	jp SetPalettes
 

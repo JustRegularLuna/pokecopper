@@ -46,7 +46,7 @@ InitClock:
 	ld hl, wTimeSetBuffer
 	ld bc, wTimeSetBufferEnd - wTimeSetBuffer
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld a, 10 ; default hour = 10 AM
 	ld [wInitHourBuffer], a
 
@@ -125,7 +125,7 @@ InitClock:
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld a, $1
 	ldh [hBGMapMode], a
 	ret
@@ -171,7 +171,7 @@ SetHour:
 	hlcoord 4, 9
 	ld a, " "
 	ld bc, 15
-	call ByteFill
+	rst ByteFill
 	hlcoord 4, 9
 	call DisplayHourOClock
 	call WaitBGMap
@@ -191,7 +191,7 @@ DisplayHourOClock:
 	call PrintHour
 	inc hl
 	ld de, String_oclock
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ret
 
@@ -234,7 +234,7 @@ SetMinutes:
 	hlcoord 12, 9
 	ld a, " "
 	ld bc, 7
-	call ByteFill
+	rst ByteFill
 	hlcoord 12, 9
 	call DisplayMinutesWithMinString
 	call WaitBGMap
@@ -249,7 +249,8 @@ DisplayMinutesWithMinString:
 	call PrintTwoDigitNumberLeftAlign
 	inc hl
 	ld de, String_min
-	jp PlaceString
+	rst PlaceString
+	ret
 
 PrintTwoDigitNumberLeftAlign:
 	push hl
@@ -471,7 +472,8 @@ SetDayOfWeek:
 	ld d, [hl]
 	ld e, a
 	pop hl
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .WeekdayStrings:
 ; entries correspond to wCurDay constants (see constants/wram_constants.asm)
@@ -564,7 +566,7 @@ PrintHour:
 	ld h, d
 	push bc
 	call GetTimeOfDayString
-	call PlaceString
+	rst PlaceString
 	ld l, c
 	ld h, b
 	inc hl

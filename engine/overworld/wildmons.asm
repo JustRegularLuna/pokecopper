@@ -13,7 +13,7 @@ LoadWildMonData:
 	inc hl
 	ld de, wMornEncounterRate
 	ld bc, 3
-	call CopyBytes
+	rst CopyBytes
 .done_copy
 	call _WaterWildmonLookup
 	ld a, 0
@@ -32,7 +32,7 @@ FindNest:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld a, e
 	and a
 	jr nz, .kanto
@@ -263,7 +263,7 @@ ChooseWildEncounter:
 	inc hl
 	ld a, [wTimeOfDay]
 	ld bc, NUM_GRASSMON * 2
-	call AddNTimes
+	rst AddNTimes
 	ld de, GrassMonProbTable
 
 .watermon
@@ -541,7 +541,7 @@ CheckEncounterRoamMon:
 	ld c, a
 	ld b, 0
 	ld a, 7 ; length of the roam_struct
-	call AddNTimes
+	rst AddNTimes
 	ld a, d
 	cp [hl]
 	jr nz, .DontEncounterRoamMon
@@ -784,7 +784,7 @@ RandomUnseenWildMon:
 	add hl, bc
 	ld a, [wTimeOfDay]
 	ld bc, NUM_GRASSMON * 2
-	call AddNTimes
+	rst AddNTimes
 .randloop1
 	call Random
 	and %11
@@ -874,7 +874,8 @@ RandomPhoneWildMon:
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer4
 	ld bc, MON_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 RandomPhoneMon:
 ; Get a random monster owned by the trainer who's calling.
@@ -957,7 +958,8 @@ RandomPhoneMon:
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer4
 	ld bc, MON_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 INCLUDE "data/wild/johto_grass.asm"
 INCLUDE "data/wild/johto_water.asm"

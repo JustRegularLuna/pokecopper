@@ -125,7 +125,7 @@ DayCareAskDepositPokemon:
 	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld d, [hl]
 	farcall ItemIsMail
 	jr c, .HoldingMail
@@ -236,11 +236,11 @@ GetPriceToRetrieveBreedmon:
 	ld [wStringBuffer2 + 1], a
 	ld de, wStringBuffer1
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, 0
 	ld bc, 100
 	ld a, [wStringBuffer2 + 1]
-	call AddNTimes
+	rst AddNTimes
 	ld de, 100
 	add hl, de
 	xor a
@@ -457,27 +457,27 @@ DayCare_GiveEgg:
 	ld bc, MON_NAME_LENGTH
 	call DayCare_GetCurrentPartyMember
 	ld hl, wEggNick
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
 	call DayCare_GetCurrentPartyMember
 	ld hl, wEggOT
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, wPartyMon1
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call DayCare_GetCurrentPartyMember
 	ld hl, wEggMon
 	ld bc, wEggMonEnd - wEggMon
-	call CopyBytes
+	rst CopyBytes
 
 	call GetBaseData
 	ld a, [wPartyCount]
 	dec a
 	ld hl, wPartyMon1
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld b, h
 	ld c, l
 	ld hl, MON_ID + 1
@@ -507,7 +507,7 @@ DayCare_GiveEgg:
 DayCare_GetCurrentPartyMember:
 	ld a, [wPartyCount]
 	dec a
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ret
@@ -535,13 +535,13 @@ DayCare_InitBreeding:
 	xor a
 	ld hl, wEggMon
 	ld bc, wEggMonEnd - wEggMon
-	call ByteFill
+	rst ByteFill
 	ld hl, wEggNick
 	ld bc, MON_NAME_LENGTH
-	call ByteFill
+	rst ByteFill
 	ld hl, wEggOT
 	ld bc, NAME_LENGTH
-	call ByteFill
+	rst ByteFill
 	ld a, [wBreedMon1DVs]
 	ld [wTempMonDVs], a
 	ld a, [wBreedMon1DVs + 1]
@@ -599,7 +599,7 @@ DayCare_InitBreeding:
 	ld hl, wPlayerName
 	ld de, wEggOT
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	xor a
 	ld [wEggMonItem], a
 	ld de, wEggMonMoves
@@ -688,14 +688,14 @@ DayCare_InitBreeding:
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wEggMonMoves
 	ld de, wEggMonPP
 	predef FillPP
 	ld hl, wMonOrItemNameBuffer
 	ld de, wStringBuffer1
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wBaseEggSteps]
 	ld hl, wEggMonHappiness
 	ld [hli], a

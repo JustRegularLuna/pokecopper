@@ -464,12 +464,12 @@ PokeBallEffect:
 	ld hl, wWildMonMoves
 	ld de, wEnemyMonMoves
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, wWildMonPP
 	ld de, wEnemyMonPP
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 
 .Transformed:
 	ld a, [wEnemyMonSpecies]
@@ -535,7 +535,7 @@ PokeBallEffect:
 	dec a
 	ld hl, wPartyMon1Happiness
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 
 	ld [hl], FRIEND_BALL_HAPPINESS
 
@@ -555,7 +555,7 @@ PokeBallEffect:
 	ld [wCurPartyMon], a
 	ld hl, wPartyMonNicknames
 	ld bc, MON_NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 
 	ld d, h
 	ld e, l
@@ -624,7 +624,7 @@ PokeBallEffect:
 	ld hl, wMonOrItemNameBuffer
 	ld de, sBoxMonNicknames
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, sBoxMonNicknames
 	ld de, wStringBuffer1
@@ -639,7 +639,7 @@ PokeBallEffect:
 	ld hl, sBoxMonNicknames
 	ld de, wMonOrItemNameBuffer
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	call CloseSRAM
 
@@ -1120,7 +1120,7 @@ VitaminEffect:
 	ld l, a
 	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	call Play_SFX_FULL_HEAL
 
@@ -1610,7 +1610,7 @@ HealHP_SFX_GFX:
 	ld a, [wCurPartyMon]
 	hlcoord 11, 0
 	ld bc, SCREEN_WIDTH * 2
-	call AddNTimes
+	rst AddNTimes
 	ld a, $2
 	ld [wWhichHPBar], a
 	predef_jump AnimateHPBar
@@ -1685,7 +1685,7 @@ ItemActionTextWaitButton:
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	ld a, [wPartyMenuActionText]
 	call ItemActionText
 	ld a, $1
@@ -2290,7 +2290,7 @@ BattleRestorePP:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Moves
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld de, wBattleMonMoves
 	ld b, NUM_MOVES
 .loop
@@ -2736,7 +2736,7 @@ GetMaxPPOfMove:
 	push hl
 	ld hl, Moves + MOVE_PP
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	ld b, a
@@ -2774,7 +2774,7 @@ GetMaxPPOfMove:
 
 GetMthMoveOfNthPartymon:
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 
 GetMthMoveOfCurrentMon:
 	ld a, [wMenuCursorY]

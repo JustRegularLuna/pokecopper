@@ -86,11 +86,12 @@ InitTradeSpeciesList:
 	xor a
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
+	rst ByteFill
 	farcall PlaceTradePartnerNamesAndParty
 	hlcoord 10, 17
 	ld de, .CANCEL
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .CANCEL:
 	db "CANCEL@"
@@ -114,7 +115,8 @@ Function16d6ae:
 	ld hl, Tilemap_CableTradeBorder
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 LinkTextbox:
 	jp _LinkTextbox
@@ -132,7 +134,7 @@ Function16d6e1:
 	predef LinkTextboxAtHL
 	hlcoord 5, 11
 	ld de, .Waiting
-	call PlaceString
+	rst PlaceString
 	call WaitBGMap
 	call WaitBGMap2
 	ld c, 50
@@ -250,7 +252,7 @@ LinkTradeMenu:
 
 .skip
 	ld c, SCREEN_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [w2DMenuCursorOffsets]
 	and $f
 	ld c, a

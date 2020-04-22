@@ -536,7 +536,7 @@ GiveItem:
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call TryGiveItemToPartymon
 	pop af
 	ld [wPackJumptableIndex], a
@@ -1227,7 +1227,7 @@ Pack_InitGFX:
 	hlcoord 0, 1
 	ld bc, 11 * SCREEN_WIDTH
 	ld a, $24
-	call ByteFill
+	rst ByteFill
 ; This is where the items themselves will be listed.
 	hlcoord 5, 1
 	lb bc, 11, 15

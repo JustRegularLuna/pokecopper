@@ -67,7 +67,7 @@ Credits::
 	ld hl, wLYOverrides
 	ld bc, $100
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
@@ -239,7 +239,7 @@ ParseCredits:
 	hlcoord 0, 5
 	ld bc, 20 * 12
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 
 ; Then read the script.
 
@@ -299,8 +299,8 @@ ParseCredits:
 ; Print strings spaced every two lines.
 	call .get
 	ld bc, 20 * 2
-	call AddNTimes
-	call PlaceString
+	rst AddNTimes
+	rst PlaceString
 	jr .loop
 
 .theend
@@ -394,12 +394,12 @@ ConstructCreditsTilemap:
 	ld a, $28
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	call ByteFill
+	rst ByteFill
 
 	ld a, $7f
 	hlcoord 0, 4
 	ld bc, (SCREEN_HEIGHT - 4) * SCREEN_WIDTH
-	call ByteFill
+	rst ByteFill
 
 	hlcoord 0, 4
 	ld a, $24
@@ -412,7 +412,7 @@ ConstructCreditsTilemap:
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	call WaitBGMap2
 	xor a

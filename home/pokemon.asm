@@ -248,10 +248,10 @@ GetBaseData::
 	dec a
 	ld bc, BASE_DATA_SIZE
 	ld hl, BaseData
-	call AddNTimes
+	rst AddNTimes
 	ld de, wCurBaseData
 	ld bc, BASE_DATA_SIZE
-	call CopyBytes
+	rst CopyBytes
 	jr .end
 
 .egg
@@ -282,7 +282,7 @@ GetNick::
 
 	push de
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop de
 
 	pop bc

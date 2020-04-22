@@ -87,7 +87,7 @@ PrintTempMonStats:
 	push bc
 	push hl
 	ld de, .StatNames
-	call PlaceString
+	rst PlaceString
 	pop hl
 	pop bc
 	add hl, bc
@@ -167,7 +167,7 @@ GetGender:
 .PartyMon:
 .sBoxMon
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 
 .DVs:
 ; sBoxMon data is read directly from SRAM.
@@ -200,7 +200,7 @@ GetGender:
 	dec a
 	ld hl, BaseData + BASE_GENDER
 	ld bc, BASE_DATA_SIZE
-	call AddNTimes
+	rst AddNTimes
 	pop bc
 
 	ld a, BANK(BaseData)
@@ -407,7 +407,7 @@ ListMoves:
 	ld de, wStringBuffer1
 	pop hl
 	push bc
-	call PlaceString
+	rst PlaceString
 	pop bc
 	ld a, b
 	ld [wNumMoves], a

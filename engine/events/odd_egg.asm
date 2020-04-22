@@ -37,12 +37,13 @@ _GiveOddEgg:
 
 	ld hl, OddEggs
 	ld a, NICKNAMED_MON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 
 	; Writes to wOddEgg, wOddEggName, and wOddEggOTName,
 	; even though OddEggs does not have data for wOddEggOTName
 	ld de, wOddEgg
 	ld bc, NICKNAMED_MON_STRUCT_LENGTH + NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 INCLUDE "data/events/odd_eggs.asm"

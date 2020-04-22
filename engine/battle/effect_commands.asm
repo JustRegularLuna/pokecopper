@@ -4676,7 +4676,8 @@ GetStatName:
 .Copy:
 	ld de, wStringBuffer2
 	ld bc, wStringBuffer3 - wStringBuffer2
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 INCLUDE "data/battle/stat_names.asm"
 
@@ -5248,7 +5249,7 @@ CheckPlayerHasMonToSwitchTo:
 
 	ld a, e
 	ld hl, wPartyMon1HP
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hli]
 	or [hl]
 	jr nz, .not_fainted
@@ -6661,7 +6662,7 @@ GetItemHeldEffect:
 	ld c, a
 	ld b, 0
 	ld a, ITEMATTR_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(ItemAttributes)
 	call GetFarHalfword
 	ld b, l
@@ -6818,7 +6819,7 @@ GetMoveAttr:
 ; Assuming hl = Moves + x, return attribute x of move a.
 	push bc
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	call GetMoveByte
 	pop bc
 	ret
@@ -6827,7 +6828,7 @@ GetMoveData:
 ; Copy move struct a to de.
 	ld hl, Moves
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	jp FarCopyBytes
 

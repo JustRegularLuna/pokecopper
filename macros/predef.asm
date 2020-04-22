@@ -6,10 +6,10 @@ ENDM
 
 predef: MACRO
 	predef_id \1
-	call Predef
+	rst Predef
 ENDM
 
 predef_jump: MACRO
-	predef_id \1
-	jp Predef
+	predef \1
+	ret
 ENDM

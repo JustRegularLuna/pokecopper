@@ -3,12 +3,12 @@ CatchTutorial::
 	ld hl, wPlayerName
 	ld de, wMomsName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 ; Copy Dude's name to your name
 	ld hl, .Dude
 	ld de, wPlayerName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	call .LoadDudeData
 
@@ -31,7 +31,8 @@ CatchTutorial::
 	ld hl, wMomsName
 	ld de, wPlayerName
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .LoadDudeData:
 	ld hl, wDudeNumItems

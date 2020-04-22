@@ -104,14 +104,14 @@ _SlotMachine:
 	hlbgcoord 0, 0
 	ld bc, vBGMap1 - vBGMap0
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	ld b, SCGB_SLOT_MACHINE
 	call GetSGBLayout
 	farcall ClearSpriteAnims
 	ld hl, wSlots
 	ld bc, wSlotsDataEnd - wSlots
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	ld hl, Slots2LZ
 	ld de, vTiles0 tile $00
@@ -132,7 +132,7 @@ _SlotMachine:
 	ld hl, SlotsTilemap
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * 12
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, rLCDC
 	set rLCDC_SPRITE_SIZE, [hl] ; 8x16
@@ -140,7 +140,7 @@ _SlotMachine:
 	ld hl, wSlots
 	ld bc, wSlotsEnd - wSlots
 	xor a
-	call ByteFill
+	rst ByteFill
 	call Slots_InitReelTiles
 	call Slots_GetPals
 	ld a, $7
@@ -1723,7 +1723,7 @@ Slots_PayoutText:
 	add hl, de
 	ld de, wStringBuffer2
 	ld bc, 4
-	call CopyBytes
+	rst CopyBytes
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

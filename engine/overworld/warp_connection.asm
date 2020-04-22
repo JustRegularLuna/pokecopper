@@ -249,7 +249,7 @@ LoadMapTimeOfDay:
 	xor a
 	ld bc, vBGMap1 - vBGMap0
 	hlbgcoord 0, 0
-	call ByteFill
+	rst ByteFill
 
 	pop af
 	ldh [rVBK], a
@@ -257,7 +257,8 @@ LoadMapTimeOfDay:
 	ld a, "■"
 	ld bc, vBGMap1 - vBGMap0
 	hlbgcoord 0, 0
-	jp ByteFill
+	rst ByteFill
+	ret
 
 .PushAttrmap:
 	decoord 0, 0
@@ -412,7 +413,7 @@ GetMapScreenCoords::
 	srl a
 
 .resume2
-	call AddNTimes
+	rst AddNTimes
 	ld a, l
 	ld [wOverworldMapAnchor], a
 	ld a, h

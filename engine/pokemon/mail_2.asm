@@ -2,7 +2,7 @@ ReadPartyMonMail:
 	ld a, [wCurPartyMon]
 	ld hl, sPartyMail
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 ReadAnyMail:
@@ -368,7 +368,7 @@ LoadBlueSkyMailGFX:
 	call LoadMailGFX_Color2
 	ld a, $ff
 	ld bc, 1 tiles
-	call ByteFill
+	rst ByteFill
 	ld de, BlueSkyMailGrassGFX
 	ld c, 1 * LEN_1BPP_TILE
 	call LoadMailGFX_Color3
@@ -544,7 +544,7 @@ LoadMusicMailGFX:
 	call LoadMailGFX_Color3
 	xor a
 	ld bc, 1 tiles
-	call ByteFill
+	rst ByteFill
 	ld de, MusicMailLargeNoteGFX
 	ld c, 3 * LEN_1BPP_TILE
 	call LoadMailGFX_Color1
@@ -649,18 +649,18 @@ MailGFX_PlaceMessage:
 	ld de, wTempMail
 	ld a, BANK(sPartyMail)
 	call GetSRAMBank
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	ld hl, wTempMailAuthor
 	ld de, wMonOrItemNameBuffer
 	ld bc, NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	ld a, "@"
 	ld [wTempMailAuthor], a
 	ld [wMonOrItemNameBuffer + NAME_LENGTH - 1], a
 	ld de, wTempMailMessage
 	hlcoord 2, 7
-	call PlaceString
+	rst PlaceString
 	ld de, wMonOrItemNameBuffer
 	ld a, [de]
 	and a
@@ -675,7 +675,8 @@ MailGFX_PlaceMessage:
 	hlcoord 5, 14
 
 .place_author
-	jp PlaceString
+	rst PlaceString
+	ret
 
 DrawMailBorder:
 	hlcoord 0, 0

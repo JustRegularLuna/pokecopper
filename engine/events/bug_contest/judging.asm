@@ -89,7 +89,7 @@ LoadContestantName:
 	ld hl, wStringBuffer1
 	ld de, wBugContestWinnerName
 	ld bc, TRAINER_CLASS_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wBugContestWinnerName
 ; Delete the trailing terminator and replace it with a space.
 .next
@@ -113,13 +113,15 @@ LoadContestantName:
 	ld hl, wStringBuffer1
 	pop de
 	ld bc, NAME_LENGTH - 1
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .player
 	ld hl, wPlayerName
 	ld de, wBugContestWinnerName
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 INCLUDE "data/events/bug_contest_winners.asm"
 
@@ -200,7 +202,8 @@ CopyTempContestant:
 	ld hl, wBugContestTempWinnerID
 CopyTempContestant_NotWinner:
 	ld bc, BUG_CONTESTANT_SIZE
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 ComputeAIContestantScores:
 	ld e, 0

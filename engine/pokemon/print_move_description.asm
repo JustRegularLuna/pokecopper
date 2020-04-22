@@ -11,4 +11,5 @@ PrintMoveDesc:
 	ld e, a
 	ld d, [hl]
 	pop hl
-	jp PlaceString
+	rst PlaceString
+	ret

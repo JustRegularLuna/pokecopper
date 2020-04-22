@@ -85,7 +85,7 @@ InitPokedex:
 	ld hl, wPokedexDataStart
 	ld bc, wPokedexDataEnd - wPokedexDataStart
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	xor a
 	ld [wJumptableIndex], a
@@ -214,7 +214,7 @@ Pokedex_InitMainScreen:
 	xor a
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	call ByteFill
+	rst ByteFill
 	farcall DrawPokedexListWindow
 	hlcoord 0, 17
 	ld de, String_START_SEARCH
@@ -641,7 +641,7 @@ Pokedex_InitSearchResultsScreen:
 	xor a
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
+	rst ByteFill
 	call Pokedex_SetBGMapMode4
 	call Pokedex_ResetBGMapMode
 	farcall DrawPokedexSearchResultsWindow
@@ -979,7 +979,7 @@ Pokedex_DrawMainScreenBG:
 	ld a, $32
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 0
 	lb bc, 7, 7
 	call Pokedex_PlaceBorder
@@ -1052,11 +1052,11 @@ Pokedex_DrawDexEntryScreenBG:
 	hlcoord 1, 10
 	ld bc, 19
 	ld a, $61
-	call ByteFill
+	rst ByteFill
 	hlcoord 1, 17
 	ld bc, 18
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlcoord 9, 7
 	ld de, .Height
 	call Pokedex_PlaceString
@@ -1088,13 +1088,14 @@ Pokedex_DrawOptionScreenBG:
 	call Pokedex_PlaceString
 	hlcoord 3, 4
 	ld de, .Modes
-	call PlaceString
+	rst PlaceString
 	ld a, [wUnlockedUnownMode]
 	and a
 	ret z
 	hlcoord 3, 10
 	ld de, .UnownMode
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .Title:
 	db $3b, " OPTION ", $3c, -1
@@ -1124,10 +1125,11 @@ Pokedex_DrawSearchScreenBG:
 	call Pokedex_PlaceString
 	hlcoord 3, 4
 	ld de, .Types
-	call PlaceString
+	rst PlaceString
 	hlcoord 3, 13
 	ld de, .Menu
-	jp PlaceString
+	rst PlaceString
+	ret
 
 .Title:
 	db $3b, " SEARCH ", $3c, -1
@@ -1155,7 +1157,7 @@ Pokedex_DrawSearchResultsScreenBG:
 	call Pokedex_PlaceBorder
 	hlcoord 1, 12
 	ld de, .BottomWindowText
-	call PlaceString
+	rst PlaceString
 	ld de, wDexSearchResultCount
 	hlcoord 1, 16
 	lb bc, 1, 3
@@ -1273,7 +1275,8 @@ Pokedex_FillBackgroundColor2:
 	hlcoord 0, 0
 	ld a, $32
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	jp ByteFill
+	rst ByteFill
+	ret
 
 Pokedex_PlaceFrontpicTopLeftCorner:
 	hlcoord 1, 1
@@ -1398,7 +1401,8 @@ Pokedex_PrintListing:
 	push hl
 	call GetPokemonName
 	pop hl
-	jp PlaceString
+	rst PlaceString
+	ret
 
 Pokedex_PrintNumberIfOldMode:
 	ld a, [wCurDexMode]
@@ -1432,7 +1436,7 @@ Pokedex_PlaceDefaultStringIfNotSeen:
 	ret nz
 	inc hl
 	ld de, .NameNotSeen
-	call PlaceString
+	rst PlaceString
 	scf
 	ret
 
@@ -1478,7 +1482,7 @@ Pokedex_OrderMonsByMode:
 	ld hl, wPokedexOrder
 	ld bc, wPokedexOrderEnd - wPokedexOrder
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld a, [wCurDexMode]
 	call AnonJumpTable
 .Jumptable:
@@ -1579,7 +1583,7 @@ Pokedex_DisplayModeDescription:
 	inc hl
 	ld d, [hl]
 	hlcoord 1, 14
-	call PlaceString
+	rst PlaceString
 	ld a, $1
 	ldh [hBGMapMode], a
 	ret
@@ -1614,7 +1618,7 @@ Pokedex_DisplayChangingModesMessage:
 	call Pokedex_PlaceBorder
 	ld de, String_ChangingModesPleaseWait
 	hlcoord 1, 14
-	call PlaceString
+	rst PlaceString
 	ld a, $1
 	ldh [hBGMapMode], a
 	ld c, 64
@@ -1727,7 +1731,8 @@ endr
 	ld e, l
 	ld d, h
 	pop hl
-	jp PlaceString
+	rst PlaceString
+	ret
 
 INCLUDE "data/types/search_strings.asm"
 
@@ -1813,7 +1818,7 @@ Pokedex_DisplayTypeNotFoundMessage:
 	call Pokedex_PlaceBorder
 	ld de, .TypeNotFound
 	hlcoord 1, 14
-	call PlaceString
+	rst PlaceString
 	ld a, $1
 	ldh [hBGMapMode], a
 	ld c, $80
@@ -1993,7 +1998,7 @@ Pokedex_PutScrollbarOAM:
 	jr z, .max
 	ld hl, 0
 	ld bc, 121 ; max y - min y
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	ld b, 0
@@ -2165,7 +2170,7 @@ Pokedex_BlackOutBG:
 	ld hl, wBGPals1
 	ld bc, 8 palettes
 	xor a
-	call ByteFill
+	rst ByteFill
 	pop af
 	ldh [rSVBK], a
 	ld a, $ff
@@ -2212,7 +2217,7 @@ Pokedex_LoadGFX:
 	ld hl, vTiles2
 	ld bc, $31 tiles
 	xor a
-	call ByteFill
+	rst ByteFill
 	call LoadStandardFont
 	call LoadFontsExtra
 	ld hl, vTiles2 tile $60
@@ -2285,7 +2290,7 @@ _NewPokedexEntry:
 	inc hl
 	ld bc, 19
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	farcall DisplayDexEntry
 	call EnableLCD
 	call WaitBGMap

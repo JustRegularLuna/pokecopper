@@ -126,16 +126,17 @@ GetCaughtName:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	ld bc, MON_NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld de, wSeerNickname
 	ld bc, MON_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 GetCaughtLevel:
 	ld a, "@"
 	ld hl, wSeerCaughtLevelString
 	ld bc, 4
-	call ByteFill
+	rst ByteFill
 
 	; caught level
 	; Limited to between 1 and 63 since it's a 6-bit quantity.
@@ -157,7 +158,8 @@ GetCaughtLevel:
 	ld de, wSeerCaughtLevelString
 	ld hl, .unknown_level
 	ld bc, 4
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .unknown_level
 	db "???@"
@@ -191,7 +193,8 @@ GetCaughtTime:
 UnknownCaughtData:
 	ld hl, .unknown
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .unknown
 	db "Unknown@"
@@ -209,7 +212,7 @@ GetCaughtLocation:
 	ld hl, wStringBuffer1
 	ld de, wSeerCaughtLocation
 	ld bc, 17
-	call CopyBytes
+	rst CopyBytes
 	and a
 	ret
 
@@ -233,10 +236,11 @@ GetCaughtOT:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld de, wSeerOTName
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 PrintSeerText:
 	ld e, a

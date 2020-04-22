@@ -79,7 +79,7 @@ PopulateMonMenu:
 	push hl
 	call GetMonMenuString
 	pop hl
-	call PlaceString
+	rst PlaceString
 	ld bc, 2 * SCREEN_WIDTH
 	add hl, bc
 	pop de
@@ -204,7 +204,8 @@ ResetMonSubmenu:
 	ld [wBuffer1], a
 	ld hl, wBuffer2
 	ld bc, NUM_MONMENU_ITEMS + 1
-	jp ByteFill
+	rst ByteFill
+	ret
 
 TerminateMonSubmenu:
 	ld a, [wBuffer1]

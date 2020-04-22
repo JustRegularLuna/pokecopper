@@ -205,7 +205,7 @@ endr
 	jr z, .loop2
 
 	ld bc, 2 * NUM_GRASSMON
-	call AddNTimes
+	rst AddNTimes
 .loop3
 	; Choose one of the middle three Pokemon.
 	call Random
@@ -227,7 +227,7 @@ endr
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	; Now that we've chosen our wild Pokemon,
 	; let's recover the map index info and get its name.
@@ -580,23 +580,26 @@ PlaceRadioString:
 	ld [wCurRadioLine], a
 	ld a, 100
 	ld [wRadioTextDelay], a
-	jp PlaceString
+	rst PlaceString
+	ret
 
 CopyBottomLineToTopLine:
 	hlcoord 0, 15
 	decoord 0, 13
 	ld bc, SCREEN_WIDTH * 2
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 ClearBottomLine:
 	hlcoord 1, 15
 	ld bc, SCREEN_WIDTH - 2
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlcoord 1, 16
 	ld bc, SCREEN_WIDTH - 2
 	ld a, " "
-	jp ByteFill
+	rst ByteFill
+	ret
 
 PokedexShow1:
 	call StartRadioStation
@@ -1349,7 +1352,8 @@ CopyRadioTextToRAM:
 	jp z, FarCopyRadioText
 	ld de, wRadioText
 	ld bc, SCREEN_WIDTH * 2
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 StartRadioStation:
 	ld a, [wNumRadioLinesPrinted]
