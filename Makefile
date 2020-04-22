@@ -36,7 +36,7 @@ RGBLINK ?= $(RGBDS)rgblink
 ### Build targets
 
 .SUFFIXES:
-.PHONY: all redgold bluesilver clean tidy compare tools
+.PHONY: all redgold bluesilver debug clean tidy compare tools
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
@@ -44,6 +44,8 @@ RGBLINK ?= $(RGBDS)rgblink
 all: $(roms)
 redgold:    redgold.gbc
 bluesilver: bluesilver.gbc
+
+debug: all
 
 clean:
 	rm -f $(roms) $(redgold_obj) $(bluesilver_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) rgbdscheck.o
@@ -62,6 +64,10 @@ tools:
 RGBASMFLAGS = -L -Weverything
 $(redgold_obj):    RGBASMFLAGS += -D _REDGOLD
 $(bluesilver_obj): RGBASMFLAGS += -D _BLUESILVER
+
+ifeq ($(filter debug,$(MAKECMDGOALS)),debug)
+RGBASMFLAGS += -D _DEBUG
+endif
 
 rgbdscheck.o: rgbdscheck.asm
 	$(RGBASM) -o $@ $<

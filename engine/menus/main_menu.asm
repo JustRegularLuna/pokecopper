@@ -23,7 +23,7 @@ MainMenu:
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 16, 7
+	menu_coords 0, 0, 13, 7
 	dw .MenuData
 	db 1 ; default option
 
@@ -93,6 +93,14 @@ MainMenuJoypadLoop:
 	ret
 
 MainMenu_PrintCurrentTimeAndDay:
+if DEF(_DEBUG)
+	xor a
+	ldh [hBGMapMode], a
+	hlcoord 15, 0
+	ld de, .Debug
+	rst PlaceString
+	ldh [hBGMapMode], a
+endc
 	ld a, [wSaveFileExists]
 	and a
 	ret z
@@ -149,6 +157,11 @@ MainMenu_PrintCurrentTimeAndDay:
 
 .TimeNotSet:
 	db "TIME NOT SET@"
+
+if DEF(_DEBUG)
+.Debug:
+	db "DEBUG@"
+endc
 
 Function49ed0:
 	xor a

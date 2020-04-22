@@ -97,6 +97,7 @@ MeetMomScript:
 .FinishPhone:
 	writetext InstructionsNextText
 	waitbutton
+if DEF(_DEBUG)
 	writetext GetStarterText
 	promptbutton
 	waitsfx
@@ -106,6 +107,7 @@ MeetMomScript:
 	waitsfx
 	promptbutton
 	givepoke PIKACHU, 10, BERRY
+endc
 	closetext
 	setevent EVENT_GOT_STARTER_POKEMON
 	setflag ENGINE_POKEDEX
