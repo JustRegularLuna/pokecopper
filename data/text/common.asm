@@ -3947,27 +3947,15 @@ _PhoneJustTalkToThemText::
 	line "that person!"
 	done
 
-SECTION "_PasswordAskResetText", ROMX
-_PasswordAskResetText::
-	text "Password OK."
-	line "Select CONTINUE &"
-	cont "reset settings."
+SECTION "_ClockResetText", ROMX
+_ClockResetText::
+	text "Select CONTINUE &"
+	line "reset settings."
 	prompt
 
-SECTION "_PasswordWrongText", ROMX
-_PasswordWrongText::
-	text "Wrong password!"
-	prompt
-
-SECTION "_PasswordAskResetClockText", ROMX
-_PasswordAskResetClockText::
+SECTION "_AskResetClockText", ROMX
+_AskResetClockText::
 	text "Reset the clock?"
-	done
-
-SECTION "_PasswordAskEnterText", ROMX
-_PasswordAskEnterText::
-	text "Please enter the"
-	line "password."
 	done
 
 SECTION "_ClearAllSaveDataText", ROMX

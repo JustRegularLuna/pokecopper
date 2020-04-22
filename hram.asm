@@ -157,4 +157,5 @@ hDMATransfer:: db ; ffe8
 	ds 1
 
 hSystemBooted:: db ; ffea
-hClockResetTrigger:: db ; ffeb
+
+	ds 4
