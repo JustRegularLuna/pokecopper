@@ -253,7 +253,6 @@ INCLUDE "data/text/battle.asm"
 
 SECTION "bank21", ROMX
 
-INCLUDE "gfx/battle_anims.asm"
 INCLUDE "engine/events/halloffame.asm"
 
 
@@ -373,7 +372,6 @@ INCLUDE "engine/events/mom_phone.asm"
 SECTION "bank41", ROMX
 
 INCLUDE "engine/gfx/dma_transfer.asm"
-INCLUDE "gfx/emotes.asm"
 INCLUDE "engine/overworld/warp_connection.asm"
 INCLUDE "engine/battle/used_move_text.asm"
 

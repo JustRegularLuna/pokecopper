@@ -12,6 +12,8 @@ data/pokemon/egg_moves.o \
 data/pokemon/evos_attacks.o \
 engine/movie/credits.o \
 engine/overworld/events.o \
+gfx/battle_anims.o \
+gfx/emotes.o \
 gfx/pics.o \
 gfx/sprites.o \
 gfx/tilesets.o
