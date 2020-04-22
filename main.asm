@@ -123,6 +123,7 @@ INCLUDE "engine/events/kurt_selectquantity_interpretjoypad.asm"
 SECTION "bankA", ROMX
 
 INCLUDE "engine/link/link.asm"
+INCLUDE "engine/link/link_trade.asm"
 INCLUDE "engine/overworld/wildmons.asm"
 
 
@@ -351,11 +352,6 @@ INCLUDE "engine/battle/used_move_text.asm"
 SECTION "Title", ROMX
 
 INCLUDE "engine/movie/title.asm"
-
-
-SECTION "bank5B", ROMX
-
-INCLUDE "engine/link/link_trade.asm"
 
 
 SECTION "UpdateBattleHUDs", ROMX

@@ -43,30 +43,16 @@ ROMX $04
 	"bank4"
 ROMX $05
 	"bank5"
-ROMX $07
-	"Roofs"
-ROMX $08
-	"Clock Reset"
-	"Egg Moves"
 ROMX $09
 	"bank9"
 ROMX $0a
 	"bankA"
 ROMX $0b
 	"bankB"
-ROMX $0d
-	"Effect Commands"
-ROMX $0e
-	"Enemy Trainers"
-ROMX $0f
-	"Battle Core"
 ROMX $10
 	"bank10"
-	"Evolutions and Attacks"
 ROMX $11
 	"bank11"
-ROMX $12
-	"Crystal Features"
 ROMX $13
 	"bank13"
 ROMX $14
@@ -86,46 +72,18 @@ ROMX $25
 	"Events"
 ROMX $2e
 	"bank2E"
-ROMX $2f
-	"Phone Scripts"
 ROMX $32
 	"bank32"
-ROMX $33
-	"Move Animations"
 ROMX $38
 	"bank38"
 ROMX $39
 	"bank39"
-ROMX $3a
-	"Audio"
 ROMX $3c
-	"Sound Effects"
 	"Cries"
 ROMX $3e
 	"bank3E"
 ROMX $3f
 	"bank3F"
-ROMX $42
-	"Credits"
-ROMX $43
-	"Title"
-ROMX $48
-	"Pic Pointers"
-ROMX $49
-	"Unown Pic Pointers"
-ROMX $4a
-	"Trainer Pic Pointers"
-ROMX $5b
-	"bank5B"
-ROMX $5e
-	"UpdateBattleHUDs"
-	"Crystal Sound Effects"
-ROMX $6d
-	"Special Phone Text"
-ROMX $72
-	"Miscellaneous Text"
-ROMX $77
-	"bank77"
 WRAM0
 	"Stack"
 	"Audio RAM"
