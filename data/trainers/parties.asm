@@ -1,34 +1,47 @@
-INCLUDE "data/trainers/party_pointers.asm"
+INCLUDE "constants.asm"
 
-Trainers:
 ; Trainer data structure:
-; - db "NAME@", TRAINERTYPE_* constant
+; - db "NAME@", TRAINERTYPE_* constants |ed together
 ; - 1 to 6 Pokémon:
-;    * for TRAINERTYPE_NORMAL:     db level, species
-;    * for TRAINERTYPE_MOVES:      db level, species, 4 moves
-;    * for TRAINERTYPE_ITEM:       db level, species, item
-;    * for TRAINERTYPE_ITEM_MOVES: db level, species, item, 4 moves
+;    * in all cases:              db level, species
+;    * with TRAINERTYPE_NICKNAME: db "NICKNAME@"
+;    * with TRAINERTYPE_DVS:      db atk|def dv, spd|spc dv
+;    * with TRAINERTYPE_STAT_EXP: dw hp, atk, def, spd, spc
+;    * with TRAINERTYPE_ITEM:     db item
+;    * with TRAINERTYPE_MOVES:    db move 1, move 2, move 3, move 4
 ; - db -1 ; end
 
-PokemonProfGroup:
+
+SECTION "PokemonProfGroup", ROMX
+
+PokemonProfGroup::
 	; POKEMON_PROF (1)
 	db "OAK@", TRAINERTYPE_NORMAL
 	db 5, EEVEE
 	db -1 ; end
 
-HiroGroup:
+
+SECTION "HiroGroup", ROMX
+
+HiroGroup::
 	; HIRO1
 	db "HIRO@", TRAINERTYPE_NORMAL
 	db 5, EEVEE
 	db -1 ; end
 
-SylviaGroup:
+
+SECTION "SylviaGroup", ROMX
+
+SylviaGroup::
 	; SYLVIA1
 	db "SYLVIA@", TRAINERTYPE_NORMAL
 	db 5, EEVEE
 	db -1 ; end
 
-Rival1Group:
+
+SECTION "Rival1Group", ROMX
+
+Rival1Group::
 ; TODO: Johto starters once added
 	; RIVAL1_LAB_STARTER1
 	db "<RIVAL>@", TRAINERTYPE_NORMAL

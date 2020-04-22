@@ -1721,7 +1721,10 @@ wOtherDecoration::    db
 wCurEnemyItem:: db
 ENDU ; d1f7
 
-	ds 3
+	ds 1
+
+wOtherTrainerType:: db
+wTrainerGroupBank:: db
 
 wLinkBattleRNs:: ds 10 ; d1fa
 
