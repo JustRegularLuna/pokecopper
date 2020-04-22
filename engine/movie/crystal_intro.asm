@@ -44,7 +44,7 @@ Copyright_GFPresents:
 	ld de, .Presents
 	hlcoord 7, 11
 	call PlaceGamefreakIntroGraphic
-	ld c, 150
+	ld c, 100
 	call DelayFrames
 
 	call .StopGamefreakAnim
