@@ -1227,6 +1227,8 @@ wMinutesSince:: db
 wHoursSince:: db
 wDaysSince:: db
 
+	ds 40
+
 
 SECTION "WRAM 1", WRAMX
 
