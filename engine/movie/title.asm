@@ -38,15 +38,13 @@ _TitleScreen:
 ; Draw the Pokemon logo
 	hlcoord 0, 0
 	lb bc, 7, 20
-	ld d, $80
-	ld e, $14
+	lb de, $80, $14
 	call DrawTitleGraphic
 
 ; Draw Ho-oh/Lugia
 	hlcoord 6, 8
 	lb bc, 8, 8
-	ld d, $1E
-	ld e, $08
+	lb de, $1E, $08
 	call DrawTitleGraphic
 
 ; Draw the dust
@@ -76,8 +74,7 @@ _TitleScreen:
 	jr nz, .copyrightLoop
 	hlcoord 3, 17
 	lb bc, 1, 13
-	ld d, $0c
-	ld e, 13
+	lb de, $0c, 13
 	call DrawTitleGraphic
 
 ; Turn BG Map update on
@@ -91,8 +88,7 @@ _TitleScreen:
 
 ; Reset audio and turn the screen on
 	call ChannelsOff
-	call EnableLCD
-	ret
+	jp EnableLCD
 
 DrawTitleGraphic:
 ; input:
