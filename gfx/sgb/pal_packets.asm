@@ -46,6 +46,9 @@ PalPacket_TradeTube:
 PalPacket_GamefreakLogo:
 	sgb_pal_set GS_INTRO_GAMEFREAK_LOGO, ROUTE, ROUTE, ROUTE
 
+PalPacket_TitleScreen:
+	sgb_pal_set TITLE_SCREEN, ROUTE, ROUTE, ROUTE
+
 PalPacket_9ce6:
 	sgb_pal01
 	RGB 31, 31, 31

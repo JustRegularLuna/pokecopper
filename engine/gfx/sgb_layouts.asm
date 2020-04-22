@@ -39,6 +39,7 @@ LoadSGBLayout:
 	dw .SGB_PlayerOrMonFrontpicPals
 	dw .SGB_TradeTube
 	dw .SGB_TrainerOrMonFrontpicPals
+	dw .SGB_TitleScreen
 
 .SGB_BattleGrayscale:
 	ld hl, PalPacket_BattleGrayscale
@@ -403,6 +404,11 @@ LoadSGBLayout:
 	ld a, [hl]
 	ld [wSGBPals + 6], a
 	ld hl, wSGBPals
+	ld de, BlkPacket_9a86
+	ret
+
+.SGB_TitleScreen
+	ld hl, PalPacket_TitleScreen
 	ld de, BlkPacket_9a86
 	ret
 

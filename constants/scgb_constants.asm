@@ -22,6 +22,7 @@
 	const SCGB_PLAYER_OR_MON_FRONTPIC_PALS
 	const SCGB_TRADE_TUBE
 	const SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	const SCGB_TITLE_SCREEN
 
 SCGB_PARTY_MENU_HP_PALS  EQU -4
 SCGB_RAM EQU -1
@@ -108,6 +109,7 @@ SCGB_RAM EQU -1
 	const PAL_UNOWN_PUZZLE
 	const PAL_GAMEFREAK_LOGO_OB
 	const PAL_GAMEFREAK_LOGO_BG
+	const PAL_TITLE_SCREEN
 
 ; SGB system command codes
 ; http://gbdev.gg8.se/wiki/articles/SGB_Functions#SGB_System_Command_Table

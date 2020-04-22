@@ -41,6 +41,7 @@ LoadSGBLayoutCGB:
 	dw _CGB_PlayerOrMonFrontpicPals
 	dw _CGB_TradeTube
 	dw _CGB_TrainerOrMonFrontpicPals
+	dw _CGB_TitleScreen
 
 _CGB_BattleGrayscale:
 	ld hl, PalPacket_BattleGrayscale + 1
@@ -648,3 +649,18 @@ _CGB_TrainerOrMonFrontpicPals:
 	call WipeAttrmap
 	call ApplyAttrmap
 	jp ApplyPals
+
+_CGB_TitleScreen:
+; Start by loading object pal
+	ld de, wOBPals1
+	ld a, PAL_TITLE_SCREEN
+	call GetPredefPal
+	push hl
+	call LoadHLPaletteIntoDE
+; then background palette
+	pop hl
+	ld de, wBGPals1
+	call LoadHLPaletteIntoDE
+; and apply it to the whole screen
+	call WipeAttrmap
+	jp ApplyAttrmap
