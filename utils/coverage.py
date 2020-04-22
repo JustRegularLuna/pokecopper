@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Usage: python3 coverage.py [pokecrystal.map] [coverage.png]
+Usage: python3 coverage.py [bluesilver.map] [coverage.png]
 
 Generate a PNG visualizing the space used by each bank in the ROM.
 """
@@ -14,7 +14,7 @@ from colorsys import hls_to_rgb
 from parsemap import MapReader
 
 def main():
-	mapfile = sys.argv[1] if len(sys.argv) >= 2 else 'pokecrystal.map'
+	mapfile = sys.argv[1] if len(sys.argv) >= 2 else 'bluesilver.map'
 	filename = sys.argv[2] if len(sys.argv) >= 3 else 'coverage.png'
 
 	num_banks = 0x80
