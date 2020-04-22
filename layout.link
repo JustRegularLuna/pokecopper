@@ -67,9 +67,6 @@ ROMX $23
 	"bank23"
 ROMX $24
 	"bank24"
-ROMX $25
-	"Maps"
-	"Events"
 ROMX $2e
 	"bank2E"
 ROMX $32
@@ -78,8 +75,6 @@ ROMX $38
 	"bank38"
 ROMX $39
 	"bank39"
-ROMX $3c
-	"Cries"
 ROMX $3e
 	"bank3E"
 ROMX $3f
