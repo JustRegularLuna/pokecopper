@@ -5,7 +5,7 @@ audio.o \
 home.o \
 main.o \
 wram.o \
-data/text/common.o \
+data/text/text.o \
 data/maps/map_data.o \
 data/pokemon/dex_entries.o \
 data/pokemon/egg_moves.o \

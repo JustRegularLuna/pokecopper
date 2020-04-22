@@ -175,7 +175,7 @@ StdBattleTextbox::
 	ldh a, [hROMBank]
 	push af
 
-	ld a, BANK(BattleText)
+	ld a, BANK("Battle Text")
 	rst Bankswitch
 
 	call BattleTextbox

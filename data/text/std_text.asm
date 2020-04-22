@@ -1,16 +1,19 @@
-NurseMornText:
+SECTION "NurseMornText", ROMX
+NurseMornText::
 	text "Good morning!"
 	line "Welcome to our"
 	cont "#MON CENTER."
 	done
 
-NurseDayText:
+SECTION "NurseDayText", ROMX
+NurseDayText::
 	text "Hello!"
 	line "Welcome to our"
 	cont "#MON CENTER."
 	done
 
-NurseNiteText:
+SECTION "NurseNiteText", ROMX
+NurseNiteText::
 	text "Good evening!"
 	line "You're out late."
 
@@ -18,7 +21,8 @@ NurseNiteText:
 	line "#MON CENTER."
 	done
 
-NurseAskHealText:
+SECTION "NurseAskHealText", ROMX
+NurseAskHealText::
 	text "We can heal your"
 	line "#MON to perfect"
 	cont "health."
@@ -27,12 +31,14 @@ NurseAskHealText:
 	line "#MON?"
 	done
 
-NurseTakePokemonText:
+SECTION "NurseTakePokemonText", ROMX
+NurseTakePokemonText::
 	text "OK, may I see your"
 	line "#MON?"
 	done
 
-NurseReturnPokemonText:
+SECTION "NurseReturnPokemonText", ROMX
+NurseReturnPokemonText::
 	text "Thank you for"
 	line "waiting."
 
@@ -40,12 +46,14 @@ NurseReturnPokemonText:
 	line "fully healed."
 	done
 
-NurseGoodbyeText:
+SECTION "NurseGoodbyeText", ROMX
+NurseGoodbyeText::
 	text "We hope to see you"
 	line "again."
 	done
 
-NursePokerusText:
+SECTION "NursePokerusText", ROMX
+NursePokerusText::
 	text "Your #MON"
 	line "appear to be"
 
@@ -63,18 +71,21 @@ NursePokerusText:
 	line "CENTER."
 	done
 
-DifficultBookshelfText:
+SECTION "DifficultBookshelfText", ROMX
+DifficultBookshelfText::
 	text "It's full of"
 	line "difficult books."
 	done
 
-PictureBookshelfText:
+SECTION "PictureBookshelfText", ROMX
+PictureBookshelfText::
 	text "A whole collection"
 	line "of #MON picture"
 	cont "books!"
 	done
 
-MagazineBookshelfText:
+SECTION "MagazineBookshelfText", ROMX
+MagazineBookshelfText::
 	text "#MON magazines…"
 	line "#MON PAL,"
 
@@ -82,7 +93,8 @@ MagazineBookshelfText:
 	line "#MON GRAPH…"
 	done
 
-TeamRocketOathText:
+SECTION "TeamRocketOathText", ROMX
+TeamRocketOathText::
 	text "TEAM ROCKET OATH"
 
 	para "Steal #MON for"
@@ -96,32 +108,38 @@ TeamRocketOathText:
 	cont "TEAM ROCKET!"
 	done
 
-IncenseBurnerText:
+SECTION "IncenseBurnerText", ROMX
+IncenseBurnerText::
 	text "What is this?"
 
 	para "Oh, it's an"
 	line "incense burner!"
 	done
 
-MerchandiseShelfText:
+SECTION "MerchandiseShelfText", ROMX
+MerchandiseShelfText::
 	text "Lots of #MON"
 	line "merchandise!"
 	done
 
-LookTownMapText:
+SECTION "LookTownMapText", ROMX
+LookTownMapText::
 	text "It's the TOWN MAP."
 	done
 
-WindowText:
+SECTION "WindowText", ROMX
+WindowText::
 	text "My reflection!"
 	line "Lookin' good!"
 	done
 
-TVText:
+SECTION "TVText", ROMX
+TVText::
 	text "It's a TV."
 	done
 
-HomepageText:
+SECTION "HomepageText", ROMX
+HomepageText::
 	text "#MON JOURNAL"
 	line "HOME PAGE…"
 
@@ -129,24 +147,28 @@ HomepageText:
 	line "updated…"
 	done
 
-TrashCanText:
+SECTION "TrashCanText", ROMX
+TrashCanText::
 	text "There's nothing in"
 	line "here…"
 	done
 
-PokecenterSignText:
+SECTION "PokecenterSignText", ROMX
+PokecenterSignText::
 	text "Heal Your #MON!"
 	line "#MON CENTER"
 	done
 
-MartSignText:
+SECTION "MartSignText", ROMX
+MartSignText::
 	text "For All Your"
 	line "#MON Needs"
 
 	para "#MON MART"
 	done
 
-ContestResults_ReadyToJudgeText:
+SECTION "ContestResults_ReadyToJudgeText", ROMX
+ContestResults_ReadyToJudgeText::
 	text "We will now judge"
 	line "the #MON you've"
 	cont "caught."
@@ -161,7 +183,8 @@ ContestResults_ReadyToJudgeText:
 	line "this?"
 	done
 
-ContestResults_PlayerWonAPrizeText:
+SECTION "ContestResults_PlayerWonAPrizeText", ROMX
+ContestResults_PlayerWonAPrizeText::
 	text "<PLAYER>, the No.@"
 	text_ram wStringBuffer3
 	text_start
@@ -171,30 +194,35 @@ ContestResults_PlayerWonAPrizeText:
 	text "!"
 	done
 
-ReceivedItemText:
+SECTION "ReceivedItemText", ROMX
+ReceivedItemText::
 	text "<PLAYER> received"
 	line "@"
 	text_ram wStringBuffer4
 	text "."
 	done
 
-ContestResults_JoinUsNextTimeText:
+SECTION "ContestResults_JoinUsNextTimeText", ROMX
+ContestResults_JoinUsNextTimeText::
 	text "Please join us for"
 	line "the next Contest!"
 	done
 
-ContestResults_ConsolationPrizeText:
+SECTION "ContestResults_ConsolationPrizeText", ROMX
+ContestResults_ConsolationPrizeText::
 	text "Everyone else gets"
 	line "a BERRY as a con-"
 	cont "solation prize!"
 	done
 
-ContestResults_DidNotWinText:
+SECTION "ContestResults_DidNotWinText", ROMX
+ContestResults_DidNotWinText::
 	text "We hope you do"
 	line "better next time."
 	done
 
-ContestResults_ReturnPartyText:
+SECTION "ContestResults_ReturnPartyText", ROMX
+ContestResults_ReturnPartyText::
 	text "We'll return the"
 	line "#MON we kept"
 
@@ -202,7 +230,8 @@ ContestResults_ReturnPartyText:
 	line "Here you go!"
 	done
 
-ContestResults_PartyFullText:
+SECTION "ContestResults_PartyFullText", ROMX
+ContestResults_PartyFullText::
 	text "Your party's full,"
 	line "so the #MON was"
 
@@ -210,13 +239,15 @@ ContestResults_PartyFullText:
 	line "in BILL's PC."
 	done
 
-GymStatue_CityGymText:
+SECTION "GymStatue_CityGymText", ROMX
+GymStatue_CityGymText::
 	text_ram wStringBuffer3
 	text_start
 	line "#MON GYM"
 	done
 
-GymStatue_WinningTrainersText:
+SECTION "GymStatue_WinningTrainersText", ROMX
+GymStatue_WinningTrainersText::
 	text "LEADER: @"
 	text_ram wStringBuffer4
 	text_start
@@ -224,12 +255,14 @@ GymStatue_WinningTrainersText:
 	line "<PLAYER>"
 	done
 
-CoinVendor_WelcomeText:
+SECTION "CoinVendor_WelcomeText", ROMX
+CoinVendor_WelcomeText::
 	text "Welcome to the"
 	line "GAME CORNER."
 	done
 
-CoinVendor_NoCoinCaseText:
+SECTION "CoinVendor_NoCoinCaseText", ROMX
+CoinVendor_NoCoinCaseText::
 	text "Do you need game"
 	line "coins?"
 
@@ -238,7 +271,8 @@ CoinVendor_NoCoinCaseText:
 	cont "your coins."
 	done
 
-CoinVendor_IntroText:
+SECTION "CoinVendor_IntroText", ROMX
+CoinVendor_IntroText::
 	text "Do you need some"
 	line "game coins?"
 
@@ -247,32 +281,38 @@ CoinVendor_IntroText:
 	cont "want some?"
 	done
 
-CoinVendor_Buy50CoinsText:
+SECTION "CoinVendor_Buy50CoinsText", ROMX
+CoinVendor_Buy50CoinsText::
 	text "Thank you!"
 	line "Here are 50 coins."
 	done
 
-CoinVendor_Buy500CoinsText:
+SECTION "CoinVendor_Buy500CoinsText", ROMX
+CoinVendor_Buy500CoinsText::
 	text "Thank you! Here"
 	line "are 500 coins."
 	done
 
-CoinVendor_NotEnoughMoneyText:
+SECTION "CoinVendor_NotEnoughMoneyText", ROMX
+CoinVendor_NotEnoughMoneyText::
 	text "You don't have"
 	line "enough money."
 	done
 
-CoinVendor_CoinCaseFullText:
+SECTION "CoinVendor_CoinCaseFullText", ROMX
+CoinVendor_CoinCaseFullText::
 	text "Whoops! Your COIN"
 	line "CASE is full."
 	done
 
-CoinVendor_CancelText:
+SECTION "CoinVendor_CancelText", ROMX
+CoinVendor_CancelText::
 	text "No coins for you?"
 	line "Come again!"
 	done
 
-BugContestPrizeNoRoomText:
+SECTION "BugContestPrizeNoRoomText", ROMX
+BugContestPrizeNoRoomText::
 	text "Oh? Your PACK is"
 	line "full."
 
@@ -283,13 +323,15 @@ BugContestPrizeNoRoomText:
 	line "make room for it."
 	done
 
-HappinessText3:
+SECTION "HappinessText3", ROMX
+HappinessText3::
 	text "Wow! You and your"
 	line "#MON are really"
 	cont "close!"
 	done
 
-HappinessText2:
+SECTION "HappinessText2", ROMX
+HappinessText2::
 	text "#MON get more"
 	line "friendly if you"
 
@@ -297,7 +339,8 @@ HappinessText2:
 	line "them."
 	done
 
-HappinessText1:
+SECTION "HappinessText1", ROMX
+HappinessText1::
 	text "You haven't tamed"
 	line "your #MON."
 
@@ -305,14 +348,16 @@ HappinessText1:
 	line "nice, it'll pout."
 	done
 
-RegisteredNumber1Text:
+SECTION "RegisteredNumber1Text", ROMX
+RegisteredNumber1Text::
 	text "<PLAYER> registered"
 	line "@"
 	text_ram wStringBuffer3
 	text "'s number."
 	done
 
-RegisteredNumber2Text:
+SECTION "RegisteredNumber2Text", ROMX
+RegisteredNumber2Text::
 	text "<PLAYER> registered"
 	line "@"
 	text_ram wStringBuffer3

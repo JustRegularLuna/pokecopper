@@ -174,11 +174,13 @@ INCLUDE "engine/pokedex/pokedex_2.asm"
 INCLUDE "engine/pokemon/mail.asm"
 
 
-SECTION "Crystal Features 1", ROMX
+SECTION "Crystal Features", ROMX
 
 INCLUDE "engine/menus/init_gender.asm"
 INCLUDE "engine/menus/main_menu.asm"
 INCLUDE "engine/pokemon/search.asm"
+INCLUDE "engine/events/kurt.asm"
+INCLUDE "engine/gfx/player_gfx.asm"
 
 
 SECTION "bank13", ROMX
@@ -232,26 +234,16 @@ INCLUDE "data/pokemon/base_stats.asm"
 INCLUDE "data/pokemon/names.asm"
 
 
-SECTION "Crystal Phone Text", ROMX
-
-
 SECTION "bank20", ROMX
 
 INCLUDE "engine/overworld/player_movement.asm"
 INCLUDE "engine/events/engine_flags.asm"
 INCLUDE "engine/overworld/variables.asm"
-INCLUDE "data/text/battle.asm"
 
 
 SECTION "bank21", ROMX
 
 INCLUDE "engine/events/halloffame.asm"
-
-
-SECTION "Crystal Features 2", ROMX
-
-INCLUDE "engine/events/kurt.asm"
-INCLUDE "engine/gfx/player_gfx.asm"
 
 
 SECTION "bank23", ROMX
@@ -274,12 +266,6 @@ INCLUDE "engine/events/fish.asm"
 INCLUDE "engine/games/slot_machine.asm"
 
 
-SECTION "Phone Scripts 1", ROMX
-
-
-SECTION "Phone Text", ROMX
-
-
 SECTION "bank2E", ROMX
 
 INCLUDE "engine/events/checkforhiddenitems.asm"
@@ -289,7 +275,7 @@ INCLUDE "engine/pokegear/radio.asm"
 INCLUDE "engine/pokemon/mail_2.asm"
 
 
-SECTION "Phone Scripts 2", ROMX
+SECTION "Phone Scripts", ROMX
 
 INCLUDE "engine/events/std_scripts.asm"
 INCLUDE "engine/events/init_events.asm"
@@ -372,17 +358,9 @@ SECTION "bank5B", ROMX
 INCLUDE "engine/link/link_trade.asm"
 
 
-SECTION "Crystal Phone Text 2", ROMX
-
-
 SECTION "UpdateBattleHUDs", ROMX
 
 INCLUDE "engine/battle/update_battle_huds.asm"
-
-
-SECTION "Phone Text 2", ROMX
-
-INCLUDE "data/text/std_text.asm"
 
 
 SECTION "Special Phone Text", ROMX
