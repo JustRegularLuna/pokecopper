@@ -22,18 +22,63 @@ _TitleScreen:
 
 ; Decompress the graphics
 	ld hl, TitleScreenGFX1
-	ld de, vTiles2
-	call Decompress
-
-	ld hl, TitleScreenGFX2
 	ld de, vTiles1
 	call Decompress
 
-; Load the tilemap to the screen
-	ld hl, TitleScreenTilemap
-	ld de, wTilemap
-	ld bc, TitleScreenTilemap.end - TitleScreenTilemap
-	call CopyBytes
+	ld hl, TitleScreenGFX2
+	ld de, vTiles2 + $1E tiles
+	call Decompress
+
+; Fill the screen with background color
+	hlcoord 0, 0
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld a, $80
+	call ByteFill
+
+; Draw the Pokemon logo
+	hlcoord 0, 0
+	lb bc, 7, 20
+	ld d, $80
+	ld e, $14
+	call DrawTitleGraphic
+
+; Draw Ho-oh/Lugia
+	hlcoord 6, 8
+	lb bc, 8, 8
+	ld d, $1E
+	ld e, $08
+	call DrawTitleGraphic
+
+; Draw the dust
+	ld a, $1A + 4
+	hlcoord 0, 16
+	ld b, 5
+.dustLoop
+	add -4
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	dec b
+	jr nz, .dustLoop
+
+; Draw the copyright text
+	ld a, $19
+	ld b, SCREEN_WIDTH
+	hlcoord 0, 17
+.copyrightLoop
+	ld [hli], a
+	dec b
+	jr nz, .copyrightLoop
+	hlcoord 3, 17
+	lb bc, 1, 13
+	ld d, $0c
+	ld e, 13
+	call DrawTitleGraphic
 
 ; Turn BG Map update on
 	ld a, 1
@@ -49,29 +94,47 @@ _TitleScreen:
 	call EnableLCD
 	ret
 
+DrawTitleGraphic:
+; input:
+;   hl: draw location
+;   b: height
+;   c: width
+;   d: tile to start drawing from
+;   e: number of tiles to advance for each bgrows
+.bgrows
+	push de
+	push bc
+	push hl
+.col
+	ld a, d
+	ld [hli], a
+	inc d
+	dec c
+	jr nz, .col
+	pop hl
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	pop bc
+	pop de
+	ld a, e
+	add d
+	ld d, a
+	dec b
+	jr nz, .bgrows
+	ret
 
 TitleScreenGFX1:
 IF DEF(_REDGOLD)
-	INCBIN "gfx/title/title_rg_1.2bpp.lz"
+	INCBIN "gfx/title/logo_rg.2bpp.lz"
 ENDC
 IF DEF(_BLUESILVER)
-	INCBIN "gfx/title/title_bs_1.2bpp.lz"
+	INCBIN "gfx/title/logo_bs.2bpp.lz"
 ENDC
 
 TitleScreenGFX2:
 IF DEF(_REDGOLD)
-	INCBIN "gfx/title/title_rg_2.2bpp.lz"
+	INCBIN "gfx/title/title_hooh.2bpp.lz"
 ENDC
 IF DEF(_BLUESILVER)
-	INCBIN "gfx/title/title_bs_2.2bpp.lz"
+	INCBIN "gfx/title/title_lugia.2bpp.lz"
 ENDC
-
-
-TitleScreenTilemap:
-IF DEF(_REDGOLD)
-	INCBIN "gfx/title/title_rg.tilemap"
-ENDC
-IF DEF(_BLUESILVER)
-	INCBIN "gfx/title/title_bs.tilemap"
-ENDC
-.end
