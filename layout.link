@@ -73,27 +73,9 @@ ROMX $13
 ROMX $14
 	"bank14"
 ROMX $15
-	"Map Scripts 1"
-ROMX $16
-	"Map Scripts 2"
-ROMX $17
-	"Map Scripts 3"
-ROMX $18
-	"Map Scripts 4"
+	"Map Scripts - Cable Club"
 ROMX $19
 	"Crystal Phone Text"
-ROMX $1a
-	"Map Scripts 5"
-ROMX $1b
-	"Map Scripts 6"
-ROMX $1c
-	"Map Scripts 7"
-ROMX $1d
-	"Map Scripts 8"
-ROMX $1e
-	"Map Scripts 9"
-ROMX $1f
-	"Map Scripts 10"
 ROMX $20
 	"bank20"
 ROMX $21
@@ -107,20 +89,10 @@ ROMX $24
 ROMX $25
 	"Maps"
 	"Events"
-ROMX $26
-	"Map Scripts 11"
-ROMX $27
-	"Map Scripts 12"
 ROMX $28
 	"Phone Scripts 1"
 ROMX $29
 	"Phone Text"
-ROMX $2a
-	"Map Blocks 1"
-ROMX $2b
-	"Map Blocks 2"
-ROMX $2c
-	"Map Blocks 3"
 ROMX $2e
 	"bank2E"
 ROMX $2f
@@ -171,33 +143,8 @@ ROMX $5e
 	"UpdateBattleHUDs"
 	"Songs 5"
 	"Crystal Sound Effects"
-ROMX $60
-	"Map Scripts 13"
-ROMX $61
-	"Map Scripts 14"
-ROMX $62
-	"Map Scripts 15"
-ROMX $63
-	"Map Scripts 16"
-ROMX $64
-	"Map Scripts 17"
-ROMX $65
-	"Map Scripts 18"
-ROMX $66
-	"Map Scripts 19"
-ROMX $67
-	"Map Scripts 20"
-ROMX $68
-	"Map Scripts 21"
-ROMX $69
-	"Map Scripts 22"
-ROMX $6a
-	"Map Scripts 23"
-ROMX $6b
-	"Map Scripts 24"
 ROMX $6c
 	"Phone Text 2"
-	"Map Scripts 25"
 ROMX $6d
 	"Special Phone Text"
 ROMX $72
