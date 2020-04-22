@@ -1,14 +1,14 @@
 LoadOverworldMonIcon:
 	ld a, e
 	call ReadMonMenuIcon
-	ld l, a
-	ld h, 0
-	add hl, hl
-	ld de, IconPointers
+	ld d, a
+	ld e, 0
+	srl d
+	rr e
+	ld hl, Icons
 	add hl, de
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
+	ld d, h
+	ld e, l
 	lb bc, BANK(Icons), 8
 	ret
 
@@ -219,17 +219,17 @@ endr
 	push hl
 
 ; The icons are contiguous, in order and of the same
-; size, so the pointer table is somewhat redundant.
+; size, so they don't need a pointer table.
 	ld a, [wCurIcon]
 	push hl
-	ld l, a
-	ld h, 0
-	add hl, hl
-	ld de, IconPointers
+	ld d, a
+	ld e, 0
+	srl d
+	rr e
+	ld hl, Icons
 	add hl, de
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
+	ld d, h
+	ld e, l
 	pop hl
 
 	lb bc, BANK(Icons), 8
@@ -338,7 +338,5 @@ ReadMonMenuIcon:
 	ret
 
 INCLUDE "data/pokemon/menu_icons.asm"
-
-INCLUDE "data/icon_pointers.asm"
 
 INCLUDE "gfx/icons.asm"

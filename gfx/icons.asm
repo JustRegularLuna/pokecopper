@@ -1,6 +1,5 @@
-Icons: ; used only for BANK(Icons)
-
-NullIcon:
+Icons:
+; entries correspond to ICON_* constants
 PoliwagIcon:      INCBIN "gfx/icons/poliwag.2bpp"
 JigglypuffIcon:   INCBIN "gfx/icons/jigglypuff.2bpp"
 DiglettIcon:      INCBIN "gfx/icons/diglett.2bpp"

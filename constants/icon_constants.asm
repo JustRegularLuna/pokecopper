@@ -1,6 +1,5 @@
-; IconPointers indexes (see data/icon_pointers.asm)
+; Icons indexes (see gfx/icons.asm)
 	const_def
-	const ICON_NULL
 	const ICON_POLIWAG
 	const ICON_JIGGLYPUFF
 	const ICON_DIGLETT
