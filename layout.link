@@ -183,7 +183,6 @@ ROMX $5e
 	"Crystal Sound Effects"
 ROMX $60
 	"Map Scripts 13"
-	"Pokedex Entries 001-064"
 ROMX $61
 	"Map Scripts 14"
 ROMX $62
@@ -211,14 +210,8 @@ ROMX $6c
 	"Map Scripts 25"
 ROMX $6d
 	"Special Phone Text"
-ROMX $6e
-	"Pokedex Entries 065-128"
 ROMX $72
 	"Miscellaneous Text"
-ROMX $73
-	"Pokedex Entries 129-192"
-ROMX $74
-	"Pokedex Entries 193-251"
 ROMX $77
 	"bank77"
 	"Tileset Data 7"
