@@ -475,10 +475,13 @@ Script_verbosegiveitem:
 ; parameters: item, quantity
 
 	call Script_giveitem
+_VerboseGiveItem:
 	call CurItemName
 	ld de, wStringBuffer1
 	ld a, STRING_BUFFER_4
 	call CopyConvertedText
+	ld de, wStringBuffer4 + STRLEN("TM##")
+	call AppendTMHMMoveName
 	ld b, BANK(GiveItemScript)
 	ld de, GiveItemScript
 	jp ScriptCall
@@ -517,17 +520,37 @@ Script_verbosegiveitemvar:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	; carry ? TRUE ; FALSE
+	; carry ? TRUE : FALSE
 	sbc a
 	and TRUE
 	ld [wScriptVar], a
-	call CurItemName
+	jr _VerboseGiveItem
+
+AppendTMHMMoveName::
+; a = item ID
+	ld a, [wNamedObjectIndexBuffer]
+	cp TM01
+	ret c
+; save item name buffer
+	push de
+; a = TM/HM number
+	ld c, a
+	farcall GetTMHMNumber
+	ld a, c
+; a = move ID
+	ld [wTempTMHM], a
+	predef GetTMHMMove
+	ld a, [wTempTMHM]
+; wStringBuffer1 = move name
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
+; hl = item name buffer
+	pop hl
+; append wStringBuffer1 to item name buffer
+	ld [hl], " "
+	inc hl
 	ld de, wStringBuffer1
-	ld a, STRING_BUFFER_4
-	call CopyConvertedText
-	ld b, BANK(GiveItemScript)
-	ld de, GiveItemScript
-	jp ScriptCall
+	jp CopyName2
 
 Script_itemnotify:
 ; script command 0x45
@@ -1972,12 +1995,9 @@ Script_giveitem:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	jr nc, .full
-	ld a, TRUE
-	ld [wScriptVar], a
-	ret
-.full
-	xor a
+	; carry ? TRUE ; FALSE
+	sbc a
+	and TRUE
 	ld [wScriptVar], a
 	ret
 
