@@ -34,52 +34,12 @@ ROM0
 	org $0150
 	"Home"
 ROMX $01
-	"bank1"
-ROMX $02
-	"bank2"
-ROMX $03
-	"bank3"
-ROMX $04
-	"bank4"
-ROMX $05
-	"bank5"
-ROMX $09
-	"bank9"
-ROMX $0a
-	"bankA"
-ROMX $0b
-	"bankB"
+	"Engine 1"
 ROMX $10
-	"bank10"
+	"Engine 10"
 	"Evolutions and Attacks"
-ROMX $11
-	"bank11"
-ROMX $13
-	"bank13"
-ROMX $14
-	"bank14"
 ROMX $15
 	"Map Scripts - Cable Club"
-ROMX $20
-	"bank20"
-ROMX $21
-	"bank21"
-ROMX $23
-	"bank23"
-ROMX $24
-	"bank24"
-ROMX $2e
-	"bank2E"
-ROMX $32
-	"bank32"
-ROMX $38
-	"bank38"
-ROMX $39
-	"bank39"
-ROMX $3e
-	"bank3E"
-ROMX $3f
-	"bank3F"
 WRAM0
 	"Stack"
 	"Audio RAM"

@@ -1,7 +1,7 @@
 INCLUDE "constants.asm"
 
 
-SECTION "bank1", ROMX
+SECTION "Engine 1", ROMX
 
 INCLUDE "engine/link/place_waiting_text.asm"
 INCLUDE "engine/gfx/load_push_oam.asm"
@@ -17,7 +17,7 @@ INCLUDE "engine/events/shuckle.asm"
 INCLUDE "engine/events/haircut.asm"
 
 
-SECTION "bank2", ROMX
+SECTION "Engine 2", ROMX
 
 INCLUDE "engine/overworld/player_object.asm"
 INCLUDE "engine/math/sine.asm"
@@ -25,7 +25,7 @@ INCLUDE "engine/predef.asm"
 INCLUDE "engine/gfx/color.asm"
 
 
-SECTION "bank3", ROMX
+SECTION "Engine 3", ROMX
 
 INCLUDE "engine/events/checktime.asm"
 INCLUDE "engine/events/specials.asm"
@@ -44,7 +44,7 @@ INCLUDE "engine/battle_anims/pokeball_wobble.asm"
 INCLUDE "engine/pokemon/knows_move.asm"
 
 
-SECTION "bank4", ROMX
+SECTION "Engine 4", ROMX
 
 INCLUDE "engine/items/pack.asm"
 INCLUDE "engine/overworld/time.asm"
@@ -69,7 +69,7 @@ INCLUDE "engine/events/bug_contest/contest_2.asm"
 INCLUDE "engine/math/get_square_root.asm"
 
 
-SECTION "bank5", ROMX
+SECTION "Engine 5", ROMX
 
 INCLUDE "engine/rtc/rtc.asm"
 INCLUDE "engine/overworld/overworld.asm"
@@ -96,7 +96,7 @@ SECTION "Clock Reset", ROMX
 INCLUDE "engine/rtc/restart_clock.asm"
 
 
-SECTION "bank9", ROMX
+SECTION "Engine 9", ROMX
 
 INCLUDE "data/text_buffers.asm"
 INCLUDE "engine/menus/menu.asm"
@@ -120,14 +120,14 @@ INCLUDE "data/moves/effects.asm"
 INCLUDE "engine/events/kurt_selectquantity_interpretjoypad.asm"
 
 
-SECTION "bankA", ROMX
+SECTION "Engine A", ROMX
 
 INCLUDE "engine/link/link.asm"
 INCLUDE "engine/link/link_trade.asm"
 INCLUDE "engine/overworld/wildmons.asm"
 
 
-SECTION "bankB", ROMX
+SECTION "Engine B", ROMX
 
 INCLUDE "engine/battle/trainer_huds.asm"
 INCLUDE "data/trainers/class_names.asm"
@@ -160,14 +160,14 @@ INCLUDE "engine/battle/core.asm"
 INCLUDE "data/battle/effect_command_pointers.asm"
 
 
-SECTION "bank10", ROMX
+SECTION "Engine 10", ROMX
 
 INCLUDE "engine/pokedex/pokedex.asm"
 INCLUDE "data/moves/moves.asm"
 INCLUDE "engine/pokemon/evolve.asm"
 
 
-SECTION "bank11", ROMX
+SECTION "Engine 11", ROMX
 
 INCLUDE "engine/events/fruit_trees.asm"
 INCLUDE "engine/battle/ai/move.asm"
@@ -184,7 +184,7 @@ INCLUDE "engine/events/kurt.asm"
 INCLUDE "engine/gfx/player_gfx.asm"
 
 
-SECTION "bank13", ROMX
+SECTION "Engine 13", ROMX
 
 INCLUDE "engine/tilesets/map_palettes.asm"
 INCLUDE "data/collision_permissions.asm"
@@ -214,7 +214,7 @@ INCLUDE "engine/movie/gbc_only.asm"
 INCLUDE "engine/events/poke_seer.asm"
 
 
-SECTION "bank14", ROMX
+SECTION "Engine 14", ROMX
 
 INCLUDE "engine/pokemon/party_menu.asm"
 INCLUDE "engine/events/poisonstep.asm"
@@ -235,19 +235,19 @@ INCLUDE "data/pokemon/base_stats.asm"
 INCLUDE "data/pokemon/names.asm"
 
 
-SECTION "bank20", ROMX
+SECTION "Engine 20", ROMX
 
 INCLUDE "engine/overworld/player_movement.asm"
 INCLUDE "engine/events/engine_flags.asm"
 INCLUDE "engine/overworld/variables.asm"
 
 
-SECTION "bank21", ROMX
+SECTION "Engine 21", ROMX
 
 INCLUDE "engine/events/halloffame.asm"
 
 
-SECTION "bank23", ROMX
+SECTION "Engine 23", ROMX
 
 INCLUDE "engine/tilesets/timeofday_pals.asm"
 INCLUDE "engine/battle/battle_transition.asm"
@@ -258,7 +258,7 @@ INCLUDE "engine/gfx/sprites.asm"
 INCLUDE "engine/gfx/mon_icons.asm"
 
 
-SECTION "bank24", ROMX
+SECTION "Engine 24", ROMX
 
 INCLUDE "engine/phone/phone.asm"
 INCLUDE "engine/rtc/timeset.asm"
@@ -267,7 +267,7 @@ INCLUDE "engine/events/fish.asm"
 INCLUDE "engine/games/slot_machine.asm"
 
 
-SECTION "bank2E", ROMX
+SECTION "Engine 2E", ROMX
 
 INCLUDE "engine/events/checkforhiddenitems.asm"
 INCLUDE "engine/events/treemons.asm"
@@ -287,7 +287,7 @@ INCLUDE "engine/phone/scripts/generic.asm"
 INCLUDE "engine/events/trainer_scripts.asm"
 
 
-SECTION "bank32", ROMX
+SECTION "Engine 32", ROMX
 
 INCLUDE "engine/battle_anims/bg_effects.asm"
 INCLUDE "data/moves/animations.asm"
@@ -307,7 +307,7 @@ INCLUDE "data/battle_anims/oam.asm"
 INCLUDE "data/battle_anims/object_gfx.asm"
 
 
-SECTION "bank38", ROMX
+SECTION "Engine 38", ROMX
 
 INCLUDE "engine/games/card_flip.asm"
 INCLUDE "engine/games/unown_puzzle.asm"
@@ -315,13 +315,13 @@ INCLUDE "engine/games/dummy_game.asm"
 INCLUDE "engine/pokemon/bills_pc.asm"
 
 
-SECTION "bank39", ROMX
+SECTION "Engine 39", ROMX
 
 INCLUDE "engine/menus/options_menu.asm"
 INCLUDE "engine/movie/crystal_intro.asm"
 
 
-SECTION "bank3E", ROMX
+SECTION "Engine 3E", ROMX
 
 INCLUDE "engine/gfx/load_font.asm"
 INCLUDE "engine/link/time_capsule.asm"
@@ -335,14 +335,14 @@ INCLUDE "engine/battle/hidden_power.asm"
 INCLUDE "engine/battle/misc.asm"
 
 
-SECTION "bank3F", ROMX
+SECTION "Engine 3F", ROMX
 
 INCLUDE "engine/tilesets/tileset_anims.asm"
 INCLUDE "engine/events/npc_trade.asm"
 INCLUDE "engine/events/mom_phone.asm"
 
 
-SECTION "bank41", ROMX
+SECTION "Engine 41", ROMX
 
 INCLUDE "engine/gfx/dma_transfer.asm"
 INCLUDE "engine/overworld/warp_connection.asm"
@@ -375,7 +375,7 @@ INCLUDE "data/moves/names.asm"
 INCLUDE "engine/overworld/landmarks.asm"
 
 
-SECTION "bank77", ROMX
+SECTION "Engine 77", ROMX
 
 INCLUDE "engine/rtc/print_hours_mins.asm"
 INCLUDE "engine/events/diploma.asm"
