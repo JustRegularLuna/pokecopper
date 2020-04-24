@@ -55,6 +55,13 @@ BadgeGFX2::
 INCBIN "gfx/trainer_card/badges2.2bpp"
 
 
+; Stats
+
+SECTION "StatsScreenPageTilesGFX", ROMX
+StatsScreenPageTilesGFX::
+INCBIN "gfx/stats/stats_tiles.2bpp"
+
+
 ; Pack
 
 SECTION "PackMenuGFX", ROMX

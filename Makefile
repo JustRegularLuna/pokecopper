@@ -167,6 +167,8 @@ gfx/trainer_card/sylvia_card.2bpp: rgbgfx += -h
 gfx/trainer_card/leaders.2bpp: tools/gfx += --trim-whitespace
 gfx/trainer_card/leaders2.2bpp: tools/gfx += --trim-whitespace
 
+gfx/pack/pack_menu.2bpp: tools/gfx += --trim-whitespace
+
 gfx/overworld/chris_fish.2bpp: tools/gfx += --trim-whitespace
 gfx/overworld/kris_fish.2bpp: tools/gfx += --trim-whitespace
 

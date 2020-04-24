@@ -1062,7 +1062,6 @@ SetUpMoveScreenBG:
 	call ClearSprites
 	xor a
 	ldh [hBGMapMode], a
-	farcall LoadStatsScreenPageTilesGFX
 	farcall ClearSpriteAnims2
 	ld a, [wCurPartyMon]
 	ld e, a

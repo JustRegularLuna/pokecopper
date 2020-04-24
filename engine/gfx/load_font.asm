@@ -61,27 +61,3 @@ LoadHPBar:
 	ld hl, vTiles2 tile $55
 	lb bc, BANK(ExpBarGFX), 9
 	jp Get2bpp_2
-
-StatsScreen_LoadFont:
-	call _LoadFontsBattleExtra
-	ld de, EnemyHPBarBorderGFX
-	ld hl, vTiles2 tile $6c
-	lb bc, BANK(EnemyHPBarBorderGFX), 4
-	call Get1bpp_2
-	ld de, HPExpBarBorderGFX
-	ld hl, vTiles2 tile $78
-	lb bc, BANK(HPExpBarBorderGFX), 1
-	call Get1bpp_2
-	ld de, HPExpBarBorderGFX + 3 * LEN_1BPP_TILE
-	ld hl, vTiles2 tile $76
-	lb bc, BANK(HPExpBarBorderGFX), 2
-	call Get1bpp_2
-	ld de, ExpBarGFX
-	ld hl, vTiles2 tile $55
-	lb bc, BANK(ExpBarGFX), 8
-	call Get2bpp_2
-LoadStatsScreenPageTilesGFX:
-	ld de, StatsScreenPageTilesGFX
-	ld hl, vTiles2 tile $31
-	lb bc, BANK(StatsScreenPageTilesGFX), 17
-	jp Get2bpp_2

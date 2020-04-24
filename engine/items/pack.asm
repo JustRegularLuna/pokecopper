@@ -1122,7 +1122,7 @@ DrawPackGFX:
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
-	ld hl, vTiles2 tile $50
+	ld hl, vTiles2 tile $30
 	jp Request2bpp
 
 PackGFXPointers:
@@ -1228,13 +1228,13 @@ Pack_InitGFX:
 	call DisableLCD
 	ld hl, PackMenuGFX
 	ld de, vTiles2
-	ld bc, $60 tiles
+	ld bc, $2f tiles
 	ld a, BANK(PackMenuGFX)
 	call FarCopyBytes
 ; Background (blue if male, pink if female)
 	hlcoord 0, 1
 	ld bc, 11 * SCREEN_WIDTH
-	ld a, $24
+	ld a, $1a
 	rst ByteFill
 ; This is where the items themselves will be listed.
 	hlcoord 5, 1
@@ -1242,7 +1242,7 @@ Pack_InitGFX:
 	call ClearBox
 ; ◀▶ POCKET       ▼▲ ITEMS
 	hlcoord 0, 0
-	ld a, $28
+	ld a, $1b
 	ld c, SCREEN_WIDTH
 .loop
 	ld [hli], a
@@ -1260,7 +1260,7 @@ Pack_InitGFX:
 
 PlacePackGFX:
 	hlcoord 0, 3
-	ld a, $50
+	ld a, $30
 	ld de, SCREEN_WIDTH - 5
 	ld b, 3
 .row

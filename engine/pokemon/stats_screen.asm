@@ -24,7 +24,12 @@ StatsScreenInit:
 	call ClearBGPalettes
 	call ClearTilemap
 	call UpdateSprites
-	farcall StatsScreen_LoadFont
+	call LoadFontsBattleExtra
+	farcall LoadHPBar
+	ld de, StatsScreenPageTilesGFX
+	ld hl, vTiles2 tile $31
+	lb bc, BANK(StatsScreenPageTilesGFX), 10
+	call Get2bpp_2
 	pop hl
 	call _hl_
 	call ClearBGPalettes
@@ -451,7 +456,7 @@ StatsScreen_LoadGFX:
 	ld b, $0
 	predef DrawPlayerHP
 	hlcoord 8, 9
-	ld [hl], $41 ; right HP/exp bar end cap
+	ld [hl], $6b ; right HP/exp bar end cap
 	ld de, .Status_Type
 	hlcoord 0, 12
 	rst PlaceString
@@ -521,9 +526,9 @@ StatsScreen_LoadGFX:
 	ld de, wTempMonExp + 2
 	predef FillInExpBar
 	hlcoord 10, 16
-	ld [hl], $40 ; left exp bar end cap
+	ld [hl], $3a ; left exp bar end cap
 	hlcoord 19, 16
-	ld [hl], $41 ; right exp bar end cap
+	ld [hl], $6b ; right exp bar end cap
 	ret
 
 .PrintNextLevel:
@@ -938,17 +943,17 @@ StatsScreen_AnimateEgg:
 
 StatsScreen_LoadPageIndicators:
 	hlcoord 13, 5
-	ld a, $36 ; first of 4 small square tiles
+	ld a, $32 ; first of 4 small square tiles
 	call .load_square
 	hlcoord 15, 5
-	ld a, $36 ; " " " "
+	ld a, $32 ; " " " "
 	call .load_square
 	hlcoord 17, 5
-	ld a, $36 ; " " " "
+	ld a, $32 ; " " " "
 	call .load_square
 	ld a, c
 	cp GREEN_PAGE
-	ld a, $3a ; first of 4 large square tiles
+	ld a, $36 ; first of 4 large square tiles
 	hlcoord 13, 5 ; PINK_PAGE (< GREEN_PAGE)
 	jr c, .load_square
 	hlcoord 15, 5 ; GREEN_PAGE (= GREEN_PAGE)

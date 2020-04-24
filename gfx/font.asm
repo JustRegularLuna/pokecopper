@@ -15,9 +15,6 @@ INCBIN "gfx/frames/7.1bpp"
 INCBIN "gfx/frames/8.1bpp"
 INCBIN "gfx/frames/9.1bpp"
 
-StatsScreenPageTilesGFX:
-INCBIN "gfx/stats/stats_tiles.2bpp"
-
 EnemyHPBarBorderGFX:
 INCBIN "gfx/battle/enemy_hp_bar_border.1bpp"
 
