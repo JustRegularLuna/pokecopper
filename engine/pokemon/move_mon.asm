@@ -1532,7 +1532,7 @@ CalcMonStatC:
 	ld e, a
 	adc d
 	sub e
-	ld e, a
+	ld d, a
 	sla e
 	rl d
 	srl b
