@@ -498,14 +498,12 @@ OakSpeech:
 	ld hl, wNumPCItems
 	call ReceiveItem
 
-	call RotateFourPalettesLeft
+	call RotateThreePalettesRight
 	call ClearTilemap
 
 	ld de, MUSIC_ROUTE_30
 	call PlayMusic
 
-	call RotateFourPalettesRight
-	call RotateThreePalettesRight
 	ld a, POKEMON_PROF
 	call Intro_PrepTrainerPic
 
