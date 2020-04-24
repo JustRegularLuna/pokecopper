@@ -554,7 +554,19 @@ DoPlayerMovement::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+if DEF(_DEBUG)
+	ldh a, [hJoypadDown]
+	and B_BUTTON
+	cp B_BUTTON
 	ld a, [hl]
+	jr nz, .no_wtw
+	cp COLL_VOID
+	jr z, .no_wtw
+	ld a, COLL_LADDER
+.no_wtw
+else
+	ld a, [hl]
+endc
 	ld [wWalkingTile], a
 	ret
 

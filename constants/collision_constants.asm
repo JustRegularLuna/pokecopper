@@ -7,6 +7,7 @@ TALK       EQU $10
 ; collision data types (see data/tilesets/*_collision.asm)
 ; TileCollisionTable indexes (see data/collision_permissions.asm)
 COLL_FLOOR             EQU $00
+COLL_VOID              EQU $01
 COLL_WALL              EQU $07
 COLL_CUT_TREE          EQU $12
 COLL_LONG_GRASS        EQU $14

@@ -1613,8 +1613,6 @@ GetCoordTile::
 ; Get the collision byte for tile d, e
 	call GetBlockLocation
 	ld a, [hl]
-	and a
-	jr z, .nope
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -1635,12 +1633,21 @@ GetCoordTile::
 	inc hl
 
 .nocarry2
+if DEF(_DEBUG)
+	ldh a, [hJoyDown]
+	and B_BUTTON
+	cp B_BUTTON
+	jr nz, .no_wtw
+	ld a, [wTilesetCollisionBank]
+	call GetFarByte
+	cp COLL_VOID
+	ret z
+	ld a, COLL_LADDER
+	ret
+.no_wtw
+endc
 	ld a, [wTilesetCollisionBank]
 	jp GetFarByte
-
-.nope
-	ld a, -1
-	ret
 
 GetBlockLocation::
 	ld a, [wMapWidth]

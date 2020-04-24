@@ -222,6 +222,12 @@ PlayerEvents:
 	ret
 
 CheckTrainerBattle_GetPlayerEvent:
+if DEF(_DEBUG)
+	ldh a, [hJoyDown]
+	and B_BUTTON
+	cp B_BUTTON
+	jr z, .nope
+endc
 	call CheckTrainerBattle
 	jr nc, .nope
 
@@ -1008,6 +1014,12 @@ TryTileCollisionEvent::
 RandomEncounter::
 ; Random encounter
 
+if DEF(_DEBUG)
+	ldh a, [hJoyDown]
+	and B_BUTTON
+	cp B_BUTTON
+	jr z, .nope
+endc
 	call CheckWildEncounterCooldown
 	jr c, .nope
 	call CanUseSweetScent

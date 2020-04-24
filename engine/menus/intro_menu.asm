@@ -504,6 +504,7 @@ OakSpeech:
 	ld de, MUSIC_ROUTE_30
 	call PlayMusic
 
+if !DEF(_DEBUG)
 	ld a, POKEMON_PROF
 	call Intro_PrepTrainerPic
 
@@ -538,6 +539,7 @@ OakSpeech:
 	call PrintText
 	call RotateThreePalettesRight
 	call ClearTilemap
+endc
 
 	call Intro_PrepPlayerPic
 
@@ -570,6 +572,7 @@ OakSpeech:
 	call RotateThreePalettesRight
 	call ClearTilemap
 
+if !DEF(_DEBUG)
 	ld a, POKEMON_PROF
 	call Intro_PrepTrainerPic
 
@@ -581,6 +584,7 @@ OakSpeech:
 	call PrintText
 	call RotateThreePalettesRight
 	call ClearTilemap
+endc
 
 	farcall InitClock
 	call RotateThreePalettesRight

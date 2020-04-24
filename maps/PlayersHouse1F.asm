@@ -50,19 +50,21 @@ MeetMomRightScript:
 	applymovement PLAYERSHOUSE1F_MOM1, MomWalksToPlayerMovement
 MeetMomScript:
 	opentext
+if !DEF(_DEBUG)
 	writetext ElmsLookingForYouText
 	promptbutton
+endc
 	getstring STRING_BUFFER_4, PokegearName
 	scall PlayersHouse1FReceiveItemStd
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD
-	setflag ENGINE_MAP_CARD
-	setflag ENGINE_RADIO_CARD
 	addcellnum PHONE_MOM
 	setscene SCENE_FINISHED
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
+if !DEF(_DEBUG)
 	writetext MomGivesPokegearText
+endc
 	promptbutton
 	special SetDayOfWeek
 .SetDayOfWeek:
@@ -79,12 +81,10 @@ MeetMomScript:
 	yesorno
 	iffalse .SetDayOfWeek
 .DayOfWeekDone:
+if !DEF(_DEBUG)
 	writetext ComeHomeForDSTText
 	yesorno
 	iffalse .ExplainPhone
-	sjump .KnowPhone
-
-.KnowPhone:
 	writetext KnowTheInstructionsText
 	promptbutton
 	sjump .FinishPhone
@@ -92,25 +92,37 @@ MeetMomScript:
 .ExplainPhone:
 	writetext DontKnowTheInstructionsText
 	promptbutton
-	sjump .FinishPhone
-
 .FinishPhone:
 	writetext InstructionsNextText
 	waitbutton
+endc
 if DEF(_DEBUG)
-	writetext GetStarterText
-	promptbutton
-	waitsfx
-	getmonname STRING_BUFFER_3, PIKACHU
-	writetext ReceivedStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
+	; all badges
+	loadmem wJohtoBadges, %11111111
+	loadmem wKantoBadges, %11111111
+	; pokedex and pokegear
+	setflag ENGINE_POKEDEX
+	setflag ENGINE_MAP_CARD
+	setflag ENGINE_RADIO_CARD
+	; all flypoints
+	setflag ENGINE_FLYPOINT_PLAYERS_HOUSE
+	setflag ENGINE_FLYPOINT_INDIGO_PLATEAU
+	setflag ENGINE_FLYPOINT_NEW_BARK
+	; starter pokemon
 	givepoke PIKACHU, 10, BERRY
+	setevent EVENT_GOT_STARTER_POKEMON
+	; hm slave
+	givepoke EXEGGUTOR, 90, LEFTOVERS
+	loadmem wPartyMon2Moves+0, FLY
+	loadmem wPartyMon2Moves+1, CUT
+	loadmem wPartyMon2Moves+2, SURF
+	loadmem wPartyMon2Moves+3, STRENGTH
+	loadmem wPartyMon2PP+0, 15
+	loadmem wPartyMon2PP+1, 30
+	loadmem wPartyMon2PP+2, 15
+	loadmem wPartyMon2PP+3, 15
 endc
 	closetext
-	setevent EVENT_GOT_STARTER_POKEMON
-	setflag ENGINE_POKEDEX
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue .FromRight
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
@@ -237,11 +249,6 @@ MomGivesPokegearText:
 	line "you want to be a"
 	cont "good trainer."
 
-	para "It comes with a"
-	line "CLOCK, PHONE,"
-	cont "TOWN MAP, and"
-	cont "even a RADIO!"
-
 	para "Oh, the day of the"
 	line "week isn't set."
 
@@ -292,19 +299,6 @@ InstructionsNextText:
 
 	para "Gee, isn't that"
 	line "convenient?"
-	done
-
-GetStarterText:
-	text "One more thing!"
-	line "Here's your first"
-	cont "#MON!"
-	done
-
-ReceivedStarterText:
-	text "<PLAYER> received"
-	line "@"
-	text_ram wStringBuffer3
-	text "!"
 	done
 
 HurryUpElmIsWaitingText:
