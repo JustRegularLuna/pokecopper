@@ -218,8 +218,6 @@ InitializeNPCNames:
 
 InitializeWorld:
 	call ShrinkPlayer
-	farcall InitClock
-	call RotateFourPalettesLeft
 	farcall SpawnPlayer
 	farcall _InitializeStartDay
 	farcall InitializeEvents
@@ -574,6 +572,22 @@ OakSpeech:
 	call RotateThreePalettesRight
 	call ClearTilemap
 
+	ld a, POKEMON_PROF
+	call Intro_PrepTrainerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call Intro_RotatePalettesLeftFrontpic
+
+	ld hl, OakTextRecordTheTime
+	call PrintText
+	call RotateThreePalettesRight
+	call ClearTilemap
+
+	farcall InitClock
+	call RotateThreePalettesRight
+	call ClearTilemap
+
 	call Intro_PrepPlayerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
@@ -618,6 +632,10 @@ OakTextIntroduceRival:
 
 OakTextOkHisNameIs:
 	text_far _OakTextOkHisNameIs
+	text_end
+
+OakTextRecordTheTime:
+	text_far _OakTextRecordTheTime
 	text_end
 
 OakText7:

@@ -120,18 +120,6 @@ _CameToItsSensesText::
 	line "to its senses."
 	done
 
-SECTION "_OakTimeWokeUpText", ROMX
-_OakTimeWokeUpText::
-	text "………………………………"
-	line "………………………………"
-
-	para "Zzz… Hm? Wha…?"
-	line "You woke me up!"
-
-	para "Will you check the"
-	line "clock for me?"
-	prompt
-
 SECTION "_OakTimeWhatTimeIsItText", ROMX
 _OakTimeWhatTimeIsItText::
 	text "What time is it?"
@@ -139,7 +127,7 @@ _OakTimeWhatTimeIsItText::
 
 SECTION "_OakTimeWhatHoursText", ROMX
 _OakTimeWhatHoursText::
-	text "What?@"
+	text "Is it@"
 	text_end
 
 SECTION "_OakTimeHoursQuestionMarkText", ROMX
@@ -154,7 +142,7 @@ _OakTimeHowManyMinutesText::
 
 SECTION "_OakTimeWhoaMinutesText", ROMX
 _OakTimeWhoaMinutesText::
-	text "Whoa!@"
+	text "Is it@"
 	text_end
 
 SECTION "_OakTimeMinutesQuestionMarkText", ROMX
@@ -162,24 +150,10 @@ _OakTimeMinutesQuestionMarkText::
 	text "?"
 	done
 
-SECTION "_OakTimeOversleptText", ROMX
-_OakTimeOversleptText::
-	text "!"
-	line "I overslept!"
-	done
-
-SECTION "_OakTimeYikesText", ROMX
-_OakTimeYikesText::
-	text "!"
-	line "Yikes! I over-"
-	cont "slept!"
-	done
-
-SECTION "_OakTimeSoDarkText", ROMX
-_OakTimeSoDarkText::
-	text "!"
-	line "No wonder it's so"
-	cont "dark!"
+SECTION "_OakTimeSetText", ROMX
+_OakTimeSetText::
+	text ","
+	line "We're all set!"
 	done
 
 SECTION "_OakTimeWhatDayIsItText", ROMX
@@ -3258,6 +3232,20 @@ _OakTextOkHisNameIs::
 	text "That's right! I"
 	line "remember now! His"
 	cont "name is <RIVAL>."
+	prompt
+
+SECTION "_OakTextRecordTheTime", ROMX
+_OakTextRecordTheTime::
+	text "While we're at it,"
+	line "let's record the"
+	cont "start of your"
+	cont "adventure by"
+	cont "marking the time!"
+
+	para "Be as precise as"
+	line "possible when"
+	cont "setting the time,"
+	cont "too, won't you?"
 	prompt
 
 SECTION "_OakText7", ROMX
