@@ -739,7 +739,7 @@ Pokedex_UpdateUnownMode:
 	call DelayFrame
 	ld hl, PokedexLZ
 	ld de, vTiles2 tile $31
-	lb bc, BANK(PokedexLZ), 58
+	lb bc, BANK(PokedexLZ), 48
 	jp DecompressRequest2bpp
 
 Pokedex_UnownModeHandleDPadInput:
@@ -1051,7 +1051,7 @@ Pokedex_DrawDexEntryScreenBG:
 	ld [hl], $39
 	hlcoord 1, 10
 	ld bc, 19
-	ld a, $61
+	ld a, $31
 	rst ByteFill
 	hlcoord 1, 17
 	ld bc, 18
@@ -1171,9 +1171,9 @@ Pokedex_DrawSearchResultsScreenBG:
 	hlcoord 8, 8
 	ld [hl], $53
 	hlcoord 8, 9
-	ld [hl], $69
+	ld [hl], $5f
 	hlcoord 8, 10
-	ld [hl], $6a
+	ld [hl], $60
 	jp Pokedex_PlaceFrontpicTopLeftCorner
 
 .BottomWindowText:

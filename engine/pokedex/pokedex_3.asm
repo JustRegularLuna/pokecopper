@@ -42,12 +42,12 @@ DrawPokedexListWindow:
 .OldMode:
 ; no scroll bar
 	hlcoord 11, 0
-	ld [hl], $66
-	ld a, $67
+	ld [hl], $5c
+	ld a, $5d
 	hlcoord 11, 1
 	ld b, SCREEN_HEIGHT - 3
 	call Bank77_FillColumn
-	ld [hl], $68
+	ld [hl], $5e
 	ret
 
 DrawPokedexSearchResultsWindow:
@@ -64,12 +64,12 @@ DrawPokedexSearchResultsWindow:
 	hlcoord 5, 10
 	ld [hl], $40
 	hlcoord 11, 0
-	ld [hl], $66
-	ld a, $67
+	ld [hl], $5c
+	ld a, $5d
 	hlcoord 11, 1
 	ld b, SCREEN_HEIGHT / 2
 	call Bank77_FillColumn
-	ld [hl], $68
+	ld [hl], $5e
 	ld a, $34
 	hlcoord 0, 11
 	ld bc, 11
@@ -79,12 +79,12 @@ DrawPokedexSearchResultsWindow:
 	ld bc, 11
 	rst ByteFill
 	hlcoord 11, 11
-	ld [hl], $66
-	ld a, $67
+	ld [hl], $5c
+	ld a, $5d
 	hlcoord 11, 12
 	ld b, 5
 	call Bank77_FillColumn
-	ld [hl], $68
+	ld [hl], $5e
 	hlcoord 0, 12
 	lb bc, 5, 11
 	call ClearBox
@@ -112,12 +112,12 @@ DrawDexEntryScreenRightEdge:
 	ld a, h
 	ldh [hBGMapAddress + 1], a
 	hlcoord 19, 0
-	ld [hl], $66
+	ld [hl], $5c
 	hlcoord 19, 1
-	ld a, $67
+	ld a, $5d
 	ld b, 15
 	call Bank77_FillColumn
-	ld [hl], $68
+	ld [hl], $5e
 	hlcoord 19, 17
 	ld [hl], $3c
 	xor a

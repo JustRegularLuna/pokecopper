@@ -165,7 +165,7 @@ DisplayDexEntry:
 	call ClearBox
 	hlcoord 1, 10
 	ld bc, SCREEN_WIDTH - 1
-	ld a, $61 ; horizontal divider
+	ld a, $31 ; horizontal divider
 	rst ByteFill
 	; page number
 	hlcoord 1, 9
@@ -195,7 +195,7 @@ DisplayDexEntry:
 	call ClearBox
 	hlcoord 1, 10
 	ld bc, SCREEN_WIDTH - 1
-	ld a, $61
+	ld a, $31
 	rst ByteFill
 	; page number
 	hlcoord 1, 9
