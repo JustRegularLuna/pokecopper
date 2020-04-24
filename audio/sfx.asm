@@ -2,9 +2,9 @@ SECTION "Sfx_PokeballsPlacedOnTable", ROMX
 
 Sfx_PokeballsPlacedOnTable::
 	channel_count 1
-	channel 5, Sfx_PokeballsPlacedOnTable_Ch5
+	channel 5, .Ch5
 
-Sfx_PokeballsPlacedOnTable_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 3, -2
 	square_note 4, 15, 2, 512
@@ -18,9 +18,9 @@ SECTION "Sfx_BallWobble", ROMX
 
 Sfx_BallWobble::
 	channel_count 1
-	channel 5, Sfx_BallWobble_Ch5
+	channel 5, .Ch5
 
-Sfx_BallWobble_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 3, -2
 	square_note 4, 15, 2, 1024
@@ -34,9 +34,9 @@ SECTION "Sfx_Potion", ROMX
 
 Sfx_Potion::
 	channel_count 1
-	channel 5, Sfx_Potion_Ch5
+	channel 5, .Ch5
 
-Sfx_Potion_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 1, 7
 	square_note 15, 15, 0, 1264
@@ -49,9 +49,9 @@ SECTION "Sfx_FullHeal", ROMX
 
 Sfx_FullHeal::
 	channel_count 1
-	channel 5, Sfx_FullHeal_Ch5
+	channel 5, .Ch5
 
-Sfx_FullHeal_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 1, 4
 	square_note 4, 15, 2, 1536
@@ -66,9 +66,9 @@ SECTION "Sfx_Menu", ROMX
 
 Sfx_Menu::
 	channel_count 1
-	channel 8, Sfx_Menu_Ch8
+	channel 8, .Ch8
 
-Sfx_Menu_Ch8:
+.Ch8:
 	noise_note 1, 14, 2, 51
 	noise_note 8, 14, 1, 34
 	sound_ret
@@ -79,10 +79,9 @@ SECTION "Sfx_ReadText", ROMX
 Sfx_ReadText::
 Sfx_ReadText2:
 	channel_count 1
-	channel 5, Sfx_ReadText2_Ch5
+	channel 5, .Ch5
 
-Sfx_ReadText_Ch5:
-Sfx_ReadText2_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 0, 9, 1, 1984
 	square_note 0, 8, 1, 2000
@@ -95,13 +94,13 @@ SECTION "Sfx_Poison", ROMX
 
 Sfx_Poison::
 	channel_count 1
-	channel 5, Sfx_Poison_Ch5
+	channel 5, .Ch5
 
-Sfx_Poison_Ch5:
+.Ch5:
 	duty_cycle 0
 	pitch_sweep 1, 4
 	square_note 4, 15, 2, 1536
-	sound_loop 4, Sfx_Poison_Ch5
+	sound_loop 4, .Ch5
 	square_note 15, 15, 3, 1536
 	pitch_sweep 0, 8
 	sound_ret
@@ -111,9 +110,9 @@ SECTION "Sfx_GotSafariBalls", ROMX
 
 Sfx_GotSafariBalls::
 	channel_count 1
-	channel 5, Sfx_GotSafariBalls_Ch5
+	channel 5, .Ch5
 
-Sfx_GotSafariBalls_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 1, 5
 	square_note 15, 15, 0, 1264
@@ -126,9 +125,9 @@ SECTION "Sfx_BootPc", ROMX
 
 Sfx_BootPc::
 	channel_count 1
-	channel 5, Sfx_BootPc_Ch5
+	channel 5, .Ch5
 
-Sfx_BootPc_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 15, 15, 2, 1984
 	square_note 15, 0, 0, 0
@@ -147,9 +146,9 @@ SECTION "Sfx_ShutDownPc", ROMX
 
 Sfx_ShutDownPc::
 	channel_count 1
-	channel 5, Sfx_ShutDownPc_Ch5
+	channel 5, .Ch5
 
-Sfx_ShutDownPc_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 4, 15, 0, 1536
 	square_note 4, 15, 0, 1024
@@ -162,9 +161,9 @@ SECTION "Sfx_ChoosePcOption", ROMX
 
 Sfx_ChoosePcOption::
 	channel_count 1
-	channel 5, Sfx_ChoosePcOption_Ch5
+	channel 5, .Ch5
 
-Sfx_ChoosePcOption_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 6, 15, 0, 1792
 	square_note 4, 0, 0, 0
@@ -177,9 +176,9 @@ SECTION "Sfx_EscapeRope", ROMX
 
 Sfx_EscapeRope::
 	channel_count 1
-	channel 5, Sfx_EscapeRope_Ch5
+	channel 5, .Ch5
 
-Sfx_EscapeRope_Ch5:
+.Ch5:
 	duty_cycle 1
 	pitch_sweep 1, 7
 	square_note 15, 13, 7, 1536
@@ -195,9 +194,9 @@ SECTION "Sfx_PushButton", ROMX
 
 Sfx_PushButton::
 	channel_count 1
-	channel 5, Sfx_PushButton_Ch5
+	channel 5, .Ch5
 
-Sfx_PushButton_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 4, 0, 0, 0
 	square_note 2, 15, 1, 1664
@@ -211,9 +210,9 @@ SECTION "Sfx_SecondPartOfItemfinder", ROMX
 
 Sfx_SecondPartOfItemfinder::
 	channel_count 1
-	channel 5, Sfx_SecondPartOfItemfinder_Ch5
+	channel 5, .Ch5
 
-Sfx_SecondPartOfItemfinder_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 2, -4
 	square_note 4, 15, 2, 1280
@@ -228,9 +227,9 @@ SECTION "Sfx_WarpTo", ROMX
 
 Sfx_WarpTo::
 	channel_count 1
-	channel 5, Sfx_WarpTo_Ch5
+	channel 5, .Ch5
 
-Sfx_WarpTo_Ch5:
+.Ch5:
 	duty_cycle 1
 	pitch_sweep 1, 7
 	square_note 15, 13, 7, 1280
@@ -246,9 +245,9 @@ SECTION "Sfx_WarpFrom", ROMX
 
 Sfx_WarpFrom::
 	channel_count 1
-	channel 5, Sfx_WarpFrom_Ch5
+	channel 5, .Ch5
 
-Sfx_WarpFrom_Ch5:
+.Ch5:
 	duty_cycle 1
 	pitch_sweep 1, 7
 	square_note 15, 13, 7, 1792
@@ -264,9 +263,9 @@ SECTION "Sfx_ChangeDexMode", ROMX
 
 Sfx_ChangeDexMode::
 	channel_count 1
-	channel 5, Sfx_ChangeDexMode_Ch5
+	channel 5, .Ch5
 
-Sfx_ChangeDexMode_Ch5:
+.Ch5:
 	duty_cycle 1
 	pitch_sweep 1, 6
 	square_note 15, 13, 2, 1280
@@ -278,9 +277,9 @@ SECTION "Sfx_JumpOverLedge", ROMX
 
 Sfx_JumpOverLedge::
 	channel_count 1
-	channel 5, Sfx_JumpOverLedge_Ch5
+	channel 5, .Ch5
 
-Sfx_JumpOverLedge_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 9, 5
 	square_note 15, 15, 2, 1024
@@ -292,9 +291,9 @@ SECTION "Sfx_GrassRustle", ROMX
 
 Sfx_GrassRustle::
 	channel_count 1
-	channel 8, Sfx_GrassRustle_Ch8
+	channel 8, .Ch8
 
-Sfx_GrassRustle_Ch8:
+.Ch8:
 	noise_note 2, 15, 1, 50
 	noise_note 2, 0, 0, 0
 	noise_note 2, 15, 1, 34
@@ -306,9 +305,9 @@ SECTION "Sfx_Fly", ROMX
 
 Sfx_Fly::
 	channel_count 1
-	channel 8, Sfx_Fly_Ch8
+	channel 8, .Ch8
 
-Sfx_Fly_Ch8:
+.Ch8:
 	noise_note 2, 15, 1, 18
 	noise_note 2, 0, 0, 0
 	noise_note 2, 10, 1, 18
@@ -332,10 +331,10 @@ SECTION "Sfx_Wrong", ROMX
 
 Sfx_Wrong::
 	channel_count 2
-	channel 5, Sfx_Wrong_Ch5
-	channel 6, Sfx_Wrong_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_Wrong_Ch5:
+.Ch5:
 	duty_cycle 3
 	pitch_sweep 5, -2
 	square_note 4, 15, 0, 1280
@@ -345,7 +344,7 @@ Sfx_Wrong_Ch5:
 	square_note 1, 0, 0, 0
 	sound_ret
 
-Sfx_Wrong_Ch6:
+.Ch6:
 	duty_cycle 3
 	square_note 4, 15, 0, 1025
 	square_note 4, 0, 0, 0
@@ -358,9 +357,9 @@ SECTION "Sfx_Squeak", ROMX
 
 Sfx_Squeak::
 	channel_count 1
-	channel 5, Sfx_Squeak_Ch5
+	channel 5, .Ch5
 
-Sfx_Squeak_Ch5:
+.Ch5:
 	duty_cycle 0
 	pitch_sweep 1, 7
 	square_note 15, 13, 2, 1792
@@ -372,9 +371,9 @@ SECTION "Sfx_Strength", ROMX
 
 Sfx_Strength::
 	channel_count 1
-	channel 8, Sfx_Strength_Ch8
+	channel 8, .Ch8
 
-Sfx_Strength_Ch8:
+.Ch8:
 	noise_note 4, 10, 2, 35
 	noise_note 8, 15, 1, 52
 	noise_note 15, 0, 0, 0
@@ -390,10 +389,10 @@ SECTION "Sfx_Boat", ROMX
 
 Sfx_Boat::
 	channel_count 2
-	channel 5, Sfx_Boat_Ch5
-	channel 6, Sfx_Boat_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_Boat_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 15, 15, 0, 1280
 	square_note 4, 0, 0, 0
@@ -404,7 +403,7 @@ Sfx_Boat_Ch5:
 	square_note 15, 15, 2, 1280
 	sound_ret
 
-Sfx_Boat_Ch6:
+.Ch6:
 	duty_cycle 3
 	square_note 15, 15, 0, 1154
 	square_note 4, 0, 0, 0
@@ -420,9 +419,9 @@ SECTION "Sfx_WallOpen", ROMX
 
 Sfx_WallOpen::
 	channel_count 1
-	channel 5, Sfx_WallOpen_Ch5
+	channel 5, .Ch5
 
-Sfx_WallOpen_Ch5:
+.Ch5:
 	duty_cycle 1
 	pitch_sweep 3, -2
 	square_note 4, 15, 2, 1280
@@ -440,9 +439,9 @@ SECTION "Sfx_PlacePuzzlePieceDown", ROMX
 
 Sfx_PlacePuzzlePieceDown::
 	channel_count 1
-	channel 8, Sfx_PlacePuzzlePieceDown_Ch8
+	channel 8, .Ch8
 
-Sfx_PlacePuzzlePieceDown_Ch8:
+.Ch8:
 	noise_note 2, 15, 7, 36
 	noise_note 2, 15, 7, 52
 	noise_note 4, 15, 7, 68
@@ -455,9 +454,9 @@ SECTION "Sfx_EnterDoor", ROMX
 
 Sfx_EnterDoor::
 	channel_count 1
-	channel 8, Sfx_EnterDoor_Ch8
+	channel 8, .Ch8
 
-Sfx_EnterDoor_Ch8:
+.Ch8:
 	noise_note 9, 15, 1, 68
 	noise_note 8, 13, 1, 67
 	sound_ret
@@ -467,15 +466,15 @@ SECTION "Sfx_SwitchPokemon", ROMX
 
 Sfx_SwitchPokemon::
 	channel_count 2
-	channel 5, Sfx_SwitchPokemon_Ch5
-	channel 6, Sfx_SwitchPokemon_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_SwitchPokemon_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 8, 14, 1, 1856
 	sound_ret
 
-Sfx_SwitchPokemon_Ch6:
+.Ch6:
 	duty_cycle 2
 	square_note 2, 0, 8, 0
 	square_note 8, 11, 1, 1857
@@ -486,15 +485,15 @@ SECTION "Sfx_Tally", ROMX
 
 Sfx_Tally::
 	channel_count 2
-	channel 5, Sfx_Tally_Ch5
-	channel 6, Sfx_Tally_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_Tally_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 4, 15, 1, 1920
 	sound_ret
 
-Sfx_Tally_Ch6:
+.Ch6:
 	duty_cycle 2
 	square_note 1, 0, 8, 0
 	square_note 4, 10, 1, 1889
@@ -505,16 +504,16 @@ SECTION "Sfx_Transaction", ROMX
 
 Sfx_Transaction::
 	channel_count 2
-	channel 5, Sfx_Transaction_Ch5
-	channel 6, Sfx_Transaction_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_Transaction_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 4, 14, 1, 1792
 	square_note 24, 15, 2, 2016
 	sound_ret
 
-Sfx_Transaction_Ch6:
+.Ch6:
 	duty_cycle 2
 	square_note 1, 0, 8, 0
 	square_note 4, 9, 1, 1729
@@ -526,9 +525,9 @@ SECTION "Sfx_Bump", ROMX
 
 Sfx_Bump::
 	channel_count 1
-	channel 5, Sfx_Bump_Ch5
+	channel 5, .Ch5
 
-Sfx_Bump_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 5, -2
 	square_note 15, 15, 1, 768
@@ -540,9 +539,9 @@ SECTION "Sfx_ExitBuilding", ROMX
 
 Sfx_ExitBuilding::
 	channel_count 1
-	channel 8, Sfx_ExitBuilding_Ch8
+	channel 8, .Ch8
 
-Sfx_ExitBuilding_Ch8:
+.Ch8:
 	noise_note 2, 15, 1, 84
 	noise_note 12, 7, 1, 35
 	noise_note 2, 11, 1, 84
@@ -555,10 +554,10 @@ SECTION "Sfx_Save", ROMX
 
 Sfx_Save::
 	channel_count 2
-	channel 5, Sfx_Save_Ch5
-	channel 6, Sfx_Save_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_Save_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 2, 15, 1, 1792
 	square_note 1, 14, 1, 1536
@@ -569,7 +568,7 @@ Sfx_Save_Ch5:
 	square_note 15, 15, 2, 2016
 	sound_ret
 
-Sfx_Save_Ch6:
+.Ch6:
 	duty_cycle 2
 	square_note 2, 0, 8, 0
 	square_note 2, 10, 1, 1793
@@ -586,9 +585,9 @@ SECTION "Sfx_Pokeflute", ROMX
 
 Sfx_Pokeflute::
 	channel_count 1
-	channel 7, Sfx_Pokeflute_Ch7
+	channel 7, .Ch7
 
-Sfx_Pokeflute_Ch7:
+.Ch7:
 	tempo 256
 	volume 7, 7
 	toggle_sfx
@@ -618,9 +617,9 @@ SECTION "Sfx_ElevatorEnd", ROMX
 
 Sfx_ElevatorEnd::
 	channel_count 1
-	channel 5, Sfx_ElevatorEnd_Ch5
+	channel 5, .Ch5
 
-Sfx_ElevatorEnd_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 15, 15, 3, 1840
 	square_note 8, 6, 5, 1840
@@ -635,16 +634,16 @@ SECTION "Sfx_ThrowBall", ROMX
 
 Sfx_ThrowBall::
 	channel_count 2
-	channel 5, Sfx_ThrowBall_Ch5
-	channel 6, Sfx_ThrowBall_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_ThrowBall_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 2, -7
 	square_note 15, 15, 2, 1920
 	sound_ret
 
-Sfx_ThrowBall_Ch6:
+.Ch6:
 	duty_cycle 2
 	square_note 15, 12, 2, 1922
 	sound_ret
@@ -654,17 +653,17 @@ SECTION "Sfx_BallPoof", ROMX
 
 Sfx_BallPoof::
 	channel_count 2
-	channel 5, Sfx_BallPoof_Ch5
-	channel 8, Sfx_BallPoof_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_BallPoof_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 1, 6
 	square_note 15, 15, 2, 1024
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_BallPoof_Ch8:
+.Ch8:
 	noise_note 15, 10, 2, 34
 	sound_ret
 
@@ -673,15 +672,15 @@ SECTION "Sfx_Unknown3A", ROMX
 
 Sfx_Unknown3A::
 	channel_count 2
-	channel 5, Sfx_Unknown3A_Ch5
-	channel 8, Sfx_Unknown3A_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_Unknown3A_Ch5:
+.Ch5:
 	square_note 15, 13, 1, 512
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_Unknown3A_Ch8:
+.Ch8:
 	noise_note 4, 15, 5, 51
 	noise_note 8, 15, 4, 34
 	noise_note 15, 15, 2, 33
@@ -692,9 +691,9 @@ SECTION "Sfx_Run", ROMX
 
 Sfx_Run::
 	channel_count 1
-	channel 8, Sfx_Run_Ch8
+	channel 8, .Ch8
 
-Sfx_Run_Ch8:
+.Ch8:
 	noise_note 2, 6, 1, 35
 	noise_note 2, 10, 1, 51
 	noise_note 2, 12, 1, 51
@@ -713,10 +712,10 @@ SECTION "Sfx_SlotMachineStart", ROMX
 
 Sfx_SlotMachineStart::
 	channel_count 2
-	channel 5, Sfx_SlotMachineStart_Ch5
-	channel 6, Sfx_SlotMachineStart_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_SlotMachineStart_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 4, 4
 	square_note 15, 15, 0, 1264
@@ -725,7 +724,7 @@ Sfx_SlotMachineStart_Ch5:
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_SlotMachineStart_Ch6:
+.Ch6:
 	duty_cycle 2
 	square_note 15, 9, 2, 1536
 	square_note 15, 9, 2, 1922
@@ -736,9 +735,9 @@ SECTION "Sfx_Call", ROMX
 
 Sfx_Call::
 	channel_count 1
-	channel 5, Sfx_Call_Ch5
+	channel 5, .Ch5
 
-Sfx_Call_Ch5:
+.Ch5:
 	pitch_sweep 6, 7
 	square_note 4, 15, 7, 1952
 	square_note 4, 15, 7, 1952
@@ -754,9 +753,9 @@ SECTION "Sfx_Unknown60", ROMX
 
 Sfx_Unknown60::
 	channel_count 1
-	channel 8, Sfx_Unknown60_Ch8
+	channel 8, .Ch8
 
-Sfx_Unknown60_Ch8:
+.Ch8:
 	noise_note 6, 2, 0, 16
 	noise_note 6, 2, -7, 64
 	noise_note 6, 4, -7, 65
@@ -772,9 +771,9 @@ SECTION "Sfx_Unknown61", ROMX
 
 Sfx_Unknown61::
 	channel_count 1
-	channel 8, Sfx_Unknown61_Ch8
+	channel 8, .Ch8
 
-Sfx_Unknown61_Ch8:
+.Ch8:
 	noise_note 4, 13, 1, 65
 	sound_ret
 
@@ -783,9 +782,9 @@ SECTION "Sfx_SwitchPockets", ROMX
 
 Sfx_SwitchPockets::
 	channel_count 1
-	channel 8, Sfx_SwitchPockets_Ch8
+	channel 8, .Ch8
 
-Sfx_SwitchPockets_Ch8:
+.Ch8:
 	noise_note 4, 12, 1, 66
 	sound_ret
 
@@ -794,9 +793,9 @@ SECTION "Sfx_Unknown63", ROMX
 
 Sfx_Unknown63::
 	channel_count 1
-	channel 8, Sfx_Unknown63_Ch8
+	channel 8, .Ch8
 
-Sfx_Unknown63_Ch8:
+.Ch8:
 	noise_note 2, 6, -7, 33
 	noise_note 2, 10, -7, 49
 	noise_note 15, 15, 2, 65
@@ -807,9 +806,9 @@ SECTION "Sfx_Burn", ROMX
 
 Sfx_Burn::
 	channel_count 1
-	channel 8, Sfx_Burn_Ch8
+	channel 8, .Ch8
 
-Sfx_Burn_Ch8:
+.Ch8:
 	noise_note 2, 13, 2, 50
 	noise_note 15, 15, 2, 67
 	sound_ret
@@ -819,9 +818,9 @@ SECTION "Sfx_TitleScreenEntrance", ROMX
 
 Sfx_TitleScreenEntrance::
 	channel_count 1
-	channel 8, Sfx_TitleScreenEntrance_Ch8
+	channel 8, .Ch8
 
-Sfx_TitleScreenEntrance_Ch8:
+.Ch8:
 	noise_note 2, 7, 0, 34
 	noise_note 2, 8, 0, 35
 	noise_note 2, 9, 0, 36
@@ -835,9 +834,9 @@ SECTION "Sfx_Unknown66", ROMX
 
 Sfx_Unknown66::
 	channel_count 1
-	channel 5, Sfx_Unknown66_Ch5
+	channel 5, .Ch5
 
-Sfx_Unknown66_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 1, 15, 2, 1696
 	square_note 1, 15, 2, 1760
@@ -849,9 +848,9 @@ SECTION "Sfx_GetCoinFromSlots", ROMX
 
 Sfx_GetCoinFromSlots::
 	channel_count 1
-	channel 5, Sfx_GetCoinFromSlots_Ch5
+	channel 5, .Ch5
 
-Sfx_GetCoinFromSlots_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 2, 15, 1, 1792
 	square_note 8, 8, 1, 2016
@@ -862,17 +861,17 @@ SECTION "Sfx_PayDay", ROMX
 
 Sfx_PayDay::
 	channel_count 2
-	channel 5, Sfx_PayDay_Ch5
-	channel 6, Sfx_PayDay_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_PayDay_Ch5:
+.Ch5:
 	duty_cycle 3
 	square_note 5, 14, 1, 1792
 	square_note 2, 14, 1, 1920
 	square_note 15, 15, 1, 1984
 	sound_ret
 
-Sfx_PayDay_Ch6:
+.Ch6:
 	duty_cycle 2
 	square_note 4, 12, 1, 1729
 	square_note 2, 12, 1, 1857
@@ -884,9 +883,9 @@ SECTION "Sfx_Metronome", ROMX
 
 Sfx_Metronome::
 	channel_count 1
-	channel 5, Sfx_Metronome_Ch5
+	channel 5, .Ch5
 
-Sfx_Metronome_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 5, -7
 	square_note 4, 4, 0, 2016
@@ -906,9 +905,9 @@ SECTION "Sfx_Peck", ROMX
 
 Sfx_Peck::
 	channel_count 1
-	channel 8, Sfx_Peck_Ch8
+	channel 8, .Ch8
 
-Sfx_Peck_Ch8:
+.Ch8:
 	noise_note 2, 10, 1, 18
 	sound_ret
 
@@ -917,9 +916,9 @@ SECTION "Sfx_Kinesis", ROMX
 
 Sfx_Kinesis::
 	channel_count 1
-	channel 5, Sfx_Kinesis_Ch5
+	channel 5, .Ch5
 
-Sfx_Kinesis_Ch5:
+.Ch5:
 	duty_cycle 1
 	pitch_sweep 10, -7
 	square_note 15, 15, 2, 1920
@@ -931,9 +930,9 @@ SECTION "Sfx_Lick", ROMX
 
 Sfx_Lick::
 	channel_count 1
-	channel 5, Sfx_Lick_Ch5
+	channel 5, .Ch5
 
-Sfx_Lick_Ch5:
+.Ch5:
 	duty_cycle 1
 	pitch_sweep 9, 7
 	square_note 15, 15, 2, 1280
@@ -945,9 +944,9 @@ SECTION "Sfx_Pound", ROMX
 
 Sfx_Pound::
 	channel_count 1
-	channel 8, Sfx_Pound_Ch8
+	channel 8, .Ch8
 
-Sfx_Pound_Ch8:
+.Ch8:
 	noise_note 2, 10, 1, 34
 	sound_ret
 
@@ -956,9 +955,9 @@ SECTION "Sfx_MovePuzzlePiece", ROMX
 
 Sfx_MovePuzzlePiece::
 	channel_count 1
-	channel 8, Sfx_MovePuzzlePiece_Ch8
+	channel 8, .Ch8
 
-Sfx_MovePuzzlePiece_Ch8:
+.Ch8:
 	noise_note 8, 15, 1, 84
 	sound_ret
 
@@ -967,9 +966,9 @@ SECTION "Sfx_CometPunch", ROMX
 
 Sfx_CometPunch::
 	channel_count 1
-	channel 8, Sfx_CometPunch_Ch8
+	channel 8, .Ch8
 
-Sfx_CometPunch_Ch8:
+.Ch8:
 	noise_note 15, 8, -7, 17
 	noise_note 4, 15, -7, 18
 	noise_note 10, 15, 1, 85
@@ -980,9 +979,9 @@ SECTION "Sfx_MegaPunch", ROMX
 
 Sfx_MegaPunch::
 	channel_count 1
-	channel 8, Sfx_MegaPunch_Ch8
+	channel 8, .Ch8
 
-Sfx_MegaPunch_Ch8:
+.Ch8:
 	noise_note 15, 8, -7, 52
 	noise_note 8, 15, 2, 53
 	noise_note 10, 15, 1, 85
@@ -993,9 +992,9 @@ SECTION "Sfx_Scratch", ROMX
 
 Sfx_Scratch::
 	channel_count 1
-	channel 8, Sfx_Scratch_Ch8
+	channel 8, .Ch8
 
-Sfx_Scratch_Ch8:
+.Ch8:
 	noise_note 15, 9, -7, 35
 	noise_note 8, 15, 1, 33
 	sound_ret
@@ -1005,9 +1004,9 @@ SECTION "Sfx_Vicegrip", ROMX
 
 Sfx_Vicegrip::
 	channel_count 1
-	channel 8, Sfx_Vicegrip_Ch8
+	channel 8, .Ch8
 
-Sfx_Vicegrip_Ch8:
+.Ch8:
 	noise_note 2, 14, 1, 75
 	noise_note 10, 15, 1, 68
 	noise_note 2, 14, 1, 58
@@ -1019,9 +1018,9 @@ SECTION "Sfx_RazorWind", ROMX
 
 Sfx_RazorWind::
 	channel_count 1
-	channel 8, Sfx_RazorWind_Ch8
+	channel 8, .Ch8
 
-Sfx_RazorWind_Ch8:
+.Ch8:
 	noise_note 2, 15, 4, 68
 	noise_note 2, 15, 4, 20
 	noise_note 15, 15, 1, 50
@@ -1032,9 +1031,9 @@ SECTION "Sfx_Cut", ROMX
 
 Sfx_Cut::
 	channel_count 1
-	channel 8, Sfx_Cut_Ch8
+	channel 8, .Ch8
 
-Sfx_Cut_Ch8:
+.Ch8:
 	noise_note 4, 8, -7, 85
 	noise_note 2, 15, 4, 68
 	noise_note 8, 15, 4, 34
@@ -1046,13 +1045,13 @@ SECTION "Sfx_WingAttack", ROMX
 
 Sfx_WingAttack::
 	channel_count 1
-	channel 8, Sfx_WingAttack_Ch8
+	channel 8, .Ch8
 
-Sfx_WingAttack_Ch8:
+.Ch8:
 	noise_note 8, 4, -7, 35
 	noise_note 4, 12, 4, 34
 	noise_note 6, 15, 2, 35
-	sound_loop 4, Sfx_WingAttack_Ch8
+	sound_loop 4, .Ch8
 	sound_ret
 
 
@@ -1060,9 +1059,9 @@ SECTION "Sfx_Whirlwind", ROMX
 
 Sfx_Whirlwind::
 	channel_count 1
-	channel 8, Sfx_Whirlwind_Ch8
+	channel 8, .Ch8
 
-Sfx_Whirlwind_Ch8:
+.Ch8:
 	noise_note 8, 4, -7, 51
 	noise_note 4, 12, 4, 34
 	noise_note 6, 15, 2, 35
@@ -1074,9 +1073,9 @@ SECTION "Sfx_Bind", ROMX
 
 Sfx_Bind::
 	channel_count 1
-	channel 8, Sfx_Bind_Ch8
+	channel 8, .Ch8
 
-Sfx_Bind_Ch8:
+.Ch8:
 	noise_note 8, 15, -7, 50
 	noise_note 8, 15, 4, 67
 	noise_note 8, 15, 2, 84
@@ -1088,9 +1087,9 @@ SECTION "Sfx_VineWhip", ROMX
 
 Sfx_VineWhip::
 	channel_count 1
-	channel 8, Sfx_VineWhip_Ch8
+	channel 8, .Ch8
 
-Sfx_VineWhip_Ch8:
+.Ch8:
 	noise_note 1, 12, 2, 51
 	noise_note 2, 15, 2, 33
 	noise_note 1, 14, 2, 51
@@ -1106,9 +1105,9 @@ SECTION "Sfx_DoubleKick", ROMX
 
 Sfx_DoubleKick::
 	channel_count 1
-	channel 8, Sfx_DoubleKick_Ch8
+	channel 8, .Ch8
 
-Sfx_DoubleKick_Ch8:
+.Ch8:
 	noise_note 1, 9, 4, 35
 	noise_note 1, 11, 4, 34
 	noise_note 8, 15, 1, 68
@@ -1119,9 +1118,9 @@ SECTION "Sfx_MegaKick", ROMX
 
 Sfx_MegaKick::
 	channel_count 1
-	channel 8, Sfx_MegaKick_Ch8
+	channel 8, .Ch8
 
-Sfx_MegaKick_Ch8:
+.Ch8:
 	noise_note 2, 9, 4, 51
 	noise_note 4, 11, 4, 34
 	noise_note 4, 15, 1, 68
@@ -1133,9 +1132,9 @@ SECTION "Sfx_Headbutt", ROMX
 
 Sfx_Headbutt::
 	channel_count 1
-	channel 8, Sfx_Headbutt_Ch8
+	channel 8, .Ch8
 
-Sfx_Headbutt_Ch8:
+.Ch8:
 	noise_note 4, 15, -7, 85
 	noise_note 8, 15, 1, 101
 	sound_ret
@@ -1145,9 +1144,9 @@ SECTION "Sfx_HornAttack", ROMX
 
 Sfx_HornAttack::
 	channel_count 1
-	channel 8, Sfx_HornAttack_Ch8
+	channel 8, .Ch8
 
-Sfx_HornAttack_Ch8:
+.Ch8:
 	noise_note 2, 8, 4, 67
 	noise_note 2, 12, 4, 34
 	noise_note 8, 15, 2, 52
@@ -1158,9 +1157,9 @@ SECTION "Sfx_Tackle", ROMX
 
 Sfx_Tackle::
 	channel_count 1
-	channel 8, Sfx_Tackle_Ch8
+	channel 8, .Ch8
 
-Sfx_Tackle_Ch8:
+.Ch8:
 	noise_note 4, 15, 1, 52
 	noise_note 15, 15, 2, 100
 	sound_ret
@@ -1170,9 +1169,9 @@ SECTION "Sfx_PoisonSting", ROMX
 
 Sfx_PoisonSting::
 	channel_count 1
-	channel 8, Sfx_PoisonSting_Ch8
+	channel 8, .Ch8
 
-Sfx_PoisonSting_Ch8:
+.Ch8:
 	noise_note 2, 15, 1, 34
 	noise_note 15, 15, 2, 18
 	sound_ret
@@ -1182,9 +1181,9 @@ SECTION "Sfx_Powder", ROMX
 
 Sfx_Powder::
 	channel_count 1
-	channel 8, Sfx_Powder_Ch8
+	channel 8, .Ch8
 
-Sfx_Powder_Ch8:
+.Ch8:
 	noise_note 2, 12, 2, 1
 	noise_note 15, 15, 4, 1
 	noise_note 15, 15, 2, 1
@@ -1195,9 +1194,9 @@ SECTION "Sfx_Doubleslap", ROMX
 
 Sfx_Doubleslap::
 	channel_count 1
-	channel 8, Sfx_Doubleslap_Ch8
+	channel 8, .Ch8
 
-Sfx_Doubleslap_Ch8:
+.Ch8:
 	noise_note 8, 15, 1, 50
 	noise_note 8, 15, 1, 51
 	sound_ret
@@ -1207,10 +1206,10 @@ SECTION "Sfx_Bite", ROMX
 
 Sfx_Bite::
 	channel_count 2
-	channel 5, Sfx_Bite_Ch5
-	channel 8, Sfx_Bite_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_Bite_Ch5:
+.Ch5:
 	duty_cycle 0
 	pitch_sweep 3, -2
 	square_note 4, 15, 2, 512
@@ -1219,7 +1218,7 @@ Sfx_Bite_Ch5:
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_Bite_Ch8:
+.Ch8:
 	noise_note 0, 13, 1, 66
 	noise_note 4, 10, 1, 50
 	noise_note 0, 13, 1, 34
@@ -1231,9 +1230,9 @@ SECTION "Sfx_JumpKick", ROMX
 
 Sfx_JumpKick::
 	channel_count 1
-	channel 8, Sfx_JumpKick_Ch8
+	channel 8, .Ch8
 
-Sfx_JumpKick_Ch8:
+.Ch8:
 	noise_note 3, 9, 2, 49
 	noise_note 3, 11, 2, 50
 	noise_note 3, 12, 2, 51
@@ -1245,9 +1244,9 @@ SECTION "Sfx_Stomp", ROMX
 
 Sfx_Stomp::
 	channel_count 1
-	channel 8, Sfx_Stomp_Ch8
+	channel 8, .Ch8
 
-Sfx_Stomp_Ch8:
+.Ch8:
 	noise_note 12, 15, 1, 84
 	noise_note 8, 15, 1, 100
 	sound_ret
@@ -1257,9 +1256,9 @@ SECTION "Sfx_TailWhip", ROMX
 
 Sfx_TailWhip::
 	channel_count 1
-	channel 8, Sfx_TailWhip_Ch8
+	channel 8, .Ch8
 
-Sfx_TailWhip_Ch8:
+.Ch8:
 	noise_note 2, 15, 1, 51
 	noise_note 2, 12, 1, 50
 	noise_note 2, 10, 1, 49
@@ -1272,9 +1271,9 @@ SECTION "Sfx_KarateChop", ROMX
 
 Sfx_KarateChop::
 	channel_count 1
-	channel 8, Sfx_KarateChop_Ch8
+	channel 8, .Ch8
 
-Sfx_KarateChop_Ch8:
+.Ch8:
 	noise_note 2, 13, 2, 50
 	noise_note 15, 15, 2, 67
 	sound_ret
@@ -1284,9 +1283,9 @@ SECTION "Sfx_Submission", ROMX
 
 Sfx_Submission::
 	channel_count 1
-	channel 8, Sfx_Submission_Ch8
+	channel 8, .Ch8
 
-Sfx_Submission_Ch8:
+.Ch8:
 	noise_note 2, 15, 2, 67
 	noise_note 4, 11, 5, 50
 	noise_note 9, 8, 6, 49
@@ -1299,17 +1298,17 @@ SECTION "Sfx_WaterGun", ROMX
 
 Sfx_WaterGun::
 	channel_count 2
-	channel 5, Sfx_WaterGun_Ch5
-	channel 8, Sfx_WaterGun_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_WaterGun_Ch5:
+.Ch5:
 	duty_cycle 1
 	pitch_sweep 9, 7
 	square_note 15, 15, 2, 1792
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_WaterGun_Ch8:
+.Ch8:
 	noise_note 15, 3, -7, 34
 	noise_note 15, 15, 2, 33
 	sound_ret
@@ -1319,9 +1318,9 @@ SECTION "Sfx_SwordsDance", ROMX
 
 Sfx_SwordsDance::
 	channel_count 1
-	channel 8, Sfx_SwordsDance_Ch8
+	channel 8, .Ch8
 
-Sfx_SwordsDance_Ch8:
+.Ch8:
 	noise_note 15, 4, -7, 65
 	noise_note 8, 8, -7, 65
 	noise_note 8, 12, -7, 65
@@ -1334,9 +1333,9 @@ SECTION "Sfx_Thunder", ROMX
 
 Sfx_Thunder::
 	channel_count 1
-	channel 8, Sfx_Thunder_Ch8
+	channel 8, .Ch8
 
-Sfx_Thunder_Ch8:
+.Ch8:
 	noise_note 10, 15, -7, 80
 	noise_note 15, 15, -7, 81
 	noise_note 8, 15, 2, 81
@@ -1351,32 +1350,32 @@ SECTION "Sfx_Supersonic", ROMX
 
 Sfx_Supersonic::
 	channel_count 3
-	channel 5, Sfx_Supersonic_Ch5
-	channel 6, Sfx_Supersonic_Ch6
-	channel 8, Sfx_Supersonic_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_Supersonic_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 15, 3, -7, 1984
-Sfx_Supersonic_branch_f21ef:
+.branch_f21ef:
 	square_note 15, 13, -7, 1984
-	sound_loop 4, Sfx_Supersonic_branch_f21ef
+	sound_loop 4, .branch_f21ef
 	square_note 15, 13, 1, 1984
 	sound_ret
 
-Sfx_Supersonic_Ch6:
+.Ch6:
 	duty_cycle_pattern 2, 3, 0, 3
 	square_note 15, 2, -7, 1992
-Sfx_Supersonic_branch_f2202:
+.branch_f2202:
 	square_note 15, 12, -7, 1991
-	sound_loop 4, Sfx_Supersonic_branch_f2202
+	sound_loop 4, .branch_f2202
 	square_note 15, 12, 1, 1992
 	sound_ret
 
-Sfx_Supersonic_Ch8:
+.Ch8:
 	noise_note 3, 9, 7, 18
 	noise_note 3, 10, 1, 17
-	sound_loop 10, Sfx_Supersonic_Ch8
+	sound_loop 10, .Ch8
 	sound_ret
 
 
@@ -1384,28 +1383,28 @@ SECTION "Sfx_Leer", ROMX
 
 Sfx_Leer::
 	channel_count 3
-	channel 5, Sfx_Leer_Ch5
-	channel 6, Sfx_Leer_Ch6
-	channel 8, Sfx_Leer_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_Leer_Ch5:
+.Ch5:
 	duty_cycle 0
 	square_note 0, 15, 1, 1984
 	square_note 0, 15, 1, 1792
-	sound_loop 12, Sfx_Leer_Ch5
+	sound_loop 12, .Ch5
 	sound_ret
 
-Sfx_Leer_Ch6:
+.Ch6:
 	duty_cycle_pattern 2, 3, 0, 3
 	square_note 0, 14, 1, 1985
 	square_note 0, 14, 1, 1793
-	sound_loop 12, Sfx_Leer_Ch6
+	sound_loop 12, .Ch6
 	sound_ret
 
-Sfx_Leer_Ch8:
+.Ch8:
 	noise_note 1, 13, 1, 73
 	noise_note 1, 13, 1, 41
-	sound_loop 6, Sfx_Leer_Ch8
+	sound_loop 6, .Ch8
 	sound_ret
 
 
@@ -1413,22 +1412,22 @@ SECTION "Sfx_Ember", ROMX
 
 Sfx_Ember::
 	channel_count 2
-	channel 5, Sfx_Ember_Ch5
-	channel 8, Sfx_Ember_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_Ember_Ch5:
+.Ch5:
 	duty_cycle_pattern 3, 0, 2, 1
 	square_note 11, 15, 3, 288
 	square_note 9, 13, 3, 336
-	sound_loop 5, Sfx_Ember_Ch5
+	sound_loop 5, .Ch5
 	square_note 8, 14, 3, 304
 	square_note 15, 12, 2, 272
 	sound_ret
 
-Sfx_Ember_Ch8:
+.Ch8:
 	noise_note 10, 15, 3, 53
 	noise_note 14, 15, 6, 69
-	sound_loop 4, Sfx_Ember_Ch8
+	sound_loop 4, .Ch8
 	noise_note 12, 15, 4, 188
 	noise_note 12, 15, 5, 156
 	noise_note 15, 15, 4, 172
@@ -1439,35 +1438,35 @@ SECTION "Sfx_Bubblebeam", ROMX
 
 Sfx_Bubblebeam::
 	channel_count 3
-	channel 5, Sfx_Bubblebeam_Ch5
-	channel 6, Sfx_Bubblebeam_Ch6
-	channel 8, Sfx_Bubblebeam_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_Bubblebeam_Ch5:
+.Ch5:
 	duty_cycle_pattern 0, 3, 2, 1
 	square_note 4, 15, 4, 1536
 	square_note 3, 12, 4, 1280
 	square_note 5, 11, 5, 1536
 	square_note 13, 14, 2, 1728
-	sound_loop 3, Sfx_Bubblebeam_Ch5
+	sound_loop 3, .Ch5
 	square_note 8, 13, 1, 1536
 	sound_ret
 
-Sfx_Bubblebeam_Ch6:
+.Ch6:
 	duty_cycle_pattern 2, 0, 3, 1
 	square_note 5, 14, 4, 1504
 	square_note 4, 11, 4, 1248
 	square_note 6, 10, 5, 1512
 	square_note 14, 13, 1, 1696
-	sound_loop 3, Sfx_Bubblebeam_Ch6
+	sound_loop 3, .Ch6
 	sound_ret
 
-Sfx_Bubblebeam_Ch8:
+.Ch8:
 	noise_note 5, 12, 3, 51
 	noise_note 3, 9, 2, 67
 	noise_note 10, 11, 5, 51
 	noise_note 15, 12, 3, 50
-	sound_loop 2, Sfx_Bubblebeam_Ch8
+	sound_loop 2, .Ch8
 	sound_ret
 
 
@@ -1475,27 +1474,27 @@ SECTION "Sfx_HydroPump", ROMX
 
 Sfx_HydroPump::
 	channel_count 2
-	channel 5, Sfx_HydroPump_Ch5
-	channel 8, Sfx_HydroPump_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_HydroPump_Ch5:
+.Ch5:
 	duty_cycle_pattern 3, 1, 0, 2
 	square_note 3, 8, 1, 768
 	square_note 3, 12, 1, 1024
 	square_note 3, 15, 1, 1280
 	square_note 3, 11, 1, 1024
 	square_note 3, 7, 1, 768
-	sound_loop 5, Sfx_HydroPump_Ch5
+	sound_loop 5, .Ch5
 	square_note 8, 8, 1, 1024
 	sound_ret
 
-Sfx_HydroPump_Ch8:
+.Ch8:
 	noise_note 3, 6, 2, 34
 	noise_note 3, 10, 2, 50
 	noise_note 3, 13, 2, 51
 	noise_note 3, 9, 2, 35
 	noise_note 3, 5, 2, 18
-	sound_loop 5, Sfx_HydroPump_Ch8
+	sound_loop 5, .Ch8
 	noise_note 8, 8, 1, 18
 	sound_ret
 
@@ -1504,32 +1503,32 @@ SECTION "Sfx_Surf", ROMX
 
 Sfx_Surf::
 	channel_count 3
-	channel 5, Sfx_Surf_Ch5
-	channel 6, Sfx_Surf_Ch6
-	channel 8, Sfx_Surf_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_Surf_Ch5:
+.Ch5:
 	duty_cycle_pattern 0, 3, 2, 1
 	square_note 15, 15, 4, 1280
 	square_note 15, 12, 4, 1024
 	square_note 15, 14, 2, 1472
-	sound_loop 3, Sfx_Surf_Ch5
+	sound_loop 3, .Ch5
 	sound_ret
 
-Sfx_Surf_Ch6:
+.Ch6:
 	duty_cycle_pattern 2, 0, 3, 1
 	square_note 7, 14, 4, 1072
 	square_note 15, 11, 4, 816
 	square_note 15, 10, 2, 1080
-	sound_loop 4, Sfx_Surf_Ch6
+	sound_loop 4, .Ch6
 	sound_ret
 
-Sfx_Surf_Ch8:
+.Ch8:
 	noise_note 9, 15, 4, 68
 	noise_note 9, 15, 2, 67
 	noise_note 15, 15, 4, 66
 	noise_note 15, 15, 4, 65
-	sound_loop 3, Sfx_Surf_Ch8
+	sound_loop 3, .Ch8
 	sound_ret
 
 
@@ -1537,32 +1536,32 @@ SECTION "Sfx_Psybeam", ROMX
 
 Sfx_Psybeam::
 	channel_count 3
-	channel 5, Sfx_Psybeam_Ch5
-	channel 6, Sfx_Psybeam_Ch6
-	channel 8, Sfx_Psybeam_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_Psybeam_Ch5:
+.Ch5:
 	duty_cycle_pattern 2, 2, 0, 1
 	square_note 10, 15, 1, 1600
 	square_note 10, 15, 3, 1664
 	square_note 10, 15, 2, 1568
-	sound_loop 4, Sfx_Psybeam_Ch5
+	sound_loop 4, .Ch5
 	square_note 10, 15, 1, 1600
 	sound_ret
 
-Sfx_Psybeam_Ch6:
+.Ch6:
 	duty_cycle_pattern 2, 3, 0, 3
 	square_note 10, 15, 3, 1393
 	square_note 7, 14, 3, 1329
 	square_note 10, 15, 1, 1361
-	sound_loop 4, Sfx_Psybeam_Ch6
+	sound_loop 4, .Ch6
 	square_note 10, 15, 1, 1393
 	sound_ret
 
-Sfx_Psybeam_Ch8:
+.Ch8:
 	noise_note 2, 13, 1, 74
 	noise_note 2, 13, 2, 42
-	sound_loop 21, Sfx_Psybeam_Ch8
+	sound_loop 21, .Ch8
 	sound_ret
 
 
@@ -1570,34 +1569,34 @@ SECTION "Sfx_Charge", ROMX
 
 Sfx_Charge::
 	channel_count 3
-	channel 5, Sfx_Charge_Ch5
-	channel 6, Sfx_Charge_Ch6
-	channel 8, Sfx_Charge_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_Charge_Ch5:
+.Ch5:
 	duty_cycle 0
 	square_note 2, 15, 1, 512
 	square_note 3, 15, 1, 1792
 	square_note 4, 15, 1, 1280
 	square_note 5, 15, 1, 2032
-	sound_loop 8, Sfx_Charge_Ch5
+	sound_loop 8, .Ch5
 	sound_ret
 
-Sfx_Charge_Ch6:
+.Ch6:
 	duty_cycle_pattern 2, 3, 0, 3
 	square_note 2, 14, 1, 770
 	square_note 3, 14, 1, 2034
 	square_note 4, 14, 1, 1538
 	square_note 5, 14, 1, 1794
-	sound_loop 8, Sfx_Charge_Ch6
+	sound_loop 8, .Ch6
 	sound_ret
 
-Sfx_Charge_Ch8:
+.Ch8:
 	noise_note 2, 13, 3, 16
 	noise_note 3, 13, 3, 17
 	noise_note 2, 13, 2, 16
 	noise_note 5, 13, 2, 18
-	sound_loop 9, Sfx_Charge_Ch8
+	sound_loop 9, .Ch8
 	sound_ret
 
 
@@ -1605,28 +1604,28 @@ SECTION "Sfx_Thundershock", ROMX
 
 Sfx_Thundershock::
 	channel_count 3
-	channel 5, Sfx_Thundershock_Ch5
-	channel 6, Sfx_Thundershock_Ch6
-	channel 8, Sfx_Thundershock_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_Thundershock_Ch5:
+.Ch5:
 	duty_cycle_pattern 0, 2, 2, 3
 	square_note 3, 15, 1, 2032
 	square_note 4, 15, 2, 512
-	sound_loop 8, Sfx_Thundershock_Ch5
+	sound_loop 8, .Ch5
 	sound_ret
 
-Sfx_Thundershock_Ch6:
+.Ch6:
 	duty_cycle_pattern 2, 3, 0, 3
 	square_note 4, 14, 2, 514
 	square_note 4, 14, 1, 2018
-	sound_loop 9, Sfx_Thundershock_Ch6
+	sound_loop 9, .Ch6
 	sound_ret
 
-Sfx_Thundershock_Ch8:
+.Ch8:
 	noise_note 4, 15, -7, 67
 	noise_note 4, 15, 2, 68
-	sound_loop 9, Sfx_Thundershock_Ch8
+	sound_loop 9, .Ch8
 	sound_ret
 
 
@@ -1634,11 +1633,11 @@ SECTION "Sfx_Psychic", ROMX
 
 Sfx_Psychic::
 	channel_count 3
-	channel 5, Sfx_Psychic_Ch5
-	channel 6, Sfx_Psychic_Ch6
-	channel 8, Sfx_Psychic_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_Psychic_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 15, 7
 	square_note 8, 12, 4, 1981
@@ -1650,7 +1649,7 @@ Sfx_Psychic_Ch5:
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_Psychic_Ch6:
+.Ch6:
 	duty_cycle 2
 	square_note 8, 12, 4, 1904
 	square_note 8, 12, 4, 1889
@@ -1660,7 +1659,7 @@ Sfx_Psychic_Ch6:
 	square_note 15, 15, 2, 1892
 	sound_ret
 
-Sfx_Psychic_Ch8:
+.Ch8:
 	noise_note 15, 3, -7, 20
 	noise_note 15, 12, -7, 19
 	noise_note 15, 12, -7, 18
@@ -1674,10 +1673,10 @@ SECTION "Sfx_Screech", ROMX
 
 Sfx_Screech::
 	channel_count 2
-	channel 5, Sfx_Screech_Ch5
-	channel 6, Sfx_Screech_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_Screech_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 15, 15, -7, 2016
 	square_note 15, 15, -7, 2016
@@ -1686,7 +1685,7 @@ Sfx_Screech_Ch5:
 	square_note 15, 15, 2, 2016
 	sound_ret
 
-Sfx_Screech_Ch6:
+.Ch6:
 	duty_cycle 3
 	square_note 15, 15, -7, 2018
 	square_note 15, 15, -7, 2017
@@ -1700,17 +1699,17 @@ SECTION "Sfx_BoneClub", ROMX
 
 Sfx_BoneClub::
 	channel_count 2
-	channel 5, Sfx_BoneClub_Ch5
-	channel 6, Sfx_BoneClub_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_BoneClub_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 10, -7
 	square_note 8, 15, 1, 1792
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_BoneClub_Ch6:
+.Ch6:
 	duty_cycle 3
 	square_note 8, 15, 1, 1793
 	sound_ret
@@ -1720,10 +1719,10 @@ SECTION "Sfx_Sharpen", ROMX
 
 Sfx_Sharpen::
 	channel_count 2
-	channel 5, Sfx_Sharpen_Ch5
-	channel 6, Sfx_Sharpen_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_Sharpen_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 6, 15, 1, 1280
 	square_note 6, 15, 1, 1408
@@ -1732,7 +1731,7 @@ Sfx_Sharpen_Ch5:
 	square_note 8, 15, 1, 1792
 	sound_ret
 
-Sfx_Sharpen_Ch6:
+.Ch6:
 	duty_cycle 3
 	square_note 6, 14, 1, 1296
 	square_note 6, 14, 1, 1424
@@ -1746,25 +1745,25 @@ SECTION "Sfx_EggBomb", ROMX
 
 Sfx_EggBomb::
 	channel_count 3
-	channel 5, Sfx_EggBomb_Ch5
-	channel 6, Sfx_EggBomb_Ch6
-	channel 8, Sfx_EggBomb_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_EggBomb_Ch5:
+.Ch5:
 	duty_cycle_pattern 3, 2, 3, 1
 	square_note 8, 15, -7, 1016
 	square_note 15, 15, -7, 1024
 	square_note 15, 15, 3, 1024
 	sound_ret
 
-Sfx_EggBomb_Ch6:
+.Ch6:
 	duty_cycle_pattern 2, 3, 1, 0
 	square_note 8, 14, -7, 960
 	square_note 15, 14, -7, 960
 	square_note 15, 14, 3, 960
 	sound_ret
 
-Sfx_EggBomb_Ch8:
+.Ch8:
 	noise_note 4, 15, -7, 81
 	noise_note 8, 15, -7, 84
 	noise_note 15, 15, -7, 85
@@ -1776,10 +1775,10 @@ SECTION "Sfx_Sing", ROMX
 
 Sfx_Sing::
 	channel_count 2
-	channel 5, Sfx_Sing_Ch5
-	channel 6, Sfx_Sing_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_Sing_Ch5:
+.Ch5:
 	toggle_sfx
 	vibrato 10, 2, 4
 	duty_cycle 2
@@ -1793,7 +1792,7 @@ Sfx_Sing_Ch5:
 	note G_, 8
 	sound_ret
 
-Sfx_Sing_Ch6:
+.Ch6:
 	toggle_sfx
 	vibrato 10, 2, 3
 	duty_cycle 2
@@ -1813,11 +1812,11 @@ SECTION "Sfx_HyperBeam", ROMX
 
 Sfx_HyperBeam::
 	channel_count 3
-	channel 5, Sfx_HyperBeam_Ch5
-	channel 6, Sfx_HyperBeam_Ch6
-	channel 8, Sfx_HyperBeam_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_HyperBeam_Ch5:
+.Ch5:
 	duty_cycle 0
 	square_note 2, 15, 1, 1920
 	square_note 2, 15, 1, 1792
@@ -1830,14 +1829,14 @@ Sfx_HyperBeam_Ch5:
 	square_note 2, 15, 1, 1984
 	square_note 2, 15, 1, 1792
 	square_note 2, 15, 1, 2000
-Sfx_HyperBeam_branch_f24f8:
+.branch_f24f8:
 	square_note 2, 15, 1, 1792
 	square_note 2, 15, 1, 2016
-	sound_loop 12, Sfx_HyperBeam_branch_f24f8
+	sound_loop 12, .branch_f24f8
 	square_note 15, 15, 1, 1792
 	sound_ret
 
-Sfx_HyperBeam_Ch6:
+.Ch6:
 	duty_cycle_pattern 2, 3, 0, 3
 	square_note 2, 15, 1, 1921
 	square_note 2, 15, 1, 1793
@@ -1850,17 +1849,17 @@ Sfx_HyperBeam_Ch6:
 	square_note 2, 15, 1, 1985
 	square_note 2, 15, 1, 1793
 	square_note 2, 15, 1, 2001
-Sfx_HyperBeam_branch_f2537:
+.branch_f2537:
 	square_note 2, 15, 1, 1793
 	square_note 2, 15, 1, 2017
-	sound_loop 12, Sfx_HyperBeam_branch_f2537
+	sound_loop 12, .branch_f2537
 	square_note 15, 15, 1, 1793
 	sound_ret
 
-Sfx_HyperBeam_Ch8:
+.Ch8:
 	noise_note 1, 13, 1, 73
 	noise_note 1, 13, 1, 41
-	sound_loop 26, Sfx_HyperBeam_Ch8
+	sound_loop 26, .Ch8
 	sound_ret
 
 
@@ -1868,9 +1867,9 @@ SECTION "Sfx_Shine", ROMX
 
 Sfx_Shine::
 	channel_count 1
-	channel 5, Sfx_Shine_Ch5
+	channel 5, .Ch5
 
-Sfx_Shine_Ch5:
+.Ch5:
 	duty_cycle 0
 	square_note 0, 13, 2, 1792
 	square_note 0, 13, 2, 1856
@@ -1888,10 +1887,9 @@ Sfx_Unknown5F::
 	channel 5, Sfx_Unknown5F_Ch5
 	channel 6, Sfx_Unknown5F_Ch6
 Sfx_Sandstorm:
-	channel 8, Sfx_Sandstorm_Ch8
+	channel 8, Sfx_Unknown5F_Ch8
 
 Sfx_Unknown5F_Ch5:
-Sfx_Unknown5F_branch_f2617:
 	square_note 2, 15, 7, 1537
 	square_note 2, 15, 7, 1793
 	sound_loop 8, Sfx_Unknown5F_Ch5
@@ -1901,17 +1899,16 @@ Sfx_Unknown5F_Ch6:
 	square_note 1, 15, 7, 65535
 	square_note 2, 15, 7, 1538
 	square_note 2, 15, 7, 1794
-	sound_loop 8, Sfx_Unknown5F_branch_f2617
+	sound_loop 8, Sfx_Unknown5F_Ch5
 	sound_ret
 
 Sfx_Unknown5F_Ch8:
-Sfx_Sandstorm_Ch8:
 	noise_note 1, 15, 8, 65
 	noise_note 2, 9, -4, 36
 	noise_note 0, 0, 0, 0
 	noise_note 3, 5, -1, 22
 	noise_note 2, 0, 0, 0
-	sound_loop 3, Sfx_Sandstorm_Ch8
+	sound_loop 3, Sfx_Unknown5F_Ch8
 	sound_ret
 
 
@@ -1942,17 +1939,17 @@ SECTION "Sfx_Elevator", ROMX
 
 Sfx_Elevator::
 	channel_count 4
-	channel 5, Sfx_Elevator_Ch5
-	channel 6, Sfx_Elevator_Ch6
-	channel 7, Sfx_Elevator_Ch7
-	channel 8, Sfx_Elevator_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_Elevator_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 5, -2
-Sfx_Elevator_branch_f2726:
+.branch_f2726:
 	square_note 2, 15, 1, 768
-	sound_loop 48, Sfx_Elevator_branch_f2726
+	sound_loop 48, .branch_f2726
 	pitch_sweep 0, 8
 	duty_cycle 2
 	square_note 15, 15, 3, 1840
@@ -1963,13 +1960,13 @@ Sfx_Elevator_branch_f2726:
 	square_note 15, 2, 4, 1792
 	sound_ret
 
-Sfx_Elevator_Ch6:
-Sfx_Elevator_Ch7:
+.Ch6:
+.Ch7:
 	square_note 96, 0, 0, 0
 	square_note 83, 0, 0, 0
 	sound_ret
 
-Sfx_Elevator_Ch8:
+.Ch8:
 	noise_note 96, 0, 0, 0
 	noise_note 83, 0, 0, 0
 	sound_ret
@@ -1980,13 +1977,12 @@ SECTION "Sfx_LevelUp", ROMX
 Sfx_LevelUp::
 Sfx_DexFanfare5079:
 	channel_count 4
-	channel 5, Sfx_LevelUp_Ch5
-	channel 6, Sfx_LevelUp_Ch6
-	channel 7, Sfx_LevelUp_Ch7
-	channel 8, Sfx_LevelUp_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_LevelUp_Ch5:
-Sfx_DexFanfare5079_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 120
 	volume 7, 7
@@ -2001,8 +1997,7 @@ Sfx_DexFanfare5079_Ch5:
 	note G#, 12
 	sound_ret
 
-Sfx_LevelUp_Ch6:
-Sfx_DexFanfare5079_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 2
 	note_type 8, 12, 1
@@ -2014,8 +2009,7 @@ Sfx_DexFanfare5079_Ch6:
 	note B_, 12
 	sound_ret
 
-Sfx_LevelUp_Ch7:
-Sfx_DexFanfare5079_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 8, 2, 5
 	octave 4
@@ -2032,8 +2026,7 @@ Sfx_DexFanfare5079_Ch7:
 	rest 4
 	sound_ret
 
-Sfx_LevelUp_Ch8:
-Sfx_DexFanfare5079_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 12
@@ -2045,12 +2038,12 @@ SECTION "Sfx_KeyItem", ROMX
 
 Sfx_KeyItem::
 	channel_count 4
-	channel 5, Sfx_KeyItem_Ch5
-	channel 6, Sfx_KeyItem_Ch6
-	channel 7, Sfx_KeyItem_Ch7
-	channel 8, Sfx_KeyItem_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_KeyItem_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 120
 	volume 7, 7
@@ -2067,7 +2060,7 @@ Sfx_KeyItem_Ch5:
 	note G#, 16
 	sound_ret
 
-Sfx_KeyItem_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 2
 	note_type 6, 12, 1
@@ -2081,7 +2074,7 @@ Sfx_KeyItem_Ch6:
 	note B_, 16
 	sound_ret
 
-Sfx_KeyItem_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 6, 2, 5
 	octave 4
@@ -2102,7 +2095,7 @@ Sfx_KeyItem_Ch7:
 	rest 4
 	sound_ret
 
-Sfx_KeyItem_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 12
@@ -2114,12 +2107,12 @@ SECTION "Sfx_DexFanfare2049", ROMX
 
 Sfx_DexFanfare2049::
 	channel_count 4
-	channel 5, Sfx_DexFanfare2049_Ch5
-	channel 6, Sfx_DexFanfare2049_Ch6
-	channel 7, Sfx_DexFanfare2049_Ch7
-	channel 8, Sfx_DexFanfare2049_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_DexFanfare2049_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 104
 	volume 7, 7
@@ -2144,7 +2137,7 @@ Sfx_DexFanfare2049_Ch5:
 	rest 6
 	sound_ret
 
-Sfx_DexFanfare2049_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 2
 	note_type 12, 12, 1
@@ -2164,7 +2157,7 @@ Sfx_DexFanfare2049_Ch6:
 	note F_, 8
 	sound_ret
 
-Sfx_DexFanfare2049_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 12, 2, 5
 	octave 4
@@ -2184,7 +2177,7 @@ Sfx_DexFanfare2049_Ch7:
 	rest 6
 	sound_ret
 
-Sfx_DexFanfare2049_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 12
@@ -2197,12 +2190,12 @@ SECTION "Sfx_Item", ROMX
 
 Sfx_Item::
 	channel_count 4
-	channel 5, Sfx_Item_Ch5
-	channel 6, Sfx_Item_Ch6
-	channel 7, Sfx_Item_Ch7
-	channel 8, Sfx_Item_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_Item_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 108
 	volume 7, 7
@@ -2221,7 +2214,7 @@ Sfx_Item_Ch5:
 	rest 12
 	sound_ret
 
-Sfx_Item_Ch6:
+.Ch6:
 	toggle_sfx
 	vibrato 8, 2, 7
 	duty_cycle 2
@@ -2238,7 +2231,7 @@ Sfx_Item_Ch6:
 	rest 12
 	sound_ret
 
-Sfx_Item_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 8, 2, 5
 	octave 4
@@ -2262,7 +2255,7 @@ Sfx_Item_Ch7:
 	rest 14
 	sound_ret
 
-Sfx_Item_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 12
@@ -2275,12 +2268,12 @@ SECTION "Sfx_CaughtMon", ROMX
 
 Sfx_CaughtMon::
 	channel_count 4
-	channel 5, Sfx_CaughtMon_Ch5
-	channel 6, Sfx_CaughtMon_Ch6
-	channel 7, Sfx_CaughtMon_Ch7
-	channel 8, Sfx_CaughtMon_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_CaughtMon_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 112
 	volume 7, 7
@@ -2304,7 +2297,7 @@ Sfx_CaughtMon_Ch5:
 	note F_, 12
 	sound_ret
 
-Sfx_CaughtMon_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 2
 	vibrato 8, 2, 7
@@ -2324,7 +2317,7 @@ Sfx_CaughtMon_Ch6:
 	note A_, 12
 	sound_ret
 
-Sfx_CaughtMon_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 8, 2, 5
 	octave 3
@@ -2343,7 +2336,7 @@ Sfx_CaughtMon_Ch7:
 	rest 3
 	sound_ret
 
-Sfx_CaughtMon_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 12
@@ -2356,12 +2349,12 @@ SECTION "Sfx_DexFanfare80109", ROMX
 
 Sfx_DexFanfare80109::
 	channel_count 4
-	channel 5, Sfx_DexFanfare80109_Ch5
-	channel 6, Sfx_DexFanfare80109_Ch6
-	channel 7, Sfx_DexFanfare80109_Ch7
-	channel 8, Sfx_DexFanfare80109_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_DexFanfare80109_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 112
 	volume 7, 7
@@ -2387,7 +2380,7 @@ Sfx_DexFanfare80109_Ch5:
 	note A#, 16
 	sound_ret
 
-Sfx_DexFanfare80109_Ch6:
+.Ch6:
 	toggle_sfx
 	vibrato 8, 2, 7
 	duty_cycle 2
@@ -2410,7 +2403,7 @@ Sfx_DexFanfare80109_Ch6:
 	note D#, 16
 	sound_ret
 
-Sfx_DexFanfare80109_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 12, 2, 5
 	octave 4
@@ -2437,7 +2430,7 @@ Sfx_DexFanfare80109_Ch7:
 	rest 9
 	sound_ret
 
-Sfx_DexFanfare80109_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 12
@@ -2450,11 +2443,11 @@ SECTION "Sfx_Fanfare2", ROMX
 
 Sfx_Fanfare2::
 	channel_count 3
-	channel 5, Sfx_Fanfare2_Ch5
-	channel 6, Sfx_Fanfare2_Ch6
-	channel 8, Sfx_Fanfare2_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_Fanfare2_Ch5:
+.Ch5:
 	toggle_sfx
 	sfx_priority_on
 	tempo 256
@@ -2479,7 +2472,7 @@ Sfx_Fanfare2_Ch5:
 	sfx_priority_off
 	sound_ret
 
-Sfx_Fanfare2_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 2
 	note_type 6, 12, 5
@@ -2499,7 +2492,7 @@ Sfx_Fanfare2_Ch6:
 	note F_, 12
 	sound_ret
 
-Sfx_Fanfare2_Ch8:
+.Ch8:
 	toggle_sfx
 	drum_speed 6
 	note C_, 1
@@ -2524,11 +2517,11 @@ SECTION "Sfx_Fanfare", ROMX
 
 Sfx_Fanfare::
 	channel_count 3
-	channel 5, Sfx_Fanfare_Ch5
-	channel 6, Sfx_Fanfare_Ch6
-	channel 8, Sfx_Fanfare_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_Fanfare_Ch5:
+.Ch5:
 	toggle_sfx
 	sfx_priority_on
 	tempo 256
@@ -2558,7 +2551,7 @@ Sfx_Fanfare_Ch5:
 	sfx_priority_off
 	sound_ret
 
-Sfx_Fanfare_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 2
 	note_type 6, 12, 4
@@ -2594,7 +2587,7 @@ Sfx_Fanfare_Ch6:
 	note F#, 12
 	sound_ret
 
-Sfx_Fanfare_Ch8:
+.Ch8:
 	toggle_sfx
 	drum_speed 6
 	note C_, 1
@@ -2624,12 +2617,12 @@ SECTION "Sfx_RegisterPhoneNumber", ROMX
 
 Sfx_RegisterPhoneNumber::
 	channel_count 4
-	channel 5, Sfx_RegisterPhoneNumber_Ch5
-	channel 6, Sfx_RegisterPhoneNumber_Ch6
-	channel 7, Sfx_RegisterPhoneNumber_Ch7
-	channel 8, Sfx_RegisterPhoneNumber_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_RegisterPhoneNumber_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 124
 	volume 7, 7
@@ -2653,7 +2646,7 @@ Sfx_RegisterPhoneNumber_Ch5:
 	rest 8
 	sound_ret
 
-Sfx_RegisterPhoneNumber_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 3
 	note_type 12, 12, 2
@@ -2675,7 +2668,7 @@ Sfx_RegisterPhoneNumber_Ch6:
 	rest 8
 	sound_ret
 
-Sfx_RegisterPhoneNumber_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 12, 2, 5
 	rest 2
@@ -2694,7 +2687,7 @@ Sfx_RegisterPhoneNumber_Ch7:
 	rest 8
 	sound_ret
 
-Sfx_RegisterPhoneNumber_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 12
@@ -2708,11 +2701,11 @@ SECTION "Sfx_3rdPlace", ROMX
 
 Sfx_3rdPlace::
 	channel_count 3
-	channel 5, Sfx_3rdPlace_Ch5
-	channel 6, Sfx_3rdPlace_Ch6
-	channel 7, Sfx_3rdPlace_Ch7
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
 
-Sfx_3rdPlace_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 120
 	volume 7, 7
@@ -2729,7 +2722,7 @@ Sfx_3rdPlace_Ch5:
 	note D_, 6
 	sound_ret
 
-Sfx_3rdPlace_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 2
 	note_type 12, 11, 4
@@ -2744,7 +2737,7 @@ Sfx_3rdPlace_Ch6:
 	note G_, 6
 	sound_ret
 
-Sfx_3rdPlace_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 12, 2, 5
 	octave 3
@@ -2764,12 +2757,12 @@ SECTION "Sfx_GetEgg", ROMX
 
 Sfx_GetEgg::
 	channel_count 4
-	channel 5, Sfx_GetEgg_Ch5
-	channel 6, Sfx_GetEgg_Ch6
-	channel 7, Sfx_GetEgg_Ch7
-	channel 8, Sfx_GetEgg_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_GetEgg_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 120
 	volume 7, 7
@@ -2799,7 +2792,7 @@ Sfx_GetEgg_Ch5:
 	rest 9
 	sound_ret
 
-Sfx_GetEgg_Ch6:
+.Ch6:
 	toggle_sfx
 	vibrato 18, 3, 4
 	duty_cycle 3
@@ -2826,7 +2819,7 @@ Sfx_GetEgg_Ch6:
 	rest 9
 	sound_ret
 
-Sfx_GetEgg_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 8, 2, 5
 	rest 2
@@ -2843,7 +2836,7 @@ Sfx_GetEgg_Ch7:
 	rest 9
 	sound_ret
 
-Sfx_GetEgg_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 8
@@ -2858,12 +2851,12 @@ SECTION "Sfx_MoveDeleted", ROMX
 
 Sfx_MoveDeleted::
 	channel_count 4
-	channel 5, Sfx_MoveDeleted_Ch5
-	channel 6, Sfx_MoveDeleted_Ch6
-	channel 7, Sfx_MoveDeleted_Ch7
-	channel 8, Sfx_MoveDeleted_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_MoveDeleted_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 116
 	volume 7, 7
@@ -2891,7 +2884,7 @@ Sfx_MoveDeleted_Ch5:
 	rest 6
 	sound_ret
 
-Sfx_MoveDeleted_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 3
 	vibrato 12, 4, 4
@@ -2925,7 +2918,7 @@ Sfx_MoveDeleted_Ch6:
 	rest 6
 	sound_ret
 
-Sfx_MoveDeleted_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 6, 2, 5
 	octave 2
@@ -2950,7 +2943,7 @@ Sfx_MoveDeleted_Ch7:
 	rest 6
 	sound_ret
 
-Sfx_MoveDeleted_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 3
 	drum_speed 12
@@ -2965,12 +2958,12 @@ SECTION "Sfx_2ndPlace", ROMX
 
 Sfx_2ndPlace::
 	channel_count 4
-	channel 5, Sfx_2ndPlace_Ch5
-	channel 6, Sfx_2ndPlace_Ch6
-	channel 7, Sfx_2ndPlace_Ch7
-	channel 8, Sfx_2ndPlace_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_2ndPlace_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 116
 	volume 7, 7
@@ -3002,7 +2995,7 @@ Sfx_2ndPlace_Ch5:
 	rest 6
 	sound_ret
 
-Sfx_2ndPlace_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 2
 	note_type 8, 11, 1
@@ -3024,7 +3017,7 @@ Sfx_2ndPlace_Ch6:
 	rest 6
 	sound_ret
 
-Sfx_2ndPlace_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 8, 2, 5
 	octave 3
@@ -3060,13 +3053,13 @@ Sfx_2ndPlace_Ch7:
 	rest 6
 	sound_ret
 
-Sfx_2ndPlace_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 3
 	drum_speed 8
-Sfx_2ndPlace_branch_f0fd7:
+.branch_f0fd7:
 	note C#, 1
-	sound_loop 6, Sfx_2ndPlace_branch_f0fd7
+	sound_loop 6, .branch_f0fd7
 	note B_, 12
 	note B_, 12
 	note B_, 12
@@ -3078,12 +3071,12 @@ SECTION "Sfx_1stPlace", ROMX
 
 Sfx_1stPlace::
 	channel_count 4
-	channel 5, Sfx_1stPlace_Ch5
-	channel 6, Sfx_1stPlace_Ch6
-	channel 7, Sfx_1stPlace_Ch7
-	channel 8, Sfx_1stPlace_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_1stPlace_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 124
 	volume 7, 7
@@ -3122,7 +3115,7 @@ Sfx_1stPlace_Ch5:
 	rest 6
 	sound_ret
 
-Sfx_1stPlace_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 3
 	vibrato 12, 3, 4
@@ -3144,7 +3137,7 @@ Sfx_1stPlace_Ch6:
 	rest 6
 	sound_ret
 
-Sfx_1stPlace_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 12, 2, 5
 	octave 2
@@ -3166,7 +3159,7 @@ Sfx_1stPlace_Ch7:
 	rest 6
 	sound_ret
 
-Sfx_1stPlace_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 6
@@ -3190,12 +3183,12 @@ SECTION "Sfx_ChooseACard", ROMX
 
 Sfx_ChooseACard::
 	channel_count 4
-	channel 5, Sfx_ChooseACard_Ch5
-	channel 6, Sfx_ChooseACard_Ch6
-	channel 7, Sfx_ChooseACard_Ch7
-	channel 8, Sfx_ChooseACard_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_ChooseACard_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 152
 	volume 7, 7
@@ -3239,7 +3232,7 @@ Sfx_ChooseACard_Ch5:
 	rest 12
 	sound_ret
 
-Sfx_ChooseACard_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 3
 	note_type 6, 11, 4
@@ -3269,7 +3262,7 @@ Sfx_ChooseACard_Ch6:
 	rest 12
 	sound_ret
 
-Sfx_ChooseACard_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 6, 2, 5
 	octave 3
@@ -3303,7 +3296,7 @@ Sfx_ChooseACard_Ch7:
 	rest 12
 	sound_ret
 
-Sfx_ChooseACard_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 6
@@ -3331,12 +3324,12 @@ SECTION "Sfx_GetTm", ROMX
 
 Sfx_GetTm::
 	channel_count 4
-	channel 5, Sfx_GetTm_Ch5
-	channel 6, Sfx_GetTm_Ch6
-	channel 7, Sfx_GetTm_Ch7
-	channel 8, Sfx_GetTm_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_GetTm_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 144
 	volume 7, 7
@@ -3360,7 +3353,7 @@ Sfx_GetTm_Ch5:
 	rest 6
 	sound_ret
 
-Sfx_GetTm_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 3
 	vibrato 8, 2, 4
@@ -3381,7 +3374,7 @@ Sfx_GetTm_Ch6:
 	rest 6
 	sound_ret
 
-Sfx_GetTm_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 6, 2, 5
 	octave 2
@@ -3410,7 +3403,7 @@ Sfx_GetTm_Ch7:
 	rest 6
 	sound_ret
 
-Sfx_GetTm_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 6
@@ -3433,12 +3426,12 @@ SECTION "Sfx_GetBadge", ROMX
 
 Sfx_GetBadge::
 	channel_count 4
-	channel 5, Sfx_GetBadge_Ch5
-	channel 6, Sfx_GetBadge_Ch6
-	channel 7, Sfx_GetBadge_Ch7
-	channel 8, Sfx_GetBadge_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_GetBadge_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 120
 	volume 7, 7
@@ -3447,17 +3440,17 @@ Sfx_GetBadge_Ch5:
 	note_type 6, 9, 2
 	octave 4
 	note F_, 3
-	sound_call Sfx_GetBadge_branch_f11aa
+	sound_call .branch_f11aa
 	note A#, 3
 	transpose 0, 2
-	sound_call Sfx_GetBadge_branch_f11aa
+	sound_call .branch_f11aa
 	transpose 0, 0
 	volume_envelope 10, 7
 	note A_, 16
 	rest 6
 	sound_ret
 
-Sfx_GetBadge_branch_f11aa:
+.branch_f11aa:
 	rest 5
 	octave 3
 	note F_, 2
@@ -3479,7 +3472,7 @@ Sfx_GetBadge_branch_f11aa:
 	note F_, 2
 	sound_ret
 
-Sfx_GetBadge_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 3
 	vibrato 8, 2, 4
@@ -3526,7 +3519,7 @@ Sfx_GetBadge_Ch6:
 	rest 6
 	sound_ret
 
-Sfx_GetBadge_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 6, 2, 5
 	octave 2
@@ -3563,11 +3556,11 @@ Sfx_GetBadge_Ch7:
 	rest 6
 	sound_ret
 
-Sfx_GetBadge_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 6
-Sfx_GetBadge_branch_f1220:
+.branch_f1220:
 	note B_, 12
 	note D_, 1
 	note D_, 1
@@ -3582,7 +3575,7 @@ Sfx_GetBadge_branch_f1220:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	sound_loop 2, Sfx_GetBadge_branch_f1220
+	sound_loop 2, .branch_f1220
 	note B_, 16
 	rest 6
 	sound_ret
@@ -3592,12 +3585,12 @@ SECTION "Sfx_QuitSlots", ROMX
 
 Sfx_QuitSlots::
 	channel_count 4
-	channel 5, Sfx_QuitSlots_Ch5
-	channel 6, Sfx_QuitSlots_Ch6
-	channel 7, Sfx_QuitSlots_Ch7
-	channel 8, Sfx_QuitSlots_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_QuitSlots_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 144
 	volume 7, 7
@@ -3627,7 +3620,7 @@ Sfx_QuitSlots_Ch5:
 	rest 6
 	sound_ret
 
-Sfx_QuitSlots_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 2
 	note_type 8, 11, 3
@@ -3652,7 +3645,7 @@ Sfx_QuitSlots_Ch6:
 	rest 6
 	sound_ret
 
-Sfx_QuitSlots_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 8, 2, 5
 	octave 3
@@ -3681,7 +3674,7 @@ Sfx_QuitSlots_Ch7:
 	rest 6
 	sound_ret
 
-Sfx_QuitSlots_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 3
 	drum_speed 8
@@ -3704,14 +3697,14 @@ SECTION "Sfx_Protect", ROMX
 
 Sfx_Protect::
 	channel_count 2
-	channel 5, Sfx_Protect_Ch5
-	channel 8, Sfx_Protect_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_Protect_Ch5:
+.Ch5:
 	toggle_sfx
 	note_type 1, 15, 1
 	duty_cycle 0
-Sfx_Protect_branch_f12c0:
+.branch_f12c0:
 	octave 5
 	note F_, 5
 	note A_, 5
@@ -3724,7 +3717,7 @@ Sfx_Protect_branch_f12c0:
 	octave 6
 	note C#, 5
 	note E_, 5
-	sound_loop 3, Sfx_Protect_branch_f12c0
+	sound_loop 3, .branch_f12c0
 	volume_envelope 12, 1
 	octave 5
 	note F_, 5
@@ -3743,10 +3736,10 @@ Sfx_Protect_branch_f12c0:
 	note E_, 5
 	sound_ret
 
-Sfx_Protect_Ch8:
+.Ch8:
 	noise_note 9, 9, -6, 0
 	noise_note 9, 11, -6, 17
-	sound_loop 6, Sfx_Protect_Ch8
+	sound_loop 6, .Ch8
 	noise_note 9, 10, 7, 0
 	noise_note 16, 7, 5, 17
 	sound_ret
@@ -3756,17 +3749,17 @@ SECTION "Sfx_Sketch", ROMX
 
 Sfx_Sketch::
 	channel_count 1
-	channel 5, Sfx_Sketch_Ch5
+	channel 5, .Ch5
 
-Sfx_Sketch_Ch5:
+.Ch5:
 	duty_cycle 1
 	pitch_sweep 10, 5
-Sfx_Sketch_branch_f12fd:
+.branch_f12fd:
 	square_note 2, 15, 1, 1760
 	square_note 13, 10, -7, 1456
 	square_note 4, 0, 0, 0
 	square_note 9, 15, 4, 1816
-	sound_loop 3, Sfx_Sketch_branch_f12fd
+	sound_loop 3, .branch_f12fd
 	pitch_sweep 0, 8
 	sound_ret
 
@@ -3775,14 +3768,14 @@ SECTION "Sfx_RainDance", ROMX
 
 Sfx_RainDance::
 	channel_count 1
-	channel 8, Sfx_RainDance_Ch8
+	channel 8, .Ch8
 
-Sfx_RainDance_Ch8:
+.Ch8:
 	noise_note 11, 7, -5, 80
 	noise_note 6, 7, -5, 79
 	noise_note 11, 7, -7, 71
 	noise_note 15, 6, -6, 34
-	sound_loop 3, Sfx_RainDance_Ch8
+	sound_loop 3, .Ch8
 	noise_note 6, 6, -5, 80
 	noise_note 5, 5, -5, 79
 	noise_note 5, 4, -7, 71
@@ -3794,17 +3787,17 @@ SECTION "Sfx_Aeroblast", ROMX
 
 Sfx_Aeroblast::
 	channel_count 2
-	channel 5, Sfx_Aeroblast_Ch5
-	channel 8, Sfx_Aeroblast_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_Aeroblast_Ch5:
+.Ch5:
 	duty_cycle_pattern 3, 3, 0, 2
 	pitch_sweep 15, 5
 	square_note 28, 15, 8, 1408
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_Aeroblast_Ch8:
+.Ch8:
 	noise_note 4, 15, 8, 108
 	noise_note 4, 12, 8, 92
 	noise_note 4, 7, 8, 91
@@ -3816,12 +3809,12 @@ SECTION "Sfx_Spark", ROMX
 
 Sfx_Spark::
 	channel_count 1
-	channel 8, Sfx_Spark_Ch8
+	channel 8, .Ch8
 
-Sfx_Spark_Ch8:
+.Ch8:
 	noise_note 4, 15, 8, 93
 	noise_note 4, 13, 8, 111
-	sound_loop 2, Sfx_Spark_Ch8
+	sound_loop 2, .Ch8
 	sound_ret
 
 
@@ -3829,10 +3822,10 @@ SECTION "Sfx_Curse", ROMX
 
 Sfx_Curse::
 	channel_count 2
-	channel 5, Sfx_Curse_Ch5
-	channel 8, Sfx_Curse_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_Curse_Ch5:
+.Ch5:
 	duty_cycle 3
 	square_note 4, 15, 2, 1155
 	square_note 4, 15, 2, 1297
@@ -3840,7 +3833,7 @@ Sfx_Curse_Ch5:
 	square_note 4, 15, 2, 1517
 	sound_ret
 
-Sfx_Curse_Ch8:
+.Ch8:
 	noise_note 20, 9, -2, 9
 	sound_ret
 
@@ -3849,17 +3842,17 @@ SECTION "Sfx_Rage", ROMX
 
 Sfx_Rage::
 	channel_count 2
-	channel 5, Sfx_Rage_Ch5
-	channel 8, Sfx_Rage_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_Rage_Ch5:
+.Ch5:
 	duty_cycle 0
 	square_note 3, 13, 1, 1968
 	square_note 3, 13, 1, 1986
 	square_note 24, 13, 2, 2005
 	sound_ret
 
-Sfx_Rage_Ch8:
+.Ch8:
 	noise_note 3, 15, 4, 26
 	noise_note 3, 15, 4, 25
 	noise_note 24, 15, 2, 24
@@ -3870,14 +3863,14 @@ SECTION "Sfx_Thief", ROMX
 
 Sfx_Thief::
 	channel_count 1
-	channel 8, Sfx_Thief_Ch8
+	channel 8, .Ch8
 
-Sfx_Thief_Ch8:
+.Ch8:
 	noise_note 0, 0, 0, 0
 	noise_note 4, 14, 1, 18
 	noise_note 0, 0, 0, 0
 	noise_note 2, 11, 1, 34
-	sound_loop 2, Sfx_Thief_Ch8
+	sound_loop 2, .Ch8
 	sound_ret
 
 
@@ -3885,9 +3878,9 @@ SECTION "Sfx_Thief2", ROMX
 
 Sfx_Thief2::
 	channel_count 1
-	channel 5, Sfx_Thief2_Ch5
+	channel 5, .Ch5
 
-Sfx_Thief2_Ch5:
+.Ch5:
 	toggle_sfx
 	note_type 2, 15, 4
 	duty_cycle 0
@@ -3911,10 +3904,10 @@ SECTION "Sfx_SpiderWeb", ROMX
 
 Sfx_SpiderWeb::
 	channel_count 2
-	channel 5, Sfx_SpiderWeb_Ch5
-	channel 8, Sfx_SpiderWeb_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_SpiderWeb_Ch5:
+.Ch5:
 	duty_cycle 0
 	square_note 32, 7, -7, 1824
 	pitch_sweep 9, 5
@@ -3927,7 +3920,7 @@ Sfx_SpiderWeb_Ch5:
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_SpiderWeb_Ch8:
+.Ch8:
 	noise_note 32, 14, -7, 0
 	sound_ret
 
@@ -3936,10 +3929,10 @@ SECTION "Sfx_MindReader", ROMX
 
 Sfx_MindReader::
 	channel_count 2
-	channel 5, Sfx_MindReader_Ch5
-	channel 8, Sfx_MindReader_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_MindReader_Ch5:
+.Ch5:
 	toggle_sfx
 	duty_cycle 2
 	note_type 2, 15, 1
@@ -3958,7 +3951,7 @@ Sfx_MindReader_Ch5:
 	toggle_sfx
 	sound_ret
 
-Sfx_MindReader_Ch8:
+.Ch8:
 	noise_note 17, 10, -7, 25
 	noise_note 18, 10, -7, 24
 	sound_ret
@@ -3968,12 +3961,12 @@ SECTION "Sfx_Nightmare", ROMX
 
 Sfx_Nightmare::
 	channel_count 1
-	channel 5, Sfx_Nightmare_Ch5
+	channel 5, .Ch5
 
-Sfx_Nightmare_Ch5:
+.Ch5:
 	duty_cycle 0
 	pitch_sweep 3, 4
-Sfx_Nightmare_branch_f1424:
+.branch_f1424:
 	square_note 3, 11, -2, 1585
 	square_note 2, 0, 0, 0
 	square_note 3, 15, 8, 1569
@@ -3984,7 +3977,7 @@ Sfx_Nightmare_branch_f1424:
 	square_note 2, 0, 0, 0
 	square_note 3, 14, 8, 1521
 	square_note 2, 0, 0, 0
-	sound_loop 2, Sfx_Nightmare_branch_f1424
+	sound_loop 2, .branch_f1424
 	pitch_sweep 0, 8
 	sound_ret
 
@@ -3993,9 +3986,9 @@ SECTION "Sfx_Snore", ROMX
 
 Sfx_Snore::
 	channel_count 1
-	channel 8, Sfx_Snore_Ch8
+	channel 8, .Ch8
 
-Sfx_Snore_Ch8:
+.Ch8:
 	noise_note 2, 14, -2, 75
 	noise_note 2, 14, -2, 91
 	noise_note 2, 0, 0, 0
@@ -4009,14 +4002,14 @@ SECTION "Sfx_SweetKiss", ROMX
 
 Sfx_SweetKiss::
 	channel_count 1
-	channel 5, Sfx_SweetKiss_Ch5
+	channel 5, .Ch5
 
-Sfx_SweetKiss_Ch5:
+.Ch5:
 	duty_cycle 2
-Sfx_SweetKiss_branch_f146e:
+.branch_f146e:
 	square_note 2, 12, 1, 1992
 	square_note 2, 13, 1, 2010
-	sound_loop 2, Sfx_SweetKiss_branch_f146e
+	sound_loop 2, .branch_f146e
 	square_note 26, 15, 1, 2018
 	sound_ret
 
@@ -4025,9 +4018,9 @@ SECTION "Sfx_SweetKiss2", ROMX
 
 Sfx_SweetKiss2::
 	channel_count 1
-	channel 5, Sfx_SweetKiss2_Ch5
+	channel 5, .Ch5
 
-Sfx_SweetKiss2_Ch5:
+.Ch5:
 	duty_cycle 0
 	pitch_sweep 9, 7
 	square_note 2, 15, 4, 1906
@@ -4045,17 +4038,17 @@ SECTION "Sfx_BellyDrum", ROMX
 
 Sfx_BellyDrum::
 	channel_count 2
-	channel 5, Sfx_BellyDrum_Ch5
-	channel 8, Sfx_BellyDrum_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_BellyDrum_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 10, -4
 	square_note 12, 15, 1, 1443
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_BellyDrum_Ch8:
+.Ch8:
 	noise_note 12, 11, 1, 108
 	sound_ret
 
@@ -4064,9 +4057,9 @@ SECTION "Sfx_Unknown7F", ROMX
 
 Sfx_Unknown7F::
 	channel_count 1
-	channel 5, Sfx_Unknown7F_Ch5
+	channel 5, .Ch5
 
-Sfx_Unknown7F_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 9, 5
 	square_note 2, 12, -1, 947
@@ -4080,10 +4073,10 @@ SECTION "Sfx_SludgeBomb", ROMX
 
 Sfx_SludgeBomb::
 	channel_count 2
-	channel 5, Sfx_SludgeBomb_Ch5
-	channel 8, Sfx_SludgeBomb_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_SludgeBomb_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 12, 5
 	square_note 3, 15, 8, 1409
@@ -4093,7 +4086,7 @@ Sfx_SludgeBomb_Ch5:
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_SludgeBomb_Ch8:
+.Ch8:
 	noise_note 3, 14, 2, 110
 	noise_note 1, 0, 0, 0
 	noise_note 16, 14, 2, 109
@@ -4104,9 +4097,9 @@ SECTION "Sfx_Foresight", ROMX
 
 Sfx_Foresight::
 	channel_count 1
-	channel 5, Sfx_Foresight_Ch5
+	channel 5, .Ch5
 
-Sfx_Foresight_Ch5:
+.Ch5:
 	square_note 3, 15, 4, 1973
 	square_note 3, 15, 5, 1992
 	square_note 8, 15, 4, 2010
@@ -4121,9 +4114,9 @@ SECTION "Sfx_Spite", ROMX
 
 Sfx_Spite::
 	channel_count 1
-	channel 5, Sfx_Spite_Ch5
+	channel 5, .Ch5
 
-Sfx_Spite_Ch5:
+.Ch5:
 	toggle_sfx
 	vibrato 0, 1, 2
 	duty_cycle 3
@@ -4154,9 +4147,9 @@ SECTION "Sfx_Outrage", ROMX
 
 Sfx_Outrage::
 	channel_count 1
-	channel 8, Sfx_Outrage_Ch8
+	channel 8, .Ch8
 
-Sfx_Outrage_Ch8:
+.Ch8:
 	noise_note 11, 14, -2, 108
 	noise_note 11, 14, -2, 107
 	noise_note 11, 14, -2, 106
@@ -4169,10 +4162,10 @@ SECTION "Sfx_PerishSong", ROMX
 
 Sfx_PerishSong::
 	channel_count 2
-	channel 5, Sfx_PerishSong_Ch5
-	channel 6, Sfx_PerishSong_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_PerishSong_Ch5:
+.Ch5:
 	toggle_sfx
 	duty_cycle 0
 	vibrato 18, 5, 3
@@ -4183,7 +4176,7 @@ Sfx_PerishSong_Ch5:
 	toggle_sfx
 	sound_ret
 
-Sfx_PerishSong_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 0
 	vibrato 18, 5, 3
@@ -4200,10 +4193,10 @@ SECTION "Sfx_GigaDrain", ROMX
 
 Sfx_GigaDrain::
 	channel_count 2
-	channel 5, Sfx_GigaDrain_Ch5
-	channel 8, Sfx_GigaDrain_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_GigaDrain_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 9, 7
 	square_note 4, 15, 8, 1664
@@ -4218,7 +4211,7 @@ Sfx_GigaDrain_Ch5:
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_GigaDrain_Ch8:
+.Ch8:
 	noise_note 4, 12, 8, 68
 	noise_note 20, 12, 8, 80
 	noise_note 20, 12, 8, 82
@@ -4232,9 +4225,9 @@ SECTION "Sfx_Attract", ROMX
 
 Sfx_Attract::
 	channel_count 1
-	channel 5, Sfx_Attract_Ch5
+	channel 5, .Ch5
 
-Sfx_Attract_Ch5:
+.Ch5:
 	duty_cycle 0
 	pitch_sweep 7, 7
 	square_note 4, 10, -1, 1776
@@ -4249,9 +4242,9 @@ SECTION "Sfx_Kinesis2", ROMX
 
 Sfx_Kinesis2::
 	channel_count 1
-	channel 5, Sfx_Kinesis2_Ch5
+	channel 5, .Ch5
 
-Sfx_Kinesis2_Ch5:
+.Ch5:
 	duty_cycle 0
 	square_note 2, 15, 3, 1942
 	square_note 2, 2, 3, 1942
@@ -4263,12 +4256,12 @@ SECTION "Sfx_ZapCannon", ROMX
 
 Sfx_ZapCannon::
 	channel_count 1
-	channel 8, Sfx_ZapCannon_Ch8
+	channel 8, .Ch8
 
-Sfx_ZapCannon_Ch8:
+.Ch8:
 	noise_note 2, 14, 1, 73
 	noise_note 0, 0, 0, 0
-	sound_loop 8, Sfx_ZapCannon_Ch8
+	sound_loop 8, .Ch8
 	noise_note 8, 14, 1, 73
 	sound_ret
 
@@ -4277,16 +4270,16 @@ SECTION "Sfx_MeanLook", ROMX
 
 Sfx_MeanLook::
 	channel_count 1
-	channel 5, Sfx_MeanLook_Ch5
+	channel 5, .Ch5
 
-Sfx_MeanLook_Ch5:
+.Ch5:
 	pitch_sweep 7, 7
 	duty_cycle 3
 	square_note 2, 15, 8, 1824
-Sfx_MeanLook_branch_f15fa:
+.branch_f15fa:
 	square_note 1, 8, 8, 1632
 	square_note 2, 15, 8, 1936
-	sound_loop 5, Sfx_MeanLook_branch_f15fa
+	sound_loop 5, .branch_f15fa
 	square_note 12, 15, 8, 1792
 	square_note 12, 12, 8, 1824
 	square_note 12, 10, 8, 1792
@@ -4301,9 +4294,9 @@ SECTION "Sfx_HealBell", ROMX
 
 Sfx_HealBell::
 	channel_count 1
-	channel 5, Sfx_HealBell_Ch5
+	channel 5, .Ch5
 
-Sfx_HealBell_Ch5:
+.Ch5:
 	duty_cycle 1
 	square_note 1, 15, 1, 2010
 	square_note 1, 13, 1, 2009
@@ -4316,17 +4309,17 @@ SECTION "Sfx_Return", ROMX
 
 Sfx_Return::
 	channel_count 1
-	channel 5, Sfx_Return_Ch5
+	channel 5, .Ch5
 
-Sfx_Return_Ch5:
+.Ch5:
 	duty_cycle 0
-Sfx_Return_branch_f163c:
+.branch_f163c:
 	pitch_sweep 11, -7
 	square_note 8, 15, 1, 1881
 	pitch_sweep 5, 7
 	square_note 8, 15, 1, 1881
 	square_note 16, 0, 0, 0
-	sound_loop 2, Sfx_Return_branch_f163c
+	sound_loop 2, .branch_f163c
 	pitch_sweep 0, 8
 	sound_ret
 
@@ -4335,9 +4328,9 @@ SECTION "Sfx_ExpBar", ROMX
 
 Sfx_ExpBar::
 	channel_count 1
-	channel 5, Sfx_ExpBar_Ch5
+	channel 5, .Ch5
 
-Sfx_ExpBar_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 13, 7
 	square_note 8, 14, 1, 1872
@@ -4357,18 +4350,18 @@ SECTION "Sfx_MilkDrink", ROMX
 
 Sfx_MilkDrink::
 	channel_count 1
-	channel 5, Sfx_MilkDrink_Ch5
+	channel 5, .Ch5
 
-Sfx_MilkDrink_Ch5:
+.Ch5:
 	duty_cycle 2
-Sfx_MilkDrink_branch_f1684:
+.branch_f1684:
 	pitch_sweep 10, 4
 	square_note 2, 14, -2, 1248
 	square_note 13, 15, 7, 656
 	pitch_sweep 9, -6
 	square_note 4, 12, -1, 1505
 	square_note 2, 0, 0, 0
-	sound_loop 6, Sfx_MilkDrink_branch_f1684
+	sound_loop 6, .branch_f1684
 	pitch_sweep 0, 8
 	sound_ret
 
@@ -4377,15 +4370,15 @@ SECTION "Sfx_Present", ROMX
 
 Sfx_Present::
 	channel_count 1
-	channel 5, Sfx_Present_Ch5
+	channel 5, .Ch5
 
-Sfx_Present_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 13, 6
-Sfx_Present_branch_f16a6:
+.branch_f16a6:
 	square_note 2, 15, 1, 1856
 	square_note 1, 0, 0, 0
-	sound_loop 3, Sfx_Present_branch_f16a6
+	sound_loop 3, .branch_f16a6
 	square_note 16, 15, 1, 1920
 	pitch_sweep 0, 8
 	sound_ret
@@ -4395,15 +4388,15 @@ SECTION "Sfx_MorningSun", ROMX
 
 Sfx_MorningSun::
 	channel_count 1
-	channel 5, Sfx_MorningSun_Ch5
+	channel 5, .Ch5
 
-Sfx_MorningSun_Ch5:
+.Ch5:
 	duty_cycle 3
-Sfx_MorningSun_branch_f16be:
+.branch_f16be:
 	square_note 2, 15, 1, 2020
 	square_note 2, 15, 1, 2016
 	square_note 5, 15, 2, 2023
-	sound_loop 3, Sfx_MorningSun_branch_f16be
+	sound_loop 3, .branch_f16be
 	square_note 1, 0, 0, 0
 	square_note 8, 12, 2, 2023
 	square_note 1, 0, 0, 0
@@ -4415,14 +4408,14 @@ SECTION "Sfx_Moonlight", ROMX
 
 Sfx_Moonlight::
 	channel_count 1
-	channel 5, Sfx_Moonlight_Ch5
+	channel 5, .Ch5
 
-Sfx_Moonlight_Ch5:
+.Ch5:
 	duty_cycle 2
-Sfx_Moonlight_branch_f16e4:
+.branch_f16e4:
 	square_note 1, 15, 8, 2000
 	square_note 4, 15, 1, 2016
-	sound_loop 2, Sfx_Moonlight_branch_f16e4
+	sound_loop 2, .branch_f16e4
 	square_note 16, 15, 1, 2016
 	square_note 16, 13, 1, 2016
 	square_note 16, 8, 1, 2016
@@ -4433,21 +4426,21 @@ SECTION "Sfx_Encore", ROMX
 
 Sfx_Encore::
 	channel_count 2
-	channel 5, Sfx_Encore_Ch5
-	channel 8, Sfx_Encore_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_Encore_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 12, -6
 	square_note 16, 0, 0, 0
-Sfx_Encore_branch_f170b:
+.branch_f170b:
 	square_note 2, 15, 8, 1908
 	square_note 36, 0, 0, 0
-	sound_loop 2, Sfx_Encore_branch_f170b
+	sound_loop 2, .branch_f170b
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_Encore_Ch8:
+.Ch8:
 	noise_note 48, 1, -7, 54
 	noise_note 48, 7, 6, 54
 	sound_ret
@@ -4457,9 +4450,9 @@ SECTION "Sfx_BeatUp", ROMX
 
 Sfx_BeatUp::
 	channel_count 1
-	channel 8, Sfx_BeatUp_Ch8
+	channel 8, .Ch8
 
-Sfx_BeatUp_Ch8:
+.Ch8:
 	noise_note 2, 14, 8, 105
 	noise_note 6, 13, 8, 36
 	noise_note 2, 14, 8, 108
@@ -4472,9 +4465,9 @@ SECTION "Sfx_SweetScent", ROMX
 
 Sfx_SweetScent::
 	channel_count 1
-	channel 5, Sfx_SweetScent_Ch5
+	channel 5, .Ch5
 
-Sfx_SweetScent_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 9, 6
 	square_note 6, 15, 8, 1888
@@ -4489,10 +4482,10 @@ SECTION "Sfx_BatonPass", ROMX
 
 Sfx_BatonPass::
 	channel_count 2
-	channel 5, Sfx_BatonPass_Ch5
-	channel 8, Sfx_BatonPass_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_BatonPass_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 15, 7
 	square_note 32, 15, 2, 1664
@@ -4504,7 +4497,7 @@ Sfx_BatonPass_Ch5:
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_BatonPass_Ch8:
+.Ch8:
 	noise_note 32, 15, 2, 32
 	sound_ret
 
@@ -4513,9 +4506,9 @@ SECTION "Sfx_EggCrack", ROMX
 
 Sfx_EggCrack::
 	channel_count 1
-	channel 5, Sfx_EggCrack_Ch5
+	channel 5, .Ch5
 
-Sfx_EggCrack_Ch5:
+.Ch5:
 	toggle_sfx
 	note_type 1, 15, 1
 	duty_cycle 0
@@ -4531,9 +4524,9 @@ SECTION "Sfx_Evolved", ROMX
 
 Sfx_Evolved::
 	channel_count 1
-	channel 5, Sfx_Evolved_Ch5
+	channel 5, .Ch5
 
-Sfx_Evolved_Ch5:
+.Ch5:
 	toggle_sfx
 	note_type 1, 12, 1
 	octave 4
@@ -4558,9 +4551,9 @@ SECTION "Sfx_MasterBall", ROMX
 
 Sfx_MasterBall::
 	channel_count 1
-	channel 5, Sfx_MasterBall_Ch5
+	channel 5, .Ch5
 
-Sfx_MasterBall_Ch5:
+.Ch5:
 	toggle_sfx
 	duty_cycle 1
 	note_type 2, 14, 1
@@ -4595,9 +4588,9 @@ SECTION "Sfx_EggHatch", ROMX
 
 Sfx_EggHatch::
 	channel_count 1
-	channel 5, Sfx_EggHatch_Ch5
+	channel 5, .Ch5
 
-Sfx_EggHatch_Ch5:
+.Ch5:
 	toggle_sfx
 	note_type 2, 15, 1
 	duty_cycle 2
@@ -4620,17 +4613,17 @@ SECTION "Sfx_GsIntroCharizardFireball", ROMX
 
 Sfx_GsIntroCharizardFireball::
 	channel_count 1
-	channel 8, Sfx_GsIntroCharizardFireball_Ch8
+	channel 8, .Ch8
 
-Sfx_GsIntroCharizardFireball_Ch8:
+.Ch8:
 	noise_note 8, 12, -7, 77
 	noise_note 8, 15, 1, 55
-Sfx_GsIntroCharizardFireball_branch_f17e2:
+.branch_f17e2:
 	noise_note 1, 15, 8, 79
 	noise_note 0, 12, 8, 38
 	noise_note 1, 13, 8, 95
 	noise_note 0, 10, 8, 55
-	sound_loop 12, Sfx_GsIntroCharizardFireball_branch_f17e2
+	sound_loop 12, .branch_f17e2
 	noise_note 3, 15, 8, 111
 	noise_note 4, 13, 8, 95
 	noise_note 12, 13, 8, 92
@@ -4642,9 +4635,9 @@ SECTION "Sfx_GsIntroPokemonAppears", ROMX
 
 Sfx_GsIntroPokemonAppears::
 	channel_count 1
-	channel 8, Sfx_GsIntroPokemonAppears_Ch8
+	channel 8, .Ch8
 
-Sfx_GsIntroPokemonAppears_Ch8:
+.Ch8:
 	noise_note 1, 8, 8, 79
 	noise_note 2, 8, -7, 2
 	noise_note 2, 5, -7, 18
@@ -4659,9 +4652,9 @@ SECTION "Sfx_Flash", ROMX
 
 Sfx_Flash::
 	channel_count 1
-	channel 5, Sfx_Flash_Ch5
+	channel 5, .Ch5
 
-Sfx_Flash_Ch5:
+.Ch5:
 	duty_cycle 1
 	pitch_sweep 14, -7
 	square_note 1, 4, 0, 2024
@@ -4681,9 +4674,9 @@ SECTION "Sfx_GameFreakLogoGs", ROMX
 
 Sfx_GameFreakLogoGs::
 	channel_count 1
-	channel 5, Sfx_GameFreakLogoGs_Ch5
+	channel 5, .Ch5
 
-Sfx_GameFreakLogoGs_Ch5:
+.Ch5:
 	duty_cycle 3
 	pitch_sweep 7, -7
 	square_note 4, 5, 5, 2018
@@ -4704,12 +4697,12 @@ SECTION "Sfx_DexFanfareLessThan20", ROMX
 
 Sfx_DexFanfareLessThan20::
 	channel_count 4
-	channel 5, Sfx_DexFanfareLessThan20_Ch5
-	channel 6, Sfx_DexFanfareLessThan20_Ch6
-	channel 7, Sfx_DexFanfareLessThan20_Ch7
-	channel 8, Sfx_DexFanfareLessThan20_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_DexFanfareLessThan20_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 124
 	volume 7, 7
@@ -4728,7 +4721,7 @@ Sfx_DexFanfareLessThan20_Ch5:
 	note D_, 6
 	sound_ret
 
-Sfx_DexFanfareLessThan20_Ch6:
+.Ch6:
 	toggle_sfx
 	note_type 8, 12, 1
 	octave 3
@@ -4745,7 +4738,7 @@ Sfx_DexFanfareLessThan20_Ch6:
 	note F#, 6
 	sound_ret
 
-Sfx_DexFanfareLessThan20_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 8, 2, 5
 	octave 4
@@ -4771,7 +4764,7 @@ Sfx_DexFanfareLessThan20_Ch7:
 	rest 6
 	sound_ret
 
-Sfx_DexFanfareLessThan20_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 12
@@ -4785,12 +4778,12 @@ SECTION "Sfx_DexFanfare140169", ROMX
 
 Sfx_DexFanfare140169::
 	channel_count 4
-	channel 5, Sfx_DexFanfare140169_Ch5
-	channel 6, Sfx_DexFanfare140169_Ch6
-	channel 7, Sfx_DexFanfare140169_Ch7
-	channel 8, Sfx_DexFanfare140169_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_DexFanfare140169_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 120
 	volume 7, 7
@@ -4817,7 +4810,7 @@ Sfx_DexFanfare140169_Ch5:
 	rest 8
 	sound_ret
 
-Sfx_DexFanfare140169_Ch6:
+.Ch6:
 	toggle_sfx
 	duty_cycle 2
 	vibrato 18, 3, 4
@@ -4841,7 +4834,7 @@ Sfx_DexFanfare140169_Ch6:
 	rest 8
 	sound_ret
 
-Sfx_DexFanfare140169_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 12, 2, 5
 	rest 4
@@ -4873,18 +4866,18 @@ Sfx_DexFanfare140169_Ch7:
 	rest 4
 	sound_ret
 
-Sfx_DexFanfare140169_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 12
 	note C_, 4
-Sfx_DexFanfare140169_branch_f1945:
+.branch_f1945:
 	note D_, 4
 	note C#, 1
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	sound_loop 3, Sfx_DexFanfare140169_branch_f1945
+	sound_loop 3, .branch_f1945
 	note D_, 8
 	sound_ret
 
@@ -4893,12 +4886,12 @@ SECTION "Sfx_DexFanfare170199", ROMX
 
 Sfx_DexFanfare170199::
 	channel_count 4
-	channel 5, Sfx_DexFanfare170199_Ch5
-	channel 6, Sfx_DexFanfare170199_Ch6
-	channel 7, Sfx_DexFanfare170199_Ch7
-	channel 8, Sfx_DexFanfare170199_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_DexFanfare170199_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 112
 	volume 7, 7
@@ -4925,7 +4918,7 @@ Sfx_DexFanfare170199_Ch5:
 	rest 4
 	sound_ret
 
-Sfx_DexFanfare170199_Ch6:
+.Ch6:
 	toggle_sfx
 	vibrato 18, 3, 4
 	duty_cycle 3
@@ -4951,7 +4944,7 @@ Sfx_DexFanfare170199_Ch6:
 	rest 4
 	sound_ret
 
-Sfx_DexFanfare170199_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 8, 2, 5
 	octave 3
@@ -4977,7 +4970,7 @@ Sfx_DexFanfare170199_Ch7:
 	rest 4
 	sound_ret
 
-Sfx_DexFanfare170199_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 8
@@ -5002,12 +4995,12 @@ SECTION "Sfx_DexFanfare200229", ROMX
 
 Sfx_DexFanfare200229::
 	channel_count 4
-	channel 5, Sfx_DexFanfare200229_Ch5
-	channel 6, Sfx_DexFanfare200229_Ch6
-	channel 7, Sfx_DexFanfare200229_Ch7
-	channel 8, Sfx_DexFanfare200229_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_DexFanfare200229_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 124
 	volume 7, 7
@@ -5032,7 +5025,7 @@ Sfx_DexFanfare200229_Ch5:
 	rest 4
 	sound_ret
 
-Sfx_DexFanfare200229_Ch6:
+.Ch6:
 	toggle_sfx
 	vibrato 18, 3, 4
 	duty_cycle 3
@@ -5053,7 +5046,7 @@ Sfx_DexFanfare200229_Ch6:
 	rest 4
 	sound_ret
 
-Sfx_DexFanfare200229_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 8, 2, 5
 	octave 3
@@ -5095,7 +5088,7 @@ Sfx_DexFanfare200229_Ch7:
 	rest 6
 	sound_ret
 
-Sfx_DexFanfare200229_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 8
@@ -5127,12 +5120,12 @@ SECTION "Sfx_DexFanfare230Plus", ROMX
 
 Sfx_DexFanfare230Plus::
 	channel_count 4
-	channel 5, Sfx_DexFanfare230Plus_Ch5
-	channel 6, Sfx_DexFanfare230Plus_Ch6
-	channel 7, Sfx_DexFanfare230Plus_Ch7
-	channel 8, Sfx_DexFanfare230Plus_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
-Sfx_DexFanfare230Plus_Ch5:
+.Ch5:
 	toggle_sfx
 	tempo 112
 	volume 7, 7
@@ -5178,7 +5171,7 @@ Sfx_DexFanfare230Plus_Ch5:
 	rest 2
 	sound_ret
 
-Sfx_DexFanfare230Plus_Ch6:
+.Ch6:
 	toggle_sfx
 	vibrato 18, 3, 4
 	duty_cycle 3
@@ -5211,7 +5204,7 @@ Sfx_DexFanfare230Plus_Ch6:
 	rest 2
 	sound_ret
 
-Sfx_DexFanfare230Plus_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 8, 2, 5
 	octave 3
@@ -5258,14 +5251,14 @@ Sfx_DexFanfare230Plus_Ch7:
 	rest 2
 	sound_ret
 
-Sfx_DexFanfare230Plus_Ch8:
+.Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	drum_speed 8
 	note D_, 2
 	note D_, 2
 	note D_, 2
-Sfx_DexFanfare230Plus_branch_f1b14:
+.branch_f1b14:
 	note D_, 6
 	note D_, 2
 	note D_, 2
@@ -5277,7 +5270,7 @@ Sfx_DexFanfare230Plus_branch_f1b14:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	sound_loop 2, Sfx_DexFanfare230Plus_branch_f1b14
+	sound_loop 2, .branch_f1b14
 	note D_, 6
 	note D_, 2
 	note D_, 2
@@ -5286,9 +5279,9 @@ Sfx_DexFanfare230Plus_branch_f1b14:
 	note D_, 4
 	note D_, 4
 	note D_, 4
-Sfx_DexFanfare230Plus_branch_f1b2b:
+.branch_f1b2b:
 	note C#, 1
-	sound_loop 18, Sfx_DexFanfare230Plus_branch_f1b2b
+	sound_loop 18, .branch_f1b2b
 	note D_, 6
 	sound_ret
 
@@ -5297,9 +5290,9 @@ SECTION "Sfx_NotVeryEffective", ROMX
 
 Sfx_NotVeryEffective::
 	channel_count 1
-	channel 8, Sfx_NotVeryEffective_Ch8
+	channel 8, .Ch8
 
-Sfx_NotVeryEffective_Ch8:
+.Ch8:
 	noise_note 4, 15, 1, 95
 	noise_note 1, 10, 0, 66
 	noise_note 16, 15, 1, 83
@@ -5310,9 +5303,9 @@ SECTION "Sfx_Damage", ROMX
 
 Sfx_Damage::
 	channel_count 1
-	channel 8, Sfx_Damage_Ch8
+	channel 8, .Ch8
 
-Sfx_Damage_Ch8:
+.Ch8:
 	noise_note 4, 15, 1, 94
 	noise_note 1, 10, 0, 18
 	noise_note 4, 15, 0, 50
@@ -5324,9 +5317,9 @@ SECTION "Sfx_SuperEffective", ROMX
 
 Sfx_SuperEffective::
 	channel_count 1
-	channel 8, Sfx_SuperEffective_Ch8
+	channel 8, .Ch8
 
-Sfx_SuperEffective_Ch8:
+.Ch8:
 	noise_note 3, 15, 1, 79
 	noise_note 1, 12, 8, 34
 	noise_note 2, 15, 8, 63
@@ -5339,10 +5332,10 @@ SECTION "Sfx_BallBounce", ROMX
 
 Sfx_BallBounce::
 	channel_count 2
-	channel 5, Sfx_BallBounce_Ch5
-	channel 6, Sfx_BallBounce_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_BallBounce_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 8, 14, 1, 1856
 	square_note 23, 0, 0, 0
@@ -5354,7 +5347,7 @@ Sfx_BallBounce_Ch5:
 	square_note 23, 0, 0, 0
 	sound_ret
 
-Sfx_BallBounce_Ch6:
+.Ch6:
 	duty_cycle 2
 	square_note 2, 0, 8, 0
 	square_note 8, 11, 1, 1857
@@ -5372,10 +5365,10 @@ SECTION "Sfx_SweetScent2", ROMX
 
 Sfx_SweetScent2::
 	channel_count 2
-	channel 5, Sfx_SweetScent2_Ch5
-	channel 8, Sfx_SweetScent2_Ch8
+	channel 5, .Ch5
+	channel 8, .Ch8
 
-Sfx_SweetScent2_Ch5:
+.Ch5:
 	pitch_sweep 10, -7
 	duty_cycle 1
 	square_note 6, 15, 8, 1520
@@ -5384,14 +5377,14 @@ Sfx_SweetScent2_Ch5:
 	pitch_sweep 0, 8
 	sound_ret
 
-Sfx_SweetScent2_Ch8:
+.Ch8:
 	noise_note 2, 14, 8, 34
 	noise_note 17, 10, -2, 0
-Sfx_SweetScent2_branch_f1bd2:
+.branch_f1bd2:
 	noise_note 4, 13, -1, 16
 	noise_note 8, 9, 1, 0
 	noise_note 2, 6, 1, 7
-	sound_loop 5, Sfx_SweetScent2_branch_f1bd2
+	sound_loop 5, .branch_f1bd2
 	noise_note 4, 9, -1, 0
 	noise_note 10, 6, 1, 0
 	noise_note 6, 5, -1, 0
@@ -5403,17 +5396,17 @@ SECTION "Sfx_HitEndOfExpBar", ROMX
 
 Sfx_HitEndOfExpBar::
 	channel_count 2
-	channel 5, Sfx_HitEndOfExpBar_Ch5
-	channel 6, Sfx_HitEndOfExpBar_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_HitEndOfExpBar_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 1, 14, 1, 1929
 	square_note 1, 14, 1, 1954
 	square_note 16, 14, 1, 1969
 	sound_ret
 
-Sfx_HitEndOfExpBar_Ch6:
+.Ch6:
 	duty_cycle 2
 	square_note 1, 14, 1, 1954
 	square_note 1, 14, 1, 1969
@@ -5425,9 +5418,9 @@ SECTION "Sfx_GiveTrademon", ROMX
 
 Sfx_GiveTrademon::
 	channel_count 1
-	channel 5, Sfx_GiveTrademon_Ch5
+	channel 5, .Ch5
 
-Sfx_GiveTrademon_Ch5:
+.Ch5:
 	square_note 32, 0, 0, 0
 	duty_cycle 1
 	pitch_sweep 10, 7
@@ -5447,9 +5440,9 @@ SECTION "Sfx_GetTrademon", ROMX
 
 Sfx_GetTrademon::
 	channel_count 1
-	channel 5, Sfx_GetTrademon_Ch5
+	channel 5, .Ch5
 
-Sfx_GetTrademon_Ch5:
+.Ch5:
 	square_note 32, 0, 0, 0
 	duty_cycle 2
 	pitch_sweep 11, -7
@@ -5469,14 +5462,14 @@ SECTION "Sfx_TrainArrived", ROMX
 
 Sfx_TrainArrived::
 	channel_count 3
-	channel 5, Sfx_TrainArrived_Ch5
-	channel 6, Sfx_TrainArrived_Ch6
-	channel 8, Sfx_TrainArrived_Ch8
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
-Sfx_TrainArrived_Ch6:
+.Ch6:
 	pitch_offset 8
 	square_note 8, 0, 0, 0
-Sfx_TrainArrived_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 4, 5, -7, 1681
 	square_note 4, 6, -7, 1684
@@ -5487,7 +5480,7 @@ Sfx_TrainArrived_Ch5:
 	square_note 104, 6, 5, 1704
 	sound_ret
 
-Sfx_TrainArrived_Ch8:
+.Ch8:
 	noise_note 5, 10, -7, 16
 	noise_note 4, 9, -7, 32
 	noise_note 4, 8, -7, 33
@@ -5503,17 +5496,17 @@ SECTION "Sfx_2Boops", ROMX
 
 Sfx_2Boops::
 	channel_count 1
-	channel 5, Sfx_2Boops_Ch5
+	channel 5, .Ch5
 
-Sfx_2Boops_Ch5:
+.Ch5:
 	duty_cycle 2
-Sfx_2Boops_branch_f1cb9:
+.branch_f1cb9:
 	pitch_sweep 7, -1
 	square_note 1, 9, -1, 1379
 	square_note 4, 15, 2, 1205
 	pitch_sweep 4, 3
 	square_note 16, 15, 8, 1485
-	sound_loop 2, Sfx_2Boops_branch_f1cb9
+	sound_loop 2, .branch_f1cb9
 	pitch_sweep 0, 8
 	sound_ret
 
@@ -5522,9 +5515,9 @@ SECTION "Sfx_IntroWhoosh", ROMX
 
 Sfx_IntroWhoosh::
 	channel_count 1
-	channel 8, Sfx_IntroWhoosh_Ch8
+	channel 8, .Ch8
 
-Sfx_IntroWhoosh_Ch8:
+.Ch8:
 	noise_note 1, 1, 0, 16
 	noise_note 2, 2, 0, 16
 	noise_note 2, 3, 0, 32
@@ -5541,9 +5534,9 @@ SECTION "Sfx_StopSlot", ROMX
 
 Sfx_StopSlot::
 	channel_count 1
-	channel 5, Sfx_StopSlot_Ch5
+	channel 5, .Ch5
 
-Sfx_StopSlot_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 1, 15, 8, 1888
 	square_note 4, 8, 2, 1888
@@ -5554,9 +5547,9 @@ SECTION "Sfx_GlassTing", ROMX
 
 Sfx_GlassTing::
 	channel_count 1
-	channel 5, Sfx_GlassTing_Ch5
+	channel 5, .Ch5
 
-Sfx_GlassTing_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 32, 13, 1, 2012
 	sound_ret
@@ -5566,15 +5559,15 @@ SECTION "Sfx_GlassTing2", ROMX
 
 Sfx_GlassTing2::
 	channel_count 2
-	channel 5, Sfx_GlassTing2_Ch5
-	channel 6, Sfx_GlassTing2_Ch6
+	channel 5, .Ch5
+	channel 6, .Ch6
 
-Sfx_GlassTing2_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 16, 15, 1, 2012
 	sound_ret
 
-Sfx_GlassTing2_Ch6:
+.Ch6:
 	duty_cycle 2
 	square_note 16, 13, 1, 2013
 	sound_ret
@@ -5584,9 +5577,9 @@ SECTION "Sfx_IntroUnown1", ROMX
 
 Sfx_IntroUnown1::
 	channel_count 1
-	channel 5, Sfx_IntroUnown1_Ch5
+	channel 5, .Ch5
 
-Sfx_IntroUnown1_Ch5:
+.Ch5:
 	vibrato 1, 10, 3
 	duty_cycle 2
 	square_note 8, 3, -1, 1797
@@ -5598,9 +5591,9 @@ SECTION "Sfx_IntroUnown2", ROMX
 
 Sfx_IntroUnown2::
 	channel_count 1
-	channel 6, Sfx_IntroUnown2_Ch6
+	channel 6, .Ch6
 
-Sfx_IntroUnown2_Ch6:
+.Ch6:
 	vibrato 1, 7, 3
 	duty_cycle 2
 	square_note 8, 3, -1, 1880
@@ -5612,9 +5605,9 @@ SECTION "Sfx_IntroUnown3", ROMX
 
 Sfx_IntroUnown3::
 	channel_count 1
-	channel 7, Sfx_IntroUnown3_Ch7
+	channel 7, .Ch7
 
-Sfx_IntroUnown3_Ch7:
+.Ch7:
 	vibrato 1, 5, 3
 	square_note 3, 3, 2, 1986
 	square_note 3, 2, 2, 1986
@@ -5629,9 +5622,9 @@ SECTION "Sfx_DittoPopUp", ROMX
 
 Sfx_DittoPopUp::
 	channel_count 1
-	channel 5, Sfx_DittoPopUp_Ch5
+	channel 5, .Ch5
 
-Sfx_DittoPopUp_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 1, -6
 	square_note 3, 8, 2, 1792
@@ -5646,9 +5639,9 @@ SECTION "Sfx_DittoTransform", ROMX
 
 Sfx_DittoTransform::
 	channel_count 1
-	channel 5, Sfx_DittoTransform_Ch5
+	channel 5, .Ch5
 
-Sfx_DittoTransform_Ch5:
+.Ch5:
 	duty_cycle 1
 	pitch_sweep 2, 6
 	square_note 20, 3, -3, 1088
@@ -5662,9 +5655,9 @@ SECTION "Sfx_IntroSuicune1", ROMX
 
 Sfx_IntroSuicune1::
 	channel_count 1
-	channel 8, Sfx_IntroSuicune1_Ch8
+	channel 8, .Ch8
 
-Sfx_IntroSuicune1_Ch8:
+.Ch8:
 	noise_note 1, 5, 8, 89
 	noise_note 2, 9, 1, 35
 	sound_ret
@@ -5674,9 +5667,9 @@ SECTION "Sfx_IntroPichu", ROMX
 
 Sfx_IntroPichu::
 	channel_count 1
-	channel 5, Sfx_IntroPichu_Ch5
+	channel 5, .Ch5
 
-Sfx_IntroPichu_Ch5:
+.Ch5:
 	duty_cycle 3
 	pitch_sweep 4, -5
 	square_note 1, 8, 8, 1904
@@ -5690,9 +5683,9 @@ SECTION "Sfx_IntroSuicune2", ROMX
 
 Sfx_IntroSuicune2::
 	channel_count 1
-	channel 8, Sfx_IntroSuicune2_Ch8
+	channel 8, .Ch8
 
-Sfx_IntroSuicune2_Ch8:
+.Ch8:
 	noise_note 1, 10, 7, 49
 	noise_note 1, 9, 1, 0
 	noise_note 1, 9, 2, 33
@@ -5716,9 +5709,9 @@ SECTION "Sfx_IntroSuicune3", ROMX
 
 Sfx_IntroSuicune3::
 	channel_count 1
-	channel 8, Sfx_IntroSuicune3_Ch8
+	channel 8, .Ch8
 
-Sfx_IntroSuicune3_Ch8:
+.Ch8:
 	noise_note 1, 8, 8, 49
 	noise_note 8, 3, -1, 17
 	noise_note 4, 10, 4, 16
@@ -5731,9 +5724,9 @@ SECTION "Sfx_DittoBounce", ROMX
 
 Sfx_DittoBounce::
 	channel_count 1
-	channel 5, Sfx_DittoBounce_Ch5
+	channel 5, .Ch5
 
-Sfx_DittoBounce_Ch5:
+.Ch5:
 	duty_cycle 2
 	pitch_sweep 2, -4
 	square_note 2, 8, 2, 1200
@@ -5747,9 +5740,9 @@ SECTION "Sfx_IntroSuicune4", ROMX
 
 Sfx_IntroSuicune4::
 	channel_count 1
-	channel 8, Sfx_IntroSuicune4_Ch8
+	channel 8, .Ch8
 
-Sfx_IntroSuicune4_Ch8:
+.Ch8:
 	noise_note 1, 10, 1, 92
 	noise_note 0, 0, 0, 0
 	noise_note 1, 12, 1, 77
@@ -5768,9 +5761,9 @@ SECTION "Sfx_GameFreakPresents", ROMX
 
 Sfx_GameFreakPresents::
 	channel_count 1
-	channel 5, Sfx_GameFreakPresents_Ch5
+	channel 5, .Ch5
 
-Sfx_GameFreakPresents_Ch5:
+.Ch5:
 	toggle_sfx
 	duty_cycle 2
 	note_type 2, 11, 1
@@ -5797,14 +5790,14 @@ SECTION "Sfx_Tingle", ROMX
 
 Sfx_Tingle::
 	channel_count 1
-	channel 5, Sfx_Tingle_Ch5
+	channel 5, .Ch5
 
-Sfx_Tingle_Ch5:
+.Ch5:
 	toggle_sfx
 	duty_cycle 1
 	transpose 0, 11
 	note_type 1, 11, 1
-Sfx_Tingle_branch_17996c:
+.branch_17996c:
 	octave 5
 	note C_, 3
 	octave 6
@@ -5812,7 +5805,7 @@ Sfx_Tingle_branch_17996c:
 	octave 5
 	note C_, 3
 	rest 2
-	sound_loop 2, Sfx_Tingle_branch_17996c
+	sound_loop 2, .branch_17996c
 	note C_, 2
 	volume_envelope 10, 1
 	note G_, 13
@@ -5823,9 +5816,9 @@ SECTION "Sfx_TwoPcBeeps", ROMX
 
 Sfx_TwoPcBeeps::
 	channel_count 1
-	channel 5, Sfx_TwoPcBeeps_Ch5
+	channel 5, .Ch5
 
-Sfx_TwoPcBeeps_Ch5:
+.Ch5:
 	duty_cycle 2
 	square_note 2, 14, 8, 1986
 	square_note 2, 2, 8, 1986
@@ -5838,11 +5831,11 @@ SECTION "Sfx_4NoteDitty", ROMX
 
 Sfx_4NoteDitty::
 	channel_count 3
-	channel 5, Sfx_4NoteDitty_Ch5
-	channel 6, Sfx_4NoteDitty_Ch6
-	channel 7, Sfx_4NoteDitty_Ch7
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
 
-Sfx_4NoteDitty_Ch5:
+.Ch5:
 	toggle_sfx
 	duty_cycle 2
 	note_type 2, 14, 8
@@ -5867,14 +5860,14 @@ Sfx_4NoteDitty_Ch5:
 	note C_, 16
 	sound_ret
 
-Sfx_4NoteDitty_Ch6:
+.Ch6:
 	toggle_sfx
 	note_type 2, 11, 8
 	rest 9
 	rest 16
 	sound_ret
 
-Sfx_4NoteDitty_Ch7:
+.Ch7:
 	toggle_sfx
 	note_type 2, 11, 8
 	rest 9
@@ -5886,9 +5879,9 @@ SECTION "Sfx_Twinkle", ROMX
 
 Sfx_Twinkle::
 	channel_count 1
-	channel 5, Sfx_Twinkle_Ch5
+	channel 5, .Ch5
 
-Sfx_Twinkle_Ch5:
+.Ch5:
 	toggle_sfx
 	duty_cycle 0
 	transpose 0, 2

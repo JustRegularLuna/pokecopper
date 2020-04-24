@@ -17,6 +17,6 @@ INCLUDE "data/pokemon/cries.asm"
 INCLUDE "audio/cries.asm"
 
 
-INCLUDE "audio/songs.asm"
+INCLUDE "audio/music.asm"
 
 INCLUDE "audio/sfx.asm"
