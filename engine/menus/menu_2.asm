@@ -69,7 +69,7 @@ DisplayCoinCaseBalance:
 	ld de, CoinString
 	rst PlaceString
 	hlcoord 17, 1
-	ld de, ShowMoney_TerminatorString
+	ld de, EmptyString
 	rst PlaceString
 	ld de, wCoins
 	lb bc, 2, 4
@@ -99,8 +99,6 @@ MoneyString:
 	db "MONEY@"
 CoinString:
 	db "COIN@"
-ShowMoney_TerminatorString:
-	db "@"
 
 StartMenu_PrintSafariZoneStatus:
 	ld hl, wOptions

@@ -731,9 +731,7 @@ SellMenu:
 	farcall SelectQuantityToSell
 	call ExitMenu
 	jr c, .declined
-	hlcoord 1, 14
-	lb bc, 3, 18
-	call ClearBox
+	call ClearSpeechBox
 	ld hl, MartSellPriceText
 	call PrintTextboxText
 	call YesNoBox
@@ -745,9 +743,7 @@ SellMenu:
 	ld hl, wNumItems
 	call TossItem
 	predef PartyMonItemName
-	hlcoord 1, 14
-	lb bc, 3, 18
-	call ClearBox
+	call ClearSpeechBox
 	ld hl, MartBoughtText
 	call PrintTextboxText
 	call PlayTransactionSound

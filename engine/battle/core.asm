@@ -5169,7 +5169,7 @@ MoveSelectionScreen:
 	dec a
 	jr nz, .interpret_joypad
 	hlcoord 11, 14
-	ld de, .string_3e61c
+	ld de, EmptyString
 	rst PlaceString
 	jr .interpret_joypad
 
@@ -5260,9 +5260,6 @@ MoveSelectionScreen:
 	call StdBattleTextbox
 	call SafeLoadTempTilemapToTilemap
 	jp MoveSelectionScreen
-
-.string_3e61c
-	db "@"
 
 .pressed_up
 	ld a, [wMenuCursorY]

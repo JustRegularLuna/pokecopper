@@ -20,9 +20,7 @@ Bankswitch::
 DoNothing::
 	ret
 
-_de_::
-	push de
-	ret
+	ds 2 ; unused
 
 SECTION "rst18 AddNTimes", ROM0[$0018]
 AddNTimes::

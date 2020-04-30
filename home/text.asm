@@ -1,3 +1,8 @@
+ClearSpeechBox::
+	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
+	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
+	; fallthrough
+
 ClearBox::
 ; Fill a c*b box at hl with blank tiles.
 	ld a, " "
@@ -19,9 +24,15 @@ FillBoxWithByte::
 	jr nz, .row
 	ret
 
+ClearScreen::
+	ld a, PAL_BG_TEXT
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	rst ByteFill
+	; fallthrough
+
 ClearTilemap::
 ; Fill wTilemap with blank tiles.
-
 	hlcoord 0, 0
 	ld a, " "
 	ld bc, wTilemapEnd - wTilemap
@@ -33,12 +44,11 @@ ClearTilemap::
 	ret z
 	jp WaitBGMap
 
-ClearScreen::
-	ld a, PAL_BG_TEXT
-	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	rst ByteFill
-	jr ClearTilemap
+SpeechTextbox::
+; Standard textbox.
+	hlcoord TEXTBOX_X, TEXTBOX_Y
+	lb bc, TEXTBOX_INNERH, TEXTBOX_INNERW
+	; fallthrough
 
 Textbox::
 ; Draw a text box at hl with room for b lines of c characters each.
@@ -49,7 +59,18 @@ Textbox::
 	call TextboxBorder
 	pop hl
 	pop bc
-	jr TextboxPalette
+	; fallthrough
+
+TextboxPalette::
+; Fill text box width c height b at hl with pal 7
+	ld de, wAttrmap - wTilemap
+	add hl, de
+	inc b
+	inc b
+	inc c
+	inc c
+	ld a, PAL_BG_TEXT
+	jr FillBoxWithByte
 
 TextboxBorder::
 	; Top
@@ -97,54 +118,28 @@ TextboxBorder::
 	jr nz, .loop
 	ret
 
-TextboxPalette::
-; Fill text box width c height b at hl with pal 7
-	ld de, wAttrmap - wTilemap
-	add hl, de
-	inc b
-	inc b
-	inc c
-	inc c
-	ld a, PAL_BG_TEXT
-.col
-	push bc
-	push hl
-.row
-	ld [hli], a
-	dec c
-	jr nz, .row
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	pop bc
-	dec b
-	jr nz, .col
-	ret
-
-SpeechTextbox::
-; Standard textbox.
-	hlcoord TEXTBOX_X, TEXTBOX_Y
-	lb bc, TEXTBOX_INNERH, TEXTBOX_INNERW
-	jp Textbox
-
-RadioTerminator::
-	ld hl, .stop
-	ret
-
-.stop:
-	text_end
-
 PrintText::
 	call SetUpTextbox
 	push hl
-	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
-	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
-	call ClearBox
+	call ClearSpeechBox
 	pop hl
+	; fallthrough
 
 PrintTextboxText::
 	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY
-	jp PlaceHLTextAtBC
+	; fallthrough
+
+PlaceHLTextAtBC::
+	ld a, [wTextboxFlags]
+	push af
+	set NO_TEXT_DELAY_F, a
+	ld [wTextboxFlags], a
+
+	call DoTextUntilTerminator
+
+	pop af
+	ld [wTextboxFlags], a
+	ret
 
 SetUpTextbox::
 	push hl
@@ -156,6 +151,7 @@ SetUpTextbox::
 
 _PlaceString::
 	push hl
+	; fallthrough
 
 PlaceNextChar::
 	ld a, [de]
@@ -166,10 +162,11 @@ PlaceNextChar::
 	pop hl
 	ret
 	pop de
+	; fallthrough
 
 NextChar::
 	inc de
-	jp PlaceNextChar
+	jr PlaceNextChar
 
 CheckDict::
 dict: MACRO
@@ -184,9 +181,6 @@ if STRSUB("\2", 1, 1) == "\""
 	jr nz, ._\@
 	ld a, \2
 ._\@:
-elif STRSUB("\2", 1, 1) == "."
-; Locals can use a short jump
-	jr z, \2
 else
 	jp z, \2
 endc
@@ -215,18 +209,6 @@ ENDM
 	call PrintLetterDelay
 	jp NextChar
 
-print_name: MACRO
-	push de
-	ld de, \1
-	jp PlaceCommandCharacter
-ENDM
-
-PrintMomsName:   print_name wMomsName
-PrintPlayerName: print_name wPlayerName
-PrintRivalName:  print_name wRivalName
-
-PlacePOKe: print_name PlacePOKeText
-
 PlaceMoveTargetsName::
 	ldh a, [hBattleTurn]
 	xor 1
@@ -234,16 +216,13 @@ PlaceMoveTargetsName::
 
 PlaceMoveUsersName::
 	ldh a, [hBattleTurn]
+	; fallthrough
 
 .place:
 	push de
-	and a
-	jr nz, .enemy
-
 	ld de, wBattleMonNick
-	jr PlaceCommandCharacter
-
-.enemy
+	and a
+	jr z, PlaceCommandCharacter
 	ld de, EnemyText
 	rst PlaceString
 	ld h, b
@@ -253,13 +232,13 @@ PlaceMoveUsersName::
 
 PlaceEnemysName::
 	push de
+	ld de, wOTClassName
 
 	ld a, [wLinkMode]
 	and a
-	jr nz, .linkbattle
+	jr nz, PlaceCommandCharacter
 
 	ld a, [wTrainerClass]
-	ld de, wOTClassName
 	rst PlaceString
 	ld h, b
 	ld l, c
@@ -271,8 +250,24 @@ PlaceEnemysName::
 	ld de, wStringBuffer1
 	jr PlaceCommandCharacter
 
-.linkbattle
-	ld de, wOTClassName
+PrintMomsName:
+	push de
+	ld de, wMomsName
+	jr PlaceCommandCharacter
+
+PrintPlayerName:
+	push de
+	ld de, wPlayerName
+	jr PlaceCommandCharacter
+
+PrintRivalName:
+	push de
+	ld de, wRivalName
+	jr PlaceCommandCharacter
+
+PlacePOKe:
+	push de
+	ld de, PlacePOKeText
 	; fallthrough
 
 PlaceCommandCharacter::
@@ -283,8 +278,9 @@ PlaceCommandCharacter::
 	jp NextChar
 
 PlacePOKeText:: db "POKé@"
-EnemyText::     db "Enemy @"
-String_Space::  db " @"
+EnemyText::     db "Enemy" ; fallthrough to " @"
+String_Space::  db " " ; fallthrough to "@"
+EmptyString::   db "@"
 
 NextLineChar::
 	pop hl
@@ -308,18 +304,12 @@ LineChar::
 
 Paragraph::
 	push de
-
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jr z, .linkbattle
-	call LoadBlinkingCursor
-
-.linkbattle
+	call nz, LoadBlinkingCursor
 	call Text_WaitBGMap
 	call PromptButton
-	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
-	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
-	call ClearBox
+	call ClearSpeechBox
 	call UnloadBlinkingCursor
 	ld c, 20
 	call DelayFrames
@@ -330,16 +320,11 @@ Paragraph::
 ContText::
 	ld a, [wLinkMode]
 	or a
-	jr nz, .communication
-	call LoadBlinkingCursor
-
-.communication
+	call z, LoadBlinkingCursor
 	call Text_WaitBGMap
-
 	push de
 	call PromptButton
 	pop de
-
 	ld a, [wLinkMode]
 	or a
 	call z, UnloadBlinkingCursor
@@ -356,25 +341,23 @@ ContTextNoPause::
 PromptText::
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jr z, .ok
-	call LoadBlinkingCursor
-
-.ok
+	call nz, LoadBlinkingCursor
 	call Text_WaitBGMap
 	call PromptButton
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jr z, DoneText
-	call UnloadBlinkingCursor
+	call nz, UnloadBlinkingCursor
+	; fallthrough
 
 DoneText::
 	pop hl
-	ld de, .stop
-	dec de
+	ld de, EmptyString - 1
 	ret
 
-.stop:
-	text_end
+RadioTerminator::
+PokeFluteTerminatorCharacter::
+	ld hl, EmptyString
+	ret
 
 NullChar::
 	ld a, "?"
@@ -450,25 +433,6 @@ FarString::
 	rst Bankswitch
 	ret
 
-PokeFluteTerminatorCharacter::
-	ld hl, .stop
-	ret
-
-.stop:
-	text_end
-
-PlaceHLTextAtBC::
-	ld a, [wTextboxFlags]
-	push af
-	set NO_TEXT_DELAY_F, a
-	ld [wTextboxFlags], a
-
-	call DoTextUntilTerminator
-
-	pop af
-	ld [wTextboxFlags], a
-	ret
-
 DoTextUntilTerminator::
 	ld a, [hli]
 	cp TX_END
@@ -477,6 +441,8 @@ DoTextUntilTerminator::
 	jr DoTextUntilTerminator
 
 .TextCommand:
+	cp TX_FAR + 1
+	jr nc, StartedText
 	push hl
 	push bc
 	ld c, a
@@ -489,8 +455,7 @@ DoTextUntilTerminator::
 	ld d, [hl]
 	pop bc
 	pop hl
-
-	; jp de
+_de_::
 	push de
 	ret
 
@@ -520,6 +485,8 @@ TextCommands::
 	dw TextCommand_DAY                ; TX_DAY
 	dw TextCommand_FAR                ; TX_FAR
 
+StartedText:
+	dec hl
 TextCommand_START::
 ; text_start
 ; write text until "@"
@@ -636,14 +603,6 @@ TextCommand_BOX::
 	pop hl
 	ret
 
-TextCommand_LOW::
-; text_low
-; write text at (1,16)
-; [$05]
-
-	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
-	ret
-
 TextCommand_PROMPT_BUTTON::
 ; text_promptbutton
 ; wait for button press
@@ -652,7 +611,7 @@ TextCommand_PROMPT_BUTTON::
 
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jp z, TextCommand_LINK_PROMPT_BUTTON
+	jr z, TextCommand_LINK_PROMPT_BUTTON
 
 	push hl
 	call LoadBlinkingCursor
@@ -660,6 +619,17 @@ TextCommand_PROMPT_BUTTON::
 	call PromptButton
 	pop bc
 	call UnloadBlinkingCursor
+	pop hl
+	ret
+
+TextCommand_LINK_PROMPT_BUTTON::
+; text_linkpromptbutton
+; wait for key down
+; display arrow
+	push hl
+	push bc
+	call PromptButton
+	pop bc
 	pop hl
 	ret
 
@@ -672,6 +642,13 @@ TextCommand_SCROLL::
 	call TextScroll
 	call TextScroll
 	pop hl
+	; fallthrough
+
+TextCommand_LOW::
+; text_low
+; write text at (1,16)
+; [$05]
+
 	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	ret
 
@@ -797,17 +774,6 @@ TextCommand_DOTS::
 
 	ld b, h
 	ld c, l
-	pop hl
-	ret
-
-TextCommand_LINK_PROMPT_BUTTON::
-; text_linkpromptbutton
-; wait for key down
-; display arrow
-	push hl
-	push bc
-	call PromptButton
-	pop bc
 	pop hl
 	ret
 

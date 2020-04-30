@@ -376,7 +376,7 @@ _HallOfFamePC:
 	hlcoord 11, 2
 
 .finish
-	ld de, .EmptyString
+	ld de, EmptyString
 	rst PlaceString
 	call WaitBGMap
 	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
@@ -385,9 +385,6 @@ _HallOfFamePC:
 	call HOF_PlayCry
 	and a
 	ret
-
-.EmptyString:
-	db "@"
 
 .HOFMaster:
 	db "    HOF Master!@"
