@@ -33,7 +33,7 @@ _UnownPuzzle:
 	hlcoord 4, 3
 	lb bc, 12, 12
 	ld a, PUZZLE_VOID
-	call UnownPuzzle_FillBox
+	call FillBoxWithByte
 	call InitUnownPuzzlePiecePositions
 	call UnownPuzzle_UpdateTilemap
 	call PlaceStartCancelBox
@@ -330,22 +330,6 @@ UnownPuzzle_InvalidAction:
 	ld de, SFX_WRONG
 	call PlaySFX
 	jp WaitSFX
-
-UnownPuzzle_FillBox:
-	ld de, SCREEN_WIDTH
-.row
-	push bc
-	push hl
-.col
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop hl
-	add hl, de
-	pop bc
-	dec b
-	jr nz, .row
-	ret
 
 UnownPuzzle_UpdateTilemap:
 	xor a

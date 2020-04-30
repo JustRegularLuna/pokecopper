@@ -292,20 +292,17 @@ DSTChecks:
 	; fallthrough
 
 .LostBooklet:
-	call ClearSpeechBox
-	bccoord 1, 14
+	call .ClearBox
 	ld hl, .TimesetAskAdjustDSTText
 	call PlaceHLTextAtBC
 	call YesNoBox
 	ret c
-	call ClearSpeechBox
-	bccoord 1, 14
+	call .ClearBox
 	ld hl, .MomLostGearBookletText
 	jp PlaceHLTextAtBC
 
 .loop
-	call ClearSpeechBox
-	bccoord 1, 14
+	call .ClearBox
 	ld a, [wDST]
 	bit 7, a
 	jr z, .SetDST
@@ -317,8 +314,7 @@ DSTChecks:
 	res 7, a
 	ld [wDST], a
 	call .SetClockBack
-	call ClearSpeechBox
-	bccoord 1, 14
+	call .ClearBox
 	ld hl, .TimesetNotDSTText
 	jp PlaceHLTextAtBC
 
@@ -331,8 +327,7 @@ DSTChecks:
 	set 7, a
 	ld [wDST], a
 	call .SetClockForward
-	call ClearSpeechBox
-	bccoord 1, 14
+	call .ClearBox
 	ld hl, .TimesetDSTText
 	jp PlaceHLTextAtBC
 
@@ -363,6 +358,11 @@ DSTChecks:
 	add 7
 .DontLoopDayBack:
 	ld [wStartDay], a
+	ret
+
+.ClearBox:
+	call ClearSpeechBox
+	bccoord 1, 14
 	ret
 
 .TimesetAskAdjustDSTText:

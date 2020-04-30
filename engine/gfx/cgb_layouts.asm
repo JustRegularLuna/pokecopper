@@ -89,23 +89,23 @@ _CGB_FinishBattleScreenLayout:
 	hlcoord 0, 4, wAttrmap
 	lb bc, 8, 10
 	ld a, PAL_BATTLE_BG_PLAYER
-	call FillBoxCGB
+	call FillBoxWithByte
 	hlcoord 10, 0, wAttrmap
 	lb bc, 7, 10
 	ld a, PAL_BATTLE_BG_ENEMY
-	call FillBoxCGB
+	call FillBoxWithByte
 	hlcoord 0, 0, wAttrmap
 	lb bc, 4, 10
 	ld a, PAL_BATTLE_BG_ENEMY_HP
-	call FillBoxCGB
+	call FillBoxWithByte
 	hlcoord 10, 7, wAttrmap
 	lb bc, 5, 10
 	ld a, PAL_BATTLE_BG_PLAYER_HP
-	call FillBoxCGB
+	call FillBoxWithByte
 	hlcoord 10, 11, wAttrmap
 	lb bc, 1, 9
 	ld a, PAL_BATTLE_BG_PLAYER_HP ; PAL_BATTLE_BG_EXP originally. Shared HP color on SGB.
-	call FillBoxCGB
+	call FillBoxWithByte
 	hlcoord 0, 12, wAttrmap
 	ld bc, 6 * SCREEN_WIDTH
 	ld a, PAL_BATTLE_BG_TEXT
@@ -178,7 +178,7 @@ _CGB_StatsScreenHPPals:
 	hlcoord 0, 0, wAttrmap
 	lb bc, 8, SCREEN_WIDTH
 	ld a, $1 ; mon palette
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 10, 16, wAttrmap
 	ld bc, 10
@@ -188,7 +188,7 @@ _CGB_StatsScreenHPPals:
 	hlcoord 13, 5, wAttrmap
 	lb bc, 2, 6
 	ld a, $3 ; pages palette
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	call ApplyAttrmap
 	call ApplyPals
@@ -217,7 +217,7 @@ _CGB_Pokedex:
 	hlcoord 1, 1, wAttrmap
 	lb bc, 7, 7
 	ld a, $1 ; green question mark palette
-	call FillBoxCGB
+	call FillBoxWithByte
 	call InitPartyMenuOBPals
 	ld a, PAL_REDMON
 	call GetPredefPal
@@ -251,7 +251,7 @@ _CGB_BillsPC:
 	hlcoord 1, 4, wAttrmap
 	lb bc, 7, 7
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 	call InitPartyMenuOBPals
 	call ApplyAttrmap
 	call ApplyPals
@@ -271,7 +271,7 @@ _CGB_PokedexUnownMode:
 	hlcoord 7, 5, wAttrmap
 	lb bc, 7, 7
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 	call InitPartyMenuOBPals
 	call ApplyAttrmap
 	call ApplyPals
@@ -300,27 +300,27 @@ _CGB_SlotMachine:
 	hlcoord 0, 2, wAttrmap
 	lb bc, 10, 3
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 	hlcoord 17, 2, wAttrmap
 	lb bc, 10, 3
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 	hlcoord 0, 4, wAttrmap
 	lb bc, 6, 3
 	ld a, $2
-	call FillBoxCGB
+	call FillBoxWithByte
 	hlcoord 17, 4, wAttrmap
 	lb bc, 6, 3
 	ld a, $2
-	call FillBoxCGB
+	call FillBoxWithByte
 	hlcoord 0, 6, wAttrmap
 	lb bc, 2, 3
 	ld a, $3
-	call FillBoxCGB
+	call FillBoxWithByte
 	hlcoord 17, 6, wAttrmap
 	lb bc, 2, 3
 	ld a, $3
-	call FillBoxCGB
+	call FillBoxWithByte
 	call ApplyAttrmap
 	call ApplyPals
 	ld a, $1
@@ -506,7 +506,7 @@ _CGB_TrainerCard:
 	hlcoord 14, 1, wAttrmap
 	lb bc, 7, 5
 	ld a, $2
-	call FillBoxCGB
+	call FillBoxWithByte
 	; top-right corner still uses the border's palette
 	hlcoord  0, 0, wAttrmap
 	ld a, [hl]
@@ -515,7 +515,7 @@ _CGB_TrainerCard:
 	hlcoord 2, 10, wAttrmap
 	lb bc, 6, 16
 	ld a, $2 ; trainer faces
-	call FillBoxCGB
+	call FillBoxWithByte
 	call ApplyAttrmap
 	call ApplyPals
 	ld a, $1
@@ -535,7 +535,7 @@ _CGB_MoveList:
 	hlcoord 11, 1, wAttrmap
 	lb bc, 2, 9
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 	call ApplyAttrmap
 	call ApplyPals
 	ld a, $1
@@ -597,7 +597,7 @@ _CGB_Pokepic:
 	inc a
 	ld c, a
 	xor a
-	call FillBoxCGB
+	call FillBoxWithByte
 	jp ApplyAttrmap
 
 _CGB_GamefreakLogo:

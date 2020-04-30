@@ -1357,12 +1357,10 @@ Function28926:
 	call SafeLoadTempTilemapToTilemap
 	hlcoord 6, 1
 	lb bc, 6, 1
-	ld a, " "
-	call LinkEngine_FillBox
+	call ClearBox
 	hlcoord 17, 1
 	lb bc, 6, 1
-	ld a, " "
-	call LinkEngine_FillBox
+	call ClearBox
 	jp LinkTrade_PlayerPartyMenu
 
 .try_trade
@@ -1509,22 +1507,6 @@ Function28b68:
 	ld bc, SCREEN_WIDTH
 	rst AddNTimes
 	ld [hl], "▷"
-	ret
-
-LinkEngine_FillBox:
-.row
-	push bc
-	push hl
-.col
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .row
 	ret
 
 LinkTrade:

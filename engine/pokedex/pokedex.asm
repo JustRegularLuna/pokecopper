@@ -1360,8 +1360,7 @@ Pokedex_PrintListing:
 	inc a
 	ld b, a
 	ld c, 11
-	ld a, " "
-	call Pokedex_FillBox
+	call ClearBox
 
 ; Load de with wPokedexOrder + [wDexListingScrollOffset]
 	ld a, [wDexListingScrollOffset]
@@ -1708,8 +1707,7 @@ Pokedex_PlaceSearchScreenTypeStrings:
 	ldh [hBGMapMode], a
 	hlcoord 9, 3
 	lb bc, 4, 8
-	ld a, " "
-	call Pokedex_FillBox
+	call ClearBox
 	ld a, [wDexSearchMonType1]
 	hlcoord 9, 4
 	call Pokedex_PlaceTypeString
@@ -2157,9 +2155,6 @@ Pokedex_ArrowCursorDelay:
 	dec [hl]
 	scf
 	ret
-
-Pokedex_FillBox:
-	jp FillBoxWithByte
 
 Pokedex_BlackOutBG:
 ; Make BG palettes black so that the BG becomes all black.

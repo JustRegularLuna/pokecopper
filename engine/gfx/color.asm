@@ -139,7 +139,7 @@ ApplyHPBarPals:
 .done
 	lb bc, 2, 8
 	ld a, e
-	jp FillBoxCGB
+	jp FillBoxWithByte
 
 LoadMailPalettes:
 	ld l, e
@@ -227,22 +227,6 @@ LoadHLPaletteIntoDE:
 	jr nz, .loop
 	pop af
 	ldh [rSVBK], a
-	ret
-
-FillBoxCGB:
-.row
-	push bc
-	push hl
-.col
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .row
 	ret
 
 ResetBGPals:
@@ -361,7 +345,7 @@ CGB_ApplyPartyMenuHPPals:
 .done
 	lb bc, 2, 8
 	ld a, e
-	jp FillBoxCGB
+	jp FillBoxWithByte
 
 InitPartyMenuOBPals:
 	ld de, wOBPals1
