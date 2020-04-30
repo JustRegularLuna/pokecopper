@@ -98,7 +98,6 @@ INCLUDE "engine/rtc/restart_clock.asm"
 
 SECTION "Engine 9", ROMX
 
-INCLUDE "data/text_buffers.asm"
 INCLUDE "engine/menus/menu.asm"
 INCLUDE "engine/items/update_item_description.asm"
 INCLUDE "engine/events/pokepic.asm"

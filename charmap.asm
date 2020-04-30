@@ -1,26 +1,33 @@
-; $00-$16 are TX_* constants (see macros/scripts/text.asm)
+; $00-$08 are TX_* constants (see macros/scripts/text.asm)
 
 ; Control characters (see home/text.asm)
 
-	charmap "<NULL>",    $00
-	charmap "¯",         $1f ; soft linebreak
-	charmap "<LF>",      $22
-	charmap "%",         $25 ; soft linebreak in landmark names
-	charmap "<ENEMY>",   $3f
-	charmap "<MOM>",     $49 ; wMomsName
+	; unused: $09-$49
+
+FIRST_CONTROL_CHAR EQU $4a
+
+	charmap "¯",         $4a ; soft linebreak
+	charmap "%",         $4b ; soft linebreak in landmark names
 	charmap "<SCROLL>",  $4c
+	charmap "<LF>",      $4d
 	charmap "<NEXT>",    $4e
 	charmap "<LINE>",    $4f
-	charmap "@",         $50 ; string terminator
+	charmap "@",         $50 ; string terminator (has to be $50 for Time Capsule)
 	charmap "<PARA>",    $51
 	charmap "<PLAYER>",  $52 ; wPlayerName
 	charmap "<RIVAL>",   $53 ; wRivalName
-	charmap "#",         $54 ; "POKé"
-	charmap "<CONT>",    $55
+	charmap "<MOM>",     $54 ; wMomsName
+	charmap "#",         $55 ; "POKé"
+	charmap "<CONT>",    $56
 	charmap "<DONE>",    $57
 	charmap "<PROMPT>",  $58
 	charmap "<TARGET>",  $59
 	charmap "<USER>",    $5a
+	charmap "<ENEMY>",   $5b
+
+LAST_CONTROL_CHAR EQU $5b
+
+	; unused: $5c-$7e
 
 ; Actual characters (from other graphics files)
 
@@ -98,6 +105,8 @@
 
 	charmap "■",         $c0
 	charmap "☎",         $c1
+
+	; unused: $c2-$c9
 
 	charmap "<BOLD_P>",  $ca ; PP
 	charmap "⁂",         $cb ; shiny

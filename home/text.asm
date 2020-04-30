@@ -155,59 +155,60 @@ _PlaceString::
 
 PlaceNextChar::
 	ld a, [de]
-	cp "@"
-	jr nz, CheckDict
-	ld b, h
-	ld c, l
-	pop hl
-	ret
-	pop de
+	cp LAST_CONTROL_CHAR + 1
+	jr nc, PlaceLiteralCharacter
+	cp FIRST_CONTROL_CHAR
+	jr nc, PlaceControlCharacter
+	; this is actually a command character; we shouldn't be here
+
+SpaceChar:
+	ld a, " "
+	; fallthrough
+
+PlaceLiteralCharacter:
+	ld [hli], a
+	call PrintLetterDelay
 	; fallthrough
 
 NextChar::
 	inc de
 	jr PlaceNextChar
 
-CheckDict::
-dict: MACRO
-if \1 == "<NULL>"
-	and a
-else
-	cp \1
-endc
+PlaceControlCharacter:
+	sub FIRST_CONTROL_CHAR
+	push hl
+	add a
+	ld c, a
+	ld b, 0
+	ld hl, ControlCharacters
+	add hl, bc
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	pop hl
+_bc_::
+	push bc
+	ret
 
-if STRSUB("\2", 1, 1) == "\""
-; Replace a character with another one
-	jr nz, ._\@
-	ld a, \2
-._\@:
-else
-	jp z, \2
-endc
-ENDM
-
-	dict "<LINE>",    LineChar
-	dict "<NEXT>",    NextLineChar
-	dict "<NULL>",    NullChar
-	dict "<SCROLL>",  ContTextNoPause
-	dict "<PARA>",    Paragraph
-	dict "<MOM>",     PrintMomsName
-	dict "<PLAYER>",  PrintPlayerName
-	dict "<RIVAL>",   PrintRivalName
-	dict "#",         PlacePOKe
-	dict "<LF>",      LineFeedChar
-	dict "<CONT>",    ContText
-	dict "<DONE>",    DoneText
-	dict "<PROMPT>",  PromptText
-	dict "%",         NextChar
-	dict "¯",         " "
-	dict "<TARGET>",  PlaceMoveTargetsName
-	dict "<USER>",    PlaceMoveUsersName
-	dict "<ENEMY>",   PlaceEnemysName
-
-	ld [hli], a
-	call PrintLetterDelay
-	jp NextChar
+ControlCharacters:
+	dw SpaceChar            ; "¯"
+	dw NextChar             ; "%"
+	dw ContTextNoPause      ; "<SCROLL>"
+	dw LineFeedChar         ; "<LF>"
+	dw NextLineChar         ; "<NEXT>"
+	dw LineChar             ; "<LINE>"
+	dw FinishString         ; "@"
+	dw Paragraph            ; "<PARA>"
+	dw PrintPlayerName      ; "<PLAYER>"
+	dw PrintRivalName       ; "<RIVAL>"
+	dw PrintMomsName        ; "<MOM>"
+	dw PlacePOKe            ; "#"
+	dw ContText             ; "<CONT>"
+	dw DoneText             ; "<DONE>"
+	dw PromptText           ; "<PROMPT>"
+	dw PlaceMoveTargetsName ; "<TARGET>"
+	dw PlaceMoveUsersName   ; "<USER>"
+	dw PlaceEnemysName      ; "<ENEMY>"
 
 PlaceMoveTargetsName::
 	ldh a, [hBattleTurn]
@@ -351,6 +352,7 @@ PromptText::
 
 DoneText::
 	pop hl
+	assert TX_END == "@"
 	ld de, EmptyString - 1
 	ret
 
@@ -358,12 +360,6 @@ RadioTerminator::
 PokeFluteTerminatorCharacter::
 	ld hl, EmptyString
 	ret
-
-NullChar::
-	ld a, "?"
-	ld [hli], a
-	call PrintLetterDelay
-	jp NextChar
 
 TextScroll::
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
@@ -461,37 +457,21 @@ _de_::
 
 TextCommands::
 ; entries correspond to TX_* constants (see macros/scripts/text.asm)
-	dw TextCommand_START              ; TX_START
-	dw TextCommand_RAM                ; TX_RAM
-	dw TextCommand_BCD                ; TX_BCD
-	dw TextCommand_MOVE               ; TX_MOVE
-	dw TextCommand_BOX                ; TX_BOX
-	dw TextCommand_LOW                ; TX_LOW
-	dw TextCommand_PROMPT_BUTTON      ; TX_PROMPT_BUTTON
-	dw TextCommand_SCROLL             ; TX_SCROLL
-	dw TextCommand_START_ASM          ; TX_START_ASM
-	dw TextCommand_NUM                ; TX_NUM
-	dw TextCommand_PAUSE              ; TX_PAUSE
-	dw TextCommand_SOUND              ; TX_SOUND_DEX_FANFARE_50_79
-	dw TextCommand_DOTS               ; TX_DOTS
-	dw TextCommand_LINK_PROMPT_BUTTON ; TX_LINK_PROMPT_BUTTON
-	dw TextCommand_SOUND              ; TX_SOUND_DEX_FANFARE_20_49
-	dw TextCommand_SOUND              ; TX_SOUND_ITEM
-	dw TextCommand_SOUND              ; TX_SOUND_CAUGHT_MON
-	dw TextCommand_SOUND              ; TX_SOUND_DEX_FANFARE_80_109
-	dw TextCommand_SOUND              ; TX_SOUND_FANFARE
-	dw TextCommand_SOUND              ; TX_SOUND_SLOT_MACHINE_START
-	dw TextCommand_STRINGBUFFER       ; TX_STRINGBUFFER
-	dw TextCommand_DAY                ; TX_DAY
-	dw TextCommand_FAR                ; TX_FAR
+	dw TextCommand_START         ; TX_START
+	dw TextCommand_RAM           ; TX_RAM
+	dw TextCommand_PROMPT_BUTTON ; TX_PROMPT_BUTTON
+	dw TextCommand_START_ASM     ; TX_START_ASM
+	dw TextCommand_NUM           ; TX_NUM
+	dw TextCommand_PAUSE         ; TX_PAUSE
+	dw TextCommand_SOUND         ; TX_SOUND
+	dw TextCommand_DAY           ; TX_DAY
+	dw TextCommand_FAR           ; TX_FAR
 
 StartedText:
 	dec hl
 TextCommand_START::
 ; text_start
 ; write text until "@"
-; [$00]["...@"]
-
 	ld d, h
 	ld e, l
 	ld h, b
@@ -505,9 +485,6 @@ TextCommand_START::
 TextCommand_RAM::
 ; text_ram
 ; write text from a ram address
-; little endian
-; [$01][addr]
-
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -522,9 +499,6 @@ TextCommand_RAM::
 TextCommand_FAR::
 ; text_far
 ; write text from a different bank
-; little endian
-; [$16][addr][bank]
-
 	ldh a, [hROMBank]
 	push af
 
@@ -548,113 +522,25 @@ TextCommand_FAR::
 	ld [MBC3RomBank], a
 	ret
 
-TextCommand_BCD::
-; text_bcd
-; write bcd from address, typically ram
-; [$02][addr][flags]
-; flags: see PrintBCDNumber
-
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, [hli]
-	push hl
-	ld h, b
-	ld l, c
-	ld c, a
-	call PrintBCDNumber
-	ld b, h
-	ld c, l
-	pop hl
-	ret
-
-TextCommand_MOVE::
-; text_move
-; move to a new tile
-; [$03][addr]
-
-	ld a, [hli]
-	ld [wMenuScrollPosition + 2], a
-	ld c, a
-	ld a, [hli]
-	ld [wMenuScrollPosition + 2 + 1], a
-	ld b, a
-	ret
-
-TextCommand_BOX::
-; text_box
-; draw a box
-; little endian
-; [$04][addr][height][width]
-
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld c, a
-	push hl
-	ld h, d
-	ld l, e
-	call Textbox
-	pop hl
-	ret
-
 TextCommand_PROMPT_BUTTON::
 ; text_promptbutton
 ; wait for button press
 ; show arrow
-; [06]
-
+	push hl
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jr z, TextCommand_LINK_PROMPT_BUTTON
-
-	push hl
-	call LoadBlinkingCursor
+	call nz, LoadBlinkingCursor
 	push bc
 	call PromptButton
 	pop bc
-	call UnloadBlinkingCursor
+	ld a, [wLinkMode]
+	cp LINK_COLOSSEUM
+	call nz, UnloadBlinkingCursor
 	pop hl
-	ret
-
-TextCommand_LINK_PROMPT_BUTTON::
-; text_linkpromptbutton
-; wait for key down
-; display arrow
-	push hl
-	push bc
-	call PromptButton
-	pop bc
-	pop hl
-	ret
-
-TextCommand_SCROLL::
-; text_scroll
-; pushes text up two lines and sets the BC cursor to the border tile
-; below the first character column of the text box.
-	push hl
-	call UnloadBlinkingCursor
-	call TextScroll
-	call TextScroll
-	pop hl
-	; fallthrough
-
-TextCommand_LOW::
-; text_low
-; write text at (1,16)
-; [$05]
-
-	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	ret
 
 TextCommand_START_ASM::
 ; text_asm
-
 	bit 7, h
 	jr nz, .not_rom
 	jp hl
@@ -665,7 +551,6 @@ TextCommand_START_ASM::
 
 TextCommand_NUM::
 ; text_decimal
-; [$09][addr][hi:bytes lo:digits]
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -683,6 +568,7 @@ TextCommand_NUM::
 	set PRINTNUM_LEFTALIGN_F, a
 	ld b, a
 	call PrintNum
+FinishString:
 	ld b, h
 	ld c, l
 	pop hl
@@ -704,111 +590,22 @@ TextCommand_PAUSE::
 	ret
 
 TextCommand_SOUND::
-; chars:
-;   $0b, $0e, $0f, $10, $11, $12, $13
-; see TextSFX
-
+; text_sound
+	ld a, [hli]
+	push hl
+	push de
 	push bc
-	dec hl
-	ld a, [hli]
-	ld b, a
-	push hl
-	ld hl, TextSFX
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, .done
-	cp b
-	jr z, .play
-	inc hl
-	inc hl
-	jr .loop
-
-.play
-	push de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	call PlaySFX
-	call WaitSFX
-	pop de
-
-.done
-	pop hl
-	pop bc
-	ret
-
-TextSFX::
-	dbw TX_SOUND_DEX_FANFARE_50_79,  SFX_DEX_FANFARE_50_79
-	dbw TX_SOUND_FANFARE,            SFX_FANFARE
-	dbw TX_SOUND_DEX_FANFARE_20_49,  SFX_DEX_FANFARE_20_49
-	dbw TX_SOUND_ITEM,               SFX_ITEM
-	dbw TX_SOUND_CAUGHT_MON,         SFX_CAUGHT_MON
-	dbw TX_SOUND_DEX_FANFARE_80_109, SFX_DEX_FANFARE_80_109
-	dbw TX_SOUND_SLOT_MACHINE_START, SFX_SLOT_MACHINE_START
-	db -1
-
-TextCommand_DOTS::
-; text_dots
-; [$0C][num]
-	ld a, [hli]
-	ld d, a
-	push hl
-	ld h, b
-	ld l, c
-
-.loop
-	push de
-	ld a, "…"
-	ld [hli], a
-	call GetJoypad
-	ldh a, [hJoyDown]
-	and A_BUTTON | B_BUTTON
-	jr nz, .next
-	ld c, 10
-	call DelayFrames
-.next
-	pop de
-	dec d
-	jr nz, .loop
-
-	ld b, h
-	ld c, l
-	pop hl
-	ret
-
-TextCommand_STRINGBUFFER::
-; text_buffer
-; Print a string from one of the following:
-; 0: wStringBuffer3
-; 1: wStringBuffer4
-; 2: wStringBuffer5
-; 3: wStringBuffer2
-; 4: wStringBuffer1
-; 5: wEnemyMonNick
-; 6: wBattleMonNick
-; [$14][id]
-
-	ld a, [hli]
-	push hl
 	ld e, a
 	ld d, 0
-	ld hl, StringBufferPointers
-	add hl, de
-	add hl, de
-	ld a, BANK(StringBufferPointers)
-	call GetFarHalfword
-	ld d, h
-	ld e, l
-	ld h, b
-	ld l, c
-	rst PlaceString
+	call PlaySFX
+	call WaitSFX
+	pop bc
+	pop de
 	pop hl
 	ret
 
 TextCommand_DAY::
 ; text_today
-
 	call GetWeekday
 PrintDayOfWeek::
 	push hl

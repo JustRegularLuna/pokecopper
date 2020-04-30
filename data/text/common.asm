@@ -109,7 +109,7 @@ _GrewToLevelText::
 	line "level @"
 	text_decimal wCurPartyLevel, 1, 3
 	text "!@"
-	sound_dex_fanfare_50_79 ; plays SFX_DEX_FANFARE_50_79, identical to SFX_LEVEL_UP
+	text_sound SFX_LEVEL_UP
 	text_promptbutton
 	text_end
 
@@ -1057,7 +1057,7 @@ _ReceiveItemText::
 	line "@"
 	text_ram wStringBuffer1
 	text "!@"
-	sound_item
+	text_sound SFX_ITEM
 	text_promptbutton
 	text_end
 
@@ -1091,7 +1091,7 @@ Text_NPCTraded::
 
 SECTION "_NPCTradeFanfareText", ROMX
 _NPCTradeFanfareText::
-	sound_dex_fanfare_80_109
+	text_sound SFX_DEX_FANFARE_80_109
 	text_pause
 	text_end
 
@@ -2397,7 +2397,7 @@ _BreedEggHatchText::
 	text_ram wStringBuffer1
 	text " came"
 	line "out of its EGG!@"
-	sound_caught_mon
+	text_sound SFX_CAUGHT_MON
 	text_promptbutton
 	text_end
 
@@ -3959,7 +3959,7 @@ _LearnedMoveText::
 	line "@"
 	text_ram wStringBuffer2
 	text "!@"
-	sound_dex_fanfare_50_79
+	text_sound SFX_DEX_FANFARE_50_79
 	text_promptbutton
 	text_end
 
@@ -4144,7 +4144,7 @@ Text_BallCaught::
 	text_ram wEnemyMonNick
 	text_start
 	line "was caught!@"
-	sound_caught_mon
+	text_sound SFX_CAUGHT_MON
 	text_end
 
 SECTION "_WaitButtonText", ROMX
@@ -4165,7 +4165,7 @@ _NewDexDataText::
 	text "'s data"
 	line "was newly added to"
 	cont "the #DEX.@"
-	sound_slot_machine_start
+	text_sound SFX_SLOT_MACHINE_START
 	text_promptbutton
 	text_end
 
@@ -4263,7 +4263,7 @@ SECTION "_SentTrophyHomeText", ROMX
 _SentTrophyHomeText::
 	text "There was a trophy"
 	line "inside!@"
-	sound_dex_fanfare_50_79
+	text_sound SFX_DEX_FANFARE_50_79
 	text_start
 
 	para "@"
@@ -4316,8 +4316,8 @@ _BallBoxFullText::
 
 SECTION "_ItemUsedText", ROMX
 _ItemUsedText::
-	text "<PLAYER> used the@"
-	text_low
+	text "<PLAYER> used the"
+	line "@"
 	text_ram wStringBuffer2
 	text "."
 	done
