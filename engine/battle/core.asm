@@ -2648,7 +2648,7 @@ ForcePlayerMonChoice:
 
 	call ClearSprites
 	call ClearBGPalettes
-	call _LoadHPBar
+	call LoadFontsBattleExtra
 	call ExitMenu
 	call LoadTilemapToTempTilemap
 	call WaitBGMap
@@ -2669,7 +2669,7 @@ ForcePlayerMonChoice:
 	call ResetPlayerStatLevels
 	call ClearPalettes
 	call DelayFrame
-	call _LoadHPBar
+	call LoadFontsBattleExtra
 	call CloseWindow
 	call GetMemSGBLayout
 	call SetPalettes
@@ -3340,7 +3340,7 @@ OfferSwitch:
 	ld [wCurBattleMon], a
 	call ClearPalettes
 	call DelayFrame
-	call _LoadHPBar
+	call LoadFontsBattleExtra
 	pop af
 	ld [wCurPartyMon], a
 	xor a
@@ -3352,7 +3352,7 @@ OfferSwitch:
 .canceled_switch
 	call ClearPalettes
 	call DelayFrame
-	call _LoadHPBar
+	call LoadFontsBattleExtra
 
 .said_no
 	pop af
@@ -4394,7 +4394,7 @@ DrawPlayerHUD:
 	farcall DrawPlayerHUDBorder
 
 	hlcoord 18, 9
-	ld [hl], $73 ; vertical bar
+	ld [hl], $6d ; vertical bar
 	call PrintPlayerHUD
 
 	; HP bar
@@ -4754,7 +4754,7 @@ BattleMenu_Pack:
 .didnt_use_item
 	call ClearPalettes
 	call DelayFrame
-	call _LoadBattleFontsHPBar
+	call LoadFontsBattleExtra
 	call GetBattleMonBackpic
 	call GetEnemyMonFrontpic
 	call ExitMenu
@@ -4781,7 +4781,7 @@ BattleMenu_Pack:
 .ball
 	xor a
 	ldh [hBGMapMode], a
-	call _LoadBattleFontsHPBar
+	call LoadFontsBattleExtra
 	call ClearSprites
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
@@ -4850,7 +4850,7 @@ BattleMenuPKMN_Loop:
 	call ClearSprites
 	call ClearPalettes
 	call DelayFrame
-	call _LoadHPBar
+	call LoadFontsBattleExtra
 	call CloseWindow
 	call LoadTilemapToTempTilemap
 	call GetMemSGBLayout
@@ -4930,7 +4930,7 @@ TryPlayerSwitch:
 	call ClearPalettes
 	call DelayFrame
 	call ClearSprites
-	call _LoadHPBar
+	call LoadFontsBattleExtra
 	call CloseWindow
 	call GetMemSGBLayout
 	call SetPalettes
@@ -6625,14 +6625,6 @@ BoostStat:
 	ld [hld], a
 	ret
 
-_LoadBattleFontsHPBar:
-	farcall LoadBattleFontsHPBar
-	ret
-
-_LoadHPBar:
-	farcall LoadHPBar
-	ret
-
 EmptyBattleTextbox:
 	ld hl, .empty
 	jp BattleTextbox
@@ -7710,7 +7702,7 @@ PlaceExpBar:
 .next
 	add $8
 	jr z, .loop2
-	add $54 ; tile to the left of small exp bar tile
+	add $72 ; tile to the left of small exp bar tile
 	jr .skip
 
 .loop2
@@ -8560,7 +8552,7 @@ InitBattleDisplay:
 	lb bc, 3, 7
 	call ClearBox
 	call LoadStandardFont
-	call _LoadBattleFontsHPBar
+	call LoadFontsBattleExtra
 	call .BlankBGMap
 	xor a
 	ldh [hMapAnims], a
@@ -8640,7 +8632,7 @@ GetTrainerBackpic:
 .DudeBackpic:
 	ld hl, DudeBackpic
 	ld de, vTiles2 tile $31
-	lb bc, BANK(DudeBackpic), 7 * 7
+	lb bc, BANK(DudeBackpic), 6 * 6
 	predef_jump DecompressGet2bpp
 
 CopyBackpic:

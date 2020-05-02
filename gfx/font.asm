@@ -15,15 +15,6 @@ INCBIN "gfx/frames/7.1bpp"
 INCBIN "gfx/frames/8.1bpp"
 INCBIN "gfx/frames/9.1bpp"
 
-EnemyHPBarBorderGFX:
-INCBIN "gfx/battle/enemy_hp_bar_border.1bpp"
-
-HPExpBarBorderGFX:
-INCBIN "gfx/battle/hp_exp_bar_border.1bpp"
-
-ExpBarGFX:
-INCBIN "gfx/battle/expbar.2bpp"
-
 TextboxSpaceGFX:
 ; StatsScreen_LoadTextboxSpaceGFX reads 2bpp; LoadFrame reads first half as 1bpp
 INCBIN "gfx/font/space.2bpp"

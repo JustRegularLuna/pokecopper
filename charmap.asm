@@ -27,9 +27,13 @@ FIRST_CONTROL_CHAR EQU $4a
 
 LAST_CONTROL_CHAR EQU $5b
 
-	; unused: $5c-$7e
+	; unused: $5c-$5f
 
 ; Actual characters (from other graphics files)
+
+	; FontBattleExtra: $60-$7b (from gfx/font/font_battle_extra.png)
+
+	; unused: $7c-$7e
 
 	charmap " ",         $7f ; gfx/font/space.png
 

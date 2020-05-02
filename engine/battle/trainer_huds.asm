@@ -108,10 +108,10 @@ DrawPlayerHUDBorder:
 	jr PlaceHUDBorderTiles
 
 .tiles
-	db $73 ; right side
-	db $77 ; bottom right
-	db $6f ; bottom left
-	db $76 ; bottom side
+	db $6d ; right side
+	db $6f ; bottom right
+	db $72 ; bottom left
+	db $62 ; bottom side
 .tiles_end
 
 DrawPlayerPartyIconHUDBorder:
@@ -124,10 +124,10 @@ DrawPlayerPartyIconHUDBorder:
 	jr PlaceHUDBorderTiles
 
 .tiles
-	db $73 ; right side
-	db $5c ; bottom right
-	db $6f ; bottom left
-	db $76 ; bottom side
+	db $6d ; right side
+	db $6e ; bottom right
+	db $72 ; bottom left
+	db $62 ; bottom side
 .tiles_end
 
 DrawEnemyHUDBorder:
@@ -146,14 +146,14 @@ DrawEnemyHUDBorder:
 	call CheckCaughtMon
 	ret z
 	hlcoord 1, 1
-	ld [hl], $5d
+	ld [hl], $7b
 	ret
 
 .tiles
-	db $6d ; left side
-	db $74 ; bottom left
-	db $78 ; bottom right
-	db $76 ; bottom side
+	db $70 ; left side
+	db $71 ; bottom left
+	db $7a ; bottom right
+	db $62 ; bottom side
 .tiles_end
 
 PlaceHUDBorderTiles:

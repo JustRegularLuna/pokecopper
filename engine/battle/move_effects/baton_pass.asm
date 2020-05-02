@@ -23,7 +23,7 @@ BattleCommand_BatonPass:
 
 ; Return to battle scene
 	call ClearPalettes
-	farcall _LoadBattleFontsHPBar
+	call LoadFontsBattleExtra
 	call CloseWindow
 	call ClearSprites
 	hlcoord 1, 0

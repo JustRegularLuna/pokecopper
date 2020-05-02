@@ -25,7 +25,6 @@ StatsScreenInit:
 	call ClearTilemap
 	call UpdateSprites
 	call LoadFontsBattleExtra
-	farcall LoadHPBar
 	ld de, StatsScreenPageTilesGFX
 	ld hl, vTiles2 tile $31
 	lb bc, BANK(StatsScreenPageTilesGFX), 10

@@ -21,7 +21,7 @@ _LoadStandardFont::
 _LoadFontsBattleExtra::
 	ld de, FontBattleExtra
 	ld hl, vTiles2 tile $60
-	lb bc, BANK(FontBattleExtra), 25
+	lb bc, BANK(FontBattleExtra), 28
 	call Get2bpp_2
 	; fallthrough
 
@@ -40,24 +40,3 @@ LoadFrame::
 	ld de, TextboxSpaceGFX
 	lb bc, BANK(TextboxSpaceGFX), 1
 	jp Get1bpp_2
-
-LoadBattleFontsHPBar:
-	ld de, FontBattleExtra
-	ld hl, vTiles2 tile $60
-	lb bc, BANK(FontBattleExtra), 12 ; HP bar tiles
-	call Get2bpp_2
-	call LoadFrame
-
-LoadHPBar:
-	ld de, EnemyHPBarBorderGFX
-	ld hl, vTiles2 tile $6c
-	lb bc, BANK(EnemyHPBarBorderGFX), 4
-	call Get1bpp_2
-	ld de, HPExpBarBorderGFX
-	ld hl, vTiles2 tile $73
-	lb bc, BANK(HPExpBarBorderGFX), 6
-	call Get1bpp_2
-	ld de, ExpBarGFX
-	ld hl, vTiles2 tile $55
-	lb bc, BANK(ExpBarGFX), 9
-	jp Get2bpp_2

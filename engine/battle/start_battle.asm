@@ -16,7 +16,7 @@ FindFirstAliveMonAndStartBattle:
 	ldh [hMapAnims], a
 	call DelayFrame
 	predef DoBattleTransition
-	farcall _LoadBattleFontsHPBar
+	call LoadFontsBattleExtra
 	ld a, 1
 	ldh [hBGMapMode], a
 	call ClearSprites

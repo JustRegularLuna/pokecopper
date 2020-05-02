@@ -176,6 +176,8 @@ gfx/sprites/big_onix.2bpp: tools/gfx += --remove-whitespace --remove-xflip
 
 gfx/battle/dude.2bpp: rgbgfx += -h
 
+gfx/font/font_battle_extra.2bpp: tools/gfx += --trim-whitespace
+
 gfx/sgb/sgb_border.2bpp: tools/gfx += --trim-whitespace
 gfx/sgb/sgb_border.sgb.tilemap: gfx/sgb/sgb_border.bin ; tr < $< -d '\000' > $@
 

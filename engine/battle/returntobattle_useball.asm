@@ -11,7 +11,7 @@ _ReturnToBattle_UseBall:
 	farcall GetTrainerBackpic
 .continue
 	farcall GetEnemyMonFrontpic
-	farcall _LoadBattleFontsHPBar
+	call LoadFontsBattleExtra
 	call GetMemSGBLayout
 	call CloseWindow
 	call LoadStandardMenuHeader

@@ -106,13 +106,13 @@ GetPlayerBackpic:
 GetHiroBackpic:
 	ld hl, HiroBackpic
 	ld de, vTiles2 tile $31
-	lb bc, BANK(HiroBackpic), 7 * 7
+	lb bc, BANK(HiroBackpic), 6 * 6
 	predef_jump DecompressGet2bpp
 
 GetSylviaBackpic:
 	ld hl, SylviaBackpic
 	ld de, vTiles2 tile $31
-	lb bc, BANK(SylviaBackpic), 7 * 7
+	lb bc, BANK(SylviaBackpic), 6 * 6
 	predef_jump DecompressGet2bpp
 
 HOF_LoadTrainerFrontpic:
