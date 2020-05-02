@@ -246,9 +246,9 @@ SECTION "SageSpriteGFX", ROMX
 SageSpriteGFX::
 INCBIN "gfx/sprites/sage.2bpp"
 
-SECTION "UnusedGuySpriteGFX", ROMX
-UnusedGuySpriteGFX::
-INCBIN "gfx/sprites/unused_guy.2bpp"
+SECTION "OldManSpriteGFX", ROMX
+OldManSpriteGFX::
+INCBIN "gfx/sprites/old_man.2bpp"
 
 SECTION "GentlemanSpriteGFX", ROMX
 GentlemanSpriteGFX::
