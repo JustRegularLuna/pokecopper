@@ -146,7 +146,7 @@ TileCollisionTable::
 	db WALL_TILE         ; 8f
 	db WALL_TILE         ; COLL_COUNTER
 	db WALL_TILE         ; COLL_BOOKSHELF
-	db WALL_TILE         ; 92
+	db WALL_TILE         ; COLL_TRASH_CAN
 	db WALL_TILE         ; COLL_PC
 	db WALL_TILE         ; COLL_RADIO
 	db WALL_TILE         ; COLL_TOWN_MAP
@@ -155,8 +155,8 @@ TileCollisionTable::
 	db WALL_TILE         ; 98
 	db WALL_TILE         ; 99
 	db WALL_TILE         ; 9a
-	db WALL_TILE         ; 9b
-	db WALL_TILE         ; 9c
+	db WALL_TILE         ; COLL_PC_SIGN
+	db WALL_TILE         ; COLL_MART_SIGN
 	db WALL_TILE         ; COLL_WINDOW
 	db WALL_TILE         ; 9e
 	db WALL_TILE         ; COLL_INCENSE_BURNER

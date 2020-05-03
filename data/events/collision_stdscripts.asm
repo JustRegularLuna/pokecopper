@@ -3,11 +3,14 @@
 TileCollisionStdScripts:
 	; collision type,        stdscript
 	dbw COLL_BOOKSHELF,      magazinebookshelf
+	dbw COLL_TRASH_CAN,      trashcan
 	dbw COLL_PC,             pcscript
 	dbw COLL_RADIO,          radio1
 	dbw COLL_TOWN_MAP,       townmap
 	dbw COLL_MART_SHELF,     merchandiseshelf
 	dbw COLL_TV,             tv
+	dbw COLL_PC_SIGN,        pokecentersign
+	dbw COLL_MART_SIGN,      martsign
 	dbw COLL_WINDOW,         window
 	dbw COLL_INCENSE_BURNER, incenseburner
 	db -1 ; end
