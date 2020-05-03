@@ -111,4 +111,4 @@ INCBIN "gfx/new_game/shrink2.2bpp.lz"
 
 SECTION "UnownFont", ROMX
 UnownFont::
-INCBIN "gfx/font/unown_font.2bpp"
+INCBIN "gfx/font/unown_font.1bpp"

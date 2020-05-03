@@ -792,7 +792,7 @@ Pokedex_UnownModeEraseCursor:
 
 Pokedex_UnownModePlaceCursor:
 	ld a, [wDexCurUnownIndex]
-	ld c, $5a ; diamond cursor
+	ld c, $7b ; diamond cursor
 
 Pokedex_UnownModeUpdateCursorGfx:
 	ld e, a
@@ -1230,7 +1230,7 @@ endr
 	ld h, [hl]
 	ld l, a
 	pop af
-	add $40 - 1 ; Unown A
+	add $61 - 1 ; Unown A
 	ld [hl], a
 	inc de
 	inc b
@@ -2234,20 +2234,10 @@ PokedexSlowpokeLZ:
 INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
 
 Pokedex_LoadUnownFont:
-	ld a, BANK(sScratch)
-	call GetSRAMBank
-	ld hl, UnownFont
-	ld de, sScratch + $188
-	ld bc, 39 tiles
-	ld a, BANK(UnownFont)
-	call FarCopyBytes
-	ld hl, sScratch + $188
-	ld bc, (NUM_UNOWN + 1) tiles
-	ld de, sScratch + $188
-	ld hl, vTiles2 tile $40
-	lb bc, BANK(Pokedex_LoadUnownFont), NUM_UNOWN + 1
-	call Request2bpp
-	jp CloseSRAM
+	ld de, UnownFont
+	ld hl, vTiles2 tile $61
+	lb bc, BANK(UnownFont), NUM_UNOWN + 1
+	jp Get1bpp_2
 
 Pokedex_LoadUnownFrontpicTiles:
 	ld a, [wUnownLetter]
