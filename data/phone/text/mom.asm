@@ -7,7 +7,7 @@ MomPhoneGreetingText:
 
 MomCheckBalanceText:
 	text "By the way, you've"
-	line "saved up ¥@"
+	line "saved up ¥"
 	text_ram wStringBuffer3
 	text "."
 
@@ -30,7 +30,7 @@ MomYoureNotSavingText:
 
 MomYouveSavedText:
 	text "By the way, you've"
-	line "saved up ¥@"
+	line "saved up ¥"
 	text_ram wStringBuffer3
 	text "."
 

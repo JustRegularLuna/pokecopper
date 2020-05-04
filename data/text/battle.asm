@@ -2,23 +2,21 @@ SECTION "Battle Text", ROMX
 
 BattleText_PlayerPickedUpPayDayMoney::
 	text "<PLAYER> picked up"
-	line "¥@"
+	line "¥"
 	text_decimal wPayDayMoney, 3, 6
 	text "!"
 	prompt
 
 WildPokemonAppearedText::
-	text "Wild @"
+	text "Wild "
 	text_ram wEnemyMonNick
-	text_start
 	line "appeared!"
 	prompt
 
 HookedPokemonAttackedText::
 	text "The hooked"
-	line "@"
+	line ""
 	text_ram wEnemyMonNick
-	text_start
 	cont "attacked!"
 	prompt
 
@@ -39,16 +37,14 @@ WantToBattlePluralText::
 	prompt
 
 BattleText_WildFled::
-	text "Wild @"
+	text "Wild "
 	text_ram wEnemyMonNick
-	text_start
 	line "fled!"
 	prompt
 
 BattleText_EnemyFled::
-	text "Enemy @"
+	text "Enemy "
 	text_ram wEnemyMonNick
-	text_start
 	line "fled!"
 	prompt
 
@@ -84,7 +80,7 @@ SandstormHitsText::
 
 PerishCountText::
 	text "<USER>'s"
-	line "PERISH count is @"
+	line "PERISH count is "
 	text_decimal wDeciramBuffer, 1, 1
 	text "!"
 	prompt
@@ -92,7 +88,7 @@ PerishCountText::
 BattleText_TargetRecoveredWithItem::
 	text "<TARGET>"
 	line "recovered with"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer1
 	text "."
 	prompt
@@ -100,7 +96,7 @@ BattleText_TargetRecoveredWithItem::
 BattleText_UserRecoveredPPUsing::
 	text "<USER>"
 	line "recovered PP using"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer1
 	text "."
 	prompt
@@ -158,16 +154,14 @@ BattleText_TheSandstormSubsided::
 	prompt
 
 BattleText_EnemyMonFainted::
-	text "Enemy @"
+	text "Enemy "
 	text_ram wEnemyMonNick
-	text_start
 	line "fainted!"
 	prompt
 
 GotMoneyForWinningText::
-	text "<PLAYER> got ¥@"
+	text "<PLAYER> got ¥"
 	text_decimal wBattleReward, 3, 6
-	text_start
 	line "for winning!"
 	prompt
 
@@ -187,9 +181,8 @@ TiedAgainstText::
 	prompt
 
 SentSomeToMomText::
-	text "<PLAYER> got ¥@"
+	text "<PLAYER> got ¥"
 	text_decimal wBattleReward, 3, 6
-	text_start
 	line "for winning!"
 	cont "Sent some to MOM!"
 	prompt
@@ -204,7 +197,6 @@ SentAllToMomText::
 
 BattleText_MonFainted::
 	text_ram wBattleMonNick
-	text_start
 	line "fainted!"
 	prompt
 
@@ -220,7 +212,7 @@ LostAgainstText::
 BattleText_EnemyIsAboutToUseWillPlayerChangeMon::
 	text "<ENEMY>"
 	line "is about to use"
-	cont "@"
+	cont ""
 	text_ram wEnemyMonNick
 	text "."
 
@@ -231,7 +223,7 @@ BattleText_EnemyIsAboutToUseWillPlayerChangeMon::
 BattleText_PluralEnemyAreAboutToUseWillPlayerChangeMon::
 	text "<ENEMY>"
 	line "are about to use"
-	cont "@"
+	cont ""
 	text_ram wEnemyMonNick
 	text "."
 
@@ -242,7 +234,7 @@ BattleText_PluralEnemyAreAboutToUseWillPlayerChangeMon::
 BattleText_EnemySentOut::
 	text "<ENEMY>"
 	line "sent out"
-	cont "@"
+	cont ""
 	text_ram wEnemyMonNick
 	text "!"
 	done
@@ -274,7 +266,7 @@ BattleText_GotAwaySafely::
 BattleText_UserFledUsingAStringBuffer1::
 	text "<USER>"
 	line "fled using a"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer1
 	text "!"
 	prompt
@@ -291,16 +283,15 @@ BattleText_UserHurtBySpikes::
 RecoveredUsingText::
 	text "<TARGET>"
 	line "recovered using a"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer1
 	text "!"
 	prompt
 
 BattleText_UsersStringBuffer1Activated::
 	text "<USER>'s"
-	line "@"
+	line ""
 	text_ram wStringBuffer1
-	text_start
 	cont "activated!"
 	prompt
 
@@ -311,13 +302,11 @@ BattleText_ItemsCantBeUsedHere::
 
 BattleText_MonIsAlreadyOut::
 	text_ram wBattleMonNick
-	text_start
 	line "is already out."
 	prompt
 
 BattleText_MonCantBeRecalled::
 	text_ram wBattleMonNick
-	text_start
 	line "can't be recalled!"
 	prompt
 
@@ -333,7 +322,6 @@ BattleText_TheMoveIsDisabled::
 
 BattleText_MonHasNoMovesLeft::
 	text_ram wBattleMonNick
-	text_start
 	line "has no moves left!"
 	done
 
@@ -345,23 +333,21 @@ BattleText_TargetsEncoreEnded::
 BattleText_StringBuffer1GrewToLevel::
 	text_ram wStringBuffer1
 	text " grew to"
-	line "level @"
+	line "level "
 	text_decimal wCurPartyLevel, 1, 3
-	text "!@"
+	text "!"
 	text_sound SFX_DEX_FANFARE_50_79
 	text_end
 
 BattleText_WildMonIsEating::
-	text "Wild @"
+	text "Wild "
 	text_ram wEnemyMonNick
-	text_start
 	line "is eating!"
 	prompt
 
 BattleText_WildMonIsAngry::
-	text "Wild @"
+	text "Wild "
 	text_ram wEnemyMonNick
-	text_start
 	line "is angry!"
 	prompt
 
@@ -416,7 +402,7 @@ BecameConfusedText::
 	prompt
 
 BattleText_ItemHealedConfusion::
-	text "A @"
+	text "A "
 	text_ram wStringBuffer1
 	text " rid"
 	line "<TARGET>"
@@ -431,7 +417,7 @@ AlreadyConfusedText::
 BattleText_UsersHurtByStringBuffer1::
 	text "<USER>'s"
 	line "hurt by"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer1
 	text "!"
 	prompt
@@ -439,7 +425,7 @@ BattleText_UsersHurtByStringBuffer1::
 BattleText_UserWasReleasedFromStringBuffer1::
 	text "<USER>"
 	line "was released from"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer1
 	text "!"
 	prompt
@@ -485,7 +471,7 @@ UnleashedEnergyText::
 HungOnText::
 	text "<TARGET>"
 	line "hung on with"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer1
 	text "!"
 	prompt
@@ -509,7 +495,7 @@ InfatuationText::
 
 DisabledMoveText::
 	text "<USER>'s"
-	line "@"
+	line ""
 	text_ram wStringBuffer1
 	text " is"
 	cont "DISABLED!"
@@ -559,7 +545,7 @@ NoPPLeftText::
 HasNoPPLeftText::
 	text "<USER>"
 	line "has no PP left for"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer2
 	text "!"
 	prompt
@@ -653,7 +639,7 @@ TookAimText::
 SketchedText::
 	text "<USER>"
 	line "SKETCHED"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer1
 	text "!"
 	prompt
@@ -666,10 +652,10 @@ DestinyBondEffectText::
 
 SpiteEffectText::
 	text "<TARGET>'s"
-	line "@"
+	line ""
 	text_ram wStringBuffer1
 	text " was"
-	cont "reduced by @"
+	cont "reduced by "
 	text_decimal wDeciramBuffer, 1, 1
 	text "!"
 	prompt
@@ -731,7 +717,7 @@ WasFrozenText::
 
 WontRiseAnymoreText::
 	text "<USER>'s"
-	line "@"
+	line ""
 	text_ram wStringBuffer2
 	text " won't"
 	cont "rise anymore!"
@@ -739,7 +725,7 @@ WontRiseAnymoreText::
 
 WontDropAnymoreText::
 	text "<TARGET>'s"
-	line "@"
+	line ""
 	text_ram wStringBuffer2
 	text " won't"
 	cont "drop anymore!"
@@ -761,13 +747,13 @@ BlownAwayText::
 	prompt
 
 PlayerHitTimesText::
-	text "Hit @"
+	text "Hit "
 	text_decimal wPlayerDamageTaken, 1, 1
 	text " times!"
 	prompt
 
 EnemyHitTimesText::
-	text "Hit @"
+	text "Hit "
 	text_decimal wEnemyDamageTaken, 1, 1
 	text " times!"
 	prompt
@@ -822,7 +808,7 @@ SubFadedText::
 MimicLearnedMoveText::
 	text "<USER>"
 	line "learned"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer1
 	text "!"
 	prompt
@@ -839,7 +825,7 @@ EvadedText::
 
 WasDisabledText::
 	text "<TARGET>'s"
-	line "@"
+	line ""
 	text_ram wStringBuffer1
 	text " was"
 	cont "DISABLED!"
@@ -853,7 +839,7 @@ CoinsScatteredText::
 TransformedTypeText::
 	text "<USER>"
 	line "transformed into"
-	cont "the @"
+	cont "the "
 	text_ram wStringBuffer1
 	text "-type!"
 	prompt
@@ -866,7 +852,7 @@ EliminatedStatsText::
 TransformedText::
 	text "<USER>"
 	line "TRANSFORMED into"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer1
 	text "!"
 	prompt
@@ -933,7 +919,7 @@ AlreadyParalyzedText::
 ProtectedByText::
 	text "<TARGET>'s"
 	line "protected by"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer1
 	text "!"
 	prompt
@@ -945,9 +931,8 @@ MirrorMoveFailedText::
 
 StoleText::
 	text "<USER>"
-	line "stole @"
+	line "stole "
 	text_ram wStringBuffer1
-	text_start
 	cont "from its foe!"
 	prompt
 
@@ -1029,7 +1014,7 @@ SafeguardProtectText::
 	prompt
 
 MagnitudeText::
-	text "Magnitude @"
+	text "Magnitude "
 	text_decimal wDeciramBuffer, 1, 1
 	text "!"
 	prompt

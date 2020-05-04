@@ -185,11 +185,10 @@ ContestResults_ReadyToJudgeText::
 
 SECTION "ContestResults_PlayerWonAPrizeText", ROMX
 ContestResults_PlayerWonAPrizeText::
-	text "<PLAYER>, the No.@"
+	text "<PLAYER>, the No."
 	text_ram wStringBuffer3
-	text_start
 	line "finisher, wins"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer4
 	text "!"
 	done
@@ -197,7 +196,7 @@ ContestResults_PlayerWonAPrizeText::
 SECTION "ReceivedItemText", ROMX
 ReceivedItemText::
 	text "<PLAYER> received"
-	line "@"
+	line ""
 	text_ram wStringBuffer4
 	text "."
 	done
@@ -242,15 +241,14 @@ ContestResults_PartyFullText::
 SECTION "GymStatue_CityGymText", ROMX
 GymStatue_CityGymText::
 	text_ram wStringBuffer3
-	text_start
 	line "#MON GYM"
 	done
 
 SECTION "GymStatue_WinningTrainersText", ROMX
 GymStatue_WinningTrainersText::
-	text "LEADER: @"
+	text "LEADER: "
 	text_ram wStringBuffer4
-	text_start
+
 	para "WINNING TRAINERS:"
 	line "<PLAYER>"
 	done
@@ -351,7 +349,7 @@ HappinessText1::
 SECTION "RegisteredNumber1Text", ROMX
 RegisteredNumber1Text::
 	text "<PLAYER> registered"
-	line "@"
+	line ""
 	text_ram wStringBuffer3
 	text "'s number."
 	done
@@ -359,7 +357,7 @@ RegisteredNumber1Text::
 SECTION "RegisteredNumber2Text", ROMX
 RegisteredNumber2Text::
 	text "<PLAYER> registered"
-	line "@"
+	line ""
 	text_ram wStringBuffer3
 	text "'s number."
 	done

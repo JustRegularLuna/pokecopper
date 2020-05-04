@@ -159,7 +159,8 @@ PlaceNextChar::
 	jr nc, PlaceLiteralCharacter
 	cp FIRST_CONTROL_CHAR
 	jr nc, PlaceControlCharacter
-	; this is actually a command character; we shouldn't be here
+	dec de
+	jp FinishString
 
 SpaceChar:
 	ld a, " "
@@ -440,16 +441,14 @@ DoTextUntilTerminator::
 	cp TX_FAR + 1
 	jr nc, StartedText
 	push hl
-	push bc
-	ld c, a
-	ld b, 0
+	ld e, a
+	ld d, 0
 	ld hl, TextCommands
-	add hl, bc
-	add hl, bc
+	add hl, de
+	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	pop bc
 	pop hl
 _de_::
 	push de

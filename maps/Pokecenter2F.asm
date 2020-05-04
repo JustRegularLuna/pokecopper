@@ -627,25 +627,24 @@ Text_PleaseEnter:
 	prompt
 
 Text_RejectNewMon:
-	text "Sorry--@"
+	text "Sorry--"
 	text_ram wStringBuffer1
-	text_start
 	line "can't be taken."
 	prompt
 
 Text_RejectMonWithNewMove:
 	text "You can't take the"
-	line "@"
+	line ""
 	text_ram wStringBuffer1
 	text " with a"
-	cont "@"
+	cont ""
 	text_ram wStringBuffer2
 	text "."
 	prompt
 
 Text_RejectMonWithMail:
 	text "You can't take the"
-	line "@"
+	line ""
 	text_ram wStringBuffer1
 	text " that"
 	cont "has MAIL with you."
