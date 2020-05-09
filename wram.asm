@@ -1559,9 +1559,7 @@ wMailboxItems:: ds MAILBOX_CAPACITY
 wMailboxEnd:: ; d0fe
 ENDU ; d100
 
-wListPointer:: dw ; d100
-	ds 2
-wItemAttributesPtr:: dw ; d104
+	ds 6
 
 wCurItem:: db ; d106
 wCurItemQuantity:: ; d107
@@ -1804,7 +1802,7 @@ wNiteEncounterRate::  db ; d25c
 wWaterEncounterRate:: db ; d25d
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
 wPutativeTMHMMove:: db
-wInitListType:: db
+	ds 1
 wBattleHasJustStarted:: db
 
 ; d265 has many different short-term uses
