@@ -484,7 +484,7 @@ GetNumberedTMHM:
 
 _CheckTossableItem::
 ; Return 1 in wItemAttributeParamBuffer and carry if wCurItem can't be removed from the bag.
-	ld a, ITEMATTR_PERMISSIONS
+	ld a, ITEMATTR_PERMS_POCKET
 	call GetItemAttr
 	bit CANT_TOSS_F, a
 	jr nz, ItemAttr_ReturnCarry
@@ -493,7 +493,7 @@ _CheckTossableItem::
 
 CheckSelectableItem:
 ; Return 1 in wItemAttributeParamBuffer and carry if wCurItem can't be selected.
-	ld a, ITEMATTR_PERMISSIONS
+	ld a, ITEMATTR_PERMS_POCKET
 	call GetItemAttr
 	bit CANT_SELECT_F, a
 	jr nz, ItemAttr_ReturnCarry
@@ -502,7 +502,7 @@ CheckSelectableItem:
 
 CheckItemPocket::
 ; Return the pocket for wCurItem in wItemAttributeParamBuffer.
-	ld a, ITEMATTR_POCKET
+	ld a, ITEMATTR_PERMS_POCKET
 	call GetItemAttr
 	and $f
 	ld [wItemAttributeParamBuffer], a
