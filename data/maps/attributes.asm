@@ -95,7 +95,7 @@ endc
 endc
 ENDM
 
-	map_attributes SilentHills, SILENT_HILLS, $05, 0
+	map_attributes SilentHills, SILENT_HILLS, $39, 0
 
 	map_attributes Pokecenter2F, POKECENTER_2F, $00, 0
 	map_attributes TradeCenter, TRADE_CENTER, $00, 0

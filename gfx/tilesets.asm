@@ -8,18 +8,18 @@ ENDM
 
 SECTION "TilesetJohtoGFX", ROMX
 Tileset0GFX::
-TilesetJohtoGFX::
-INCBIN "gfx/tilesets/johto.2bpp.lz"
+TilesetSilentGFX::
+INCBIN "gfx/tilesets/silent.2bpp.lz"
 
 SECTION "TilesetJohtoMeta", ROMX
 Tileset0Meta::
-TilesetJohtoMeta::
-INCBIN "data/tilesets/johto_metatiles.bin"
+TilesetSilentMeta::
+INCBIN "data/tilesets/silent_metatiles.bin"
 
 SECTION "TilesetJohtoColl", ROMX
 Tileset0Coll::
-TilesetJohtoColl::
-INCLUDE "data/tilesets/johto_collision.asm"
+TilesetSilentColl::
+INCLUDE "data/tilesets/silent_collision.asm"
 
 
 SECTION "TilesetPlayersHouseGFX", ROMX

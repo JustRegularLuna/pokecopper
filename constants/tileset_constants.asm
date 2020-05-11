@@ -1,6 +1,6 @@
 ; Tilesets indexes (see data/tilesets.asm)
 	const_def 1
-	const TILESET_JOHTO
+	const TILESET_SILENT
 	const TILESET_PLAYERS_HOUSE
 	const TILESET_PLAYERS_ROOM
 	const TILESET_HOUSE

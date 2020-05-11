@@ -46,7 +46,7 @@ Tileset0Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-TilesetJohtoAnim:
+TilesetSilentAnim:
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -541,10 +541,10 @@ TowerPillarTile8:  INCBIN "gfx/tilesets/tower-pillar/8.2bpp"
 TowerPillarTile9:  INCBIN "gfx/tilesets/tower-pillar/9.2bpp"
 TowerPillarTile10: INCBIN "gfx/tilesets/tower-pillar/10.2bpp"
 
-WhirlpoolFrames1: dw vTiles2 tile $32, WhirlpoolTiles1
-WhirlpoolFrames2: dw vTiles2 tile $33, WhirlpoolTiles2
-WhirlpoolFrames3: dw vTiles2 tile $42, WhirlpoolTiles3
-WhirlpoolFrames4: dw vTiles2 tile $43, WhirlpoolTiles4
+WhirlpoolFrames1: dw vTiles2 tile $60, WhirlpoolTiles1
+WhirlpoolFrames2: dw vTiles2 tile $61, WhirlpoolTiles2
+WhirlpoolFrames3: dw vTiles2 tile $70, WhirlpoolTiles3
+WhirlpoolFrames4: dw vTiles2 tile $71, WhirlpoolTiles4
 
 WhirlpoolTiles1: INCBIN "gfx/tilesets/whirlpool/1.2bpp"
 WhirlpoolTiles2: INCBIN "gfx/tilesets/whirlpool/2.2bpp"

@@ -10,7 +10,7 @@ ENDM
 Tilesets::
 ; entries correspond to TILESET_* constants
 	tileset Tileset0
-	tileset TilesetJohto
+	tileset TilesetSilent
 	tileset TilesetPlayersHouse
 	tileset TilesetPlayersRoom
 	tileset TilesetHouse

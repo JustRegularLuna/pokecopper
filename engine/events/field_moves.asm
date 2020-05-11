@@ -89,7 +89,7 @@ HideHeadbuttTree:
 	ld h, [hl]
 	ld l, a
 
-	ld a, $05 ; grass block
+	ld a, $02 ; grass tile
 	ld [hli], a
 	ld [hld], a
 	ld bc, SCREEN_WIDTH
