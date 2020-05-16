@@ -11,6 +11,7 @@ SECTION "Map Scripts - Silent Hills", ROMX
 INCLUDE "maps/SilentHills.asm"
 INCLUDE "maps/PlayersHouse1F.asm"
 INCLUDE "maps/PlayersHouse2F.asm"
+INCLUDE "maps/JohtoRoute1.asm"
 
 
 SECTION "Map Scripts - Indigo Plateau", ROMX

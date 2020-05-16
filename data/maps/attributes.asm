@@ -95,7 +95,11 @@ endc
 endc
 ENDM
 
-	map_attributes SilentHills, SILENT_HILLS, $39, 0
+	map_attributes SilentHills, SILENT_HILLS, $39, WEST
+	connection west, JohtoRoute1, JOHTO_ROUTE_1, 0
+
+	map_attributes JohtoRoute1, JOHTO_ROUTE_1, $05, EAST
+	connection east, SilentHills, SILENT_HILLS, 0
 
 	map_attributes Pokecenter2F, POKECENTER_2F, $00, 0
 	map_attributes TradeCenter, TRADE_CENTER, $00, 0

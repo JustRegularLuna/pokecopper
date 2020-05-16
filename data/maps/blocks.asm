@@ -15,6 +15,10 @@ SECTION "SilentHills_Blocks", ROMX
 SilentHills_Blocks:
 INCBIN "maps/SilentHills.blk"
 
+SECTION "JohtoRoute1_Blocks",ROMX
+JohtoRoute1_Blocks:
+INCBIN "maps/JohtoRoute1.blk"
+
 SECTION "PlayersHouse1F_Blocks", ROMX
 PlayersHouse1F_Blocks:
 INCBIN "maps/PlayersHouse1F.blk"
