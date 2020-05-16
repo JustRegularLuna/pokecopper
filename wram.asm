@@ -129,10 +129,7 @@ wMusicEnd::
 
 SECTION "WRAM", WRAM0
 
-wLZAddress:: dw ; c2c2
-wLZBank::    db ; c2c4
-
-	ds 1
+	ds 4
 
 wBoxAlignment:: db
 

@@ -3,6 +3,7 @@ SECTION "HRAM", HRAM
 hTransferVirtualOAM:: ds 10 ; ff80
 
 hROMBankBackup:: db ; ff8a
+hBuffer::
 hFarByte::
 hTempBank:: db ; ff8b
 hSRAMBank:: db ; ff8c
@@ -13,7 +14,7 @@ hRTCHours::   db ; ff8f
 hRTCMinutes:: db ; ff90
 hRTCSeconds:: db ; ff91
 
-	ds 2
+hLZAddress:: dw ; ff92
 
 hHours:: db ; ff94
 	ds 1
