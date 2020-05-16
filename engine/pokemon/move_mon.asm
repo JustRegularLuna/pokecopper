@@ -830,10 +830,7 @@ RetrieveBreedmon:
 	ld a, [wPartyCount]
 	dec a
 	call SkipNames
-	push hl
-	ld h, d
-	ld l, e
-	pop de
+	call SwapHLDE
 	rst CopyBytes
 	push hl
 	ld hl, wPartyMonOT

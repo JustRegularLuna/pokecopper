@@ -5428,10 +5428,7 @@ BattleCommand_OHKO:
 	ldh a, [hBattleTurn]
 	and a
 	jr z, .got_move_accuracy
-	push hl
-	ld h, d
-	ld l, e
-	pop de
+	call SwapHLDE
 	ld bc, wEnemyMoveStruct + MOVE_ACC
 .got_move_accuracy
 	ld a, [de]

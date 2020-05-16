@@ -75,10 +75,7 @@ BattleCommand_Transform:
 ; init the power points
 	ld bc, wBattleMonMoves - wBattleMonStructEnd
 	add hl, bc
-	push de
-	ld d, h
-	ld e, l
-	pop hl
+	call SwapHLDE
 	ld bc, wBattleMonPP - wBattleMonStructEnd
 	add hl, bc
 	ld b, NUM_MOVES
@@ -140,13 +137,6 @@ BattleSideCopy:
 ; Copy bc bytes from de to hl if it's the enemy's turn.
 	ldh a, [hBattleTurn]
 	and a
-	jr z, .copy
-
-; Swap hl and de
-	push hl
-	ld h, d
-	ld l, e
-	pop de
-.copy
+	call nz, SwapHLDE
 	rst CopyBytes
 	ret

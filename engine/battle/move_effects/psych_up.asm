@@ -7,10 +7,7 @@ BattleCommand_PsychUp:
 	and a
 	jr z, .pointers_correct
 ; It's the enemy's turn, so swap the pointers.
-	push hl
-	ld h, d
-	ld l, e
-	pop de
+	call SwapHLDE
 .pointers_correct
 	push hl
 	ld b, NUM_LEVEL_STATS

@@ -837,11 +837,7 @@ QueryWhichSide:
 	ld a, [wBuffer2]
 	cp 1
 	ret z
-	push hl
-	ld h, d
-	ld l, e
-	pop de
-	ret
+	jp SwapHLDE
 
 MenuHeader_0x26eab:
 	db MENU_BACKUP_TILES ; flags

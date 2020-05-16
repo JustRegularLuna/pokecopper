@@ -964,10 +964,7 @@ Function2868a:
 	push bc
 	ld hl, MON_ITEM
 	add hl, bc
-	push hl
-	ld h, d
-	ld l, e
-	pop de
+	call SwapHLDE
 	push bc
 	ld a, [hli]
 	ld b, a
@@ -990,10 +987,7 @@ Function2868a:
 	push bc
 	ld hl, $24
 	add hl, bc
-	push hl
-	ld h, d
-	ld l, e
-	pop de
+	call SwapHLDE
 	ld bc, 8
 	rst CopyBytes
 	pop bc

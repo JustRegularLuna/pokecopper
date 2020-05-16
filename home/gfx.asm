@@ -252,10 +252,7 @@ Get2bpp::
 Copy2bpp:
 ; copy c 2bpp tiles from b:de to hl
 
-	push hl
-	ld h, d
-	ld l, e
-	pop de
+	call SwapHLDE
 
 ; bank
 	ld a, b
