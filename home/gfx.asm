@@ -89,13 +89,7 @@ FarCopyBytesDouble:
 	ldh a, [hTempBank]
 	rst Bankswitch
 
-; switcheroo, de <> hl
-	ld a, h
-	ld h, d
-	ld d, a
-	ld a, l
-	ld l, e
-	ld e, a
+	call SwapHLDE
 
 	inc b
 	inc c
