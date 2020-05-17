@@ -1275,13 +1275,8 @@ ClearBattleAnims::
 ; Clear animation block
 	ld hl, wLYOverrides
 	ld bc, wBattleAnimEnd - wLYOverrides
-.loop
-	ld [hl], $0
-	inc hl
-	dec bc
-	ld a, c
-	or b
-	jr nz, .loop
+	xor a
+	rst ByteFill
 
 	ld hl, wFXAnimID
 	ld e, [hl]
