@@ -110,6 +110,9 @@ FarCopyBytesDouble:
 	rst Bankswitch
 	ret
 
+LY_REQUEST EQU $88
+TILES_PER_BLANK EQU 8
+
 Request2bpp::
 ; Load 2bpp at b:de to occupy c tiles of hl.
 	ldh a, [hBGMapMode]
@@ -122,47 +125,54 @@ Request2bpp::
 	ld a, b
 	rst Bankswitch
 
-	ldh a, [hTilesPerCycle]
-	push af
 	call WriteVCopyRegistersToHRAM
-.loop
-	ld a, c
-	ld hl, hTilesPerCycle
-	cp [hl]
-	jr nc, .iterate
 
+	ldh a, [rLY]
+	cp LY_REQUEST
+	jr c, .handleLoop
+.loop
+	ldh a, [hTilesPerCycle]
+	sub TILES_PER_BLANK
+	ldh [hTilesPerCycle], a
+	jr c, .copyRemainingTilesAndExit
+	jr nz, .copyEightTilesAndContinue
+.copyRemainingTilesAndExit
+	add TILES_PER_BLANK
 	ldh [hRequested2bpp], a
-.wait
+	xor a
+	ldh [hTilesPerCycle], a
 	call DelayFrame
 	ldh a, [hRequested2bpp]
 	and a
-	jr nz, .wait
-
-	pop af
+	jr nz, .addUncopiedTilesToCount
+	xor a
 	ldh [hTilesPerCycle], a
+	jr .done
 
+.addUncopiedTilesToCount
+	ld b, a
+	ldh a, [hTilesPerCycle]
+	add b
+	ldh [hTilesPerCycle], a
+	jr .handleLoop
+
+.copyEightTilesAndContinue
+	ld a, TILES_PER_BLANK
+	ldh [hRequested2bpp], a
+	call DelayFrame
+	ldh a, [hRequested2bpp]
+	and a
+	jr nz, .addUncopiedTilesToCount
+.handleLoop
+	call HBlankCopy2bpp
+	jr c, .loop
+.done
 	pop af
 	rst Bankswitch
 
 	pop af
 	ldh [hBGMapMode], a
 	ret
-
-.iterate
-	ldh a, [hTilesPerCycle]
-	ldh [hRequested2bpp], a
-
-.wait2
-	call DelayFrame
-	ldh a, [hRequested2bpp]
-	and a
-	jr nz, .wait2
-
-	ld a, c
-	ld hl, hTilesPerCycle
-	sub [hl]
-	ld c, a
-	jr .loop
 
 Request1bpp::
 ; Load 1bpp at b:de to occupy c tiles of hl.
@@ -176,25 +186,48 @@ Request1bpp::
 	ld a, b
 	rst Bankswitch
 
-	ldh a, [hTilesPerCycle]
-	push af
 	call WriteVCopyRegistersToHRAM
-.loop
-	ld a, c
-	ld hl, hTilesPerCycle
-	cp [hl]
-	jr nc, .iterate
 
-	ldh [hRequested1bpp], a
-.wait
+	ldh a, [rLY]
+	cp LY_REQUEST
+	jr c, .handleLoop
+.loop
+	ldh a, [hTilesPerCycle]
+	sub TILES_PER_BLANK
+	ldh [hTilesPerCycle], a
+	jr c, .copyRemainingTilesAndExit
+	jr nz, .copyEightTilesAndContinue
+.copyRemainingTilesAndExit
+	add TILES_PER_BLANK
+	ldh [hTilesPerCycle], a
+	xor a
+	ldh [hTilesPerCycle], a
 	call DelayFrame
 	ldh a, [hRequested1bpp]
 	and a
-	jr nz, .wait
-
-	pop af
+	jr nz, .addUncopiedTilesToCount
+	xor a
 	ldh [hTilesPerCycle], a
+	jr .done
 
+.addUncopiedTilesToCount
+	ld b, a
+	ldh a, [hTilesPerCycle]
+	add b
+	ldh [hTilesPerCycle], a
+	jr .handleLoop
+
+.copyEightTilesAndContinue
+	ld a, TILES_PER_BLANK
+	ldh [hRequested1bpp], a
+	call DelayFrame
+	ldh a, [hRequested1bpp]
+	and a
+	jr nz, .addUncopiedTilesToCount
+.handleLoop
+	call HBlankCopy1bpp
+	jr c, .loop
+.done
 	pop af
 	rst Bankswitch
 
@@ -202,24 +235,8 @@ Request1bpp::
 	ldh [hBGMapMode], a
 	ret
 
-.iterate
-	ldh a, [hTilesPerCycle]
-	ldh [hRequested1bpp], a
-
-.wait2
-	call DelayFrame
-	ldh a, [hRequested1bpp]
-	and a
-	jr nz, .wait2
-
-	ld a, c
-	ld hl, hTilesPerCycle
-	sub [hl]
-	ld c, a
-	jr .loop
-
 WriteVCopyRegistersToHRAM:
-	ld a, $8
+	ld a, c
 	ldh [hTilesPerCycle], a
 	ld a, e
 	ldh [hRequestedVTileSource], a
@@ -285,3 +302,163 @@ Copy1bpp::
 
 	pop hl
 	jp FarCopyBytesDouble
+
+HBlankCopy1bpp:
+	di
+	ld [hSPBuffer], sp
+
+; Source
+	ld hl, hRequestedVTileSource
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld sp, hl
+
+; Destination
+	ld hl, hRequestedVTileDest
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+
+	jr .innerLoop
+
+.outerLoop
+	ldh a, [rLY]
+	cp LY_REQUEST
+	jr nc, ContinueHBlankCopy
+.innerLoop
+	pop bc
+	pop de
+.waitNoHBlank
+	ldh a, [rSTAT]
+	and %11
+	jr z, .waitNoHBlank
+.waitHBlank
+	ldh a, [rSTAT]
+	and %11
+	jr nz, .waitHBlank
+	ld a, c
+	ld [hli], a
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld [hli], a
+	ld a, l
+	and $f
+	jr nz, .innerLoop
+	ldh a, [hTilesPerCycle]
+	dec a
+	ldh [hTilesPerCycle], a
+	jr nz, .outerLoop
+	jr DoneHBlankCopy
+
+ContinueHBlankCopy:
+	ld [hRequestedVTileSource], sp
+	ld sp, hl
+	ld [hRequestedVTileDest], sp
+	scf
+DoneHBlankCopy:
+	ldh a, [hSPBuffer]
+	ld l, a
+	ldh a, [hSPBuffer + 1]
+	ld h, a
+	ld sp, hl
+	reti
+
+HBlankCopy2bpp::
+	di
+	ld [hSPBuffer], sp
+
+; Source
+	ld hl, hRequestedVTileSource
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld sp, hl
+
+; Destination
+	ld hl, hRequestedVTileDest
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+
+	cp HIGH(VRAM_Begin)
+	jr c, .innerLoop
+	cp HIGH(VRAM_End)
+	jr nc, .innerLoop
+
+; VRAM to VRAM copy
+	lb bc, %11, rSTAT & $ff
+	jr .waitNoHBlank2
+.outerLoop2
+	ldh a, [rLY]
+	cp LY_REQUEST
+	jp nc, ContinueHBlankCopy
+.waitNoHBlank2
+	ldh a, [c]
+	and b
+	jr z, .waitNoHBlank2
+.waitHBlank2
+	ldh a, [c]
+	and b
+	jr nz, .waitHBlank2
+rept 4
+	pop de
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+endr
+	ld a, l
+	and $f
+	jr nz, .waitNoHBlank2
+	ldh a, [hTilesPerCycle]
+	dec a
+	ldh [hTilesPerCycle], a
+	jr nz, .outerLoop2
+	jp DoneHBlankCopy
+
+.outerLoop
+	ldh a, [rLY]
+	cp LY_REQUEST
+	jp nc, ContinueHBlankCopy
+.innerLoop
+	pop bc
+	pop de
+.waitNoHBlank
+	ldh a, [rSTAT]
+	and %11
+	jr z, .waitNoHBlank
+.waitHBlank
+	ldh a, [rSTAT]
+	and %11
+	jr nz, .waitHBlank
+	ld a, c
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+rept 2
+	pop de
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+endr
+	ld a, l
+	and $f
+	jr nz, .innerLoop
+	ldh a, [hTilesPerCycle]
+	dec a
+	ldh [hTilesPerCycle], a
+	jr nz, .outerLoop
+	jp DoneHBlankCopy
