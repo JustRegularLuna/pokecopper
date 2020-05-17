@@ -75,7 +75,7 @@ CopyTilemapAtOnce::
 	ldh [rVBK], a
 	hlcoord 0, 0, wAttrmap
 	call CopyBGMapViaStack
-	ld a, BANK(vTiles0)
+	xor a ; BANK(vTiles0)
 	ldh [rVBK], a
 	hlcoord 0, 0
 	call CopyBGMapViaStack

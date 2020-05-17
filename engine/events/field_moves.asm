@@ -307,7 +307,7 @@ FlyFromAnim:
 	ld a, [wJumptableIndex]
 	bit 7, a
 	jr nz, .exit
-	ld a, 0 * SPRITEOAMSTRUCT_LENGTH
+	xor a ; 0 * SPRITEOAMSTRUCT_LENGTH
 	ld [wCurSpriteOAMAddr], a
 	farcall DoNextFrameForAllSprites
 	call FlyFunction_FrameTimer
@@ -344,7 +344,7 @@ FlyToAnim:
 	ld a, [wJumptableIndex]
 	bit 7, a
 	jr nz, .exit
-	ld a, 0 * SPRITEOAMSTRUCT_LENGTH
+	xor a ; 0 * SPRITEOAMSTRUCT_LENGTH
 	ld [wCurSpriteOAMAddr], a
 	farcall DoNextFrameForAllSprites
 	call FlyFunction_FrameTimer

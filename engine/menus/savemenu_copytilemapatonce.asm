@@ -25,7 +25,7 @@ SaveMenu_CopyTilemapAtOnce:
 	ldh [rVBK], a
 	hlcoord 0, 0, wAttrmap
 	call CopyBGMapViaStack
-	ld a, BANK(vBGMap0)
+	xor a ; BANK(vBGMap0)
 	ldh [rVBK], a
 	hlcoord 0, 0
 	call CopyBGMapViaStack

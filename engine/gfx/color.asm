@@ -505,7 +505,7 @@ InitCGBPals::
 	ld bc, $200 tiles
 	xor a
 	rst ByteFill
-	ld a, BANK(vTiles0)
+	; a == 0 == BANK(vTiles0)
 	ldh [rVBK], a
 	ld a, 1 << rBGPI_AUTO_INCREMENT
 	ldh [rBGPI], a
