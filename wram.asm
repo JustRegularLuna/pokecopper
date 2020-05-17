@@ -1059,15 +1059,7 @@ wSlotsDelay::
 	db
 ENDU ; cf67
 
-wRequested2bpp::
-wRequested2bppSize:: db ; cf67
-wRequested2bppSource:: dw ; cf68
-wRequested2bppDest:: dw ; cf6a
-
-wRequested1bpp::
-wRequested1bppSize:: db ; cf6c
-wRequested1bppSource:: dw ; cf6d
-wRequested1bppDest:: dw ; cf6f
+	ds 10
 
 wWindowStackPointer:: dw ; cf71
 wMenuJoypad:: db ; cf73

@@ -124,27 +124,17 @@ Request2bpp::
 
 	ldh a, [hTilesPerCycle]
 	push af
-	ld a, $8
-	ldh [hTilesPerCycle], a
-
-	ld a, e
-	ld [wRequested2bppSource], a
-	ld a, d
-	ld [wRequested2bppSource + 1], a
-	ld a, l
-	ld [wRequested2bppDest], a
-	ld a, h
-	ld [wRequested2bppDest + 1], a
+	call WriteVCopyRegistersToHRAM
 .loop
 	ld a, c
 	ld hl, hTilesPerCycle
 	cp [hl]
 	jr nc, .iterate
 
-	ld [wRequested2bpp], a
+	ldh [hRequested2bpp], a
 .wait
 	call DelayFrame
-	ld a, [wRequested2bpp]
+	ldh a, [hRequested2bpp]
 	and a
 	jr nz, .wait
 
@@ -160,11 +150,11 @@ Request2bpp::
 
 .iterate
 	ldh a, [hTilesPerCycle]
-	ld [wRequested2bpp], a
+	ldh [hRequested2bpp], a
 
 .wait2
 	call DelayFrame
-	ld a, [wRequested2bpp]
+	ldh a, [hRequested2bpp]
 	and a
 	jr nz, .wait2
 
@@ -188,27 +178,17 @@ Request1bpp::
 
 	ldh a, [hTilesPerCycle]
 	push af
-	ld a, $8
-	ldh [hTilesPerCycle], a
-
-	ld a, e
-	ld [wRequested1bppSource], a
-	ld a, d
-	ld [wRequested1bppSource + 1], a
-	ld a, l
-	ld [wRequested1bppDest], a
-	ld a, h
-	ld [wRequested1bppDest + 1], a
+	call WriteVCopyRegistersToHRAM
 .loop
 	ld a, c
 	ld hl, hTilesPerCycle
 	cp [hl]
 	jr nc, .iterate
 
-	ld [wRequested1bpp], a
+	ldh [hRequested1bpp], a
 .wait
 	call DelayFrame
-	ld a, [wRequested1bpp]
+	ldh a, [hRequested1bpp]
 	and a
 	jr nz, .wait
 
@@ -224,11 +204,11 @@ Request1bpp::
 
 .iterate
 	ldh a, [hTilesPerCycle]
-	ld [wRequested1bpp], a
+	ldh [hRequested1bpp], a
 
 .wait2
 	call DelayFrame
-	ld a, [wRequested1bpp]
+	ldh a, [hRequested1bpp]
 	and a
 	jr nz, .wait2
 
@@ -237,6 +217,19 @@ Request1bpp::
 	sub [hl]
 	ld c, a
 	jr .loop
+
+WriteVCopyRegistersToHRAM:
+	ld a, $8
+	ldh [hTilesPerCycle], a
+	ld a, e
+	ldh [hRequestedVTileSource], a
+	ld a, d
+	ldh [hRequestedVTileSource + 1], a
+	ld a, l
+	ldh [hRequestedVTileDest], a
+	ld a, h
+	ldh [hRequestedVTileDest + 1], a
+	ret
 
 Get2bpp::
 	ldh a, [rLCDC]

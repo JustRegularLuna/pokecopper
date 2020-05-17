@@ -234,15 +234,15 @@ PushLYOverrides::
 	ret z
 
 	ld a, LOW(wLYOverridesBackup)
-	ld [wRequested2bppSource], a
+	ldh [hRequestedVTileSource], a
 	ld a, HIGH(wLYOverridesBackup)
-	ld [wRequested2bppSource + 1], a
+	ldh [hRequestedVTileSource + 1], a
 
 	ld a, LOW(wLYOverrides)
-	ld [wRequested2bppDest], a
+	ldh [hRequestedVTileDest], a
 	ld a, HIGH(wLYOverrides)
-	ld [wRequested2bppDest + 1], a
+	ldh [hRequestedVTileDest + 1], a
 
 	ld a, (wLYOverridesEnd - wLYOverrides) / 16
-	ld [wRequested2bpp], a
+	ldh [hRequested2bpp], a
 	ret

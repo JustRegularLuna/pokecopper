@@ -65,11 +65,11 @@ MagnetTrain:
 	ldh [hLYOverrideStart], a
 	ldh [hLYOverrideEnd], a
 	ldh [hSCX], a
-	ld [wRequested2bppSource], a
-	ld [wRequested2bppSource + 1], a
-	ld [wRequested2bppDest], a
-	ld [wRequested2bppDest + 1], a
-	ld [wRequested2bpp], a
+	ldh [hRequestedVTileSource], a
+	ldh [hRequestedVTileSource + 1], a
+	ldh [hRequestedVTileDest], a
+	ldh [hRequestedVTileDest + 1], a
+	ldh [hRequested2bpp], a
 	call ClearTilemap
 
 	pop af

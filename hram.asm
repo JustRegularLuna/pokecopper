@@ -159,4 +159,9 @@ hDMATransfer:: db ; ffe8
 
 hSystemBooted:: db ; ffea
 
-	ds 4
+hRequested2bpp:: db ; ffeb
+hRequested1bpp:: db ; ffec
+hRequestedVTileSource:: dw ; ffed
+hRequestedVTileDest::   dw ; ffef
+
+	ds 14
