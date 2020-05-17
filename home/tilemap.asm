@@ -74,11 +74,11 @@ CopyTilemapAtOnce::
 	ld a, BANK(vTiles3)
 	ldh [rVBK], a
 	hlcoord 0, 0, wAttrmap
-	call .StackPointerMagic
+	call CopyBGMapViaStack
 	ld a, BANK(vTiles0)
 	ldh [rVBK], a
 	hlcoord 0, 0
-	call .StackPointerMagic
+	call CopyBGMapViaStack
 
 .wait2
 	ldh a, [rLY]
@@ -92,7 +92,7 @@ CopyTilemapAtOnce::
 	ldh [hBGMapMode], a
 	ret
 
-.StackPointerMagic:
+CopyBGMapViaStack::
 ; Copy all tiles to vBGMap
 	ld [hSPBuffer], sp
 	ld sp, hl
@@ -111,7 +111,7 @@ rept SCREEN_WIDTH / 2
 	ldh a, [c]
 	and b
 	jr nz, .loop\@
-; load BGMap0
+; load vBGMap
 	ld [hl], e
 	inc l
 	ld [hl], d

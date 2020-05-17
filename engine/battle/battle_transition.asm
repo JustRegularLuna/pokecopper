@@ -66,7 +66,7 @@ DoBattleTransition:
 	call UpdateSprites
 	call DelayFrame
 	call .LoadPokeballTiles
-	call BattleStart_CopyTilemapAtOnce
+	call CGBOnly_CopyTilemapAtOnce
 
 	ld a, SCREEN_HEIGHT_PX
 	ldh [hWY], a

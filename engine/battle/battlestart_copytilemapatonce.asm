@@ -1,2 +1,0 @@
-BattleStart_CopyTilemapAtOnce:
-	jp CGBOnly_CopyTilemapAtOnce
