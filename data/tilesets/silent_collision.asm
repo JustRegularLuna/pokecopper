@@ -77,7 +77,7 @@
 	tilecoll UP_WALL, UP_WALL, FLOOR, FLOOR ; 4c
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 4d
 	tilecoll FLOOR, FLOOR, WALL, WALL ; 4e
-	tilecoll FLOOR, FLOOR, CAVE, WALL ; 4f
+	tilecoll DOWN_WALL, FLOOR, CAVE, WALL ; 4f
 	tilecoll WALL, HOP_LEFT, WALL, HOP_LEFT ; 50
 	tilecoll HOP_RIGHT, WALL, HOP_RIGHT, WALL ; 51
 	tilecoll WALL, HOP_LEFT, WALL, HOP_LEFT ; 52
