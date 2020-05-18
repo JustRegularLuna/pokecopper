@@ -67,8 +67,8 @@ GetPlayerIcon:
 ; Get the player icon corresponding to gender
 
 ; Male
-	ld de, ChrisSpriteGFX
-	ld b, BANK(ChrisSpriteGFX)
+	ld de, HiroSpriteGFX
+	ld b, BANK(HiroSpriteGFX)
 
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a

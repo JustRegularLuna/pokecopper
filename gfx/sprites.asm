@@ -1,10 +1,10 @@
-SECTION "ChrisSpriteGFX", ROMX
-ChrisSpriteGFX::
-INCBIN "gfx/sprites/chris.2bpp"
+SECTION "HiroSpriteGFX", ROMX
+HiroSpriteGFX::
+INCBIN "gfx/sprites/hiro.2bpp"
 
-SECTION "ChrisBikeSpriteGFX", ROMX
-ChrisBikeSpriteGFX::
-INCBIN "gfx/sprites/chris_bike.2bpp"
+SECTION "HiroBikeSpriteGFX", ROMX
+HiroBikeSpriteGFX::
+INCBIN "gfx/sprites/hiro_bike.2bpp"
 
 SECTION "GameboyKidSpriteGFX", ROMX
 GameboyKidSpriteGFX::
