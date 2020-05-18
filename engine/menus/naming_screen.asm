@@ -167,6 +167,7 @@ NamingScreen:
 	push bc
 	call Request2bpp
 	pop bc
+	pop de
 	ld hl, 12 tiles
 	add hl, de
 	ld e, l
@@ -177,7 +178,6 @@ NamingScreen:
 	ld hl, wSpriteAnimDict
 	ld [hli], a
 	ld [hl], a
-	pop de
 	ld a, SPRITE_ANIM_INDEX_RED_WALK
 	depixel 4, 4, 4, 0
 	jp InitSpriteAnimStruct
