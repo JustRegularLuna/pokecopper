@@ -98,7 +98,11 @@ ENDM
 	map_attributes SilentHills, SILENT_HILLS, $39, WEST
 	connection west, JohtoRoute1, JOHTO_ROUTE_1, 0
 
-	map_attributes JohtoRoute1, JOHTO_ROUTE_1, $5D, EAST
+	map_attributes SakuraTown, SAKURA_TOWN, $5D, EAST
+	connection east, JohtoRoute1, JOHTO_ROUTE_1, 9
+
+	map_attributes JohtoRoute1, JOHTO_ROUTE_1, $5D, WEST | EAST
+	connection west, SakuraTown, SAKURA_TOWN, -9
 	connection east, SilentHills, SILENT_HILLS, 0
 
 	map_attributes Pokecenter2F, POKECENTER_2F, $00, 0

@@ -5,6 +5,7 @@ OutdoorSprites:
 ; entries correspond to map groups
 	dw CableClubGroupSprites
 	dw SilentGroupSprites
+	dw SakuraGroupSprites
 	dw PokemonLeagueGroupSprites
 
 CableClubGroupSprites:
@@ -13,7 +14,9 @@ CableClubGroupSprites:
 	db 0 ; end
 
 SilentGroupSprites:
+SakuraGroupSprites:
 ; SilentHills
+; Sakura Town
 	; 0 of 9 walking sprites
 	db 0 ; end
 

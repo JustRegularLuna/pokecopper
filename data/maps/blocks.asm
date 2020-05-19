@@ -15,6 +15,10 @@ SECTION "SilentHills_Blocks", ROMX
 SilentHills_Blocks:
 INCBIN "maps/SilentHills.blk"
 
+SECTION "SakuraTown_Blocks", ROMX
+SakuraTown_Blocks:
+INCBIN "maps/SakuraTown.blk"
+
 SECTION "JohtoRoute1_Blocks",ROMX
 JohtoRoute1_Blocks:
 INCBIN "maps/JohtoRoute1.blk"

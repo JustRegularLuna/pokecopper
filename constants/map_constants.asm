@@ -40,7 +40,11 @@ ENDM
 	map_const PLAYERS_HOUSE_2F,                             4,  3 ;  3
 	map_const JOHTO_ROUTE_1,                               30,  9 ;  4
 
-	newgroup                                                      ;  3
+	newgroup                                                      ; 3
+
+	map_const SAKURA_TOWN,                                 20, 18 ; 1
+
+	newgroup                                                      ;  4
 
 	map_const INDIGO_PLATEAU_POKECENTER_1F,                 9,  7 ;  1
 	map_const WILLS_ROOM,                                   5,  9 ;  2

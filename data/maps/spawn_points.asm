@@ -10,6 +10,7 @@ SpawnPoints:
 ; kanto
 	spawn INDIGO_PLATEAU_POKECENTER_1F,  7,  9
 ; johto
-	spawn SILENT_HILLS,                 15,  8
+	spawn SILENT_HILLS,                 11,  6
+	spawn SAKURA_TOWN,                  31, 22
 
 	spawn N_A,                          -1, -1

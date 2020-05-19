@@ -19,6 +19,6 @@ SilentHills_MapEvents:
 
 
 SilentHills_FlyPointCallback:
-	setflag ENGINE_FLYPOINT_NEW_BARK
+	setflag ENGINE_FLYPOINT_SILENT
 	clearevent EVENT_FIRST_TIME_BANKING_WITH_MOM
 	return

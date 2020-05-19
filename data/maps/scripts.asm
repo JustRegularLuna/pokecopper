@@ -14,6 +14,11 @@ INCLUDE "maps/PlayersHouse2F.asm"
 INCLUDE "maps/JohtoRoute1.asm"
 
 
+SECTION "Map Scripts - Sakura Town", ROMX
+
+INCLUDE "maps/SakuraTown.asm"
+
+
 SECTION "Map Scripts - Indigo Plateau", ROMX
 
 INCLUDE "maps/IndigoPlateauPokecenter1F.asm"

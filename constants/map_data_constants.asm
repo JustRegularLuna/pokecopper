@@ -71,12 +71,14 @@ const_value = -1
 	const SPAWN_INDIGO
 ; johto
 	const SPAWN_SILENT
+	const SPAWN_SAKURA
 NUM_SPAWNS EQU const_value
 
 ; Flypoints indexes (see data/maps/flypoints.asm)
 	const_def
 ; johto
 	const FLY_SILENT
+	const FLY_SAKURA
 	const FLY_N_A
 ; kanto
 KANTO_FLYPOINT EQU const_value
