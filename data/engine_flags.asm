@@ -71,6 +71,7 @@ EngineFlags:
 	engine_flag wVisitedSpawns, SPAWN_HOME
 	engine_flag wVisitedSpawns, SPAWN_INDIGO ; $40
 	engine_flag wVisitedSpawns, SPAWN_SILENT
+	engine_flag wVisitedSpawns, SPAWN_SAKURA
 
 	engine_flag wLuckyNumberShowFlag, LUCKYNUMBERSHOW_GAME_OVER_F
 
