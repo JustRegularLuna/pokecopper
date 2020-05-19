@@ -383,14 +383,13 @@ HBlankCopy2bpp::
 	ld sp, hl
 
 ; Destination
-	ld hl, hRequestedVTileDest
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld hl, hRequestedVTileDest + 1
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
 
-	cp HIGH(VRAM_Begin)
-	jr c, .innerLoop
-	cp HIGH(VRAM_End)
+	sub HIGH(VRAM_Begin)
+	cp HIGH(VRAM_End) - HIGH(VRAM_Begin)
 	jr nc, .innerLoop
 
 ; VRAM to VRAM copy
