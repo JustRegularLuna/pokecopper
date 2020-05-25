@@ -17,11 +17,11 @@ INCBIN "gfx/battle/dude.2bpp.lz"
 
 SECTION "HiroCardPic", ROMX
 HiroCardPic::
-INCBIN "gfx/trainer_card/hiro_card.2bpp"
+INCBIN "gfx/trainer_card/hiro_card.2bpp.lz"
 
 SECTION "SylviaCardPic", ROMX
 SylviaCardPic::
-INCBIN "gfx/trainer_card/sylvia_card.2bpp"
+INCBIN "gfx/trainer_card/sylvia_card.2bpp.lz"
 
 
 ; Trainer card
@@ -66,7 +66,7 @@ INCBIN "gfx/stats/stats_tiles.2bpp"
 
 SECTION "PackMenuGFX", ROMX
 PackMenuGFX::
-INCBIN "gfx/pack/pack_menu.2bpp"
+INCBIN "gfx/pack/pack_menu.2bpp.lz"
 
 SECTION "PackGFX", ROMX
 PackGFX::

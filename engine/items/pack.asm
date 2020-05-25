@@ -1228,9 +1228,8 @@ Pack_InitGFX:
 	call DisableLCD
 	ld hl, PackMenuGFX
 	ld de, vTiles2
-	ld bc, $2f tiles
-	ld a, BANK(PackMenuGFX)
-	call FarCopyBytes
+	lb bc, BANK(PackMenuGFX), $2f
+	call DecompressRequest2bpp
 ; Background (blue if male, pink if female)
 	hlcoord 0, 1
 	ld bc, 11 * SCREEN_WIDTH

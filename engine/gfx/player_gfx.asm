@@ -89,13 +89,9 @@ GetCardPic:
 	ld a, BANK(SylviaCardPic)
 .GotPic:
 	ld de, vTiles2 tile $00
-	ld bc, $23 tiles
-	call FarCopyBytes
-	ld hl, CardGFX
-	ld de, vTiles2 tile $23
-	ld bc, 6 tiles
-	ld a, BANK(CardGFX)
-	jp FarCopyBytes
+	ld b, a
+	ld c, 5 * 7
+	jp DecompressRequest2bpp
 
 GetPlayerBackpic:
 	ld a, [wPlayerGender]

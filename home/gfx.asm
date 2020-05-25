@@ -57,7 +57,7 @@ DecompressRequest2bpp::
 	pop hl
 
 	ld de, sScratch
-	call Request2bpp
+	call Get2bpp
 	jp CloseSRAM
 
 FarCopyBytes::

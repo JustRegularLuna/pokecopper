@@ -46,6 +46,12 @@ TrainerCard:
 
 	farcall GetCardPic
 
+	ld hl, CardGFX
+	ld de, vTiles2 tile $23
+	ld bc, 6 tiles
+	ld a, BANK(CardGFX)
+	call FarCopyBytes
+
 	ld hl, CardRightCornerGFX
 	ld de, vTiles2 tile $1c
 	ld bc, 1 tiles
