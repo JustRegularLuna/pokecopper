@@ -59,7 +59,7 @@ TrainerCard:
 	call FarCopyBytes
 
 	ld hl, CardStatusGFX
-	ld de, vTiles2 tile $29
+	ld de, vTiles2 tile $79
 	ld bc, 6 tiles
 	ld a, BANK(CardStatusGFX)
 	call FarCopyBytes
@@ -113,7 +113,7 @@ TrainerCard_Page1_LoadGFX:
 	call TrainerCard_InitBorder
 	call WaitBGMap
 	ld de, CardStatusGFX
-	ld hl, vTiles2 tile $29
+	ld hl, vTiles2 tile $79
 	lb bc, BANK(CardStatusGFX), 6
 	call Request2bpp
 	call TrainerCard_Page1_PrintDexCaught_GameTime
@@ -288,7 +288,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	call PrintNum
 	call TrainerCard_Page1_PrintGameTime
 	hlcoord 2, 8
-	ld de, .StatusTilemap
+	ld de, StatusBadgesTilemap
 	call TrainerCardSetup_PlaceTilemapString
 	ld a, [wStatusFlags]
 	bit STATUSFLAGS_POKEDEX_F, a
@@ -304,13 +304,10 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 .Badges:
 	db "  BADGES▶@"
 
-.StatusTilemap:
-	db $29, $2a, $2b, $2c, $2d, -1
-
 TrainerCard_Page2_3_InitObjectsAndStrings:
 	push hl
 	hlcoord 2, 8
-	ld de, .BadgesTilemap
+	ld de, StatusBadgesTilemap
 	call TrainerCardSetup_PlaceTilemapString
 	hlcoord 2, 10
 	ld a, $29
@@ -337,8 +334,8 @@ endr
 	pop hl
 	jp TrainerCard_Page2_3_OAMUpdate
 
-.BadgesTilemap:
-	db $79, $7a, $7b, $7c, $7d, -1 ; "BADGES"
+StatusBadgesTilemap:
+	db $79, $7a, $7b, $7c, $7d, -1 ; "STATUS" or "BADGES"
 
 TrainerCardSetup_PlaceTilemapString:
 .loop
@@ -350,16 +347,14 @@ TrainerCardSetup_PlaceTilemapString:
 	jr .loop
 
 TrainerCard_InitBorder:
-	ld e, SCREEN_WIDTH
-.loop1
+	ld e, SCREEN_WIDTH + 1
 	ld a, $23
+.loop1
 	ld [hli], a
 	dec e
 	jr nz, .loop1
 
-	ld a, $23
-	ld [hli], a
-	ld e, SCREEN_HEIGHT - 1
+	ld e, SCREEN_WIDTH - 3
 	ld a, " "
 .loop2
 	ld [hli], a
@@ -370,11 +365,12 @@ TrainerCard_InitBorder:
 	ld [hli], a
 	ld a, $23
 	ld [hli], a
+
 .loop3
 	ld a, $23
 	ld [hli], a
 
-	ld e, SCREEN_HEIGHT
+	ld e, SCREEN_WIDTH - 2
 	ld a, " "
 .loop4
 	ld [hli], a
@@ -383,25 +379,27 @@ TrainerCard_InitBorder:
 
 	ld a, $23
 	ld [hli], a
+
 	dec d
 	jr nz, .loop3
 
-	ld a, $23
 	ld [hli], a
-	ld a, $24
+	inc a ; $24
 	ld [hli], a
 
-	ld e, SCREEN_HEIGHT - 1
+	ld e, SCREEN_WIDTH - 3
 	ld a, " "
 .loop5
 	ld [hli], a
 	dec e
 	jr nz, .loop5
+
 	ld a, $23
 	ld [hli], a
+
 	ld e, SCREEN_WIDTH
-.loop6
 	ld a, $23
+.loop6
 	ld [hli], a
 	dec e
 	jr nz, .loop6
@@ -452,7 +450,7 @@ TrainerCard_Page1_PrintGameTime:
 	ret nz
 	hlcoord 15, 12
 	ld a, [hl]
-	xor " " ^ $2e ; alternate between space and small colon ($2e) tiles
+	xor " " ^ $7e ; alternate between space and small colon ($7e) tiles
 	ld [hl], a
 	ret
 
