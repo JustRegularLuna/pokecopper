@@ -164,4 +164,9 @@ hRequested1bpp:: db ; ffec
 hRequestedVTileSource:: dw ; ffed
 hRequestedVTileDest::   dw ; ffef
 
-	ds 14
+hPredefID:: db ; fff1
+hPredefTemp:: dw ; fff2
+hPredefAddress:: dw ; fff4
+hFarCallBCBuffer:: dw ; fff6
+
+	ds 7

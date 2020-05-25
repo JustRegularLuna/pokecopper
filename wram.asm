@@ -1147,12 +1147,7 @@ wOverworldDelay:: db ; cfb1
 wTextDelayFrames:: db ; cfb2
 wVBlankOccurred:: db ; cfb3
 
-wPredefID:: db ; cfb4
-wPredefTemp:: dw ; cfb5
-wPredefAddress:: dw ; cfb7
-wFarCallBCBuffer:: dw ; cfb9
-
-	ds 1
+	ds 8
 
 wGameTimerPause:: ; cfbc
 ; bit 0: game timer paused
