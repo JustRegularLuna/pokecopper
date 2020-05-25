@@ -2437,7 +2437,7 @@ Script_writecmdqueue:
 	ld d, a
 	ld a, [wScriptBank]
 	ld b, a
-	farjp WriteCmdQueue ; no need to farcall
+	jp WriteCmdQueue
 
 Script_delcmdqueue:
 ; script command 0x7e
@@ -2447,7 +2447,7 @@ Script_delcmdqueue:
 	ld [wScriptVar], a
 	call GetScriptByte
 	ld b, a
-	farcall DelCmdQueue ; no need to farcall
+	call DelCmdQueue
 	ret c
 	ld a, TRUE
 	ld [wScriptVar], a

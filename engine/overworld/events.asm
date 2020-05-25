@@ -103,7 +103,7 @@ HandleMap:
 	ld a, 2
 	ld [wOverworldDelay], a
 	call HandleMapTimeAndJoypad
-	farcall HandleCmdQueue ; no need to farcall
+	call HandleCmdQueue
 	call MapEvents
 
 ; Not immediately entering a connected map will cause problems.

@@ -2021,7 +2021,7 @@ Function565c:
 Function5673:
 	call Function56a3
 	jr c, SetFacing_Standing
-	farcall Function4440 ; no need to farcall
+	call Function4440
 	xor a
 	ret
 
@@ -2045,7 +2045,7 @@ Function5688:
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld [hl], a
-	farjp UpdateTallGrassFlags ; no need to farcall
+	jp UpdateTallGrassFlags
 
 Function56a3:
 	ld hl, OBJECT_NEXT_MAP_X
@@ -2306,7 +2306,7 @@ ResetFollower:
 	cp -1
 	ret z
 	call GetObjectStruct
-	farcall Function58e3 ; no need to bankswitch
+	call Function58e3
 	ld a, -1
 	ld [wObjectFollow_Follower], a
 	ret
