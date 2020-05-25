@@ -563,7 +563,7 @@ OpenPartyStats:
 	call LowVolume
 	predef StatsScreenInit
 	call MaxVolume
-	call Call_ExitMenu
+	call ExitMenu
 	ld a, 0
 	ret
 
@@ -788,7 +788,7 @@ ChooseMoveToDelete:
 	jr .enter_loop
 
 .loop
-	call ScrollingMenuJoypad
+	call DoMenuJoypadLoop
 	bit B_BUTTON_F, a
 	jp nz, .b_button
 	bit A_BUTTON_F, a
@@ -856,7 +856,7 @@ MoveScreenLoop:
 	jr .skip_joy
 
 .joy_loop
-	call ScrollingMenuJoypad
+	call DoMenuJoypadLoop
 	bit 1, a
 	jp nz, .b_button
 	bit 0, a

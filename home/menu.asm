@@ -20,12 +20,8 @@ SetMenuAttributes::
 	pop hl
 	ret
 
-StaticMenuJoypad::
-	farcall _StaticMenuJoypad
-	jr GetMenuJoypad
-
-ScrollingMenuJoypad::
-	farcall _ScrollingMenuJoypad
+DoMenuJoypadLoop::
+	farcall _DoMenuJoypadLoop
 	; fallthrough
 
 GetMenuJoypad::
@@ -308,10 +304,6 @@ CopyMenuHeader::
 	ld [wMenuDataBank], a
 	ret
 
-StoreTo_wMenuCursorBuffer::
-	ld [wMenuCursorBuffer], a
-	ret
-
 MenuTextbox::
 	push hl
 	call LoadMenuTextbox
@@ -342,9 +334,6 @@ LoadStandardMenuHeader::
 	dw 0
 	db 1 ; default option
 
-Call_ExitMenu::
-	jp ExitMenu
-
 VerticalMenu::
 	xor a
 	ldh [hBGMapMode], a
@@ -357,7 +346,7 @@ VerticalMenu::
 	bit 7, a
 	jr z, .cancel
 	call InitVerticalMenuCursor
-	call StaticMenuJoypad
+	call DoMenuJoypadLoop
 	call MenuClickSound
 	bit 1, a
 	jr z, .okay
@@ -595,7 +584,7 @@ InitMenuCursorAndButtonPermissions::
 	ret
 
 GetScrollingMenuJoypad::
-	call ScrollingMenuJoypad
+	call DoMenuJoypadLoop
 	ld hl, wMenuJoypadFilter
 	and [hl]
 	jr ContinueGettingMenuJoypad
@@ -603,7 +592,7 @@ GetScrollingMenuJoypad::
 GetStaticMenuJoypad::
 	xor a
 	ld [wMenuJoypad], a
-	call StaticMenuJoypad
+	call DoMenuJoypadLoop
 
 ContinueGettingMenuJoypad:
 	bit A_BUTTON_F, a

@@ -163,7 +163,7 @@ ForgetMove:
 	ld [w2DMenuFlags2], a
 	ld a, $20
 	ld [w2DMenuCursorOffsets], a
-	call StaticMenuJoypad
+	call DoMenuJoypadLoop
 	push af
 	call SafeLoadTempTilemapToTilemap
 	pop af

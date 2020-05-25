@@ -210,8 +210,7 @@ TMHM_PocketLoop:
 	jr TMHM_ShowTMMoveDescription
 
 TMHM_JoypadLoop:
-	call TMHM_DisplayPocketItems
-	call StaticMenuJoypad
+	call DoMenuJoypadLoop
 	ld b, a
 	ld a, [wMenuCursorY]
 	dec a

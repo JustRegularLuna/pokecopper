@@ -124,6 +124,15 @@ if DEF(_DEBUG)
 	loadmem wPartyMon2PP+3, 15
 	; events
 	setevent EVENT_ENABLED_CABLE_CLUB
+	; all TMs
+x = TM_DYNAMICPUNCH
+rept NUM_TMS + NUM_HMS
+	giveitem x
+x = x + 1
+if x == ITEM_C3 || x == ITEM_DC
+x = x + 1
+endc
+endr
 endc
 	closetext
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
