@@ -647,6 +647,10 @@ GetWarpDestCoords::
 	ret
 
 LoadBlockData::
+	ldh a, [hVBlank]
+	push af
+	ld a, 2
+	ldh [hVBlank], a
 	ld hl, wOverworldMapBlocks
 	ld bc, wOverworldMapBlocksEnd - wOverworldMapBlocks
 	xor a
@@ -654,7 +658,10 @@ LoadBlockData::
 	call ChangeMap
 	call FillMapConnections
 	ld a, MAPCALLBACK_TILES
-	jp RunMapCallback
+	call RunMapCallback
+	pop af
+	ldh [hVBlank], a
+	ret
 
 ChangeMap::
 	ldh a, [hROMBank]
@@ -983,25 +990,6 @@ MapTextbox::
 
 	pop af
 	rst Bankswitch
-	ret
-
-Call_a_de::
-; Call a:de.
-
-	ldh [hTempBank], a
-	ldh a, [hROMBank]
-	push af
-	ldh a, [hTempBank]
-	rst Bankswitch
-
-	call .de
-
-	pop af
-	rst Bankswitch
-	ret
-
-.de
-	push de
 	ret
 
 GetMovementData::

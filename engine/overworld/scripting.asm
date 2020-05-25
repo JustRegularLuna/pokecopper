@@ -413,7 +413,7 @@ Script_loadmenu:
 	ld h, a
 	ld de, LoadMenuHeader
 	ld a, [wScriptBank]
-	call Call_a_de
+	call FarCall_de
 	jp UpdateSprites
 
 Script_closewindow:
