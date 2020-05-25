@@ -10,7 +10,7 @@ PlaceWaitingText::
 	jr .proceed
 
 .notinbattle
-	predef LinkTextboxAtHL
+	call Textbox
 
 .proceed
 	hlcoord 4, 11

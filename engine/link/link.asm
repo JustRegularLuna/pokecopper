@@ -14,13 +14,10 @@ LinkCommunications:
 	call UpdateSprites
 	call LoadStandardFont
 	call LoadFontsBattleExtra
-	farcall LinkComms_LoadPleaseWaitTextboxBorderGFX
 	call WaitBGMap2
 	hlcoord 3, 8
 	lb bc, 2, 12
-	ld d, h
-	ld e, l
-	farcall LinkTextbox2
+	call Textbox
 	hlcoord 4, 10
 	ld de, String_PleaseWait
 	rst PlaceString
@@ -394,7 +391,7 @@ Gen2ToGen2LinkComms:
 	ld a, HIRO
 	ld [wOtherTrainerClass], a
 	call ClearScreen
-	farcall Link_WaitBGMap
+	call Link_WaitBGMap
 	ld hl, wOptions
 	ld a, [hl]
 	push af
@@ -459,13 +456,7 @@ LinkTimeout:
 	ld [hl], a
 	ldh [hVBlank], a
 	push de
-	hlcoord 0, 12
-	lb bc, 4, 18
-	push de
-	ld d, h
-	ld e, l
-	farcall LinkTextbox2
-	pop de
+	call SpeechTextbox
 	pop hl
 	bccoord 1, 14
 	call PlaceHLTextAtBC
@@ -1156,7 +1147,7 @@ LinkTradeOTPartymonMenuLoop:
 	jp z, LinkTradePartiesMenuMasterLoop
 	bit A_BUTTON_F, a
 	jr z, .not_a_button
-	farcall LinkMonStatsScreen
+	call LinkMonStatsScreen
 	jp LinkTradePartiesMenuMasterLoop
 
 .not_a_button
@@ -1271,11 +1262,11 @@ Function28926:
 	push af
 	hlcoord 0, 15
 	lb bc, 1, 18
-	call LinkTextboxAtHL
+	call Textbox
 	hlcoord 2, 16
 	ld de, .String_Stats_Trade
 	rst PlaceString
-	farcall Link_WaitBGMap
+	call Link_WaitBGMap
 
 .joy_loop
 	ld a, " "
@@ -1340,7 +1331,7 @@ Function28926:
 .show_stats
 	pop af
 	ld [wMenuCursorY], a
-	farcall LinkMonStatsScreen
+	call LinkMonStatsScreen
 	call SafeLoadTempTilemapToTilemap
 	hlcoord 6, 1
 	lb bc, 6, 1
@@ -1374,8 +1365,8 @@ Function28926:
 	ld [wOtherPlayerLinkAction], a
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call LinkTextboxAtHL
-	farcall Link_WaitBGMap
+	call Textbox
+	call Link_WaitBGMap
 	ld hl, .LinkTradeCantBattleText
 	bccoord 1, 14
 	call PlaceHLTextAtBC
@@ -1395,8 +1386,8 @@ Function28926:
 	call GetPokemonName
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call LinkTextboxAtHL
-	farcall Link_WaitBGMap
+	call Textbox
+	call Link_WaitBGMap
 	ld hl, .LinkAbnormalMonText
 	bccoord 1, 14
 	call PlaceHLTextAtBC
@@ -1404,7 +1395,7 @@ Function28926:
 .cancel_trade
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call LinkTextboxAtHL
+	call Textbox
 	hlcoord 1, 14
 	ld de, String_TooBadTheTradeWasCanceled
 	rst PlaceString
@@ -1502,8 +1493,8 @@ LinkTrade:
 	ld [wOtherPlayerLinkAction], a
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call LinkTextboxAtHL
-	farcall Link_WaitBGMap
+	call Textbox
+	call Link_WaitBGMap
 	ld a, [wd002]
 	ld hl, wPartySpecies
 	ld c, a
@@ -1530,7 +1521,7 @@ LinkTrade:
 	call LoadStandardMenuHeader
 	hlcoord 10, 7
 	lb bc, 3, 7
-	call LinkTextboxAtHL
+	call Textbox
 	ld de, String28eab
 	hlcoord 12, 8
 	rst PlaceString
@@ -1552,7 +1543,7 @@ LinkTrade:
 	ld a, 1
 	ld [wMenuCursorY], a
 	ld [wMenuCursorX], a
-	farcall Link_WaitBGMap
+	call Link_WaitBGMap
 	call ScrollingMenuJoypad
 	push af
 	call Call_ExitMenu
@@ -1569,7 +1560,7 @@ LinkTrade:
 	ld [wPlayerLinkAction], a
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call LinkTextboxAtHL
+	call Textbox
 	hlcoord 1, 14
 	ld de, String_TooBadTheTradeWasCanceled
 	rst PlaceString
@@ -1585,7 +1576,7 @@ LinkTrade:
 	jr nz, .asm_28c7b
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call LinkTextboxAtHL
+	call Textbox
 	hlcoord 1, 14
 	ld de, String_TooBadTheTradeWasCanceled
 	rst PlaceString
@@ -1772,7 +1763,7 @@ LinkTrade:
 	call ClearScreen
 	call LoadTradeScreenBorder
 	call SetTradeRoomBGPals
-	farcall Link_WaitBGMap
+	call Link_WaitBGMap
 	ld b, $1
 	pop af
 	ld c, a
@@ -1812,11 +1803,11 @@ LinkTrade:
 	call DelayFrames
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call LinkTextboxAtHL
+	call Textbox
 	hlcoord 1, 14
 	ld de, String28ebd
 	rst PlaceString
-	farcall Link_WaitBGMap
+	call Link_WaitBGMap
 	ld c, 50
 	call DelayFrames
 	ld a, [wLinkMode]
@@ -1843,11 +1834,6 @@ String28ebd:
 String_TooBadTheTradeWasCanceled:
 	db   "Too bad! The trade"
 	next "was canceled!@"
-
-LinkTextboxAtHL:
-	ld d, h
-	ld e, l
-	farjp LinkTextbox
 
 LoadTradeScreenBorder:
 	farjp _LoadTradeScreenBorder
@@ -2373,3 +2359,25 @@ CableClubCheckWhichChris:
 .yes
 	ld [wScriptVar], a
 	ret
+
+LinkMonStatsScreen:
+	ld a, [wMenuCursorY]
+	dec a
+	ld [wCurPartyMon], a
+	call LowVolume
+	predef StatsScreenInit
+	ld a, [wCurPartyMon]
+	inc a
+	ld [wMenuCursorY], a
+	call ClearScreen
+	call ClearBGPalettes
+	call MaxVolume
+	farcall LoadTradeScreenBorder
+	call Link_WaitBGMap
+	farcall InitTradeSpeciesList
+	farcall SetTradeRoomBGPals
+	jp WaitBGMap2
+
+Link_WaitBGMap:
+	call WaitBGMap
+	jp WaitBGMap2

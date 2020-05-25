@@ -1,84 +1,14 @@
 LinkCommsBorderGFX:
-INCBIN "gfx/trade/border_tiles.2bpp"
+INCBIN "gfx/trade/border_tiles.2bpp.lz"
 
-__LoadTradeScreenBorder:
-	ld de, LinkCommsBorderGFX
-	ld hl, vTiles2
-	lb bc, BANK(LinkCommsBorderGFX), 70
-	jp Get2bpp
+_LoadTradeScreenBorder:
+	ld hl, LinkCommsBorderGFX
+	ld de, vTiles2
+	lb bc, BANK(LinkCommsBorderGFX), 64
+	jp DecompressRequest2bpp
 
 Tilemap_CableTradeBorder:
 INCBIN "gfx/trade/border.tilemap"
-
-_LinkTextbox:
-	ld h, d
-	ld l, e
-	push bc
-	push hl
-	call .PlaceBorder
-	pop hl
-	pop bc
-
-	ld de, wAttrmap - wTilemap
-	add hl, de
-	inc b
-	inc b
-	inc c
-	inc c
-	ld a, PAL_BG_TEXT
-.row
-	push bc
-	push hl
-.col
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	pop bc
-	dec b
-	jr nz, .row
-	ret
-
-.PlaceBorder
-	push hl
-	ld a, $30
-	ld [hli], a
-	inc a
-	call .PlaceRow
-	inc a
-	ld [hl], a
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-.loop
-	push hl
-	ld a, $33
-	ld [hli], a
-	ld a, " "
-	call .PlaceRow
-	ld [hl], $34
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	dec b
-	jr nz, .loop
-
-	ld a, $35
-	ld [hli], a
-	ld a, $36
-	call .PlaceRow
-	ld [hl], $37
-	ret
-
-.PlaceRow
-	ld d, c
-.row_loop
-	ld [hli], a
-	dec d
-	jr nz, .row_loop
-	ret
 
 InitTradeSpeciesList:
 	call _LoadTradeScreenBorder
@@ -96,15 +26,6 @@ InitTradeSpeciesList:
 .CANCEL:
 	db "CANCEL@"
 
-_LoadTradeScreenBorder:
-	jp __LoadTradeScreenBorder
-
-LinkComms_LoadPleaseWaitTextboxBorderGFX:
-	ld de, LinkCommsBorderGFX + $30 tiles
-	ld hl, vTiles2 tile $76
-	lb bc, BANK(LinkCommsBorderGFX), 8
-	jp Get2bpp
-
 LoadTradeRoomBGPals:
 	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
@@ -117,9 +38,6 @@ Function16d6ae:
 	rst CopyBytes
 	ret
 
-LinkTextbox:
-	jp _LinkTextbox
-
 Function16d6ce:
 	call LoadStandardMenuHeader
 	call Function16d6e1
@@ -130,7 +48,7 @@ Function16d6ce:
 Function16d6e1:
 	hlcoord 4, 10
 	lb bc, 1, 10
-	predef LinkTextboxAtHL
+	call Textbox
 	hlcoord 5, 11
 	ld de, .Waiting
 	rst PlaceString
