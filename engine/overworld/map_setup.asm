@@ -52,7 +52,7 @@ ReadMapSetupScript:
 .go
 	ld a, b
 	and $7f
-	rst FarCall
+	call FarCall_hl
 
 	pop hl
 	jr .loop
@@ -131,8 +131,7 @@ LoadMapObjects:
 	ld a, MAPCALLBACK_OBJECTS
 	call RunMapCallback
 	farcall LoadObjectMasks
-	farcall InitializeVisibleSprites
-	ret
+	farjp InitializeVisibleSprites
 
 ResetPlayerObjectAction:
 	ld hl, wPlayerSpriteSetupFlags
@@ -218,8 +217,7 @@ FadeOutMapMusic:
 	jp SkipMusic
 
 ApplyMapPalettes:
-	farcall _UpdateTimePals
-	ret
+	farjp _UpdateTimePals
 
 FadeMapMusicAndPalettes:
 	ld a, $4

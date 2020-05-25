@@ -3,8 +3,7 @@ GiveParkBalls:
 	ld [wContestMon], a
 	ld a, 20
 	ld [wParkBallsRemaining], a
-	farcall StartBugContestTimer
-	ret
+	farjp StartBugContestTimer
 
 BugCatchingContestBattleScript::
 	loadvar VAR_BATTLETYPE, BATTLETYPE_CONTEST

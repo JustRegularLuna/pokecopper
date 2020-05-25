@@ -257,8 +257,7 @@ _SaveGameData:
 	call SaveBackupChecksum
 	call ValidateBackupSave
 	farcall BackupPartyMonMail
-	farcall SaveRTC
-	ret
+	farjp SaveRTC
 
 SavingDontTurnOffThePower:
 	; Prevent joypad interrupts

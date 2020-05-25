@@ -9,7 +9,7 @@ EntryPoint::
 
 SECTION "rst8 FarCall", ROM0[$0008]
 FarCall::
-	jp FarCall_hl
+	jp _FarCall
 
 	ds 5 ; unused
 

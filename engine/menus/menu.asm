@@ -1,7 +1,7 @@
 _2DMenu_::
 	ld hl, CopyMenuData
 	ld a, [wMenuData_2DMenuItemStringsBank]
-	rst FarCall
+	call FarCall_hl
 
 	call Draw2DMenu
 	call UpdateSprites
@@ -11,7 +11,7 @@ _2DMenu_::
 _InterpretBattleMenu::
 	ld hl, CopyMenuData
 	ld a, [wMenuData_2DMenuItemStringsBank]
-	rst FarCall
+	call FarCall_hl
 
 	call Draw2DMenu
 	call UpdateSprites
@@ -114,8 +114,7 @@ Place2DMenuItemStrings:
 	or h
 	ret z
 	ld a, [wMenuData_2DMenuFunctionBank]
-	rst FarCall
-	ret
+	jp FarCall_hl
 
 Init2DMenuCursorPosition:
 	call GetMenuTextStartCoord

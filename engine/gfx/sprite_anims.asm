@@ -103,20 +103,17 @@ DoAnimFrame:
 	ret
 
 .NamingScreenCursor
-	farcall NamingScreen_AnimateCursor
-	ret
+	farjp NamingScreen_AnimateCursor
 
 .MailCursor
-	farcall ComposeMail_AnimateCursor
-	ret
+	farjp ComposeMail_AnimateCursor
 
 .GameFreakLogo:
 	; TODO: Maybe add an animation
 	ret
 
 .SlotsGolem:
-	farcall Slots_AnimateGolem
-	ret
+	farjp Slots_AnimateGolem
 
 .SlotsChansey:
 	farcall Slots_AnimateChansey
@@ -161,12 +158,10 @@ DoAnimFrame:
 	ret
 
 .PokegearArrow
-	farcall AnimatePokegearModeIndicatorArrow
-	ret
+	farjp AnimatePokegearModeIndicatorArrow
 
 .DummyGameCursor
-	farcall DummyGame_InterpretJoypad_AnimateCursor
-	ret
+	farjp DummyGame_InterpretJoypad_AnimateCursor
 
 .TradePokeBall
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
@@ -308,8 +303,7 @@ DoAnimFrame:
 	jp DeinitializeSprite
 
 .TrademonInTube
-	farcall TradeAnim_AnimateTrademonInTube
-	ret
+	farjp TradeAnim_AnimateTrademonInTube
 
 .RevealNewMon:
 	ld hl, SPRITEANIMSTRUCT_0C
@@ -348,8 +342,7 @@ DoAnimFrame:
 	jp DeinitializeSprite
 
 .RadioTuningKnob:
-	farcall AnimateTuningKnob
-	ret
+	farjp AnimateTuningKnob
 
 .CutLeaves
 	ld hl, SPRITEANIMSTRUCT_0D

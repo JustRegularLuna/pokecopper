@@ -690,8 +690,7 @@ PokegearRadio_Joypad:
 	ld a, [wPokegearRadioChannelBank]
 	and a
 	ret z
-	rst FarCall
-	ret
+	jp FarCall_hl
 
 .left
 	ld a, [wPokegearFlags]
@@ -1762,8 +1761,7 @@ _TownMap:
 	ld [hl], $17
 	ld a, [wTownMapCursorLandmark]
 	call PokegearMap_UpdateLandmarkName
-	farcall TownMapPals
-	ret
+	farjp TownMapPals
 
 PlayRadio:
 	ld hl, wOptions
@@ -1785,7 +1783,7 @@ PlayRadio:
 	ld a, [wPokegearRadioChannelBank]
 	and a
 	jr z, .zero
-	rst FarCall
+	call FarCall_hl
 .zero
 	call DelayFrame
 	jr .loop
@@ -2421,8 +2419,7 @@ Pokedex_GetArea:
 	ret
 
 .GetPlayerIcon:
-	farcall GetPlayerIcon
-	ret
+	farjp GetPlayerIcon
 
 TownMapBGUpdate:
 ; Update BG Map tiles and attributes

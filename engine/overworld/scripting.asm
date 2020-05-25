@@ -251,8 +251,7 @@ Script_callasm:
 	call GetScriptByte
 	ld h, a
 	ld a, b
-	rst FarCall
-	ret
+	jp FarCall_hl
 
 Script_special:
 ; script command 0xf
@@ -262,8 +261,7 @@ Script_special:
 	ld e, a
 	call GetScriptByte
 	ld d, a
-	farcall Special
-	ret
+	farjp Special
 
 Script_memcallasm:
 ; script command 0x10
@@ -279,8 +277,7 @@ Script_memcallasm:
 	ld h, [hl]
 	ld l, a
 	ld a, b
-	rst FarCall
-	ret
+	jp FarCall_hl
 
 Script_jumptextfaceplayer:
 ; script command 0x51
@@ -435,21 +432,19 @@ Script_pokepic:
 	ld a, [wScriptVar]
 .ok
 	ld [wCurPartySpecies], a
-	farcall Pokepic
-	ret
+	farjp Pokepic
 
 Script_closepokepic:
 ; script command 0x57
 
-	farcall ClosePokepic
-	ret
+	farjp ClosePokepic
 
 Script_verticalmenu:
 ; script command 0x59
 
 	ld a, [wScriptBank]
 	ld hl, VerticalMenu
-	rst FarCall
+	call FarCall_hl
 	ld a, [wMenuCursorY]
 	jr nc, .ok
 	xor a
@@ -462,7 +457,7 @@ Script__2dmenu:
 
 	ld a, [wScriptBank]
 	ld hl, _2DMenu
-	rst FarCall
+	call FarCall_hl
 	ld a, [wMenuCursorBuffer]
 	jr nc, .ok
 	xor a
@@ -626,8 +621,7 @@ Script_pokemart:
 	ld d, a
 	ld a, [wScriptBank]
 	ld b, a
-	farcall OpenMartDialog
-	ret
+	farjp OpenMartDialog
 
 Script_elevator:
 ; script command 0x95
@@ -653,8 +647,7 @@ Script_trade:
 
 	call GetScriptByte
 	ld e, a
-	farcall NPCTrade
-	ret
+	farjp NPCTrade
 
 Script_phonecall:
 ; script command 0x98
@@ -666,14 +659,12 @@ Script_phonecall:
 	ld d, a
 	ld a, [wScriptBank]
 	ld b, a
-	farcall PhoneCall
-	ret
+	farjp PhoneCall
 
 Script_hangup:
 ; script command 0x99
 
-	farcall HangUp
-	ret
+	farjp HangUp
 
 Script_askforphonenumber:
 ; script command 0x97
@@ -728,8 +719,7 @@ Script_swarm:
 	ld d, a
 	call GetScriptByte
 	ld e, a
-	farcall StoreSwarmMapIndices
-	ret
+	farjp StoreSwarmMapIndices
 
 Script_trainertext:
 ; script command 0x62
@@ -820,8 +810,7 @@ Script_encountermusic:
 
 	ld a, [wOtherTrainerClass]
 	ld e, a
-	farcall PlayTrainerEncounterMusic
-	ret
+	farjp PlayTrainerEncounterMusic
 
 Script_playmapmusic:
 ; script command 0x82
@@ -940,8 +929,7 @@ ApplyMovement:
 	jp StopScript
 
 SetFlagsForMovement_2:
-	farcall _SetFlagsForMovement_2
-	ret
+	farjp _SetFlagsForMovement_2
 
 Script_applymovementlasttalked:
 ; script command 0x6a
@@ -1098,8 +1086,7 @@ Script_disappear:
 	ldh a, [hMapObjectIndexBuffer]
 	ld b, 1 ; set
 	call ApplyEventActionAppearDisappear
-	farcall _UpdateSprites
-	ret
+	farjp _UpdateSprites
 
 ApplyEventActionAppearDisappear:
 	push bc
@@ -1130,14 +1117,12 @@ Script_follow:
 	call GetScriptByte
 	call GetScriptObject
 	ld c, a
-	farcall StartFollow
-	ret
+	farjp StartFollow
 
 Script_stopfollow:
 ; script command 0x71
 
-	farcall StopFollow
-	ret
+	farjp StopFollow
 
 Script_moveobject:
 ; script command 0x72
@@ -1152,8 +1137,7 @@ Script_moveobject:
 	call GetScriptByte
 	add 4
 	ld e, a
-	farcall CopyDECoordsToMapObject
-	ret
+	farjp CopyDECoordsToMapObject
 
 Script_writeobjectxy:
 ; script command 0x73
@@ -1166,8 +1150,7 @@ Script_writeobjectxy:
 	ldh a, [hLastTalked]
 .ok
 	ld b, a
-	farcall WriteObjectXY
-	ret
+	farjp WriteObjectXY
 
 Script_follownotexact:
 ; script command 0x77
@@ -1179,8 +1162,7 @@ Script_follownotexact:
 	call GetScriptByte
 	call GetScriptObject
 	ld c, a
-	farcall FollowNotExact
-	ret
+	farjp FollowNotExact
 
 Script_loademote:
 ; script command 0x74
@@ -1192,8 +1174,7 @@ Script_loademote:
 	ld a, [wScriptVar]
 .not_var_emote
 	ld c, a
-	farcall LoadEmote
-	ret
+	farjp LoadEmote
 
 Script_showemote:
 ; script command 0x75
@@ -1791,8 +1772,7 @@ Script_loadvar:
 
 GetVarAction:
 	ld c, a
-	farcall _GetVarAction
-	ret
+	farjp _GetVarAction
 
 Script_getmonname:
 ; script command 0x40
@@ -1943,7 +1923,7 @@ Script_getstring:
 	ld d, a
 	ld a, [wScriptBank]
 	ld hl, CopyName1
-	rst FarCall
+	call FarCall_hl
 	ld de, wStringBuffer2
 	jp GetStringBuffer
 
@@ -1965,8 +1945,7 @@ Script_givepokemail:
 	ld a, [wScriptBank]
 	call FarCopyBytes
 	pop bc
-	farcall GivePokeMail
-	ret
+	farjp GivePokeMail
 
 Script_checkpokemail:
 ; script command 0x30
@@ -1978,8 +1957,7 @@ Script_checkpokemail:
 	ld d, a
 	ld a, [wScriptBank]
 	ld b, a
-	farcall CheckPokeMail
-	ret
+	farjp CheckPokeMail
 
 Script_giveitem:
 ; script command 0x1f
@@ -2041,8 +2019,7 @@ Script_givemoney:
 
 	call GetMoneyAccount
 	call LoadMoneyAmountToMem
-	farcall GiveMoney
-	ret
+	farjp GiveMoney
 
 Script_takemoney:
 ; script command 0x23
@@ -2050,8 +2027,7 @@ Script_takemoney:
 
 	call GetMoneyAccount
 	call LoadMoneyAmountToMem
-	farcall TakeMoney
-	ret
+	farjp TakeMoney
 
 Script_checkmoney:
 ; script command 0x24
@@ -2102,16 +2078,14 @@ Script_givecoins:
 ; parameters: coins
 
 	call LoadCoinAmountToMem
-	farcall GiveCoins
-	ret
+	farjp GiveCoins
 
 Script_takecoins:
 ; script command 0x26
 ; parameters: coins
 
 	call LoadCoinAmountToMem
-	farcall TakeCoins
-	ret
+	farjp TakeCoins
 
 Script_checkcoins:
 ; script command 0x27
@@ -2350,8 +2324,7 @@ Script_checkflag:
 	ret
 
 _EngineFlagAction:
-	farcall EngineFlagAction
-	ret
+	farjp EngineFlagAction
 
 Script_wildoff:
 ; script command 0x38
@@ -2464,8 +2437,7 @@ Script_writecmdqueue:
 	ld d, a
 	ld a, [wScriptBank]
 	ld b, a
-	farcall WriteCmdQueue ; no need to farcall
-	ret
+	farjp WriteCmdQueue ; no need to farcall
 
 Script_delcmdqueue:
 ; script command 0x7e
@@ -2524,8 +2496,7 @@ Script_warpcheck:
 
 	call WarpCheck
 	ret nc
-	farcall EnableEvents
-	ret
+	farjp EnableEvents
 
 Script_newloadmap:
 ; script command 0x8a

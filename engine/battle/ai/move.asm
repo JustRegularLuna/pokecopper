@@ -103,7 +103,7 @@ AIChooseMove:
 	ld h, [hl]
 	ld l, a
 	ld a, BANK(AIScoring)
-	rst FarCall
+	call FarCall_hl
 
 	jr .CheckLayer
 

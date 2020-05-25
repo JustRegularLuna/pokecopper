@@ -167,6 +167,6 @@ hRequestedVTileDest::   dw ; ffef
 hPredefID:: db ; fff1
 hPredefTemp:: dw ; fff2
 hPredefAddress:: dw ; fff4
-hFarCallBCBuffer:: dw ; fff6
+hFarCallSavedA:: db ; fff6
 
-	ds 7
+	ds 8

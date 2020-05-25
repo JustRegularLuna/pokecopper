@@ -16,8 +16,7 @@ BlindingFlash:
 	farcall UpdateTimeOfDayPal
 	ld b, SCGB_MAPPALS
 	call GetSGBLayout
-	farcall FadeInPalettes
-	ret
+	farjp FadeInPalettes
 
 ShakeHeadbuttTree:
 	farcall ClearSpriteAnims

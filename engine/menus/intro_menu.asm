@@ -18,8 +18,7 @@ NewGame_ClearTilemapEtc:
 	jp ClearWindowData
 
 OptionsMenu:
-	farcall _OptionsMenu
-	ret
+	farjp _OptionsMenu
 
 NewGame:
 	xor a
@@ -220,8 +219,7 @@ InitializeWorld:
 	call ShrinkPlayer
 	farcall SpawnPlayer
 	farcall _InitializeStartDay
-	farcall InitializeEvents
-	ret
+	farjp InitializeEvents
 
 LoadOrRegenerateLuckyIDNumber:
 	ld a, BANK(sLuckyIDNumber)
@@ -652,8 +650,7 @@ NamePlayer:
 	jr z, .NewName
 	call StorePlayerName
 	farcall ApplyMonOrTrainerPals
-	farcall MovePlayerPicLeft
-	ret
+	farjp MovePlayerPicLeft
 
 .NewName:
 	ld b, NAME_PLAYER
@@ -694,8 +691,7 @@ NameRival:
 	jr z, .NewName
 	call StoreRivalName
 	farcall ApplyMonOrTrainerPals
-	farcall MovePlayerPicLeft
-	ret
+	farjp MovePlayerPicLeft
 
 .NewName:
 	ld b, NAME_RIVAL
@@ -954,8 +950,7 @@ StartTitleScreen:
 	dw ResetClock
 
 .TitleScreen:
-	farcall _TitleScreen
-	ret
+	farjp _TitleScreen
 
 RunTitleScreen:
 	ld a, [wJumptableIndex]

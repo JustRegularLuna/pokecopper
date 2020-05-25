@@ -2996,14 +2996,12 @@ AIDamageCalc:
 	ld hl, ConstantDamageEffects
 	call IsInArray
 	jr nc, .asm_39400
-	farcall BattleCommand_ConstantDamage
-	ret
+	farjp BattleCommand_ConstantDamage
 
 .asm_39400
 	farcall EnemyAttackDamage
 	farcall BattleCommand_DamageCalc
-	farcall BattleCommand_Stab
-	ret
+	farjp BattleCommand_Stab
 
 INCLUDE "data/battle/ai/constant_damage_effects.asm"
 

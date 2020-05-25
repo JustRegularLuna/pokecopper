@@ -232,8 +232,7 @@ _CopyObjectStruct::
 	call UnmaskObject
 	ldh a, [hMapObjectIndexBuffer]
 	call GetMapObject
-	farcall CopyObjectStruct
-	ret
+	farjp CopyObjectStruct
 
 ApplyDeletionToMapObject::
 	ldh [hMapObjectIndexBuffer], a
@@ -248,8 +247,7 @@ ApplyDeletionToMapObject::
 	call .CheckStopFollow
 	pop af
 	call GetObjectStruct
-	farcall DeleteMapObject
-	ret
+	farjp DeleteMapObject
 
 .CheckStopFollow:
 	ld hl, wObjectFollow_Leader
@@ -471,8 +469,7 @@ UpdateSprites::
 	ret z
 
 	farcall Function55e0
-	farcall _UpdateSprites
-	ret
+	farjp _UpdateSprites
 
 GetObjectStruct::
 	ld bc, OBJECT_LENGTH

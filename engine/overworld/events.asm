@@ -127,8 +127,7 @@ MapEvents:
 .events
 	call PlayerEvents
 	call DisableEvents
-	farcall ScriptEvents
-	ret
+	farjp ScriptEvents
 
 NextOverworldFrame:
 	ld a, [wOverworldDelay]
@@ -153,8 +152,7 @@ HandleMapObjects:
 
 HandleMapBackground:
 	farcall _UpdateSprites
-	farcall ScrollScreen
-	ret
+	farjp ScrollScreen
 
 CheckPlayerState:
 	ld a, [wPlayerStepFlags]
@@ -179,8 +177,7 @@ _CheckObjectEnteringVisibleRange:
 	ld hl, wPlayerStepFlags
 	bit PLAYERSTEP_STOP_F, [hl]
 	ret z
-	farcall CheckObjectEnteringVisibleRange
-	ret
+	farjp CheckObjectEnteringVisibleRange
 
 PlayerEvents:
 	xor a
@@ -1087,8 +1084,7 @@ _TryWildEncounter_BugContest:
 	call TryWildEncounter_BugContest
 	ret nc
 	call ChooseWildEncounter_BugContest
-	farcall CheckRepelEffect
-	ret
+	farjp CheckRepelEffect
 
 ChooseWildEncounter_BugContest::
 ; Pick a random mon out of ContestMons.
@@ -1275,8 +1271,7 @@ HandleQueuedCommand:
 	ld h, [hl]
 	ld l, a
 	pop af
-	rst FarCall
-	ret
+	jp FarCall_hl
 
 .Jumptable:
 	dba DoNothing

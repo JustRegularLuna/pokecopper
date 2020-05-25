@@ -56,8 +56,7 @@ Copyright_GFPresents:
 	ld hl, vTiles2
 	lb bc, BANK(GameFreakLogo), 28
 	call Request2bpp
-	farcall ClearSpriteAnims
-	ret
+	farjp ClearSpriteAnims
 
 .StopGamefreakAnim:
 	farcall ClearSpriteAnims

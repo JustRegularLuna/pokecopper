@@ -1847,12 +1847,10 @@ String_TooBadTheTradeWasCanceled:
 LinkTextboxAtHL:
 	ld d, h
 	ld e, l
-	farcall LinkTextbox
-	ret
+	farjp LinkTextbox
 
 LoadTradeScreenBorder:
-	farcall _LoadTradeScreenBorder
-	ret
+	farjp _LoadTradeScreenBorder
 
 SetTradeRoomBGPals:
 	farcall LoadTradeRoomBGPals

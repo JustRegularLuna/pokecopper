@@ -2709,8 +2709,7 @@ SetUpBattlePartyMenu: ; switch to fullscreen menu?
 	farcall LoadPartyMenuGFX
 	farcall InitPartyMenuWithCancel
 	farcall InitPartyMenuBGPal7
-	farcall InitPartyMenuGFX
-	ret
+	farjp InitPartyMenuGFX
 
 JumpToPartyMenuAndPrintText:
 	farcall WritePartyMenuTilemap
@@ -2720,8 +2719,7 @@ JumpToPartyMenuAndPrintText:
 	jp DelayFrame
 
 SelectBattleMon:
-	farcall PartyMenuSelect
-	ret
+	farjp PartyMenuSelect
 
 PickPartyMonInBattle:
 .loop
@@ -3717,8 +3715,7 @@ BattleCheckEnemyShininess:
 BattleCheckShininess:
 	ld b, h
 	ld c, l
-	farcall CheckShininess
-	ret
+	farjp CheckShininess
 
 GetPartyMonDVs:
 	ld hl, wBattleMonDVs
@@ -3970,7 +3967,7 @@ PursuitSwitch:
 	ld [wCurBattleMon], a
 .do_turn
 	ld a, BANK(DoPlayerTurn) ; aka BANK(DoEnemyTurn)
-	rst FarCall
+	call FarCall_hl
 
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
@@ -4220,7 +4217,7 @@ UseHeldStatusHealingItem:
 .got_pointer
 	call SwitchTurnCore
 	ld a, BANK(CalcPlayerStats) ; aka BANK(CalcEnemyStats)
-	rst FarCall
+	call FarCall_hl
 	call SwitchTurnCore
 	call ItemRecoveryAnim
 	call UseOpponentItem
@@ -4318,7 +4315,7 @@ HandleStatBoostingHeldItems:
 	ld h, [hl]
 	ld l, a
 	ld a, BANK(BattleCommand_AttackUp)
-	rst FarCall
+	call FarCall_hl
 	pop bc
 	pop de
 	ld a, [wFailedMessage]
@@ -4330,8 +4327,7 @@ HandleStatBoostingHeldItems:
 	call GetItemName
 	ld hl, BattleText_UsersStringBuffer1Activated
 	call StdBattleTextbox
-	farcall BattleCommand_StatUpMessage
-	ret
+	farjp BattleCommand_StatUpMessage
 
 .finish
 	pop bc
@@ -4858,8 +4854,7 @@ BattleMenuPKMN_Loop:
 	jp BattleMenu
 
 .GetMenu:
-	farcall BattleMonMenu
-	ret
+	farjp BattleMonMenu
 
 Battle_StatsScreen:
 	call DisableLCD
@@ -7744,7 +7739,7 @@ GetBattleMonBackpic_DoAnim:
 	xor a
 	ldh [hBattleTurn], a
 	ld a, BANK(BattleAnimCommands)
-	rst FarCall
+	call FarCall_hl
 	pop af
 	ldh [hBattleTurn], a
 	ret
@@ -7780,7 +7775,7 @@ GetEnemyMonFrontpic_DoAnim:
 	push af
 	call SetEnemyTurn
 	ld a, BANK(BattleAnimCommands)
-	rst FarCall
+	call FarCall_hl
 	pop af
 	ldh [hBattleTurn], a
 	ret
@@ -7979,8 +7974,7 @@ ExitBattle:
 	xor a
 	ld [wForceEvolution], a
 	predef EvolveAfterBattle
-	farcall GivePokerusAndConvertBerries
-	ret
+	farjp GivePokerusAndConvertBerries
 
 CleanUpBattleRAM:
 	call BattleEnd_HandleRoamMons
@@ -8051,8 +8045,7 @@ ShowLinkBattleParticipantsAfterEnd:
 	ld a, [wEnemyMonStatus]
 	ld [hl], a
 	call ClearTilemap
-	farcall _ShowLinkBattleParticipants
-	ret
+	farjp _ShowLinkBattleParticipants
 
 DisplayLinkBattleResult:
 	ld a, [wBattleResult]
@@ -8271,8 +8264,7 @@ BattleEnd_HandleRoamMons:
 	ret nz
 
 .update_roam_mons
-	farcall UpdateRoamMons
-	ret
+	farjp UpdateRoamMons
 
 GetRoamMonMapGroup:
 	ld a, [wTempEnemyMonSpecies]
@@ -8621,13 +8613,11 @@ GetTrainerBackpic:
 	ld a, [wPlayerSpriteSetupFlags]
 	bit PLAYERSPRITESETUP_FEMALE_TO_MALE_F, a
 	jr nz, .Chris
-	farcall GetPlayerBackpic
-	ret
+	farjp GetPlayerBackpic
 
 .Chris:
 ; It's a boy.
-	farcall GetHiroBackpic
-	ret
+	farjp GetHiroBackpic
 
 .DudeBackpic:
 	ld hl, DudeBackpic

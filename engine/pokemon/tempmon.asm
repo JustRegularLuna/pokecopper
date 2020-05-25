@@ -19,8 +19,7 @@ CopyMonToTempMon:
 	cp OTPARTYMON
 	jr z, .copywholestruct
 	ld bc, BOXMON_STRUCT_LENGTH
-	farcall CopyBoxmonToTempMon
-	ret
+	farjp CopyBoxmonToTempMon
 
 .copywholestruct
 	ld a, [wCurPartyMon]

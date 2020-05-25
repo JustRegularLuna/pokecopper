@@ -86,8 +86,7 @@ StatsScreen_WaitAnim:
 .finish
 	ld hl, wcf64
 	res 5, [hl]
-	farcall HDMATransferTilemapToWRAMBank3
-	ret
+	farjp HDMATransferTilemapToWRAMBank3
 
 StatsScreen_SetJumptableIndex:
 	ld a, [wJumptableIndex]

@@ -22,8 +22,7 @@ HiddenItemScript::
 
 .append_tmhm_move_name
 	ld de, wStringBuffer3 + STRLEN("TM##")
-	farcall AppendTMHMMoveName
-	ret
+	farjp AppendTMHMMoveName
 
 .PlayerFoundItemText:
 	text_far _PlayerFoundItemText

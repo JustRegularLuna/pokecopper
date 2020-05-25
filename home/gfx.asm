@@ -32,20 +32,16 @@ FarCopyBytesDouble_DoubleBankSwitch::
 	ret
 
 ReplaceKrisSprite::
-	farcall _ReplaceKrisSprite
-	ret
+	farjp _ReplaceKrisSprite
 
 LoadStandardFont::
-	farcall _LoadStandardFont
-	ret
+	farjp _LoadStandardFont
 
 LoadFontsBattleExtra::
-	farcall _LoadFontsBattleExtra
-	ret
+	farjp _LoadFontsBattleExtra
 
 LoadFontsExtra::
-	farcall LoadFrame
-	ret
+	farjp LoadFrame
 
 DecompressRequest2bpp::
 	push de

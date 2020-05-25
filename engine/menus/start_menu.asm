@@ -125,7 +125,7 @@ StartMenu::
 	ld h, [hl]
 	ld l, a
 	ld a, [wQueuedScriptBank]
-	rst FarCall
+	call FarCall_hl
 	jr .ReturnEnd2
 
 .ReturnRedraw:
@@ -376,8 +376,7 @@ endr
 	ld hl, wStatusFlags2
 	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
 	ret z
-	farcall StartMenu_DrawBugContestStatusBox
-	ret
+	farjp StartMenu_DrawBugContestStatusBox
 
 .DrawBugContestStatus:
 	ld hl, wStatusFlags2
@@ -385,8 +384,7 @@ endr
 	jr nz, .contest
 	ret
 .contest
-	farcall StartMenu_PrintBugContestStatus
-	ret
+	farjp StartMenu_PrintBugContestStatus
 
 StartMenu_Exit:
 ; Exit the menu.

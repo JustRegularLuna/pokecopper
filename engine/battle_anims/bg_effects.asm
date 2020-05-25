@@ -496,8 +496,7 @@ BattleBGEffect_BattlerObj_2Row:
 	jp EndBattleBGEffect
 
 _QueueBattleAnimation:
-	farcall QueueBattleAnimation
-	ret
+	farjp QueueBattleAnimation
 
 BattleBGEffect_27:
 	call BattleBGEffects_AnonJumptable

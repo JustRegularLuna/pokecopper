@@ -112,8 +112,7 @@ Function140ae:
 	jr c, .dont_update
 
 .time_overflow
-	farcall ClearDailyTimers
-	ret
+	farjp ClearDailyTimers
 
 .dont_update
 	xor a

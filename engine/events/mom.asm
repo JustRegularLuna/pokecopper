@@ -512,8 +512,7 @@ Mom_WithdrawDepositMenuJoypad:
 	ld c, l
 	ld b, h
 	ld de, wStringBuffer2
-	farcall GiveMoney
-	ret
+	farjp GiveMoney
 
 .decrementdigit
 	ld hl, .DigitQuantities
@@ -521,8 +520,7 @@ Mom_WithdrawDepositMenuJoypad:
 	ld c, l
 	ld b, h
 	ld de, wStringBuffer2
-	farcall TakeMoney
-	ret
+	farjp TakeMoney
 
 .getdigitquantity
 	ld a, [wMomBankDigitCursorPosition]

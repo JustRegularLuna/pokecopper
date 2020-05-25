@@ -132,8 +132,7 @@ RefreshBattleHuds::
 
 UpdateBattleHuds::
 	farcall UpdatePlayerHUD
-	farcall UpdateEnemyHUD
-	ret
+	farjp UpdateEnemyHUD
 
 INCLUDE "home/battle_vars.asm"
 

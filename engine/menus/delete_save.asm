@@ -15,8 +15,7 @@ _DeleteSaveData:
 	ld a, [wMenuCursorY]
 	cp $1
 	ret z
-	farcall EmptyAllSRAMBanks
-	ret
+	farjp EmptyAllSRAMBanks
 
 .ClearAllSaveDataText:
 	text_far _ClearAllSaveDataText

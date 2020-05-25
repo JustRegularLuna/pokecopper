@@ -10,8 +10,7 @@ Special::
 	ld h, [hl]
 	ld l, a
 	ld a, b
-	rst FarCall
-	ret
+	jp FarCall_hl
 
 INCLUDE "data/special_pointers.asm"
 
@@ -68,8 +67,7 @@ FoundNone:
 	ret
 
 NameRater:
-	farcall _NameRater
-	ret
+	farjp _NameRater
 
 OverworldTownMap:
 	call FadeToMenu
@@ -98,8 +96,7 @@ BugContestJudging:
 MapRadio:
 	ld a, [wScriptVar]
 	ld e, a
-	farcall PlayRadio
-	ret
+	farjp PlayRadio
 
 UnownPuzzle:
 	call FadeToMenu
@@ -139,7 +136,7 @@ StartGameCornerGame:
 	ld h, [hl]
 	ld l, a
 	pop af
-	rst FarCall
+	call FarCall_hl
 	jp ExitAllMenus
 
 CheckCoinsAndCoinCase:
@@ -223,8 +220,7 @@ ResetLuckyNumberShowFlag:
 	farcall RestartLuckyNumberCountdown
 	ld hl, wLuckyNumberShowFlag
 	res LUCKYNUMBERSHOW_GAME_OVER_F, [hl]
-	farcall LoadOrRegenerateLuckyIDNumber
-	ret
+	farjp LoadOrRegenerateLuckyIDNumber
 
 CheckLuckyNumberShowFlag:
 	farcall _CheckLuckyNumberShowFlag

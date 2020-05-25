@@ -172,13 +172,10 @@ Function49ed0:
 	jp ClearWindowData
 
 MainMenu_NewGame:
-	farcall NewGame
-	ret
+	farjp NewGame
 
 MainMenu_Options:
-	farcall OptionsMenu
-	ret
+	farjp OptionsMenu
 
 MainMenu_Continue:
-	farcall Continue
-	ret
+	farjp Continue

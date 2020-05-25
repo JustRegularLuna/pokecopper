@@ -108,8 +108,7 @@ LinkComms_LoadPleaseWaitTextboxBorderGFX:
 LoadTradeRoomBGPals:
 	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
-	farcall ApplyPals
-	ret
+	farjp ApplyPals
 
 Function16d6ae:
 	ld hl, Tilemap_CableTradeBorder

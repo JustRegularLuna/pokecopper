@@ -78,8 +78,7 @@ ReadMailMessage:
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	farcall ReadAnyMail
-	ret
+	farjp ReadAnyMail
 
 MoveMailFromPCToParty:
 	ld a, BANK(sMailboxCount)
