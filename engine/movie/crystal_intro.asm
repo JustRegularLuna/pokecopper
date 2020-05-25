@@ -52,10 +52,10 @@ Copyright_GFPresents:
 	ret
 
 .GetGFLogoGFX:
-	ld de, GameFreakLogo
-	ld hl, vTiles2
-	lb bc, BANK(GameFreakLogo), 28
-	call Request2bpp
+	ld hl, GameFreakLogoGFX
+	ld de, vTiles2
+	lb bc, BANK(GameFreakLogoGFX), 28
+	call DecompressRequest2bpp
 	farjp ClearSpriteAnims
 
 .StopGamefreakAnim:
@@ -94,10 +94,6 @@ PlaceGamefreakIntroGraphic:
 	ld bc, SCREEN_WIDTH - 3
 	add hl, bc
 	jr .loop
-
-GameFreakLogo:
-INCBIN "gfx/splash/logo1.2bpp"
-INCBIN "gfx/splash/logo2.2bpp"
 
 SpaceworldIntro:
 ; TODO: Attempt to port the intro movie from Spaceworld over.

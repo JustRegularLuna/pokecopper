@@ -83,20 +83,28 @@ SECTION "PokegearGFX", ROMX
 PokegearGFX::
 INCBIN "gfx/pokegear/pokegear.2bpp.lz"
 
-SECTION "TownMapGFX:", ROMX
+SECTION "TownMapGFX", ROMX
 TownMapGFX::
 INCBIN "gfx/pokegear/town_map.2bpp.lz"
 
 
 ; Intro / Credits
 
-SECTION "CopyrightGFX:", ROMX
-CopyrightGFX::
-INCBIN "gfx/splash/copyright.2bpp"
+SECTION "CopyrightGFX", ROMX
+GameFreakLogoGFX::
+INCBIN "gfx/splash/logo.2bpp.lz"
 
-SECTION "TheEndGFX:", ROMX
+SECTION "CopyrightGFX", ROMX
+CopyrightGFX::
+INCBIN "gfx/splash/copyright.2bpp.lz"
+
+SECTION "TheEndGFX", ROMX
 TheEndGFX::
-INCBIN "gfx/credits/theend.2bpp"
+INCBIN "gfx/credits/theend.2bpp.lz"
+
+SECTION "CreditsBorderGFX", ROMX
+CreditsBorderGFX::
+INCBIN "gfx/credits/border.2bpp.lz"
 
 SECTION "Shrink1Pic", ROMX
 Shrink1Pic::

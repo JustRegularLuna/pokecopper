@@ -25,7 +25,6 @@ Credits::
 	ld de, `22222222 ; eight pixels, each color #2 (dark)
 
 ; Fill wCreditsBlankFrame2bpp with 4x4=16 tiles, all solid dark color
-; (the same color used for the four border frame mons' backgrounds)
 
 .load_loop
 	ld a, e
@@ -35,20 +34,20 @@ Credits::
 	dec c
 	jr nz, .load_loop
 
-	ld de, CreditsBorderGFX
-	ld hl, vTiles2 tile $20
+	ld hl, CreditsBorderGFX
+	ld de, vTiles2 tile $20
 	lb bc, BANK(CreditsBorderGFX), 9
-	call Request2bpp
+	call DecompressRequest2bpp
 
-	ld de, CopyrightGFX
-	ld hl, vTiles2 tile $60
+	ld hl, CopyrightGFX
+	ld de, vTiles2 tile $60
 	lb bc, BANK(CopyrightGFX), 29
-	call Request2bpp
+	call DecompressRequest2bpp
 
-	ld de, TheEndGFX
-	ld hl, vTiles2 tile $40
+	ld hl, TheEndGFX
+	ld de, vTiles2 tile $40
 	lb bc, BANK(TheEndGFX), 16
-	call Request2bpp
+	call DecompressRequest2bpp
 
 	ld a, $ff
 	ld [wCreditsBorderFrame], a
@@ -57,7 +56,7 @@ Credits::
 
 	ld de, wCreditsBlankFrame2bpp
 	ld hl, vTiles2
-	lb bc, BANK(CreditsBorderGFX), 16
+	lb bc, BANK(@), 16
 	call Request2bpp
 
 	call ConstructCreditsTilemap
@@ -474,8 +473,6 @@ Credits_TheEnd:
 	dec c
 	jr nz, .loop
 	ret
-
-CreditsBorderGFX:    INCBIN "gfx/credits/border.2bpp"
 
 INCLUDE "data/credits_script.asm"
 INCLUDE "data/credits_strings.asm"

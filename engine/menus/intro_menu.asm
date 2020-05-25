@@ -1100,10 +1100,10 @@ ResetClock:
 Copyright:
 	call ClearTilemap
 	call LoadFontsExtra
-	ld de, CopyrightGFX
-	ld hl, vTiles2 tile $60
+	ld hl, CopyrightGFX
+	ld de, vTiles2 tile $60
 	lb bc, BANK(CopyrightGFX), 29
-	call Request2bpp
+	call DecompressRequest2bpp
 	hlcoord 2, 7
 	ld de, CopyrightString
 	rst PlaceString
