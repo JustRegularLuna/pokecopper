@@ -1,4 +1,4 @@
-PrintMoveDesc:
+PrintMoveDescription:
 	push hl
 	ld hl, MoveDescriptions
 	ld a, [wCurSpecies]
@@ -13,3 +13,5 @@ PrintMoveDesc:
 	pop hl
 	rst PlaceString
 	ret
+
+INCLUDE "data/moves/descriptions.asm"

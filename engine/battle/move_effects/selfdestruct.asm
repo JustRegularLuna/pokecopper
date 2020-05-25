@@ -20,7 +20,7 @@ BattleCommand_Selfdestruct:
 	ld a, BATTLE_VARS_SUBSTATUS5_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_DESTINY_BOND, [hl]
-	call _CheckBattleScene
+	call CheckBattleScene
 	ret nc
 	farcall DrawPlayerHUD
 	farcall DrawEnemyHUD

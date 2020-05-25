@@ -21,7 +21,7 @@ PredefPointers::
 	add_predef CalcMonStatC
 	add_predef CanLearnTMHMMove
 	add_predef GetTMHMMove
-	add_predef PrintMoveDesc
+	add_predef PrintMoveDescription
 	add_predef PlaceGraphic
 	add_predef CheckPlayerPartyForFitMon
 	add_predef StartBattle

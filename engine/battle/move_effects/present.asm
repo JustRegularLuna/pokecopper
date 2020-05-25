@@ -69,7 +69,7 @@ BattleCommand_Present:
 
 .already_fully_healed
 	call BattleCommand_SwitchTurn
-	call _CheckBattleScene
+	call CheckBattleScene
 	jr nc, .do_animation
 	call AnimateFailedMove
 	ld hl, RefusedGiftText

@@ -5668,7 +5668,7 @@ CheckEnemyLockedIn:
 LinkBattleSendReceiveAction:
 	call .StageForSend
 	ld [wd431], a
-	farcall PlaceWaitingText
+	call PlaceWaitingText
 	jp .LinkBattle_SendReceiveAction
 
 .StageForSend:
@@ -5726,6 +5726,19 @@ LinkBattleSendReceiveAction:
 	ld a, [wOtherPlayerLinkAction]
 	ld [wBattleAction], a
 	ret
+
+PlaceWaitingText::
+	hlcoord 3, 10
+	lb bc, 1, 11
+	call Textbox
+	hlcoord 4, 11
+	ld de, .Waiting
+	rst PlaceString
+	ld c, 50
+	jp DelayFrames
+
+.Waiting:
+	db "Waiting...!@"
 
 
 LoadEnemyMon:

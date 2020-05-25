@@ -3,7 +3,6 @@ INCLUDE "constants.asm"
 
 SECTION "Engine 1", ROMX
 
-INCLUDE "engine/link/place_waiting_text.asm"
 INCLUDE "engine/gfx/load_push_oam.asm"
 INCLUDE "engine/overworld/map_objects.asm"
 INCLUDE "engine/menus/intro_menu.asm"
@@ -36,12 +35,14 @@ INCLUDE "engine/items/items.asm"
 INCLUDE "engine/overworld/player_step.asm"
 INCLUDE "engine/battle/anim_hp_bar.asm"
 INCLUDE "engine/pokemon/move_mon.asm"
+INCLUDE "engine/battle/read_trainer_dvs.asm"
 INCLUDE "engine/pokemon/bills_pc_top.asm"
 INCLUDE "engine/pokemon/breedmon_level_growth.asm"
 INCLUDE "engine/events/bug_contest/caught_mon.asm"
 INCLUDE "engine/items/item_effects.asm"
 INCLUDE "engine/battle_anims/pokeball_wobble.asm"
 INCLUDE "engine/pokemon/knows_move.asm"
+INCLUDE "engine/math/get_square_root.asm"
 
 
 SECTION "Engine 4", ROMX
@@ -66,7 +67,6 @@ INCLUDE "engine/events/std_collision.asm"
 INCLUDE "engine/events/bug_contest/judging.asm"
 INCLUDE "engine/events/pokerus/apply_pokerus_tick.asm"
 INCLUDE "engine/events/bug_contest/contest_2.asm"
-INCLUDE "engine/math/get_square_root.asm"
 
 
 SECTION "Engine 5", ROMX
@@ -112,17 +112,13 @@ INCLUDE "engine/menus/trainer_card.asm"
 INCLUDE "engine/events/prof_oaks_pc.asm"
 INCLUDE "engine/overworld/decorations.asm"
 INCLUDE "engine/pokemon/level_up_happiness.asm"
-INCLUDE "engine/battle/read_trainer_dvs.asm"
-INCLUDE "engine/battle/returntobattle_useball.asm"
 INCLUDE "engine/battle/consume_held_item.asm"
 INCLUDE "data/moves/effects.asm"
-INCLUDE "engine/events/kurt_selectquantity_interpretjoypad.asm"
 
 
 SECTION "Engine A", ROMX
 
 INCLUDE "engine/link/link.asm"
-INCLUDE "engine/link/link_trade.asm"
 INCLUDE "engine/overworld/wildmons.asm"
 
 
@@ -134,7 +130,6 @@ INCLUDE "engine/battle/ai/redundant.asm"
 INCLUDE "engine/events/move_deleter.asm"
 INCLUDE "engine/items/tmhm.asm"
 INCLUDE "engine/pokemon/print_move_description.asm"
-INCLUDE "data/moves/descriptions.asm"
 INCLUDE "engine/events/pokerus/pokerus.asm"
 INCLUDE "engine/battle/start_battle.asm"
 INCLUDE "engine/gfx/place_graphic.asm"
@@ -187,12 +182,9 @@ SECTION "Engine 13", ROMX
 
 INCLUDE "engine/tilesets/map_palettes.asm"
 INCLUDE "data/collision_permissions.asm"
-INCLUDE "engine/menus/empty_sram.asm"
-INCLUDE "engine/menus/savemenu_copytilemapatonce.asm"
 INCLUDE "engine/events/checksave.asm"
 INCLUDE "data/maps/scenes.asm"
 INCLUDE "engine/overworld/load_map_part.asm"
-INCLUDE "engine/phone/phonering_copytilemapatonce.asm"
 INCLUDE "engine/rtc/reset_password.asm"
 INCLUDE "engine/menus/delete_save.asm"
 INCLUDE "data/tilesets.asm"
@@ -207,7 +199,6 @@ INCLUDE "engine/events/catch_tutorial.asm"
 INCLUDE "engine/movie/evolution_animation.asm"
 INCLUDE "engine/movie/init_hof_credits.asm"
 INCLUDE "engine/battle/sliding_intro.asm"
-INCLUDE "engine/battle/check_battle_scene.asm"
 INCLUDE "engine/movie/gbc_only.asm"
 INCLUDE "engine/events/poke_seer.asm"
 
@@ -350,11 +341,6 @@ SECTION "Title", ROMX
 INCLUDE "engine/movie/title.asm"
 
 
-SECTION "UpdateBattleHUDs", ROMX
-
-INCLUDE "engine/battle/update_battle_huds.asm"
-
-
 SECTION "Special Phone Text", ROMX
 
 INCLUDE "data/phone/text/mom.asm"
@@ -366,7 +352,6 @@ INCLUDE "data/phone/text/generic.asm"
 SECTION "Miscellaneous Text", ROMX
 
 INCLUDE "data/items/names.asm"
-INCLUDE "engine/items/print_item_description.asm"
 INCLUDE "data/moves/names.asm"
 INCLUDE "engine/overworld/landmarks.asm"
 
@@ -377,4 +362,3 @@ INCLUDE "engine/rtc/print_hours_mins.asm"
 INCLUDE "engine/events/diploma.asm"
 INCLUDE "engine/pokedex/pokedex_3.asm"
 INCLUDE "engine/events/catch_tutorial_input.asm"
-INCLUDE "engine/pokegear/townmap_convertlinebreakcharacters.asm"

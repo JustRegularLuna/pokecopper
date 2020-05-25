@@ -179,7 +179,7 @@ endr
 	jr z, .registerpokedex
 
 	push hl
-	farcall GetTrainerDVs
+	call GetTrainerDVs
 	pop hl
 	jr .initializeDVs
 
@@ -1452,7 +1452,7 @@ CalcMonStatC:
 	ld a, [hld]
 	ld e, a
 	ld d, [hl]
-	farcall GetSquareRoot
+	call GetSquareRoot
 	pop de
 
 .no_stat_exp
