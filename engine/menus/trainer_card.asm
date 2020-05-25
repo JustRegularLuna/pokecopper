@@ -132,14 +132,14 @@ TrainerCard_Page2_LoadGFX:
 	ld d, 6
 	call TrainerCard_InitBorder
 	call WaitBGMap
-	ld de, LeaderGFX
-	ld hl, vTiles2 tile $29
+	ld hl, LeaderGFX
+	ld de, vTiles2 tile $29
 	lb bc, BANK(LeaderGFX), 85
-	call Request2bpp
-	ld de, BadgeGFX
-	ld hl, vTiles0 tile $00
+	call DecompressRequest2bpp
+	ld hl, BadgeGFX
+	ld de, vTiles0 tile $00
 	lb bc, BANK(BadgeGFX), 44
-	call Request2bpp
+	call DecompressRequest2bpp
 	ld hl, TrainerCard_JohtoBadgesOAM
 	call TrainerCard_Page2_3_InitObjectsAndStrings
 	jp TrainerCard_IncrementJumptable
@@ -191,14 +191,14 @@ TrainerCard_Page3_LoadGFX:
 	ld d, 6
 	call TrainerCard_InitBorder
 	call WaitBGMap
-	ld de, LeaderGFX2
-	ld hl, vTiles2 tile $29
+	ld hl, LeaderGFX2
+	ld de, vTiles2 tile $29
 	lb bc, BANK(LeaderGFX2), 85
-	call Request2bpp
-	ld de, BadgeGFX2
-	ld hl, vTiles0 tile $00
+	call DecompressRequest2bpp
+	ld hl, BadgeGFX2
+	ld de, vTiles0 tile $00
 	lb bc, BANK(BadgeGFX2), 44
-	call Request2bpp
+	call DecompressRequest2bpp
 	ld hl, TrainerCard_KantoBadgesOAM
 	call TrainerCard_Page2_3_InitObjectsAndStrings
 	jp TrainerCard_IncrementJumptable

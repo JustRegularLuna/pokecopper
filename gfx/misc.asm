@@ -40,19 +40,19 @@ INCBIN "gfx/trainer_card/card_right_corner.2bpp"
 
 SECTION "LeaderGFX", ROMX
 LeaderGFX::
-INCBIN "gfx/trainer_card/leaders.2bpp"
+INCBIN "gfx/trainer_card/leaders.2bpp.lz"
 
 SECTION "LeaderGFX2", ROMX
 LeaderGFX2::
-INCBIN "gfx/trainer_card/leaders2.2bpp"
+INCBIN "gfx/trainer_card/leaders2.2bpp.lz"
 
 SECTION "BadgeGFX", ROMX
 BadgeGFX::
-INCBIN "gfx/trainer_card/badges.2bpp"
+INCBIN "gfx/trainer_card/badges.2bpp.lz"
 
 SECTION "BadgeGFX2", ROMX
 BadgeGFX2::
-INCBIN "gfx/trainer_card/badges2.2bpp"
+INCBIN "gfx/trainer_card/badges2.2bpp.lz"
 
 
 ; Stats
