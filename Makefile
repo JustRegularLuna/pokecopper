@@ -94,11 +94,11 @@ endif
 
 redgold.gbc: $(redgold_obj) layout.link
 	$(RGBLINK) -n redgold.sym -m redgold.map -l layout.link -p 0xff -o $@ $(redgold_obj)
-	$(RGBFIX) -Cjv -t POKEMON_2_ -i GOLD -k 01 -l 0x33 -m 0x10 -n 1 -p 0xff -r 3 $@
+	$(RGBFIX) -csjv -t POKEMON_2_ -i GOLD -k 01 -l 0x33 -m 0x10 -n 1 -p 0xff -r 3 $@
 
 bluesilver.gbc: $(bluesilver_obj) layout.link
 	$(RGBLINK) -n bluesilver.sym -m bluesilver.map -l layout.link -p 0xff -o $@ $(bluesilver_obj)
-	$(RGBFIX) -Cjv -t POKEMON_2_ -i SILV -k 01 -l 0x33 -m 0x10 -n 1 -p 0xff -r 3 $@
+	$(RGBFIX) -csjv -t POKEMON_2_ -i SILV -k 01 -l 0x33 -m 0x10 -n 1 -p 0xff -r 3 $@
 
 
 ### Misc file-specific graphics rules
