@@ -149,14 +149,14 @@ Credits_Jumptable:
 	dw Credits_Next
 	dw Credits_Next
 	dw Credits_PrepBGMapUpdate
-	dw Credits_UpdateGFXRequestPath
-	dw Credits_RequestGFX
+	dw Credits_Next
+	dw Credits_Next
 	dw Credits_LYOverride
 	dw Credits_Next
 	dw Credits_Next
 	dw Credits_Next
-	dw Credits_UpdateGFXRequestPath
-	dw Credits_RequestGFX
+	dw Credits_Next
+	dw Credits_Next
 	dw Credits_LoopBack
 
 Credits_Next:
@@ -176,22 +176,22 @@ Credits_PrepBGMapUpdate:
 	ldh [hBGMapMode], a
 	jp Credits_Next
 
-Credits_UpdateGFXRequestPath:
-	ld hl, wCreditsBlankFrame2bpp
-	ld a, l
-	ldh [hRequestedVTileSource], a
-	ld a, h
-	ldh [hRequestedVTileSource + 1], a
-	ld a, LOW(vTiles2)
-	ldh [hRequestedVTileDest], a
-	ld a, HIGH(vTiles2)
-	ldh [hRequestedVTileDest + 1], a
-Credits_RequestGFX:
-	xor a
-	ldh [hBGMapMode], a
-	ld a, $8
-	ldh [hRequested2bpp], a
-	jp Credits_Next
+;Credits_UpdateGFXRequestPath:
+;	ld hl, wCreditsBlankFrame2bpp
+;	ld a, l
+;	ldh [hRequestedVTileSource], a
+;	ld a, h
+;	ldh [hRequestedVTileSource + 1], a
+;	ld a, LOW(vTiles2)
+;	ldh [hRequestedVTileDest], a
+;	ld a, HIGH(vTiles2)
+;	ldh [hRequestedVTileDest + 1], a
+;Credits_RequestGFX:
+;	xor a
+;	ldh [hBGMapMode], a
+;	ld a, $8
+;	ldh [hRequested2bpp], a
+;	jp Credits_Next
 
 Credits_LYOverride:
 	ldh a, [rLY]
@@ -236,9 +236,11 @@ ParseCredits:
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 0, 5
-	ld bc, 20 * 12
+	ld bc, SCREEN_WIDTH * 12
 	ld a, " "
 	rst ByteFill
+
+	call WaitBGMap
 
 ; Then read the script.
 
@@ -250,10 +252,10 @@ ParseCredits:
 	jp z, .end
 	cp CREDITS_WAIT
 	jr z, .wait
-	cp CREDITS_SCENE
-	jr z, .scene
-	cp CREDITS_CLEAR
-	jr z, .clear
+;	cp CREDITS_SCENE
+;	jr z, .scene
+;	cp CREDITS_CLEAR
+;	jr z, .clear
 	cp CREDITS_MUSIC
 	jr z, .music
 	cp CREDITS_WAIT2
@@ -274,30 +276,20 @@ ParseCredits:
 	ld e, a
 	pop af
 
-; Strings spanning multiple lines have special cases.
+; Some strings spanning multiple lines have special cases.
 
 	cp COPYRIGHT
-	jr z, .copyright
-
-	cp STAFF
-	jr c, .staff
+	hlcoord 2, 6
+	jr z, .print
 
 ; The rest start from line 6.
 
-	hlcoord 0, 6
-	jr .print
-
-.copyright
-	hlcoord 2, 6
-	jr .print
-
-.staff
 	hlcoord 0, 6
 
 .print
 ; Print strings spaced every two lines.
 	call .get
-	ld bc, 20 * 2
+	ld bc, SCREEN_WIDTH * 2
 	rst AddNTimes
 	rst PlaceString
 	jr .loop
@@ -307,19 +299,19 @@ ParseCredits:
 	call Credits_TheEnd
 	jr .loop
 
-.scene
-; Update the scene number and corresponding palette.
-	call .get
-	ld [wCreditsBorderMon], a ; scene
-	xor a
-	ld [wCreditsBorderFrame], a ; frame
-	jr .loop
-
-.clear
-; Clear the banner.
-	ld a, $ff
-	ld [wCreditsBorderFrame], a ; frame
-	jr .loop
+;.scene
+;; Update the scene number and corresponding palette.
+;	call .get
+;	ld [wCreditsBorderMon], a ; scene
+;	xor a
+;	ld [wCreditsBorderFrame], a ; frame
+;	jr .loop
+;
+;.clear
+;; Clear the banner.
+;	ld a, $ff
+;	ld [wCreditsBorderFrame], a ; frame
+;	jr .loop
 
 .music
 ; Play the credits music.
