@@ -179,7 +179,12 @@ CreditsStrings:
 .KazuyoshiOsawa:      db "  KAZUYOSHI OSAWA@"
 .KimikoNakamichi:     db "  KIMIKO NAKAMICHI@"
 .Staff:               db "      #MON"                 ; "ポケットモンスター"
-                    next "  CRYSTAL VERSION"          ; "　　クりスタル　バージョン"
+IF DEF(_REDGOLD)
+                    next "  REDGOLD VERSION"
+ENDC
+IF DEF(_BLUESILVER)
+                    next " BLUESILVER VERSION"
+ENDC
                     next "       STAFF@"              ; "　　　　スタッフ@"
 .Director:            db "      DIRECTOR@"            ; "エグゼクティブ　ディレクター@"
 .CoDirector:          db "    CO-DIRECTOR@"           ; "ディレクター@"
