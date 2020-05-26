@@ -468,6 +468,13 @@ InitSGBBorder:
 	ret nz
 ; SGB/DMG only
 	di
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDecompressScratch)
+	ldh [rSVBK], a
+	ld hl, SGBBorderGFX
+	ld de, wDecompressScratch
+	call Decompress
 	ld a, [wcfbe]
 	push af
 	set 7, a
@@ -492,6 +499,8 @@ InitSGBBorder:
 .skip
 	pop af
 	ld [wcfbe], a
+	pop af
+	ldh [rSVBK], a
 	ei
 	ret
 
@@ -579,16 +588,12 @@ _InitSGBBorderPals:
 	dw DataSndPacket8
 
 PushSGBBorder:
-	call .LoadSGBBorderPointers
+	ld hl, wDecompressScratch
+	ld de, SGBBorderMap
 	push de
 	call SGBBorder_YetMorePalPushing
 	pop hl
 	jp SGBBorder_MorePalPushing
-
-.LoadSGBBorderPointers:
-	ld hl, SGBBorder
-	ld de, SGBBorderMap
-	ret
 
 SGB_ClearVRAM:
 	ld hl, VRAM_Begin
@@ -792,7 +797,7 @@ SGBBorderPalettes:
 ; assumed to come after SGBBorderMap
 INCLUDE "gfx/sgb/sgb_border.pal"
 
-SGBBorder:
-INCBIN "gfx/sgb/sgb_border.2bpp"
+SGBBorderGFX:
+INCBIN "gfx/sgb/sgb_border.2bpp.lz"
 
 INCLUDE "data/pokemon/palettes.asm"
