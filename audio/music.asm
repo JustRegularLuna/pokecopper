@@ -260,15 +260,6 @@ INCLUDE "audio/music/pokeflutechannel.asm"
 SECTION "Song - bugcatchingcontest", ROMX
 INCLUDE "audio/music/bugcatchingcontest.asm"
 
-SECTION "Song - buenaspassword", ROMX
-INCLUDE "audio/music/buenaspassword.asm"
-
-SECTION "Song - lookmysticalman", ROMX
-INCLUDE "audio/music/lookmysticalman.asm"
-
-SECTION "Song - crystalopening", ROMX
-INCLUDE "audio/music/crystalopening.asm"
-
 SECTION "Song - suicunebattle", ROMX
 INCLUDE "audio/music/suicunebattle.asm"
 
