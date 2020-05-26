@@ -122,15 +122,13 @@ DrawTitleGraphic:
 TitleScreenGFX1:
 IF DEF(_REDGOLD)
 	INCBIN "gfx/title/logo_rg.2bpp.lz"
-ENDC
-IF DEF(_BLUESILVER)
+ELIF DEF(_BLUESILVER)
 	INCBIN "gfx/title/logo_bs.2bpp.lz"
 ENDC
 
 TitleScreenGFX2:
 IF DEF(_REDGOLD)
 	INCBIN "gfx/title/title_hooh.2bpp.lz"
-ENDC
-IF DEF(_BLUESILVER)
+ELIF DEF(_BLUESILVER)
 	INCBIN "gfx/title/title_lugia.2bpp.lz"
 ENDC

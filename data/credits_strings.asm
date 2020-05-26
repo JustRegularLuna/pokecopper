@@ -181,8 +181,7 @@ CreditsStrings:
 .Staff:               db "      #MON"                 ; "ポケットモンスター"
 IF DEF(_REDGOLD)
                     next "  REDGOLD VERSION"
-ENDC
-IF DEF(_BLUESILVER)
+ELIF DEF(_BLUESILVER)
                     next " BLUESILVER VERSION"
 ENDC
                     next "       STAFF@"              ; "　　　　スタッフ@"

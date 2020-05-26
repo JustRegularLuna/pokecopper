@@ -9,18 +9,17 @@ HiroNameMenuHeader:
 	db STATICMENU_CURSOR | STATICMENU_PLACE_TITLE | STATICMENU_DISABLE_B ; flags
 	db 5 ; items
 	db "NEW NAME@"
-if DEF(_REDGOLD)
+IF DEF(_REDGOLD)
 	db "GOLD@"
 	db "HIRO@"
 	db "TAYLOR@"
 	db "KARL@"
-endc
-if DEF(_BLUESILVER)
+ELIF DEF(_BLUESILVER)
 	db "SILVER@"
 	db "HIRO@"
 	db "TAYLOR@"
 	db "KARL@"
-endc
+ENDC
 	db 2 ; displacement
 	db " NAME @" ; title
 
@@ -36,18 +35,17 @@ SylviaNameMenuHeader:
 	db STATICMENU_CURSOR | STATICMENU_PLACE_TITLE | STATICMENU_DISABLE_B ; flags
 	db 5 ; items
 	db "NEW NAME@"
-if DEF(_REDGOLD)
+IF DEF(_REDGOLD)
 	db "GOLD@"
 	db "SYLVIA@"
 	db "TAYLOR@"
 	db "CARLY@"
-endc
-if DEF(_BLUESILVER)
+ELIF DEF(_BLUESILVER)
 	db "SILVER@"
 	db "SYLVIA@"
 	db "TAYLOR@"
 	db "CARLY@"
-endc
+ENDC
 	db 2 ; displacement
 	db " NAME @" ; title
 
@@ -64,17 +62,16 @@ RivalNameMenuHeader:
 	db 5 ; items
 	db "NEW NAME@"
 RivalNameArray:
-if DEF(_REDGOLD)
+IF DEF(_REDGOLD)
 	db "SILVER@"
 	db "KAMON@"
 	db "OSCAR@"
 	db "MAX@"
-endc
-if DEF(_BLUESILVER)
+ELIF DEF(_BLUESILVER)
 	db "GOLD@"
 	db "KAMON@"
 	db "OSCAR@"
 	db "MAX@"
-endc
+ENDC
 	db 2 ; displacement
 	db " NAME @" ; title
