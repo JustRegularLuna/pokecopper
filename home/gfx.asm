@@ -106,9 +106,6 @@ FarCopyBytesDouble:
 	rst Bankswitch
 	ret
 
-LY_REQUEST EQU $88
-TILES_PER_BLANK EQU 8
-
 Request2bpp::
 ; Load 2bpp at b:de to occupy c tiles of hl.
 	ldh a, [hBGMapMode]
@@ -299,110 +296,21 @@ Copy1bpp::
 	pop hl
 	jp FarCopyBytesDouble
 
-HBlankCopy1bpp:
-	di
-	ld [hSPBuffer], sp
-
-; Source
-	ld hl, hRequestedVTileSource
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld sp, hl
-
-; Destination
-	ld hl, hRequestedVTileDest
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-
-	jr .innerLoop
-
+HBlankCopyVRAM:
+	lb bc, %11, rSTAT & $ff
+	jr .waitNoHBlank
 .outerLoop
 	ldh a, [rLY]
 	cp LY_REQUEST
-	jr nc, ContinueHBlankCopy
-.innerLoop
-	pop bc
-	pop de
+	jp nc, ContinueHBlankCopy
 .waitNoHBlank
-	ldh a, [rSTAT]
-	and %11
+	ldh a, [c]
+	and b
 	jr z, .waitNoHBlank
 .waitHBlank
-	ldh a, [rSTAT]
-	and %11
+	ldh a, [c]
+	and b
 	jr nz, .waitHBlank
-	ld a, c
-	ld [hli], a
-	ld [hli], a
-	ld a, b
-	ld [hli], a
-	ld [hli], a
-	ld a, e
-	ld [hli], a
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-	ld [hli], a
-	ld a, l
-	and $f
-	jr nz, .innerLoop
-	ldh a, [hTilesPerCycle]
-	dec a
-	ldh [hTilesPerCycle], a
-	jr nz, .outerLoop
-	jr DoneHBlankCopy
-
-ContinueHBlankCopy:
-	ld [hRequestedVTileSource], sp
-	ld sp, hl
-	ld [hRequestedVTileDest], sp
-	scf
-DoneHBlankCopy:
-	ldh a, [hSPBuffer]
-	ld l, a
-	ldh a, [hSPBuffer + 1]
-	ld h, a
-	ld sp, hl
-	reti
-
-HBlankCopy2bpp::
-	di
-	ld [hSPBuffer], sp
-
-; Source
-	ld hl, hRequestedVTileSource
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld sp, hl
-
-; Destination
-	ld hl, hRequestedVTileDest + 1
-	ld a, [hld]
-	ld l, [hl]
-	ld h, a
-
-	sub HIGH(VRAM_Begin)
-	cp HIGH(VRAM_End) - HIGH(VRAM_Begin)
-	jr nc, .innerLoop
-
-; VRAM to VRAM copy
-	lb bc, %11, rSTAT & $ff
-	jr .waitNoHBlank2
-.outerLoop2
-	ldh a, [rLY]
-	cp LY_REQUEST
-	jp nc, ContinueHBlankCopy
-.waitNoHBlank2
-	ldh a, [c]
-	and b
-	jr z, .waitNoHBlank2
-.waitHBlank2
-	ldh a, [c]
-	and b
-	jr nz, .waitHBlank2
 rept 4
 	pop de
 	ld a, e
@@ -412,46 +320,7 @@ rept 4
 endr
 	ld a, l
 	and $f
-	jr nz, .waitNoHBlank2
-	ldh a, [hTilesPerCycle]
-	dec a
-	ldh [hTilesPerCycle], a
-	jr nz, .outerLoop2
-	jp DoneHBlankCopy
-
-.outerLoop
-	ldh a, [rLY]
-	cp LY_REQUEST
-	jp nc, ContinueHBlankCopy
-.innerLoop
-	pop bc
-	pop de
-.waitNoHBlank
-	ldh a, [rSTAT]
-	and %11
-	jr z, .waitNoHBlank
-.waitHBlank
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .waitHBlank
-	ld a, c
-	ld [hli], a
-	ld a, b
-	ld [hli], a
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-rept 2
-	pop de
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-endr
-	ld a, l
-	and $f
-	jr nz, .innerLoop
+	jr nz, .waitNoHBlank
 	ldh a, [hTilesPerCycle]
 	dec a
 	ldh [hTilesPerCycle], a

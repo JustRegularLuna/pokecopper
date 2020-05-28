@@ -67,8 +67,9 @@ SECTION "lcd", ROM0[$0048]
 
 SECTION "timer", ROM0[$0050]
 ; TIMER interrupt is never enabled
+	reti
 
-	ds 8 ; unused
+	ds 7 ; unused
 
 SECTION "serial", ROM0[$0058]
 	jp Serial
@@ -77,13 +78,9 @@ SECTION "serial", ROM0[$0058]
 
 SECTION "joypad", ROM0[$0060]
 ; JOYPAD interrupt is never enabled
+	reti
 
-	ds 8 ; unused
-
-
-SECTION "High Home", ROM0[$0068]
-
-	ds 152 ; unused
+INCLUDE "home/hblank.asm"
 
 
 SECTION "Header", ROM0[$0100]
