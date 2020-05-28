@@ -299,18 +299,22 @@ Copy1bpp::
 HBlankCopyVRAM:
 	lb bc, %11, rSTAT & $ff
 	jr .waitNoHBlank
+
 .outerLoop
 	ldh a, [rLY]
 	cp LY_REQUEST
 	jp nc, ContinueHBlankCopy
+
 .waitNoHBlank
 	ldh a, [c]
 	and b
 	jr z, .waitNoHBlank
+
 .waitHBlank
 	ldh a, [c]
 	and b
 	jr nz, .waitHBlank
+
 rept 4
 	pop de
 	ld a, e
@@ -318,11 +322,14 @@ rept 4
 	ld a, d
 	ld [hli], a
 endr
+
 	ld a, l
 	and $f
 	jr nz, .waitNoHBlank
+
 	ldh a, [hTilesPerCycle]
 	dec a
 	ldh [hTilesPerCycle], a
 	jr nz, .outerLoop
+
 	jp DoneHBlankCopy

@@ -21,17 +21,21 @@ HBlankCopy1bpp:
 	ldh a, [rLY]
 	cp LY_REQUEST
 	jr nc, ContinueHBlankCopy
+
 .innerLoop
 	pop bc
 	pop de
+
 .waitNoHBlank
 	ldh a, [rSTAT]
 	and %11
 	jr z, .waitNoHBlank
+
 .waitHBlank
 	ldh a, [rSTAT]
 	and %11
 	jr nz, .waitHBlank
+
 	ld a, c
 	ld [hli], a
 	ld [hli], a
@@ -44,13 +48,16 @@ HBlankCopy1bpp:
 	ld a, d
 	ld [hli], a
 	ld [hli], a
+
 	ld a, l
 	and $f
 	jr nz, .innerLoop
+
 	ldh a, [hTilesPerCycle]
 	dec a
 	ldh [hTilesPerCycle], a
 	jr nz, .outerLoop
+
 	jr DoneHBlankCopy
 
 ContinueHBlankCopy:
@@ -58,6 +65,8 @@ ContinueHBlankCopy:
 	ld sp, hl
 	ld [hRequestedVTileDest], sp
 	scf
+	; fallthrough
+
 DoneHBlankCopy:
 	ldh a, [hSPBuffer]
 	ld l, a
@@ -92,17 +101,21 @@ HBlankCopy2bpp::
 	ldh a, [rLY]
 	cp LY_REQUEST
 	jr nc, ContinueHBlankCopy
+
 .innerLoop
 	pop bc
 	pop de
+
 .waitNoHBlank
 	ldh a, [rSTAT]
 	and %11
 	jr z, .waitNoHBlank
+
 .waitHBlank
 	ldh a, [rSTAT]
 	and %11
 	jr nz, .waitHBlank
+
 	ld a, c
 	ld [hli], a
 	ld a, b
@@ -118,11 +131,14 @@ rept 2
 	ld a, d
 	ld [hli], a
 endr
+
 	ld a, l
 	and $f
 	jr nz, .innerLoop
+
 	ldh a, [hTilesPerCycle]
 	dec a
 	ldh [hTilesPerCycle], a
 	jr nz, .outerLoop
+
 	jr DoneHBlankCopy
