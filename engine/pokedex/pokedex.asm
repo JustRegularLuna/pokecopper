@@ -2237,7 +2237,7 @@ Pokedex_LoadUnownFont:
 	ld de, UnownFont
 	ld hl, vTiles2 tile $61
 	lb bc, BANK(UnownFont), NUM_UNOWN + 1
-	jp Get1bpp_2
+	jp Get1bppViaHDMA
 
 Pokedex_LoadUnownFrontpicTiles:
 	ld a, [wUnownLetter]

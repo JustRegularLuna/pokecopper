@@ -191,7 +191,7 @@ GetIconGFX:
 	add hl, de
 	ld de, HeldItemIcons
 	lb bc, BANK(HeldItemIcons), 2
-	call Get2bpp_2
+	call Get2bppViaHDMA
 	ld a, [wCurIconTile]
 	add 10
 	ld [wCurIconTile], a
@@ -233,7 +233,7 @@ endr
 	pop hl
 
 	lb bc, BANK(Icons), 8
-	call Get2bpp_2
+	call Get2bppViaHDMA
 
 	pop hl
 	ret

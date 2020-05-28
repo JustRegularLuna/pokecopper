@@ -1,20 +1,20 @@
 ; Functions to copy data from ROM.
 
-Get2bpp_2::
+Get2bppViaHDMA::
 	ldh a, [rLCDC]
 	bit rLCDC_ENABLE, a
 	jp z, Copy2bpp
 
-	homecall _Get2bpp
+	homecall HDMATransfer2bpp
 
 	ret
 
-Get1bpp_2::
+Get1bppViaHDMA::
 	ldh a, [rLCDC]
 	bit rLCDC_ENABLE, a
 	jp z, Copy1bpp
 
-	homecall _Get1bpp
+	homecall HDMATransfer1bpp
 
 	ret
 

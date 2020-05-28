@@ -28,7 +28,7 @@ StatsScreenInit:
 	ld de, StatsScreenPageTilesGFX
 	ld hl, vTiles2 tile $31
 	lb bc, BANK(StatsScreenPageTilesGFX), 10
-	call Get2bpp_2
+	call Get2bppViaHDMA
 	pop hl
 	call _hl_
 	call ClearBGPalettes
