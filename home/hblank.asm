@@ -78,10 +78,10 @@ HBlankCopy2bpp::
 	ld sp, hl
 
 ; Destination
-	ld hl, hRequestedVTileDest + 1
-	ld a, [hld]
-	ld l, [hl]
-	ld h, a
+	ld hl, hRequestedVTileDest
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 
 	sub HIGH(VRAM_Begin)
 	cp HIGH(VRAM_End) - HIGH(VRAM_Begin)
