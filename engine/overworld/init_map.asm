@@ -1,5 +1,4 @@
 ReanchorBGMap_NoOAMUpdate::
-	call DelayFrame
 	ldh a, [hOAMUpdate]
 	push af
 
@@ -9,26 +8,16 @@ ReanchorBGMap_NoOAMUpdate::
 	push af
 	xor a
 	ldh [hBGMapMode], a
-
-	call .ReanchorBGMap
-
-	pop af
-	ldh [hBGMapMode], a
-	pop af
-	ldh [hOAMUpdate], a
-	ld hl, wVramState
-	set 6, [hl]
-	ret
-
-.ReanchorBGMap:
-	xor a
 	ldh [hLCDCPointer], a
 	ldh [hBGMapMode], a
 	ld a, $90
 	ldh [hWY], a
 	call OverworldTextModeSwitch
+
 	ld a, HIGH(vBGMap1)
-	call .LoadBGMapAddrIntoHRAM
+	ldh [hBGMapAddress + 1], a
+	xor a
+	ldh [hBGMapAddress], a
 	call _OpenAndCloseMenu_HDMATransferTilemapAndAttrmap
 	farcall ApplyPals
 	ld a, $1
@@ -38,20 +27,22 @@ ReanchorBGMap_NoOAMUpdate::
 	ldh [hWY], a
 	call HDMATransfer_FillBGMap0WithBlack
 	ld a, HIGH(vBGMap0)
-	call .LoadBGMapAddrIntoHRAM
-	xor a ; LOW(vBGMap0)
-	ld [wBGMapAnchor], a
-	ld a, HIGH(vBGMap0)
-	ld [wBGMapAnchor + 1], a
+	ldh [hBGMapAddress + 1], a
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	jp ApplyBGMapAnchorToObjects
-
-.LoadBGMapAddrIntoHRAM:
-	ldh [hBGMapAddress + 1], a
-	xor a
 	ldh [hBGMapAddress], a
+	ld [wBGMapAnchor], a
+	ld a, HIGH(vBGMap0)
+	ld [wBGMapAnchor + 1], a
+	call ApplyBGMapAnchorToObjects
+
+	pop af
+	ldh [hBGMapMode], a
+	pop af
+	ldh [hOAMUpdate], a
+	ld hl, wVramState
+	set 6, [hl]
 	ret
 
 LoadFonts_NoOAMUpdate::
@@ -60,18 +51,15 @@ LoadFonts_NoOAMUpdate::
 	ld a, $1
 	ldh [hOAMUpdate], a
 
-	call .LoadGFX
-
-	pop af
-	ldh [hOAMUpdate], a
-	ret
-
-.LoadGFX:
 	call LoadFontsExtra
 	ld a, $90
 	ldh [hWY], a
 	call SafeUpdateSprites
-	jp LoadStandardFont
+	call LoadStandardFont
+
+	pop af
+	ldh [hOAMUpdate], a
+	ret
 
 HDMATransfer_FillBGMap0WithBlack:
 	ldh a, [rSVBK]
