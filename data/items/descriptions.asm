@@ -5,7 +5,7 @@ ItemDescriptions:
 	dw BrightpowderDesc
 	dw GreatBallDesc
 	dw PokeBallDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw BicycleDesc
 	dw MoonStoneDesc
 	dw AntidoteDesc
@@ -24,7 +24,7 @@ ItemDescriptions:
 	dw FireStoneDesc
 	dw ThunderStoneDesc
 	dw WaterStoneDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw HPUpDesc
 	dw ProteinDesc
 	dw IronDesc
@@ -44,18 +44,18 @@ ItemDescriptions:
 	dw SuperRepelDesc
 	dw MaxRepelDesc
 	dw DireHitDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw FreshWaterDesc
 	dw SodaPopDesc
 	dw LemonadeDesc
 	dw XAttackDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw XDefendDesc
 	dw XSpeedDesc
 	dw XSpecialDesc
 	dw CoinCaseDesc
 	dw ItemfinderDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw ExpShareDesc
 	dw OldRodDesc
 	dw GoodRodDesc
@@ -89,7 +89,7 @@ ItemDescriptions:
 	dw BigMushroomDesc
 	dw SilverPowderDesc
 	dw BluApricornDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw AmuletCoinDesc
 	dw YlwApricornDesc
 	dw GrnApricornDesc
@@ -99,7 +99,7 @@ ItemDescriptions:
 	dw WhtApricornDesc
 	dw BlackbeltDesc
 	dw BlkApricornDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw PnkApricornDesc
 	dw BlackGlassesDesc
 	dw SlowpokeTailDesc
@@ -115,11 +115,11 @@ ItemDescriptions:
 	dw SpellTagDesc
 	dw RageCandyBarDesc
 	dw GSBallDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw MiracleSeedDesc
 	dw ThickClubDesc
 	dw FocusBandDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw EnergyPowderDesc
 	dw EnergyRootDesc
 	dw HealPowderDesc
@@ -134,34 +134,34 @@ ItemDescriptions:
 	dw StarPieceDesc
 	dw BasementKeyDesc
 	dw PassDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
+	dw EmptyString
+	dw EmptyString
+	dw EmptyString
 	dw CharcoalDesc
 	dw BerryJuiceDesc
 	dw ScopeLensDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
+	dw EmptyString
+	dw EmptyString
 	dw MetalCoatDesc
 	dw DragonFangDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw LeftoversDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
+	dw EmptyString
+	dw EmptyString
+	dw EmptyString
 	dw MysteryBerryDesc
 	dw DragonScaleDesc
 	dw BerserkGeneDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
+	dw EmptyString
+	dw EmptyString
+	dw EmptyString
 	dw SacredAshDesc
 	dw HeavyBallDesc
 	dw FlowerMailDesc
 	dw LevelBallDesc
 	dw LureBallDesc
 	dw FastBallDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw LightBallDesc
 	dw FriendBallDesc
 	dw MoonBallDesc
@@ -170,15 +170,15 @@ ItemDescriptions:
 	dw GorgeousBoxDesc
 	dw SunStoneDesc
 	dw PolkadotBowDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw UpGradeDesc
 	dw BerryDesc
 	dw GoldBerryDesc
 	dw SquirtBottleDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw ParkBallDesc
 	dw RainbowWingDesc
-	dw TeruSamaDesc
+	dw EmptyString
 	dw BrickPieceDesc
 	dw SurfMailDesc
 	dw LiteBlueMailDesc
@@ -190,8 +190,6 @@ ItemDescriptions:
 	dw MusicMailDesc
 	dw MirageMailDesc
 
-TeruSamaDesc:
-	db   "?@"
 
 MasterBallDesc:
 	db   "The best BALL. It"
