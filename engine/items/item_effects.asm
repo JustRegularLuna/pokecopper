@@ -126,7 +126,7 @@ ItemEffects:
 	dw NoEffect            ; SPELL_TAG
 	dw RestoreHPEffect     ; RAGECANDYBAR
 	dw NoEffect            ; GS_BALL
-	dw NoEffect            ; BLUE_CARD
+	dw NoEffect            ; ITEM_74
 	dw NoEffect            ; MIRACLE_SEED
 	dw NoEffect            ; THICK_CLUB
 	dw NoEffect            ; FOCUS_BAND

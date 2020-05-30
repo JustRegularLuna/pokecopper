@@ -114,7 +114,7 @@ ItemNames::
 	db "SPELL TAG@"
 	db "RAGECANDYBAR@"
 	db "GS BALL@"
-	db "BLUE CARD@"
+	db "@"
 	db "MIRACLE SEED@"
 	db "THICK CLUB@"
 	db "FOCUS BAND@"

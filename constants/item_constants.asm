@@ -121,7 +121,7 @@
 	const SPELL_TAG    ; 71
 	const RAGECANDYBAR ; 72
 	const GS_BALL      ; 73
-	const BLUE_CARD    ; 74
+	const ITEM_74      ; 74
 	const MIRACLE_SEED ; 75
 	const THICK_CLUB   ; 76
 	const FOCUS_BAND   ; 77
