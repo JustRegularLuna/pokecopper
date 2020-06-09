@@ -362,7 +362,7 @@ ShortHPBar_CalcPixelFrame:
 
 	ld b, 0
 .loop
-	ld a, l
+	ld a, l ; no-optimize hl|bc|de -= N (dec h can't set carry)
 	sub HP_BAR_LENGTH_PX
 	ld l, a
 	ld a, h
@@ -380,7 +380,7 @@ ShortHPBar_CalcPixelFrame:
 	pop bc
 	ld a, l
 	sub HP_BAR_LENGTH_PX
-	ld l, a
+	ld l, a ; no-optimize hl|bc|de -= N (dec h can't set carry)
 	ld a, h
 	sbc $0
 	ld h, a
