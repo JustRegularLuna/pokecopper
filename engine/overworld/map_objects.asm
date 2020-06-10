@@ -633,12 +633,9 @@ MapObjectMovementPattern:
 	ld a, [hl]
 	cp d
 	jr z, .equal
-	jr c, .less
-	ld a, 3
-	jr .done
-
-.less
-	ld a, 2
+	; carry ? 2 : 3
+	sbc a
+	add 3
 	jr .done
 
 .equal
@@ -647,12 +644,9 @@ MapObjectMovementPattern:
 	ld a, [hl]
 	cp e
 	jr z, .standing
-	jr c, .less2
-	xor a
-	jr .done
-
-.less2
-	ld a, 1
+	; carry ? 1 : 0
+	sbc a
+	and 1
 .done
 	ld d, a
 	ld hl, OBJECT_DIRECTION_WALKING
