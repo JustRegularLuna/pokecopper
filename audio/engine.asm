@@ -1847,14 +1847,10 @@ Music_TempoRelative:
 	ld e, a
 	; check sign
 	cp $80
-	jr nc, .negative
-;positive
-	ld d, 0
-	jr .ok
-
-.negative
-	ld d, -1
-.ok
+	; carry ? 0 (positive) : -1 (negative)
+	ccf
+	sbc a
+	ld d, a
 	ld hl, CHANNEL_TEMPO
 	add hl, bc
 	ld a, [hli]

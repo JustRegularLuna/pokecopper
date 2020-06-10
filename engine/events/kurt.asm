@@ -331,13 +331,11 @@ Kurt_GiveUpSelectedQuantityOfSelectedApricorn:
 Kurt_GetAddressOfApricornQuantity:
 	push hl
 	push bc
-	ld hl, wNumItems
-	inc hl
+	ld hl, wNumItems + 2
 	ld c, a
 	ld b, $0
 	add hl, bc
 	add hl, bc
-	inc hl
 	ld a, [hl]
 	pop bc
 	pop hl

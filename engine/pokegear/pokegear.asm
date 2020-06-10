@@ -1755,13 +1755,11 @@ _TownMap:
 .InitTilemap:
 	ld a, [wTownMapPlayerIconLandmark]
 	cp KANTO_LANDMARK
-	jr nc, .kanto2
-	ld e, JOHTO_REGION
-	jr .okay_tilemap
-
-.kanto2
-	ld e, KANTO_REGION
-.okay_tilemap
+	; carry ? JOHTO_REGION : KANTO_REGION
+	assert JOHTO_REGION == 0 && KANTO_REGION == 1
+	sbc a
+	inc a
+	ld e, a
 	farcall PokegearMap
 	ld a, $07
 	ld bc, 6

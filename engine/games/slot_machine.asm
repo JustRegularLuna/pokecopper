@@ -1456,7 +1456,7 @@ Slots_GetNumberOfGolems:
 	ld a, [wSlotBias]
 	and a
 	jr nz, .not_biased_to_seven
-	ld e, $0
+	ld e, a
 .loop1
 	ld hl, REEL_POSITION
 	add hl, bc
