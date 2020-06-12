@@ -139,7 +139,7 @@ ScrollingMenuJoyAction:
 .d_up
 	ld a, [wMenuScrollPosition]
 	and a
-	jr z, .unset_zero_flag
+	jr z, .check_call_function_3
 	ld a, [w2DMenuFlags2]
 	bit 7, a
 	jr z, .check_call_function_3
