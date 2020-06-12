@@ -35,61 +35,61 @@ _AnimateTileset::
 
 Tileset0Anim:
 	dw vTiles2 tile $14, AnimateWaterTile
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
 	dw NULL,  AnimateFlowerTile
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
 TilesetSilentAnim:
 	dw vTiles2 tile $14, AnimateWaterTile
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
 	dw NULL,  AnimateFlowerTile
 	dw WhirlpoolFrames1, AnimateWhirlpoolTile
 	dw WhirlpoolFrames2, AnimateWhirlpoolTile
 	dw WhirlpoolFrames3, AnimateWhirlpoolTile
 	dw WhirlpoolFrames4, AnimateWhirlpoolTile
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
 TilesetEliteFourRoomAnim:
 	dw NULL,  LavaBubbleAnim2
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
 	dw NULL,  LavaBubbleAnim1
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
 TilesetIcePathAnim:
 	dw vTiles2 tile $35, WriteTileToBuffer
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
 	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
 	dw vTiles2 tile $35, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
 	dw vTiles2 tile $31, WriteTileToBuffer
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
 	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
 	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
 	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
 	dw vTiles2 tile $31, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
 	dw NULL,  DoneTileAnimation
 
 TilesetHouseAnim:
@@ -99,19 +99,16 @@ TilesetGateAnim:
 TilesetMartAnim:
 TilesetChampionsRoomAnim:
 TilesetPlayersRoomAnim:
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
 	dw NULL,  DoneTileAnimation
 
 DoneTileAnimation:
 ; Reset the animation command loop.
 	xor a
 	ldh [hTileAnimFrame], a
-
-WaitTileAnimation:
-; Do nothing this frame.
 	ret
 
 StandingTileFrame8:

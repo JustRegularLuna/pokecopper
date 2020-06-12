@@ -335,7 +335,7 @@ BattleAnimCmd_ED:
 BattleAnimCmd_F5:
 BattleAnimCmd_F6:
 BattleAnimCmd_F7:
-	ret
+	ret ; no-optimize stub function
 
 BattleAnimCmd_Ret:
 	ld hl, wBattleAnimFlags

@@ -17,7 +17,7 @@ SECTION "rst10 Bankswitch", ROM0[$0010]
 Bankswitch::
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
-DoNothing::
+DoNothing:: ; no-optimize stub function
 	ret
 
 	ds 2 ; unused

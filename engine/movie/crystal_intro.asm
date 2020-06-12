@@ -97,4 +97,4 @@ PlaceGamefreakIntroGraphic:
 
 SpaceworldIntro:
 ; TODO: Attempt to port the intro movie from Spaceworld over.
-	ret
+	ret ; no-optimize stub function

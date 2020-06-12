@@ -110,7 +110,7 @@ DoAnimFrame:
 
 .GameFreakLogo:
 	; TODO: Maybe add an animation
-	ret
+	ret ; no-optimize stub function
 
 .SlotsGolem:
 	farjp Slots_AnimateGolem

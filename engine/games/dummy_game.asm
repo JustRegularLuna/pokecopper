@@ -3,7 +3,7 @@ Unknown_e00ed:
 ; game were meant to be here.
 
 ret_e00ed:
-	ret
+	ret ; no-optimize stub function
 
 _DummyGame:
 	call .LoadGFXAndPals
