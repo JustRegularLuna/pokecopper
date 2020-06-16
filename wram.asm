@@ -170,10 +170,13 @@ wMovementDataBank:: db
 wMovementDataAddress:: dw
 	ds 4
 wMovementByteWasControlSwitch:: db
+
+UNION ; c2eb
+wObjectPriorities:: ds NUM_OBJECT_STRUCTS ; c2eb
+
+NEXTU ; c2eb
 wMovementPointer:: dw ; c2eb
-
 	ds 3
-
 wTempObjectCopyMapObjectIndex:: db ; c2f0
 wTempObjectCopySprite:: db ; c2f1
 wTempObjectCopySpriteVTile:: db ; c2f2
@@ -183,6 +186,7 @@ wTempObjectCopyRange:: db ; c2f5
 wTempObjectCopyX:: db ; c2f6
 wTempObjectCopyY:: db ; c2f7
 wTempObjectCopyRadius:: db ; c2f8
+ENDU ; c2f8
 
 	ds 1
 
