@@ -4824,7 +4824,7 @@ BattleMenuPKMN_Loop:
 .loop
 	farcall FreezeMonIcons
 	call .GetMenu
-	jr c, .PressedB
+	jr c, BattleMenuPKMN_Loop
 	call PlaceHollowCursor
 	ld a, [wMenuCursorY]
 	cp $1 ; SWITCH
@@ -4834,9 +4834,6 @@ BattleMenuPKMN_Loop:
 	cp $3 ; CANCEL
 	jr z, .Cancel
 	jr .loop
-
-.PressedB:
-	jr BattleMenuPKMN_Loop
 
 .Stats:
 	call Battle_StatsScreen

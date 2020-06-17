@@ -43,6 +43,9 @@ CheckReceiveCallTimer:
 	scf
 	ret
 
+RestartDailyResetTimer:
+	ld hl, wDailyResetTimer
+
 InitOneDayCountdown:
 	ld a, 1
 
@@ -77,10 +80,6 @@ CheckReceiveCallDelay:
 	ld hl, wReceiveCallDelay_MinsRemaining
 	jp UpdateTimeRemaining
 
-RestartDailyResetTimer:
-	ld hl, wDailyResetTimer
-	jp InitOneDayCountdown
-
 CheckDailyResetTimer::
 	ld hl, wDailyResetTimer
 	call CheckDayDependentEventHL
@@ -107,10 +106,9 @@ endr
 	and a
 	jr z, .RestartKenjiBreakCountdown
 	dec [hl]
-	jr nz, .DontRestartKenjiBreakCountdown
+	jr nz, RestartDailyResetTimer
 .RestartKenjiBreakCountdown:
 	call SampleKenjiBreakCountdown
-.DontRestartKenjiBreakCountdown:
 	jr RestartDailyResetTimer
 
 SampleKenjiBreakCountdown:

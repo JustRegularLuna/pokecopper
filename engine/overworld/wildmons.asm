@@ -319,19 +319,11 @@ ChooseWildEncounter:
 	jr c, .nowildbattle
 
 	cp UNOWN
-	jr nz, .done
+	jr nz, .loadwildmon
 
 	ld a, [wUnlockedUnowns]
 	and a
 	jr z, .nowildbattle
-
-.done
-	jr .loadwildmon
-
-.nowildbattle
-	ld a, 1
-	and a
-	ret
 
 .loadwildmon
 	ld a, b
@@ -339,6 +331,11 @@ ChooseWildEncounter:
 
 .startwildbattle
 	xor a
+	ret
+
+.nowildbattle
+	ld a, 1
+	and a
 	ret
 
 INCLUDE "data/wild/probabilities.asm"

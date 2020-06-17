@@ -1280,7 +1280,7 @@ Slots_CheckMatchedFirstTwoReels:
 	call .CheckBottomRow
 	call .CheckTopRow
 
-.one
+.one ; no-optimize stub jump
 	jr .CheckMiddleRow
 
 .CheckBottomRow:
@@ -1370,7 +1370,7 @@ Slots_CheckMatchedAllThreeReels:
 	call .CheckBottomRow
 	call .CheckTopRow
 
-.one
+.one ; no-optimize stub jump
 	jr .CheckMiddleRow
 
 .CheckBottomRow:
