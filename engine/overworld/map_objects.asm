@@ -582,7 +582,6 @@ MapObjectMovementPattern:
 	add hl, bc
 	ld a, [hl]
 	and %00000011
-	or 0
 	call InitStep
 	call CanObjectMoveInDirection
 	jr c, .ok2
