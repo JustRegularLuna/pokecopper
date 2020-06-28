@@ -1,39 +1,53 @@
-# Pokémon Gold and Silver [![Build Status][travis-badge]][travis]
+# Pokémon RedGold/BlueSilver
 
-This is a disassembly of Pokémon Gold and Pokémon Silver.
+This is a WIP rom hack made from the disassembly of Pokémon Gold and Pokémon Silver.
 
-It builds the following ROMs:
+It is my own imagining of what the Gen 2 Pokémon games might have been if various beta elements had been kept and elaborated on instead of scrapped.
+It references beta content leftover in the final builds, content from the leaked Space World '97 demo, pre-release magazine scans, etc. along with a hefty dose of creative license to fill in the very large gaps.
 
-- Pokemon - Gold Version (UE) [C][!].gbc `sha1: d8b8a3600a465308c9953dfa04f0081c05bdcb94`
-- Pokemon - Silver Version (UE) [C][!].gbc `sha1: 49b163f7e57702bc939d642a18f591de55d92dae`
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
 ## See also
+Other hack projects:
 
-- **Discord:** [pret][discord]
-- **IRC:** [freenode#pret][irc]
+- [**Pokémon Red++ v3**][rpp3]
+- [**Pokémon Red++ v4 (WIP)**][rpp4]
+- [**Pokémon Polished Crystal**][pc]
+- [**Pokémon Ancient Ruby/Sapphire/Emerald**][arse]
+- [**Pokémon Orange**][orange]
+
 
 Other disassembly projects:
 
 - [**Pokémon Red/Blue**][pokered]
 - [**Pokémon Yellow**][pokeyellow]
-- [**Pokémon Crystal**][pokecrystal]
+- [**Pokémon Gold**][pokegold]
 - [**Pokémon Pinball**][pokepinball]
 - [**Pokémon TCG**][poketcg]
 - [**Pokémon Ruby**][pokeruby]
 - [**Pokémon Fire Red**][pokefirered]
 - [**Pokémon Emerald**][pokeemerald]
 
+
+Tools:
+
+- [**Polished Map**][pmap]
+- [**Tilemap Studio**][tmap]
+
+
+[rpp3]: https://github.com/TheFakeMateo/rpp-backup
+[rpp4]: https://github.com/TheFakeMateo/RedPlusPlus
+[pc]: https://github.com/Rangi42/polishedcrystal
+[arse]: https://github.com/BloodlessNS/ancientruby
+[orange]: https://github.com/PiaCarrot/pokeorange
 [pokered]: https://github.com/pret/pokered
 [pokeyellow]: https://github.com/pret/pokeyellow
-[pokecrystal]: https://github.com/pret/pokecrystal
+[pokegold]: https://github.com/pret/pokegold
 [pokepinball]: https://github.com/pret/pokepinball
 [poketcg]: https://github.com/pret/poketcg
 [pokeruby]: https://github.com/pret/pokeruby
 [pokefirered]: https://github.com/pret/pokefirered
 [pokeemerald]: https://github.com/pret/pokeemerald
-[discord]: https://discord.gg/d5dubZ3
-[irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
-[travis]: https://travis-ci.org/pret/pokegold
-[travis-badge]: https://travis-ci.org/pret/pokegold.svg?branch=master
+[pmap]: https://github.com/Rangi42/polished-map
+[tmap]: https://github.com/Rangi42/tilemap-studio
