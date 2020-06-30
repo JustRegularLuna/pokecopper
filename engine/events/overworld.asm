@@ -403,9 +403,7 @@ UsedSurfScript:
 
 	special UpdatePlayerSprite
 	special PlayMapMusic
-; step into the water (slow_step DIR, step_end)
 	special SurfStartStep
-	applymovement PLAYER, wMovementBuffer
 	end
 
 UsedSurfText:

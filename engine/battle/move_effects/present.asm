@@ -1,7 +1,11 @@
 BattleCommand_Present:
 ; present
 
+	push bc
+	push de
 	call BattleCommand_Stab
+	pop de
+	pop bc
 	ld a, [wTypeMatchup]
 	and a
 	jp z, AnimateFailedMove
