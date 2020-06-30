@@ -550,7 +550,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ldh [hBGMapMode], a
 
 	hlcoord 2, 1
-	ld de, .PokeBallTransition
+	call .loadtransitionpattern
 	ld b, SCREEN_WIDTH - 4
 .tile_loop
 	push hl
@@ -628,7 +628,24 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	call StartTrainerBattle_NextScene
 	ret
 
-.PokeBallTransition:
+.loadtransitionpattern
+	ld de, .TeamRocketTransition
+ 	ld a, [wOtherTrainerClass]
+	cp GRUNTM
+	ret z
+	cp GRUNTF
+	ret z
+	cp EXECUTIVEM
+	ret z
+	cp EXECUTIVEF
+	ret z
+	cp SCIENTIST
+	ret z
+	; TODO: Additional Rocket classes here once added
+ 	ld de, .PokeBallTransition
+ 	ret
+
+.PokeBallTransition
 	; 16x16 overlay of a Poke Ball
 pusho
 opt b.X ; . = 0, X = 1
@@ -648,6 +665,27 @@ opt b.X ; . = 0, X = 1
 	bigdw %..XXXX....XXXX..
 	bigdw %....XXXXXXXX....
 	bigdw %......XXXX......
+popo
+
+.TeamRocketTransition
+pusho
+opt b.X ; . = 0, X = 1
+	bigdw %XXXXXXXXXXXX....
+	bigdw %XXXXXXXXXXXXXX..
+	bigdw %XXXXXXXXXXXXXXX.
+	bigdw %XXXXXXXXXXXXXXX.
+	bigdw %XXXXX.....XXXXXX
+	bigdw %XXXXX......XXXXX
+	bigdw %XXXXX.....XXXXXX
+	bigdw %XXXXXXXXXXXXXXX.
+	bigdw %XXXXXXXXXXXXXXX.
+	bigdw %XXXXXXXXXXXXXX..
+	bigdw %XXXXXXXXXXXXX...
+	bigdw %XXXXX....XXXXX..
+	bigdw %XXXXX....XXXXX..
+	bigdw %XXXXX.....XXXXX.
+	bigdw %XXXXX......XXXXX
+	bigdw %XXXXX......XXXXX
 popo
 
 .copypals
