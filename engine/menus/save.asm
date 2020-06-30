@@ -376,6 +376,13 @@ EraseHallOfFame:
 	call ByteFill
 	jp CloseSRAM
 
+HallOfFame_InitSaveIfNeeded:
+	ld a, [wSavedAtLeastOnce]
+	and a
+	ret nz
+	call ErasePreviousSave
+	ret
+
 ValidateSave:
 	ld a, BANK(sCheckValue1) ; aka BANK(sCheckValue2)
 	call OpenSRAM
