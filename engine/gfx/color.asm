@@ -1121,102 +1121,11 @@ INCLUDE "data/pokemon/palettes.asm"
 
 INCLUDE "data/trainers/palettes.asm"
 
-LoadMapPals:
-	; Which palette group is based on whether we're outside or inside
-	ld a, [wEnvironment]
-	and 7
-	ld e, a
-	ld d, 0
-	ld hl, EnvironmentColorsPointers
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	; Futher refine by time of day
-	ld a, [wTimeOfDayPal]
-	maskbits NUM_DAYTIMES
-	add a
-	add a
-	add a
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld e, l
-	ld d, h
-	ld hl, wBGPals1
-	ld b, 8
-.outer_loop
-	ld a, [de] ; lookup index for TilesetBGPalette
-	push de
-	push hl
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, TilesetBGPalette
-	add hl, de
-	ld e, l
-	ld d, h
-	pop hl
-	ld c, 1 palettes
-.inner_loop
-	ld a, [de]
-	inc de
-	ld [hli], a
-	dec c
-	jr nz, .inner_loop
-	pop de
-	inc de
-	dec b
-	jr nz, .outer_loop
-	ld a, [wTimeOfDayPal]
-	maskbits NUM_DAYTIMES
-	ld bc, 8 palettes
-	ld hl, MapObjectPals
-	call AddNTimes
-	ld de, wOBPals1
-	ld bc, 8 palettes
-	call CopyBytes
-
-	ld a, [wEnvironment]
-	cp TOWN
-	jr z, .outside
-	cp ROUTE
-	ret nz
-.outside
-	ld a, [wMapGroup]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, RoofPals
-	add hl, de
-	ld a, [wTimeOfDayPal]
-	maskbits NUM_DAYTIMES
-	cp NITE_F
-	jr c, .morn_day
-rept 4
-	inc hl
-endr
-.morn_day
-	ld de, wBGPals1 palette PAL_BG_ROOF color 1
-	ld bc, 4
-	call CopyBytes
-	ret
-
-INCLUDE "data/maps/environment_colors.asm"
-
 TilesetBGPalette:
 INCLUDE "gfx/tilesets/bg_tiles.pal"
 
 MapObjectPals::
 INCLUDE "gfx/overworld/npc_sprites.pal"
-
-RoofPals:
-INCLUDE "gfx/tilesets/roofs.pal"
 
 DiplomaPalettes:
 INCLUDE "gfx/diploma/diploma.pal"
