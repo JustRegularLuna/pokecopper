@@ -264,7 +264,7 @@ ReloadPalettes::
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 .loop
 	ld a, [hli]
-	cp "■"
+	cp " "
 	jr c, .skip
 	ld a, PAL_BG_TEXT
 	ld [de], a
