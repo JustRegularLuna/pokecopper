@@ -373,7 +373,6 @@ INCLUDE "engine/tilesets/tileset_anims.asm"
 INCLUDE "engine/events/npc_trade.asm"
 INCLUDE "engine/events/mom_phone.asm"
 INCLUDE "engine/link/mystery_gift_3.asm"
-INCLUDE "engine/menus/debug.asm"
 
 
 SECTION "Standard Scripts", ROMX

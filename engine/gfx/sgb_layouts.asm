@@ -109,7 +109,9 @@ LoadSGBLayout:
 	call CopyBytes
 
 	call GetBattlemonBackpicPalettePointer
-
+	; only load middle colors
+	inc hl
+	inc hl
 	ld a, [hli]
 	ld [wSGBPals + 19], a
 	ld a, [hli]
@@ -119,6 +121,9 @@ LoadSGBLayout:
 	ld a, [hl]
 	ld [wSGBPals + 22], a
 	call GetEnemyFrontpicPalettePointer
+	; only load middle colors
+	inc hl
+	inc hl
 	ld a, [hli]
 	ld [wSGBPals + 25], a
 	ld a, [hli]
@@ -180,6 +185,9 @@ LoadSGBLayout:
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonDVs
 	call GetPlayerOrMonPalettePointer
+	; only load middle colors
+	inc hl
+	inc hl
 	ld a, [hli]
 	ld [wSGBPals + 9], a
 	ld a, [hli]
@@ -212,6 +220,9 @@ LoadSGBLayout:
 	ld [hl], HIGH(palred 26 + palgreen 10 + palblue 6)
 	ld a, [wCurPartySpecies]
 	call GetMonPalettePointer
+	; only load middle colors
+	inc hl
+	inc hl
 	ld a, [hli]
 	ld [wSGBPals + 9], a
 	ld a, [hli]
@@ -245,6 +256,9 @@ LoadSGBLayout:
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonDVs
 	call GetPlayerOrMonPalettePointer
+	; only load middle colors
+	inc hl
+	inc hl
 	ld a, [hli]
 	ld [wSGBPals + 9], a
 	ld a, [hli]
@@ -389,6 +403,9 @@ endr
 	ld b, h
 	ld a, [wPlayerHPPal]
 	call GetPlayerOrMonPalettePointer
+	; only load middle colors
+	inc hl
+	inc hl
 	ld a, [hli]
 	ld [wSGBPals + 3], a
 	ld a, [hli]
@@ -488,6 +505,9 @@ endr
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonDVs
 	call GetPlayerOrMonPalettePointer
+	; only load middle colors
+	inc hl
+	inc hl
 	ld a, [hli]
 	ld [wSGBPals + 3], a
 	ld a, [hli]
@@ -513,6 +533,9 @@ endr
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonDVs
 	call GetFrontpicPalettePointer
+	; only load middle colors
+	inc hl
+	inc hl
 	ld a, [hli]
 	ld [wSGBPals + 3], a
 	ld a, [hli]

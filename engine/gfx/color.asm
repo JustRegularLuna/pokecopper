@@ -225,6 +225,9 @@ Intro_LoadMonPalette:
 	call CopyBytes
 	pop af
 	call GetMonPalettePointer
+	; only load middle colors
+	inc hl
+	inc hl
 	ld a, [hli]
 	ld [wSGBPals + 3], a
 	ld a, [hli]
@@ -240,7 +243,7 @@ Intro_LoadMonPalette:
 	ld de, wOBPals1
 	ld a, c
 	call GetMonPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
+	call LoadHLPaletteIntoDE
 	ret
 
 Function91b4: ; unreferenced
@@ -289,7 +292,7 @@ ApplyMonOrTrainerPals:
 
 .load_palettes
 	ld de, wBGPals1
-	call LoadPalette_White_Col1_Col2_Black
+	call LoadHLPaletteIntoDE
 	call WipeAttrmap
 	call ApplyAttrmap
 	call ApplyPals
@@ -625,22 +628,16 @@ GetEnemyFrontpicPalettePointer:
 GetPlayerOrMonPalettePointer:
 	and a
 	jp nz, GetMonNormalOrShinyPalettePointer
-	ld hl, PlayerPalette
-	ret
+	jr GetTrainerPalettePointer
 
 GetFrontpicPalettePointer:
 	and a
 	jp nz, GetMonNormalOrShinyPalettePointer
-	ld a, [wTrainerClass]
+	; fallthrough
 
 GetTrainerPalettePointer:
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	ld bc, TrainerPalettes
-	add hl, bc
-	ret
+	ld a, PAL_MEWMON
+	jp GetPredefPal
 
 GetMonPalettePointer:
 	call _GetMonPalettePointer
@@ -691,14 +688,12 @@ Function9c39: ; unreferenced
 	ret
 
 _GetMonPalettePointer:
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld bc, PokemonPalettes
+	ld hl, PokemonPalettes
+	ld c, a
+	ld b, $0
 	add hl, bc
-	ret
+	ld a, [hl]
+	jp GetPredefPal
 
 GetMonNormalOrShinyPalettePointer:
 	push bc
@@ -708,9 +703,11 @@ GetMonNormalOrShinyPalettePointer:
 	call CheckShininess
 	pop hl
 	ret nc
-rept 4
-	inc hl
-endr
+	; all shiny mons of the same color use the same shiny palette, offset from the normal palette
+	push bc
+	ld bc, (PAL_SHINY_MEWMON - PAL_MEWMON) * 4
+	add hl, bc
+	pop bc
 	ret
 
 PushSGBPals:
@@ -1118,8 +1115,6 @@ ExpBarPalette:
 INCLUDE "gfx/battle/exp_bar.pal"
 
 INCLUDE "data/pokemon/palettes.asm"
-
-INCLUDE "data/trainers/palettes.asm"
 
 TilesetBGPalette:
 INCLUDE "gfx/tilesets/bg_tiles.pal"
