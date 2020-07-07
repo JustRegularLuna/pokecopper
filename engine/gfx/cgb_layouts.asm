@@ -239,7 +239,7 @@ _CGB_Pokedex_5x5:
 
 _CGB_Pokedex_Init:
 	ld de, wBGPals1
-	ld a, PREDEFPAL_POKEDEX
+	ld a, PAL_REDMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE ; dex interface palette
 	ld a, [wCurPartySpecies]
@@ -276,7 +276,7 @@ INCLUDE "gfx/pokedex/question_mark.pal"
 
 _CGB_BillsPC:
 	ld de, wBGPals1
-	ld a, PREDEFPAL_POKEDEX
+	ld a, PAL_REDMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	ld a, [wCurPartySpecies]
@@ -330,7 +330,7 @@ INCLUDE "gfx/pc/orange.pal"
 
 _CGB_PokedexUnownMode:
 	ld de, wBGPals1
-	ld a, PREDEFPAL_POKEDEX
+	ld a, PAL_REDMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	ld a, [wCurPartySpecies]
@@ -405,7 +405,7 @@ _CGB_BetaTitleScreen:
 	call CopyFourPalettes
 	call WipeAttrmap
 	ld de, wOBPals1
-	ld a, PREDEFPAL_PACK
+	ld a, PAL_PACK
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	hlcoord 0, 6, wAttrmap
@@ -463,12 +463,12 @@ _CGB_GSIntro:
 
 .JigglypuffPikachuScene:
 	ld de, wBGPals1
-	ld a, PREDEFPAL_GS_INTRO_JIGGLYPUFF_PIKACHU_BG
+	ld a, PAL_GS_INTRO_JIGGLYPUFF_PIKACHU_BG
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 
 	ld de, wOBPals1
-	ld a, PREDEFPAL_GS_INTRO_JIGGLYPUFF_PIKACHU_OB
+	ld a, PAL_GS_INTRO_JIGGLYPUFF_PIKACHU_OB
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	call WipeAttrmap
@@ -478,7 +478,7 @@ _CGB_GSIntro:
 	ld hl, PalPacket_Pack + 1
 	call CopyFourPalettes
 	ld de, wOBPals1
-	ld a, PREDEFPAL_GS_INTRO_STARTERS_TRANSITION
+	ld a, PAL_GS_INTRO_STARTERS_TRANSITION
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	call WipeAttrmap
@@ -593,7 +593,7 @@ _CGB_Evolution:
 	ld a, c
 	and a
 	jr z, .pokemon
-	ld a, PREDEFPAL_BLACKOUT
+	ld a, PAL_BLACKOUT
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	jr .got_palette
@@ -648,7 +648,7 @@ _CGB_UnownPuzzle:
 	ld hl, PalPacket_UnownPuzzle + 1
 	call CopyFourPalettes
 	ld de, wOBPals1
-	ld a, PREDEFPAL_UNOWN_PUZZLE
+	ld a, PAL_UNOWN_PUZZLE
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	ld hl, wOBPals1
@@ -686,7 +686,7 @@ _CGB_TrainerCard:
 	ld a, PRYCE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, PREDEFPAL_CGB_BADGE
+	ld a, PAL_GREYMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 
@@ -739,7 +739,7 @@ _CGB_TrainerCard:
 
 _CGB_MoveList:
 	ld de, wBGPals1
-	ld a, PREDEFPAL_GOLDENROD
+	ld a, PAL_GOLDENROD
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	ld a, [wPlayerHPPal]
@@ -773,7 +773,7 @@ _CGB_BetaPikachuMinigame:
 
 _CGB_PokedexSearchOption:
 	ld de, wBGPals1
-	ld a, PREDEFPAL_POKEDEX
+	ld a, PAL_REDMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	call WipeAttrmap
@@ -873,15 +873,15 @@ _CGB_MagnetTrain:
 
 _CGB_GamefreakLogo:
 	ld de, wBGPals1
-	ld a, PREDEFPAL_GAMEFREAK_LOGO_BG
+	ld a, PAL_GAMEFREAK_LOGO_BG
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	ld de, wOBPals1
-	ld a, PREDEFPAL_GAMEFREAK_LOGO_OB
+	ld a, PAL_GAMEFREAK_LOGO_OB
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	ld de, wOBPals1 palette 1
-	ld a, PREDEFPAL_GAMEFREAK_LOGO_OB
+	ld a, PAL_GAMEFREAK_LOGO_OB
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	call WipeAttrmap
@@ -917,7 +917,7 @@ _CGB_TradeTube:
 	ld bc, 1 palettes
 	call CopyBytes
 	ld de, wOBPals1 palette 7
-	ld a, PREDEFPAL_TRADE_TUBE
+	ld a, PAL_BLUEMON
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	call WipeAttrmap

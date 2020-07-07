@@ -192,7 +192,7 @@ Function9144: ; unreferenced
 
 .cgb
 	ld de, wOBPals1
-	ld a, PREDEFPAL_BETA_INTRO_VENUSAUR
+	ld a, PAL_BETA_INTRO_VENUSAUR
 	call GetPredefPal
 	jp LoadHLPaletteIntoDE
 
@@ -207,7 +207,7 @@ Function915e: ; unreferenced
 
 .cgb
 	ld de, wOBPals1
-	ld a, PREDEFPAL_PACK
+	ld a, PAL_PACK
 	call GetPredefPal
 	jp LoadHLPaletteIntoDE
 
@@ -673,10 +673,10 @@ Function9c39: ; unreferenced
 	ret z
 	ld a, $90
 	ldh [rOBPI], a
-	ld a, PREDEFPAL_TRADE_TUBE
+	ld a, PAL_BLUEMON
 	call GetPredefPal
 	call .PushPalette
-	ld a, PREDEFPAL_RB_GREENMON
+	ld a, PAL_GREENMON
 	call GetPredefPal
 	call .PushPalette
 	ret
