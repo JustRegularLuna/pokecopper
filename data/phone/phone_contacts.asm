@@ -12,38 +12,38 @@ PhoneContacts:
 ; entries correspond to PHONE_* constants
 	phone TRAINER_NONE, PHONE_00,              N_A,                       0,       UnusedPhoneScript,        0,       UnusedPhoneScript
 	phone TRAINER_NONE, PHONECONTACT_MOM,      PLAYERS_HOUSE_1F,          ANYTIME, MomPhoneCalleeScript,     0,       UnusedPhoneScript
-	phone TRAINER_NONE, PHONECONTACT_BIKESHOP, OAKS_LAB,                  0,       UnusedPhoneScript,        0,       UnusedPhoneScript
+	phone TRAINER_NONE, PHONECONTACT_BIKESHOP, N_A,                       0,       UnusedPhoneScript,        0,       UnusedPhoneScript
 	phone TRAINER_NONE, PHONECONTACT_BILL,     N_A,                       ANYTIME, BillPhoneCalleeScript,    0,       BillPhoneCallerScript
-	phone TRAINER_NONE, PHONECONTACT_ELM,      ELMS_LAB,                  ANYTIME, ElmPhoneCalleeScript,     0,       ElmPhoneCallerScript
-	phone SCHOOLBOY,    JACK1,                 NATIONAL_PARK,             ANYTIME, JackPhoneCalleeScript,    ANYTIME, JackPhoneCallerScript
-	phone POKEFANF,     BEVERLY1,              NATIONAL_PARK,             ANYTIME, BeverlyPhoneCalleeScript, ANYTIME, BeverlyPhoneCallerScript
-	phone SAILOR,       HUEY1,                 OLIVINE_LIGHTHOUSE_2F,     ANYTIME, HueyPhoneCalleeScript,    ANYTIME, HueyPhoneCallerScript
+	phone TRAINER_NONE, PHONECONTACT_ELM,      N_A,                       ANYTIME, ElmPhoneCalleeScript,     0,       ElmPhoneCallerScript
+	phone SCHOOLBOY,    JACK1,                 N_A,                       ANYTIME, JackPhoneCalleeScript,    ANYTIME, JackPhoneCallerScript
+	phone POKEFANF,     BEVERLY1,              N_A,                       ANYTIME, BeverlyPhoneCalleeScript, ANYTIME, BeverlyPhoneCallerScript
+	phone SAILOR,       HUEY1,                 N_A,                       ANYTIME, HueyPhoneCalleeScript,    ANYTIME, HueyPhoneCallerScript
 	phone TRAINER_NONE, PHONE_00,              N_A,                       0,       UnusedPhoneScript,        0,       UnusedPhoneScript
 	phone TRAINER_NONE, PHONE_00,              N_A,                       0,       UnusedPhoneScript,        0,       UnusedPhoneScript
 	phone TRAINER_NONE, PHONE_00,              N_A,                       0,       UnusedPhoneScript,        0,       UnusedPhoneScript
-	phone COOLTRAINERM, GAVEN3,                ROUTE_26,                  ANYTIME, GavenPhoneCalleeScript,   ANYTIME, GavenPhoneCallerScript
-	phone COOLTRAINERF, BETH1,                 ROUTE_26,                  ANYTIME, BethPhoneCalleeScript,    ANYTIME, BethPhoneCallerScript
-	phone BIRD_KEEPER,  JOSE2,                 ROUTE_27,                  ANYTIME, JosePhoneCalleeScript,    ANYTIME, JosePhoneCallerScript
-	phone COOLTRAINERF, REENA1,                ROUTE_27,                  ANYTIME, ReenaPhoneCalleeScript,   ANYTIME, ReenaPhoneCallerScript
-	phone YOUNGSTER,    JOEY1,                 ROUTE_30,                  ANYTIME, JoeyPhoneCalleeScript,    ANYTIME, JoeyPhoneCallerScript
-	phone BUG_CATCHER,  WADE1,                 ROUTE_31,                  ANYTIME, WadePhoneCalleeScript,    ANYTIME, WadePhoneCallerScript
-	phone FISHER,       RALPH1,                ROUTE_32,                  ANYTIME, RalphPhoneCalleeScript,   ANYTIME, RalphPhoneCallerScript
-	phone PICNICKER,    LIZ1,                  ROUTE_32,                  ANYTIME, LizPhoneCalleeScript,     ANYTIME, LizPhoneCallerScript
-	phone HIKER,        ANTHONY2,              ROUTE_33,                  ANYTIME, AnthonyPhoneCalleeScript, ANYTIME, AnthonyPhoneCallerScript
-	phone CAMPER,       TODD1,                 ROUTE_34,                  ANYTIME, ToddPhoneCalleeScript,    ANYTIME, ToddPhoneCallerScript
-	phone PICNICKER,    GINA1,                 ROUTE_34,                  ANYTIME, GinaPhoneCalleeScript,    ANYTIME, GinaPhoneCallerScript
-	phone JUGGLER,      IRWIN1,                ROUTE_35,                  ANYTIME, IrwinPhoneCalleeScript,   ANYTIME, IrwinPhoneCallerScript
-	phone BUG_CATCHER,  ARNIE1,                ROUTE_35,                  ANYTIME, ArniePhoneCalleeScript,   ANYTIME, ArniePhoneCallerScript
-	phone SCHOOLBOY,    ALAN1,                 ROUTE_36,                  ANYTIME, AlanPhoneCalleeScript,    ANYTIME, AlanPhoneCallerScript
+	phone COOLTRAINERM, GAVEN3,                N_A,                       ANYTIME, GavenPhoneCalleeScript,   ANYTIME, GavenPhoneCallerScript
+	phone COOLTRAINERF, BETH1,                 N_A,                       ANYTIME, BethPhoneCalleeScript,    ANYTIME, BethPhoneCallerScript
+	phone BIRD_KEEPER,  JOSE2,                 N_A,                       ANYTIME, JosePhoneCalleeScript,    ANYTIME, JosePhoneCallerScript
+	phone COOLTRAINERF, REENA1,                N_A,                       ANYTIME, ReenaPhoneCalleeScript,   ANYTIME, ReenaPhoneCallerScript
+	phone YOUNGSTER,    JOEY1,                 N_A,                       ANYTIME, JoeyPhoneCalleeScript,    ANYTIME, JoeyPhoneCallerScript
+	phone BUG_CATCHER,  WADE1,                 N_A,                       ANYTIME, WadePhoneCalleeScript,    ANYTIME, WadePhoneCallerScript
+	phone FISHER,       RALPH1,                N_A,                       ANYTIME, RalphPhoneCalleeScript,   ANYTIME, RalphPhoneCallerScript
+	phone PICNICKER,    LIZ1,                  N_A,                       ANYTIME, LizPhoneCalleeScript,     ANYTIME, LizPhoneCallerScript
+	phone HIKER,        ANTHONY2,              N_A,                       ANYTIME, AnthonyPhoneCalleeScript, ANYTIME, AnthonyPhoneCallerScript
+	phone CAMPER,       TODD1,                 N_A,                       ANYTIME, ToddPhoneCalleeScript,    ANYTIME, ToddPhoneCallerScript
+	phone PICNICKER,    GINA1,                 N_A,                       ANYTIME, GinaPhoneCalleeScript,    ANYTIME, GinaPhoneCallerScript
+	phone JUGGLER,      IRWIN1,                N_A,                       ANYTIME, IrwinPhoneCalleeScript,   ANYTIME, IrwinPhoneCallerScript
+	phone BUG_CATCHER,  ARNIE1,                N_A,                       ANYTIME, ArniePhoneCalleeScript,   ANYTIME, ArniePhoneCallerScript
+	phone SCHOOLBOY,    ALAN1,                 N_A,                       ANYTIME, AlanPhoneCalleeScript,    ANYTIME, AlanPhoneCallerScript
 	phone TRAINER_NONE, PHONE_00,              N_A,                       0,       UnusedPhoneScript,        0,       UnusedPhoneScript
-	phone LASS,         DANA1,                 ROUTE_38,                  ANYTIME, DanaPhoneCalleeScript,    ANYTIME, DanaPhoneCallerScript
-	phone SCHOOLBOY,    CHAD1,                 ROUTE_38,                  ANYTIME, ChadPhoneCalleeScript,    ANYTIME, ChadPhoneCallerScript
-	phone POKEFANM,     DEREK1,                ROUTE_39,                  ANYTIME, DerekPhoneCalleeScript,   ANYTIME, DerekPhoneCallerScript
-	phone FISHER,       CHRIS1,                ROUTE_42,                  ANYTIME, ChrisPhoneCalleeScript,   ANYTIME, ChrisPhoneCallerScript
-	phone POKEMANIAC,   BRENT1,                ROUTE_43,                  ANYTIME, BrentPhoneCalleeScript,   ANYTIME, BrentPhoneCallerScript
-	phone PICNICKER,    TIFFANY3,              ROUTE_43,                  ANYTIME, TiffanyPhoneCalleeScript, ANYTIME, TiffanyPhoneCallerScript
-	phone BIRD_KEEPER,  VANCE1,                ROUTE_44,                  ANYTIME, VancePhoneCalleeScript,   ANYTIME, VancePhoneCallerScript
-	phone FISHER,       WILTON1,               ROUTE_44,                  ANYTIME, WiltonPhoneCalleeScript,  ANYTIME, WiltonPhoneCallerScript
-	phone BLACKBELT_T,  KENJI3,                ROUTE_45,                  ANYTIME, KenjiPhoneCalleeScript,   ANYTIME, KenjiPhoneCallerScript
-	phone HIKER,        PARRY1,                ROUTE_45,                  ANYTIME, ParryPhoneCalleeScript,   ANYTIME, ParryPhoneCallerScript
-	phone PICNICKER,    ERIN1,                 ROUTE_46,                  ANYTIME, ErinPhoneCalleeScript,    ANYTIME, ErinPhoneCallerScript
+	phone LASS,         DANA1,                 N_A,                       ANYTIME, DanaPhoneCalleeScript,    ANYTIME, DanaPhoneCallerScript
+	phone SCHOOLBOY,    CHAD1,                 N_A,                       ANYTIME, ChadPhoneCalleeScript,    ANYTIME, ChadPhoneCallerScript
+	phone POKEFANM,     DEREK1,                N_A,                       ANYTIME, DerekPhoneCalleeScript,   ANYTIME, DerekPhoneCallerScript
+	phone FISHER,       CHRIS1,                N_A,                       ANYTIME, ChrisPhoneCalleeScript,   ANYTIME, ChrisPhoneCallerScript
+	phone POKEMANIAC,   BRENT1,                N_A,                       ANYTIME, BrentPhoneCalleeScript,   ANYTIME, BrentPhoneCallerScript
+	phone PICNICKER,    TIFFANY3,              N_A,                       ANYTIME, TiffanyPhoneCalleeScript, ANYTIME, TiffanyPhoneCallerScript
+	phone BIRD_KEEPER,  VANCE1,                N_A,                       ANYTIME, VancePhoneCalleeScript,   ANYTIME, VancePhoneCallerScript
+	phone FISHER,       WILTON1,               N_A,                       ANYTIME, WiltonPhoneCalleeScript,  ANYTIME, WiltonPhoneCallerScript
+	phone BLACKBELT_T,  KENJI3,                N_A,                       ANYTIME, KenjiPhoneCalleeScript,   ANYTIME, KenjiPhoneCallerScript
+	phone HIKER,        PARRY1,                N_A,                       ANYTIME, ParryPhoneCalleeScript,   ANYTIME, ParryPhoneCallerScript
+	phone PICNICKER,    ERIN1,                 N_A,                       ANYTIME, ErinPhoneCalleeScript,    ANYTIME, ErinPhoneCallerScript

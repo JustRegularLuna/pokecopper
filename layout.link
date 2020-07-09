@@ -40,14 +40,11 @@ ROMX $04
 ROMX $05
 	"bank5"
 ROMX $06
-	"Tileset Data 1"
 ROMX $07
 	"Roofs"
-	"Tileset Data 2"
 	"Extra Songs 1"
 ROMX $08
 	"Clock Reset"
-	"Tileset Data 3"
 	"Catch Tutorial"
 	"Egg Moves"
 ROMX $09
@@ -57,7 +54,6 @@ ROMX $0a
 ROMX $0b
 	"bankB"
 ROMX $0c
-	"Tileset Data 4"
 ROMX $0d
 	"Effect Commands"
 ROMX $0e
@@ -115,9 +111,7 @@ ROMX $25
 ROMX $26
 	"bank26"
 ROMX $2a
-	"Map Blocks 1"
 ROMX $2b
-	"Map Blocks 2"
 ROMX $2e
 	"Pics 14"
 	org $6300
@@ -136,8 +130,6 @@ ROMX $33
 ROMX $36
 	"Font Inversed"
 ROMX $37
-	"Map Blocks 3"
-	"Tileset Data 5"
 ROMX $38
 	"bank38"
 ROMX $39
@@ -162,69 +154,37 @@ ROMX $40
 ROMX $41
 	"Phone Scripts"
 ROMX $42
-	"Map Scripts 1"
 ROMX $43
-	"Map Scripts 2"
 ROMX $44
-	"Map Scripts 3"
 ROMX $45
-	"Map Scripts 4"
 ROMX $46
-	"Map Scripts 5"
 ROMX $47
-	"Map Scripts 6"
 ROMX $48
-	"Map Scripts 7"
 ROMX $49
-	"Map Scripts 8"
 ROMX $4a
-	"Map Scripts 9"
 ROMX $4b
-	"Map Scripts 10"
 ROMX $4c
-	"Map Scripts 11"
 ROMX $4d
-	"Map Scripts 12"
 ROMX $4e
-	"Map Scripts 13"
 ROMX $4f
-	"Map Scripts 14"
 ROMX $50
-	"Map Scripts 15"
 ROMX $51
-	"Map Scripts 16"
 ROMX $52
-	"Map Scripts 17"
 ROMX $53
-	"Map Scripts 18"
 ROMX $54
-	"Map Scripts 19"
 ROMX $55
-	"Map Scripts 20"
 ROMX $56
-	"Map Scripts 21"
 ROMX $57
-	"Map Scripts 22"
 ROMX $59
-	"Map Scripts 23"
 ROMX $5a
-	"Map Scripts 24"
 ROMX $5b
-	"Map Scripts 25"
 ROMX $5c
-	"Map Scripts 26"
 ROMX $5d
-	"Map Scripts 27"
 ROMX $5e
-	"Map Scripts 28"
 ROMX $5f
-	"Map Scripts 29"
 ROMX $60
-	"Map Scripts 30"
 ROMX $61
-	"Map Scripts 31"
 ROMX $62
-	"Map Scripts 32"
 ROMX $64
 	"Text 1"
 ROMX $65
@@ -247,7 +207,6 @@ ROMX $6e
 	"Item Descriptions"
 ROMX $70
 	"bank70"
-	"Tileset Data 6"
 	"bank70_2"
 ROMX $7f
 	org $7df8

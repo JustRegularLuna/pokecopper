@@ -139,7 +139,7 @@ JoeyPhoneCalleeScript:
 JoeyPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, YOUNGSTER, JOEY1
 	scall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_FLYPOINT_GOLDENROD
+	checkflag ENGINE_FLYPOINT_SILENT ; TODO: MARIGOLD or something
 	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
@@ -182,7 +182,7 @@ WadePhoneCallerScript:
 	ifequal SATURDAY, PhoneScript_BugCatchingContest
 
 .NoContest:
-	checkflag ENGINE_FLYPOINT_GOLDENROD
+	checkflag ENGINE_FLYPOINT_SILENT ; TODO: MARIGOLD or something
 	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
@@ -205,7 +205,7 @@ RalphPhoneCalleeScript:
 RalphPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, FISHER, RALPH1
 	scall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_FLYPOINT_GOLDENROD
+	checkflag ENGINE_FLYPOINT_SILENT ; TODO: MARIGOLD or something
 	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
@@ -239,7 +239,7 @@ LizPhoneCalleeScript:
 LizPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, PICNICKER, LIZ1
 	scall PhoneScript_GreetPhone_Female
-	checkflag ENGINE_FLYPOINT_GOLDENROD
+	checkflag ENGINE_FLYPOINT_SILENT ; TODO: MARIGOLD or something
 	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
@@ -262,7 +262,7 @@ AnthonyPhoneCalleeScript:
 AnthonyPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, HIKER, ANTHONY2
 	scall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_FLYPOINT_GOLDENROD
+	checkflag ENGINE_FLYPOINT_SILENT ; TODO: MARIGOLD or something
 	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
@@ -284,7 +284,7 @@ AnthonyPhoneCallerScript:
 	iftrue Phone_GenericCall_Male
 	getmonname STRING_BUFFER_4, DUNSPARCE
 	getstring STRING_BUFFER_5, PhoneDarkCaveText
-	swarm DARK_CAVE_VIOLET_ENTRANCE
+	swarm N_A
 	sjump PhoneScript_SwarmCave
 
 ToddPhoneCalleeScript:
@@ -295,7 +295,7 @@ ToddPhoneCalleeScript:
 ToddPhoneCallerScript:
 	gettrainername STRING_BUFFER_3, CAMPER, TODD1
 	scall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_FLYPOINT_GOLDENROD
+	checkflag ENGINE_FLYPOINT_SILENT ; TODO: MARIGOLD or something
 	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
@@ -322,7 +322,7 @@ GinaPhoneCallerScript:
 	scall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue GinaRocketRumorScript
-	checkflag ENGINE_FLYPOINT_GOLDENROD
+	checkflag ENGINE_FLYPOINT_SILENT ; TODO: MARIGOLD or something
 	iffalse .NoBattle
 	scall PhoneScript_Random2
 	ifequal 0, .WantsBattle
@@ -386,7 +386,7 @@ ArniePhoneCallerScript:
 	iftrue Phone_GenericCall_Male
 	getmonname STRING_BUFFER_4, YANMA
 	getstring STRING_BUFFER_5, PhoneRoute35Text
-	swarm ROUTE_35
+	swarm N_A
 	sjump PhoneScript_SwarmGrass
 
 AlanPhoneCalleeScript:
@@ -448,7 +448,7 @@ ChadPhoneCallerScript:
 	iftrue Phone_GenericCall_Male
 	getmonname STRING_BUFFER_4, SNUBBULL
 	getstring STRING_BUFFER_5, PhoneRoute38Text
-	swarm ROUTE_38
+	swarm N_A
 	sjump PhoneScript_SwarmGrass
 
 .WantsBattle:
@@ -645,7 +645,7 @@ ParryPhoneCallerScript:
 	iftrue Phone_GenericCall_Male
 	getmonname STRING_BUFFER_4, MARILL
 	getstring STRING_BUFFER_5, PhoneMtMortarText
-	swarm MOUNT_MORTAR_1F_OUTSIDE
+	swarm N_A
 	sjump PhoneScript_SwarmCave
 
 .WantsBattle:

@@ -12,31 +12,13 @@ ENDM
 Tilesets::
 ; entries correspond to TILESET_* constants
 	tileset Tileset0
-	tileset TilesetJohto
-	tileset TilesetJohtoModern
-	tileset TilesetKanto
-	tileset TilesetHouse
+	tileset TilesetSilent
 	tileset TilesetPlayersHouse
-	tileset TilesetPokecenter
-	tileset TilesetGate
-	tileset TilesetPort
-	tileset TilesetLab
-	tileset TilesetFacility
-	tileset TilesetMart
-	tileset TilesetMansion
-	tileset TilesetGameCorner
-	tileset TilesetEliteFourRoom
-	tileset TilesetTraditionalHouse
-	tileset TilesetTrainStation
-	tileset TilesetChampionsRoom
-	tileset TilesetLighthouse
 	tileset TilesetPlayersRoom
-	tileset TilesetTower
-	tileset TilesetCave
-	tileset TilesetPark
-	tileset TilesetRuinsOfAlph
-	tileset TilesetRadioTower
-	tileset TilesetUnderground
+	tileset TilesetHouse
+	tileset TilesetPokecenter
+	tileset TilesetMart
+	tileset TilesetGate
+	tileset TilesetEliteFourRoom
+	tileset TilesetChampionsRoom
 	tileset TilesetIcePath
-	tileset TilesetDarkCave
-	tileset TilesetForest

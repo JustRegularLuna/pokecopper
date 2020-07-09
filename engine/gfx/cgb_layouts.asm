@@ -153,10 +153,14 @@ _CGB_FinishBattleScreenLayout:
 	ret
 
 _CGB_PokegearPals:
-	ld hl, PokegearPals
+	ld a, PAL_POKEGEAR
+	call GetPredefPal
 	ld de, wBGPals1
-	ld bc, 6 palettes
-	call CopyBytes
+	push hl
+	call LoadHLPaletteIntoDE
+	pop hl
+	ld de, wOBPals1
+	call _CGB_MapPals.LoadHLOBPaletteIntoDE
 	call ApplyPals
 	ld a, $1
 	ldh [hCGBPalUpdate], a
@@ -739,7 +743,7 @@ _CGB_TrainerCard:
 
 _CGB_MoveList:
 	ld de, wBGPals1
-	ld a, PAL_GOLDENROD
+	ld a, PAL_MARIGOLD
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	ld a, [wPlayerHPPal]

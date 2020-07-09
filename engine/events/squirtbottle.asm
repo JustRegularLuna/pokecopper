@@ -10,7 +10,8 @@ _Squirtbottle:
 	special UpdateTimePals
 	callasm .CheckCanUseSquirtbottle
 	iffalse .SquirtbottleNothingScript
-	farsjump WateredWeirdTreeScript
+	farsjump ObjectEvent
+	; TODO: Script on the appropriate map
 
 .SquirtbottleNothingScript:
 	jumptext .SquirtbottleNothingText
@@ -21,11 +22,11 @@ _Squirtbottle:
 
 .CheckCanUseSquirtbottle:
 	ld a, [wMapGroup]
-	cp GROUP_ROUTE_36
+	cp GROUP_NONE
 	jr nz, .nope
 
 	ld a, [wMapNumber]
-	cp MAP_ROUTE_36
+	cp MAP_NONE
 	jr nz, .nope
 
 	farcall GetFacingObject

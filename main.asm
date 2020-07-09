@@ -378,6 +378,7 @@ INCLUDE "engine/link/mystery_gift_3.asm"
 SECTION "Standard Scripts", ROMX
 
 INCLUDE "engine/events/std_scripts.asm"
+INCLUDE "engine/events/init_events.asm"
 INCLUDE "data/text/std_text.asm"
 INCLUDE "data/text/battle.asm"
 

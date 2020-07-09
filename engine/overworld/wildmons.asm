@@ -502,21 +502,21 @@ InitRoamMons:
 	ld [wRoamMon3Level], a
 
 ; raikou starting map
-	ld a, GROUP_ROUTE_42
+	ld a, GROUP_N_A
 	ld [wRoamMon1MapGroup], a
-	ld a, MAP_ROUTE_42
+	ld a, MAP_N_A
 	ld [wRoamMon1MapNumber], a
 
 ; entei starting map
-	ld a, GROUP_ROUTE_37
+	ld a, GROUP_N_A
 	ld [wRoamMon2MapGroup], a
-	ld a, MAP_ROUTE_37
+	ld a, MAP_N_A
 	ld [wRoamMon2MapNumber], a
 
 ; suicune starting map
-	ld a, GROUP_ROUTE_38
+	ld a, GROUP_N_A
 	ld [wRoamMon3MapGroup], a
-	ld a, MAP_ROUTE_38
+	ld a, MAP_N_A
 	ld [wRoamMon3MapNumber], a
 
 ; hp

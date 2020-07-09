@@ -1,9 +1,3 @@
-	object_const_def ; object_event constants
-	const POKECENTER2F_TRADE_RECEPTIONIST
-	const POKECENTER2F_BATTLE_RECEPTIONIST
-	const POKECENTER2F_TIME_CAPSULE_RECEPTIONIST
-	const POKECENTER2F_OFFICER
-
 Pokecenter2F_MapScripts:
 	db 4 ; scene scripts
 	scene_script .Scene0 ; SCENE_DEFAULT
@@ -35,6 +29,34 @@ Pokecenter2F_MapScripts:
 .Scene3:
 	prioritysjump Script_LeftTimeCapsule
 	end
+
+
+Pokecenter2F_MapEvents:
+	db 0, 0 ; filler
+
+	db 4 ; warp events
+	warp_event  0,  7, POKECENTER_2F, -1
+	warp_event  5,  0, TRADE_CENTER, 1
+	warp_event  9,  0, COLOSSEUM, 1
+	warp_event 13,  2, TIME_CAPSULE, 1
+
+	db 0 ; coord events
+
+	db 1 ; bg events
+	bg_event  7,  3, BGEVENT_READ, Pokecenter2FLinkRecordSign
+
+	db 4 ; object events
+	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
+	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
+	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
+	object_event  1,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Pokecenter2FOfficerScript, EVENT_MYSTERY_GIFT_DELIVERY_GUY
+
+	object_const_def ; object_event constants
+	const POKECENTER2F_TRADE_RECEPTIONIST
+	const POKECENTER2F_BATTLE_RECEPTIONIST
+	const POKECENTER2F_TIME_CAPSULE_RECEPTIONIST
+	const POKECENTER2F_OFFICER
+
 
 Pokecenter2F_AppearMysteryGiftDeliveryGuy:
 	appear POKECENTER2F_OFFICER
@@ -572,23 +594,3 @@ Text_MysteryGiftDeliveryGuy_SaidNo:
 	text "No? That's very"
 	line "strange…"
 	done
-
-Pokecenter2F_MapEvents:
-	db 0, 0 ; filler
-
-	db 4 ; warp events
-	warp_event  0,  7, POKECENTER_2F, -1
-	warp_event  5,  0, TRADE_CENTER, 1
-	warp_event  9,  0, COLOSSEUM, 1
-	warp_event 13,  2, TIME_CAPSULE, 1
-
-	db 0 ; coord events
-
-	db 1 ; bg events
-	bg_event  7,  3, BGEVENT_READ, Pokecenter2FLinkRecordSign
-
-	db 4 ; object events
-	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
-	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
-	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
-	object_event  1,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Pokecenter2FOfficerScript, EVENT_MYSTERY_GIFT_DELIVERY_GUY

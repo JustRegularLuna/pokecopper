@@ -5,7 +5,7 @@ MomPhoneCalleeScript:
 	iftrue MomPhoneLectureScript
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue MomPhoneNoGymQuestScript
-	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
+	checkevent EVENT_GOT_STARTER_POKEMON
 	iftrue MomPhoneNoPokedexScript
 	sjump MomPhoneNoPokemonScript
 
@@ -27,42 +27,21 @@ MomPhoneLandmark:
 
 MomPhonePalette1:
 	readvar VAR_MAPGROUP
-	ifequal GROUP_NEW_BARK_TOWN, .newbark
-	ifequal GROUP_CHERRYGROVE_CITY, .cherrygrove
-	ifequal GROUP_VIOLET_CITY, .violet
-	ifequal GROUP_AZALEA_TOWN, .azalea
-	ifequal GROUP_GOLDENROD_CITY, .goldenrod
+	ifequal GROUP_SILENT_HILLS, .silent
+	ifequal GROUP_SAKURA_TOWN, .sakura
 	writetext MomPhoneGenericAreaText
 	promptbutton
 	sjump MomSavingMoney
 
-.newbark
+.silent
 	writetext MomPhoneNewBarkText
 	promptbutton
 	sjump MomSavingMoney
 
-.cherrygrove
+.sakura
 	writetext MomPhoneCherrygroveText
 	promptbutton
 	sjump MomSavingMoney
-
-.violet
-	getstring STRING_BUFFER_4, .text_sprout_tower
-	sjump MomPhoneLandmark
-.text_sprout_tower
-	db "SPROUT TOWER@"
-
-.azalea
-	getstring STRING_BUFFER_4, .text_slowpoke_well
-	sjump MomPhoneLandmark
-.text_slowpoke_well
-	db "SLOWPOKE WELL@"
-
-.goldenrod
-	getstring STRING_BUFFER_4, .text_radio_tower
-	sjump MomPhoneLandmark
-.text_radio_tower
-	db "RADIO TOWER@"
 
 MomPhonePalette2:
 	writetext MomOtherAreaText

@@ -28,7 +28,7 @@
 	tilecoll WALL, WALL, BOOKSHELF, BOOKSHELF ; 1b
 	tilecoll WALL, FLOOR, WALL, FLOOR ; 1c
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 1d
-	tilecoll WALL, WALL, VIRTUAL_BOY, FLOOR ; 1e
+	tilecoll WALL, WALL, WALL, FLOOR ; 1e
 	tilecoll WALL, WALL, PC, RADIO ; 1f
 	tilecoll WALL, WALL, WALL, WALL ; 20
 	tilecoll WALL, WALL, TV, BOOKSHELF ; 21

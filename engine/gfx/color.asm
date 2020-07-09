@@ -1141,9 +1141,6 @@ ENDC
 GSTitleOBPals:
 INCLUDE "gfx/title/title_fg.pal"
 
-PokegearPals:
-INCLUDE "gfx/pokegear/pokegear.pal"
-
 BetaPokerPals:
 INCLUDE "gfx/beta_poker/beta_poker.pal"
 

@@ -31,5 +31,4 @@ OftenFleeMons:
 AlwaysFleeMons:
 	db RAIKOU
 	db ENTEI
-	db SUICUNE
 	db -1

@@ -5,7 +5,7 @@ _AnimateTileset::
 ; Iterate over a given pointer array of
 ; animation functions (one per frame).
 
-; Typically in WRAM bank 1.
+; Typically in wra1, vra0
 
 	ld a, [wTilesetAnim]
 	ld e, a
@@ -36,11 +36,7 @@ _AnimateTileset::
 
 	jp hl
 
-Tileset0Anim::
-TilesetJohtoModernAnim::
-TilesetKantoAnim::
-TilesetParkAnim::
-TilesetForestAnim::
+Tileset0Anim:
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -53,7 +49,7 @@ TilesetForestAnim::
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-TilesetJohtoAnim:
+TilesetSilentAnim:
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -68,20 +64,6 @@ TilesetJohtoAnim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-TilesetPortAnim:
-	dw vTiles2 tile $14, AnimateWaterTile
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  StandingTileFrame8
-	dw NULL,  DoneTileAnimation
-
 TilesetEliteFourRoomAnim:
 	dw NULL,  LavaBubbleAnim2
 	dw NULL,  WaitTileAnimation
@@ -90,28 +72,6 @@ TilesetEliteFourRoomAnim:
 	dw NULL,  LavaBubbleAnim1
 	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
-	dw NULL,  DoneTileAnimation
-
-TilesetCaveAnim:
-TilesetDarkCaveAnim:
-	dw vTiles2 tile $14, WriteTileToBuffer
-	dw NULL,  WaitTileAnimation
-	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw NULL,  WaitTileAnimation
-	dw vTiles2 tile $14, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw vTiles2 tile $40, WriteTileToBuffer
-	dw NULL,  WaitTileAnimation
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  WaitTileAnimation
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  WaitTileAnimation
-	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  WaitTileAnimation
-	dw vTiles2 tile $40, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
 	dw NULL,  DoneTileAnimation
 
 TilesetIcePathAnim:
@@ -135,41 +95,13 @@ TilesetIcePathAnim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  DoneTileAnimation
 
-TilesetTowerAnim:
-	dw TowerPillarTilePointer9, AnimateTowerPillarTile
-	dw TowerPillarTilePointer10, AnimateTowerPillarTile
-	dw TowerPillarTilePointer7, AnimateTowerPillarTile
-	dw TowerPillarTilePointer8, AnimateTowerPillarTile
-	dw TowerPillarTilePointer5, AnimateTowerPillarTile
-	dw TowerPillarTilePointer6, AnimateTowerPillarTile
-	dw TowerPillarTilePointer3, AnimateTowerPillarTile
-	dw TowerPillarTilePointer4, AnimateTowerPillarTile
-	dw TowerPillarTilePointer1, AnimateTowerPillarTile
-	dw TowerPillarTilePointer2, AnimateTowerPillarTile
-	dw NULL,  StandingTileFrame
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  DoneTileAnimation
-
 TilesetHouseAnim:
 TilesetPlayersHouseAnim:
 TilesetPokecenterAnim:
 TilesetGateAnim:
-TilesetLabAnim:
-TilesetFacilityAnim:
 TilesetMartAnim:
-TilesetMansionAnim:
-TilesetGameCornerAnim:
-TilesetTraditionalHouseAnim:
-TilesetTrainStationAnim:
 TilesetChampionsRoomAnim:
-TilesetLighthouseAnim:
 TilesetPlayersRoomAnim:
-TilesetRuinsOfAlphAnim:
-TilesetRadioTowerAnim:
-TilesetUndergroundAnim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -180,6 +112,7 @@ DoneTileAnimation:
 ; Reset the animation command loop.
 	xor a
 	ldh [hTileAnimFrame], a
+	ret
 
 WaitTileAnimation:
 ; Do nothing this frame.
@@ -294,6 +227,43 @@ ScrollTileDown:
 	jr nz, .loop
 	ret
 
+AnimateFountain:
+	ld hl, sp+0
+	ld b, h
+	ld c, l
+	ld hl, .frames
+	ld a, [wTileAnimationTimer]
+	and %111
+	add a
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld sp, hl
+	ld l, e
+	ld h, d
+	jp WriteTile
+
+.frames
+	dw .frame1
+	dw .frame2
+	dw .frame3
+	dw .frame4
+	dw .frame3
+	dw .frame4
+	dw .frame5
+	dw .frame1
+
+.frame1 INCBIN "gfx/tilesets/fountain/1.2bpp"
+.frame2 INCBIN "gfx/tilesets/fountain/2.2bpp"
+.frame3 INCBIN "gfx/tilesets/fountain/3.2bpp"
+.frame4 INCBIN "gfx/tilesets/fountain/4.2bpp"
+.frame5 INCBIN "gfx/tilesets/fountain/5.2bpp"
+
 AnimateWaterTile:
 ; Draw a water tile for the current frame in VRAM tile at de.
 
@@ -314,8 +284,8 @@ AnimateWaterTile:
 
 	add LOW(WaterTileFrames)
 	ld l, a
-	ld a, 0
 	adc HIGH(WaterTileFrames)
+	sub l
 	ld h, a
 
 ; The stack now points to the start of the tile for this frame.
@@ -340,6 +310,7 @@ AnimateFlowerTile:
 ; Alternate tile graphic every other frame
 	ld a, [wTileAnimationTimer]
 	and %10
+
 	swap a
 	ld e, a
 	ld d, 0
@@ -351,13 +322,14 @@ AnimateFlowerTile:
 
 	jp WriteTile
 
-FlowerTileFrames:
+FlowerTileFrames: ; TODO: Rework the logic to only need the 2 frames
 	INCBIN "gfx/tilesets/flower/dmg_1.2bpp"
-	INCBIN "gfx/tilesets/flower/cgb_1.2bpp"
+	INCBIN "gfx/tilesets/flower/dmg_1.2bpp"
 	INCBIN "gfx/tilesets/flower/dmg_2.2bpp"
-	INCBIN "gfx/tilesets/flower/cgb_2.2bpp"
+	INCBIN "gfx/tilesets/flower/dmg_2.2bpp"
 
 LavaBubbleAnim1:
+; Splash in the bottom-right corner of the fountain.
 	ld hl, sp+0
 	ld b, h
 	ld c, l
@@ -377,6 +349,7 @@ LavaBubbleAnim1:
 	jp WriteTile
 
 LavaBubbleAnim2:
+; Splash in the top-left corner of the fountain.
 	ld hl, sp+0
 	ld b, h
 	ld c, l
@@ -415,8 +388,8 @@ AnimateTowerPillarTile:
 	ld hl, .frames
 	add l
 	ld l, a
-	ld a, 0
 	adc h
+	sub l
 	ld h, a
 	ld a, [hl]
 
@@ -433,8 +406,8 @@ AnimateTowerPillarTile:
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld a, 0
 	adc h
+	sub l
 	ld h, a
 
 	ld sp, hl
@@ -482,8 +455,8 @@ AnimateWhirlpoolTile:
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld a, 0
 	adc h
+	sub l
 	ld h, a
 
 ; The stack now points to the desired frame.
@@ -572,10 +545,10 @@ TowerPillarTile8:  INCBIN "gfx/tilesets/tower-pillar/8.2bpp"
 TowerPillarTile9:  INCBIN "gfx/tilesets/tower-pillar/9.2bpp"
 TowerPillarTile10: INCBIN "gfx/tilesets/tower-pillar/10.2bpp"
 
-WhirlpoolFrames1: dw vTiles2 tile $32, WhirlpoolTiles1
-WhirlpoolFrames2: dw vTiles2 tile $33, WhirlpoolTiles2
-WhirlpoolFrames3: dw vTiles2 tile $42, WhirlpoolTiles3
-WhirlpoolFrames4: dw vTiles2 tile $43, WhirlpoolTiles4
+WhirlpoolFrames1: dw vTiles2 tile $60, WhirlpoolTiles1
+WhirlpoolFrames2: dw vTiles2 tile $61, WhirlpoolTiles2
+WhirlpoolFrames3: dw vTiles2 tile $70, WhirlpoolTiles3
+WhirlpoolFrames4: dw vTiles2 tile $71, WhirlpoolTiles4
 
 WhirlpoolTiles1: INCBIN "gfx/tilesets/whirlpool/1.2bpp"
 WhirlpoolTiles2: INCBIN "gfx/tilesets/whirlpool/2.2bpp"

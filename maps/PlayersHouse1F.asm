@@ -1,9 +1,3 @@
-	object_const_def ; object_event constants
-	const PLAYERSHOUSE1F_MOM1
-	const PLAYERSHOUSE1F_MOM2
-	const PLAYERSHOUSE1F_MOM3
-	const PLAYERSHOUSE1F_MOM4
-
 PlayersHouse1F_MapScripts:
 	db 2 ; scene scripts
 	scene_script .DummyScene0 ; SCENE_DEFAULT
@@ -11,22 +5,61 @@ PlayersHouse1F_MapScripts:
 
 	db 0 ; callbacks
 
-.DummyScene0:
-	prioritysjump MeetMomScript
+.DummyScene0
+.DummyScene1
 	end
 
-.DummyScene1:
-	end
+PlayersHouse1F_MapEvents:
+	db 0, 0 ; filler
 
-MeetMomScript:
-	applymovement PLAYER, PlayersHouseDownstairsMovement
+	db 3 ; warp events
+	warp_event  6,  7, SILENT_HILLS, 1
+	warp_event  7,  7, SILENT_HILLS, 1
+	warp_event  9,  0, PLAYERS_HOUSE_2F, 1
+
+	db 2 ; coord events
+	coord_event  8,  4, SCENE_DEFAULT, MeetMomLeftScript
+	coord_event  9,  4, SCENE_DEFAULT, MeetMomRightScript
+
+	db 4 ; bg events
+	bg_event  0,  1, BGEVENT_READ, StoveScript
+	bg_event  1,  1, BGEVENT_READ, SinkScript
+	bg_event  2,  1, BGEVENT_READ, FridgeScript
+	bg_event  4,  1, BGEVENT_READ, TVScript
+
+	db 4 ; object events
+	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_1
+	object_event  2,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, MORN, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
+	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, DAY, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
+	object_event  0,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, NITE, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
+
+	object_const_def ; object_event constants
+	const PLAYERSHOUSE1F_MOM1
+	const PLAYERSHOUSE1F_MOM2
+	const PLAYERSHOUSE1F_MOM3
+	const PLAYERSHOUSE1F_MOM4
+
+
+MeetMomLeftScript:
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+
+MeetMomRightScript:
 	playmusic MUSIC_MOM
-	turnobject PLAYERSHOUSE1F_MOM1, UP
 	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
+	turnobject PLAYER, LEFT
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	iffalse .OnRight
+	applymovement PLAYERSHOUSE1F_MOM1, MomTurnsTowardPlayerMovement
+	sjump MeetMomScript
+
+.OnRight:
 	applymovement PLAYERSHOUSE1F_MOM1, MomWalksToPlayerMovement
+MeetMomScript:
 	opentext
+if !DEF(_DEBUG)
 	writetext ElmsLookingForYouText
 	promptbutton
+endc
 	getstring STRING_BUFFER_4, PokegearName
 	scall PlayersHouse1FReceiveItemStd
 	setflag ENGINE_POKEGEAR
@@ -35,7 +68,9 @@ MeetMomScript:
 	setscene SCENE_FINISHED
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
+if !DEF(_DEBUG)
 	writetext MomGivesPokegearText
+endc
 	promptbutton
 	special SetDayOfWeek
 .SetDayOfWeek:
@@ -52,12 +87,10 @@ MeetMomScript:
 	yesorno
 	iffalse .SetDayOfWeek
 .DayOfWeekDone:
+if !DEF(_DEBUG)
 	writetext ComeHomeForDSTText
 	yesorno
 	iffalse .ExplainPhone
-	sjump .KnowPhone
-
-.KnowPhone:
 	writetext KnowTheInstructionsText
 	promptbutton
 	sjump .FinishPhone
@@ -65,15 +98,71 @@ MeetMomScript:
 .ExplainPhone:
 	writetext DontKnowTheInstructionsText
 	promptbutton
-	sjump .FinishPhone
-
 .FinishPhone:
 	writetext InstructionsNextText
 	waitbutton
+endc
+if DEF(_DEBUG)
+	; all badges
+	loadmem wJohtoBadges, %11111111
+	loadmem wKantoBadges, %11111111
+	; pokedex and pokegear
+	setflag ENGINE_POKEDEX
+	setflag ENGINE_MAP_CARD
+	setflag ENGINE_RADIO_CARD
+	; all flypoints
+	setflag ENGINE_FLYPOINT_PLAYERS_HOUSE
+	setflag ENGINE_FLYPOINT_INDIGO_PLATEAU
+	setflag ENGINE_FLYPOINT_SILENT
+	setflag ENGINE_FLYPOINT_SAKURA
+	; starter pokemon
+	givepoke PIKACHU, 10, BERRY
+	setevent EVENT_GOT_STARTER_POKEMON
+	; hm slave
+	givepoke EXEGGUTOR, 90, LEFTOVERS
+	loadmem wPartyMon2Moves+0, FLY
+	loadmem wPartyMon2Moves+1, CUT
+	loadmem wPartyMon2Moves+2, SURF
+	loadmem wPartyMon2Moves+3, STRENGTH
+	loadmem wPartyMon2PP+0, 15
+	loadmem wPartyMon2PP+1, 30
+	loadmem wPartyMon2PP+2, 15
+	loadmem wPartyMon2PP+3, 15
+	; events
+	setevent EVENT_ENABLED_CABLE_CLUB
+	; all TMs
+x = TM_DYNAMICPUNCH
+rept NUM_TMS + NUM_HMS
+	giveitem x
+x = x + 1
+if x == ITEM_C3 || x == ITEM_DC
+x = x + 1
+endc
+endr
+endc
 	closetext
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	iftrue .FromRight
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	iffalse .FromLeft
+	sjump .Finish
+
+.FromRight:
+	applymovement PLAYERSHOUSE1F_MOM1, MomTurnsBackMovement
+	sjump .Finish
+
+.FromLeft:
 	applymovement PLAYERSHOUSE1F_MOM1, MomWalksBackMovement
+	sjump .Finish
+
+.Finish:
 	special RestartMapMusic
+	turnobject PLAYERSHOUSE1F_MOM1, LEFT
 	end
+
+MeetMomTalkedScript:
+	playmusic MUSIC_MOM
+	sjump MeetMomScript
 
 PokegearName:
 	db "#GEAR@"
@@ -84,6 +173,9 @@ PlayersHouse1FReceiveItemStd:
 
 MomScript:
 	faceplayer
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	checkscene
+	iffalse MeetMomTalkedScript ; SCENE_DEFAULT
 	opentext
 	checkevent EVENT_FIRST_TIME_BANKING_WITH_MOM
 	iftrue .FirstTimeBanking
@@ -91,7 +183,7 @@ MomScript:
 	iftrue .BankOfMom
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue .GaveMysteryEgg
-	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
+	checkevent EVENT_GOT_STARTER_POKEMON
 	iftrue .GotAPokemon
 	writetext HurryUpElmIsWaitingText
 	waitbutton
@@ -119,31 +211,31 @@ MomScript:
 	closetext
 	end
 
-PlayersHouse1FTVScript:
-	jumptext PlayersHouse1FTVText
+TVScript:
+	jumptext TVText
 
-PlayersHouse1FStoveScript:
-	jumptext PlayersHouse1FStoveText
+StoveScript:
+	jumptext StoveText
 
-PlayersHouse1FSinkScript:
-	jumptext PlayersHouse1FSinkText
+SinkScript:
+	jumptext SinkText
 
-PlayersHouse1FFridgeScript:
-	jumptext PlayersHouse1FFridgeText
+FridgeScript:
+	jumptext FridgeText
 
-PlayersHouseDownstairsMovement:
-	step DOWN
+MomTurnsTowardPlayerMovement:
+	turn_head RIGHT
 	step_end
 
 MomWalksToPlayerMovement:
 	slow_step RIGHT
-	slow_step RIGHT
-	slow_step UP
+	step_end
+
+MomTurnsBackMovement:
+	turn_head LEFT
 	step_end
 
 MomWalksBackMovement:
-	slow_step DOWN
-	slow_step LEFT
 	slow_step LEFT
 	step_end
 
@@ -255,20 +347,20 @@ ImBehindYouText:
 	line "the way!"
 	done
 
-PlayersHouse1FStoveText:
+StoveText:
 	text "Mom's specialty!"
 
 	para "CINNABAR VOLCANO"
 	line "BURGER!"
 	done
 
-PlayersHouse1FSinkText:
+SinkText:
 	text "The sink is spot-"
 	line "less. Mom likes it"
 	cont "clean."
 	done
 
-PlayersHouse1FFridgeText:
+FridgeText:
 	text "Let's see what's"
 	line "in the fridge…"
 
@@ -276,7 +368,7 @@ PlayersHouse1FFridgeText:
 	line "tasty LEMONADE!"
 	done
 
-PlayersHouse1FTVText:
+TVText:
 	text "There's a movie on"
 	line "TV: Stars dot the"
 
@@ -286,25 +378,3 @@ PlayersHouse1FTVText:
 	para "I'd better get"
 	line "rolling too!"
 	done
-
-PlayersHouse1F_MapEvents:
-	db 0, 0 ; filler
-
-	db 3 ; warp events
-	warp_event  6,  7, NEW_BARK_TOWN, 2
-	warp_event  7,  7, NEW_BARK_TOWN, 2
-	warp_event  9,  0, PLAYERS_HOUSE_2F, 1
-
-	db 0 ; coord events
-
-	db 4 ; bg events
-	bg_event  0,  1, BGEVENT_READ, PlayersHouse1FStoveScript
-	bg_event  1,  1, BGEVENT_READ, PlayersHouse1FSinkScript
-	bg_event  2,  1, BGEVENT_READ, PlayersHouse1FFridgeScript
-	bg_event  4,  1, BGEVENT_READ, PlayersHouse1FTVScript
-
-	db 4 ; object events
-	object_event  7,  3, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_1
-	object_event  2,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, MORN, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
-	object_event  7,  3, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, DAY, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2
-	object_event  0,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, NITE, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_2

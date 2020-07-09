@@ -1,24 +1,41 @@
+LancesRoom_MapScripts:
+	db 2 ; scene scripts
+	scene_script LancesRoom_LockDoor ; SCENE_DEFAULT
+	scene_script .DummyScene ; SCENE_LANCESROOM_APPROACH_LANCE
+
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, LancesRoom_DoorsCallback
+
+.DummyScene
+	end
+
+LancesRoom_MapEvents:
+	db 0, 0 ; filler
+
+	db 4 ; warp events
+	warp_event  4, 23, KARENS_ROOM, 3
+	warp_event  5, 23, KARENS_ROOM, 4
+	warp_event  4,  1, HALL_OF_FAME, 1
+	warp_event  5,  1, HALL_OF_FAME, 2
+
+	db 2 ; coord events
+	coord_event  4,  5, SCENE_LANCESROOM_APPROACH_LANCE, Script_ApproachLanceFromLeft
+	coord_event  5,  5, SCENE_LANCESROOM_APPROACH_LANCE, Script_ApproachLanceFromRight
+
+	db 0 ; bg events
+
+	db 3 ; object events
+	object_event  5,  3, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LancesRoomLanceScript, -1
+	object_event  4,  7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
+	object_event  4,  7, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
+
 	object_const_def ; object_event constants
 	const LANCESROOM_LANCE
 	const LANCESROOM_MARY
 	const LANCESROOM_OAK
 
-LancesRoom_MapScripts:
-	db 2 ; scene scripts
-	scene_script .LockDoor ; SCENE_DEFAULT
-	scene_script .DummyScene ; SCENE_LANCESROOM_APPROACH_LANCE
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_TILES, .LancesRoomDoors
-
-.LockDoor:
-	prioritysjump .LancesDoorLocksBehindYou
-	end
-
-.DummyScene:
-	end
-
-.LancesRoomDoors:
+LancesRoom_DoorsCallback:
 	checkevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
 	iffalse .KeepEntranceOpen
 	changeblock 4, 22, $34 ; wall
@@ -29,9 +46,13 @@ LancesRoom_MapScripts:
 .KeepExitClosed:
 	return
 
+LancesRoom_LockDoor:
+	prioritysjump .LancesDoorLocksBehindYou
+	end
+
 .LancesDoorLocksBehindYou:
 	applymovement PLAYER, LancesRoom_EnterMovement
-	refreshscreen $85
+	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
 	changeblock 4, 22, $34 ; wall
@@ -57,7 +78,7 @@ LancesRoomLanceScript:
 	closetext
 	winlosstext LanceBattleWinText, 0
 	setlasttalked LANCESROOM_LANCE
-	loadtrainer CHAMPION, LANCE
+	loadtrainer POKEMON_PROF, 1 ; TODO: Real trainer
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -125,7 +146,7 @@ LancesRoomLanceScript:
 	applymovement LANCESROOM_MARY, LancesRoomMovementData_MaryRunsBackAndForth
 	special FadeOutPalettes
 	pause 15
-	warp HALL_OF_FAME, 4, 13
+	warpfacing UP, HALL_OF_FAME, 4, 13
 	end
 
 LancesRoom_EnterMovement:
@@ -138,14 +159,12 @@ LancesRoom_EnterMovement:
 MovementData_ApproachLanceFromLeft:
 	step UP
 	step UP
-	step UP
 	turn_head RIGHT
 	step_end
 
 MovementData_ApproachLanceFromRight:
 	step UP
 	step LEFT
-	step UP
 	step UP
 	turn_head RIGHT
 	step_end
@@ -154,12 +173,10 @@ LancesRoomMovementData_MaryRushesIn:
 	big_step UP
 	big_step UP
 	big_step UP
-	big_step UP
 	turn_head DOWN
 	step_end
 
 LancesRoomMovementData_OakWalksIn:
-	step UP
 	step UP
 	step UP
 	step_end
@@ -293,7 +310,7 @@ LancesRoomOakCongratulationsText:
 	line "while."
 
 	para "You certainly look"
-	line "more mature."
+	line "more impressive."
 
 	para "Your conquest of"
 	line "the LEAGUE is just"
@@ -338,23 +355,3 @@ LancesRoomMaryNoInterviewText:
 	line "We haven't done"
 	cont "the interview!"
 	done
-
-LancesRoom_MapEvents:
-	db 0, 0 ; filler
-
-	db 4 ; warp events
-	warp_event  4, 23, KARENS_ROOM, 3
-	warp_event  5, 23, KARENS_ROOM, 4
-	warp_event  4,  0, HALL_OF_FAME, 1
-	warp_event  5,  0, HALL_OF_FAME, 2
-
-	db 2 ; coord events
-	coord_event  4,  5, SCENE_LANCESROOM_APPROACH_LANCE, Script_ApproachLanceFromLeft
-	coord_event  5,  5, SCENE_LANCESROOM_APPROACH_LANCE, Script_ApproachLanceFromRight
-
-	db 0 ; bg events
-
-	db 3 ; object events
-	object_event  5,  2, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LancesRoomLanceScript, -1
-	object_event  4,  7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
-	object_event  4,  7, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
