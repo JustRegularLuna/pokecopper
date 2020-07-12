@@ -315,41 +315,6 @@ PhoneSwarmCaveText:
 	line "to go look."
 	done
 
-PhoneBugCatchingContestText:
-	text "They're holding"
-	line "the Bug-Catching"
-
-	para "Contest today at"
-	line "the PARK."
-
-	para "<PLAYER>, are you"
-	line "going to go?"
-	done
-
-IrwinRocketTakeoverRumorText:
-	text "<PLAYER>, did you"
-	line "know?"
-
-	para "I hear GOLDENROD's"
-	line "RADIO TOWER was"
-
-	para "taken over by TEAM"
-	line "ROCKET."
-
-	para "But what exactly"
-	line "is TEAM ROCKET?"
-	done
-
-GinaRocketTakeoverRumorText:
-	text "<PLAYER>, did you"
-	line "hear the news?"
-
-	para "TEAM ROCKET has"
-	line "taken over the"
-
-	para "RADIO TOWER in"
-	line "GOLDENROD CITY."
-
-	para "I wonder if the"
-	line "workers are OK…"
+PlaceholderPhoneText:
+	text "Good morning!"
 	done

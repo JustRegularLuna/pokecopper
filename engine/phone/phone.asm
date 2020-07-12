@@ -450,7 +450,7 @@ LoadElmCallScript:
 	sjump Script_ReceivePhoneCall
 
 .LoadElmScript:
-	ld e, PHONE_ELM
+	ld e, PHONE_OAK
 	jp LoadCallerScript
 
 RingTwice_StartCall:
@@ -613,7 +613,7 @@ CheckCanDeletePhoneNumber:
 	ld a, b
 	cp PHONECONTACT_MOM
 	ret z
-	cp PHONECONTACT_ELM
+	cp PHONECONTACT_OAK
 	ret z
 	ld c, $1
 	ret

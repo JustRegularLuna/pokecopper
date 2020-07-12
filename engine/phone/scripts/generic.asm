@@ -74,7 +74,6 @@ PhoneScript_GreetPhone_Female:
 	promptbutton
 	end
 
-; Huey
 Phone_GenericCall_Male_SkipMon:
 	special RandomPhoneMon
 	scall PhoneScript_Random2
@@ -83,7 +82,6 @@ Phone_GenericCall_Male_SkipMon:
 	promptbutton
 	sjump PhoneScript_SeeYouLater
 
-; unused
 Phone_GenericCall_Female_SkipMon:
 	special RandomPhoneMon
 	scall PhoneScript_Random2
@@ -92,13 +90,11 @@ Phone_GenericCall_Female_SkipMon:
 	promptbutton
 	sjump PhoneScript_ByeBye
 
-; Huey
 Phone_LookingAwesome_Male_SkipMon:
 	writetext PhoneMaleLookingAwesomeText
 	promptbutton
 	sjump PhoneScript_ByeBye
 
-; unused
 Phone_DressedUp_Female_SkipMon:
 	writetext PhoneFemaleDressedUpText
 	promptbutton
@@ -196,21 +192,6 @@ PhoneScript_SwarmCave:
 	writetext PhoneSwarmCaveText
 	promptbutton
 	sjump PhoneScript_SeeYouLater
-
-PhoneScript_BugCatchingContest:
-	writetext PhoneBugCatchingContestText
-	promptbutton
-	sjump PhoneScript_SeeYouLater
-
-IrwinRocketRumorScript:
-	writetext IrwinRocketTakeoverRumorText
-	promptbutton
-	sjump PhoneScript_SeeYouLater
-
-GinaRocketRumorScript:
-	writetext GinaRocketTakeoverRumorText
-	promptbutton
-	sjump PhoneScript_ByeBye
 
 Phone_CheckIfUnseenRare_Male:
 	scall PhoneScriptRareWildMon
