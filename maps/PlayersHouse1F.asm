@@ -128,8 +128,6 @@ if DEF(_DEBUG)
 	loadmem wPartyMon2PP+1, 30
 	loadmem wPartyMon2PP+2, 15
 	loadmem wPartyMon2PP+3, 15
-	; events
-	setevent EVENT_ENABLED_CABLE_CLUB
 	; all TMs
 x = TM_DYNAMICPUNCH
 rept NUM_TMS + NUM_HMS
