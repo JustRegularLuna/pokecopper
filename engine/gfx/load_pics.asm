@@ -78,7 +78,7 @@ GetFrontpic:
 	push bc
 	ld a, BANK(sDecompressBuffer)
 	call OpenSRAM
-	ld hl, PokemonPicPointers ; UnownPicPointers
+	ld hl, PokemonPicPointers
 	ld a, [wCurPartySpecies]
 	ld d, BANK(PokemonPicPointers)
 	cp UNOWN
@@ -90,6 +90,7 @@ GetFrontpic:
 	jr .ok
 
 .unown
+	ld hl, UnownPicPointers
 	ld a, [wUnownLetter]
 	ld d, BANK(UnownPicPointers)
 
@@ -138,12 +139,12 @@ GetMonBackpic:
 	ld a, BANK(sDecompressBuffer)
 	call OpenSRAM
 
-	; These are assumed to be at the same address in their respective banks.
-	ld hl, PokemonPicPointers ; UnownPicPointers
+	ld hl, PokemonPicPointers
 	ld a, [wCurPartySpecies]
 	ld d, BANK(PokemonPicPointers)
 	cp UNOWN
 	jr nz, .ok
+	ld hl, UnownPicPointers
 	ld a, [wUnownLetter]
 	ld d, BANK(UnownPicPointers)
 .ok
