@@ -174,7 +174,7 @@ SPAWN_RED   EQU 2
 
 ; wMapObjects::
 PLAYER_OBJECT EQU 0
-NUM_OBJECTS   EQU 16
+NUM_OBJECTS   EQU 18
 
 ; wStatusFlags::
 	const_def
