@@ -100,7 +100,6 @@ GetFrontpic:
 	call AddNTimes
 	ld a, d
 	call GetFarByte
-	call FixPicBank
 	push af
 	inc hl
 	ld a, d
@@ -155,7 +154,6 @@ GetMonBackpic:
 	add hl, bc
 	ld a, d
 	call GetFarByte
-	call FixPicBank
 	push af
 	inc hl
 	ld a, d
@@ -181,42 +179,6 @@ GetMonBackpic:
 	call CloseSRAM
 	ret
 
-FixPicBank:
-; Precondition:  a = defined bank for pic
-; Postcondition: a = repaired bank for pic
-;
-; Pic bank values that will get repaired (and what they'll be repaired to):
-;     $13 -> BANK("Pics 12")
-;     $14 -> BANK("Pics 13")
-;     $1f -> BANK("Pics 14")
-;
-; Otherwise, the repaired bank will match the defined bank.
-	push hl
-	push bc
-	ld b, a
-	ld hl, .FixPicBankTable
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, .done
-	inc hl
-	cp b
-	jr nz, .loop
-	dec hl
-	ld b, [hl]
-
-.done
-	ld a, b
-	pop bc
-	pop hl
-	ret
-
-.FixPicBankTable:
-	db $13, BANK("Pics 12")
-	db $14, BANK("Pics 13")
-	db $1f, BANK("Pics 14")
-	db -1
-
 Intro_GetMonFrontpic:
 	ld a, c
 	push de
@@ -226,7 +188,6 @@ Intro_GetMonFrontpic:
 	call AddNTimes
 	ld a, BANK(PokemonPicPointers)
 	call GetFarByte
-	call FixPicBank
 	push af
 	inc hl
 	ld a, BANK(PokemonPicPointers)
@@ -256,7 +217,6 @@ GetTrainerPic:
 	call AddNTimes
 	ld a, BANK(TrainerPicPointers)
 	call GetFarByte
-	call FixPicBank
 	push af
 	inc hl
 	ld a, BANK(TrainerPicPointers)
