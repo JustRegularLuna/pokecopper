@@ -490,15 +490,20 @@ Continue_DisplayGameTime:
 	jp PrintNum
 
 OakSpeech:
-	farcall InitClock
-	call RotateFourPalettesLeft
+	; Silently add 1 Potion to the player's PC
+	ld a, POTION
+	ld [wCurItem], a
+	ld a, 1
+	ld [wItemQuantityChangeBuffer], a
+	ld hl, wNumPCItems
+	call ReceiveItem
+
+	call RotateThreePalettesRight
 	call ClearTilemap
 
 	ld de, MUSIC_ROUTE_30
 	call PlayMusic
 
-	call RotateFourPalettesRight
-	call RotateThreePalettesRight
 	xor a
 	ld [wCurPartySpecies], a
 	ld a, POKEMON_PROF
@@ -540,6 +545,44 @@ OakSpeech:
 
 	xor a
 	ld [wCurPartySpecies], a
+	ld a, CAL
+	ld [wTrainerClass], a
+	call Intro_PrepTrainerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call Intro_RotatePalettesLeftFrontpic
+
+	ld hl, OakText6
+	call PrintText
+	call NamePlayer
+
+	ld hl, OakTextYourNameIs
+	call PrintText
+	call RotateThreePalettesRight
+	call ClearTilemap
+
+	xor a
+	ld [wCurPartySpecies], a
+	ld a, RIVAL1
+	ld [wTrainerClass], a
+	call Intro_PrepTrainerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call Intro_RotatePalettesLeftFrontpic
+
+	ld hl, OakTextIntroduceRival
+	call PrintText
+	call NameRival
+
+	ld hl, OakTextOkHisNameIs
+	call PrintText
+	call RotateThreePalettesRight
+	call ClearTilemap
+
+	xor a
+	ld [wCurPartySpecies], a
 	ld a, POKEMON_PROF
 	ld [wTrainerClass], a
 	call Intro_PrepTrainerPic
@@ -548,8 +591,12 @@ OakSpeech:
 	call GetSGBLayout
 	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, OakText5
+	ld hl, OakTextRecordTheTime
 	call PrintText
+	call RotateThreePalettesRight
+	call ClearTilemap
+
+	farcall InitClock
 	call RotateThreePalettesRight
 	call ClearTilemap
 
@@ -563,9 +610,6 @@ OakSpeech:
 	call GetSGBLayout
 	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, OakText6
-	call PrintText
-	call NamePlayer
 	ld hl, OakText7
 	call PrintText
 	ret
@@ -591,12 +635,24 @@ OakText4:
 	text_far _OakText4
 	text_end
 
-OakText5:
-	text_far _OakText5
-	text_end
-
 OakText6:
 	text_far _OakText6
+	text_end
+
+OakTextYourNameIs:
+	text_far _OakTextYourNameIs
+	text_end
+
+OakTextIntroduceRival:
+	text_far _OakTextIntroduceRival
+	text_end
+
+OakTextOkHisNameIs:
+	text_far _OakTextOkHisNameIs
+	text_end
+
+OakTextRecordTheTime:
+	text_far _OakTextRecordTheTime
 	text_end
 
 OakText7:
@@ -605,7 +661,7 @@ OakText7:
 
 NamePlayer:
 	call MovePlayerPicRight
-	ld hl, NameMenuHeader
+	ld hl, HiroNameMenuHeader
 	call ShowPlayerNamingChoices
 	ld a, [wMenuCursorY]
 	dec a
@@ -638,7 +694,46 @@ NamePlayer:
 	call RotateThreePalettesLeft
 
 	ld hl, wPlayerName
-	ld de, PlayerNameArray
+	ld de, HiroNameArray
+	call InitName
+	ret
+
+NameRival:
+	call MovePlayerPicRight
+	ld hl, KamonNameMenuHeader
+	call ShowPlayerNamingChoices
+	ld a, [wMenuCursorY]
+	dec a
+	jr z, .NewName
+	ld de, wRivalName
+	call StorePlayerName
+	farcall ApplyMonOrTrainerPals
+	call MovePlayerPicLeft
+	ret
+
+.NewName:
+	ld b, NAME_RIVAL
+	ld de, wRivalName
+	farcall NamingScreen
+
+	call RotateThreePalettesRight
+	call ClearTilemap
+
+	call LoadFontsExtra
+	call WaitBGMap
+
+	xor a
+	ld [wCurPartySpecies], a
+	ld a, RIVAL1
+	ld [wTrainerClass], a
+	call Intro_PrepTrainerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call RotateThreePalettesLeft
+
+	ld hl, wRivalName
+	ld de, KamonNameArray
 	call InitName
 	ret
 
@@ -720,6 +815,8 @@ MovePlayerPicLeft:
 	hlcoord 13, 4
 	ld de, -1
 MovePlayerPic:
+; Modified to erase the old pic too, not just draw the new one
+; This prevents Kamon's hand from artifacting across the screen
 	ld c, 7 + 1
 .loop
 	push bc
@@ -738,8 +835,22 @@ MovePlayerPic:
 	add hl, de
 	pop bc
 	dec c
-	jr nz, .loop
-	ret
+	ret z
+	push hl
+	push bc
+	push de
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	lb bc, 7, 7
+	call ClearBox
+	pop de
+	pop bc
+	pop hl
+	jr .loop
 
 Intro_RotatePalettesLeftFrontpic:
 	ld hl, IntroFadePalettes

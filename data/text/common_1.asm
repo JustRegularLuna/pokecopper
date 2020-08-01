@@ -93,26 +93,15 @@ _CameToItsSensesText::
 	line "to its senses."
 	done
 
-_OakTimeWokeUpText::
-	text "<……><……><……><……><……><……>"
-	line "<……><……><……><……><……><……>"
-
-	para "Zzz… Hm? Wha…?"
-	line "You woke me up!"
-
-	para "Will you check the"
-	line "clock for me?"
-	prompt
-
 _OakTimeWhatTimeIsItText::
 	text "What time is it?"
 	done
 
-_OakTimeWhatHoursText::
-	text "What?@"
+_OakTimeSetIsItText::
+	text "Is it@"
 	text_end
 
-_OakTimeHoursQuestionMarkText::
+_OakTimeQuestionMarkText::
 	text "?"
 	done
 
@@ -120,29 +109,9 @@ _OakTimeHowManyMinutesText::
 	text "How many minutes?"
 	done
 
-_OakTimeWhoaMinutesText::
-	text "Whoa!@"
-	text_end
-
-_OakTimeMinutesQuestionMarkText::
-	text "?"
-	done
-
-_OakTimeOversleptText::
-	text "!"
-	line "I overslept!"
-	done
-
-_OakTimeYikesText::
-	text "!"
-	line "Yikes! I over-"
-	cont "slept!"
-	done
-
-_OakTimeSoDarkText::
-	text "!"
-	line "No wonder it's so"
-	cont "dark!"
+_OakTimeSetText::
+	text ","
+	line "we're all set!"
 	done
 
 _OakTimeWhatDayIsItText::

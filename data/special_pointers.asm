@@ -52,7 +52,6 @@ SpecialsPointers::
 	add_special MoveDeletion
 	add_special BankOfMom
 	add_special MagnetTrain
-	add_special NameRival
 	add_special SetDayOfWeek
 	add_special OverworldTownMap
 	add_special UnownPrinter

@@ -1143,22 +1143,25 @@ _MainMenuTimeUnknownText::
 	done
 
 _OakText1::
-	text "Hello! Sorry to"
-	line "keep you waiting!"
+	text "Oh! Sorry for"
+	line "the wait!"
 
 	para "Welcome to the"
 	line "world of #MON!"
 
-	para "My name is OAK."
+	para "My name is OAK!"
 
 	para "People call me the"
-	line "#MON PROF."
+	line "#MON PROF!"
 	prompt
 
 _OakText2::
-	text "This world is in-"
-	line "habited by crea-"
-	cont "tures that we call"
+	text "As you surely"
+	line "already know…"
+
+	para "This world is"
+	line "inhabited by"
+	cont "creatures called"
 	cont "#MON.@"
 	text_end
 
@@ -1167,33 +1170,41 @@ _OakText3::
 	text_end
 
 _OakText4::
-	text "People and #MON"
-	line "live together by"
+	text "For some people,"
+	line "#MON are pets."
+	cont "Others use them"
+	cont "for fights."
 
-	para "supporting each"
-	line "other."
+	para "Myself…"
 
-	para "Some people play"
-	line "with #MON, some"
-	cont "battle with them."
-	prompt
-
-_OakText5::
-	text "But we don't know"
-	line "everything about"
-	cont "#MON yet."
-
-	para "There are still"
-	line "many mysteries to"
-	cont "solve."
-
-	para "That's why I study"
-	line "#MON every day."
+	para "I study #MON"
+	line "as a profession."
 	prompt
 
 _OakText6::
-	text "Now, what did you"
-	line "say your name was?"
+	text "First, what is"
+	line "your name?"
+	prompt
+
+_OakTextYourNameIs::
+	text "Right, so your"
+	line "name is <PLAYER>."
+	prompt
+
+_OakTextIntroduceRival::
+	text "Then there's this"
+	line "boy. He's been"
+	cont "your rival since"
+	cont "you were little."
+
+	para "…Erm, what is"
+	line "his name again?"
+	prompt
+
+_OakTextOkHisNameIs::
+	text "That's right! I"
+	line "remember now! His"
+	cont "name is <RIVAL>."
 	prompt
 
 _OakText7::
@@ -1204,19 +1215,24 @@ _OakText7::
 	line "#MON story is"
 	cont "about to unfold."
 
-	para "You'll face fun"
-	line "times and tough"
-	cont "challenges."
-
 	para "A world of dreams"
 	line "and adventures"
-
-	para "with #MON"
-	line "awaits! Let's go!"
-
-	para "I'll be seeing you"
-	line "later!"
+	cont "with #MON"
+	cont "awaits! Let's go!"
 	done
+
+_OakTextRecordTheTime::
+	text "While we're at it,"
+	line "let's record the"
+	cont "start of your"
+	cont "adventure by"
+	cont "marking the time!"
+
+	para "Be as precise as"
+	line "possible when"
+	cont "setting the time,"
+	cont "too, won't you?"
+	prompt
 
 _ClockTimeMayBeWrongText::
 	text "The clock's time"
