@@ -8,58 +8,57 @@ Landmarks:
 ; entries correspond to constants/landmark_constants.asm
 ; JOHTO LANDMARKS
 	dbbw       0,   0, SpecialMapName
-	landmark 140, 100, SilentHillsName
-	landmark 124, 100, Route1Name
-	landmark 108, 100, SakuraTownName
-	landmark 108,  76, Route2Name
-	landmark 100,  60, Route3Name
-	landmark  84,  60, BellflowerCityName
-	landmark  84,  62, SproutTowerName
-	landmark  84,  54, HauntedHouseName
-	landmark  76,  68, RuinsOfAlphName
-	landmark  84,  84, Route4Name
-	landmark  84, 100, UnionCaveName
-	landmark  84, 112, Route5Name
-	landmark  84, 124, CypressTownName
-	landmark  72, 124, Route6Name
-	landmark  60, 124, WhisperingWoodsName
-	landmark  52, 124, BegoniaTownName
-	landmark  52, 108, Route7Name
-	landmark  52,  92, MarigoldCityName
-	landmark  50,  92, RadioTowerName
-	landmark  52,  76, Route8Name
-	landmark  52,  60, PowerPlantName
-	landmark  68,  60, Route9Name
-	landmark  68,  52, Route10Name
-	landmark  68,  44, MapleCityName
-	landmark  64,  50, BrassTowerName
-	landmark  70,  40, TinTowerName
-	landmark  53,  44, Route11Name
-	landmark  36,  48, Route12Name
-	landmark  36,  60, AzureMistCityName
-	landmark  32,  64, LighthouseName
-	landmark  36,  68, SSAnneName
-	landmark  36,  80, Route13Name
-	landmark  36,  92, WhirlIslandsName
-	landmark  44,  92, Route14Name
+	landmark 132, 100, SilentHillsName
+	landmark 116, 100, Route1Name
+	landmark 100, 100, SakuraTownName
+	landmark 100,  76, Route2Name
+	landmark  92,  60, Route3Name
+	landmark  76,  60, BellflowerCityName
+	landmark  76,  62, SproutTowerName
+	landmark  76,  54, HauntedHouseName
+	landmark  68,  68, RuinsOfAlphName
+	landmark  76,  84, Route4Name
+	landmark  76, 100, UnionCaveName
+	landmark  76, 112, Route5Name
+	landmark  76, 124, CypressTownName
+	landmark  64, 124, Route6Name
+	landmark  52, 124, WhisperingWoodsName
+	landmark  44, 124, BegoniaTownName
+	landmark  44, 108, Route7Name
+	landmark  44,  92, MarigoldCityName
+	landmark  42,  92, RadioTowerName
+	landmark  44,  76, Route8Name
+	landmark  44,  60, PowerPlantName
+	landmark  60,  60, Route9Name
+	landmark  60,  52, Route10Name
+	landmark  60,  44, MapleCityName
+	landmark  56,  50, BrassTowerName
+	landmark  62,  40, TinTowerName
+	landmark  44,  44, Route11Name
+	landmark  28,  48, Route12Name
+	landmark  28,  60, AzureMistCityName
+	landmark  24,  64, LighthouseName
+	landmark  28,  68, SSAnneName
+	landmark  28,  80, Route13Name
+	landmark  28,  92, TidalCaveName
+	landmark  36,  92, Route14Name
 	landmark  28, 100, Route15Name
 	landmark  12, 100, NatureParkName
-	landmark  84,  44, Route16Name
-	landmark  92,  44, IcePathName
-	landmark 108,  44, CedarTownName
-	landmark 108,  36, Route17Name
-	landmark 108,  28, WisteriaTownName
-	landmark 120,  44, Route18Name
-	landmark 132,  44, EbongroveCityName
-	landmark 136,  40, DragonTempleName
-	landmark 132,  68, Route19Name
-	landmark 116,  60, DarkCaveName
-	landmark 144,  84, Route20Name
-	landmark 148,  68, Route21Name
+	landmark  76,  44, Route16Name
+	landmark  84,  44, IcePathName
+	landmark 100,  44, CedarTownName
+	landmark 100,  36, Route17Name
+	landmark 100,  28, WisteriaTownName
+	landmark 112,  44, Route18Name
+	landmark 124,  44, EbongroveCityName
+	landmark 128,  40, DragonTempleName
+	landmark 124,  68, Route19Name
+	landmark 108,  60, DarkCaveName
+	landmark 116,  88, Route20Name
+	landmark 144, 100, Route21Name
+	landmark 148,  76, Route22Name
 	landmark 148,  60, MtFujiName
 	landmark 148,  52, SilverCityName
-	landmark 148, 100, Route22Name
-	landmark 148,  92, TidalCaveName
 
 ; KANTO LANDMARKS
 	landmark  52, 100, PalletTownName
@@ -176,13 +175,12 @@ BrassTowerName:      db "BRASS TOWER@"
 TinTowerName:        db "TIN TOWER@"
 LighthouseName:      db "LIGHTHOUSE@"
 SSAnneName:          db "S.S. ANNE@"
-WhirlIslandsName:    db "WHIRL¯ISLANDS@"
+TidalCaveName:       db "TIDAL CAVE@"
 NatureParkName:      db "NATURE PARK@"
 IcePathName:         db "ICE PATH@"
 DragonTempleName:    db "DRAGON¯TEMPLE@"
 DarkCaveName:        db "DARK CAVE@"
 MtFujiName:          db "MT. FUJI@"
-TidalCaveName:       db "TIDAL CAVE@"
 
 ViridianForestName:  db "VIRIDIAN¯FOREST@"
 MtMoonName:          db "MT. MOON@"

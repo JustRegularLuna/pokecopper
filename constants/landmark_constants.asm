@@ -35,7 +35,7 @@
 	const LANDMARK_LIGHTHOUSE
 	const LANDMARK_SS_ANNE ; similar to Gen 1. train is how you get to Kanto.
 	const LANDMARK_JOHTO_ROUTE_13 ; sea route
-	const LANDMARK_WHIRL_ISLANDS ; new name?
+	const LANDMARK_TIDAL_CAVE
 	const LANDMARK_JOHTO_ROUTE_14 ; sea route
 	const LANDMARK_JOHTO_ROUTE_15 ; sea route
 	const LANDMARK_NATURE_PARK
@@ -50,11 +50,10 @@
 	const LANDMARK_JOHTO_ROUTE_19
 	const LANDMARK_DARK_CAVE ; new name?
 	const LANDMARK_JOHTO_ROUTE_20
-	const LANDMARK_JOHTO_ROUTE_21 ; badge check
+	const LANDMARK_JOHTO_ROUTE_21
+	const LANDMARK_JOHTO_ROUTE_22
 	const LANDMARK_MT_FUJI ; victory road
 	const LANDMARK_SILVER_CITY
-	const LANDMARK_JOHTO_ROUTE_22
-	const LANDMARK_TIDAL_CAVE ; where Tohjo Falls was. map changes based on time
 
 KANTO_LANDMARK EQU const_value
 	const LANDMARK_PALLET_TOWN

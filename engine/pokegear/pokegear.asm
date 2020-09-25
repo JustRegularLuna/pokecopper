@@ -542,7 +542,7 @@ PokegearMap_KantoMap:
 	jr PokegearMap_ContinueMap
 
 PokegearMap_JohtoMap:
-	lb de, LANDMARK_TIDAL_CAVE, LANDMARK_SILENT_HILLS
+	lb de, LANDMARK_SILVER_CITY, LANDMARK_SILENT_HILLS
 PokegearMap_ContinueMap:
 	ld hl, hJoyLast
 	ld a, [hl]
