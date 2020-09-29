@@ -880,16 +880,16 @@ _CGB_MagnetTrain:
 
 _CGB_GamefreakLogo:
 	ld de, wBGPals1
-	ld a, PAL_GAMEFREAK_LOGO_BG
+	ld a, PAL_GS_INTRO_GAMEFREAK_LOGO
 	call GetPredefPal
+	push hl
+	push hl
 	call LoadHLPaletteIntoDE
 	ld de, wOBPals1
-	ld a, PAL_GAMEFREAK_LOGO_OB
-	call GetPredefPal
+	pop hl
 	call LoadHLPaletteIntoDE
 	ld de, wOBPals1 palette 1
-	ld a, PAL_GAMEFREAK_LOGO_OB
-	call GetPredefPal
+	pop hl
 	call LoadHLPaletteIntoDE
 	call WipeAttrmap
 	call ApplyAttrmap
