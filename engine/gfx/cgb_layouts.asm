@@ -438,32 +438,19 @@ _CGB_GSIntro:
 	dw .StartersCharizardScene
 
 .ShellderLaprasScene:
-	ld hl, .ShellderLaprasBGPalette
+	ld a, PAL_GS_INTRO_SHELLDER_LAPRAS
+	call GetPredefPal
+	push hl
+	push hl
 	ld de, wBGPals1
 	call LoadHLPaletteIntoDE
-	ld hl, .ShellderLaprasOBPals
+	pop hl
 	ld de, wOBPals1
-	ld bc, 2 palettes
-	call CopyBytes
+	call LoadHLPaletteIntoDE
+	pop hl
+	call LoadHLPaletteIntoDE
 	call WipeAttrmap
 	ret
-
-.ShellderLaprasBGPalette:
-	RGB 19, 31, 19
-	RGB 18, 23, 31
-	RGB 11, 21, 28
-	RGB 04, 16, 24
-
-.ShellderLaprasOBPals:
-	RGB 29, 29, 29
-	RGB 20, 19, 20
-	RGB 19, 06, 04
-	RGB 03, 04, 06
-
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 00, 00
-	RGB 03, 04, 06
 
 .JigglypuffPikachuScene:
 	ld de, wBGPals1
@@ -479,8 +466,10 @@ _CGB_GSIntro:
 	ret
 
 .StartersCharizardScene:
-	ld hl, PalPacket_Pack + 1
-	call CopyFourPalettes
+	ld a, PAL_REDMON ; Charizard
+	call GetPredefPal
+	ld de, wBGPals1
+	call LoadHLPaletteIntoDE
 	ld de, wOBPals1
 	ld a, PAL_GS_INTRO_STARTERS_TRANSITION
 	call GetPredefPal

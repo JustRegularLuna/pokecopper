@@ -141,37 +141,6 @@ SGB_ApplyPartyMenuHPPals:
 	ld [hl], e
 	ret
 
-Function9102:
-	call CheckCGB
-	ret z
-; CGB only
-	ld hl, .BGPal
-	ld de, wBGPals1
-	ld bc, 1 palettes
-	call CopyBytes
-
-	ld hl, .OBPal
-	ld de, wOBPals1
-	ld bc, 1 palettes
-	call CopyBytes
-
-	call ApplyPals
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
-
-.BGPal:
-	RGB 31, 31, 31
-	RGB 18, 23, 31
-	RGB 15, 20, 31
-	RGB 00, 00, 00
-
-.OBPal:
-	RGB 31, 31, 31
-	RGB 31, 31, 12
-	RGB 08, 16, 28
-	RGB 00, 00, 00
-
 Function9136:
 	call CheckCGB
 	ret nz

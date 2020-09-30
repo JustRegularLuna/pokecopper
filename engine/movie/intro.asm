@@ -656,12 +656,8 @@ Functione4ed5:
 	ld hl, wIntroFrameCounter2
 	ld a, [hl]
 	and %00011111
-	jr z, .asm_e4ee1
+	ret z
 	call Intro_InitMagikarps
-	ret
-
-.asm_e4ee1
-	callfar Function9102
 	ret
 
 Functione4ee8:
