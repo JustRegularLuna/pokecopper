@@ -113,10 +113,10 @@ _CGB_BattleColors:
 	ld [wSGBPredef], a
 	call ApplyPals
 _CGB_FinishBattleScreenLayout:
-	ld hl, TilesetBGPalette palette 7
 	ld de, wBGPals1 palette 7
-	ld bc, 1 palettes
-	call CopyBytes
+	ld a, PAL_GREYMON
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, PAL_BATTLE_BG_ENEMY_HP

@@ -1085,9 +1085,6 @@ INCLUDE "gfx/battle/exp_bar.pal"
 
 INCLUDE "data/pokemon/palettes.asm"
 
-TilesetBGPalette:
-INCLUDE "gfx/tilesets/bg_tiles.pal"
-
 MapObjectPals::
 INCLUDE "gfx/overworld/npc_sprites.pal"
 
