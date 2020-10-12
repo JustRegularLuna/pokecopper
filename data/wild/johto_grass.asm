@@ -2,7 +2,7 @@
 
 JohtoGrassWildMons:
 
-	map_id SILENT_HILLS
+	map_id JOHTO_ROUTE_1
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 2, PIDGEY

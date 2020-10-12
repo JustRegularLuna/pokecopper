@@ -285,14 +285,10 @@ ApplyHPBarPals:
 	ld de, wBGPals2 palette PAL_BATTLE_BG_PLAYER_HP color 1
 
 .okay
-	ld l, c
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld bc, HPBarPals
-	add hl, bc
-	ld bc, 4
-	call CopyBytes
+	ld a, c
+	add PAL_HP_GREEN
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
@@ -316,33 +312,13 @@ ApplyHPBarPals:
 	call FillBoxCGB
 	ret
 
-LoadStatsScreenPals:
-	call CheckCGB
-	ret z
-	ld hl, StatsScreenPals
-	ld b, 0
-	dec c
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld [wBGPals1 palette 0], a
-	ld [wBGPals1 palette 2], a
-	ld a, [hl]
-	ld [wBGPals1 palette 0 + 1], a
-	ld [wBGPals1 palette 2 + 1], a
-	call ApplyPals
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
-
 LoadMailPalettes:
 	ld l, e
 	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
 	ld de, .MailPals
 	add hl, de
+	ld a, [hl]
+	call GetPredefPal
 	call CheckCGB
 	jr nz, .cgb
 	push hl
@@ -377,7 +353,7 @@ LoadMailPalettes:
 	ret
 
 .MailPals:
-INCLUDE "gfx/mail/mail.pal"
+INCLUDE "data/items/mail_palettes.asm"
 
 INCLUDE "engine/gfx/cgb_layouts.asm"
 
@@ -568,11 +544,13 @@ CGB_ApplyPartyMenuHPPals:
 	ret
 
 InitPartyMenuOBPals:
-	ld hl, PartyMenuOBPals
 	ld de, wOBPals1
-	ld bc, 2 palettes
-	call CopyBytes
-	ret
+	ld a, PAL_MEWMON
+	call GetPredefPal
+	push hl
+	call _CGB_MapPals.LoadHLOBPaletteIntoDE
+	pop hl
+	jp _CGB_MapPals.LoadHLOBPaletteIntoDE
 
 GetBattlemonBackpicPalettePointer:
 	push de
@@ -610,50 +588,6 @@ GetTrainerPalettePointer:
 
 GetMonPalettePointer:
 	call _GetMonPalettePointer
-	ret
-
-Function9be8: ; unreferenced
-	ret
-	call CheckCGB
-	ret z
-	ld hl, BattleObjectPals
-	ld a, $90
-	ldh [rOBPI], a
-	ld c, 6 palettes
-.loop
-	ld a, [hli]
-	ldh [rOBPD], a
-	dec c
-	jr nz, .loop
-	ld hl, BattleObjectPals
-	ld de, wOBPals1 palette 2
-	ld bc, 2 palettes
-	call CopyBytes
-	ret
-
-BattleObjectPals:
-INCLUDE "gfx/battle_anims/battle_anims.pal"
-
-Function9c39: ; unreferenced
-	call CheckCGB
-	ret z
-	ld a, $90
-	ldh [rOBPI], a
-	ld a, PAL_BLUEMON
-	call GetPredefPal
-	call .PushPalette
-	ld a, PAL_GREENMON
-	call GetPredefPal
-	call .PushPalette
-	ret
-
-.PushPalette:
-	ld c, 1 palettes
-.loop
-	ld a, [hli]
-	ldh [rOBPD], a
-	dec c
-	jr nz, .loop
 	ret
 
 _GetMonPalettePointer:
@@ -1077,25 +1011,7 @@ SGBBorderGFX:
 INCBIN "gfx/sgb/silver_border.2bpp"
 ENDC
 
-HPBarPals:
-INCLUDE "gfx/battle/hp_bar.pal"
-
-ExpBarPalette:
-INCLUDE "gfx/battle/exp_bar.pal"
-
 INCLUDE "data/pokemon/palettes.asm"
-
-MapObjectPals::
-INCLUDE "gfx/overworld/npc_sprites.pal"
-
-DiplomaPalettes:
-INCLUDE "gfx/diploma/diploma.pal"
-
-PartyMenuOBPals:
-INCLUDE "gfx/stats/party_menu_ob.pal"
-
-UnusedBattleObjectPals:
-INCLUDE "gfx/battle_anims/unused_battle_anims.pal"
 
 GSTitleBGPals:
 IF DEF(_GOLD)
@@ -1109,10 +1025,3 @@ INCLUDE "gfx/title/title_fg.pal"
 
 BetaPokerPals:
 INCLUDE "gfx/beta_poker/beta_poker.pal"
-
-SlotMachinePals:
-IF DEF(_GOLD)
-INCLUDE "gfx/slots/slots_gold.pal"
-ELIF DEF(_SILVER)
-INCLUDE "gfx/slots/slots_silver.pal"
-ENDC

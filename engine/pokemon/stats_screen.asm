@@ -453,7 +453,6 @@ LoadPinkPage:
 
 ; Load palettes / place frontpic
 	pop bc
-	farcall LoadStatsScreenPals
 	call WaitBGMap
 	ld a, 1
 	ldh [hBGMapMode], a
@@ -596,7 +595,6 @@ LoadGreenPage:
 
 ; Load palettes / place frontpic
 	pop bc
-	farcall LoadStatsScreenPals
 	call WaitBGMap
 	ld a, 1
 	ldh [hBGMapMode], a
@@ -643,7 +641,6 @@ LoadBluePage:
 
 ; Load palettes / place frontpic
 	pop bc
-	farcall LoadStatsScreenPals
 	call WaitBGMap
 	ld a, 1
 	ldh [hBGMapMode], a

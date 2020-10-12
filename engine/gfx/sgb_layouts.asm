@@ -70,13 +70,8 @@ LoadSGBLayout:
 	call CopyBytes
 
 	ld a, [wPlayerHPPal]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	ld de, HPBarPals
-	add hl, de
-
+	add PAL_HP_GREEN
+	call GetPredefPal
 	ld a, [hli]
 	ld [wSGBPals + 3], a
 	ld a, [hli]
@@ -87,13 +82,8 @@ LoadSGBLayout:
 	ld [wSGBPals + 6], a
 
 	ld a, [wEnemyHPPal]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-
-	ld de, HPBarPals
-	add hl, de
+	add PAL_HP_GREEN
+	call GetPredefPal
 	ld a, [hli]
 	ld [wSGBPals + 9], a
 	ld a, [hli]
@@ -168,12 +158,8 @@ LoadSGBLayout:
 	ld bc, PALPACKET_LENGTH
 	call CopyBytes
 	ld a, [wCurHPPal]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	ld de, HPBarPals
-	add hl, de
+	add PAL_HP_GREEN
+	call GetPredefPal
 	ld a, [hli]
 	ld [wSGBPals + 3], a
 	ld a, [hli]

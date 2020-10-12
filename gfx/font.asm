@@ -39,8 +39,5 @@ INCBIN "gfx/font/unused_bold_font.1bpp"
 TextboxSpaceGFX:
 INCBIN "gfx/font/space.1bpp"
 
-Footprints:
-INCLUDE "gfx/footprints.asm"
-
 UnownFont:
 INCBIN "gfx/font/unown_font.2bpp"

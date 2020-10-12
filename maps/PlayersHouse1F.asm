@@ -116,7 +116,7 @@ if DEF(_DEBUG)
 	setflag ENGINE_FLYPOINT_SILENT
 	setflag ENGINE_FLYPOINT_SAKURA
 	; starter pokemon
-	givepoke PIKACHU, 10, BERRY
+	givepoke PIKACHU, 5, BERRY
 	setevent EVENT_GOT_STARTER_POKEMON
 	; hm slave
 	givepoke EXEGGUTOR, 90, LEFTOVERS

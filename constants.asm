@@ -1,3 +1,5 @@
+_DEBUG EQU 1
+
 INCLUDE "charmap.asm"
 
 INCLUDE "macros.asm"
