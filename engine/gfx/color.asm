@@ -545,7 +545,7 @@ CGB_ApplyPartyMenuHPPals:
 
 InitPartyMenuOBPals:
 	ld de, wOBPals1
-	ld a, PAL_MEWMON
+	ld a, PAL_SHINY_GREYMON
 	call GetPredefPal
 	push hl
 	call _CGB_MapPals.LoadHLOBPaletteIntoDE

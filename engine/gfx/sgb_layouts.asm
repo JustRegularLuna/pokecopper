@@ -72,6 +72,9 @@ LoadSGBLayout:
 	ld a, [wPlayerHPPal]
 	add PAL_HP_GREEN
 	call GetPredefPal
+	; only load middle colors
+	inc hl
+	inc hl
 	ld a, [hli]
 	ld [wSGBPals + 3], a
 	ld a, [hli]
@@ -84,6 +87,9 @@ LoadSGBLayout:
 	ld a, [wEnemyHPPal]
 	add PAL_HP_GREEN
 	call GetPredefPal
+	; only load middle colors
+	inc hl
+	inc hl
 	ld a, [hli]
 	ld [wSGBPals + 9], a
 	ld a, [hli]
