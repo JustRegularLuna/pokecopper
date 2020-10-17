@@ -1555,45 +1555,10 @@ CardFlip_InitAttrPals:
 	ldh a, [hCGB]
 	and a
 	ret z
-
-	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	xor a
-	call ByteFill
-
-	hlcoord 12, 1, wAttrmap
-	lb bc, 2, 2
-	ld a, $1
-	call CardFlip_FillBox
-
-	hlcoord 14, 1, wAttrmap
-	lb bc, 2, 2
-	ld a, $2
-	call CardFlip_FillBox
-
-	hlcoord 16, 1, wAttrmap
-	lb bc, 2, 2
-	ld a, $3
-	call CardFlip_FillBox
-
-	hlcoord 18, 1, wAttrmap
-	lb bc, 2, 2
-	ld a, $4
-	call CardFlip_FillBox
-
-	hlcoord 9, 0, wAttrmap
-	lb bc, 12, 1
-	ld a, $1
-	call CardFlip_FillBox
-
-	ld hl, .palettes
-	ld de, wBGPals1
-	ld bc, 9 palettes
-	call CopyBytes
+	; since it doesn't use special pals on non-color gameboys
+	ld b, SCGB_MAPPALS
+	call GetSGBLayout
 	ret
-
-.palettes
-INCLUDE "gfx/card_flip/card_flip.pal"
 
 CardFlipLZ03:
 INCBIN "gfx/card_flip/card_flip_3.2bpp.lz"
