@@ -156,22 +156,11 @@ INCBIN "gfx/overworld/heal_machine.2bpp"
 
 .LoadPalettes:
 	call IsCGB
-	jr nz, .cgb
+	ret nz
+	; SGB/GB
 	ld a, %11100000
 	ldh [rOBP1], a
 	ret
-
-.cgb
-	ld hl, .palettes
-	ld de, wOBPals2 palette PAL_OW_TREE
-	ld bc, 1 palettes
-	call CopyBytes
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
-
-.palettes
-INCLUDE "gfx/overworld/heal_machine.pal"
 
 .FlashPalettes8Times:
 	ld c, 8
