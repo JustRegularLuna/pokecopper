@@ -1022,6 +1022,3 @@ ENDC
 
 GSTitleOBPals:
 INCLUDE "gfx/title/title_fg.pal"
-
-BetaPokerPals:
-INCLUDE "gfx/beta_poker/beta_poker.pal"

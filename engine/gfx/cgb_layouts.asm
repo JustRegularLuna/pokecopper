@@ -415,10 +415,9 @@ _CGB_GSIntro:
 	ret
 
 _CGB_BetaPoker:
-	ld hl, BetaPokerPals
-	ld de, wBGPals1
-	ld bc, 5 palettes
-	call CopyBytes
+	ld hl, PalPacket_BetaPoker + 1
+	call CopyFourPalettes
+	call InitPartyMenuOBPals
 	call ApplyPals
 	call WipeAttrmap
 	call ApplyAttrmap
