@@ -587,42 +587,10 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	dec b
 	jr nz, .tile_loop
 
-	ldh a, [hCGB]
-	and a
-	jr nz, .cgb
 	ld a, 1
 	ldh [hBGMapMode], a
 	call DelayFrame
 	call DelayFrame
-	jr .nextscene
-
-.cgb
-	ld hl, .daypals
-	ld a, [wTimeOfDayPal]
-	maskbits NUM_DAYTIMES
-	cp DARKNESS_F
-	jr nz, .daytime
-	ld hl, .nightpals
-.daytime
-	call .copypals
-	push hl
-	ld de, wBGPals1 palette PAL_BG_TEXT
-	ld bc, 1 palettes
-	call CopyBytes
-	pop hl
-	ld de, wBGPals2 palette PAL_BG_TEXT
-	ld bc, 1 palettes
-	call CopyBytes
-
-	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	ld a, PAL_BG_TEXT
-	call ByteFill
-
-	ld a, 1
-	ldh [hCGBPalUpdate], a
-	call DelayFrame
-	call CGBOnly_CopyTilemapAtOnce
 
 .nextscene
 	call StartTrainerBattle_NextScene
@@ -687,32 +655,6 @@ opt b.X ; . = 0, X = 1
 	bigdw %XXXXX......XXXXX
 	bigdw %XXXXX......XXXXX
 popo
-
-.copypals
-	ld de, wBGPals1 palette PAL_BG_TEXT
-	call .copy
-	ld de, wBGPals2 palette PAL_BG_TEXT
-	call .copy
-	ld de, wOBPals1 palette PAL_OW_TREE
-	call .copy
-	ld de, wOBPals2 palette PAL_OW_TREE
-	call .copy
-	ld de, wOBPals1 palette PAL_OW_ROCK
-	call .copy
-	ld de, wOBPals2 palette PAL_OW_ROCK
-
-.copy
-	push hl
-	ld bc, 1 palettes
-	call CopyBytes
-	pop hl
-	ret
-
-.daypals
-INCLUDE "gfx/overworld/trainer_battle_day.pal"
-
-.nightpals
-INCLUDE "gfx/overworld/trainer_battle_nite.pal"
 
 WipeLYOverrides:
 	ld hl, wLYOverrides
