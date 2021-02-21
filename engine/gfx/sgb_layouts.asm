@@ -211,7 +211,19 @@ LoadSGBLayout:
 	inc hl
 	ld [hl], HIGH(palred 26 + palgreen 10 + palblue 6)
 	ld a, [wCurPartySpecies]
+	cp $ff
+	jr nz, .isPokemon
+
+	; Load grey palette if we're in list view
+	ld a, PAL_GREYMON
+	call GetPredefPal
+	jr .gotPalette
+
+.isPokemon
+	; Load the pal for the mon only on dex entry page, not list view
 	call GetMonPalettePointer
+
+.gotPalette
 	; only load middle colors
 	inc hl
 	inc hl
