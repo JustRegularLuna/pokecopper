@@ -340,7 +340,7 @@ endr
 
 .SGB_GSTitleScreen:
 	ld hl, PalPacket_GSTitleScreen
-	ld de, BlkPacket_GSTitleScreen
+	ld de, BlkPacket_9ee5
 	ld a, SCGB_DIPLOMA
 	ld [wSGBPredef], a
 	ret

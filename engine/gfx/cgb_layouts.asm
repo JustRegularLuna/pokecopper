@@ -572,20 +572,19 @@ LoadBattleObjectPals:
 	jp LoadHLPaletteIntoDE
 
 _CGB_GSTitleScreen:
-	ld hl, GSTitleBGPals
-	ld de, wBGPals1
-	ld bc, 5 palettes
-	call CopyBytes
-	ld hl, GSTitleOBPals
+; Start by loading object pal
 	ld de, wOBPals1
-	ld bc, 2 palettes
-	call CopyBytes
-	ld a, SCGB_DIPLOMA
-	ld [wSGBPredef], a
-	call ApplyPals
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
+	ld a, PAL_TITLE_SCREEN
+	call GetPredefPal
+	push hl
+	call LoadHLPaletteIntoDE
+; then background palette
+	pop hl
+	ld de, wBGPals1
+	call LoadHLPaletteIntoDE
+; and apply it to the whole screen
+	call WipeAttrmap
+	jp ApplyAttrmap
 
 _CGB0d:
 	ld hl, PalPacket_Diploma + 1

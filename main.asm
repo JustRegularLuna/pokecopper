@@ -252,22 +252,6 @@ INCLUDE "engine/games/slot_machine.asm"
 
 SECTION "bank26", ROMX
 
-IF DEF(_GOLD)
-TitleScreenGFX1:
-INCBIN "gfx/title/logo_bottom_gold.2bpp.lz"
-TitleScreenGFX2:
-INCBIN "gfx/title/logo_top_gold.2bpp.lz"
-
-ELIF DEF(_SILVER)
-TitleScreenGFX1:
-INCBIN "gfx/title/logo_bottom_silver.2bpp.lz"
-TitleScreenGFX2:
-INCBIN "gfx/title/logo_top_silver.2bpp.lz"
-ENDC
-
-TitleScreenTilemap:
-INCBIN "gfx/title/logo.tilemap"
-
 
 SECTION "bank2E_2", ROMX
 
@@ -327,19 +311,6 @@ SECTION "bank39", ROMX
 
 CopyrightGFX::
 INCBIN "gfx/intro/copyright.2bpp"
-
-IF DEF(_GOLD)
-TitleScreenGFX3:
-INCBIN "gfx/title/title_trail_gold.2bpp"
-TitleScreenGFX4:
-INCBIN "gfx/title/hooh_gold.2bpp.lz"
-
-ELIF DEF(_SILVER)
-TitleScreenGFX3:
-INCBIN "gfx/title/title_trail_silver.2bpp"
-TitleScreenGFX4:
-INCBIN "gfx/title/lugia_silver.2bpp.lz"
-ENDC
 
 INCLUDE "engine/menus/options_menu.asm"
 INCLUDE "engine/movie/intro.asm"

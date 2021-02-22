@@ -80,12 +80,6 @@ BlkPacket_PartyMenu:
 	attr_blk_data %010, 0,0,0, 12,11, 18,12
 	ds 4
 
-BlkPacket_GSTitleScreen:
-	attr_blk 2
-	attr_blk_data %111, 0,0,3, 00,00, 19,06
-	attr_blk_data %010, 0,1,0, 05,06, 14,06
-	ds 2
-
 BlkPacket_BetaTitleScreen:
 	attr_blk 1
 	attr_blk_data %111, 0,0,1, 00,00, 19,05 ; logo

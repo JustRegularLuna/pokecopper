@@ -1012,13 +1012,3 @@ INCBIN "gfx/sgb/silver_border.2bpp"
 ENDC
 
 INCLUDE "data/pokemon/palettes.asm"
-
-GSTitleBGPals:
-IF DEF(_GOLD)
-INCLUDE "gfx/title/title_bg_gold.pal"
-ELIF DEF(_SILVER)
-INCLUDE "gfx/title/title_bg_silver.pal"
-ENDC
-
-GSTitleOBPals:
-INCLUDE "gfx/title/title_fg.pal"
