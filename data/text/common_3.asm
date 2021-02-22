@@ -82,23 +82,14 @@ _PhoneThankYouText::
 	text "Thank you!"
 	done
 
-_PasswordAskResetText::
-	text "Password OK."
+_AskResetText::
+	text "Clock Reset."
 	line "Select CONTINUE &"
-	cont "reset settings."
+	cont "set the clock."
 	prompt
 
-_PasswordWrongText::
-	text "Wrong password!"
-	prompt
-
-_PasswordAskResetClockText::
+_AskResetClockText::
 	text "Reset the clock?"
-	done
-
-_PasswordAskEnterText::
-	text "Please enter the"
-	line "password."
 	done
 
 _ClearAllSaveDataText::
