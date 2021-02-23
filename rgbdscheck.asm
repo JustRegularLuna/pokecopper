@@ -1,7 +1,7 @@
-; pokegold requires rgbds 0.4.0 or newer.
+; rg/bs requires rgbds 0.4.2 or newer.
 MAJOR EQU 0
 MINOR EQU 4
-PATCH EQU 0
+PATCH EQU 2
 
 if !DEF(__RGBDS_MAJOR__) || !DEF(__RGBDS_MINOR__) || !DEF(__RGBDS_PATCH__)
 	fail "pokegold requires rgbds {MAJOR}.{MINOR}.{PATCH} or newer."
