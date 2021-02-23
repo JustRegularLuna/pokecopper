@@ -117,9 +117,6 @@ pokesilver.gbc: $(silver_obj) layout.link
 
 ### LZ compression rules
 
-# Delete this line if you don't care about matching and just want optimal compression.
-include gfx/lz.mk
-
 %.lz: %
 	tools/lzcomp $(LZFLAGS) -- $< $@
 
@@ -170,11 +167,6 @@ gfx/pokegear/pokegear_sprites.2bpp: tools/gfx += --trim-whitespace
 gfx/mystery_gift/mystery_gift.2bpp: tools/gfx += --remove-whitespace
 gfx/mystery_gift/mystery_gift_2.2bpp: tools/gfx += --trim-whitespace
 gfx/mystery_gift/question_mark.1bpp: tools/gfx += --remove-whitespace
-
-gfx/title/logo_bottom_gold.2bpp: tools/gfx += --trim-whitespace
-gfx/title/logo_bottom_silver.2bpp: tools/gfx += --trim-whitespace
-gfx/title/hooh_gold.2bpp: tools/gfx += --interleave --png=$<
-gfx/title/lugia_silver.2bpp: tools/gfx += --interleave --png=$<
 
 gfx/trade/ball.2bpp: tools/gfx += --remove-whitespace
 gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates --preserve=0x23,0x27
