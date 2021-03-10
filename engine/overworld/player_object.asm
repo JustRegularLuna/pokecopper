@@ -40,7 +40,7 @@ PlayerObjectTemplate:
 ; A dummy map object used to initialize the player object.
 ; Shorter than the actual amount copied by two bytes.
 ; Said bytes seem to be unused.
-	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
+	object_event -4, -4, SPRITE_HIRO, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
 
 CopyDECoordsToMapObject::
 	push de
@@ -122,7 +122,7 @@ SpawnObject1: ; unreferenced
 	ret
 
 UnusedObject1Template:
-	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_12, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
+	object_event -4, -4, SPRITE_HIRO, SPRITEMOVEDATA_12, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
 
 CopyObjectStruct::
 	call CheckObjectMask

@@ -1,6 +1,6 @@
 	object_const_def ; object_event constants
-	const COLOSSEUM_CHRIS1
-	const COLOSSEUM_CHRIS2
+	const COLOSSEUM_HIRO1
+	const COLOSSEUM_HIRO2
 
 Colosseum_MapScripts:
 	db 2 ; scene scripts
@@ -8,7 +8,7 @@ Colosseum_MapScripts:
 	scene_script .DummyScene1 ; SCENE_FINISHED
 
 	db 1 ; callbacks
-	callback MAPCALLBACK_OBJECTS, .SetWhichChris
+	callback MAPCALLBACK_OBJECTS, .SetWhichHiro
 
 .InitializeColosseum:
 	prioritysjump .InitializeAndPreparePokecenter2F
@@ -17,16 +17,16 @@ Colosseum_MapScripts:
 .DummyScene1:
 	end
 
-.SetWhichChris:
-	special CableClubCheckWhichChris
-	iffalse .Chris2
-	disappear COLOSSEUM_CHRIS2
-	appear COLOSSEUM_CHRIS1
+.SetWhichHiro:
+	special CableClubCheckWhichHiro
+	iffalse .Hiro2
+	disappear COLOSSEUM_HIRO2
+	appear COLOSSEUM_HIRO1
 	return
 
-.Chris2:
-	disappear COLOSSEUM_CHRIS1
-	appear COLOSSEUM_CHRIS2
+.Hiro2:
+	disappear COLOSSEUM_HIRO1
+	appear COLOSSEUM_HIRO2
 	return
 
 .InitializeAndPreparePokecenter2F:
@@ -65,5 +65,5 @@ Colosseum_MapEvents:
 	bg_event  5,  4, BGEVENT_LEFT, ColosseumConsoleScript
 
 	db 2 ; object events
-	object_event  3,  4, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CableClubFriendScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event  6,  4, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CableClubFriendScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event  3,  4, SPRITE_HIRO, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CableClubFriendScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  6,  4, SPRITE_HIRO, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CableClubFriendScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2

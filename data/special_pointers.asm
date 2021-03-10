@@ -30,7 +30,7 @@ SpecialsPointers::
 	add_special TradeCenter
 	add_special Colosseum
 	add_special TimeCapsule
-	add_special CableClubCheckWhichChris
+	add_special CableClubCheckWhichHiro
 	add_special CheckMysteryGift
 	add_special GetMysteryGiftItem
 	add_special UnlockMysteryGift

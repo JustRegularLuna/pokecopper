@@ -52,7 +52,6 @@ INCLUDE "engine/pokemon/knows_move.asm"
 
 SECTION "bank4", ROMX
 
-INCLUDE "engine/overworld/player_movement.asm"
 INCLUDE "engine/items/pack.asm"
 INCLUDE "engine/overworld/time.asm"
 INCLUDE "engine/items/tmhm2.asm"
@@ -73,6 +72,11 @@ INCLUDE "engine/events/std_collision.asm"
 INCLUDE "engine/events/bug_contest/judging.asm"
 INCLUDE "engine/events/pokerus/apply_pokerus_tick.asm"
 INCLUDE "engine/events/bug_contest/contest_2.asm"
+
+
+SECTION "Player Movement", ROMX
+
+INCLUDE "engine/overworld/player_movement.asm"
 
 
 SECTION "bank5", ROMX
@@ -401,6 +405,24 @@ PokegearGFX:
 INCBIN "gfx/pokegear/pokegear.2bpp.lz"
 
 INCLUDE "data/credits_strings.asm"
+
+
+SECTION "Player Pics", ROMX
+HiroPic::
+INCBIN "gfx/player/hiro.2bpp.lz"
+
+HiroBackpic::
+INCBIN "gfx/player/hiro_back.2bpp.lz"
+
+SylviaPic::
+INCBIN "gfx/player/sylvia.2bpp.lz"
+
+SylviaBackpic::
+INCBIN "gfx/player/sylvia_back.2bpp.lz"
+
+DudeBackpic::
+INCBIN "gfx/battle/dude.2bpp.lz"
+
 
 
 SECTION "Stadium Data", ROMX

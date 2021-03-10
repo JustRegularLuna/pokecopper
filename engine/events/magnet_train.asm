@@ -112,14 +112,24 @@ MagnetTrain_LoadGFX_PlayMusic:
 	ldh [hSCX], a
 	ldh [hSCY], a
 
-	ld de, ChrisSpriteGFX
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld de, HiroSpriteGFX
+	jr z, .gotPlayerSprite
+	ld de, SylviaSpriteGFX
+.gotPlayerSprite
 	ld hl, vTiles0
-	lb bc, BANK(ChrisSpriteGFX), 4
+	lb bc, BANK(HiroSpriteGFX), 4
 	call Request2bpp
 
-	ld de, ChrisSpriteGFX + 12 tiles
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld de, HiroSpriteGFX + 12 tiles
+	jr z, .gotPlayerSprite2
+	ld de, SylviaSpriteGFX + 12 tiles
+.gotPlayerSprite2
 	ld hl, vTiles0 tile $04
-	lb bc, BANK(ChrisSpriteGFX), 4
+	lb bc, BANK(HiroSpriteGFX), 4
 	call Request2bpp
 
 	call MagnetTrain_InitLYOverrides

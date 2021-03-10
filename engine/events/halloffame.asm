@@ -514,9 +514,14 @@ HOF_AnimatePlayerPic:
 	ld a, " "
 	call ByteFill
 
-	ld hl, ChrisBackpic
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld hl, HiroBackpic
+	jr z, .gotBackpic
+	ld hl, SylviaBackpic
+.gotBackpic
 	ld de, vTiles2 tile $31
-	ld b, BANK(ChrisBackpic)
+	ld b, BANK(HiroBackpic)
 	ld c, 7 * 7
 	predef DecompressGet2bpp
 
@@ -543,10 +548,15 @@ HOF_AnimatePlayerPic:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
 	call ByteFill
-	ld a, CAL
-	ld [wTrainerClass], a
 	ld de, vTiles2
-	farcall GetTrainerPic
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld hl, HiroPic
+	jr z, .gotPic
+	ld hl, SylviaPic
+.gotPic
+	lb bc, BANK(HiroPic), 7 * 7
+	predef DecompressGet2bpp
 	xor a
 	ldh [hGraphicStartTile], a
 	hlcoord 12, 5

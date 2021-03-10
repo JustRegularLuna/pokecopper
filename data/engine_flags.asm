@@ -95,3 +95,5 @@ EngineFlags:
 	engine_flag wDailyFlags2, DAILYFLAGS2_GOLDENROD_DEPT_STORE_TM27_RETURN_F
 	engine_flag wDailyFlags2, DAILYFLAGS2_DAISYS_GROOMING_F
 	engine_flag wDailyFlags2, DAILYFLAGS2_INDIGO_PLATEAU_RIVAL_FIGHT_F
+
+	engine_flag wPlayerGender, PLAYERGENDER_FEMALE_F

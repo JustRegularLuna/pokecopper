@@ -1,6 +1,6 @@
 	object_const_def ; object_event constants
-	const TIMECAPSULE_CHRIS1
-	const TIMECAPSULE_CHRIS2
+	const TIMECAPSULE_HIRO1
+	const TIMECAPSULE_HIRO2
 
 TimeCapsule_MapScripts:
 	db 2 ; scene scripts
@@ -8,7 +8,7 @@ TimeCapsule_MapScripts:
 	scene_script .DummyScene ; SCENE_FINISHED
 
 	db 1 ; callbacks
-	callback MAPCALLBACK_OBJECTS, .SetWhichChris
+	callback MAPCALLBACK_OBJECTS, .SetWhichHiro
 
 .InitializeTimeCapsule:
 	prioritysjump .InitializeAndPreparePokecenter2F
@@ -17,16 +17,16 @@ TimeCapsule_MapScripts:
 .DummyScene:
 	end
 
-.SetWhichChris:
-	special CableClubCheckWhichChris
-	iffalse .Chris2
-	disappear TIMECAPSULE_CHRIS2
-	appear TIMECAPSULE_CHRIS1
+.SetWhichHiro:
+	special CableClubCheckWhichHiro
+	iffalse .Hiro2
+	disappear TIMECAPSULE_HIRO2
+	appear TIMECAPSULE_HIRO1
 	return
 
-.Chris2:
-	disappear TIMECAPSULE_CHRIS1
-	appear TIMECAPSULE_CHRIS2
+.Hiro2:
+	disappear TIMECAPSULE_HIRO1
+	appear TIMECAPSULE_HIRO2
 	return
 
 .InitializeAndPreparePokecenter2F:
@@ -65,5 +65,5 @@ TimeCapsule_MapEvents:
 	bg_event  5,  4, BGEVENT_LEFT, TimeCapsuleConsoleScript
 
 	db 2 ; object events
-	object_event  3,  4, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TimeCapsuleFriendScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event  6,  4, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TimeCapsuleFriendScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event  3,  4, SPRITE_HIRO, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TimeCapsuleFriendScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  6,  4, SPRITE_HIRO, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TimeCapsuleFriendScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2

@@ -119,7 +119,12 @@ NamingScreen:
 	db "NICKNAME?@"
 
 .Player:
-	ld de, ChrisSpriteGFX
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld de, HiroSpriteGFX
+	jr z, .gotSprite
+	ld de, SylviaSpriteGFX
+.gotSprite
 	call .LoadSprite
 	hlcoord 5, 2
 	ld de, .PlayerNameString
@@ -181,7 +186,7 @@ NamingScreen:
 .LoadSprite:
 	push de
 	ld hl, vTiles0 tile $00
-	lb bc, BANK(ChrisSpriteGFX), 4
+	lb bc, BANK(HiroSpriteGFX), 4
 	call Request2bpp
 	pop de
 	ld hl, 12 tiles
@@ -189,7 +194,7 @@ NamingScreen:
 	ld e, l
 	ld d, h
 	ld hl, vTiles0 tile $04
-	lb bc, BANK(ChrisSpriteGFX), 4
+	lb bc, BANK(HiroSpriteGFX), 4
 	call Request2bpp
 	xor a
 	ld hl, wSpriteAnimDict

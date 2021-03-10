@@ -289,3 +289,6 @@ DAYCARELADY_HAS_MON_F        EQU 0
 
 ; shared flag between wDayCareMan and wDayCareLady
 DAYCARE_INTRO_SEEN_F         EQU 7
+
+; wPlayerGender
+PLAYERGENDER_FEMALE_F        EQU 0

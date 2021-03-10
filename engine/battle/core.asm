@@ -8585,16 +8585,22 @@ InitBackPic:
 GetTrainerBackpic:
 ; Load the player character's backpic (6x6) into VRAM starting from vTiles2 tile $31.
 
-; Special exception for Dude.
-	ld hl, ChrisBackpic
+; Tutorial has Dude pic
+	ld hl, DudeBackpic
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
-	jr nz, .ok
-	ld hl, DudeBackpic
+	jr z, .ok
+
+; Other battles need Player
+	ld hl, HiroBackpic
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	jr z, .ok
+	ld hl, SylviaBackpic
 
 .ok:
 	ld de, vTiles2 tile $31
-	ld b, BANK(ChrisBackpic) ; aka BANK(DudeBackpic)
+	ld b, BANK(HiroBackpic) ; aka BANK(DudeBackpic)
 	ld c, 7 * 7
 	predef DecompressGet2bpp
 	ret
@@ -8651,12 +8657,6 @@ CopyBackpic:
 	dec b
 	jr nz, .outer_loop
 	ret
-
-ChrisBackpic:
-INCBIN "gfx/player/chris_back.2bpp.lz"
-
-DudeBackpic:
-INCBIN "gfx/battle/dude.2bpp.lz"
 
 BattleStartMessage:
 	ld a, [wBattleMode]

@@ -44,10 +44,14 @@ RefreshSprites::
 	ret
 
 GetPlayerSprite:
-; Get Chris's sprite.
+; Get Player's sprite.
 	ld a, [wPlayerState]
 	ld c, a
-	ld hl, ChrisStateSprites
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld hl, HiroStateSprites
+	jr z, .loop
+	ld hl, SylviaStateSprites
 .loop
 	ld a, [hli]
 	cp c
@@ -56,10 +60,10 @@ GetPlayerSprite:
 	cp -1
 	jr nz, .loop
 
-; Any player state not in the array defaults to Chris's sprite.
+; Any player state not in the array defaults to Hiro's sprite.
 	xor a ; ld a, PLAYER_NORMAL
 	ld [wPlayerState], a
-	ld a, SPRITE_CHRIS
+	ld a, SPRITE_HIRO
 	jr .finish
 
 .good

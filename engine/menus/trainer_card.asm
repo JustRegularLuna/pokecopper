@@ -44,15 +44,20 @@ TrainerCard:
 	call ClearTilemap
 	call DisableLCD
 
-	ld hl, ChrisCardPic
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld hl, HiroCardPic
+	jr z, .gotCardPic
+	ld hl, SylviaCardPic
+.gotCardPic
 	ld de, vTiles2
-	ld bc, 41 tiles
-	ld a, BANK(ChrisCardPic)
+	ld bc, 35 tiles
+	ld a, BANK(HiroCardPic)
 	call FarCopyBytes
 
-	ld hl, CardStatusGFX
-	ld de, vTiles2 tile $29
-	ld bc, 86 tiles
+	ld hl, CardGFX
+	ld de, vTiles2 tile $23
+	ld bc, 92 tiles
 	ld a, BANK(CardStatusGFX)
 	call FarCopyBytes
 
@@ -619,7 +624,8 @@ TrainerCard_JohtoBadgesOAM:
 	db $1c,            $20, $24, $20 | (1 << 7)
 	db $1c | (1 << 7), $20, $24, $20 | (1 << 7)
 
-ChrisCardPic:  INCBIN "gfx/trainer_card/chris_card.2bpp"
+HiroCardPic:   INCBIN "gfx/trainer_card/hiro_card.2bpp"
+SylviaCardPic: INCBIN "gfx/trainer_card/sylvia_card.2bpp"
 CardGFX:       INCBIN "gfx/trainer_card/trainer_card.2bpp"
 CardStatusGFX: INCBIN "gfx/trainer_card/card_status.2bpp"
 

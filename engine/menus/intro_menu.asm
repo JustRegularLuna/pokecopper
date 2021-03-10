@@ -3,6 +3,7 @@ NewGame:
 	ld [wDebugFlags], a
 	call ResetWRAM
 	call ClearTilemapEtc
+	call InitGender
 	call OakSpeech
 	call InitializeWorld
 
@@ -489,6 +490,51 @@ Continue_DisplayGameTime:
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum
 
+InitGender:
+	xor a
+	ld [wPlayerGender], a
+	ld a, $10
+	ld [wMusicFade], a
+	ld a, LOW(MUSIC_NONE)
+	ld [wMusicFadeID], a
+	ld a, HIGH(MUSIC_NONE)
+	ld [wMusicFadeID + 1], a
+	ld c, 8
+	call DelayFrames
+	call ClearScreen
+	ld b, SCGB_DIPLOMA
+	call GetSGBLayout
+	call WaitBGMap2
+	call SetPalettes
+	ld hl, AreYouABoyOrAreYouAGirlText
+	call PrintText
+	ld hl, .MenuHeader
+	call LoadMenuHeader
+	call WaitBGMap2
+	call VerticalMenu
+	call CloseWindow
+	ld a, [wMenuCursorY]
+	dec a
+	ld [wPlayerGender], a
+	ld c, 10
+	jp DelayFrames
+
+.MenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 6, 4, 12, 9
+	dw .MenuData
+	db 1 ; default option
+
+.MenuData:
+	db STATICMENU_CURSOR | STATICMENU_WRAP | STATICMENU_DISABLE_B ; flags
+	db 2 ; items
+	db "Boy@"
+	db "Girl@"
+
+AreYouABoyOrAreYouAGirlText:
+	text_far _AreYouABoyOrAreYouAGirlText
+	text_end
+
 OakSpeech:
 	; Silently add 1 Potion to the player's PC
 	ld a, POTION
@@ -525,7 +571,6 @@ OakSpeech:
 	call GetBaseData
 
 	hlcoord 6, 4
-	hlcoord 6, 4 ; redundant
 	call PrepMonFrontpic
 
 	xor a
@@ -545,9 +590,9 @@ OakSpeech:
 
 	xor a
 	ld [wCurPartySpecies], a
-	ld a, CAL
+	inc a
 	ld [wTrainerClass], a
-	call Intro_PrepTrainerPic
+	call Intro_PrepPlayerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
@@ -602,9 +647,9 @@ OakSpeech:
 
 	xor a
 	ld [wCurPartySpecies], a
-	ld a, CAL
+	inc a
 	ld [wTrainerClass], a
-	call Intro_PrepTrainerPic
+	call Intro_PrepPlayerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
@@ -661,7 +706,12 @@ OakText7:
 
 NamePlayer:
 	call MovePlayerPicRight
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
 	ld hl, HiroNameMenuHeader
+	jr z, .gotNameMenuHeader
+	ld hl, SylviaNameMenuHeader
+.gotNameMenuHeader
 	call ShowPlayerNamingChoices
 	ld a, [wMenuCursorY]
 	dec a
@@ -685,16 +735,21 @@ NamePlayer:
 
 	xor a
 	ld [wCurPartySpecies], a
-	ld a, CAL
+	inc a
 	ld [wTrainerClass], a
-	call Intro_PrepTrainerPic
+	call Intro_PrepPlayerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	call RotateThreePalettesLeft
 
 	ld hl, wPlayerName
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
 	ld de, HiroNameArray
+	jr z, .gotNameArray
+	ld de, SylviaNameArray
+.gotNameArray
 	call InitName
 	ret
 
@@ -796,7 +851,7 @@ ShrinkPlayer:
 	ld c, 3
 	call DelayFrames
 
-	call Intro_PlaceChrisSprite
+	call Intro_PlacePlayerSprite
 	call LoadFontsExtra
 
 	ld c, 50
@@ -898,6 +953,25 @@ Intro_PrepTrainerPic:
 	predef PlaceGraphic
 	ret
 
+Intro_PrepPlayerPic:
+	ld de, vTiles2
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld b, BANK(HiroPic)
+	ld hl, HiroPic
+	jr z, .gotPic
+	ld b, BANK(SylviaPic)
+	ld hl, SylviaPic
+.gotPic
+	ld c, 7 * 7
+	predef DecompressGet2bpp
+	xor a
+	ldh [hGraphicStartTile], a
+	hlcoord 6, 4
+	lb bc, 7, 7
+	predef PlaceGraphic
+	ret
+
 ShrinkFrame:
 	ld de, vTiles2
 	ld c, 7 * 7
@@ -909,9 +983,15 @@ ShrinkFrame:
 	predef PlaceGraphic
 	ret
 
-Intro_PlaceChrisSprite:
-	ld de, ChrisSpriteGFX
-	lb bc, BANK(ChrisSpriteGFX), 12
+Intro_PlacePlayerSprite:
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld de, HiroSpriteGFX
+	lb bc, BANK(HiroSpriteGFX), 12
+	jr z, .gotSpriteGFX
+	ld de, SylviaSpriteGFX
+	lb bc, BANK(SylviaSpriteGFX), 12
+.gotSpriteGFX
 	ld hl, vTiles0
 	call Request2bpp
 

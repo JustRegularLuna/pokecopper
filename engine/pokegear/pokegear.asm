@@ -130,15 +130,25 @@ Pokegear_LoadGFX:
 	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
-	ld hl, ChrisSpriteGFX
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld hl, HiroSpriteGFX
+	jr z, .next1
+	ld hl, SylviaSpriteGFX
+.next1
 	ld de, vTiles0 tile $10
 	ld bc, 4 tiles
-	ld a, BANK(ChrisSpriteGFX)
+	ld a, BANK(HiroSpriteGFX)
 	call FarCopyBytes
-	ld hl, ChrisSpriteGFX + 12 tiles
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld hl, HiroSpriteGFX + 12 tiles
+	jr z, .next2
+	ld hl, SylviaSpriteGFX + 12 tiles
+.next2
 	ld de, vTiles0 tile $14
 	ld bc, 4 tiles
-	ld a, BANK(ChrisSpriteGFX)
+	ld a, BANK(HiroSpriteGFX)
 	call FarCopyBytes
 	ret
 
@@ -2517,8 +2527,13 @@ Pokedex_GetArea:
 	ret
 
 .GetPlayerOrFastShipIcon:
-	ld de, ChrisSpriteGFX
-	ld b, BANK(ChrisSpriteGFX)
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld de, HiroSpriteGFX
+	jr z, .gotIcon
+	ld de, SylviaSpriteGFX
+.gotIcon
+	ld b, BANK(HiroSpriteGFX)
 	ret
 
 TownMapBGUpdate:
@@ -2602,16 +2617,25 @@ TownMapMon:
 TownMapPlayerIcon:
 ; Draw the player icon at town map location in a
 	push af
-	ld de, ChrisSpriteGFX
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld de, HiroSpriteGFX
+	jr z, .gotSpriteGFX1
+	ld de, SylviaSpriteGFX
+.gotSpriteGFX1
 ; Standing icon
 	ld hl, vTiles0 tile $10
-	lb bc, BANK(ChrisSpriteGFX), 4
+	lb bc, BANK(HiroSpriteGFX), 4
 	call Request2bpp
 ; Walking icon
-	ld de, ChrisSpriteGFX + 12 tiles
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
+	ld de, HiroSpriteGFX + 12 tiles
+	jr z, .gotSpriteGFX2
+	ld de, SylviaSpriteGFX + 12 tiles
+.gotSpriteGFX2
 	ld hl, vTiles0 tile $14
-	lb bc, BANK(ChrisSpriteGFX), 4
-	ld a, BANK(ChrisSpriteGFX) ; does nothing
+	lb bc, BANK(HiroSpriteGFX), 4
 	call Request2bpp
 ; Animation/palette
 	depixel 0, 0

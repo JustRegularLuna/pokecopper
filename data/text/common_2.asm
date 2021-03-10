@@ -334,6 +334,11 @@ _YouCantUseItInABattleText::
 	line "in a battle."
 	prompt
 
+_AreYouABoyOrAreYouAGirlText::
+	text "Are you a boy?"
+	line "Or are you a girl?"
+	done
+
 _ActorNameText::
 	text "<USER>@@"
 

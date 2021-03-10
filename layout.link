@@ -120,7 +120,6 @@ ROMX $30
 	"Sprites 1"
 ROMX $31
 	"Sprites 2"
-	org $7a40
 	"bank31_2"
 ROMX $32
 	"bank32"

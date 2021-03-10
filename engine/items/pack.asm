@@ -1212,7 +1212,12 @@ DrawPackGFX:
 	maskbits NUM_POCKETS
 	ld e, a
 	ld d, 0
+	ld a, [wPlayerGender]
+	bit PLAYERGENDER_FEMALE_F, a
 	ld hl, PackGFXPointers
+	jr z, .gotPackGFXPointers
+	ld hl, PackGFXPointersF
+.gotPackGFXPointers
 	add hl, de
 	add hl, de
 	ld a, [hli]
@@ -1228,6 +1233,12 @@ PackGFXPointers:
 	dw PackGFX + (15 tiles) * 3 ; BALL_POCKET
 	dw PackGFX + (15 tiles) * 0 ; KEY_ITEM_POCKET
 	dw PackGFX + (15 tiles) * 2 ; TM_HM_POCKET
+
+PackGFXPointersF:
+	dw PackGFX_F + (15 tiles) * 1 ; ITEM_POCKET
+	dw PackGFX_F + (15 tiles) * 3 ; BALL_POCKET
+	dw PackGFX_F + (15 tiles) * 0 ; KEY_ITEM_POCKET
+	dw PackGFX_F + (15 tiles) * 2 ; TM_HM_POCKET
 
 Pack_InterpretJoypad:
 	ld hl, wMenuJoypad
@@ -1582,3 +1593,5 @@ PackMenuGFX:
 INCBIN "gfx/pack/pack_menu.2bpp"
 PackGFX:
 INCBIN "gfx/pack/pack.2bpp"
+PackGFX_F:
+INCBIN "gfx/pack/pack_f.2bpp"

@@ -2109,6 +2109,8 @@ wRivalName::  ds NAME_LENGTH
 wRedsName::   ds NAME_LENGTH
 wGreensName:: ds NAME_LENGTH
 
+wPlayerGender:: db
+
 wSavedAtLeastOnce:: db
 wSpawnAfterChampion:: db
 
