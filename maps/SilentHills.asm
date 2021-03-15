@@ -13,7 +13,8 @@ SilentHills_MapEvents:
 
 	db 0 ; coord events
 
-	db 0 ; bg events
+	db 1 ; bg events
+	bg_event 12,  8, BGEVENT_READ, SafariBattleTestScript
 
 	db 0 ; object events
 
@@ -24,3 +25,12 @@ SilentHills_FlyPointCallback:
 	setflag ENGINE_FLYPOINT_SILENT
 	clearevent EVENT_FIRST_TIME_BANKING_WITH_MOM
 	return
+
+SafariBattleTestScript:
+	loadwildmon RHYHORN, 30
+	setval 5
+	writemem wSafariBallsRemaining
+	loadvar VAR_BATTLETYPE, BATTLETYPE_SAFARI
+	startbattle
+	reloadmapafterbattle
+	end
