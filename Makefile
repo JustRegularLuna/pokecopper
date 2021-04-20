@@ -108,11 +108,11 @@ endif
 
 pokegold.gbc: $(gold_obj) layout.link
 	$(RGBLINK) -n pokegold.sym -m pokegold.map -l layout.link -o $@ $(gold_obj)
-	$(RGBFIX) -cjsv -t POKEMON_GLD -i AAUE -k 01 -l 0x33 -m 0x10 -r 3 -p 0 $@
+	$(RGBFIX) -cjsv -t "PKMNREDGOLD" -k 01 -l 0x33 -m 0x10 -r 3 -p 0 $@
 
 pokesilver.gbc: $(silver_obj) layout.link
 	$(RGBLINK) -n pokesilver.sym -m pokesilver.map -l layout.link -o $@ $(silver_obj)
-	$(RGBFIX) -cjsv -t POKEMON_SLV -i AAXE -k 01 -l 0x33 -m 0x10 -r 3 -p 0 $@
+	$(RGBFIX) -cjsv -t "PKMNBLUESILVER" -k 01 -l 0x33 -m 0x10 -r 3 -p 0 $@
 
 
 ### LZ compression rules

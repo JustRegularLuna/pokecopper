@@ -132,8 +132,8 @@ Now you're ready to [build **pokegold**](#build-pokegold).
 To download the **pokegold** source files:
 
 ```bash
-git clone https://github.com/pret/pokegold
-cd pokegold
+git clone https://github.com/TheFakeMateo/rgbs
+cd rgbs
 ```
 
 To build **pokegold.gbc**:
