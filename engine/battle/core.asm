@@ -4626,6 +4626,13 @@ DrawEnemyHUD:
 	ld a, [hl]
 	ld [de], a
 
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	jr nz, .notGhost
+	ld a, " "
+	jr .got_gender
+
+.notGhost
 	ld a, TEMPMON
 	ld [wMonType], a
 	callfar GetGender
