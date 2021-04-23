@@ -424,6 +424,10 @@ DudeBackpic::
 INCBIN "gfx/battle/dude.2bpp.lz"
 
 
+SECTION "Ghost Pic", ROMX
+GhostPic::
+INCBIN "gfx/battle/ghost.2bpp.lz"
+
 
 SECTION "Stadium Data", ROMX
 

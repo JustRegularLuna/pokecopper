@@ -112,6 +112,10 @@ DoBattle:
 	call SpikesDamage
 
 .not_linked_2
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	jp z, GhostBattleTurn
+	; else
 	jp BattleTurn
 
 WildFled_EnemyFled_LinkBattleCanceled:
@@ -228,6 +232,39 @@ SafariBattleTurn:
 	ret nz
 	
 	jr .loop
+
+GhostBattleTurn:
+.loop
+	xor a
+	ld [wBattlePlayerAction], a
+
+	call BattleMenu
+	ret c
+
+	ld a, [wBattleEnded]
+	and a
+	ret nz
+
+	call ParsePlayerAction
+	jr nz, .loop
+
+	call HandleGhostBehavior
+
+	jr .loop
+
+HandleGhostBehavior:
+	; The ghost always says "Get Out... Get Out..."
+	ld hl, BattleText_GhostGetOut
+	call StdBattleTextbox
+
+	; Did the player try to attack the ghost?
+	ld a, [wBattlePlayerAction]
+	and a
+	ret nz
+
+	; If you tried to attack, your Pokemon is "too scared to move"
+	ld hl, BattleText_TooScared
+	jp StdBattleTextbox
 
 HandleBetweenTurnEffects:
 	ldh a, [hSerialConnectionStatus]
@@ -3539,6 +3576,8 @@ TryToRunAwayFromBattle:
 	jp z, .can_escape
 	cp BATTLETYPE_SAFARI
 	jp z, .can_escape
+	cp BATTLETYPE_GHOST
+	jp z, .can_escape
 	cp BATTLETYPE_TRAP
 	jp z, .cant_escape
 	cp BATTLETYPE_SHINY
@@ -6326,6 +6365,11 @@ LoadEnemyMon:
 
 ; Update enemy nick
 	ld hl, wStringBuffer1
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	jr nz, .notGhost
+	ld hl, GhostName
+.notGhost
 	ld de, wEnemyMonNick
 	ld bc, MON_NAME_LENGTH
 	call CopyBytes
@@ -6344,6 +6388,9 @@ LoadEnemyMon:
 	call CopyBytes
 
 	ret
+
+GhostName:
+	db "GHOST@@@@@"
 
 CheckUnownLetter:
 ; Return carry if the Unown letter hasn't been unlocked yet
@@ -7863,7 +7910,7 @@ DropEnemySub:
 	ld hl, wEnemyMonDVs
 	predef GetUnownLetter
 	ld de, vTiles2
-	predef GetMonFrontpic
+	predef GetMonFrontpic2
 	pop af
 	ld [wCurPartySpecies], a
 	ret
@@ -8019,7 +8066,7 @@ InitEnemyWildmon:
 	ld [wFirstUnownSeen], a
 .skip_unown
 	ld de, vTiles2
-	predef GetMonFrontpic
+	predef GetMonFrontpic2
 	xor a
 	ld [wTrainerClass], a
 	ldh [hGraphicStartTile], a
@@ -8844,6 +8891,9 @@ BattleStartMessage:
 	jr z, .PlaceBattleStartText
 	ld hl, PokemonFellFromTreeText
 	cp BATTLETYPE_TREE
+	jr z, .PlaceBattleStartText
+	ld hl, GhostCantBeIDdText
+	cp BATTLETYPE_GHOST
 	jr z, .PlaceBattleStartText
 	ld hl, WildPokemonAppearedText
 

@@ -27,10 +27,9 @@ SilentHills_FlyPointCallback:
 	return
 
 SafariBattleTestScript:
-	loadwildmon RHYHORN, 30
-	setval 5
-	writemem wSafariBallsRemaining
-	loadvar VAR_BATTLETYPE, BATTLETYPE_SAFARI
+	giveitem GREAT_BALL, 5
+	loadwildmon HAUNTER, 30
+	loadvar VAR_BATTLETYPE, BATTLETYPE_GHOST
 	startbattle
 	reloadmapafterbattle
 	end

@@ -52,12 +52,23 @@ GetMonFrontpic:
 	call GetFrontpic
 	jp Load2bppToSRAM
 
-UnusedFrontpicPredef:
-	call GetFrontpic
-	push hl
-	farcall StubbedGetFrontpic
-	pop hl
+GetMonFrontpic2:
+	call GetFrontpic2
 	jp Load2bppToSRAM
+
+GetFrontpic2:
+	ld a, [wBattleType]
+	cp BATTLETYPE_GHOST
+	jr nz, GetFrontpic
+
+	push de
+	ld b, $6
+	push bc
+	ld a, BANK(sDecompressBuffer)
+	call OpenSRAM
+	ld hl, GhostPic
+	ld a, BANK(GhostPic)
+	jr GetFrontpic.ok
 
 GetFrontpic:
 	ld a, [wCurPartySpecies]

@@ -210,6 +210,7 @@ gfx/overworld/sylvia_fish.2bpp: tools/gfx += --trim-whitespace
 gfx/sprites/big_onix.2bpp: tools/gfx += --remove-whitespace --remove-xflip
 
 gfx/battle/dude.2bpp: rgbgfx += -h
+gfx/battle/ghost.2bpp: rgbgfx += -h
 
 gfx/font/unused_bold_font.1bpp: tools/gfx += --trim-whitespace
 
