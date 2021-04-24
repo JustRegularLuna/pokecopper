@@ -166,6 +166,8 @@ LoadSGBLayout:
 	ld a, [wCurHPPal]
 	add PAL_HP_GREEN
 	call GetPredefPal
+	inc hl
+	inc hl
 	ld a, [hli]
 	ld [wSGBPals + 3], a
 	ld a, [hli]
