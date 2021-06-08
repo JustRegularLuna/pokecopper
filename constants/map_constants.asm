@@ -37,7 +37,7 @@ ENDM
 
 	map_const SILENT_HILLS,                                10,  9 ;  1
 	map_const PLAYERS_HOUSE_1F,                             5,  4 ;  2
-	map_const PLAYERS_HOUSE_2F,                             4,  3 ;  3
+	map_const PLAYERS_HOUSE_2F,                             5,  4 ;  3
 	map_const JOHTO_ROUTE_1,                               30,  9 ;  4
 
 	newgroup                                                      ; 3
