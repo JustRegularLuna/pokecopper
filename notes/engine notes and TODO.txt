@@ -1,0 +1,13 @@
+Engine and Effect changes from vanilla:
+
+- Restore unfinished kanto badge screen on Trainer Card
+
+- Restore Gen 1 Mimic menu
+- Restore Safari Zone mechanic
+- Restore Ghost Battle mechanic
+
+- Curse always works the way it does for Ghost Types in final (to be like spaceworld)
+
+- Change Amnesia to boost Spc Atk instead of Def? Or both?
+  - the Amnesia Psyduck from Stadium clearly used it to boost Spc Atk, so I feel this is sticking with the original intent
+
