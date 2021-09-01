@@ -356,65 +356,67 @@ MewFrontpic::           INCBIN "gfx/pokemon/monfront/mew.2bpp.lz"
 MewBackpic::            INCBIN "gfx/pokemon/monback/mewb.2bpp.lz"
 
 
-SECTION "Pics 9", ROMX
+; Unown Pics
 
-UnownAFrontpic::  INCBIN "gfx/pokemon/unown_a/front.2bpp.lz"
-UnownABackpic::   INCBIN "gfx/pokemon/unown_a/back.2bpp.lz"
-UnownBFrontpic::  INCBIN "gfx/pokemon/unown_b/front.2bpp.lz"
-UnownBBackpic::   INCBIN "gfx/pokemon/unown_b/back.2bpp.lz"
-UnownCFrontpic::  INCBIN "gfx/pokemon/unown_c/front.2bpp.lz"
-UnownCBackpic::   INCBIN "gfx/pokemon/unown_c/back.2bpp.lz"
-UnownDFrontpic::  INCBIN "gfx/pokemon/unown_d/front.2bpp.lz"
-UnownDBackpic::   INCBIN "gfx/pokemon/unown_d/back.2bpp.lz"
-UnownEFrontpic::  INCBIN "gfx/pokemon/unown_e/front.2bpp.lz"
-UnownEBackpic::   INCBIN "gfx/pokemon/unown_e/back.2bpp.lz"
-UnownFFrontpic::  INCBIN "gfx/pokemon/unown_f/front.2bpp.lz"
-UnownFBackpic::   INCBIN "gfx/pokemon/unown_f/back.2bpp.lz"
-UnownGFrontpic::  INCBIN "gfx/pokemon/unown_g/front.2bpp.lz"
-UnownGBackpic::   INCBIN "gfx/pokemon/unown_g/back.2bpp.lz"
-UnownHFrontpic::  INCBIN "gfx/pokemon/unown_h/front.2bpp.lz"
-UnownHBackpic::   INCBIN "gfx/pokemon/unown_h/back.2bpp.lz"
-UnownIFrontpic::  INCBIN "gfx/pokemon/unown_i/front.2bpp.lz"
-UnownIBackpic::   INCBIN "gfx/pokemon/unown_i/back.2bpp.lz"
-UnownJFrontpic::  INCBIN "gfx/pokemon/unown_j/front.2bpp.lz"
-UnownJBackpic::   INCBIN "gfx/pokemon/unown_j/back.2bpp.lz"
-UnownKFrontpic::  INCBIN "gfx/pokemon/unown_k/front.2bpp.lz"
-UnownKBackpic::   INCBIN "gfx/pokemon/unown_k/back.2bpp.lz"
-UnownLFrontpic::  INCBIN "gfx/pokemon/unown_l/front.2bpp.lz"
-UnownLBackpic::   INCBIN "gfx/pokemon/unown_l/back.2bpp.lz"
-UnownMFrontpic::  INCBIN "gfx/pokemon/unown_m/front.2bpp.lz"
-UnownMBackpic::   INCBIN "gfx/pokemon/unown_m/back.2bpp.lz"
-UnownNFrontpic::  INCBIN "gfx/pokemon/unown_n/front.2bpp.lz"
-UnownNBackpic::   INCBIN "gfx/pokemon/unown_n/back.2bpp.lz"
-UnownOFrontpic::  INCBIN "gfx/pokemon/unown_o/front.2bpp.lz"
-UnownOBackpic::   INCBIN "gfx/pokemon/unown_o/back.2bpp.lz"
-UnownPFrontpic::  INCBIN "gfx/pokemon/unown_p/front.2bpp.lz"
-UnownPBackpic::   INCBIN "gfx/pokemon/unown_p/back.2bpp.lz"
-UnownQFrontpic::  INCBIN "gfx/pokemon/unown_q/front.2bpp.lz"
-UnownQBackpic::   INCBIN "gfx/pokemon/unown_q/back.2bpp.lz"
-UnownRFrontpic::  INCBIN "gfx/pokemon/unown_r/front.2bpp.lz"
-UnownRBackpic::   INCBIN "gfx/pokemon/unown_r/back.2bpp.lz"
-UnownSFrontpic::  INCBIN "gfx/pokemon/unown_s/front.2bpp.lz"
-UnownSBackpic::   INCBIN "gfx/pokemon/unown_s/back.2bpp.lz"
-UnownTFrontpic::  INCBIN "gfx/pokemon/unown_t/front.2bpp.lz"
-UnownTBackpic::   INCBIN "gfx/pokemon/unown_t/back.2bpp.lz"
-UnownUFrontpic::  INCBIN "gfx/pokemon/unown_u/front.2bpp.lz"
-UnownUBackpic::   INCBIN "gfx/pokemon/unown_u/back.2bpp.lz"
-UnownVFrontpic::  INCBIN "gfx/pokemon/unown_v/front.2bpp.lz"
-UnownVBackpic::   INCBIN "gfx/pokemon/unown_v/back.2bpp.lz"
-UnownWFrontpic::  INCBIN "gfx/pokemon/unown_w/front.2bpp.lz"
-UnownWBackpic::   INCBIN "gfx/pokemon/unown_w/back.2bpp.lz"
-UnownXFrontpic::  INCBIN "gfx/pokemon/unown_x/front.2bpp.lz"
-UnownXBackpic::   INCBIN "gfx/pokemon/unown_x/back.2bpp.lz"
-UnownYFrontpic::  INCBIN "gfx/pokemon/unown_y/front.2bpp.lz"
-UnownYBackpic::   INCBIN "gfx/pokemon/unown_y/back.2bpp.lz"
-UnownZFrontpic::  INCBIN "gfx/pokemon/unown_z/front.2bpp.lz"
-UnownZBackpic::   INCBIN "gfx/pokemon/unown_z/back.2bpp.lz"
+SECTION "Unown Pics", ROMX
+
+UnownAFrontpic::      INCBIN "gfx/pokemon/unown/unowna.2bpp.lz"
+UnownABackpic::       INCBIN "gfx/pokemon/unownback/unowna.2bpp.lz"
+UnownBFrontpic::      INCBIN "gfx/pokemon/unown/unownb.2bpp.lz"
+UnownBBackpic::       INCBIN "gfx/pokemon/unownback/unownb.2bpp.lz"
+UnownCFrontpic::      INCBIN "gfx/pokemon/unown/unownc.2bpp.lz"
+UnownCBackpic::       INCBIN "gfx/pokemon/unownback/unownc.2bpp.lz"
+UnownDFrontpic::      INCBIN "gfx/pokemon/unown/unownd.2bpp.lz"
+UnownDBackpic::       INCBIN "gfx/pokemon/unownback/unownd.2bpp.lz"
+UnownEFrontpic::      INCBIN "gfx/pokemon/unown/unowne.2bpp.lz"
+UnownEBackpic::       INCBIN "gfx/pokemon/unownback/unowne.2bpp.lz"
+UnownFFrontpic::      INCBIN "gfx/pokemon/unown/unownf.2bpp.lz"
+UnownFBackpic::       INCBIN "gfx/pokemon/unownback/unownf.2bpp.lz"
+UnownGFrontpic::      INCBIN "gfx/pokemon/unown/unowng.2bpp.lz"
+UnownGBackpic::       INCBIN "gfx/pokemon/unownback/unowng.2bpp.lz"
+UnownHFrontpic::      INCBIN "gfx/pokemon/unown/unownh.2bpp.lz"
+UnownHBackpic::       INCBIN "gfx/pokemon/unownback/unownh.2bpp.lz"
+UnownIFrontpic::      INCBIN "gfx/pokemon/unown/unowni.2bpp.lz"
+UnownIBackpic::       INCBIN "gfx/pokemon/unownback/unowni.2bpp.lz"
+UnownJFrontpic::      INCBIN "gfx/pokemon/unown/unownj.2bpp.lz"
+UnownJBackpic::       INCBIN "gfx/pokemon/unownback/unownj.2bpp.lz"
+UnownKFrontpic::      INCBIN "gfx/pokemon/unown/unownk.2bpp.lz"
+UnownKBackpic::       INCBIN "gfx/pokemon/unownback/unownk.2bpp.lz"
+UnownLFrontpic::      INCBIN "gfx/pokemon/unown/unownl.2bpp.lz"
+UnownLBackpic::       INCBIN "gfx/pokemon/unownback/unownl.2bpp.lz"
+UnownMFrontpic::      INCBIN "gfx/pokemon/unown/unownm.2bpp.lz"
+UnownMBackpic::       INCBIN "gfx/pokemon/unownback/unownm.2bpp.lz"
+UnownNFrontpic::      INCBIN "gfx/pokemon/unown/unownn.2bpp.lz"
+UnownNBackpic::       INCBIN "gfx/pokemon/unownback/unownn.2bpp.lz"
+UnownOFrontpic::      INCBIN "gfx/pokemon/unown/unowno.2bpp.lz"
+UnownOBackpic::       INCBIN "gfx/pokemon/unownback/unowno.2bpp.lz"
+UnownPFrontpic::      INCBIN "gfx/pokemon/unown/unownp.2bpp.lz"
+UnownPBackpic::       INCBIN "gfx/pokemon/unownback/unownp.2bpp.lz"
+UnownQFrontpic::      INCBIN "gfx/pokemon/unown/unownq.2bpp.lz"
+UnownQBackpic::       INCBIN "gfx/pokemon/unownback/unownq.2bpp.lz"
+UnownRFrontpic::      INCBIN "gfx/pokemon/unown/unownr.2bpp.lz"
+UnownRBackpic::       INCBIN "gfx/pokemon/unownback/unownr.2bpp.lz"
+UnownSFrontpic::      INCBIN "gfx/pokemon/unown/unowns.2bpp.lz"
+UnownSBackpic::       INCBIN "gfx/pokemon/unownback/unowns.2bpp.lz"
+UnownTFrontpic::      INCBIN "gfx/pokemon/unown/unownt.2bpp.lz"
+UnownTBackpic::       INCBIN "gfx/pokemon/unownback/unownt.2bpp.lz"
+UnownUFrontpic::      INCBIN "gfx/pokemon/unown/unownu.2bpp.lz"
+UnownUBackpic::       INCBIN "gfx/pokemon/unownback/unownu.2bpp.lz"
+UnownVFrontpic::      INCBIN "gfx/pokemon/unown/unownv.2bpp.lz"
+UnownVBackpic::       INCBIN "gfx/pokemon/unownback/unownv.2bpp.lz"
+UnownWFrontpic::      INCBIN "gfx/pokemon/unown/unownw.2bpp.lz"
+UnownWBackpic::       INCBIN "gfx/pokemon/unownback/unownw.2bpp.lz"
+UnownXFrontpic::      INCBIN "gfx/pokemon/unown/unownx.2bpp.lz"
+UnownXBackpic::       INCBIN "gfx/pokemon/unownback/unownx.2bpp.lz"
+UnownYFrontpic::      INCBIN "gfx/pokemon/unown/unowny.2bpp.lz"
+UnownYBackpic::       INCBIN "gfx/pokemon/unownback/unowny.2bpp.lz"
+UnownZFrontpic::      INCBIN "gfx/pokemon/unown/unownz.2bpp.lz"
+UnownZBackpic::       INCBIN "gfx/pokemon/unownback/unownz.2bpp.lz"
 
 
 ; Trainer Pics
 
-SECTION "Pics 10", ROMX
+SECTION "Trainer Pics 1", ROMX
 
 FalknerPic::      INCBIN "gfx/trainers/falkner.2bpp.lz"
 WhitneyPic::      INCBIN "gfx/trainers/whitney.2bpp.lz"
@@ -461,7 +463,7 @@ Rival2Pic::       INCBIN "gfx/trainers/rival2.2bpp.lz"
 GuitaristPic::    INCBIN "gfx/trainers/guitarist.2bpp.lz"
 
 
-SECTION "Pics 11", ROMX
+SECTION "Trainer Pics 2", ROMX
 
 HikerPic::        INCBIN "gfx/trainers/hiker.2bpp.lz"
 BikerPic::        INCBIN "gfx/trainers/biker.2bpp.lz"
@@ -486,17 +488,3 @@ RedPic::          INCBIN "gfx/trainers/red.2bpp.lz"
 BluePic::         INCBIN "gfx/trainers/blue.2bpp.lz"
 OfficerPic::      INCBIN "gfx/trainers/officer.2bpp.lz"
 GruntfPic::       INCBIN "gfx/trainers/grunt_f.2bpp.lz"
-
-SECTION "Pics 12", ROMX
-
-SECTION "Pics 13", ROMX
-
-SECTION "Pics 14", ROMX
-
-SECTION "Pics 15", ROMX
-
-SECTION "Pics 16", ROMX
-
-SECTION "Pics 17", ROMX
-
-SECTION "Pics 18", ROMX
