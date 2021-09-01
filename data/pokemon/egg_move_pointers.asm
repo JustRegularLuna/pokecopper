@@ -1,154 +1,154 @@
 EggMovePointers::
-	dw BulbasaurEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw CharmanderEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw SquirtleEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw PidgeyEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw RattataEggMoves
-	dw NoEggMoves
-	dw SpearowEggMoves
-	dw NoEggMoves
-	dw EkansEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw SandshrewEggMoves
-	dw NoEggMoves
-	dw NidoranFEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NidoranMEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw VulpixEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw ZubatEggMoves
-	dw NoEggMoves
-	dw OddishEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw ParasEggMoves
-	dw NoEggMoves
-	dw VenonatEggMoves
-	dw NoEggMoves
-	dw DiglettEggMoves
-	dw NoEggMoves
-	dw MeowthEggMoves
-	dw NoEggMoves
-	dw PsyduckEggMoves
-	dw NoEggMoves
-	dw MankeyEggMoves
-	dw NoEggMoves
-	dw GrowlitheEggMoves
-	dw NoEggMoves
-	dw PoliwagEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw AbraEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw MachopEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw BellsproutEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw TentacoolEggMoves
-	dw NoEggMoves
-	dw GeodudeEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw PonytaEggMoves
-	dw NoEggMoves
-	dw SlowpokeEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw FarfetchDEggMoves
-	dw DoduoEggMoves
-	dw NoEggMoves
-	dw SeelEggMoves
-	dw NoEggMoves
-	dw GrimerEggMoves
-	dw NoEggMoves
-	dw ShellderEggMoves
-	dw NoEggMoves
-	dw GastlyEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw OnixEggMoves
-	dw DrowzeeEggMoves
-	dw NoEggMoves
-	dw KrabbyEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw ExeggcuteEggMoves
-	dw NoEggMoves
-	dw CuboneEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw LickitungEggMoves
-	dw KoffingEggMoves
-	dw NoEggMoves
-	dw RhyhornEggMoves
-	dw NoEggMoves
-	dw ChanseyEggMoves
-	dw TangelaEggMoves
-	dw KangaskhanEggMoves
-	dw HorseaEggMoves
-	dw NoEggMoves
-	dw GoldeenEggMoves
-	dw NoEggMoves
-	dw StaryuEggMoves
-	dw NoEggMoves
-	dw MrMimeEggMoves
-	dw ScytherEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw PinsirEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw LaprasEggMoves
-	dw NoEggMoves
-	dw EeveeEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw OmanyteEggMoves
-	dw NoEggMoves
-	dw KabutoEggMoves
-	dw NoEggMoves
-	dw AerodactylEggMoves
-	dw SnorlaxEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw DratiniEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
+	dw NoEggMoves ; BULBASAUR  ; 01
+	dw NoEggMoves ; IVYSAUR    ; 02
+	dw NoEggMoves ; VENUSAUR   ; 03
+	dw NoEggMoves ; CHARMANDER ; 04
+	dw NoEggMoves ; CHARMELEON ; 05
+	dw NoEggMoves ; CHARIZARD  ; 06
+	dw NoEggMoves ; SQUIRTLE   ; 07
+	dw NoEggMoves ; WARTORTLE  ; 08
+	dw NoEggMoves ; BLASTOISE  ; 09
+	dw NoEggMoves ; CATERPIE   ; 0a
+	dw NoEggMoves ; METAPOD    ; 0b
+	dw NoEggMoves ; BUTTERFREE ; 0c
+	dw NoEggMoves ; WEEDLE     ; 0d
+	dw NoEggMoves ; KAKUNA     ; 0e
+	dw NoEggMoves ; BEEDRILL   ; 0f
+	dw NoEggMoves ; PIDGEY     ; 10
+	dw NoEggMoves ; PIDGEOTTO  ; 11
+	dw NoEggMoves ; PIDGEOT    ; 12
+	dw NoEggMoves ; RATTATA    ; 13
+	dw NoEggMoves ; RATICATE   ; 14
+	dw NoEggMoves ; SPEAROW    ; 15
+	dw NoEggMoves ; FEAROW     ; 16
+	dw NoEggMoves ; EKANS      ; 17
+	dw NoEggMoves ; ARBOK      ; 18
+	dw NoEggMoves ; PIKACHU    ; 19
+	dw NoEggMoves ; RAICHU     ; 1a
+	dw NoEggMoves ; SANDSHREW  ; 1b
+	dw NoEggMoves ; SANDSLASH  ; 1c
+	dw NoEggMoves ; NIDORAN_F  ; 1d
+	dw NoEggMoves ; NIDORINA   ; 1e
+	dw NoEggMoves ; NIDOQUEEN  ; 1f
+	dw NoEggMoves ; NIDORAN_M  ; 20
+	dw NoEggMoves ; NIDORINO   ; 21
+	dw NoEggMoves ; NIDOKING   ; 22
+	dw NoEggMoves ; CLEFAIRY   ; 23
+	dw NoEggMoves ; CLEFABLE   ; 24
+	dw NoEggMoves ; VULPIX     ; 25
+	dw NoEggMoves ; NINETALES  ; 26
+	dw NoEggMoves ; JIGGLYPUFF ; 27
+	dw NoEggMoves ; WIGGLYTUFF ; 28
+	dw NoEggMoves ; ZUBAT      ; 29
+	dw NoEggMoves ; GOLBAT     ; 2a
+	dw NoEggMoves ; ODDISH     ; 2b
+	dw NoEggMoves ; GLOOM      ; 2c
+	dw NoEggMoves ; VILEPLUME  ; 2d
+	dw NoEggMoves ; PARAS      ; 2e
+	dw NoEggMoves ; PARASECT   ; 2f
+	dw NoEggMoves ; VENONAT    ; 30
+	dw NoEggMoves ; VENOMOTH   ; 31
+	dw NoEggMoves ; DIGLETT    ; 32
+	dw NoEggMoves ; DUGTRIO    ; 33
+	dw NoEggMoves ; MEOWTH     ; 34
+	dw NoEggMoves ; PERSIAN    ; 35
+	dw NoEggMoves ; PSYDUCK    ; 36
+	dw NoEggMoves ; GOLDUCK    ; 37
+	dw NoEggMoves ; MANKEY     ; 38
+	dw NoEggMoves ; PRIMEAPE   ; 39
+	dw NoEggMoves ; GROWLITHE  ; 3a
+	dw NoEggMoves ; ARCANINE   ; 3b
+	dw NoEggMoves ; POLIWAG    ; 3c
+	dw NoEggMoves ; POLIWHIRL  ; 3d
+	dw NoEggMoves ; POLIWRATH  ; 3e
+	dw NoEggMoves ; ABRA       ; 3f
+	dw NoEggMoves ; KADABRA    ; 40
+	dw NoEggMoves ; ALAKAZAM   ; 41
+	dw NoEggMoves ; MACHOP     ; 42
+	dw NoEggMoves ; MACHOKE    ; 43
+	dw NoEggMoves ; MACHAMP    ; 44
+	dw NoEggMoves ; BELLSPROUT ; 45
+	dw NoEggMoves ; WEEPINBELL ; 46
+	dw NoEggMoves ; VICTREEBEL ; 47
+	dw NoEggMoves ; TENTACOOL  ; 48
+	dw NoEggMoves ; TENTACRUEL ; 49
+	dw NoEggMoves ; GEODUDE    ; 4a
+	dw NoEggMoves ; GRAVELER   ; 4b
+	dw NoEggMoves ; GOLEM      ; 4c
+	dw NoEggMoves ; PONYTA     ; 4d
+	dw NoEggMoves ; RAPIDASH   ; 4e
+	dw NoEggMoves ; SLOWPOKE   ; 4f
+	dw NoEggMoves ; SLOWBRO    ; 50
+	dw NoEggMoves ; MAGNEMITE  ; 51
+	dw NoEggMoves ; MAGNETON   ; 52
+	dw NoEggMoves ; FARFETCH_D ; 53
+	dw NoEggMoves ; DODUO      ; 54
+	dw NoEggMoves ; DODRIO     ; 55
+	dw NoEggMoves ; SEEL       ; 56
+	dw NoEggMoves ; DEWGONG    ; 57
+	dw NoEggMoves ; GRIMER     ; 58
+	dw NoEggMoves ; MUK        ; 59
+	dw NoEggMoves ; SHELLDER   ; 5a
+	dw NoEggMoves ; CLOYSTER   ; 5b
+	dw NoEggMoves ; GASTLY     ; 5c
+	dw NoEggMoves ; HAUNTER    ; 5d
+	dw NoEggMoves ; GENGAR     ; 5e
+	dw NoEggMoves ; ONIX       ; 5f
+	dw NoEggMoves ; DROWZEE    ; 60
+	dw NoEggMoves ; HYPNO      ; 61
+	dw NoEggMoves ; KRABBY     ; 62
+	dw NoEggMoves ; KINGLER    ; 63
+	dw NoEggMoves ; VOLTORB    ; 64
+	dw NoEggMoves ; ELECTRODE  ; 65
+	dw NoEggMoves ; EXEGGCUTE  ; 66
+	dw NoEggMoves ; EXEGGUTOR  ; 67
+	dw NoEggMoves ; CUBONE     ; 68
+	dw NoEggMoves ; MAROWAK    ; 69
+	dw NoEggMoves ; HITMONLEE  ; 6a
+	dw NoEggMoves ; HITMONCHAN ; 6b
+	dw NoEggMoves ; LICKITUNG  ; 6c
+	dw NoEggMoves ; KOFFING    ; 6d
+	dw NoEggMoves ; WEEZING    ; 6e
+	dw NoEggMoves ; RHYHORN    ; 6f
+	dw NoEggMoves ; RHYDON     ; 70
+	dw NoEggMoves ; CHANSEY    ; 71
+	dw NoEggMoves ; TANGELA    ; 72
+	dw NoEggMoves ; KANGASKHAN ; 73
+	dw NoEggMoves ; HORSEA     ; 74
+	dw NoEggMoves ; SEADRA     ; 75
+	dw NoEggMoves ; GOLDEEN    ; 76
+	dw NoEggMoves ; SEAKING    ; 77
+	dw NoEggMoves ; STARYU     ; 78
+	dw NoEggMoves ; STARMIE    ; 79
+	dw NoEggMoves ; MR__MIME   ; 7a
+	dw NoEggMoves ; SCYTHER    ; 7b
+	dw NoEggMoves ; JYNX       ; 7c
+	dw NoEggMoves ; ELECTABUZZ ; 7d
+	dw NoEggMoves ; MAGMAR     ; 7e
+	dw NoEggMoves ; PINSIR     ; 7f
+	dw NoEggMoves ; TAUROS     ; 80
+	dw NoEggMoves ; MAGIKARP   ; 81
+	dw NoEggMoves ; GYARADOS   ; 82
+	dw NoEggMoves ; LAPRAS     ; 83
+	dw NoEggMoves ; DITTO      ; 84
+	dw NoEggMoves ; EEVEE      ; 85
+	dw NoEggMoves ; VAPOREON   ; 86
+	dw NoEggMoves ; JOLTEON    ; 87
+	dw NoEggMoves ; FLAREON    ; 88
+	dw NoEggMoves ; PORYGON    ; 89
+	dw NoEggMoves ; OMANYTE    ; 8a
+	dw NoEggMoves ; OMASTAR    ; 8b
+	dw NoEggMoves ; KABUTO     ; 8c
+	dw NoEggMoves ; KABUTOPS   ; 8d
+	dw NoEggMoves ; AERODACTYL ; 8e
+	dw NoEggMoves ; SNORLAX    ; 8f
+	dw NoEggMoves ; ARTICUNO   ; 90
+	dw NoEggMoves ; ZAPDOS     ; 91
+	dw NoEggMoves ; MOLTRES    ; 92
+	dw NoEggMoves ; DRATINI    ; 93
+	dw NoEggMoves ; DRAGONAIR  ; 94
+	dw NoEggMoves ; DRAGONITE  ; 95
+	dw NoEggMoves ; MEWTWO     ; 96
+	dw NoEggMoves ; MEW        ; 97
 
-	dw NoEggMoves ; Unown
+	dw NoEggMoves ; UNOWN
