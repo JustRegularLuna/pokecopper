@@ -565,7 +565,7 @@ OakSpeech:
 	call RotateThreePalettesRight
 	call ClearTilemap
 
-	ld a, MARILL
+	ld a, PIKACHU
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	call GetBaseData
@@ -666,7 +666,7 @@ OakText1:
 OakText2:
 	text_far _OakText2
 	text_asm
-	ld a, MARILL
+	ld a, PIKACHU
 	call PlayMonCry
 	call WaitSFX
 	ld hl, OakText3

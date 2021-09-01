@@ -12,9 +12,9 @@
 	db 15 ; step cycles to hatch
 	db 5 ; unknown 2
 IF DEF(_GOLD)
-	INCBIN "gfx/pokemon/graveler/front_gold.dimensions"
+	INCBIN "gfx/pokemon/monfront/graveler.dimensions"
 ELIF DEF(_SILVER)
-	INCBIN "gfx/pokemon/graveler/front_silver.dimensions"
+	INCBIN "gfx/pokemon/monfront/graveler.dimensions"
 ENDC
 	dw NULL, NULL ; unused (beta front/back pics)
 	db GROWTH_MEDIUM_SLOW ; growth rate

@@ -43,13 +43,13 @@ FishGroups:
 .Ocean_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     TENTACOOL,  20
-	db  90 percent + 1, CHINCHOU,   20
+	db  90 percent + 1, GOLDEEN,   20
 	db 100 percent,     time_group 2
 .Ocean_Super:
-	db  40 percent,     CHINCHOU,   40
+	db  40 percent,     GOLDEEN,   40
 	db  70 percent,     time_group 3
 	db  90 percent + 1, TENTACRUEL, 40
-	db 100 percent,     LANTURN,    40
+	db 100 percent,     SEAKING,    40
 
 .Lake_Old:
 	db  70 percent + 1, MAGIKARP,   10
@@ -99,32 +99,32 @@ FishGroups:
 .Qwilfish_Swarm_Old:
 	db  70 percent + 1, MAGIKARP,   5
 	db  85 percent + 1, MAGIKARP,   5
-	db 100 percent,     QWILFISH,   5
+	db 100 percent,     POLIWAG,   5
 .Qwilfish_Swarm_Good:
 	db  35 percent,     MAGIKARP,   20
-	db  70 percent,     QWILFISH,   20
-	db  90 percent + 1, QWILFISH,   20
+	db  70 percent,     POLIWAG,   20
+	db  90 percent + 1, POLIWAG,   20
 	db 100 percent,     time_group 10
 .Qwilfish_Swarm_Super:
-	db  40 percent,     QWILFISH,   40
+	db  40 percent,     POLIWAG,   40
 	db  70 percent,     time_group 11
-	db  90 percent + 1, QWILFISH,   40
-	db 100 percent,     QWILFISH,   40
+	db  90 percent + 1, POLIWAG,   40
+	db 100 percent,     POLIWAG,   40
 
 .Remoraid_Swarm_Old:
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
-	db 100 percent,     REMORAID,   10
+	db 100 percent,     POLIWAG,   10
 .Remoraid_Swarm_Good:
 	db  35 percent,     MAGIKARP,   20
-	db  70 percent,     REMORAID,   20
-	db  90 percent + 1, REMORAID,   20
+	db  70 percent,     POLIWAG,   20
+	db  90 percent + 1, POLIWAG,   20
 	db 100 percent,     time_group 12
 .Remoraid_Swarm_Super:
-	db  40 percent,     REMORAID,   40
+	db  40 percent,     POLIWAG,   40
 	db  70 percent,     time_group 13
-	db  90 percent + 1, REMORAID,   40
-	db 100 percent,     REMORAID,   40
+	db  90 percent + 1, POLIWAG,   40
+	db 100 percent,     POLIWAG,   40
 
 .Gyarados_Old:
 	db  70 percent + 1, MAGIKARP,   10
@@ -187,7 +187,7 @@ FishGroups:
 	db  40 percent,     TENTACOOL,  40
 	db  70 percent,     time_group 21
 	db  90 percent + 1, MAGIKARP,   40
-	db 100 percent,     QWILFISH,   40
+	db 100 percent,     POLIWAG,   40
 
 .Remoraid_Old:
 	db  70 percent + 1, MAGIKARP,   10
@@ -202,12 +202,12 @@ FishGroups:
 	db  40 percent,     POLIWAG,    40
 	db  70 percent,     time_group 7
 	db  90 percent + 1, MAGIKARP,   40
-	db 100 percent,     REMORAID,   40
+	db 100 percent,     POLIWAG,   40
 
 TimeFishGroups:
 	;  day              nite
-	db CORSOLA,    20,  STARYU,     20 ; 0
-	db CORSOLA,    40,  STARYU,     40 ; 1
+	db SQUIRTLE,    20,  STARYU,     20 ; 0
+	db SQUIRTLE,    40,  STARYU,     40 ; 1
 	db SHELLDER,   20,  SHELLDER,   20 ; 2
 	db SHELLDER,   40,  SHELLDER,   40 ; 3
 	db GOLDEEN,    20,  GOLDEEN,    20 ; 4
@@ -216,10 +216,10 @@ TimeFishGroups:
 	db POLIWAG,    40,  POLIWAG,    40 ; 7
 	db DRATINI,    20,  DRATINI,    20 ; 8
 	db DRATINI,    40,  DRATINI,    40 ; 9
-	db QWILFISH,   20,  QWILFISH,   20 ; 10
-	db QWILFISH,   40,  QWILFISH,   40 ; 11
-	db REMORAID,   20,  REMORAID,   20 ; 12
-	db REMORAID,   40,  REMORAID,   40 ; 13
+	db POLIWAG,    20,  POLIWAG,    20 ; 10
+	db POLIWAG,    40,  POLIWAG,    40 ; 11
+	db POLIWAG,    20,  POLIWAG,    20 ; 12
+	db POLIWAG,    40,  POLIWAG,    40 ; 13
 	db GYARADOS,   20,  GYARADOS,   20 ; 14
 	db GYARADOS,   40,  GYARADOS,   40 ; 15
 	db DRATINI,    10,  DRATINI,    10 ; 16

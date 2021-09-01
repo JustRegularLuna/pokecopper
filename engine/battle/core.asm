@@ -6194,16 +6194,16 @@ LoadEnemyMon:
 	ld a, [wTempEnemyMonSpecies]
 
 ; Hoothoot/Noctowl are asleep if MORN/DAY
-	cp HOOTHOOT
-	jr z, .sleeping_if_not_nite
-	cp NOCTOWL
-	jr z, .sleeping_if_not_nite
+	;cp HOOTHOOT
+	;jr z, .sleeping_if_not_nite
+	;cp NOCTOWL
+	;jr z, .sleeping_if_not_nite
 
 ; Pidgey/Spearow are asleep if NITE
-	cp PIDGEY
-	jr z, .sleeping_if_nite
-	cp SPEAROW
-	jr z, .sleeping_if_nite
+	;cp PIDGEY
+	;jr z, .sleeping_if_nite
+	;cp SPEAROW
+	;jr z, .sleeping_if_nite
 
 ; Other species are never asleep
 	jr .not_sleeping

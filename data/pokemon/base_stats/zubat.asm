@@ -12,9 +12,9 @@
 	db 15 ; step cycles to hatch
 	db 5 ; unknown 2
 IF DEF(_GOLD)
-	INCBIN "gfx/pokemon/zubat/front_gold.dimensions"
+	INCBIN "gfx/pokemon/monfront/zubat.dimensions"
 ELIF DEF(_SILVER)
-	INCBIN "gfx/pokemon/zubat/front_silver.dimensions"
+	INCBIN "gfx/pokemon/monfront/zubat.dimensions"
 ENDC
 	dw NULL, NULL ; unused (beta front/back pics)
 	db GROWTH_MEDIUM_FAST ; growth rate

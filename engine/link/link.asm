@@ -1729,10 +1729,10 @@ LinkTrade:
 	jr z, .loop
 	ld b, $2
 	ld a, c
-	cp CELEBI
+	cp NUM_POKEMON
 	jr z, .loop
 	ld a, [wCurPartySpecies]
-	cp CELEBI
+	cp NUM_POKEMON
 	jr z, .loop
 	ld b, $0
 

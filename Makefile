@@ -124,22 +124,9 @@ pokesilver.gbc: $(silver_obj) layout.link
 ### Misc file-specific graphics rules
 
 gfx/pokemon/%/front.2bpp: rgbgfx += -h
-gfx/pokemon/%/front_gold.2bpp: rgbgfx += -h
-gfx/pokemon/%/front_silver.2bpp: rgbgfx += -h
-
 gfx/pokemon/%/back.2bpp: rgbgfx += -h
-gfx/pokemon/%/back_gold.2bpp: rgbgfx += -h
-gfx/pokemon/%/back_silver.2bpp: rgbgfx += -h
-
-gfx/pokemon/%/back_gold.2bpp: gfx/pokemon/%/back.png
-	$(RGBGFX) $(rgbgfx) -o $@ $<
-	$(if $(tools/gfx),\
-		tools/gfx $(tools/gfx) -o $@ $@)
-
-gfx/pokemon/%/back_silver.2bpp: gfx/pokemon/%/back.png
-	$(RGBGFX) $(rgbgfx) -o $@ $<
-	$(if $(tools/gfx),\
-		tools/gfx $(tools/gfx) -o $@ $@)
+gfx/pokemon/monfront/%.2bpp: rgbgfx += -h
+gfx/pokemon/monback/%.2bpp: rgbgfx += -h
 
 gfx/trainers/%.2bpp: rgbgfx += -h
 
