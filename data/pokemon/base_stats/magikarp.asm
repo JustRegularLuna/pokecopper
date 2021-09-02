@@ -21,5 +21,5 @@ ENDC
 	dn EGG_WATER_2, EGG_DRAGON ; egg groups
 
 	; tm/hm learnset
-	tmhm
+	tmhm 
 	; end

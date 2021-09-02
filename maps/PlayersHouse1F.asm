@@ -129,11 +129,11 @@ if DEF(_DEBUG)
 	loadmem wPartyMon2PP+2, 15
 	loadmem wPartyMon2PP+3, 15
 	; all TMs
-x = TM_DYNAMICPUNCH
+x = TM_MEGA_PUNCH
 rept NUM_TMS + NUM_HMS
 	giveitem x
 x = x + 1
-if x == ITEM_C3 || x == ITEM_DC
+if x == ITEM_C8 || x == ITEM_E1
 x = x + 1
 endc
 endr

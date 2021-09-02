@@ -60,6 +60,6 @@ IndigoPlateauPokecenter1FNurseScript:
 
 IndigoPlateauPokecenter1FClerkScript:
 	opentext
-	pokemart MARTTYPE_STANDARD, MART_INDIGO_PLATEAU
+	pokemart MARTTYPE_STANDARD, MART_SAKURA_DEX ; placeholder mart
 	closetext
 	end

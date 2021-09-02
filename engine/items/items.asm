@@ -460,9 +460,9 @@ GetTMHMNumber::
 ; Return the number of a TM/HM by item id c.
 	ld a, c
 ; Skip any dummy items.
-	cp ITEM_C3 ; TM04-05
+	cp ITEM_C8 ; TM04-05
 	jr c, .done
-	cp ITEM_DC ; TM28-29
+	cp ITEM_E1 ; TM28-29
 	jr c, .skip
 	dec a
 .skip
@@ -477,9 +477,9 @@ GetNumberedTMHM:
 ; Return the item id of a TM/HM by number c.
 	ld a, c
 ; Skip any gaps.
-	cp ITEM_C3 - (TM01 - 1)
+	cp ITEM_C8 - (TM01 - 1)
 	jr c, .done
-	cp ITEM_DC - (TM01 - 1) - 1
+	cp ITEM_E1 - (TM01 - 1) - 1
 	jr c, .skip_one
 .skip_two
 	inc a

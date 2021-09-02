@@ -196,7 +196,11 @@
 	const MUSIC_MAIL   ; bc
 	const MIRAGE_MAIL  ; bd
 	const ITEM_BE      ; be
-
+	const ITEM_BF      ; bf
+	const ITEM_C0      ; c0
+	const ITEM_C1      ; c1
+	const ITEM_C2      ; c2
+	const ITEM_C3      ; c3
 add_tm: MACRO
 if !DEF(TM01)
 TM01 EQU const_value
@@ -207,59 +211,59 @@ endc
 ENDM
 
 ; see data/moves/tmhm_moves.asm for moves
-	add_tm DYNAMICPUNCH ; bf
-	add_tm HEADBUTT     ; c0
-	add_tm CURSE        ; c1
-	add_tm ROLLOUT      ; c2
-	const ITEM_C3       ; c3
-	add_tm ROAR         ; c4
-	add_tm TOXIC        ; c5
-	add_tm ZAP_CANNON   ; c6
-	add_tm ROCK_SMASH   ; c7
-	add_tm PSYCH_UP     ; c8
-	add_tm HIDDEN_POWER ; c9
-	add_tm SUNNY_DAY    ; ca
-	add_tm SWEET_SCENT  ; cb
-	add_tm SNORE        ; cc
-	add_tm BLIZZARD     ; cd
-	add_tm HYPER_BEAM   ; ce
-	add_tm ICY_WIND     ; cf
-	add_tm PROTECT      ; d0
-	add_tm RAIN_DANCE   ; d1
-	add_tm GIGA_DRAIN   ; d2
-	add_tm ENDURE       ; d3
-	add_tm FRUSTRATION  ; d4
-	add_tm SOLARBEAM    ; d5
-	add_tm IRON_TAIL    ; d6
-	add_tm DRAGONBREATH ; d7
-	add_tm THUNDER      ; d8
-	add_tm EARTHQUAKE   ; d9
-	add_tm RETURN       ; da
-	add_tm DIG          ; db
-	const ITEM_DC       ; dc
-	add_tm PSYCHIC_M    ; dd
-	add_tm SHADOW_BALL  ; de
-	add_tm MUD_SLAP     ; df
-	add_tm DOUBLE_TEAM  ; e0
-	add_tm ICE_PUNCH    ; e1
-	add_tm SWAGGER      ; e2
-	add_tm SLEEP_TALK   ; e3
-	add_tm SLUDGE_BOMB  ; e4
-	add_tm SANDSTORM    ; e5
-	add_tm FIRE_BLAST   ; e6
-	add_tm SWIFT        ; e7
-	add_tm DEFENSE_CURL ; e8
-	add_tm THUNDERPUNCH ; e9
-	add_tm DREAM_EATER  ; ea
-	add_tm DETECT       ; eb
-	add_tm REST         ; ec
-	add_tm ATTRACT      ; ed
-	add_tm THIEF        ; ee
-	add_tm STEEL_WING   ; ef
-	add_tm FIRE_PUNCH   ; f0
-	add_tm FURY_CUTTER  ; f1
-	add_tm NIGHTMARE    ; f2
-NUM_TMS EQU const_value - TM01 - 2 ; discount ITEM_C3 and ITEM_DC
+	add_tm MEGA_PUNCH   ; c4
+	add_tm RAZOR_WIND   ; c5
+	add_tm SWORDS_DANCE ; c6
+	add_tm WHIRLWIND    ; c7
+	const ITEM_C8       ; c8
+	add_tm MEGA_KICK    ; c9
+	add_tm TOXIC        ; ca
+	add_tm HORN_DRILL   ; cb
+	add_tm BODY_SLAM    ; cc
+	add_tm TAKE_DOWN    ; cd
+	add_tm DOUBLE_EDGE  ; ce
+	add_tm BUBBLEBEAM   ; cf
+	add_tm WATER_GUN    ; d0
+	add_tm ICE_BEAM     ; d1
+	add_tm BLIZZARD     ; d2
+	add_tm HYPER_BEAM   ; d3
+	add_tm PAY_DAY      ; d4
+	add_tm SUBMISSION   ; d5
+	add_tm COUNTER      ; d6
+	add_tm SEISMIC_TOSS ; d7
+	add_tm RAGE         ; d8
+	add_tm MEGA_DRAIN   ; d9
+	add_tm SOLARBEAM    ; da
+	add_tm DRAGON_RAGE  ; db
+	add_tm THUNDERBOLT  ; dc
+	add_tm THUNDER      ; dd
+	add_tm EARTHQUAKE   ; de
+	add_tm FISSURE      ; df
+	add_tm DIG          ; e0
+	const ITEM_E1       ; e1
+	add_tm PSYCHIC_M    ; e2
+	add_tm TELEPORT     ; e3
+	add_tm MIMIC        ; e4
+	add_tm DOUBLE_TEAM  ; e5
+	add_tm REFLECT      ; e6
+	add_tm BIDE         ; e7
+	add_tm METRONOME    ; e8
+	add_tm SELFDESTRUCT ; e9
+	add_tm EGG_BOMB     ; ea
+	add_tm FIRE_BLAST   ; eb
+	add_tm SWIFT        ; ec
+	add_tm SKULL_BASH   ; ed
+	add_tm SOFTBOILED   ; ee
+	add_tm DREAM_EATER  ; ef
+	add_tm SKY_ATTACK   ; f0
+	add_tm REST         ; f1
+	add_tm THUNDER_WAVE ; f2
+	add_tm PSYWAVE      ; f3
+	add_tm EXPLOSION    ; f4
+	add_tm ROCK_SLIDE   ; f5
+	add_tm TRI_ATTACK   ; f6
+	add_tm SUBSTITUTE   ; f7
+NUM_TMS EQU const_value - TM01 - 2 ; discount ITEM_C8 and ITEM_E1
 
 add_hm: MACRO
 if !DEF(HM01)
@@ -269,18 +273,18 @@ endc
 	enum \1_TMNUM
 ENDM
 
-	add_hm CUT          ; f3
-	add_hm FLY          ; f4
-	add_hm SURF         ; f5
-	add_hm STRENGTH     ; f6
-	add_hm FLASH        ; f7
-	add_hm WHIRLPOOL    ; f8
-	add_hm WATERFALL    ; f9
+	add_hm CUT          ; f8
+	add_hm FLY          ; f9
+	add_hm SURF         ; fa
+	add_hm STRENGTH     ; fb
+	add_hm FLASH        ; fc
+	add_hm WHIRLPOOL    ; fd
+	add_hm WATERFALL    ; fe
 NUM_HMS EQU const_value - HM01
 
 NUM_TM_HM EQU __enum__ - 1
 
-	const ITEM_FA       ; fa
+	const ITEM_FF       ; ff
 
 USE_SCRIPT_VAR EQU $00
 ITEM_FROM_MEM  EQU $ff
