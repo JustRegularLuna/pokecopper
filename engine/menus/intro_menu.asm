@@ -1094,7 +1094,7 @@ RunTitleScreen:
 	ret
 
 Function63fe:
-IF DEF(_GOLD)
+IF DEF(_COPPER)
 	ldh a, [hVBlankCounter]
 	and $7
 	ret nz
@@ -1134,9 +1134,9 @@ TitleScreenTimer:
 
 ; Start a timer
 	ld hl, wTitleScreenTimer
-IF DEF(_GOLD)
+IF DEF(_COPPER)
 	ld de, 84 * 60 + 16
-ELIF DEF(_SILVER)
+ELIF DEF(_TIN)
 	ld de, 73 * 60 + 36
 ENDC
 	ld [hl], e

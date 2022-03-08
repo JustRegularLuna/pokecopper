@@ -13,9 +13,9 @@ FEMALE EQU 1
 	const CHECK_FLAG
 
 ; G/S version ID: 0 = Gold, 1 = Silver (used by checkver)
-IF DEF(_GOLD)
+IF DEF(_COPPER)
 GS_VERSION EQU 0
-ELIF DEF(_SILVER)
+ELIF DEF(_TIN)
 GS_VERSION EQU 1
 ENDC
 

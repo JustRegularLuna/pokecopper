@@ -87,13 +87,13 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_CutTree4                 ; SPRITE_ANIM_OAMSET_CUT_TREE_4
 	dbw $00, .OAMData_1x1_Palette0             ; SPRITE_ANIM_OAMSET_EGG_CRACK
 	dbw $01, .OAMData_1x1_Palette0             ; SPRITE_ANIM_OAMSET_EGG_HATCH
-IF DEF(_GOLD)
+IF DEF(_COPPER)
 	dbw $00, .OAMData_GSIntroHoOh1             ; SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_1
 	dbw $00, .OAMData_GSIntroHoOh2             ; SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_2
 	dbw $00, .OAMData_GSIntroHoOh3             ; SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_3
 	dbw $00, .OAMData_GSIntroHoOh4             ; SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_4
 	dbw $00, .OAMData_GSIntroHoOh5             ; SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_5
-ELIF DEF(_SILVER)
+ELIF DEF(_TIN)
 	dbw $00, .OAMData_GSIntroLugia1            ; SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_1
 	dbw $20, .OAMData_GSIntroLugia1            ; SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_2
 	dbw $40, .OAMData_GSIntroLugia2            ; SPRITE_ANIM_OAMSET_GS_INTRO_HO_OH_3
@@ -619,7 +619,7 @@ ENDC
 	dbsprite -2,  0,  0,  0, $02, PAL_OW_TREE
 	dbsprite  1,  0,  0,  0, $03, PAL_OW_TREE
 
-IF DEF(_GOLD)
+IF DEF(_COPPER)
 .OAMData_GSIntroHoOh1:
 	db 19
 	dbsprite -4, -1,  0,  0, $00, 0
@@ -723,7 +723,7 @@ IF DEF(_GOLD)
 	db 1
 	dbsprite -1, -1,  4,  4, $00, 1 | OBP_NUM
 
-ELIF DEF(_SILVER)
+ELIF DEF(_TIN)
 .OAMData_GSIntroLugia1:
 	db 16
 	dbsprite -5, -2,  0,  0, $00, 0

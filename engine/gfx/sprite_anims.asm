@@ -728,7 +728,7 @@ DoAnimFrame:
 	call .AnonymousJumptable
 	jp hl
 
-IF DEF(_GOLD)
+IF DEF(_COPPER)
 ; anonymous jumptable
 	dw .Function8d835
 	dw .Function8d84c
@@ -793,7 +793,7 @@ IF DEF(_GOLD)
 	call DeinitializeSprite
 	ret
 
-ELIF DEF(_SILVER)
+ELIF DEF(_TIN)
 ; anonymous jumptable
 	dw .Function8d835
 	dw .Function8d856
@@ -837,11 +837,11 @@ ENDC
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld a, [hl]
-IF DEF(_GOLD)
+IF DEF(_COPPER)
 	inc a
 	ld [hl], a
 	ld d, $2
-ELIF DEF(_SILVER)
+ELIF DEF(_TIN)
 	dec a
 	ld [hl], a
 	ld d, $8

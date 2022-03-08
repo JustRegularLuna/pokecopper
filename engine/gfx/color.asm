@@ -990,25 +990,25 @@ INCLUDE "data/sgb_ctrl_packets.asm"
 PredefPals:
 INCLUDE "gfx/sgb/predef.pal"
 
-IF DEF(_GOLD)
+IF DEF(_COPPER)
 SGBBorderMap:
 ; interleaved tile ids and palette ids, without the center 20x18 screen area
-INCBIN "gfx/sgb/gold_border.sgb.tilemap"
+INCBIN "gfx/sgb/copper_border.sgb.tilemap"
 SGBBorderPalettes:
 ; assumed to come after SGBBorderMap
-INCLUDE "gfx/sgb/gold_border.pal"
+INCLUDE "gfx/sgb/copper_border.pal"
 SGBBorderGFX:
-INCBIN "gfx/sgb/gold_border.2bpp"
+INCBIN "gfx/sgb/copper_border.2bpp"
 
-ELIF DEF(_SILVER)
+ELIF DEF(_TIN)
 SGBBorderMap:
 ; interleaved tile ids and palette ids, without the center 20x18 screen area
-INCBIN "gfx/sgb/silver_border.sgb.tilemap"
+INCBIN "gfx/sgb/tin_border.sgb.tilemap"
 SGBBorderPalettes:
 ; assumed to come after SGBBorderMap
-INCLUDE "gfx/sgb/silver_border.pal"
+INCLUDE "gfx/sgb/tin_border.pal"
 SGBBorderGFX:
-INCBIN "gfx/sgb/silver_border.2bpp"
+INCBIN "gfx/sgb/tin_border.2bpp"
 ENDC
 
 INCLUDE "data/pokemon/palettes.asm"

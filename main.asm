@@ -430,8 +430,8 @@ INCBIN "gfx/battle/ghost.2bpp.lz"
 
 SECTION "Stadium Data", ROMX
 
-IF DEF(_GOLD)
-INCBIN "data/stadium/stadium_gold.bin"
-ELIF DEF(_SILVER)
-INCBIN "data/stadium/stadium_silver.bin"
+IF DEF(_COPPER)
+INCBIN "data/stadium/stadium_copper.bin"
+ELIF DEF(_TIN)
+INCBIN "data/stadium/stadium_tin.bin"
 ENDC

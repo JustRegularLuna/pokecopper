@@ -11,11 +11,7 @@
 	db 100 ; unknown 1
 	db 35 ; step cycles to hatch
 	db 5 ; unknown 2
-IF DEF(_GOLD)
 	INCBIN "gfx/pokemon/monfront/aerodactyl.dimensions"
-ELIF DEF(_SILVER)
-	INCBIN "gfx/pokemon/monfront/aerodactyl.dimensions"
-ENDC
 	dw NULL, NULL ; unused (beta front/back pics)
 	db GROWTH_SLOW ; growth rate
 	dn EGG_FLYING, EGG_FLYING ; egg groups

@@ -1,4 +1,4 @@
-roms := pokegold.gbc pokesilver.gbc
+roms := pokecopper.gbc poketin.gbc
 
 rom_obj := \
 audio.o \
@@ -12,17 +12,17 @@ data/pokemon/evos_attacks.o \
 engine/movie/credits.o \
 engine/overworld/events.o \
 gfx/sprites.o \
-gfx/tilesets.o
+gfx/tilesets.o \
+gfx/pics.o
 
-# Distinguish asm files which are game-exclusive for building (*_[gold|silver].asm)
+# Distinguish asm files which are game-exclusive for building (*_[copper|tin].asm)
 gs_excl_asm := \
-data/pokemon/dex_entries \
-gfx/pics
+data/pokemon/dex_entries
 
-gold_excl_obj := $(addsuffix _gold.o,$(gs_excl_asm))
-silver_excl_obj := $(addsuffix _silver.o,$(gs_excl_asm))
-gold_obj := $(rom_obj:.o=_gold.o) $(gold_excl_obj)
-silver_obj := $(rom_obj:.o=_silver.o) $(silver_excl_obj)
+copper_excl_obj := $(addsuffix _copper.o,$(gs_excl_asm))
+tin_excl_obj := $(addsuffix _tin.o,$(gs_excl_asm))
+copper_obj := $(rom_obj:.o=_copper.o) $(copper_excl_obj)
+tin_obj := $(rom_obj:.o=_tin.o) $(tin_excl_obj)
 
 
 ### Build tools
@@ -43,22 +43,22 @@ RGBLINK ?= $(RGBDS)rgblink
 ### Build targets
 
 .SUFFIXES:
-.PHONY: all gold silver clean tidy compare tools
+.PHONY: all copper tin clean tidy compare tools
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
 
 all: $(roms)
-gold:   pokegold.gbc
-silver: pokesilver.gbc
+copper: pokecopper.gbc
+tin:    poketin.gbc
 
 clean:
-	rm -f $(roms) $(gold_obj) $(silver_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) rgbdscheck.o
+	rm -f $(roms) $(copper_obj) $(tin_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) rgbdscheck.o
 	find gfx \( -name "*.[12]bpp" -o -name "*.lz" -o -name "*.gbcpal" -o -name "*.dimensions" -o -name "*.sgb.tilemap" \) -delete
 	$(MAKE) clean -C tools/
 
 tidy:
-	rm -f $(roms) $(gold_obj) $(silver_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) rgbdscheck.o
+	rm -f $(roms) $(copper_obj) $(tin_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) rgbdscheck.o
 	$(MAKE) clean -C tools/
 
 compare: $(roms)
@@ -68,14 +68,14 @@ tools:
 	$(MAKE) -C tools/
 
 
-RGBASMFLAGS = -L -Weverything
+RGBASMFLAGS = -L -Weverything -Wnumeric-string=2 -Wtruncation=1
 # Create a sym/map for debug purposes if `make` run with `DEBUG=1`
 ifeq ($(DEBUG),1)
 RGBASMFLAGS += -E
 endif
 
-$(gold_obj):   RGBASMFLAGS += -D _GOLD
-$(silver_obj): RGBASMFLAGS += -D _SILVER
+$(copper_obj): RGBASMFLAGS += -D _COPPER
+$(tin_obj):    RGBASMFLAGS += -D _TIN
 
 rgbdscheck.o: rgbdscheck.asm
 	$(RGBASM) -o $@ $<
@@ -94,25 +94,25 @@ ifeq (,$(filter clean tools,$(MAKECMDGOALS)))
 
 $(info $(shell $(MAKE) -C tools))
 
-# Dependencies for shared objects (drop _gold and _silver from asm file basenames)
-$(foreach obj, $(filter-out $(gold_excl_obj), $(gold_obj)), \
-	$(eval $(call DEP,$(obj),$(obj:_gold.o=.asm))))
-$(foreach obj, $(filter-out $(silver_excl_obj), $(silver_obj)), \
-	$(eval $(call DEP,$(obj),$(obj:_silver.o=.asm))))
+# Dependencies for shared objects (drop _copper and _tin from asm file basenames)
+$(foreach obj, $(filter-out $(copper_excl_obj), $(copper_obj)), \
+	$(eval $(call DEP,$(obj),$(obj:_copper.o=.asm))))
+$(foreach obj, $(filter-out $(tin_excl_obj), $(tin_obj)), \
+	$(eval $(call DEP,$(obj),$(obj:_tin.o=.asm))))
 
-# Dependencies for game-exclusive objects (keep _gold and _silver in asm file basenames)
-$(foreach obj, $(gold_excl_obj) $(silver_excl_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
+# Dependencies for game-exclusive objects (keep _copper and _tin in asm file basenames)
+$(foreach obj, $(copper_excl_obj) $(tin_excl_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 
 endif
 
 
-pokegold.gbc: $(gold_obj) layout.link
-	$(RGBLINK) -n pokegold.sym -m pokegold.map -l layout.link -o $@ $(gold_obj)
-	$(RGBFIX) -cjsv -t "PKMNREDGOLD" -k 01 -l 0x33 -m 0x10 -r 3 -p 0 $@
+pokecopper.gbc: $(copper_obj) layout.link
+	$(RGBLINK) -n pokecopper.sym -m pokecopper.map -l layout.link -o $@ $(copper_obj)
+	$(RGBFIX) -cjsv -t "POKEMON2COPPER" -k 01 -l 0x33 -m 0x10 -r 3 -p 0 $@
 
-pokesilver.gbc: $(silver_obj) layout.link
-	$(RGBLINK) -n pokesilver.sym -m pokesilver.map -l layout.link -o $@ $(silver_obj)
-	$(RGBFIX) -cjsv -t "PKMNBLUESILVER" -k 01 -l 0x33 -m 0x10 -r 3 -p 0 $@
+poketin.gbc: $(tin_obj) layout.link
+	$(RGBLINK) -n poketin.sym -m poketin.map -l layout.link -o $@ $(tin_obj)
+	$(RGBFIX) -cjsv -t "POKEMON2TIN" -k 01 -l 0x33 -m 0x10 -r 3 -p 0 $@
 
 
 ### LZ compression rules
@@ -201,10 +201,10 @@ gfx/battle/ghost.2bpp: rgbgfx += -h
 
 gfx/font/unused_bold_font.1bpp: tools/gfx += --trim-whitespace
 
-gfx/sgb/gold_border.2bpp: tools/gfx += --trim-whitespace
-gfx/sgb/silver_border.2bpp: tools/gfx += --trim-whitespace
-gfx/sgb/gold_border.sgb.tilemap: gfx/sgb/gold_border.bin ; tr < $< -d '\000' > $@
-gfx/sgb/silver_border.sgb.tilemap: gfx/sgb/silver_border.bin ; tr < $< -d '\000' > $@
+gfx/sgb/copper_border.2bpp: tools/gfx += --trim-whitespace
+gfx/sgb/tin_border.2bpp: tools/gfx += --trim-whitespace
+gfx/sgb/copper_border.sgb.tilemap: gfx/sgb/copper_border.bin ; tr < $< -d '\000' > $@
+gfx/sgb/tin_border.sgb.tilemap: gfx/sgb/tin_border.bin ; tr < $< -d '\000' > $@
 
 
 ### Catch-all graphics rules

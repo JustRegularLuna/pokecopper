@@ -52,9 +52,9 @@ Credits_KazuyoshiOsawa::      db "  KAZUYOSHI OSAWA@"
 Credits_KimikoNakamichi::     db "  KIMIKO NAKAMICHI@"
 Credits_End::                 db "END@"                       ; "おしまい@"
 Credits_Staff::               db "      #MON"                 ; "ポケットモンスター"
-                            IF DEF(_GOLD)
+                            IF DEF(_COPPER)
                             next "    GOLD VERSION"
-                            ELIF DEF(_SILVER)
+                            ELIF DEF(_TIN)
                             next "   SILVER VERSION"
                             ENDC
                             next "       STAFF@"

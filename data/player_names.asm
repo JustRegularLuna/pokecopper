@@ -10,13 +10,13 @@ HiroNameMenuHeader:
 	db "NEW NAME@"
 
 HiroNameArray:
-IF DEF(_GOLD)
-	db "GOLD@"
+IF DEF(_COPPER)
+	db "COPPER@"
 	db "HIRO@"
 	db "TAYLOR@"
 	db "KARL@"
-ELIF DEF(_SILVER)
-	db "SILVER@"
+ELIF DEF(_TIN)
+	db "TIN@"
 	db "KAMON@"
 	db "OSCAR@"
 	db "MAX@"
@@ -37,13 +37,13 @@ SylviaNameMenuHeader:
 	db "NEW NAME@"
 
 SylviaNameArray:
-IF DEF(_GOLD)
-	db "GOLD@"
+IF DEF(_COPPER)
+	db "COPPER@"
 	db "SYLVIA@"
 	db "TAYLOR@"
 	db "CARLY@"
-ELIF DEF(_SILVER)
-	db "SILVER@"
+ELIF DEF(_TIN)
+	db "TIN@"
 	db "SYLVIA@"
 	db "TAYLOR@"
 	db "CARLY@"
@@ -64,13 +64,13 @@ KamonNameMenuHeader:
 	db "NEW NAME@"
 
 KamonNameArray:
-IF DEF(_GOLD)
-	db "SILVER@"
+IF DEF(_COPPER)
+	db "TIN@"
 	db "KAMON@"
 	db "OSCAR@"
 	db "MAX@"
-ELIF DEF(_SILVER)
-	db "GOLD@"
+ELIF DEF(_TIN)
+	db "COPPER@"
 	db "HIRO@"
 	db "TAYLOR@"
 	db "KARL@"

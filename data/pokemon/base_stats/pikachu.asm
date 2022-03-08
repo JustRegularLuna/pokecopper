@@ -11,11 +11,7 @@
 	db 100 ; unknown 1
 	db 10 ; step cycles to hatch
 	db 5 ; unknown 2
-IF DEF(_GOLD)
 	INCBIN "gfx/pokemon/monfront/pikachu.dimensions"
-ELIF DEF(_SILVER)
-	INCBIN "gfx/pokemon/monfront/pikachu.dimensions"
-ENDC
 	dw NULL, NULL ; unused (beta front/back pics)
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_FAIRY ; egg groups

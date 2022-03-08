@@ -1,4 +1,4 @@
-# Pokémon RedGold/BlueSilver
+# Pokémon 2: Copper & Tin Versions
 
 This is a WIP rom hack made from the disassembly of Pokémon Gold and Pokémon Silver.
 

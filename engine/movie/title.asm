@@ -129,15 +129,15 @@ DrawTitleGraphic:
 	ret
 
 TitleScreenGFX1:
-IF DEF(_GOLD)
-	INCBIN "gfx/title/logo_rg.2bpp.lz"
-ELIF DEF(_SILVER)
-	INCBIN "gfx/title/logo_bs.2bpp.lz"
+IF DEF(_COPPER)
+	INCBIN "gfx/title/logo_copper.2bpp.lz"
+ELIF DEF(_TIN)
+	INCBIN "gfx/title/logo_tin.2bpp.lz"
 ENDC
 
 TitleScreenGFX2:
-IF DEF(_GOLD)
-	INCBIN "gfx/title/title_hooh.2bpp.lz"
-ELIF DEF(_SILVER)
-	INCBIN "gfx/title/title_lugia.2bpp.lz"
+IF DEF(_COPPER)
+	INCBIN "gfx/title/title_copper.2bpp.lz"
+ELIF DEF(_TIN)
+	INCBIN "gfx/title/title_tin.2bpp.lz"
 ENDC
