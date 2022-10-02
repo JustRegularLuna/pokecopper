@@ -192,6 +192,22 @@ ItemEffects:
 	dw PokeBallEffect      ; PARK_BALL
 	dw NoEffect            ; RAINBOW_WING
 	dw NoEffect            ; ITEM_B3
+	dw NoEffect            ; BRICK_PIECE
+	dw NoEffect            ; SURF_MAIL
+	dw NoEffect            ; LITEBLUEMAIL
+	dw NoEffect            ; PORTRAITMAIL
+	dw NoEffect            ; LOVELY_MAIL
+	dw NoEffect            ; EON_MAIL
+	dw NoEffect            ; MORPH_MAIL
+	dw NoEffect            ; BLUESKY_MAIL
+	dw NoEffect            ; MUSIC_MAIL
+	dw NoEffect            ; MIRAGE_MAIL
+	dw NoEffect            ; ITEM_BE
+	dw NoEffect            ; ITEM_BF
+	dw NoEffect            ; ITEM_C0
+	dw NoEffect            ; ITEM_C1
+	dw NoEffect            ; ITEM_C2
+	dw NoEffect            ; ITEM_C3
 
 PokeBallEffect:
 	ld a, [wBattleMode]
