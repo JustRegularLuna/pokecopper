@@ -4819,7 +4819,10 @@ BattleMenu_Rock:
 
 .noCarry
 	ld [hl], a
-	; TODO: Play the rock animation
+
+	ld de, ANIM_THROW_ROCK
+	call Call_PlayBattleAnim
+
 	ld hl, wSafariMonAngerCount
 	ld de, wSafariMonEating
 	; fallthrough to BaitRockCommon
@@ -5043,7 +5046,10 @@ BattleMenu_Bait:
 	call StdBattleTextbox
 	ld hl, wEnemyMonCatchRate
 	srl [hl] ; halve the catch rate
-	; TODO: play the bait animation
+
+	ld de, ANIM_THROW_BAIT
+	call Call_PlayBattleAnim
+
 	ld hl, wSafariMonEating
 	ld de, wSafariMonAngerCount
 	jp BaitRockCommon

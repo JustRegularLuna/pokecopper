@@ -279,6 +279,8 @@ BattleAnimations::
 	dw BattleAnim_Wobble
 	dw BattleAnim_Shake
 	dw BattleAnim_HitConfusion
+	dw BattleAnim_ThrowRock
+	dw BattleAnim_ThrowBait
 
 BattleAnim_0:
 BattleAnim_252:
@@ -4819,3 +4821,20 @@ BattleAnim_ShowMon_1:
 	anim_incobj 1
 	anim_wait 1
 	anim_ret
+
+BattleAnim_ThrowRock:
+    anim_2gfx ANIM_GFX_HIT, ANIM_GFX_ROCKS
+    anim_sound 6, 2, SFX_BONE_CLUB
+    anim_obj ANIM_OBJ_SAFARI_ROCK, 64, 84, $10
+    anim_wait 36
+    anim_sound 0, 1, SFX_POUND
+    anim_obj ANIM_OBJ_02, 136, 52, $0
+    anim_wait 24
+    anim_ret
+
+BattleAnim_ThrowBait:
+    anim_1gfx ANIM_GFX_MISC_2
+    anim_sound 6, 2, SFX_BONE_CLUB
+    anim_obj ANIM_OBJ_SAFARI_BAIT, 64, 92, $10
+    anim_wait 56
+    anim_ret
