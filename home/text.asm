@@ -175,25 +175,23 @@ NextChar::
 
 CheckDict::
 MACRO dict
-if \1 == "<NULL>"
-	and a
-else
-	cp \1
-endc
-
-if ISCONST(\2)
-; Replace a character with another one
-	jr nz, ._\@
-	ld a, \2
-._\@:
-else
-	if STRSUB("\2", 1, 1) == "."
-	; Locals can use a short jump
-	jr z, \2
+	assert CHARLEN(\1) == 1
+	if \1 == 0
+		and a
 	else
-	jp z, \2
+		cp \1
 	endc
-endc
+	if ISCONST(\2)
+		; Replace a character with another one
+		jr nz, .not\@
+		ld a, \2
+	.not\@:
+	elif !STRCMP(STRSUB("\2", 1, 1), ".")
+		; Locals can use a short jump
+		jr z, \2
+	else
+		jp z, \2
+	endc
 ENDM
 
 	dict "<LINE>",    LineChar
