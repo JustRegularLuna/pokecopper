@@ -2,17 +2,17 @@
 ; names taken from pandocs
 ; http://gbdev.gg8.se/wiki/articles/SGB_Functions#SGB_Palette_Commands
 
-sgb_pal_set: MACRO
+MACRO sgb_pal_set
 	db (SGB_PAL_SET << 3) + 1
 	dw PAL_\1, PAL_\2, PAL_\3, PAL_\4
 	ds 7
 ENDM
 
-sgb_pal01: MACRO
+MACRO sgb_pal01
 	db (SGB_PAL01 << 3) + 1
 ENDM
 
-sgb_pal23: MACRO
+MACRO sgb_pal23
 	db (SGB_PAL23 << 3) + 1
 ENDM
 

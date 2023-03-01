@@ -529,6 +529,7 @@ Function2a1d7:
 	xor a
 	ldh [rIF], a
 	halt
+	nop
 	ldh a, [c]
 	bit 1, a
 	jr z, Function2a1d7
@@ -541,6 +542,7 @@ Function2a1e5:
 	xor a
 	ldh [rIF], a
 	halt
+	nop
 	ldh a, [c]
 	bit 1, a
 	jr nz, Function2a1e5
@@ -556,6 +558,7 @@ Function2a1f3:
 	xor a
 	ldh [rIF], a
 	halt
+	nop
 	jr .wait
 
 Function2a1ff:
@@ -567,6 +570,7 @@ Function2a1ff:
 	xor a
 	ldh [rIF], a
 	halt
+	nop
 	jr .wait
 
 Function2a20b:
@@ -735,6 +739,7 @@ Function2a304:
 	xor a
 	ldh [rIF], a
 	halt
+	nop
 	ld a, $c1
 	ldh [rRP], a
 	ld d, $1
@@ -754,6 +759,7 @@ Function2a304:
 	xor a
 	ldh [rIF], a
 	halt
+	nop
 .asm_2a353
 	ldh a, [hPrintNumBuffer + 3]
 	dec a
@@ -766,6 +772,7 @@ Function2a304:
 	xor a
 	ldh [rIF], a
 	halt
+	nop
 	ld d, $5
 	call Function2a1f3
 	ld d, $11

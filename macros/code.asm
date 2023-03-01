@@ -1,16 +1,16 @@
 ; Syntactic sugar macros
 
-lb: MACRO ; r, hi, lo
+MACRO lb ; r, hi, lo
 	ld \1, ((\2) & $ff) << 8 | ((\3) & $ff)
 ENDM
 
-ln: MACRO ; r, hi, lo
+MACRO ln ; r, hi, lo
 	ld \1, ((\2) & $f) << 4 | ((\3) & $f)
 ENDM
 
 ; Design patterns
 
-jumptable: MACRO
+MACRO jumptable
 	ld a, [\2]
 	ld e, a
 	ld d, 0
@@ -23,7 +23,7 @@ jumptable: MACRO
 	jp hl
 ENDM
 
-maskbits: MACRO
+MACRO maskbits
 ; masks just enough bits to cover the first argument
 ; the second argument is an optional shift amount
 ; e.g. "maskbits 26" becomes "and %00011111" (since 26 - 1 = %00011001)
@@ -47,7 +47,7 @@ else
 endc
 ENDM
 
-calc_sine_wave: MACRO
+MACRO calc_sine_wave
 ; input: a = a signed 6-bit value
 ; output: a = d * sin(a * pi/32)
 	and %111111
