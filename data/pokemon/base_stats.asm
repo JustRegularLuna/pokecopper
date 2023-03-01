@@ -1,4 +1,4 @@
-tmhm: MACRO
+MACRO tmhm
 ; used in data/pokemon/base_stats/*.asm
 _tms1 = 0 ; TM01-TM24 (24)
 _tms2 = 0 ; TM25-TM48 (24)
