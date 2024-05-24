@@ -1,9 +1,6 @@
 # Pokémon 2: Copper & Tin Versions
 
-This is a WIP rom hack made from the disassembly of Pokémon Gold and Pokémon Silver.
-
-It is my own imagining of what the Gen 2 Pokémon games might have been if various beta elements had been kept and elaborated on instead of scrapped.
-It references beta content leftover in the final builds, content from the leaked Space World '97 demo, pre-release magazine scans, etc. along with a hefty dose of creative license to fill in the very large gaps.
+This rom hack is moving to a different base, but this old repository will be kept around for reference purposes.
 
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
